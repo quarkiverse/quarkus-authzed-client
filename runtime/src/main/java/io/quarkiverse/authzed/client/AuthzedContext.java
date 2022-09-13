@@ -1,9 +1,8 @@
 package io.quarkiverse.authzed.client;
 
-import com.authzed.grpcutil.BearerToken;
-
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.quarkiverse.authzed.BearerToken;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 
 public class AuthzedContext implements AutoCloseable {

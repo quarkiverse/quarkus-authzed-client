@@ -14,6 +14,7 @@
   <name>Quarkus - Authzed Client - Parent</name>
 
   <modules>
+    <module>authzed-grpc</module>
     <module>deployment</module>
     <module>runtime</module>
   </modules>

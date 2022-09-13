@@ -1,13 +1,21 @@
 package io.quarkiverse.authzed.client;
 
+import io.quarkiverse.authzed.client.blocking.BlockingAuthzedClient;
+import io.quarkiverse.authzed.client.reactive.AuthzedClientV0;
+import io.quarkiverse.authzed.client.reactive.AuthzedClientV1;
+import io.quarkiverse.authzed.client.reactive.AuthzedClientV1Alpha1;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 
 public class AuthzedClient implements AutoCloseable {
 
     private final AuthzedContext context;
 
+    public AuthzedClient(AuthzedContext context) {
+        this.context = context;
+    }
+
     public AuthzedClient(AuthzedConfig config) {
-        this.context = AuthzedContext.create(config);
+        this(AuthzedContext.create(config));
     }
 
     public AuthzedClientV0 v0() {
@@ -25,5 +33,9 @@ public class AuthzedClient implements AutoCloseable {
     @Override
     public void close() throws Exception {
         context.close();
+    }
+
+    public BlockingAuthzedClient blocking() {
+        return new BlockingAuthzedClient(context);
     }
 }

@@ -1,7 +1,10 @@
-package io.quarkiverse.authzed.client;
+package io.quarkiverse.authzed.client.blocking;
 
 import com.authzed.api.v1alpha1.SchemaServiceGrpc;
 import com.authzed.api.v1alpha1.WatchResourcesServiceGrpc;
+
+import io.quarkiverse.authzed.client.AuthzedContext;
+import io.quarkiverse.authzed.client.WithContext;
 
 public class AuthzedClientV1Alpha1 extends WithContext {
 

@@ -15,8 +15,9 @@
       <artifactId>quarkus-arc</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.authzed.api</groupId>
-      <artifactId>authzed</artifactId>
+      <groupId>io.quarkiverse.authzed</groupId>
+      <artifactId>quarkus-authzed-grpc</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.grpc</groupId>
