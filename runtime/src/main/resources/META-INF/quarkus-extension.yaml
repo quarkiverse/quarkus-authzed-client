@@ -1,0 +1,11 @@
+name: Authzed Client
+description: A wrapper around the authzed client
+metadata:
+ keywords:
+   - authzed-client
+   - fga
+# guide: ...
+ categories:
+   - authorization
+   - security
+ status: "preview"
