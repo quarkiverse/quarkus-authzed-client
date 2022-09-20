@@ -25,7 +25,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.version>2.12.2.Final</quarkus.version>
-    <authzed-client.version>0.2.0</authzed-client.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -35,11 +34,6 @@
         <version>2.12.2.Final</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.authzed.api</groupId>
-        <artifactId>authzed</artifactId>
-        <version>${authzed-client.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
