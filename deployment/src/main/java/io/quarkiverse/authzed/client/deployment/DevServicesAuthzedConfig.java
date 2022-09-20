@@ -35,7 +35,7 @@ public class DevServicesAuthzedConfig {
      * Indicates if the Authzed instance managed by Quarkus DevServices is shared.
      * When shared, Quarkus looks for running containers using label-based service discovery.
      * If a matching container is found, it is used, and so a second one is not started.
-     * Otherwise, DevServices for OpenFGA starts a new container.
+     * Otherwise, DevServices for Authzed starts a new container.
      * <p>
      * The discovery uses the {@code quarkus-dev-service-openfga} label.
      * The value is configured using the {@code service-name} property.
@@ -48,12 +48,12 @@ public class DevServicesAuthzedConfig {
     /**
      * The value of the {@code quarkus-dev-service-authzed} label attached to the started container.
      * This property is used when {@code shared} is set to {@code true}.
-     * In this case, before starting a container, DevServices for OpenFGA looks for a container with the
+     * In this case, before starting a container, DevServices for Authzed looks for a container with the
      * {@code quarkus-dev-service-openfga} label
      * set to the configured value. If found, it will use this container instead of starting a new one, otherwise it
      * starts a new container with the {@code quarkus-dev-service-openfga} label set to the specified value.
      * <p>
-     * This property is used when you need multiple shared OpenFGA instances.
+     * This property is used when you need multiple shared Authzed instances.
      */
     @ConfigItem(defaultValue = "authzed")
     public String serviceName;
