@@ -8,7 +8,6 @@ import java.nio.file.Path;
 
 import javax.inject.Inject;
 
-import io.smallrye.mutiny.Uni;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
@@ -17,12 +16,17 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import com.authzed.api.v1.SchemaServiceOuterClass;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
+import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkus.test.QuarkusUnitTest;
+import io.smallrye.mutiny.Uni;
 
 public class AuthzedClientTest {
 
     @Inject
     AuthzedClient client;
+
+    @Inject
+    AuthzedConfig config;
 
     // Start unit test with your extension loaded
     @RegisterExtension
@@ -32,8 +36,10 @@ public class AuthzedClientTest {
 
     @Test
     public void shouldCreateSchema() {
-        client.v1().schemaService().writeSchema(SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(readSchema()).build());
-        Uni<SchemaServiceOuterClass.ReadSchemaResponse> response = client.v1().schemaService().readSchema(SchemaServiceOuterClass.ReadSchemaRequest.newBuilder().build());
+        client.v1().schemaService()
+                .writeSchema(SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(readSchema()).build());
+        Uni<SchemaServiceOuterClass.ReadSchemaResponse> response = client.v1().schemaService()
+                .readSchema(SchemaServiceOuterClass.ReadSchemaRequest.newBuilder().build());
         assertNotNull(response);
     }
 

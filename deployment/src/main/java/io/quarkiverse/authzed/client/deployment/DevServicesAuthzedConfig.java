@@ -22,8 +22,8 @@ public class DevServicesAuthzedConfig {
      * When DevServices is enabled Quarkus will attempt to automatically configure and start
      * a database when running in 'dev' or 'test' mode.
      */
-    @ConfigItem
-    public Optional<Boolean> enabled;
+    @ConfigItem(defaultValue = "true")
+    public Boolean enabled;
 
     /**
      * The container image name to use, for container based DevServices providers.
@@ -35,7 +35,7 @@ public class DevServicesAuthzedConfig {
      * Indicates if the Authzed instance managed by Quarkus DevServices is shared.
      * When shared, Quarkus looks for running containers using label-based service discovery.
      * If a matching container is found, it is used, and so a second one is not started.
-     * Otherwise, DevServices for OpenFGA starts a new container.
+     * Otherwise, DevServices for Authzed starts a new container.
      * <p>
      * The discovery uses the {@code quarkus-dev-service-openfga} label.
      * The value is configured using the {@code service-name} property.
@@ -48,15 +48,22 @@ public class DevServicesAuthzedConfig {
     /**
      * The value of the {@code quarkus-dev-service-authzed} label attached to the started container.
      * This property is used when {@code shared} is set to {@code true}.
-     * In this case, before starting a container, DevServices for OpenFGA looks for a container with the
+     * In this case, before starting a container, DevServices for Authzed looks for a container with the
      * {@code quarkus-dev-service-openfga} label
      * set to the configured value. If found, it will use this container instead of starting a new one, otherwise it
      * starts a new container with the {@code quarkus-dev-service-openfga} label set to the specified value.
      * <p>
-     * This property is used when you need multiple shared OpenFGA instances.
+     * This property is used when you need multiple shared Authzed instances.
      */
     @ConfigItem(defaultValue = "authzed")
     public String serviceName;
+
+    /**
+     * The preshared key used to initalize the server.
+     * Corresponds to the value passed to the `--grpc-preshared-key` argument of the serve command.
+     */
+    @ConfigItem(defaultValue = "test")
+    public String presharedKey;
 
     /**
      * Optional fixed port the service will be bound to.
@@ -65,14 +72,6 @@ public class DevServicesAuthzedConfig {
      */
     @ConfigItem
     public OptionalInt port;
-
-    /**
-     * Name of authorization store to create for DevServices.
-     * <p>
-     * Defaults to "dev".
-     */
-    @ConfigItem(defaultValue = "dev")
-    public String storeName;
 
     /**
      * Schema to upload during DevServices initialization.
@@ -88,4 +87,16 @@ public class DevServicesAuthzedConfig {
      */
     @ConfigItem
     public Optional<String> schemaLocation;
+
+    /**
+     * Dashboard configuration
+     */
+    @ConfigItem
+    public DashboardConfig dashboard;
+
+    /**
+     * Http configuration
+     */
+    @ConfigItem
+    public HttpConfig http;
 }
