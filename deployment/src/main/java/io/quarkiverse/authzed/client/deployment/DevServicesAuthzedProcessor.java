@@ -9,7 +9,11 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -146,7 +150,7 @@ public class DevServicesAuthzedProcessor {
             DevServicesAuthzedConfig devServicesConfig,
             LaunchModeBuildItem launchMode,
             Optional<Duration> timeout) {
-        if (!devServicesConfig.enabled.orElse(true)) {
+        if (!devServicesConfig.enabled) {
             // explicitly disabled
             log.debug("Not starting devservices for authzed as it has been disabled in the config");
             return null;
@@ -168,10 +172,7 @@ public class DevServicesAuthzedProcessor {
                 .asCompatibleSubstituteFor(DevServicesAuthzedConfig.DEFAULT_IMAGE);
 
         final Supplier<RunningDevService> defaultAuthzedInstanceSupplier = () -> {
-            QuarkusAuthzedContainer container = new QuarkusAuthzedContainer(
-                    dockerImageName,
-                    devServicesConfig.port,
-                    devServicesConfig.serviceName)
+            QuarkusAuthzedContainer container = new QuarkusAuthzedContainer(dockerImageName, devServicesConfig)
                     .withNetwork(Network.SHARED)
                     .waitingFor(Wait.forLogMessage(".*grpc server serving plaintext.*", 1));
 
@@ -184,11 +185,12 @@ public class DevServicesAuthzedProcessor {
             withClient(
                     container.getHost(),
                     container.getPort(),
+                    devServicesConfig.presharedKey,
                     client -> {
                         try {
                             devServicesConfigProperties.put(URL_CONFIG_KEY,
                                     new URL("https", container.getHost(), container.getPort(), "").toExternalForm());
-                            devServicesConfigProperties.put(TOKEN_CONFIG_KEY, "test");
+                            devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.presharedKey);
                         } catch (MalformedURLException e) {
                             throw new RuntimeException(e);
                         }
@@ -218,7 +220,7 @@ public class DevServicesAuthzedProcessor {
                 .map(containerAddress -> {
                     Map<String, String> devServicesConfigProperties = new HashMap<>();
                     devServicesConfigProperties.put(URL_CONFIG_KEY, containerAddress.getUrl());
-                    devServicesConfigProperties.put(TOKEN_CONFIG_KEY, "test");
+                    devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.presharedKey);
                     return new RunningDevService(
                             FEATURE,
                             containerAddress.getId(),
@@ -275,7 +277,7 @@ public class DevServicesAuthzedProcessor {
         return location;
     }
 
-    private static void withClient(String host, Integer port, Consumer<AuthzedClient> consumer) {
+    private static void withClient(String host, Integer port, String token, Consumer<AuthzedClient> consumer) {
         URL instanceURL;
         try {
             instanceURL = new URL("http", host, port, "");
@@ -285,7 +287,7 @@ public class DevServicesAuthzedProcessor {
         }
         AuthzedConfig config = new AuthzedConfig();
         config.url = instanceURL;
-        config.token = "test";
+        config.token = token;
         try (AuthzedClient client = new AuthzedClient(config)) {
             consumer.accept(client);
         } catch (Exception e) {
@@ -295,36 +297,71 @@ public class DevServicesAuthzedProcessor {
 
     private static class QuarkusAuthzedContainer extends GenericContainer<QuarkusAuthzedContainer> {
 
-        OptionalInt fixedExposedPort;
+        DevServicesAuthzedConfig config;
 
-        public QuarkusAuthzedContainer(
-                DockerImageName dockerImageName,
-                OptionalInt fixedExposedPort,
-                String serviceName) {
+        public QuarkusAuthzedContainer(DockerImageName dockerImageName, DevServicesAuthzedConfig config) {
             super(dockerImageName);
-            this.fixedExposedPort = fixedExposedPort;
-            withCommand("serve", "--grpc-preshared-key", "\"test\"");
+            this.config = config;
+
+            List<String> command = new ArrayList<>();
+            List<Integer> ports = new ArrayList<>();
+
+            command.add("serve");
+            command.add("--grpc-preshared-key");
+            command.add(config.presharedKey);
+
+            if (config.dashboard.enabled) {
+                command.add("--dashboard-enabled");
+                command.add("--dashboard-addr");
+                command.add(":" + config.dashboard.port);
+                config.dashboard.tlsCertPath.ifPresent(path -> {
+                    command.add("--dashboard-tls-cert-path");
+                    command.add(path);
+                });
+                config.dashboard.tlsCertKey.ifPresent(key -> {
+                    command.add("--dashboard-tls-cert-key");
+                    command.add(key);
+                });
+                ports.add(config.dashboard.port);
+            }
+
+            if (config.http.enabled) {
+                command.add("--http-enabled");
+                command.add("--http-addr");
+                command.add(":" + config.http.port);
+                config.http.tlsCertPath.ifPresent(path -> {
+                    command.add("--http-tls-cert-path");
+                    command.add(path);
+                });
+                config.http.tlsCertKey.ifPresent(key -> {
+                    command.add("--http-tls-cert-key");
+                    command.add(key);
+                });
+                ports.add(config.http.port);
+            }
+
+            withCommand(command.toArray(new String[command.size()]));
+            withExposedPorts(ports.toArray(new Integer[ports.size()]));
             withNetwork(Network.SHARED);
-            if (serviceName != null) { // Only adds the label in dev mode.
-                withLabel(DEV_SERVICE_LABEL, serviceName);
+            if (config.serviceName != null) { // Only adds the label in dev mode.
+                withLabel(DEV_SERVICE_LABEL, config.serviceName);
             }
         }
 
         @Override
         protected void configure() {
             super.configure();
-            if (fixedExposedPort.isPresent()) {
-                addFixedExposedPort(fixedExposedPort.getAsInt(), AUTHZED_EXPOSED_PORT);
+            if (config.port.isPresent()) {
+                addFixedExposedPort(config.port.getAsInt(), AUTHZED_EXPOSED_PORT);
             } else {
                 addExposedPort(AUTHZED_EXPOSED_PORT);
             }
         }
 
-        public int getPort() {
-            if (fixedExposedPort.isPresent()) {
-                return fixedExposedPort.getAsInt();
-            }
-            return super.getMappedPort(AUTHZED_EXPOSED_PORT);
+        public Integer getPort() {
+            return config.port.orElseGet(() -> super.getMappedPort(AUTHZED_EXPOSED_PORT));
         }
+
     }
+
 }

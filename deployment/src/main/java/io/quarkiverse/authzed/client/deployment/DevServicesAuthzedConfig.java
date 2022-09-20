@@ -22,8 +22,8 @@ public class DevServicesAuthzedConfig {
      * When DevServices is enabled Quarkus will attempt to automatically configure and start
      * a database when running in 'dev' or 'test' mode.
      */
-    @ConfigItem
-    public Optional<Boolean> enabled;
+    @ConfigItem(defaultValue = "true")
+    public Boolean enabled;
 
     /**
      * The container image name to use, for container based DevServices providers.
@@ -59,20 +59,19 @@ public class DevServicesAuthzedConfig {
     public String serviceName;
 
     /**
+     * The preshared key used to initalize the server.
+     * Corresponds to the value passed to the `--grpc-preshared-key` argument of the serve command.
+     */
+    @ConfigItem(defaultValue = "test")
+    public String presharedKey;
+
+    /**
      * Optional fixed port the service will be bound to.
      * <p>
      * If not defined, the port will be chosen randomly.
      */
     @ConfigItem
     public OptionalInt port;
-
-    /**
-     * Name of authorization store to create for DevServices.
-     * <p>
-     * Defaults to "dev".
-     */
-    @ConfigItem(defaultValue = "dev")
-    public String storeName;
 
     /**
      * Schema to upload during DevServices initialization.
@@ -88,4 +87,16 @@ public class DevServicesAuthzedConfig {
      */
     @ConfigItem
     public Optional<String> schemaLocation;
+
+    /**
+     * Dashboard configuration
+     */
+    @ConfigItem
+    public DashboardConfig dashboard;
+
+    /**
+     * Http configuration
+     */
+    @ConfigItem
+    public HttpConfig http;
 }
