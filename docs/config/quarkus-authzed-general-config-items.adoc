@@ -1,0 +1,276 @@
+
+:summaryTableId: quarkus-authzed-general-config-items
+[.configuration-legend]
+icon:lock[title=Fixed at build time] Configuration property fixed at build time - All other configuration properties are overridable at runtime
+[.configuration-reference, cols="80,.^10,.^10"]
+|===
+
+h|[[quarkus-authzed-general-config-items_configuration]]link:#quarkus-authzed-general-config-items_configuration[Configuration property]
+
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.enabled]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.enabled[quarkus.authzed.dev-services.enabled]`
+
+[.description]
+--
+If DevServices has been explicitly enabled or disabled. DevServices is generally enabled by default, unless there is an existing configuration present. 
+ When DevServices is enabled Quarkus will attempt to automatically configure and start a database when running in 'dev' or 'test' mode.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.image-name]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.image-name[quarkus.authzed.dev-services.image-name]`
+
+[.description]
+--
+The container image name to use, for container based DevServices providers.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_IMAGE_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_IMAGE_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.shared]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.shared[quarkus.authzed.dev-services.shared]`
+
+[.description]
+--
+Indicates if the Authzed instance managed by Quarkus DevServices is shared. When shared, Quarkus looks for running containers using label-based service discovery. If a matching container is found, it is used, and so a second one is not started. Otherwise, DevServices for Authzed starts a new container. 
+ The discovery uses the `quarkus-dev-service-openfga` label. The value is configured using the `service-name` property. 
+ Container sharing is only used in 'dev' mode.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_SHARED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_SHARED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.service-name]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.service-name[quarkus.authzed.dev-services.service-name]`
+
+[.description]
+--
+The value of the `quarkus-dev-service-authzed` label attached to the started container. This property is used when `shared` is set to `true`. In this case, before starting a container, DevServices for Authzed looks for a container with the `quarkus-dev-service-openfga` label set to the configured value. If found, it will use this container instead of starting a new one, otherwise it starts a new container with the `quarkus-dev-service-openfga` label set to the specified value. 
+ This property is used when you need multiple shared Authzed instances.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_SERVICE_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_SERVICE_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`authzed`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.preshared-key]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.preshared-key[quarkus.authzed.dev-services.preshared-key]`
+
+[.description]
+--
+The preshared key used to initalize the server. Corresponds to the value passed to the `--grpc-preshared-key` argument of the serve command.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_PRESHARED_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_PRESHARED_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`test`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.port]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.port[quarkus.authzed.dev-services.port]`
+
+[.description]
+--
+Optional fixed port the service will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.schema]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.schema[quarkus.authzed.dev-services.schema]`
+
+[.description]
+--
+Schema to upload during DevServices initialization.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_SCHEMA+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_SCHEMA+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.schema-location]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.schema-location[quarkus.authzed.dev-services.schema-location]`
+
+[.description]
+--
+Location of schema file to upload during DevServices initialization. 
+ The location can be prefixed with `classpath:` or `filesystem:` to specify where the file will be read from; if not prefixed, it will be read from the classpath.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_SCHEMA_LOCATION+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_SCHEMA_LOCATION+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.enabled]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.enabled[quarkus.authzed.dev-services.dashboard.enabled]`
+
+[.description]
+--
+Flag to enable dashboard (defaults to true)
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.port]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.port[quarkus.authzed.dev-services.dashboard.port]`
+
+[.description]
+--
+Optional fixed port the dashboard will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`8443`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.tls-cert-path]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.tls-cert-path[quarkus.authzed.dev-services.dashboard.tls-cert-path]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.tls-cert-key]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.dashboard.tls-cert-key[quarkus.authzed.dev-services.dashboard.tls-cert-key]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.enabled]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.enabled[quarkus.authzed.dev-services.http.enabled]`
+
+[.description]
+--
+Flag to enable http (defaults to true)
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.port]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.port[quarkus.authzed.dev-services.http.port]`
+
+[.description]
+--
+Optional fixed port the http will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`8080`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.tls-cert-path]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.tls-cert-path[quarkus.authzed.dev-services.http.tls-cert-path]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_TLS_CERT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_TLS_CERT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.tls-cert-key]]`link:#quarkus-authzed-general-config-items_quarkus.authzed.dev-services.http.tls-cert-key[quarkus.authzed.dev-services.http.tls-cert-key]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_TLS_CERT_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_TLS_CERT_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+|===

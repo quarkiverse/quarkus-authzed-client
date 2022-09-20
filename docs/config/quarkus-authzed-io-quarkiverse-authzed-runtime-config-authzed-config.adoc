@@ -1,0 +1,45 @@
+
+:summaryTableId: quarkus-authzed-io-quarkiverse-authzed-runtime-config-authzed-config
+[.configuration-legend]
+icon:lock[title=Fixed at build time] Configuration property fixed at build time - All other configuration properties are overridable at runtime
+[.configuration-reference, cols="80,.^10,.^10"]
+|===
+
+h|[[quarkus-authzed-io-quarkiverse-authzed-runtime-config-authzed-config_configuration]]link:#quarkus-authzed-io-quarkiverse-authzed-runtime-config-authzed-config_configuration[Configuration property]
+
+h|Type
+h|Default
+
+a| [[quarkus-authzed-io-quarkiverse-authzed-runtime-config-authzed-config_quarkus.authzed.url]]`link:#quarkus-authzed-io-quarkiverse-authzed-runtime-config-authzed-config_quarkus.authzed.url[quarkus.authzed.url]`
+
+[.description]
+--
+Authzed URL. Example: http://authzed:8080
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_URL+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_URL+++`
+endif::add-copy-button-to-env-var[]
+--|link:https://docs.oracle.com/javase/8/docs/api/java/net/URL.html[URL]
+ 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a| [[quarkus-authzed-io-quarkiverse-authzed-runtime-config-authzed-config_quarkus.authzed.token]]`link:#quarkus-authzed-io-quarkiverse-authzed-runtime-config-authzed-config_quarkus.authzed.token[quarkus.authzed.token]`
+
+[.description]
+--
+The token to use to connect.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_TOKEN+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_TOKEN+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+|===
