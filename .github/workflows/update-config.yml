@@ -29,6 +29,7 @@ jobs:
            cp -r target/asciidoc/generated/config docs/
            git add docs/config
            git commit -m "doc: Update config documentation"
+      - name: Push Configuration
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
