@@ -1,0 +1,77 @@
+
+:summaryTableId: config-group-io-quarkiverse-authzed-client-deployment-dashboard-config
+[.configuration-legend]
+icon:lock[title=Fixed at build time] Configuration property fixed at build time - All other configuration properties are overridable at runtime
+[.configuration-reference, cols="80,.^10,.^10"]
+|===
+
+h|[[config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_configuration]]link:#config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_configuration[Configuration property]
+
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.enabled]]`link:#config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.enabled[quarkus.authzed.dev-services.dashboard.enabled]`
+
+[.description]
+--
+Flag to enable dashboard (defaults to true)
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.port]]`link:#config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.port[quarkus.authzed.dev-services.dashboard.port]`
+
+[.description]
+--
+Optional fixed port the dashboard will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`8443`
+
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.tls-cert-path]]`link:#config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.tls-cert-path[quarkus.authzed.dev-services.dashboard.tls-cert-path]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.tls-cert-key]]`link:#config-group-io-quarkiverse-authzed-client-deployment-dashboard-config_quarkus.authzed.dev-services.dashboard.tls-cert-key[quarkus.authzed.dev-services.dashboard.tls-cert-key]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_TLS_CERT_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+|===
