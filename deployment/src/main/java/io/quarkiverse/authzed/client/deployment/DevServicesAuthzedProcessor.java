@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -185,7 +186,7 @@ public class DevServicesAuthzedProcessor {
             withClient(
                     container.getHost(),
                     container.getGrpcPort(),
-                    devServicesConfig.grpc.presharedKey,
+                    devServicesConfig,
                     client -> {
                         try {
                             devServicesConfigProperties.put(URL_CONFIG_KEY,
@@ -277,17 +278,24 @@ public class DevServicesAuthzedProcessor {
         return location;
     }
 
-    private static void withClient(String host, Integer port, String token, Consumer<AuthzedClient> consumer) {
+    private static void withClient(String host, Integer port, DevServicesAuthzedConfig devServicesAuthzedConfig,
+            Consumer<AuthzedClient> consumer) {
         URL instanceURL;
+
+        AuthzedConfig config = new AuthzedConfig();
+        config.token = devServicesAuthzedConfig.grpc.presharedKey;
+        config.tlsEnabled = devServicesAuthzedConfig.grpc.tlsCertPath.isPresent()
+                || devServicesAuthzedConfig.grpc.tlsKeyPath.isPresent();
+        config.idleTimeout = OptionalInt.empty();
+        config.keepAliveTime = OptionalInt.empty();
+        config.keepAliveTimeout = OptionalInt.empty();
         try {
-            instanceURL = new URL("http", host, port, "");
+            instanceURL = new URL(config.tlsEnabled ? "https" : "http", host, port, "");
         } catch (MalformedURLException e) {
             // Should not happen
             throw new RuntimeException(e);
         }
-        AuthzedConfig config = new AuthzedConfig();
         config.url = instanceURL;
-        config.token = token;
         try (AuthzedClient client = new AuthzedClient(config)) {
             consumer.accept(client);
         } catch (Exception e) {
@@ -337,7 +345,7 @@ public class DevServicesAuthzedProcessor {
                 command.add("--grpc-tls-cert-path");
                 command.add(path);
             });
-            config.grpc.tlsCertKey.ifPresent(key -> {
+            config.grpc.tlsKeyPath.ifPresent(key -> {
                 command.add("--grpc-tls-cert-key");
                 command.add(key);
             });
@@ -357,7 +365,7 @@ public class DevServicesAuthzedProcessor {
                 command.add("--http-tls-cert-path");
                 command.add(path);
             });
-            config.http.tlsCertKey.ifPresent(key -> {
+            config.http.tlsKeyPath.ifPresent(key -> {
                 command.add("--http-tls-cert-key");
                 command.add(key);
             });
@@ -377,7 +385,7 @@ public class DevServicesAuthzedProcessor {
                 command.add("--dashboard-tls-cert-path");
                 command.add(path);
             });
-            config.dashboard.tlsCertKey.ifPresent(key -> {
+            config.dashboard.tlsKeyPath.ifPresent(key -> {
                 command.add("--dashboard-tls-cert-key");
                 command.add(key);
             });
@@ -397,7 +405,7 @@ public class DevServicesAuthzedProcessor {
                 command.add("--metrics-tls-cert-path");
                 command.add(path);
             });
-            config.metrics.tlsCertKey.ifPresent(key -> {
+            config.metrics.tlsKeyPath.ifPresent(key -> {
                 command.add("--metrics-tls-cert-key");
                 command.add(key);
             });
