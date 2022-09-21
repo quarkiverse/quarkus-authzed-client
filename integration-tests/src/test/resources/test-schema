@@ -1,0 +1,5 @@
+definition user {}
+definition document {
+relation view: user
+relation write: user
+}

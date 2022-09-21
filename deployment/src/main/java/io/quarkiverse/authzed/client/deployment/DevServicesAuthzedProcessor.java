@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,8 +26,14 @@ import org.testcontainers.containers.Network;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
+import com.authzed.api.v1.Core.RelationshipUpdate;
+import com.authzed.api.v1.Core.RelationshipUpdate.Operation;
+import com.authzed.api.v1.PermissionService.WriteRelationshipsRequest;
+import com.authzed.api.v1.PermissionService.WriteRelationshipsResponse;
 import com.authzed.api.v1.SchemaServiceOuterClass;
+import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse;
 
+import io.quarkiverse.authzed.Tuples;
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkus.deployment.IsNormal;
@@ -44,6 +51,7 @@ import io.quarkus.deployment.logging.LoggingSetupBuildItem;
 import io.quarkus.devservices.common.ContainerLocator;
 import io.quarkus.runtime.configuration.ConfigUtils;
 import io.quarkus.runtime.util.ClassPathUtils;
+import io.smallrye.mutiny.Uni;
 
 public class DevServicesAuthzedProcessor {
 
@@ -196,15 +204,28 @@ public class DevServicesAuthzedProcessor {
                                 container.getDashboardURL().toExternalForm());
                         devServicesConfigProperties.put(METRICS_URL_CONFIG_KEY, container.getMetricsURL().toExternalForm());
                         devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
-                        loadSchema(devServicesConfig)
-                                .ifPresentOrElse(schema -> {
-                                    log.info("Initializing authorization schema ...");
-                                    client.v1().schemaService().writeSchema(SchemaServiceOuterClass.WriteSchemaRequest
-                                            .newBuilder().setSchema(schema).build());
-                                },
-                                        () -> {
-                                            log.warn("No schema configured");
-                                        });
+                        loadSchema(devServicesConfig).ifPresentOrElse(schema -> {
+                            log.info("Initializing authorization schema ...");
+                            Uni<WriteSchemaResponse> writeSchemaResponse = client.v1().schemaService()
+                                    .writeSchema(
+                                            SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(schema).build());
+                            writeSchemaResponse.await().indefinitely();
+
+                            loadAuthorizationTuples(devServicesConfig).forEach(tuple -> {
+                                log.debug(dockerImageName);
+                                Uni<WriteRelationshipsResponse> writeRelationshipRespone = client.v1().permissionService()
+                                        .writeRelationships(WriteRelationshipsRequest.newBuilder()
+                                                .addUpdates(RelationshipUpdate.newBuilder()
+                                                        .setOperation(Operation.OPERATION_CREATE)
+                                                        .setRelationship(Tuples.parseRelationship(tuple))
+                                                        .build())
+                                                .build());
+                                writeRelationshipRespone.await().indefinitely();
+                            });
+                            log.info("Loaded tuples succesfully");
+                        }, () -> {
+                            log.warn("No schema configured");
+                        });
                     });
 
             return new RunningDevService(
@@ -232,23 +253,33 @@ public class DevServicesAuthzedProcessor {
                 .orElseGet(defaultAuthzedInstanceSupplier);
     }
 
-    private static Optional<String> loadSchema(
-            DevServicesAuthzedConfig devServicesConfig) {
+    private static Optional<String> loadSchema(DevServicesAuthzedConfig devServicesConfig) {
         return devServicesConfig.schema
                 .or(() -> {
                     return devServicesConfig.schemaLocation.map(location -> {
                         try {
-                            var schemaPath = resolveSchemaPath(location);
+                            var schemaPath = resolvePath(location);
                             return Files.readString(schemaPath);
                         } catch (Throwable x) {
-                            throw new RuntimeException(
-                                    format("Unable to load authorization model from '%s'", location));
+                            throw new RuntimeException(format("Unable to load authorization model from '%s'", location));
                         }
                     });
                 });
     }
 
-    private static Path resolveSchemaPath(String location) throws IOException {
+    private static List<String> loadAuthorizationTuples(DevServicesAuthzedConfig devServicesConfig) {
+        return devServicesConfig.authorizationTuples.map(lines -> Arrays.asList(lines.split("\n|\r")))
+                .orElseGet(() -> devServicesConfig.authorizationTuplesLocation.map(location -> {
+                    try {
+                        var tuplesPath = resolvePath(location);
+                        return Arrays.asList(Files.readString(tuplesPath).split("\n"));
+                    } catch (Throwable x) {
+                        throw new RuntimeException(format("Unable to load authorization tuples from '%s'", location));
+                    }
+                }).get());
+    }
+
+    private static Path resolvePath(String location) throws IOException {
         location = normalizeLocation(location);
         if (location.startsWith("filesystem:")) {
             return Path.of(location.substring("filesystem:".length()));

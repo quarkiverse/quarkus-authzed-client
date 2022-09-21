@@ -33,6 +33,7 @@ public class AuthzedContext implements AutoCloseable {
 
     private static ManagedChannel createChannel(AuthzedConfig config) {
         NettyChannelBuilder builder = NettyChannelBuilder.forAddress(config.url.getHost(), config.url.getPort());
+
         if (config.tlsEnabled) {
             builder = builder.useTransportSecurity().sslContext(createSslContext(config));
         } else {
@@ -40,15 +41,15 @@ public class AuthzedContext implements AutoCloseable {
         }
 
         if (config.keepAliveTime.isPresent()) {
-            builder.keepAliveTime(config.keepAliveTime.getAsInt(), TimeUnit.MILLISECONDS);
+            builder = builder.keepAliveTime(config.keepAliveTime.getAsInt(), TimeUnit.MILLISECONDS);
         }
 
         if (config.keepAliveTimeout.isPresent()) {
-            builder.keepAliveTimeout(config.keepAliveTimeout.getAsInt(), TimeUnit.MILLISECONDS);
+            builder = builder.keepAliveTimeout(config.keepAliveTimeout.getAsInt(), TimeUnit.MILLISECONDS);
         }
 
         if (config.idleTimeout.isPresent()) {
-            builder.idleTimeout(config.idleTimeout.getAsInt(), TimeUnit.MILLISECONDS);
+            builder = builder.idleTimeout(config.idleTimeout.getAsInt(), TimeUnit.MILLISECONDS);
         }
         return builder.build();
     }

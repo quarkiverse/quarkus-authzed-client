@@ -2,4 +2,5 @@
 definition user {}
 definition document {
 relation reader: user
+relation writer: user
 }
