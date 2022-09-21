@@ -14,7 +14,7 @@
   <name>Quarkus - Authzed Client - Parent</name>
 
   <modules>
-    <module>authzed-grpc</module>
+    <module>grpc</module>
     <module>deployment</module>
     <module>runtime</module>
   </modules>
@@ -26,6 +26,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.version>2.12.2.Final</quarkus.version>
   </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -37,6 +38,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <build>
     <pluginManagement>
       <plugins>

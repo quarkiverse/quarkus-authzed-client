@@ -1,0 +1,45 @@
+name: Update Client
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Prepare git
+        run: git config --global core.autocrlf false
+        if: startsWith(matrix.os, 'windows')
+      - uses: actions/checkout@v2
+        name: Checkout
+      - uses: radcortez/project-metadata-action@main
+        name: Retrieve project metadata
+        id: metadata
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          metadata-file-path: '.github/project.yml'
+          local-file: true
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: temurin
+          java-version: 11
+          cache: 'maven'
+      - name: Update client
+        run: ./bin/generate.sh ${{steps.metadata.outputs.proto-sha}}
+      - name: Build with Maven
+        run: mvn -B formatter:validate verify --file pom.xml
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          add-paths: |
+            grpc/client
+          commit-message: 'Update grpc client'
+          committer: GitHub <noreply@github.com>
+          delete-branch: true
+          title: 'Update grpc client'
+          draft: false

@@ -16,7 +16,7 @@
     </dependency>
     <dependency>
       <groupId>io.quarkiverse.authzed</groupId>
-      <artifactId>quarkus-authzed-grpc</artifactId>
+      <artifactId>quarkus-authzed-grpc-client</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
