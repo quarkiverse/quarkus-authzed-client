@@ -30,6 +30,10 @@ public class AuthzedClient implements AutoCloseable {
         return new AuthzedClientV1Alpha1(context);
     }
 
+    public AuthzedContext getContext() {
+        return context;
+    }
+
     @Override
     public void close() throws Exception {
         context.close();
