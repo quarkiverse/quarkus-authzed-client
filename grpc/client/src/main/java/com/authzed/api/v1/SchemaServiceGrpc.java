@@ -1,0 +1,375 @@
+package com.authzed.api.v1;
+
+import static io.grpc.MethodDescriptor.generateFullMethodName;
+
+/**
+ * <pre>
+ * SchemaService implements operations on a Permissions System's Schema.
+ * </pre>
+ */
+@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.48.1)", comments = "Source: authzed/api/v1/schema_service.proto")
+@io.grpc.stub.annotations.GrpcGenerated
+public final class SchemaServiceGrpc {
+
+    private SchemaServiceGrpc() {
+    }
+
+    public static final String SERVICE_NAME = "authzed.api.v1.SchemaService";
+
+    // Static method descriptors that strictly reflect the proto.
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> getReadSchemaMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ReadSchema", requestType = com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest.class, responseType = com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> getReadSchemaMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> getReadSchemaMethod;
+        if ((getReadSchemaMethod = SchemaServiceGrpc.getReadSchemaMethod) == null) {
+            synchronized (SchemaServiceGrpc.class) {
+                if ((getReadSchemaMethod = SchemaServiceGrpc.getReadSchemaMethod) == null) {
+                    SchemaServiceGrpc.getReadSchemaMethod = getReadSchemaMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReadSchema"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(new SchemaServiceMethodDescriptorSupplier("ReadSchema")).build();
+                }
+            }
+        }
+        return getReadSchemaMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> getWriteSchemaMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "WriteSchema", requestType = com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest.class, responseType = com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> getWriteSchemaMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> getWriteSchemaMethod;
+        if ((getWriteSchemaMethod = SchemaServiceGrpc.getWriteSchemaMethod) == null) {
+            synchronized (SchemaServiceGrpc.class) {
+                if ((getWriteSchemaMethod = SchemaServiceGrpc.getWriteSchemaMethod) == null) {
+                    SchemaServiceGrpc.getWriteSchemaMethod = getWriteSchemaMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "WriteSchema"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(new SchemaServiceMethodDescriptorSupplier("WriteSchema")).build();
+                }
+            }
+        }
+        return getWriteSchemaMethod;
+    }
+
+    /**
+     * Creates a new async stub that supports all call types for the service
+     */
+    public static SchemaServiceStub newStub(io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<SchemaServiceStub> factory = new io.grpc.stub.AbstractStub.StubFactory<SchemaServiceStub>() {
+
+            @java.lang.Override
+            public SchemaServiceStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                return new SchemaServiceStub(channel, callOptions);
+            }
+        };
+        return SchemaServiceStub.newStub(factory, channel);
+    }
+
+    /**
+     * Creates a new blocking-style stub that supports unary and streaming output calls on the service
+     */
+    public static SchemaServiceBlockingStub newBlockingStub(io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<SchemaServiceBlockingStub> factory = new io.grpc.stub.AbstractStub.StubFactory<SchemaServiceBlockingStub>() {
+
+            @java.lang.Override
+            public SchemaServiceBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                return new SchemaServiceBlockingStub(channel, callOptions);
+            }
+        };
+        return SchemaServiceBlockingStub.newStub(factory, channel);
+    }
+
+    /**
+     * Creates a new ListenableFuture-style stub that supports unary calls on the service
+     */
+    public static SchemaServiceFutureStub newFutureStub(io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<SchemaServiceFutureStub> factory = new io.grpc.stub.AbstractStub.StubFactory<SchemaServiceFutureStub>() {
+
+            @java.lang.Override
+            public SchemaServiceFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                return new SchemaServiceFutureStub(channel, callOptions);
+            }
+        };
+        return SchemaServiceFutureStub.newStub(factory, channel);
+    }
+
+    /**
+     * <pre>
+     * SchemaService implements operations on a Permissions System's Schema.
+     * </pre>
+     */
+    public static abstract class SchemaServiceImplBase implements io.grpc.BindableService {
+
+        /**
+         * <pre>
+         * Read returns the current Object Definitions for a Permissions System.
+         * Errors include:
+         * - INVALID_ARGUMENT: a provided value has failed to semantically validate
+         * - NOT_FOUND: no schema has been defined
+         * </pre>
+         */
+        public void readSchema(com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReadSchemaMethod(), responseObserver);
+        }
+
+        /**
+         * <pre>
+         * Write overwrites the current Object Definitions for a Permissions System.
+         * </pre>
+         */
+        public void writeSchema(com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWriteSchemaMethod(), responseObserver);
+        }
+
+        @java.lang.Override
+        public io.grpc.ServerServiceDefinition bindService() {
+            return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+                    .addMethod(getReadSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                            new MethodHandlers<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse>(
+                                    this, METHODID_READ_SCHEMA)))
+                    .addMethod(getWriteSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                            new MethodHandlers<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse>(
+                                    this, METHODID_WRITE_SCHEMA)))
+                    .build();
+        }
+    }
+
+    /**
+     * <pre>
+     * SchemaService implements operations on a Permissions System's Schema.
+     * </pre>
+     */
+    public static class SchemaServiceStub extends io.grpc.stub.AbstractAsyncStub<SchemaServiceStub> {
+
+        private SchemaServiceStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
+
+        @java.lang.Override
+        protected SchemaServiceStub build(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new SchemaServiceStub(channel, callOptions);
+        }
+
+        /**
+         * <pre>
+         * Read returns the current Object Definitions for a Permissions System.
+         * Errors include:
+         * - INVALID_ARGUMENT: a provided value has failed to semantically validate
+         * - NOT_FOUND: no schema has been defined
+         * </pre>
+         */
+        public void readSchema(com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(getChannel().newCall(getReadSchemaMethod(), getCallOptions()), request,
+                    responseObserver);
+        }
+
+        /**
+         * <pre>
+         * Write overwrites the current Object Definitions for a Permissions System.
+         * </pre>
+         */
+        public void writeSchema(com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(getChannel().newCall(getWriteSchemaMethod(), getCallOptions()), request,
+                    responseObserver);
+        }
+    }
+
+    /**
+     * <pre>
+     * SchemaService implements operations on a Permissions System's Schema.
+     * </pre>
+     */
+    public static class SchemaServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<SchemaServiceBlockingStub> {
+
+        private SchemaServiceBlockingStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
+
+        @java.lang.Override
+        protected SchemaServiceBlockingStub build(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new SchemaServiceBlockingStub(channel, callOptions);
+        }
+
+        /**
+         * <pre>
+         * Read returns the current Object Definitions for a Permissions System.
+         * Errors include:
+         * - INVALID_ARGUMENT: a provided value has failed to semantically validate
+         * - NOT_FOUND: no schema has been defined
+         * </pre>
+         */
+        public com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse readSchema(
+                com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getReadSchemaMethod(), getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * Write overwrites the current Object Definitions for a Permissions System.
+         * </pre>
+         */
+        public com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse writeSchema(
+                com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getWriteSchemaMethod(), getCallOptions(), request);
+        }
+    }
+
+    /**
+     * <pre>
+     * SchemaService implements operations on a Permissions System's Schema.
+     * </pre>
+     */
+    public static class SchemaServiceFutureStub extends io.grpc.stub.AbstractFutureStub<SchemaServiceFutureStub> {
+
+        private SchemaServiceFutureStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
+
+        @java.lang.Override
+        protected SchemaServiceFutureStub build(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new SchemaServiceFutureStub(channel, callOptions);
+        }
+
+        /**
+         * <pre>
+         * Read returns the current Object Definitions for a Permissions System.
+         * Errors include:
+         * - INVALID_ARGUMENT: a provided value has failed to semantically validate
+         * - NOT_FOUND: no schema has been defined
+         * </pre>
+         */
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> readSchema(
+                com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(getChannel().newCall(getReadSchemaMethod(), getCallOptions()),
+                    request);
+        }
+
+        /**
+         * <pre>
+         * Write overwrites the current Object Definitions for a Permissions System.
+         * </pre>
+         */
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> writeSchema(
+                com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(getChannel().newCall(getWriteSchemaMethod(), getCallOptions()),
+                    request);
+        }
+    }
+
+    private static final int METHODID_READ_SCHEMA = 0;
+
+    private static final int METHODID_WRITE_SCHEMA = 1;
+
+    private static final class MethodHandlers<Req, Resp> implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
+            io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
+            io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>, io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
+
+        private final SchemaServiceImplBase serviceImpl;
+
+        private final int methodId;
+
+        MethodHandlers(SchemaServiceImplBase serviceImpl, int methodId) {
+            this.serviceImpl = serviceImpl;
+            this.methodId = methodId;
+        }
+
+        @java.lang.Override
+        @java.lang.SuppressWarnings("unchecked")
+        public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
+            switch (methodId) {
+                case METHODID_READ_SCHEMA:
+                    serviceImpl.readSchema((com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse>) responseObserver);
+                    break;
+                case METHODID_WRITE_SCHEMA:
+                    serviceImpl.writeSchema((com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse>) responseObserver);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+
+        @java.lang.Override
+        @java.lang.SuppressWarnings("unchecked")
+        public io.grpc.stub.StreamObserver<Req> invoke(io.grpc.stub.StreamObserver<Resp> responseObserver) {
+            switch (methodId) {
+                default:
+                    throw new AssertionError();
+            }
+        }
+    }
+
+    private static abstract class SchemaServiceBaseDescriptorSupplier
+            implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+
+        SchemaServiceBaseDescriptorSupplier() {
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
+            return com.authzed.api.v1.SchemaServiceOuterClass.getDescriptor();
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
+            return getFileDescriptor().findServiceByName("SchemaService");
+        }
+    }
+
+    private static final class SchemaServiceFileDescriptorSupplier extends SchemaServiceBaseDescriptorSupplier {
+
+        SchemaServiceFileDescriptorSupplier() {
+        }
+    }
+
+    private static final class SchemaServiceMethodDescriptorSupplier extends SchemaServiceBaseDescriptorSupplier
+            implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
+
+        private final String methodName;
+
+        SchemaServiceMethodDescriptorSupplier(String methodName) {
+            this.methodName = methodName;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
+            return getServiceDescriptor().findMethodByName(methodName);
+        }
+    }
+
+    private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
+
+    public static io.grpc.ServiceDescriptor getServiceDescriptor() {
+        io.grpc.ServiceDescriptor result = serviceDescriptor;
+        if (result == null) {
+            synchronized (SchemaServiceGrpc.class) {
+                result = serviceDescriptor;
+                if (result == null) {
+                    serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
+                            .setSchemaDescriptor(new SchemaServiceFileDescriptorSupplier()).addMethod(getReadSchemaMethod())
+                            .addMethod(getWriteSchemaMethod()).build();
+                }
+            }
+        }
+        return result;
+    }
+}
