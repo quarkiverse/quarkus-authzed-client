@@ -33,7 +33,7 @@ jobs:
         with:
           add-paths: |
             docs/config
-          commit-message: Update report
+          commit-message: 'Update configuration refernce'
           committer: GitHub <noreply@github.com>
           delete-branch: true
           title: 'Update configuration refernce'
