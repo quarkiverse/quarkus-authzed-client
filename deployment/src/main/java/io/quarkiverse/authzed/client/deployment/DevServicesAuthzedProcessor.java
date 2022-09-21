@@ -50,7 +50,10 @@ public class DevServicesAuthzedProcessor {
     private static final Logger log = Logger.getLogger(DevServicesAuthzedProcessor.class);
     static final String CONFIG_PREFIX = "quarkus.authzed.";
 
-    static final String URL_CONFIG_KEY = CONFIG_PREFIX + "url";
+    static final String GRPC_URL_CONFIG_KEY = CONFIG_PREFIX + "url";
+    static final String HTTP_URL_CONFIG_KEY = CONFIG_PREFIX + "http.url";
+    static final String DASHBOARD_URL_CONFIG_KEY = CONFIG_PREFIX + "dashboard.url";
+    static final String METRICS_URL_CONFIG_KEY = CONFIG_PREFIX + "metrics.url";
 
     static final String TOKEN_CONFIG_KEY = CONFIG_PREFIX + "token";
 
@@ -110,8 +113,8 @@ public class DevServicesAuthzedProcessor {
                             "Other Quarkus applications in dev mode will find the " +
                                     "instance automatically. For Quarkus applications in production mode, you can connect to" +
                                     " this by starting your application with -D%s=%s -D%s=%s",
-                            URL_CONFIG_KEY,
-                            devService.getConfig().get(URL_CONFIG_KEY),
+                            GRPC_URL_CONFIG_KEY,
+                            devService.getConfig().get(GRPC_URL_CONFIG_KEY),
                             TOKEN_CONFIG_KEY,
                             devService.getConfig().get(TOKEN_CONFIG_KEY));
                 }
@@ -157,14 +160,14 @@ public class DevServicesAuthzedProcessor {
             return null;
         }
 
-        boolean needToStart = !ConfigUtils.isPropertyPresent(URL_CONFIG_KEY);
+        boolean needToStart = !ConfigUtils.isPropertyPresent(GRPC_URL_CONFIG_KEY);
         if (!needToStart) {
             log.debug("Not starting devservices for default authzed client as url has been provided");
             return null;
         }
 
         if (!dockerStatusBuildItem.isDockerAvailable()) {
-            log.warn("Please configure " + URL_CONFIG_KEY + " or get a working docker instance");
+            log.warn("Please configure " + GRPC_URL_CONFIG_KEY + " or get a working docker instance");
             return null;
         }
 
@@ -184,17 +187,15 @@ public class DevServicesAuthzedProcessor {
             var devServicesConfigProperties = new HashMap<String, String>();
 
             withClient(
-                    container.getHost(),
-                    container.getGrpcPort(),
+                    container,
                     devServicesConfig,
                     client -> {
-                        try {
-                            devServicesConfigProperties.put(URL_CONFIG_KEY,
-                                    new URL("https", container.getHost(), container.getGrpcPort(), "").toExternalForm());
-                            devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
-                        } catch (MalformedURLException e) {
-                            throw new RuntimeException(e);
-                        }
+                        devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY, container.getGrpcURL().toExternalForm());
+                        devServicesConfigProperties.put(HTTP_URL_CONFIG_KEY, container.getHttpURL().toExternalForm());
+                        devServicesConfigProperties.put(DASHBOARD_URL_CONFIG_KEY,
+                                container.getDashboardURL().toExternalForm());
+                        devServicesConfigProperties.put(METRICS_URL_CONFIG_KEY, container.getMetricsURL().toExternalForm());
+                        devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
                         loadSchema(devServicesConfig)
                                 .ifPresentOrElse(schema -> {
                                     log.info("Initializing authorization schema ...");
@@ -220,7 +221,7 @@ public class DevServicesAuthzedProcessor {
                         launchMode.getLaunchMode())
                 .map(containerAddress -> {
                     Map<String, String> devServicesConfigProperties = new HashMap<>();
-                    devServicesConfigProperties.put(URL_CONFIG_KEY, containerAddress.getUrl());
+                    devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY, containerAddress.getUrl());
                     devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
                     return new RunningDevService(
                             FEATURE,
@@ -278,7 +279,7 @@ public class DevServicesAuthzedProcessor {
         return location;
     }
 
-    private static void withClient(String host, Integer port, DevServicesAuthzedConfig devServicesAuthzedConfig,
+    private static void withClient(QuarkusAuthzedContainer container, DevServicesAuthzedConfig devServicesAuthzedConfig,
             Consumer<AuthzedClient> consumer) {
         URL instanceURL;
 
@@ -290,7 +291,7 @@ public class DevServicesAuthzedProcessor {
         config.keepAliveTime = OptionalInt.empty();
         config.keepAliveTimeout = OptionalInt.empty();
         try {
-            instanceURL = new URL(config.tlsEnabled ? "https" : "http", host, port, "");
+            instanceURL = new URL(config.tlsEnabled ? "https" : "http", container.getHost(), container.getGrpcPort(), "");
         } catch (MalformedURLException e) {
             // Should not happen
             throw new RuntimeException(e);
@@ -328,6 +329,9 @@ public class DevServicesAuthzedProcessor {
                 configureDashboard();
             }
 
+            if (config.metrics.enabled) {
+                configureMetrics();
+            }
             withCommand(command.toArray(new String[command.size()]));
             withNetwork(Network.SHARED);
             if (config.serviceName != null) { // Only adds the label in dev mode.
@@ -421,5 +425,52 @@ public class DevServicesAuthzedProcessor {
             return config.grpc.hostPort.orElseGet(() -> super.getMappedPort(config.grpc.port));
         }
 
+        public URL getGrpcURL() {
+            try {
+                boolean useHttps = config.grpc.tlsCertPath.isPresent() && config.grpc.tlsKeyPath.isPresent();
+                return new URL(useHttps ? "https" : "http", getHost(), getGrpcPort(), "");
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public Integer getHttpPort() {
+            return config.http.hostPort.orElseGet(() -> super.getMappedPort(config.http.port));
+        }
+
+        public URL getHttpURL() {
+            try {
+                boolean useHttps = config.http.tlsCertPath.isPresent() && config.http.tlsKeyPath.isPresent();
+                return new URL(useHttps ? "https" : "http", getHost(), getHttpPort(), "/v1");
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public Integer getDashboardPort() {
+            return config.dashboard.hostPort.orElseGet(() -> super.getMappedPort(config.dashboard.port));
+        }
+
+        public URL getDashboardURL() {
+            try {
+                boolean useHttps = config.dashboard.tlsCertPath.isPresent() && config.dashboard.tlsKeyPath.isPresent();
+                return new URL(useHttps ? "https" : "http", getHost(), getDashboardPort(), "");
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public Integer getMetricsPort() {
+            return config.metrics.hostPort.orElseGet(() -> super.getMappedPort(config.metrics.port));
+        }
+
+        public URL getMetricsURL() {
+            try {
+                boolean useHttps = config.metrics.tlsCertPath.isPresent() && config.metrics.tlsKeyPath.isPresent();
+                return new URL(useHttps ? "https" : "http", getHost(), getMetricsPort(), "");
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
