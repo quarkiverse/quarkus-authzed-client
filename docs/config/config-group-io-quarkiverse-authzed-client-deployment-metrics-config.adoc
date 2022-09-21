@@ -1,0 +1,93 @@
+
+:summaryTableId: config-group-io-quarkiverse-authzed-client-deployment-metrics-config
+[.configuration-legend]
+icon:lock[title=Fixed at build time] Configuration property fixed at build time - All other configuration properties are overridable at runtime
+[.configuration-reference, cols="80,.^10,.^10"]
+|===
+
+h|[[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_configuration]]link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_configuration[Configuration property]
+
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.enabled]]`link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.enabled[quarkus.authzed.dev-services.metrics.enabled]`
+
+[.description]
+--
+Flag to enable http (defaults to true)
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.port]]`link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.port[quarkus.authzed.dev-services.metrics.port]`
+
+[.description]
+--
+The container port the http will be bound to.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`9090`
+
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.host-port]]`link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.host-port[quarkus.authzed.dev-services.metrics.host-port]`
+
+[.description]
+--
+Optional host port the http will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_HOST_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_HOST_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-cert-path]]`link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-cert-path[quarkus.authzed.dev-services.metrics.tls-cert-path]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-cert-key]]`link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-cert-key[quarkus.authzed.dev-services.metrics.tls-cert-key]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+|===

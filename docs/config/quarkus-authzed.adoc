@@ -78,39 +78,6 @@ endif::add-copy-button-to-env-var[]
 |`authzed`
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.preshared-key]]`link:#quarkus-authzed_quarkus.authzed.dev-services.preshared-key[quarkus.authzed.dev-services.preshared-key]`
-
-[.description]
---
-The preshared key used to initalize the server. Corresponds to the value passed to the `--grpc-preshared-key` argument of the serve command.
-
-ifdef::add-copy-button-to-env-var[]
-Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_PRESHARED_KEY+++[]
-endif::add-copy-button-to-env-var[]
-ifndef::add-copy-button-to-env-var[]
-Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_PRESHARED_KEY+++`
-endif::add-copy-button-to-env-var[]
---|string 
-|`test`
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.port]]`link:#quarkus-authzed_quarkus.authzed.dev-services.port[quarkus.authzed.dev-services.port]`
-
-[.description]
---
-Optional fixed port the service will be bound to. 
- If not defined, the port will be chosen randomly.
-
-ifdef::add-copy-button-to-env-var[]
-Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_PORT+++[]
-endif::add-copy-button-to-env-var[]
-ifndef::add-copy-button-to-env-var[]
-Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_PORT+++`
-endif::add-copy-button-to-env-var[]
---|int 
-|
-
-
 a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.schema]]`link:#quarkus-authzed_quarkus.authzed.dev-services.schema[quarkus.authzed.dev-services.schema]`
 
 [.description]
@@ -144,6 +111,103 @@ endif::add-copy-button-to-env-var[]
 |
 
 
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.grpc.enabled]]`link:#quarkus-authzed_quarkus.authzed.dev-services.grpc.enabled[quarkus.authzed.dev-services.grpc.enabled]`
+
+[.description]
+--
+Flag to enable grpc (defaults to true)
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.grpc.port]]`link:#quarkus-authzed_quarkus.authzed.dev-services.grpc.port[quarkus.authzed.dev-services.grpc.port]`
+
+[.description]
+--
+The container port the grpc will be bound to.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`50051`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.grpc.host-port]]`link:#quarkus-authzed_quarkus.authzed.dev-services.grpc.host-port[quarkus.authzed.dev-services.grpc.host-port]`
+
+[.description]
+--
+Optional host port the grpc will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_HOST_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_HOST_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.grpc.tls-cert-path]]`link:#quarkus-authzed_quarkus.authzed.dev-services.grpc.tls-cert-path[quarkus.authzed.dev-services.grpc.tls-cert-path]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_TLS_CERT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_TLS_CERT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.grpc.tls-cert-key]]`link:#quarkus-authzed_quarkus.authzed.dev-services.grpc.tls-cert-key[quarkus.authzed.dev-services.grpc.tls-cert-key]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_TLS_CERT_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_TLS_CERT_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.grpc.preshared-key]]`link:#quarkus-authzed_quarkus.authzed.dev-services.grpc.preshared-key[quarkus.authzed.dev-services.grpc.preshared-key]`
+
+[.description]
+--
+The preshared key used to initalize the server. Corresponds to the value passed to the `--grpc-preshared-key` argument of the serve command.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_PRESHARED_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_GRPC_PRESHARED_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`test`
+
+
 a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.dashboard.enabled]]`link:#quarkus-authzed_quarkus.authzed.dev-services.dashboard.enabled[quarkus.authzed.dev-services.dashboard.enabled]`
 
 [.description]
@@ -164,8 +228,7 @@ a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-ser
 
 [.description]
 --
-Optional fixed port the dashboard will be bound to. 
- If not defined, the port will be chosen randomly.
+The container port the dashboard will be bound to.
 
 ifdef::add-copy-button-to-env-var[]
 Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_PORT+++[]
@@ -175,6 +238,23 @@ Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_PORT+++`
 endif::add-copy-button-to-env-var[]
 --|int 
 |`8443`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.dashboard.host-port]]`link:#quarkus-authzed_quarkus.authzed.dev-services.dashboard.host-port[quarkus.authzed.dev-services.dashboard.host-port]`
+
+[.description]
+--
+Optional host port the dashboard will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_HOST_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_DASHBOARD_HOST_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|
 
 
 a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.dashboard.tls-cert-path]]`link:#quarkus-authzed_quarkus.authzed.dev-services.dashboard.tls-cert-path[quarkus.authzed.dev-services.dashboard.tls-cert-path]`
@@ -229,8 +309,7 @@ a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-ser
 
 [.description]
 --
-Optional fixed port the http will be bound to. 
- If not defined, the port will be chosen randomly.
+The container port the http will be bound to.
 
 ifdef::add-copy-button-to-env-var[]
 Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_PORT+++[]
@@ -240,6 +319,23 @@ Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_PORT+++`
 endif::add-copy-button-to-env-var[]
 --|int 
 |`8080`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.http.host-port]]`link:#quarkus-authzed_quarkus.authzed.dev-services.http.host-port[quarkus.authzed.dev-services.http.host-port]`
+
+[.description]
+--
+Optional host port the http will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_HOST_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_HOST_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|
 
 
 a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.http.tls-cert-path]]`link:#quarkus-authzed_quarkus.authzed.dev-services.http.tls-cert-path[quarkus.authzed.dev-services.http.tls-cert-path]`
@@ -269,6 +365,87 @@ Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_H
 endif::add-copy-button-to-env-var[]
 ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_HTTP_TLS_CERT_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.metrics.enabled]]`link:#quarkus-authzed_quarkus.authzed.dev-services.metrics.enabled[quarkus.authzed.dev-services.metrics.enabled]`
+
+[.description]
+--
+Flag to enable http (defaults to true)
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`true`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.metrics.port]]`link:#quarkus-authzed_quarkus.authzed.dev-services.metrics.port[quarkus.authzed.dev-services.metrics.port]`
+
+[.description]
+--
+The container port the http will be bound to.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`9090`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.metrics.host-port]]`link:#quarkus-authzed_quarkus.authzed.dev-services.metrics.host-port[quarkus.authzed.dev-services.metrics.host-port]`
+
+[.description]
+--
+Optional host port the http will be bound to. 
+ If not defined, the port will be chosen randomly.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_HOST_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_HOST_PORT+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.metrics.tls-cert-path]]`link:#quarkus-authzed_quarkus.authzed.dev-services.metrics.tls-cert-path[quarkus.authzed.dev-services.metrics.tls-cert-path]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-authzed_quarkus.authzed.dev-services.metrics.tls-cert-key]]`link:#quarkus-authzed_quarkus.authzed.dev-services.metrics.tls-cert-key[quarkus.authzed.dev-services.metrics.tls-cert-key]`
+
+[.description]
+--
+The path to the TLS certificate.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_KEY+++`
 endif::add-copy-button-to-env-var[]
 --|string 
 |
