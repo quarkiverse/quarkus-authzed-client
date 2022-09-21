@@ -1,7 +1,15 @@
 package io.quarkiverse.authzed.client;
 
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.SSLException;
+
 import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
+import io.grpc.netty.GrpcSslContexts;
+import io.grpc.netty.NettyChannelBuilder;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
 import io.quarkiverse.authzed.BearerToken;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 
@@ -24,10 +32,47 @@ public class AuthzedContext implements AutoCloseable {
     }
 
     private static ManagedChannel createChannel(AuthzedConfig config) {
-        return ManagedChannelBuilder
-                .forAddress(config.url.getHost(), config.url.getPort())
-                .usePlaintext()
-                .build();
+        NettyChannelBuilder builder = NettyChannelBuilder.forAddress(config.url.getHost(), config.url.getPort());
+        if (config.tlsEnabled) {
+            builder = builder.useTransportSecurity().sslContext(createSslContext(config));
+        } else {
+            builder = builder.usePlaintext();
+        }
+
+        if (config.keepAliveTime.isPresent()) {
+            builder.keepAliveTime(config.keepAliveTime.getAsInt(), TimeUnit.MILLISECONDS);
+        }
+
+        if (config.keepAliveTimeout.isPresent()) {
+            builder.keepAliveTimeout(config.keepAliveTimeout.getAsInt(), TimeUnit.MILLISECONDS);
+        }
+
+        if (config.idleTimeout.isPresent()) {
+            builder.idleTimeout(config.idleTimeout.getAsInt(), TimeUnit.MILLISECONDS);
+        }
+        return builder.build();
+    }
+
+    private static SslContext createSslContext(AuthzedConfig config) {
+        SslContextBuilder builder = GrpcSslContexts.forClient();
+        if (config.tlsCaCertPath.isPresent()) {
+            builder = builder.trustManager(new File(config.tlsCaCertPath.get()));
+        }
+
+        if (config.tlsCertPath.isPresent() && config.tlsKeyPath.isPresent()) {
+            if (config.tlsKeyPassphrase.isPresent()) {
+                builder = builder.keyManager(new File(config.tlsCertPath.get()), new File(config.tlsKeyPath.get()),
+                        config.tlsKeyPassphrase.get());
+            } else {
+                builder = builder.keyManager(new File(config.tlsCertPath.get()), new File(config.tlsKeyPath.get()));
+            }
+        }
+
+        try {
+            return builder.build();
+        } catch (SSLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static BearerToken createToken(AuthzedConfig config) {

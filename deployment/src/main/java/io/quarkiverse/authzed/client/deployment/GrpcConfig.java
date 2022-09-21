@@ -36,10 +36,10 @@ public class GrpcConfig {
     public Optional<String> tlsCertPath;
 
     /**
-     * The path to the TLS certificate.
+     * The path to the TLS key.
      */
     @ConfigItem
-    public Optional<String> tlsCertKey;
+    public Optional<String> tlsKeyPath;
 
     /**
      * The preshared key used to initalize the server.
