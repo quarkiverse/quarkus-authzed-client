@@ -1,4 +1,3 @@
-
 package io.quarkiverse.authzed.client.deployment;
 
 import java.util.Optional;
@@ -8,22 +7,22 @@ import io.quarkus.runtime.annotations.ConfigGroup;
 import io.quarkus.runtime.annotations.ConfigItem;
 
 @ConfigGroup
-public class DashboardConfig {
+public class MetricsConfig {
 
     /**
-     * Flag to enable dashboard (defaults to true)
+     * Flag to enable http (defaults to true)
      */
     @ConfigItem(defaultValue = "true")
     public Boolean enabled;
 
     /**
-     * The container port the dashboard will be bound to.
+     * The container port the http will be bound to.
      */
-    @ConfigItem(defaultValue = "8443")
+    @ConfigItem(defaultValue = "9090")
     public Integer port;
 
     /**
-     * Optional host port the dashboard will be bound to.
+     * Optional host port the http will be bound to.
      * <p>
      * If not defined, the port will be chosen randomly.
      */
