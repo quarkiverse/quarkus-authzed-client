@@ -75,17 +75,17 @@ endif::add-copy-button-to-env-var[]
 |
 
 
-a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-cert-key]]`link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-cert-key[quarkus.authzed.dev-services.metrics.tls-cert-key]`
+a|icon:lock[title=Fixed at build time] [[config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-key-path]]`link:#config-group-io-quarkiverse-authzed-client-deployment-metrics-config_quarkus.authzed.dev-services.metrics.tls-key-path[quarkus.authzed.dev-services.metrics.tls-key-path]`
 
 [.description]
 --
-The path to the TLS certificate.
+The path to the TLS key.
 
 ifdef::add-copy-button-to-env-var[]
-Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_KEY+++[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_KEY_PATH+++[]
 endif::add-copy-button-to-env-var[]
 ifndef::add-copy-button-to-env-var[]
-Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_CERT_KEY+++`
+Environment variable: `+++QUARKUS_AUTHZED_DEV_SERVICES_METRICS_TLS_KEY_PATH+++`
 endif::add-copy-button-to-env-var[]
 --|string 
 |
