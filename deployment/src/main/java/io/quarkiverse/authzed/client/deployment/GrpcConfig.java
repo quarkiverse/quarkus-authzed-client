@@ -1,4 +1,3 @@
-
 package io.quarkiverse.authzed.client.deployment;
 
 import java.util.Optional;
@@ -8,22 +7,22 @@ import io.quarkus.runtime.annotations.ConfigGroup;
 import io.quarkus.runtime.annotations.ConfigItem;
 
 @ConfigGroup
-public class DashboardConfig {
+public class GrpcConfig {
 
     /**
-     * Flag to enable dashboard (defaults to true)
+     * Flag to enable grpc (defaults to true)
      */
     @ConfigItem(defaultValue = "true")
     public Boolean enabled;
 
     /**
-     * The container port the dashboard will be bound to.
+     * The container port the grpc will be bound to.
      */
-    @ConfigItem(defaultValue = "8443")
+    @ConfigItem(defaultValue = "50051")
     public Integer port;
 
     /**
-     * Optional host port the dashboard will be bound to.
+     * Optional host port the grpc will be bound to.
      * <p>
      * If not defined, the port will be chosen randomly.
      */
@@ -41,5 +40,12 @@ public class DashboardConfig {
      */
     @ConfigItem
     public Optional<String> tlsCertKey;
+
+    /**
+     * The preshared key used to initalize the server.
+     * Corresponds to the value passed to the `--grpc-preshared-key` argument of the serve command.
+     */
+    @ConfigItem(defaultValue = "test")
+    public String presharedKey;
 
 }

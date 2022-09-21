@@ -184,13 +184,13 @@ public class DevServicesAuthzedProcessor {
 
             withClient(
                     container.getHost(),
-                    container.getPort(),
-                    devServicesConfig.presharedKey,
+                    container.getGrpcPort(),
+                    devServicesConfig.grpc.presharedKey,
                     client -> {
                         try {
                             devServicesConfigProperties.put(URL_CONFIG_KEY,
-                                    new URL("https", container.getHost(), container.getPort(), "").toExternalForm());
-                            devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.presharedKey);
+                                    new URL("https", container.getHost(), container.getGrpcPort(), "").toExternalForm());
+                            devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
                         } catch (MalformedURLException e) {
                             throw new RuntimeException(e);
                         }
@@ -220,7 +220,7 @@ public class DevServicesAuthzedProcessor {
                 .map(containerAddress -> {
                     Map<String, String> devServicesConfigProperties = new HashMap<>();
                     devServicesConfigProperties.put(URL_CONFIG_KEY, containerAddress.getUrl());
-                    devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.presharedKey);
+                    devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
                     return new RunningDevService(
                             FEATURE,
                             containerAddress.getId(),
@@ -298,70 +298,120 @@ public class DevServicesAuthzedProcessor {
     private static class QuarkusAuthzedContainer extends GenericContainer<QuarkusAuthzedContainer> {
 
         DevServicesAuthzedConfig config;
+        List<String> command = new ArrayList<>();
 
         public QuarkusAuthzedContainer(DockerImageName dockerImageName, DevServicesAuthzedConfig config) {
             super(dockerImageName);
             this.config = config;
+        }
 
-            List<String> command = new ArrayList<>();
-            List<Integer> ports = new ArrayList<>();
-
+        @Override
+        protected void configure() {
+            super.configure();
             command.add("serve");
-            command.add("--grpc-preshared-key");
-            command.add(config.presharedKey);
 
-            if (config.dashboard.enabled) {
-                command.add("--dashboard-enabled");
-                command.add("--dashboard-addr");
-                command.add(":" + config.dashboard.port);
-                config.dashboard.tlsCertPath.ifPresent(path -> {
-                    command.add("--dashboard-tls-cert-path");
-                    command.add(path);
-                });
-                config.dashboard.tlsCertKey.ifPresent(key -> {
-                    command.add("--dashboard-tls-cert-key");
-                    command.add(key);
-                });
-                ports.add(config.dashboard.port);
-            }
+            configureGrpc();
 
             if (config.http.enabled) {
-                command.add("--http-enabled");
-                command.add("--http-addr");
-                command.add(":" + config.http.port);
-                config.http.tlsCertPath.ifPresent(path -> {
-                    command.add("--http-tls-cert-path");
-                    command.add(path);
-                });
-                config.http.tlsCertKey.ifPresent(key -> {
-                    command.add("--http-tls-cert-key");
-                    command.add(key);
-                });
-                ports.add(config.http.port);
+                configureHttp();
+            }
+
+            if (config.dashboard.enabled) {
+                configureDashboard();
             }
 
             withCommand(command.toArray(new String[command.size()]));
-            withExposedPorts(ports.toArray(new Integer[ports.size()]));
             withNetwork(Network.SHARED);
             if (config.serviceName != null) { // Only adds the label in dev mode.
                 withLabel(DEV_SERVICE_LABEL, config.serviceName);
             }
         }
 
-        @Override
-        protected void configure() {
-            super.configure();
-            if (config.port.isPresent()) {
-                addFixedExposedPort(config.port.getAsInt(), AUTHZED_EXPOSED_PORT);
+        private void configureGrpc() {
+            command.add("--grpc-preshared-key");
+            command.add(config.grpc.presharedKey);
+            command.add("--grpc-enabled");
+            command.add("--grpc-addr");
+            command.add(":" + config.grpc.port);
+            config.grpc.tlsCertPath.ifPresent(path -> {
+                command.add("--grpc-tls-cert-path");
+                command.add(path);
+            });
+            config.grpc.tlsCertKey.ifPresent(key -> {
+                command.add("--grpc-tls-cert-key");
+                command.add(key);
+            });
+
+            if (config.grpc.hostPort.isPresent()) {
+                addFixedExposedPort(config.grpc.hostPort.getAsInt(), config.grpc.port);
             } else {
-                addExposedPort(AUTHZED_EXPOSED_PORT);
+                addExposedPort(config.grpc.port);
             }
         }
 
-        public Integer getPort() {
-            return config.port.orElseGet(() -> super.getMappedPort(AUTHZED_EXPOSED_PORT));
+        private void configureHttp() {
+            command.add("--http-enabled");
+            command.add("--http-addr");
+            command.add(":" + config.http.port);
+            config.http.tlsCertPath.ifPresent(path -> {
+                command.add("--http-tls-cert-path");
+                command.add(path);
+            });
+            config.http.tlsCertKey.ifPresent(key -> {
+                command.add("--http-tls-cert-key");
+                command.add(key);
+            });
+
+            if (config.http.hostPort.isPresent()) {
+                addFixedExposedPort(config.http.hostPort.getAsInt(), config.http.port);
+            } else {
+                addExposedPort(config.http.port);
+            }
+        }
+
+        private void configureDashboard() {
+            command.add("--dashboard-enabled");
+            command.add("--dashboard-addr");
+            command.add(":" + config.dashboard.port);
+            config.dashboard.tlsCertPath.ifPresent(path -> {
+                command.add("--dashboard-tls-cert-path");
+                command.add(path);
+            });
+            config.dashboard.tlsCertKey.ifPresent(key -> {
+                command.add("--dashboard-tls-cert-key");
+                command.add(key);
+            });
+
+            if (config.dashboard.hostPort.isPresent()) {
+                addFixedExposedPort(config.dashboard.hostPort.getAsInt(), config.dashboard.port);
+            } else {
+                addExposedPort(config.dashboard.port);
+            }
+        }
+
+        private void configureMetrics() {
+            command.add("--metrics-enabled");
+            command.add("--metrics-addr");
+            command.add(":" + config.metrics.port);
+            config.metrics.tlsCertPath.ifPresent(path -> {
+                command.add("--metrics-tls-cert-path");
+                command.add(path);
+            });
+            config.metrics.tlsCertKey.ifPresent(key -> {
+                command.add("--metrics-tls-cert-key");
+                command.add(key);
+            });
+
+            if (config.metrics.hostPort.isPresent()) {
+                addFixedExposedPort(config.metrics.hostPort.getAsInt(), config.metrics.port);
+            } else {
+                addExposedPort(config.metrics.port);
+            }
+        }
+
+        public Integer getGrpcPort() {
+            return config.grpc.hostPort.orElseGet(() -> super.getMappedPort(config.grpc.port));
         }
 
     }
-
 }

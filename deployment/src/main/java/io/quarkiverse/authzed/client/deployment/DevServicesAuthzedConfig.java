@@ -1,7 +1,6 @@
 package io.quarkiverse.authzed.client.deployment;
 
 import java.util.Optional;
-import java.util.OptionalInt;
 
 import io.quarkus.runtime.annotations.ConfigGroup;
 import io.quarkus.runtime.annotations.ConfigItem;
@@ -59,21 +58,6 @@ public class DevServicesAuthzedConfig {
     public String serviceName;
 
     /**
-     * The preshared key used to initalize the server.
-     * Corresponds to the value passed to the `--grpc-preshared-key` argument of the serve command.
-     */
-    @ConfigItem(defaultValue = "test")
-    public String presharedKey;
-
-    /**
-     * Optional fixed port the service will be bound to.
-     * <p>
-     * If not defined, the port will be chosen randomly.
-     */
-    @ConfigItem
-    public OptionalInt port;
-
-    /**
      * Schema to upload during DevServices initialization.
      */
     @ConfigItem
@@ -92,6 +76,12 @@ public class DevServicesAuthzedConfig {
      * Dashboard configuration
      */
     @ConfigItem
+    public GrpcConfig grpc;
+
+    /**
+     * Dashboard configuration
+     */
+    @ConfigItem
     public DashboardConfig dashboard;
 
     /**
@@ -99,4 +89,11 @@ public class DevServicesAuthzedConfig {
      */
     @ConfigItem
     public HttpConfig http;
+
+    /**
+     * Metrics configuration
+     */
+    @ConfigItem
+    public MetricsConfig metrics;
+
 }
