@@ -27,9 +27,9 @@ private AuthzedClient client;
 Then the client can be used like this:
 
 ```java
-      Uni<ReadSchemaResponse> response = client.v1().schemaService().readSchema(ReadSchemaRequest.newBuilder().build());
-      //To actually invoke the request you need to subscribe / wait on the Uni:
-      System.out.println(response.await().indefinitely().getSchemaText());
+Uni<ReadSchemaResponse> response = client.v1().schemaService().readSchema(ReadSchemaRequest.newBuilder().build());
+//To actually invoke the request you need to subscribe / wait on the Uni:
+System.out.println(response.await().indefinitely().getSchemaText());
 ```
 
 **Note**: The request will not be executed until you subscribe or wait on the Uni.
