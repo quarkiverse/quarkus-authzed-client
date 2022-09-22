@@ -83,7 +83,7 @@ public class DevServicesAuthzedProcessor {
             LoggingSetupBuildItem loggingSetupBuildItem,
             GlobalDevServicesConfig devServicesConfig,
             BuildProducer<DevServicesResultBuildItem> devServicesResults) {
-        DevServicesAuthzedConfig currentDevServicesConfiguration = config.devServices;
+        DevServicesAuthzedConfig currentDevServicesConfiguration = config.devservices;
 
         // figure out if we need to shut down and restart any existing authzed container
         // if not and the authzed container have already started we just return
