@@ -11,5 +11,5 @@ public class AuthzedBuildTimeConfig {
      * Dev services configuration.
      */
     @ConfigItem
-    public DevServicesAuthzedConfig devServices;
+    public DevServicesAuthzedConfig devservices;
 }

@@ -26,7 +26,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.smallrye.mutiny.Uni;
 
-public class AuthzedClientTest {
+public class DevServicesAuthzedClientTest {
 
     @Inject
     AuthzedClient client;
@@ -38,7 +38,7 @@ public class AuthzedClientTest {
     @RegisterExtension
     static final QuarkusUnitTest unitTest = new QuarkusUnitTest()
             .setArchiveProducer(() -> ShrinkWrap.create(JavaArchive.class)
-                    .addAsResource(AuthzedClientTest.class.getResource("/test-schema"), "/test-schema"));
+                    .addAsResource(DevServicesAuthzedClientTest.class.getResource("/test-schema"), "/test-schema"));
 
     @Test
     public void shouldAccessDashboard() {
@@ -79,7 +79,7 @@ public class AuthzedClientTest {
 
     private String readSchema() {
         try {
-            return Files.readString(Path.of(AuthzedClientTest.class.getResource("/test-schema").getPath()));
+            return Files.readString(Path.of(DevServicesAuthzedClientTest.class.getResource("/test-schema").getPath()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

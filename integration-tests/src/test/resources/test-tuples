@@ -1,0 +1,3 @@
+document:cv#view@user:somegal
+document:bio#view@user:anotherguy
+document:notes#write@user:anotherguy
