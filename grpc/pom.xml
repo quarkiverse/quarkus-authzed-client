@@ -9,7 +9,7 @@
   </parent>
 
   <groupId>io.quarkiverse.authzed</groupId>
-  <artifactId>quarkus-authzed-client-grpc-pom</artifactId>
+  <artifactId>quarkus-authzed-client-grpc-parent</artifactId>
   <packaging>pom</packaging>
   <name>Quarkus - Authzed Client - gRPC - Parent</name>
 
