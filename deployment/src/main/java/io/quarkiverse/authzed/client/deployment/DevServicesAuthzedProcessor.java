@@ -20,6 +20,7 @@ import java.util.OptionalInt;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import org.jboss.logging.Logger;
 import org.testcontainers.containers.GenericContainer;
@@ -273,7 +274,8 @@ public class DevServicesAuthzedProcessor {
                 .orElseGet(() -> devServicesConfig.authorizationTuplesLocation.map(location -> {
                     try {
                         var tuplesPath = resolvePath(location);
-                        return Arrays.asList(Files.readString(tuplesPath).split("\n|\r"));
+                        return Arrays.stream(Files.readString(tuplesPath).split("\n|\r")).map(String::trim)
+                                .filter(s -> !s.isEmpty()).collect(Collectors.toList());
                     } catch (Throwable x) {
                         throw new RuntimeException(format("Unable to load authorization tuples from '%s'", location));
                     }
