@@ -16,7 +16,7 @@ public class AuthzedClientProducer {
     @DefaultBean
     @Singleton
     @Produces
-    public AuthzedClient kubernetesClient(AuthzedConfig config) {
+    public AuthzedClient create(AuthzedConfig config) {
         client = new AuthzedClient(config);
         return client;
     }
