@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -261,7 +262,7 @@ public class DevServicesAuthzedProcessor {
                             var schemaPath = resolvePath(location);
                             return Files.readString(schemaPath);
                         } catch (Throwable x) {
-                            throw new RuntimeException(format("Unable to load authorization model from '%s'", location));
+                            throw new RuntimeException(format("Unable to load authorization model from '%s'", location), x);
                         }
                     });
                 });
@@ -276,7 +277,7 @@ public class DevServicesAuthzedProcessor {
                     } catch (Throwable x) {
                         throw new RuntimeException(format("Unable to load authorization tuples from '%s'", location));
                     }
-                }).get());
+                }).orElseGet(() -> Collections.emptyList()));
     }
 
     private static Path resolvePath(String location) throws IOException {
