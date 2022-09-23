@@ -288,10 +288,20 @@ public class DevServicesAuthzedProcessor {
 
         var classpathPath = new AtomicReference<Path>();
 
-        ClassPathUtils.consumeAsPaths(
-                Thread.currentThread().getContextClassLoader(),
+        ClassPathUtils.consumeAsPaths(DevServicesAuthzedProcessor.class.getClassLoader(),
                 location,
                 classpathPath::set);
+
+        if (classpathPath.get() == null) {
+            ClassPathUtils.consumeAsPaths(
+                    Thread.currentThread().getContextClassLoader(),
+                    location,
+                    classpathPath::set);
+        }
+
+        if (classpathPath.get() == null) {
+            throw new IllegalStateException("Could not find classpath resource:" + location);
+        }
 
         return classpathPath.get();
     }
