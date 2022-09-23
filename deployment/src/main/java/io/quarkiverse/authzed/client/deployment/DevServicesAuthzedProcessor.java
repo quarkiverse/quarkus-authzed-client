@@ -315,9 +315,6 @@ public class DevServicesAuthzedProcessor {
                 location = location.substring(1);
             }
         }
-        if (!location.endsWith("/")) {
-            location += "/";
-        }
         return location;
     }
 
