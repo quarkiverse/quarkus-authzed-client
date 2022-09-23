@@ -273,7 +273,7 @@ public class DevServicesAuthzedProcessor {
                 .orElseGet(() -> devServicesConfig.authorizationTuplesLocation.map(location -> {
                     try {
                         var tuplesPath = resolvePath(location);
-                        return Arrays.asList(Files.readString(tuplesPath).split("\n"));
+                        return Arrays.asList(Files.readString(tuplesPath).split("\n|\r"));
                     } catch (Throwable x) {
                         throw new RuntimeException(format("Unable to load authorization tuples from '%s'", location));
                     }
