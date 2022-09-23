@@ -20,6 +20,7 @@ import java.util.OptionalInt;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import org.jboss.logging.Logger;
 import org.testcontainers.containers.GenericContainer;
@@ -273,7 +274,8 @@ public class DevServicesAuthzedProcessor {
                 .orElseGet(() -> devServicesConfig.authorizationTuplesLocation.map(location -> {
                     try {
                         var tuplesPath = resolvePath(location);
-                        return Arrays.asList(Files.readString(tuplesPath).split("\n|\r"));
+                        return Arrays.stream(Files.readString(tuplesPath).split("\n|\r")).map(String::trim)
+                                .filter(s -> !s.isEmpty()).collect(Collectors.toList());
                     } catch (Throwable x) {
                         throw new RuntimeException(format("Unable to load authorization tuples from '%s'", location));
                     }
@@ -288,10 +290,20 @@ public class DevServicesAuthzedProcessor {
 
         var classpathPath = new AtomicReference<Path>();
 
-        ClassPathUtils.consumeAsPaths(
-                Thread.currentThread().getContextClassLoader(),
+        ClassPathUtils.consumeAsPaths(DevServicesAuthzedProcessor.class.getClassLoader(),
                 location,
                 classpathPath::set);
+
+        if (classpathPath.get() == null) {
+            ClassPathUtils.consumeAsPaths(
+                    Thread.currentThread().getContextClassLoader(),
+                    location,
+                    classpathPath::set);
+        }
+
+        if (classpathPath.get() == null) {
+            throw new IllegalStateException("Could not find classpath resource:" + location);
+        }
 
         return classpathPath.get();
     }
@@ -304,9 +316,6 @@ public class DevServicesAuthzedProcessor {
             if (location.startsWith("/")) {
                 location = location.substring(1);
             }
-        }
-        if (!location.endsWith("/")) {
-            location += "/";
         }
         return location;
     }
