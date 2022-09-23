@@ -5,11 +5,15 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.jboss.logging.Logger;
+
 import com.authzed.api.v1.Core.ObjectReference;
 import com.authzed.api.v1.Core.Relationship;
 import com.authzed.api.v1.Core.SubjectReference;
 
 public class Tuples {
+
+    private static final Logger log = Logger.getLogger(Tuples.class);
 
     // <tuple> ::= <object>'#'<relation>'@'<user>
     // <object> ::= <namespace>':'<object_id>
@@ -31,7 +35,7 @@ public class Tuples {
     }
 
     public static Optional<String> match(String text, String id) {
-        Matcher m = TUPLE_PATTERN.matcher(text);
+        Matcher m = TUPLE_PATTERN.matcher(text.trim());
         if (m.matches()) {
             return Optional.of(m.group(id));
         }
@@ -48,6 +52,10 @@ public class Tuples {
 
         ObjectReference resource = Tuples.parseObject(object);
         SubjectReference subject = Tuples.parseUser(user);
+
+        if (log.isDebugEnabled()) {
+            log.debug("Parsing resource: [" + object + "] relation: [" + relation + "] subject: [" + user + "]");
+        }
         return Relationship.newBuilder()
                 .setResource(resource)
                 .setRelation(relation)
