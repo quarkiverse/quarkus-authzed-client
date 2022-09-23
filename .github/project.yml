@@ -1,5 +1,5 @@
 release:
-  current-version: 0.0.1
+  current-version: 0.0.2
   next-version: 1.0.0-SNAPSHOT
   proto-sha: 6bf58783fdc3ed33da39a728e2538c1cb58da34e
 
