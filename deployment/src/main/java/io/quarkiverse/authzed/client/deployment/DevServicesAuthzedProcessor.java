@@ -3,11 +3,13 @@ package io.quarkiverse.authzed.client.deployment;
 import static io.quarkiverse.authzed.client.deployment.AuthzedClientProcessor.FEATURE;
 import static java.lang.String.format;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,10 +19,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalInt;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.jboss.logging.Logger;
 import org.testcontainers.containers.GenericContainer;
@@ -52,7 +54,6 @@ import io.quarkus.deployment.dev.devservices.GlobalDevServicesConfig;
 import io.quarkus.deployment.logging.LoggingSetupBuildItem;
 import io.quarkus.devservices.common.ContainerLocator;
 import io.quarkus.runtime.configuration.ConfigUtils;
-import io.quarkus.runtime.util.ClassPathUtils;
 import io.smallrye.mutiny.Uni;
 
 public class DevServicesAuthzedProcessor {
@@ -260,8 +261,7 @@ public class DevServicesAuthzedProcessor {
                 .or(() -> {
                     return devServicesConfig.schemaLocation.map(location -> {
                         try {
-                            var schemaPath = resolvePath(location);
-                            return Files.readString(schemaPath);
+                            return streamFileOrResource(location).collect(Collectors.joining("\n"));
                         } catch (Throwable x) {
                             throw new RuntimeException(format("Unable to load authorization model from '%s'", location), x);
                         }
@@ -273,51 +273,44 @@ public class DevServicesAuthzedProcessor {
         return devServicesConfig.authorizationTuples.map(lines -> Arrays.asList(lines.split("\n|\r")))
                 .orElseGet(() -> devServicesConfig.authorizationTuplesLocation.map(location -> {
                     try {
-                        var tuplesPath = resolvePath(location);
-                        return Arrays.stream(Files.readString(tuplesPath).split("\n|\r")).map(String::trim)
-                                .filter(s -> !s.isEmpty()).collect(Collectors.toList());
+                        return streamFileOrResource(location)
+                                .collect(Collectors.toList());
                     } catch (Throwable x) {
                         throw new RuntimeException(format("Unable to load authorization tuples from '%s'", location));
                     }
                 }).orElseGet(() -> Collections.emptyList()));
     }
 
-    private static Path resolvePath(String location) throws IOException {
-        location = normalizeLocation(location);
-        if (location.startsWith("filesystem:")) {
-            return Path.of(location.substring("filesystem:".length()));
+    private static Stream<String> streamFileOrResource(String location) {
+        if (location.startsWith("classpath:")) {
+            return streamClasspathResource(location.substring("classpath:".length()));
+        } else if (location.startsWith("filesystem:")) {
+            return streamFile(location.substring("filesystem:".length()));
+        } else {
+            return streamClasspathResource(location);
         }
-
-        var classpathPath = new AtomicReference<Path>();
-
-        ClassPathUtils.consumeAsPaths(DevServicesAuthzedProcessor.class.getClassLoader(),
-                location,
-                classpathPath::set);
-
-        if (classpathPath.get() == null) {
-            ClassPathUtils.consumeAsPaths(
-                    Thread.currentThread().getContextClassLoader(),
-                    location,
-                    classpathPath::set);
-        }
-
-        if (classpathPath.get() == null) {
-            throw new IllegalStateException("Could not find classpath resource:" + location);
-        }
-
-        return classpathPath.get();
     }
 
-    private static String normalizeLocation(String location) {
-        // Strip any 'classpath:' protocol prefixes because they are assumed
-        // but not recognized by ClassLoader.getResources()
-        if (location.startsWith("classpath:")) {
-            location = location.substring("classpath:".length());
-            if (location.startsWith("/")) {
-                location = location.substring(1);
-            }
+    private static Stream<String> streamFile(String path) {
+        try (InputStream is = new FileInputStream(path)) {
+            return streamLines(is);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return location;
+    }
+
+    private static Stream<String> streamClasspathResource(String resource) {
+        InputStream is;
+        is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource);
+        if (is == null) {
+            throw new RuntimeException("Failed to read classpath resource:" + resource);
+        }
+        return streamLines(is);
+    }
+
+    private static Stream<String> streamLines(InputStream stream) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        return reader.lines().map(String::trim).filter(s -> !s.isEmpty());
     }
 
     private static void withClient(QuarkusAuthzedContainer container, DevServicesAuthzedConfig devServicesAuthzedConfig,
