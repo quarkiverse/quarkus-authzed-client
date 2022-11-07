@@ -189,7 +189,7 @@ public class DevServicesAuthzedProcessor {
         final Supplier<RunningDevService> defaultAuthzedInstanceSupplier = () -> {
             QuarkusAuthzedContainer container = new QuarkusAuthzedContainer(dockerImageName, devServicesConfig)
                     .withNetwork(Network.SHARED)
-                    .waitingFor(Wait.forLogMessage(".*grpc server serving plaintext.*", 1));
+                    .waitingFor(Wait.forLogMessage(".*grpc server started serving.*", 1));
 
             timeout.ifPresent(container::withStartupTimeout);
             log.info("Starting authzed...");
