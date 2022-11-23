@@ -4,7 +4,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.48.1)", comments = "Source: authzed/api/v0/developer.proto")
+@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.50.2)", comments = "Source: authzed/api/v0/developer.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class DeveloperServiceGrpc {
 

@@ -169,73 +169,6 @@ public final class WatchresourcesService {
             return this.unknownFields;
         }
 
-        private WatchResourcesRequest(com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            resourceObjectType_ = s;
-                            break;
-                        }
-                        case 18: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            permission_ = s;
-                            break;
-                        }
-                        case 26: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            subjectObjectType_ = s;
-                            break;
-                        }
-                        case 34: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            optionalSubjectRelation_ = s;
-                            break;
-                        }
-                        case 42: {
-                            com.authzed.api.v1.Core.ZedToken.Builder subBuilder = null;
-                            if (optionalStartCursor_ != null) {
-                                subBuilder = optionalStartCursor_.toBuilder();
-                            }
-                            optionalStartCursor_ = input.readMessage(com.authzed.api.v1.Core.ZedToken.parser(),
-                                    extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(optionalStartCursor_);
-                                optionalStartCursor_ = subBuilder.buildPartial();
-                            }
-                            break;
-                        }
-                        default: {
-                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1alpha1.WatchresourcesService.internal_static_authzed_api_v1alpha1_WatchResourcesRequest_descriptor;
         }
@@ -505,7 +438,7 @@ public final class WatchresourcesService {
             if (optionalStartCursor_ != null) {
                 output.writeMessage(5, getOptionalStartCursor());
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -529,7 +462,7 @@ public final class WatchresourcesService {
             if (optionalStartCursor_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getOptionalStartCursor());
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -557,7 +490,7 @@ public final class WatchresourcesService {
                 if (!getOptionalStartCursor().equals(other.getOptionalStartCursor()))
                     return false;
             }
-            if (!unknownFields.equals(other.unknownFields))
+            if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
         }
@@ -581,7 +514,7 @@ public final class WatchresourcesService {
                 hash = (37 * hash) + OPTIONAL_START_CURSOR_FIELD_NUMBER;
                 hash = (53 * hash) + getOptionalStartCursor().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -700,17 +633,10 @@ public final class WatchresourcesService {
 
             // Construct using com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest.newBuilder()
             private Builder() {
-                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                }
             }
 
             @java.lang.Override
@@ -828,7 +754,7 @@ public final class WatchresourcesService {
                 if (other.hasOptionalStartCursor()) {
                     mergeOptionalStartCursor(other.getOptionalStartCursor());
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -841,18 +767,59 @@ public final class WatchresourcesService {
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-                com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                resourceObjectType_ = input.readStringRequireUtf8();
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                permission_ = input.readStringRequireUtf8();
+                                break;
+                            }
+                            // case 18
+                            case 26: {
+                                subjectObjectType_ = input.readStringRequireUtf8();
+                                break;
+                            }
+                            // case 26
+                            case 34: {
+                                optionalSubjectRelation_ = input.readStringRequireUtf8();
+                                break;
+                            }
+                            // case 34
+                            case 42: {
+                                input.readMessage(getOptionalStartCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                break;
+                            }
+                            // case 42
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest) e
-                            .getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
+                    onChanged();
                 }
+                // finally
                 return this;
             }
 
@@ -1413,7 +1380,18 @@ public final class WatchresourcesService {
             public WatchResourcesRequest parsePartialFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new WatchResourcesRequest(input, extensionRegistry);
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
             }
         };
 
@@ -1558,74 +1536,6 @@ public final class WatchresourcesService {
         @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
             return this.unknownFields;
-        }
-
-        private PermissionUpdate(com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10: {
-                            com.authzed.api.v1.Core.SubjectReference.Builder subBuilder = null;
-                            if (subject_ != null) {
-                                subBuilder = subject_.toBuilder();
-                            }
-                            subject_ = input.readMessage(com.authzed.api.v1.Core.SubjectReference.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(subject_);
-                                subject_ = subBuilder.buildPartial();
-                            }
-                            break;
-                        }
-                        case 18: {
-                            com.authzed.api.v1.Core.ObjectReference.Builder subBuilder = null;
-                            if (resource_ != null) {
-                                subBuilder = resource_.toBuilder();
-                            }
-                            resource_ = input.readMessage(com.authzed.api.v1.Core.ObjectReference.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(resource_);
-                                resource_ = subBuilder.buildPartial();
-                            }
-                            break;
-                        }
-                        case 26: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            relation_ = s;
-                            break;
-                        }
-                        case 32: {
-                            int rawValue = input.readEnum();
-                            updatedPermission_ = rawValue;
-                            break;
-                        }
-                        default: {
-                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -1940,7 +1850,7 @@ public final class WatchresourcesService {
                     .getNumber()) {
                 output.writeEnum(4, updatedPermission_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -1962,7 +1872,7 @@ public final class WatchresourcesService {
                     .getNumber()) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, updatedPermission_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -1992,7 +1902,7 @@ public final class WatchresourcesService {
                 return false;
             if (updatedPermission_ != other.updatedPermission_)
                 return false;
-            if (!unknownFields.equals(other.unknownFields))
+            if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
         }
@@ -2016,7 +1926,7 @@ public final class WatchresourcesService {
             hash = (53 * hash) + getRelation().hashCode();
             hash = (37 * hash) + UPDATED_PERMISSION_FIELD_NUMBER;
             hash = (53 * hash) + updatedPermission_;
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -2134,17 +2044,10 @@ public final class WatchresourcesService {
 
             // Construct using com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.newBuilder()
             private Builder() {
-                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                }
             }
 
             @java.lang.Override
@@ -2263,7 +2166,7 @@ public final class WatchresourcesService {
                 if (other.updatedPermission_ != 0) {
                     setUpdatedPermissionValue(other.getUpdatedPermissionValue());
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -2276,17 +2179,54 @@ public final class WatchresourcesService {
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-                com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                break;
+                            }
+                            // case 18
+                            case 26: {
+                                relation_ = input.readStringRequireUtf8();
+                                break;
+                            }
+                            // case 26
+                            case 32: {
+                                updatedPermission_ = input.readEnum();
+                                break;
+                            }
+                            // case 32
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
+                    onChanged();
                 }
+                // finally
                 return this;
             }
 
@@ -2770,7 +2710,18 @@ public final class WatchresourcesService {
             public PermissionUpdate parsePartialFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new PermissionUpdate(input, extensionRegistry);
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
             }
         };
 
@@ -2868,66 +2819,6 @@ public final class WatchresourcesService {
         @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
             return this.unknownFields;
-        }
-
-        private WatchResourcesResponse(com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10: {
-                            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                updates_ = new java.util.ArrayList<com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate>();
-                                mutable_bitField0_ |= 0x00000001;
-                            }
-                            updates_.add(
-                                    input.readMessage(com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.parser(),
-                                            extensionRegistry));
-                            break;
-                        }
-                        case 18: {
-                            com.authzed.api.v1.Core.ZedToken.Builder subBuilder = null;
-                            if (changesThrough_ != null) {
-                                subBuilder = changesThrough_.toBuilder();
-                            }
-                            changesThrough_ = input.readMessage(com.authzed.api.v1.Core.ZedToken.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(changesThrough_);
-                                changesThrough_ = subBuilder.buildPartial();
-                            }
-                            break;
-                        }
-                        default: {
-                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                    updates_ = java.util.Collections.unmodifiableList(updates_);
-                }
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -3039,7 +2930,7 @@ public final class WatchresourcesService {
             if (changesThrough_ != null) {
                 output.writeMessage(2, getChangesThrough());
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -3054,7 +2945,7 @@ public final class WatchresourcesService {
             if (changesThrough_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getChangesThrough());
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -3076,7 +2967,7 @@ public final class WatchresourcesService {
                 if (!getChangesThrough().equals(other.getChangesThrough()))
                     return false;
             }
-            if (!unknownFields.equals(other.unknownFields))
+            if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
         }
@@ -3096,7 +2987,7 @@ public final class WatchresourcesService {
                 hash = (37 * hash) + CHANGES_THROUGH_FIELD_NUMBER;
                 hash = (53 * hash) + getChangesThrough().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -3215,18 +3106,10 @@ public final class WatchresourcesService {
 
             // Construct using com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse.newBuilder()
             private Builder() {
-                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                    getUpdatesFieldBuilder();
-                }
             }
 
             @java.lang.Override
@@ -3234,10 +3117,11 @@ public final class WatchresourcesService {
                 super.clear();
                 if (updatesBuilder_ == null) {
                     updates_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
                 } else {
+                    updates_ = null;
                     updatesBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000001);
                 if (changesThroughBuilder_ == null) {
                     changesThrough_ = null;
                 } else {
@@ -3362,7 +3246,7 @@ public final class WatchresourcesService {
                 if (other.hasChangesThrough()) {
                     mergeChangesThrough(other.getChangesThrough());
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -3375,18 +3259,52 @@ public final class WatchresourcesService {
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-                com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate m = input.readMessage(
+                                        com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.parser(),
+                                        extensionRegistry);
+                                if (updatesBuilder_ == null) {
+                                    ensureUpdatesIsMutable();
+                                    updates_.add(m);
+                                } else {
+                                    updatesBuilder_.addMessage(m);
+                                }
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                input.readMessage(getChangesThroughFieldBuilder().getBuilder(), extensionRegistry);
+                                break;
+                            }
+                            // case 18
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse) e
-                            .getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
+                    onChanged();
                 }
+                // finally
                 return this;
             }
 
@@ -3784,7 +3702,18 @@ public final class WatchresourcesService {
             public WatchResourcesResponse parsePartialFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new WatchResourcesResponse(input, extensionRegistry);
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
             }
         };
 

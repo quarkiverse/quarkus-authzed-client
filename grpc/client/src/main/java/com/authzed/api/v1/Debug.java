@@ -106,57 +106,6 @@ public final class Debug {
             return this.unknownFields;
         }
 
-        private DebugInformation(com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10: {
-                            com.authzed.api.v1.Debug.CheckDebugTrace.Builder subBuilder = null;
-                            if (check_ != null) {
-                                subBuilder = check_.toBuilder();
-                            }
-                            check_ = input.readMessage(com.authzed.api.v1.Debug.CheckDebugTrace.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(check_);
-                                check_ = subBuilder.buildPartial();
-                            }
-                            break;
-                        }
-                        case 18: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            schemaUsed_ = s;
-                            break;
-                        }
-                        default: {
-                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_DebugInformation_descriptor;
         }
@@ -280,7 +229,7 @@ public final class Debug {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUsed_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, schemaUsed_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -295,7 +244,7 @@ public final class Debug {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUsed_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, schemaUsed_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -317,7 +266,7 @@ public final class Debug {
             }
             if (!getSchemaUsed().equals(other.getSchemaUsed()))
                 return false;
-            if (!unknownFields.equals(other.unknownFields))
+            if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
         }
@@ -335,7 +284,7 @@ public final class Debug {
             }
             hash = (37 * hash) + SCHEMA_USED_FIELD_NUMBER;
             hash = (53 * hash) + getSchemaUsed().hashCode();
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -453,17 +402,10 @@ public final class Debug {
 
             // Construct using com.authzed.api.v1.Debug.DebugInformation.newBuilder()
             private Builder() {
-                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                }
             }
 
             @java.lang.Override
@@ -562,7 +504,7 @@ public final class Debug {
                     schemaUsed_ = other.schemaUsed_;
                     onChanged();
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -575,17 +517,44 @@ public final class Debug {
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-                com.authzed.api.v1.Debug.DebugInformation parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                input.readMessage(getCheckFieldBuilder().getBuilder(), extensionRegistry);
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                schemaUsed_ = input.readStringRequireUtf8();
+                                break;
+                            }
+                            // case 18
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.authzed.api.v1.Debug.DebugInformation) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
+                    onChanged();
                 }
+                // finally
                 return this;
             }
 
@@ -868,7 +837,18 @@ public final class Debug {
             public DebugInformation parsePartialFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new DebugInformation(input, extensionRegistry);
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
             }
         };
 
@@ -1113,98 +1093,6 @@ public final class Debug {
         @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
             return this.unknownFields;
-        }
-
-        private CheckDebugTrace(com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10: {
-                            com.authzed.api.v1.Core.ObjectReference.Builder subBuilder = null;
-                            if (resource_ != null) {
-                                subBuilder = resource_.toBuilder();
-                            }
-                            resource_ = input.readMessage(com.authzed.api.v1.Core.ObjectReference.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(resource_);
-                                resource_ = subBuilder.buildPartial();
-                            }
-                            break;
-                        }
-                        case 18: {
-                            java.lang.String s = input.readStringRequireUtf8();
-                            permission_ = s;
-                            break;
-                        }
-                        case 24: {
-                            int rawValue = input.readEnum();
-                            permissionType_ = rawValue;
-                            break;
-                        }
-                        case 34: {
-                            com.authzed.api.v1.Core.SubjectReference.Builder subBuilder = null;
-                            if (subject_ != null) {
-                                subBuilder = subject_.toBuilder();
-                            }
-                            subject_ = input.readMessage(com.authzed.api.v1.Core.SubjectReference.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(subject_);
-                                subject_ = subBuilder.buildPartial();
-                            }
-                            break;
-                        }
-                        case 40: {
-                            int rawValue = input.readEnum();
-                            result_ = rawValue;
-                            break;
-                        }
-                        case 48: {
-                            resolution_ = input.readBool();
-                            resolutionCase_ = 6;
-                            break;
-                        }
-                        case 58: {
-                            com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems.Builder subBuilder = null;
-                            if (resolutionCase_ == 7) {
-                                subBuilder = ((com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) resolution_).toBuilder();
-                            }
-                            resolution_ = input.readMessage(com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems.parser(),
-                                    extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom((com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) resolution_);
-                                resolution_ = subBuilder.buildPartial();
-                            }
-                            resolutionCase_ = 7;
-                            break;
-                        }
-                        default: {
-                            if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -1501,53 +1389,6 @@ public final class Debug {
                 return this.unknownFields;
             }
 
-            private SubProblems(com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                this();
-                if (extensionRegistry == null) {
-                    throw new java.lang.NullPointerException();
-                }
-                int mutable_bitField0_ = 0;
-                com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
-                try {
-                    boolean done = false;
-                    while (!done) {
-                        int tag = input.readTag();
-                        switch (tag) {
-                            case 0:
-                                done = true;
-                                break;
-                            case 10: {
-                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                    traces_ = new java.util.ArrayList<com.authzed.api.v1.Debug.CheckDebugTrace>();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                traces_.add(input.readMessage(com.authzed.api.v1.Debug.CheckDebugTrace.parser(),
-                                        extensionRegistry));
-                                break;
-                            }
-                            default: {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                        }
-                    }
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    throw e.setUnfinishedMessage(this);
-                } catch (java.io.IOException e) {
-                    throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-                } finally {
-                    if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                        traces_ = java.util.Collections.unmodifiableList(traces_);
-                    }
-                    this.unknownFields = unknownFields.build();
-                    makeExtensionsImmutable();
-                }
-            }
-
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
                 return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CheckDebugTrace_SubProblems_descriptor;
             }
@@ -1621,7 +1462,7 @@ public final class Debug {
                 for (int i = 0; i < traces_.size(); i++) {
                     output.writeMessage(1, traces_.get(i));
                 }
-                unknownFields.writeTo(output);
+                getUnknownFields().writeTo(output);
             }
 
             @java.lang.Override
@@ -1633,7 +1474,7 @@ public final class Debug {
                 for (int i = 0; i < traces_.size(); i++) {
                     size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, traces_.get(i));
                 }
-                size += unknownFields.getSerializedSize();
+                size += getUnknownFields().getSerializedSize();
                 memoizedSize = size;
                 return size;
             }
@@ -1649,7 +1490,7 @@ public final class Debug {
                 com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems other = (com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) obj;
                 if (!getTracesList().equals(other.getTracesList()))
                     return false;
-                if (!unknownFields.equals(other.unknownFields))
+                if (!getUnknownFields().equals(other.getUnknownFields()))
                     return false;
                 return true;
             }
@@ -1665,7 +1506,7 @@ public final class Debug {
                     hash = (37 * hash) + TRACES_FIELD_NUMBER;
                     hash = (53 * hash) + getTracesList().hashCode();
                 }
-                hash = (29 * hash) + unknownFields.hashCode();
+                hash = (29 * hash) + getUnknownFields().hashCode();
                 memoizedHashCode = hash;
                 return hash;
             }
@@ -1777,18 +1618,10 @@ public final class Debug {
 
                 // Construct using com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems.newBuilder()
                 private Builder() {
-                    maybeForceBuilderInitialization();
                 }
 
                 private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                     super(parent);
-                    maybeForceBuilderInitialization();
-                }
-
-                private void maybeForceBuilderInitialization() {
-                    if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                        getTracesFieldBuilder();
-                    }
                 }
 
                 @java.lang.Override
@@ -1796,10 +1629,11 @@ public final class Debug {
                     super.clear();
                     if (tracesBuilder_ == null) {
                         traces_ = java.util.Collections.emptyList();
-                        bitField0_ = (bitField0_ & ~0x00000001);
                     } else {
+                        traces_ = null;
                         tracesBuilder_.clear();
                     }
+                    bitField0_ = (bitField0_ & ~0x00000001);
                     return this;
                 }
 
@@ -1910,7 +1744,7 @@ public final class Debug {
                             }
                         }
                     }
-                    this.mergeUnknownFields(other.unknownFields);
+                    this.mergeUnknownFields(other.getUnknownFields());
                     onChanged();
                     return this;
                 }
@@ -1923,17 +1757,46 @@ public final class Debug {
                 @java.lang.Override
                 public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                         com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-                    com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems parsedMessage = null;
+                    if (extensionRegistry == null) {
+                        throw new java.lang.NullPointerException();
+                    }
                     try {
-                        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                        boolean done = false;
+                        while (!done) {
+                            int tag = input.readTag();
+                            switch (tag) {
+                                case 0:
+                                    done = true;
+                                    break;
+                                case 10: {
+                                    com.authzed.api.v1.Debug.CheckDebugTrace m = input
+                                            .readMessage(com.authzed.api.v1.Debug.CheckDebugTrace.parser(), extensionRegistry);
+                                    if (tracesBuilder_ == null) {
+                                        ensureTracesIsMutable();
+                                        traces_.add(m);
+                                    } else {
+                                        tracesBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                }
+                                // case 10
+                                default: {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        // was an endgroup tag
+                                        done = true;
+                                    }
+                                    break;
+                                }
+                            }
+                            // switch (tag)
+                        }
+                        // while (!done)
                     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                        parsedMessage = (com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) e.getUnfinishedMessage();
                         throw e.unwrapIOException();
                     } finally {
-                        if (parsedMessage != null) {
-                            mergeFrom(parsedMessage);
-                        }
+                        onChanged();
                     }
+                    // finally
                     return this;
                 }
 
@@ -2207,7 +2070,18 @@ public final class Debug {
                 public SubProblems parsePartialFrom(com.google.protobuf.CodedInputStream input,
                         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                         throws com.google.protobuf.InvalidProtocolBufferException {
-                    return new SubProblems(input, extensionRegistry);
+                    Builder builder = newBuilder();
+                    try {
+                        builder.mergeFrom(input, extensionRegistry);
+                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                        throw e.setUnfinishedMessage(builder.buildPartial());
+                    } catch (com.google.protobuf.UninitializedMessageException e) {
+                        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                    } catch (java.io.IOException e) {
+                        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                .setUnfinishedMessage(builder.buildPartial());
+                    }
+                    return builder.buildPartial();
                 }
             };
 
@@ -2604,7 +2478,7 @@ public final class Debug {
             if (resolutionCase_ == 7) {
                 output.writeMessage(7, (com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) resolution_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -2636,7 +2510,7 @@ public final class Debug {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(7,
                         (com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) resolution_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -2682,7 +2556,7 @@ public final class Debug {
                 case 0:
                 default:
             }
-            if (!unknownFields.equals(other.unknownFields))
+            if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
         }
@@ -2720,7 +2594,7 @@ public final class Debug {
                 case 0:
                 default:
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -2835,17 +2709,10 @@ public final class Debug {
 
             // Construct using com.authzed.api.v1.Debug.CheckDebugTrace.newBuilder()
             private Builder() {
-                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                }
             }
 
             @java.lang.Override
@@ -2866,6 +2733,9 @@ public final class Debug {
                     subjectBuilder_ = null;
                 }
                 result_ = 0;
+                if (subProblemsBuilder_ != null) {
+                    subProblemsBuilder_.clear();
+                }
                 resolutionCase_ = 0;
                 resolution_ = null;
                 return this;
@@ -2994,7 +2864,7 @@ public final class Debug {
                         break;
                     }
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -3007,17 +2877,71 @@ public final class Debug {
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-                com.authzed.api.v1.Debug.CheckDebugTrace parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                permission_ = input.readStringRequireUtf8();
+                                break;
+                            }
+                            // case 18
+                            case 24: {
+                                permissionType_ = input.readEnum();
+                                break;
+                            }
+                            // case 24
+                            case 34: {
+                                input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                break;
+                            }
+                            // case 34
+                            case 40: {
+                                result_ = input.readEnum();
+                                break;
+                            }
+                            // case 40
+                            case 48: {
+                                resolution_ = input.readBool();
+                                resolutionCase_ = 6;
+                                break;
+                            }
+                            // case 48
+                            case 58: {
+                                input.readMessage(getSubProblemsFieldBuilder().getBuilder(), extensionRegistry);
+                                resolutionCase_ = 7;
+                                break;
+                            }
+                            // case 58
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.authzed.api.v1.Debug.CheckDebugTrace) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
+                    onChanged();
                 }
+                // finally
                 return this;
             }
 
@@ -3902,7 +3826,18 @@ public final class Debug {
             public CheckDebugTrace parsePartialFrom(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new CheckDebugTrace(input, extensionRegistry);
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
             }
         };
 

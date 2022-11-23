@@ -8,7 +8,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * relationships and permissions.
  * </pre>
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.48.1)", comments = "Source: authzed/api/v1/permission_service.proto")
+@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.50.2)", comments = "Source: authzed/api/v1/permission_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class PermissionsServiceGrpc {
 

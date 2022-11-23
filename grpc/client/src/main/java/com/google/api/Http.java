@@ -36,55 +36,6 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
         return this.unknownFields;
     }
 
-    private Http(com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        this();
-        if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-        }
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-            boolean done = false;
-            while (!done) {
-                int tag = input.readTag();
-                switch (tag) {
-                    case 0:
-                        done = true;
-                        break;
-                    case 10: {
-                        if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                            rules_ = new java.util.ArrayList<com.google.api.HttpRule>();
-                            mutable_bitField0_ |= 0x00000001;
-                        }
-                        rules_.add(input.readMessage(com.google.api.HttpRule.parser(), extensionRegistry));
-                        break;
-                    }
-                    case 16: {
-                        fullyDecodeReservedExpansion_ = input.readBool();
-                        break;
-                    }
-                    default: {
-                        if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                            done = true;
-                        }
-                        break;
-                    }
-                }
-            }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-        } finally {
-            if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                rules_ = java.util.Collections.unmodifiableList(rules_);
-            }
-            this.unknownFields = unknownFields.build();
-            makeExtensionsImmutable();
-        }
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return com.google.api.HttpProto.internal_static_google_api_Http_descriptor;
     }
@@ -207,7 +158,7 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
         if (fullyDecodeReservedExpansion_ != false) {
             output.writeBool(2, fullyDecodeReservedExpansion_);
         }
-        unknownFields.writeTo(output);
+        getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -222,7 +173,7 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
         if (fullyDecodeReservedExpansion_ != false) {
             size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, fullyDecodeReservedExpansion_);
         }
-        size += unknownFields.getSerializedSize();
+        size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
         return size;
     }
@@ -240,7 +191,7 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
             return false;
         if (getFullyDecodeReservedExpansion() != other.getFullyDecodeReservedExpansion())
             return false;
-        if (!unknownFields.equals(other.unknownFields))
+        if (!getUnknownFields().equals(other.getUnknownFields()))
             return false;
         return true;
     }
@@ -258,7 +209,7 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
         }
         hash = (37 * hash) + FULLY_DECODE_RESERVED_EXPANSION_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getFullyDecodeReservedExpansion());
-        hash = (29 * hash) + unknownFields.hashCode();
+        hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
     }
@@ -369,18 +320,10 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
 
         // Construct using com.google.api.Http.newBuilder()
         private Builder() {
-            maybeForceBuilderInitialization();
         }
 
         private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
             super(parent);
-            maybeForceBuilderInitialization();
-        }
-
-        private void maybeForceBuilderInitialization() {
-            if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                getRulesFieldBuilder();
-            }
         }
 
         @java.lang.Override
@@ -388,10 +331,11 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
             super.clear();
             if (rulesBuilder_ == null) {
                 rules_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000001);
             } else {
+                rules_ = null;
                 rulesBuilder_.clear();
             }
+            bitField0_ = (bitField0_ & ~0x00000001);
             fullyDecodeReservedExpansion_ = false;
             return this;
         }
@@ -505,7 +449,7 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
             if (other.getFullyDecodeReservedExpansion() != false) {
                 setFullyDecodeReservedExpansion(other.getFullyDecodeReservedExpansion());
             }
-            this.mergeUnknownFields(other.unknownFields);
+            this.mergeUnknownFields(other.getUnknownFields());
             onChanged();
             return this;
         }
@@ -518,17 +462,50 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-            com.google.api.Http parsedMessage = null;
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
             try {
-                parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        case 10: {
+                            com.google.api.HttpRule m = input.readMessage(com.google.api.HttpRule.parser(), extensionRegistry);
+                            if (rulesBuilder_ == null) {
+                                ensureRulesIsMutable();
+                                rules_.add(m);
+                            } else {
+                                rulesBuilder_.addMessage(m);
+                            }
+                            break;
+                        }
+                        // case 10
+                        case 16: {
+                            fullyDecodeReservedExpansion_ = input.readBool();
+                            break;
+                        }
+                        // case 16
+                        default: {
+                            if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                // was an endgroup tag
+                                done = true;
+                            }
+                            break;
+                        }
+                    }
+                    // switch (tag)
+                }
+                // while (!done)
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                parsedMessage = (com.google.api.Http) e.getUnfinishedMessage();
                 throw e.unwrapIOException();
             } finally {
-                if (parsedMessage != null) {
-                    mergeFrom(parsedMessage);
-                }
+                onChanged();
             }
+            // finally
             return this;
         }
 
@@ -950,7 +927,17 @@ public final class Http extends com.google.protobuf.GeneratedMessageV3 implement
         public Http parsePartialFrom(com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
-            return new Http(input, extensionRegistry);
+            Builder builder = newBuilder();
+            try {
+                builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+                throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
         }
     };
 
