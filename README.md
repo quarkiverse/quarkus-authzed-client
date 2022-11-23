@@ -132,5 +132,15 @@ p == Permissionship.PERMISSIONSHIP_HAS_PERMISSION
 
 See the [configuration reference](docs/config/quarkus-authzed.adoc) for the full list of supported configuration options.
 
+## Compatibility
+
+The table below specifies the `Authzed Client` version that used for each `Quarkus Authzed Client Extension`.
+**Note**: The table only includes the versions that contained a change in the `Authzed Client` version.
+
+| Quarkus Authzed Client Extension Versions | Authzed Client Version |
+|-------------------------------------------|------------------------|
+| 0.0.1                                     | v.12.0                 |
+| 0.1.0                                     | v.15.0                 |
+
 ## Credits
 Heavily influeced by Kevin Wotten's (kdubb) work on https://github.com/quarkiverse/quarkus-openfga-client
