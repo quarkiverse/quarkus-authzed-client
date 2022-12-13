@@ -118,5 +118,13 @@ public class DevServicesAuthzedConfig {
      */
     @ConfigItem
     public MetricsConfig metrics;
+    
+     /**
+     * operationType configuration
+     */
+    @ConfigItem(defaultValue = "CREATE")
+    public String operationType;
+    
+    
 
 }
