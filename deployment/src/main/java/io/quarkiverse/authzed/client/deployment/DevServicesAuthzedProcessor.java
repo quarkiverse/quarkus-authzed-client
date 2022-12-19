@@ -60,6 +60,7 @@ public class DevServicesAuthzedProcessor {
 
     private static final Logger log = Logger.getLogger(DevServicesAuthzedProcessor.class);
     static final String CONFIG_PREFIX = "quarkus.authzed.";
+    public static final String OPERATION = "OPERATION_";
 
     static final String GRPC_URL_CONFIG_KEY = CONFIG_PREFIX + "url";
     static final String HTTP_URL_CONFIG_KEY = CONFIG_PREFIX + "http.url";
@@ -219,7 +220,8 @@ public class DevServicesAuthzedProcessor {
                                 Uni<WriteRelationshipsResponse> writeRelationshipRespone = client.v1().permissionService()
                                         .writeRelationships(WriteRelationshipsRequest.newBuilder()
                                                 .addUpdates(RelationshipUpdate.newBuilder()
-                                                        .setOperation(Operation.OPERATION_CREATE)
+                                                        .setOperation(Operation.valueOf(OPERATION
+                                                                .concat(devServicesConfig.operationType.toUpperCase())))
                                                         .setRelationship(Tuples.parseRelationship(tuple))
                                                         .build())
                                                 .build());
