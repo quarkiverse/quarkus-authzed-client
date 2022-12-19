@@ -220,7 +220,8 @@ public class DevServicesAuthzedProcessor {
                                 Uni<WriteRelationshipsResponse> writeRelationshipRespone = client.v1().permissionService()
                                         .writeRelationships(WriteRelationshipsRequest.newBuilder()
                                                 .addUpdates(RelationshipUpdate.newBuilder()
-                                                        .setOperation(Operation.valueOf(OPERATION.concat(devServicesConfig.operationType.toUpperCase())))
+                                                        .setOperation(Operation.valueOf(OPERATION
+                                                                .concat(devServicesConfig.operationType.toUpperCase())))
                                                         .setRelationship(Tuples.parseRelationship(tuple))
                                                         .build())
                                                 .build());
