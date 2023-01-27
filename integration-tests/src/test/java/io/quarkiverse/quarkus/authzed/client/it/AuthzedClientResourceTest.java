@@ -16,8 +16,8 @@ import com.authzed.api.v1.PermissionService.Consistency;
 import com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest;
 import com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse;
 
-import io.quarkiverse.authzed.Tuples;
 import io.quarkiverse.authzed.client.AuthzedClient;
+import io.quarkiverse.authzed.utils.Tuples;
 import io.quarkus.test.junit.QuarkusTest;
 import io.smallrye.mutiny.Uni;
 

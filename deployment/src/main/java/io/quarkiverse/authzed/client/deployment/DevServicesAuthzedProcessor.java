@@ -37,9 +37,9 @@ import com.authzed.api.v1.PermissionService.WriteRelationshipsResponse;
 import com.authzed.api.v1.SchemaServiceOuterClass;
 import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse;
 
-import io.quarkiverse.authzed.Tuples;
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
+import io.quarkiverse.authzed.utils.Tuples;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;

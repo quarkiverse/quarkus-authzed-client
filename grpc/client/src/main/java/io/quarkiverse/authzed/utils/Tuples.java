@@ -1,5 +1,5 @@
 
-package io.quarkiverse.authzed;
+package io.quarkiverse.authzed.utils;
 
 import java.util.Optional;
 import java.util.regex.Matcher;
