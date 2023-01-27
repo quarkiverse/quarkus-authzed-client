@@ -1,4 +1,4 @@
-package io.quarkiverse.authzed;
+package io.quarkiverse.authzed.runtime;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;

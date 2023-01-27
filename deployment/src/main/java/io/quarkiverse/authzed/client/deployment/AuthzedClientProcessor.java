@@ -4,8 +4,8 @@ import static io.quarkus.deployment.annotations.ExecutionTime.RUNTIME_INIT;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import io.quarkiverse.authzed.AuthzedRecorder;
 import io.quarkiverse.authzed.client.AuthzedClient;
+import io.quarkiverse.authzed.runtime.AuthzedRecorder;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkus.arc.deployment.SyntheticBeanBuildItem;
 import io.quarkus.deployment.Capabilities;
