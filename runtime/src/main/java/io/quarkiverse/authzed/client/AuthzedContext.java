@@ -12,6 +12,7 @@ import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.quarkiverse.authzed.BearerToken;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
+import io.quarkus.grpc.runtime.supports.IOThreadClientInterceptor;
 
 public class AuthzedContext implements AutoCloseable {
 
@@ -32,7 +33,8 @@ public class AuthzedContext implements AutoCloseable {
     }
 
     private static ManagedChannel createChannel(AuthzedConfig config) {
-        NettyChannelBuilder builder = NettyChannelBuilder.forAddress(config.url.getHost(), config.url.getPort());
+        NettyChannelBuilder builder = NettyChannelBuilder.forAddress(config.url.getHost(), config.url.getPort())
+                .intercept(new IOThreadClientInterceptor());
 
         if (config.tlsEnabled) {
             builder = builder.useTransportSecurity().sslContext(createSslContext(config));
