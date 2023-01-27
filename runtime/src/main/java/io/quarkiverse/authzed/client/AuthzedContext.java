@@ -10,8 +10,8 @@ import io.grpc.netty.GrpcSslContexts;
 import io.grpc.netty.NettyChannelBuilder;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
-import io.quarkiverse.authzed.BearerToken;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
+import io.quarkiverse.authzed.utils.BearerToken;
 import io.quarkus.grpc.runtime.supports.IOThreadClientInterceptor;
 
 public class AuthzedContext implements AutoCloseable {
