@@ -16,6 +16,7 @@
     <module>grpc</module>
     <module>deployment</module>
     <module>runtime</module>
+    <module>cli</module>
   </modules>
 
   <properties>
