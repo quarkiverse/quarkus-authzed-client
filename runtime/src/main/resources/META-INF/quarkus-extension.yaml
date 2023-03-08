@@ -10,4 +10,4 @@ metadata:
    - security
  status: "preview"
  cli-plugins:
-   - "${project.groupId}:quarkus-authzed-cli:runner:jar:${project.version}"
+   - "${project.groupId}:quarkus-authzed-cli:${project.version}"
