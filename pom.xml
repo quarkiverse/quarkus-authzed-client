@@ -18,7 +18,7 @@
     <module>cli</module>
   </modules>
   <scm>
-    <connection>:git:git@github.com:quarkiverse/quarkus-authzed-client.git</connection>
+    <connection>scm:git:git@github.com:quarkiverse/quarkus-authzed-client.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-authzed-client.git</developerConnection>
     <url>https://github.com/quarkiverse/quarkus-authzed-client</url>
   </scm>
