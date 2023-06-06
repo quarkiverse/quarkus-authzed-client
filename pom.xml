@@ -11,14 +11,17 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Quarkus - Authzed Client - Parent</name>
-
   <modules>
     <module>grpc</module>
     <module>deployment</module>
     <module>runtime</module>
     <module>cli</module>
   </modules>
-
+  <scm>
+    <connection>:git:git@github.com:quarkiverse/quarkus-authzed-client.git</connection>
+    <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-authzed-client.git</developerConnection>
+    <url>https://github.com/quarkiverse/quarkus-authzed-client</url>
+  </scm>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <maven.compiler.release>11</maven.compiler.release>
@@ -26,7 +29,6 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.version>3.0.0.Final</quarkus.version>
   </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -38,7 +40,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
   <build>
     <pluginManagement>
       <plugins>
