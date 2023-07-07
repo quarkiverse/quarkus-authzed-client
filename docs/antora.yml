@@ -1,5 +1,5 @@
 name: quarkus-authzed-client
-title: Quarkus - Authzed Client
+title: Authzed Client
 version: dev
 nav:
   - modules/ROOT/nav.adoc
