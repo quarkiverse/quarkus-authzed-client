@@ -75,7 +75,9 @@ public final class Debug {
      * <pre>
      * DebugInformation defines debug information returned by an API call in a footer when
      * requested with a specific debugging header.
+     *
      * The specific debug information returned will depend on the type of the API call made.
+     *
      * See the github.com/authzed/authzed-go project for the specific header and footer names.
      * </pre>
      *
@@ -101,11 +103,6 @@ public final class Debug {
             return new DebugInformation();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_DebugInformation_descriptor;
         }
@@ -116,6 +113,8 @@ public final class Debug {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.Debug.DebugInformation.class,
                             com.authzed.api.v1.Debug.DebugInformation.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CHECK_FIELD_NUMBER = 1;
 
@@ -132,7 +131,7 @@ public final class Debug {
          */
         @java.lang.Override
         public boolean hasCheck() {
-            return check_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -158,12 +157,13 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Debug.CheckDebugTraceOrBuilder getCheckOrBuilder() {
-            return getCheck();
+            return check_ == null ? com.authzed.api.v1.Debug.CheckDebugTrace.getDefaultInstance() : check_;
         }
 
         public static final int SCHEMA_USED_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object schemaUsed_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schemaUsed_ = "";
 
         /**
          * <pre>
@@ -223,7 +223,7 @@ public final class Debug {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (check_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getCheck());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUsed_)) {
@@ -238,7 +238,7 @@ public final class Debug {
             if (size != -1)
                 return size;
             size = 0;
-            if (check_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getCheck());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUsed_)) {
@@ -380,7 +380,9 @@ public final class Debug {
          * <pre>
          * DebugInformation defines debug information returned by an API call in a footer when
          * requested with a specific debugging header.
+         *
          * The specific debug information returned will depend on the type of the API call made.
+         *
          * See the github.com/authzed/authzed-go project for the specific header and footer names.
          * </pre>
          *
@@ -402,19 +404,27 @@ public final class Debug {
 
             // Construct using com.authzed.api.v1.Debug.DebugInformation.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getCheckFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (checkBuilder_ == null) {
-                    check_ = null;
-                } else {
-                    check_ = null;
+                bitField0_ = 0;
+                check_ = null;
+                if (checkBuilder_ != null) {
+                    checkBuilder_.dispose();
                     checkBuilder_ = null;
                 }
                 schemaUsed_ = "";
@@ -443,14 +453,24 @@ public final class Debug {
             @java.lang.Override
             public com.authzed.api.v1.Debug.DebugInformation buildPartial() {
                 com.authzed.api.v1.Debug.DebugInformation result = new com.authzed.api.v1.Debug.DebugInformation(this);
-                if (checkBuilder_ == null) {
-                    result.check_ = check_;
-                } else {
-                    result.check_ = checkBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.schemaUsed_ = schemaUsed_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Debug.DebugInformation result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.check_ = checkBuilder_ == null ? check_ : checkBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.schemaUsed_ = schemaUsed_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -502,6 +522,7 @@ public final class Debug {
                 }
                 if (!other.getSchemaUsed().isEmpty()) {
                     schemaUsed_ = other.schemaUsed_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -530,11 +551,13 @@ public final class Debug {
                                 break;
                             case 10: {
                                 input.readMessage(getCheckFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 schemaUsed_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -558,6 +581,8 @@ public final class Debug {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Debug.CheckDebugTrace check_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.CheckDebugTrace, com.authzed.api.v1.Debug.CheckDebugTrace.Builder, com.authzed.api.v1.Debug.CheckDebugTraceOrBuilder> checkBuilder_;
@@ -572,7 +597,7 @@ public final class Debug {
              * @return Whether the check field is set.
              */
             public boolean hasCheck() {
-                return checkBuilder_ != null || check_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -605,10 +630,11 @@ public final class Debug {
                         throw new NullPointerException();
                     }
                     check_ = value;
-                    onChanged();
                 } else {
                     checkBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -622,10 +648,11 @@ public final class Debug {
             public Builder setCheck(com.authzed.api.v1.Debug.CheckDebugTrace.Builder builderForValue) {
                 if (checkBuilder_ == null) {
                     check_ = builderForValue.build();
-                    onChanged();
                 } else {
                     checkBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -638,14 +665,18 @@ public final class Debug {
              */
             public Builder mergeCheck(com.authzed.api.v1.Debug.CheckDebugTrace value) {
                 if (checkBuilder_ == null) {
-                    if (check_ != null) {
-                        check_ = com.authzed.api.v1.Debug.CheckDebugTrace.newBuilder(check_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && check_ != null
+                            && check_ != com.authzed.api.v1.Debug.CheckDebugTrace.getDefaultInstance()) {
+                        getCheckBuilder().mergeFrom(value);
                     } else {
                         check_ = value;
                     }
-                    onChanged();
                 } else {
                     checkBuilder_.mergeFrom(value);
+                }
+                if (check_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -658,13 +689,13 @@ public final class Debug {
              * <code>.authzed.api.v1.CheckDebugTrace check = 1;</code>
              */
             public Builder clearCheck() {
-                if (checkBuilder_ == null) {
-                    check_ = null;
-                    onChanged();
-                } else {
-                    check_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                check_ = null;
+                if (checkBuilder_ != null) {
+                    checkBuilder_.dispose();
                     checkBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -676,6 +707,7 @@ public final class Debug {
              * <code>.authzed.api.v1.CheckDebugTrace check = 1;</code>
              */
             public com.authzed.api.v1.Debug.CheckDebugTrace.Builder getCheckBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getCheckFieldBuilder().getBuilder();
             }
@@ -769,6 +801,7 @@ public final class Debug {
                     throw new NullPointerException();
                 }
                 schemaUsed_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -784,6 +817,7 @@ public final class Debug {
              */
             public Builder clearSchemaUsed() {
                 schemaUsed_ = getDefaultInstance().getSchemaUsed();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -804,6 +838,7 @@ public final class Debug {
                 }
                 checkByteStringIsUtf8(value);
                 schemaUsed_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1057,7 +1092,7 @@ public final class Debug {
          */
         com.authzed.api.v1.Debug.CheckDebugTrace.SubProblemsOrBuilder getSubProblemsOrBuilder();
 
-        public com.authzed.api.v1.Debug.CheckDebugTrace.ResolutionCase getResolutionCase();
+        com.authzed.api.v1.Debug.CheckDebugTrace.ResolutionCase getResolutionCase();
     }
 
     /**
@@ -1088,11 +1123,6 @@ public final class Debug {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new CheckDebugTrace();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -1384,11 +1414,6 @@ public final class Debug {
                 return new SubProblems();
             }
 
-            @java.lang.Override
-            public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-                return this.unknownFields;
-            }
-
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
                 return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CheckDebugTrace_SubProblems_descriptor;
             }
@@ -1402,6 +1427,7 @@ public final class Debug {
 
             public static final int TRACES_FIELD_NUMBER = 1;
 
+            @SuppressWarnings("serial")
             private java.util.List<com.authzed.api.v1.Debug.CheckDebugTrace> traces_;
 
             /**
@@ -1627,6 +1653,7 @@ public final class Debug {
                 @java.lang.Override
                 public Builder clear() {
                     super.clear();
+                    bitField0_ = 0;
                     if (tracesBuilder_ == null) {
                         traces_ = java.util.Collections.emptyList();
                     } else {
@@ -1660,7 +1687,15 @@ public final class Debug {
                 public com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems buildPartial() {
                     com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems result = new com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems(
                             this);
-                    int from_bitField0_ = bitField0_;
+                    buildPartialRepeatedFields(result);
+                    if (bitField0_ != 0) {
+                        buildPartial0(result);
+                    }
+                    onBuilt();
+                    return result;
+                }
+
+                private void buildPartialRepeatedFields(com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems result) {
                     if (tracesBuilder_ == null) {
                         if (((bitField0_ & 0x00000001) != 0)) {
                             traces_ = java.util.Collections.unmodifiableList(traces_);
@@ -1670,8 +1705,10 @@ public final class Debug {
                     } else {
                         result.traces_ = tracesBuilder_.build();
                     }
-                    onBuilt();
-                    return result;
+                }
+
+                private void buildPartial0(com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems result) {
+                    int from_bitField0_ = bitField0_;
                 }
 
                 @java.lang.Override
@@ -2100,8 +2137,11 @@ public final class Debug {
             }
         }
 
+        private int bitField0_;
+
         private int resolutionCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object resolution_;
 
         public enum ResolutionCase
@@ -2164,7 +2204,7 @@ public final class Debug {
          */
         @java.lang.Override
         public boolean hasResource() {
-            return resource_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -2190,12 +2230,13 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int PERMISSION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object permission_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
 
         /**
          * <pre>
@@ -2242,7 +2283,7 @@ public final class Debug {
 
         public static final int PERMISSION_TYPE_FIELD_NUMBER = 3;
 
-        private int permissionType_;
+        private int permissionType_ = 0;
 
         /**
          * <pre>
@@ -2269,9 +2310,8 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType getPermissionType() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType result = com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType
-                    .valueOf(permissionType_);
+                    .forNumber(permissionType_);
             return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType.UNRECOGNIZED : result;
         }
 
@@ -2291,7 +2331,7 @@ public final class Debug {
          */
         @java.lang.Override
         public boolean hasSubject() {
-            return subject_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -2319,12 +2359,12 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
-            return getSubject();
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
         public static final int RESULT_FIELD_NUMBER = 5;
 
-        private int result_;
+        private int result_ = 0;
 
         /**
          * <pre>
@@ -2351,9 +2391,8 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship getResult() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship result = com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship
-                    .valueOf(result_);
+                    .forNumber(result_);
             return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship.UNRECOGNIZED : result;
         }
 
@@ -2456,7 +2495,7 @@ public final class Debug {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
@@ -2466,7 +2505,7 @@ public final class Debug {
                     .getNumber()) {
                 output.writeEnum(3, permissionType_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(4, getSubject());
             }
             if (result_ != com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship.PERMISSIONSHIP_UNSPECIFIED.getNumber()) {
@@ -2487,7 +2526,7 @@ public final class Debug {
             if (size != -1)
                 return size;
             size = 0;
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
@@ -2497,7 +2536,7 @@ public final class Debug {
                     .getNumber()) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, permissionType_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getSubject());
             }
             if (result_ != com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship.PERMISSIONSHIP_UNSPECIFIED.getNumber()) {
@@ -2709,27 +2748,35 @@ public final class Debug {
 
             // Construct using com.authzed.api.v1.Debug.CheckDebugTrace.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getResourceFieldBuilder();
+                    getSubjectFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                bitField0_ = 0;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 permission_ = "";
                 permissionType_ = 0;
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                } else {
-                    subject_ = null;
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
                 result_ = 0;
@@ -2763,32 +2810,43 @@ public final class Debug {
             @java.lang.Override
             public com.authzed.api.v1.Debug.CheckDebugTrace buildPartial() {
                 com.authzed.api.v1.Debug.CheckDebugTrace result = new com.authzed.api.v1.Debug.CheckDebugTrace(this);
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.permission_ = permission_;
-                result.permissionType_ = permissionType_;
-                if (subjectBuilder_ == null) {
-                    result.subject_ = subject_;
-                } else {
-                    result.subject_ = subjectBuilder_.build();
-                }
-                result.result_ = result_;
-                if (resolutionCase_ == 6) {
-                    result.resolution_ = resolution_;
-                }
-                if (resolutionCase_ == 7) {
-                    if (subProblemsBuilder_ == null) {
-                        result.resolution_ = resolution_;
-                    } else {
-                        result.resolution_ = subProblemsBuilder_.build();
-                    }
-                }
-                result.resolutionCase_ = resolutionCase_;
+                buildPartialOneofs(result);
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Debug.CheckDebugTrace result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.permission_ = permission_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.permissionType_ = permissionType_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.result_ = result_;
+                }
+                result.bitField0_ |= to_bitField0_;
+            }
+
+            private void buildPartialOneofs(com.authzed.api.v1.Debug.CheckDebugTrace result) {
+                result.resolutionCase_ = resolutionCase_;
+                result.resolution_ = this.resolution_;
+                if (resolutionCase_ == 7 && subProblemsBuilder_ != null) {
+                    result.resolution_ = subProblemsBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -2840,6 +2898,7 @@ public final class Debug {
                 }
                 if (!other.getPermission().isEmpty()) {
                     permission_ = other.permission_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.permissionType_ != 0) {
@@ -2890,26 +2949,31 @@ public final class Debug {
                                 break;
                             case 10: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 24: {
                                 permissionType_ = input.readEnum();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 24
                             case 34: {
                                 input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
                             case 40: {
                                 result_ = input.readEnum();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 40
@@ -2960,6 +3024,8 @@ public final class Debug {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ObjectReference resource_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> resourceBuilder_;
@@ -2974,7 +3040,7 @@ public final class Debug {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -3007,10 +3073,11 @@ public final class Debug {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -3024,10 +3091,11 @@ public final class Debug {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -3040,15 +3108,18 @@ public final class Debug {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
+                }
+                if (resource_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -3061,13 +3132,13 @@ public final class Debug {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3079,6 +3150,7 @@ public final class Debug {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -3172,6 +3244,7 @@ public final class Debug {
                     throw new NullPointerException();
                 }
                 permission_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3187,6 +3260,7 @@ public final class Debug {
              */
             public Builder clearPermission() {
                 permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -3207,6 +3281,7 @@ public final class Debug {
                 }
                 checkByteStringIsUtf8(value);
                 permission_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3239,6 +3314,7 @@ public final class Debug {
              */
             public Builder setPermissionTypeValue(int value) {
                 permissionType_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -3254,9 +3330,8 @@ public final class Debug {
              */
             @java.lang.Override
             public com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType getPermissionType() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType result = com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType
-                        .valueOf(permissionType_);
+                        .forNumber(permissionType_);
                 return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType.UNRECOGNIZED : result;
             }
 
@@ -3274,6 +3349,7 @@ public final class Debug {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000004;
                 permissionType_ = value.getNumber();
                 onChanged();
                 return this;
@@ -3289,6 +3365,7 @@ public final class Debug {
              * @return This builder for chaining.
              */
             public Builder clearPermissionType() {
+                bitField0_ = (bitField0_ & ~0x00000004);
                 permissionType_ = 0;
                 onChanged();
                 return this;
@@ -3309,7 +3386,7 @@ public final class Debug {
              * @return Whether the subject field is set.
              */
             public boolean hasSubject() {
-                return subjectBuilder_ != null || subject_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -3344,10 +3421,11 @@ public final class Debug {
                         throw new NullPointerException();
                     }
                     subject_ = value;
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -3362,10 +3440,11 @@ public final class Debug {
             public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
                 if (subjectBuilder_ == null) {
                     subject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -3379,15 +3458,18 @@ public final class Debug {
              */
             public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
                 if (subjectBuilder_ == null) {
-                    if (subject_ != null) {
-                        subject_ = com.authzed.api.v1.Core.SubjectReference.newBuilder(subject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
                     } else {
                         subject_ = value;
                     }
-                    onChanged();
                 } else {
                     subjectBuilder_.mergeFrom(value);
+                }
+                if (subject_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
                 }
                 return this;
             }
@@ -3401,13 +3483,13 @@ public final class Debug {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public Builder clearSubject() {
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                    onChanged();
-                } else {
-                    subject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3420,6 +3502,7 @@ public final class Debug {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getSubjectFieldBuilder().getBuilder();
             }
@@ -3485,6 +3568,7 @@ public final class Debug {
              */
             public Builder setResultValue(int value) {
                 result_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -3500,9 +3584,8 @@ public final class Debug {
              */
             @java.lang.Override
             public com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship getResult() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship result = com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship
-                        .valueOf(result_);
+                        .forNumber(result_);
                 return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship.UNRECOGNIZED : result;
             }
 
@@ -3520,6 +3603,7 @@ public final class Debug {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000010;
                 result_ = value.getNumber();
                 onChanged();
                 return this;
@@ -3535,6 +3619,7 @@ public final class Debug {
              * @return This builder for chaining.
              */
             public Builder clearResult() {
+                bitField0_ = (bitField0_ & ~0x00000010);
                 result_ = 0;
                 onChanged();
                 return this;
@@ -3709,8 +3794,9 @@ public final class Debug {
                 } else {
                     if (resolutionCase_ == 7) {
                         subProblemsBuilder_.mergeFrom(value);
+                    } else {
+                        subProblemsBuilder_.setMessage(value);
                     }
-                    subProblemsBuilder_.setMessage(value);
                 }
                 resolutionCase_ = 7;
                 return this;
@@ -3793,7 +3879,6 @@ public final class Debug {
                 }
                 resolutionCase_ = 7;
                 onChanged();
-                ;
                 return subProblemsBuilder_;
             }
 

@@ -44,11 +44,6 @@ public final class SchemaServiceOuterClass {
             return new ReadSchemaRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_ReadSchemaRequest_descriptor;
         }
@@ -466,11 +461,6 @@ public final class SchemaServiceOuterClass {
             return new ReadSchemaResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_ReadSchemaResponse_descriptor;
         }
@@ -484,7 +474,8 @@ public final class SchemaServiceOuterClass {
 
         public static final int SCHEMA_TEXT_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schemaText_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schemaText_ = "";
 
         /**
          * <pre>
@@ -716,6 +707,7 @@ public final class SchemaServiceOuterClass {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schemaText_ = "";
                 return this;
             }
@@ -743,9 +735,18 @@ public final class SchemaServiceOuterClass {
             public com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse buildPartial() {
                 com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse result = new com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse(
                         this);
-                result.schemaText_ = schemaText_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schemaText_ = schemaText_;
+                }
             }
 
             @java.lang.Override
@@ -794,6 +795,7 @@ public final class SchemaServiceOuterClass {
                     return this;
                 if (!other.getSchemaText().isEmpty()) {
                     schemaText_ = other.schemaText_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -822,6 +824,7 @@ public final class SchemaServiceOuterClass {
                                 break;
                             case 10: {
                                 schemaText_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -844,6 +847,8 @@ public final class SchemaServiceOuterClass {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object schemaText_ = "";
 
@@ -903,6 +908,7 @@ public final class SchemaServiceOuterClass {
                     throw new NullPointerException();
                 }
                 schemaText_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -918,6 +924,7 @@ public final class SchemaServiceOuterClass {
              */
             public Builder clearSchemaText() {
                 schemaText_ = getDefaultInstance().getSchemaText();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -938,6 +945,7 @@ public final class SchemaServiceOuterClass {
                 }
                 checkByteStringIsUtf8(value);
                 schemaText_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1057,11 +1065,6 @@ public final class SchemaServiceOuterClass {
             return new WriteSchemaRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_WriteSchemaRequest_descriptor;
         }
@@ -1075,7 +1078,8 @@ public final class SchemaServiceOuterClass {
 
         public static final int SCHEMA_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schema_ = "";
 
         /**
          * <pre>
@@ -1309,6 +1313,7 @@ public final class SchemaServiceOuterClass {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schema_ = "";
                 return this;
             }
@@ -1336,9 +1341,18 @@ public final class SchemaServiceOuterClass {
             public com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest buildPartial() {
                 com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest result = new com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest(
                         this);
-                result.schema_ = schema_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schema_ = schema_;
+                }
             }
 
             @java.lang.Override
@@ -1387,6 +1401,7 @@ public final class SchemaServiceOuterClass {
                     return this;
                 if (!other.getSchema().isEmpty()) {
                     schema_ = other.schema_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -1415,6 +1430,7 @@ public final class SchemaServiceOuterClass {
                                 break;
                             case 10: {
                                 schema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -1437,6 +1453,8 @@ public final class SchemaServiceOuterClass {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object schema_ = "";
 
@@ -1499,6 +1517,7 @@ public final class SchemaServiceOuterClass {
                     throw new NullPointerException();
                 }
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1515,6 +1534,7 @@ public final class SchemaServiceOuterClass {
              */
             public Builder clearSchema() {
                 schema_ = getDefaultInstance().getSchema();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -1536,6 +1556,7 @@ public final class SchemaServiceOuterClass {
                 }
                 checkByteStringIsUtf8(value);
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1628,11 +1649,6 @@ public final class SchemaServiceOuterClass {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new WriteSchemaResponse();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {

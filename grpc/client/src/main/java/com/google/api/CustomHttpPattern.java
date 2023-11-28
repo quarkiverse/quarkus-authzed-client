@@ -30,11 +30,6 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
         return new CustomHttpPattern();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-        return this.unknownFields;
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return com.google.api.HttpProto.internal_static_google_api_CustomHttpPattern_descriptor;
     }
@@ -48,7 +43,8 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
 
     public static final int KIND_FIELD_NUMBER = 1;
 
-    private volatile java.lang.Object kind_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object kind_ = "";
 
     /**
      * <pre>
@@ -95,7 +91,8 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
 
     public static final int PATH_FIELD_NUMBER = 2;
 
-    private volatile java.lang.Object path_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object path_ = "";
 
     /**
      * <pre>
@@ -332,6 +329,7 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
         @java.lang.Override
         public Builder clear() {
             super.clear();
+            bitField0_ = 0;
             kind_ = "";
             path_ = "";
             return this;
@@ -359,10 +357,21 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
         @java.lang.Override
         public com.google.api.CustomHttpPattern buildPartial() {
             com.google.api.CustomHttpPattern result = new com.google.api.CustomHttpPattern(this);
-            result.kind_ = kind_;
-            result.path_ = path_;
+            if (bitField0_ != 0) {
+                buildPartial0(result);
+            }
             onBuilt();
             return result;
+        }
+
+        private void buildPartial0(com.google.api.CustomHttpPattern result) {
+            int from_bitField0_ = bitField0_;
+            if (((from_bitField0_ & 0x00000001) != 0)) {
+                result.kind_ = kind_;
+            }
+            if (((from_bitField0_ & 0x00000002) != 0)) {
+                result.path_ = path_;
+            }
         }
 
         @java.lang.Override
@@ -411,10 +420,12 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
                 return this;
             if (!other.getKind().isEmpty()) {
                 kind_ = other.kind_;
+                bitField0_ |= 0x00000001;
                 onChanged();
             }
             if (!other.getPath().isEmpty()) {
                 path_ = other.path_;
+                bitField0_ |= 0x00000002;
                 onChanged();
             }
             this.mergeUnknownFields(other.getUnknownFields());
@@ -443,11 +454,13 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
                             break;
                         case 10: {
                             kind_ = input.readStringRequireUtf8();
+                            bitField0_ |= 0x00000001;
                             break;
                         }
                         // case 10
                         case 18: {
                             path_ = input.readStringRequireUtf8();
+                            bitField0_ |= 0x00000002;
                             break;
                         }
                         // case 18
@@ -470,6 +483,8 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
             // finally
             return this;
         }
+
+        private int bitField0_;
 
         private java.lang.Object kind_ = "";
 
@@ -529,6 +544,7 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
                 throw new NullPointerException();
             }
             kind_ = value;
+            bitField0_ |= 0x00000001;
             onChanged();
             return this;
         }
@@ -544,6 +560,7 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
          */
         public Builder clearKind() {
             kind_ = getDefaultInstance().getKind();
+            bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
             return this;
         }
@@ -564,6 +581,7 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
             }
             checkByteStringIsUtf8(value);
             kind_ = value;
+            bitField0_ |= 0x00000001;
             onChanged();
             return this;
         }
@@ -626,6 +644,7 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
                 throw new NullPointerException();
             }
             path_ = value;
+            bitField0_ |= 0x00000002;
             onChanged();
             return this;
         }
@@ -641,6 +660,7 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
          */
         public Builder clearPath() {
             path_ = getDefaultInstance().getPath();
+            bitField0_ = (bitField0_ & ~0x00000002);
             onChanged();
             return this;
         }
@@ -661,6 +681,7 @@ public final class CustomHttpPattern extends com.google.protobuf.GeneratedMessag
             }
             checkByteStringIsUtf8(value);
             path_ = value;
+            bitField0_ |= 0x00000002;
             onChanged();
             return this;
         }

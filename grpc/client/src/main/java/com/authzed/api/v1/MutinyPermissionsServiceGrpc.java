@@ -4,7 +4,7 @@ import static com.authzed.api.v1.PermissionsServiceGrpc.getServiceDescriptor;
 import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
 public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.MutinyGrpc {
 
     private MutinyPermissionsServiceGrpc() {

@@ -20,6 +20,7 @@ public final class Schema {
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -33,6 +34,7 @@ public final class Schema {
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -46,6 +48,7 @@ public final class Schema {
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -60,6 +63,7 @@ public final class Schema {
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -91,18 +95,13 @@ public final class Schema {
         }
 
         private ReadSchemaRequest() {
-            objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.emptyList();
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new ReadSchemaRequest();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -118,11 +117,14 @@ public final class Schema {
 
         public static final int OBJECT_DEFINITIONS_NAMES_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.LazyStringList objectDefinitionsNames_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList
+                .emptyList();
 
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -138,6 +140,7 @@ public final class Schema {
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -153,6 +156,7 @@ public final class Schema {
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -169,6 +173,7 @@ public final class Schema {
         /**
          * <pre>
          * The list of names of the Object Definitions that are being requested.
+         *
          * These names must be fully qualified with their namespace (e.g.
          * myblog/post).
          * </pre>
@@ -374,8 +379,8 @@ public final class Schema {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = 0;
+                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 return this;
             }
 
@@ -402,14 +407,19 @@ public final class Schema {
             public com.authzed.api.v1alpha1.Schema.ReadSchemaRequest buildPartial() {
                 com.authzed.api.v1alpha1.Schema.ReadSchemaRequest result = new com.authzed.api.v1alpha1.Schema.ReadSchemaRequest(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    objectDefinitionsNames_ = objectDefinitionsNames_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.objectDefinitionsNames_ = objectDefinitionsNames_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1alpha1.Schema.ReadSchemaRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    objectDefinitionsNames_.makeImmutable();
+                    result.objectDefinitionsNames_ = objectDefinitionsNames_;
+                }
             }
 
             @java.lang.Override
@@ -459,7 +469,7 @@ public final class Schema {
                 if (!other.objectDefinitionsNames_.isEmpty()) {
                     if (objectDefinitionsNames_.isEmpty()) {
                         objectDefinitionsNames_ = other.objectDefinitionsNames_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000001;
                     } else {
                         ensureObjectDefinitionsNamesIsMutable();
                         objectDefinitionsNames_.addAll(other.objectDefinitionsNames_);
@@ -519,18 +529,20 @@ public final class Schema {
 
             private int bitField0_;
 
-            private com.google.protobuf.LazyStringList objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
 
             private void ensureObjectDefinitionsNamesIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!objectDefinitionsNames_.isModifiable()) {
                     objectDefinitionsNames_ = new com.google.protobuf.LazyStringArrayList(objectDefinitionsNames_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000001;
             }
 
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -540,12 +552,14 @@ public final class Schema {
              * @return A list containing the objectDefinitionsNames.
              */
             public com.google.protobuf.ProtocolStringList getObjectDefinitionsNamesList() {
-                return objectDefinitionsNames_.getUnmodifiableView();
+                objectDefinitionsNames_.makeImmutable();
+                return objectDefinitionsNames_;
             }
 
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -561,6 +575,7 @@ public final class Schema {
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -577,6 +592,7 @@ public final class Schema {
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -593,6 +609,7 @@ public final class Schema {
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -609,6 +626,7 @@ public final class Schema {
                 }
                 ensureObjectDefinitionsNamesIsMutable();
                 objectDefinitionsNames_.set(index, value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -616,6 +634,7 @@ public final class Schema {
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -631,6 +650,7 @@ public final class Schema {
                 }
                 ensureObjectDefinitionsNamesIsMutable();
                 objectDefinitionsNames_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -638,6 +658,7 @@ public final class Schema {
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -650,6 +671,7 @@ public final class Schema {
             public Builder addAllObjectDefinitionsNames(java.lang.Iterable<java.lang.String> values) {
                 ensureObjectDefinitionsNamesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, objectDefinitionsNames_);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -657,6 +679,7 @@ public final class Schema {
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -666,8 +689,9 @@ public final class Schema {
              * @return This builder for chaining.
              */
             public Builder clearObjectDefinitionsNames() {
-                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000001);
+                ;
                 onChanged();
                 return this;
             }
@@ -675,6 +699,7 @@ public final class Schema {
             /**
              * <pre>
              * The list of names of the Object Definitions that are being requested.
+             *
              * These names must be fully qualified with their namespace (e.g.
              * myblog/post).
              * </pre>
@@ -691,6 +716,7 @@ public final class Schema {
                 checkByteStringIsUtf8(value);
                 ensureObjectDefinitionsNamesIsMutable();
                 objectDefinitionsNames_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -845,7 +871,7 @@ public final class Schema {
         }
 
         private ReadSchemaResponse() {
-            objectDefinitions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            objectDefinitions_ = com.google.protobuf.LazyStringArrayList.emptyList();
             computedDefinitionsRevision_ = "";
         }
 
@@ -853,11 +879,6 @@ public final class Schema {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new ReadSchemaResponse();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -873,7 +894,9 @@ public final class Schema {
 
         public static final int OBJECT_DEFINITIONS_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.LazyStringList objectDefinitions_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList objectDefinitions_ = com.google.protobuf.LazyStringArrayList
+                .emptyList();
 
         /**
          * <pre>
@@ -931,7 +954,8 @@ public final class Schema {
 
         public static final int COMPUTED_DEFINITIONS_REVISION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object computedDefinitionsRevision_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object computedDefinitionsRevision_ = "";
 
         /**
          * <pre>
@@ -1178,8 +1202,8 @@ public final class Schema {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                objectDefinitions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = 0;
+                objectDefinitions_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 computedDefinitionsRevision_ = "";
                 return this;
             }
@@ -1207,15 +1231,22 @@ public final class Schema {
             public com.authzed.api.v1alpha1.Schema.ReadSchemaResponse buildPartial() {
                 com.authzed.api.v1alpha1.Schema.ReadSchemaResponse result = new com.authzed.api.v1alpha1.Schema.ReadSchemaResponse(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    objectDefinitions_ = objectDefinitions_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.objectDefinitions_ = objectDefinitions_;
-                result.computedDefinitionsRevision_ = computedDefinitionsRevision_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1alpha1.Schema.ReadSchemaResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    objectDefinitions_.makeImmutable();
+                    result.objectDefinitions_ = objectDefinitions_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.computedDefinitionsRevision_ = computedDefinitionsRevision_;
+                }
             }
 
             @java.lang.Override
@@ -1265,7 +1296,7 @@ public final class Schema {
                 if (!other.objectDefinitions_.isEmpty()) {
                     if (objectDefinitions_.isEmpty()) {
                         objectDefinitions_ = other.objectDefinitions_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000001;
                     } else {
                         ensureObjectDefinitionsIsMutable();
                         objectDefinitions_.addAll(other.objectDefinitions_);
@@ -1274,6 +1305,7 @@ public final class Schema {
                 }
                 if (!other.getComputedDefinitionsRevision().isEmpty()) {
                     computedDefinitionsRevision_ = other.computedDefinitionsRevision_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -1309,6 +1341,7 @@ public final class Schema {
                             // case 10
                             case 18: {
                                 computedDefinitionsRevision_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -1334,13 +1367,14 @@ public final class Schema {
 
             private int bitField0_;
 
-            private com.google.protobuf.LazyStringList objectDefinitions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList objectDefinitions_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
 
             private void ensureObjectDefinitionsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!objectDefinitions_.isModifiable()) {
                     objectDefinitions_ = new com.google.protobuf.LazyStringArrayList(objectDefinitions_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000001;
             }
 
             /**
@@ -1353,7 +1387,8 @@ public final class Schema {
              * @return A list containing the objectDefinitions.
              */
             public com.google.protobuf.ProtocolStringList getObjectDefinitionsList() {
-                return objectDefinitions_.getUnmodifiableView();
+                objectDefinitions_.makeImmutable();
+                return objectDefinitions_;
             }
 
             /**
@@ -1414,6 +1449,7 @@ public final class Schema {
                 }
                 ensureObjectDefinitionsIsMutable();
                 objectDefinitions_.set(index, value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1434,6 +1470,7 @@ public final class Schema {
                 }
                 ensureObjectDefinitionsIsMutable();
                 objectDefinitions_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1451,6 +1488,7 @@ public final class Schema {
             public Builder addAllObjectDefinitions(java.lang.Iterable<java.lang.String> values) {
                 ensureObjectDefinitionsIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, objectDefinitions_);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1465,8 +1503,9 @@ public final class Schema {
              * @return This builder for chaining.
              */
             public Builder clearObjectDefinitions() {
-                objectDefinitions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                objectDefinitions_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000001);
+                ;
                 onChanged();
                 return this;
             }
@@ -1488,6 +1527,7 @@ public final class Schema {
                 checkByteStringIsUtf8(value);
                 ensureObjectDefinitionsIsMutable();
                 objectDefinitions_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1550,6 +1590,7 @@ public final class Schema {
                     throw new NullPointerException();
                 }
                 computedDefinitionsRevision_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1565,6 +1606,7 @@ public final class Schema {
              */
             public Builder clearComputedDefinitionsRevision() {
                 computedDefinitionsRevision_ = getDefaultInstance().getComputedDefinitionsRevision();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -1585,6 +1627,7 @@ public final class Schema {
                 }
                 checkByteStringIsUtf8(value);
                 computedDefinitionsRevision_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1731,11 +1774,6 @@ public final class Schema {
             return new WriteSchemaRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1alpha1.Schema.internal_static_authzed_api_v1alpha1_WriteSchemaRequest_descriptor;
         }
@@ -1749,7 +1787,8 @@ public final class Schema {
 
         public static final int SCHEMA_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schema_ = "";
 
         /**
          * <pre>
@@ -1798,7 +1837,8 @@ public final class Schema {
 
         public static final int OPTIONAL_DEFINITIONS_REVISION_PRECONDITION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object optionalDefinitionsRevisionPrecondition_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalDefinitionsRevisionPrecondition_ = "";
 
         /**
          * <pre>
@@ -2042,6 +2082,7 @@ public final class Schema {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schema_ = "";
                 optionalDefinitionsRevisionPrecondition_ = "";
                 return this;
@@ -2070,10 +2111,21 @@ public final class Schema {
             public com.authzed.api.v1alpha1.Schema.WriteSchemaRequest buildPartial() {
                 com.authzed.api.v1alpha1.Schema.WriteSchemaRequest result = new com.authzed.api.v1alpha1.Schema.WriteSchemaRequest(
                         this);
-                result.schema_ = schema_;
-                result.optionalDefinitionsRevisionPrecondition_ = optionalDefinitionsRevisionPrecondition_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1alpha1.Schema.WriteSchemaRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schema_ = schema_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.optionalDefinitionsRevisionPrecondition_ = optionalDefinitionsRevisionPrecondition_;
+                }
             }
 
             @java.lang.Override
@@ -2122,10 +2174,12 @@ public final class Schema {
                     return this;
                 if (!other.getSchema().isEmpty()) {
                     schema_ = other.schema_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getOptionalDefinitionsRevisionPrecondition().isEmpty()) {
                     optionalDefinitionsRevisionPrecondition_ = other.optionalDefinitionsRevisionPrecondition_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -2154,11 +2208,13 @@ public final class Schema {
                                 break;
                             case 10: {
                                 schema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 optionalDefinitionsRevisionPrecondition_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -2181,6 +2237,8 @@ public final class Schema {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object schema_ = "";
 
@@ -2243,6 +2301,7 @@ public final class Schema {
                     throw new NullPointerException();
                 }
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2259,6 +2318,7 @@ public final class Schema {
              */
             public Builder clearSchema() {
                 schema_ = getDefaultInstance().getSchema();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -2280,6 +2340,7 @@ public final class Schema {
                 }
                 checkByteStringIsUtf8(value);
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2348,6 +2409,7 @@ public final class Schema {
                     throw new NullPointerException();
                 }
                 optionalDefinitionsRevisionPrecondition_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2365,6 +2427,7 @@ public final class Schema {
              */
             public Builder clearOptionalDefinitionsRevisionPrecondition() {
                 optionalDefinitionsRevisionPrecondition_ = getDefaultInstance().getOptionalDefinitionsRevisionPrecondition();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -2387,6 +2450,7 @@ public final class Schema {
                 }
                 checkByteStringIsUtf8(value);
                 optionalDefinitionsRevisionPrecondition_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2541,7 +2605,7 @@ public final class Schema {
         }
 
         private WriteSchemaResponse() {
-            objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.emptyList();
             computedDefinitionsRevision_ = "";
         }
 
@@ -2549,11 +2613,6 @@ public final class Schema {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new WriteSchemaResponse();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -2569,7 +2628,9 @@ public final class Schema {
 
         public static final int OBJECT_DEFINITIONS_NAMES_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.LazyStringList objectDefinitionsNames_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList
+                .emptyList();
 
         /**
          * <pre>
@@ -2627,7 +2688,8 @@ public final class Schema {
 
         public static final int COMPUTED_DEFINITIONS_REVISION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object computedDefinitionsRevision_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object computedDefinitionsRevision_ = "";
 
         /**
          * <pre>
@@ -2874,8 +2936,8 @@ public final class Schema {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = 0;
+                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 computedDefinitionsRevision_ = "";
                 return this;
             }
@@ -2903,15 +2965,22 @@ public final class Schema {
             public com.authzed.api.v1alpha1.Schema.WriteSchemaResponse buildPartial() {
                 com.authzed.api.v1alpha1.Schema.WriteSchemaResponse result = new com.authzed.api.v1alpha1.Schema.WriteSchemaResponse(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    objectDefinitionsNames_ = objectDefinitionsNames_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.objectDefinitionsNames_ = objectDefinitionsNames_;
-                result.computedDefinitionsRevision_ = computedDefinitionsRevision_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1alpha1.Schema.WriteSchemaResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    objectDefinitionsNames_.makeImmutable();
+                    result.objectDefinitionsNames_ = objectDefinitionsNames_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.computedDefinitionsRevision_ = computedDefinitionsRevision_;
+                }
             }
 
             @java.lang.Override
@@ -2961,7 +3030,7 @@ public final class Schema {
                 if (!other.objectDefinitionsNames_.isEmpty()) {
                     if (objectDefinitionsNames_.isEmpty()) {
                         objectDefinitionsNames_ = other.objectDefinitionsNames_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000001;
                     } else {
                         ensureObjectDefinitionsNamesIsMutable();
                         objectDefinitionsNames_.addAll(other.objectDefinitionsNames_);
@@ -2970,6 +3039,7 @@ public final class Schema {
                 }
                 if (!other.getComputedDefinitionsRevision().isEmpty()) {
                     computedDefinitionsRevision_ = other.computedDefinitionsRevision_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -3005,6 +3075,7 @@ public final class Schema {
                             // case 10
                             case 18: {
                                 computedDefinitionsRevision_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -3030,13 +3101,14 @@ public final class Schema {
 
             private int bitField0_;
 
-            private com.google.protobuf.LazyStringList objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
 
             private void ensureObjectDefinitionsNamesIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!objectDefinitionsNames_.isModifiable()) {
                     objectDefinitionsNames_ = new com.google.protobuf.LazyStringArrayList(objectDefinitionsNames_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000001;
             }
 
             /**
@@ -3049,7 +3121,8 @@ public final class Schema {
              * @return A list containing the objectDefinitionsNames.
              */
             public com.google.protobuf.ProtocolStringList getObjectDefinitionsNamesList() {
-                return objectDefinitionsNames_.getUnmodifiableView();
+                objectDefinitionsNames_.makeImmutable();
+                return objectDefinitionsNames_;
             }
 
             /**
@@ -3110,6 +3183,7 @@ public final class Schema {
                 }
                 ensureObjectDefinitionsNamesIsMutable();
                 objectDefinitionsNames_.set(index, value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3130,6 +3204,7 @@ public final class Schema {
                 }
                 ensureObjectDefinitionsNamesIsMutable();
                 objectDefinitionsNames_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3147,6 +3222,7 @@ public final class Schema {
             public Builder addAllObjectDefinitionsNames(java.lang.Iterable<java.lang.String> values) {
                 ensureObjectDefinitionsNamesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, objectDefinitionsNames_);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3161,8 +3237,9 @@ public final class Schema {
              * @return This builder for chaining.
              */
             public Builder clearObjectDefinitionsNames() {
-                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                objectDefinitionsNames_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000001);
+                ;
                 onChanged();
                 return this;
             }
@@ -3184,6 +3261,7 @@ public final class Schema {
                 checkByteStringIsUtf8(value);
                 ensureObjectDefinitionsNamesIsMutable();
                 objectDefinitionsNames_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3246,6 +3324,7 @@ public final class Schema {
                     throw new NullPointerException();
                 }
                 computedDefinitionsRevision_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3261,6 +3340,7 @@ public final class Schema {
              */
             public Builder clearComputedDefinitionsRevision() {
                 computedDefinitionsRevision_ = getDefaultInstance().getComputedDefinitionsRevision();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -3281,6 +3361,7 @@ public final class Schema {
                 }
                 checkByteStringIsUtf8(value);
                 computedDefinitionsRevision_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }

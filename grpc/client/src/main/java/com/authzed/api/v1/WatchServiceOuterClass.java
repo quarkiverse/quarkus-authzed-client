@@ -87,18 +87,13 @@ public final class WatchServiceOuterClass {
         }
 
         private WatchRequest() {
-            optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.emptyList();
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new WatchRequest();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -112,9 +107,13 @@ public final class WatchServiceOuterClass {
                             com.authzed.api.v1.WatchServiceOuterClass.WatchRequest.Builder.class);
         }
 
+        private int bitField0_;
+
         public static final int OPTIONAL_OBJECT_TYPES_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.LazyStringList optionalObjectTypes_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList
+                .emptyList();
 
         /**
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
@@ -165,7 +164,7 @@ public final class WatchServiceOuterClass {
          */
         @java.lang.Override
         public boolean hasOptionalStartCursor() {
-            return optionalStartCursor_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -183,7 +182,7 @@ public final class WatchServiceOuterClass {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getOptionalStartCursorOrBuilder() {
-            return getOptionalStartCursor();
+            return optionalStartCursor_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : optionalStartCursor_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -204,7 +203,7 @@ public final class WatchServiceOuterClass {
             for (int i = 0; i < optionalObjectTypes_.size(); i++) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 1, optionalObjectTypes_.getRaw(i));
             }
-            if (optionalStartCursor_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(2, getOptionalStartCursor());
             }
             getUnknownFields().writeTo(output);
@@ -224,7 +223,7 @@ public final class WatchServiceOuterClass {
                 size += dataSize;
                 size += 1 * getOptionalObjectTypesList().size();
             }
-            if (optionalStartCursor_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getOptionalStartCursor());
             }
             size += getUnknownFields().getSerializedSize();
@@ -387,21 +386,28 @@ public final class WatchServiceOuterClass {
 
             // Construct using com.authzed.api.v1.WatchServiceOuterClass.WatchRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getOptionalStartCursorFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                if (optionalStartCursorBuilder_ == null) {
-                    optionalStartCursor_ = null;
-                } else {
-                    optionalStartCursor_ = null;
+                bitField0_ = 0;
+                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                optionalStartCursor_ = null;
+                if (optionalStartCursorBuilder_ != null) {
+                    optionalStartCursorBuilder_.dispose();
                     optionalStartCursorBuilder_ = null;
                 }
                 return this;
@@ -430,19 +436,26 @@ public final class WatchServiceOuterClass {
             public com.authzed.api.v1.WatchServiceOuterClass.WatchRequest buildPartial() {
                 com.authzed.api.v1.WatchServiceOuterClass.WatchRequest result = new com.authzed.api.v1.WatchServiceOuterClass.WatchRequest(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    optionalObjectTypes_ = optionalObjectTypes_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
-                }
-                result.optionalObjectTypes_ = optionalObjectTypes_;
-                if (optionalStartCursorBuilder_ == null) {
-                    result.optionalStartCursor_ = optionalStartCursor_;
-                } else {
-                    result.optionalStartCursor_ = optionalStartCursorBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    optionalObjectTypes_.makeImmutable();
+                    result.optionalObjectTypes_ = optionalObjectTypes_;
+                }
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.optionalStartCursor_ = optionalStartCursorBuilder_ == null ? optionalStartCursor_
+                            : optionalStartCursorBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -492,7 +505,7 @@ public final class WatchServiceOuterClass {
                 if (!other.optionalObjectTypes_.isEmpty()) {
                     if (optionalObjectTypes_.isEmpty()) {
                         optionalObjectTypes_ = other.optionalObjectTypes_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000001;
                     } else {
                         ensureOptionalObjectTypesIsMutable();
                         optionalObjectTypes_.addAll(other.optionalObjectTypes_);
@@ -535,6 +548,7 @@ public final class WatchServiceOuterClass {
                             // case 10
                             case 18: {
                                 input.readMessage(getOptionalStartCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -560,13 +574,14 @@ public final class WatchServiceOuterClass {
 
             private int bitField0_;
 
-            private com.google.protobuf.LazyStringList optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
 
             private void ensureOptionalObjectTypesIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!optionalObjectTypes_.isModifiable()) {
                     optionalObjectTypes_ = new com.google.protobuf.LazyStringArrayList(optionalObjectTypes_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000001;
             }
 
             /**
@@ -575,7 +590,8 @@ public final class WatchServiceOuterClass {
              * @return A list containing the optionalObjectTypes.
              */
             public com.google.protobuf.ProtocolStringList getOptionalObjectTypesList() {
-                return optionalObjectTypes_.getUnmodifiableView();
+                optionalObjectTypes_.makeImmutable();
+                return optionalObjectTypes_;
             }
 
             /**
@@ -620,6 +636,7 @@ public final class WatchServiceOuterClass {
                 }
                 ensureOptionalObjectTypesIsMutable();
                 optionalObjectTypes_.set(index, value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -636,6 +653,7 @@ public final class WatchServiceOuterClass {
                 }
                 ensureOptionalObjectTypesIsMutable();
                 optionalObjectTypes_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -649,6 +667,7 @@ public final class WatchServiceOuterClass {
             public Builder addAllOptionalObjectTypes(java.lang.Iterable<java.lang.String> values) {
                 ensureOptionalObjectTypesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, optionalObjectTypes_);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -659,8 +678,9 @@ public final class WatchServiceOuterClass {
              * @return This builder for chaining.
              */
             public Builder clearOptionalObjectTypes() {
-                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000001);
+                ;
                 onChanged();
                 return this;
             }
@@ -678,6 +698,7 @@ public final class WatchServiceOuterClass {
                 checkByteStringIsUtf8(value);
                 ensureOptionalObjectTypesIsMutable();
                 optionalObjectTypes_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -692,7 +713,7 @@ public final class WatchServiceOuterClass {
              * @return Whether the optionalStartCursor field is set.
              */
             public boolean hasOptionalStartCursor() {
-                return optionalStartCursorBuilder_ != null || optionalStartCursor_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -718,10 +739,11 @@ public final class WatchServiceOuterClass {
                         throw new NullPointerException();
                     }
                     optionalStartCursor_ = value;
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -731,10 +753,11 @@ public final class WatchServiceOuterClass {
             public Builder setOptionalStartCursor(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (optionalStartCursorBuilder_ == null) {
                     optionalStartCursor_ = builderForValue.build();
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -743,15 +766,18 @@ public final class WatchServiceOuterClass {
              */
             public Builder mergeOptionalStartCursor(com.authzed.api.v1.Core.ZedToken value) {
                 if (optionalStartCursorBuilder_ == null) {
-                    if (optionalStartCursor_ != null) {
-                        optionalStartCursor_ = com.authzed.api.v1.Core.ZedToken.newBuilder(optionalStartCursor_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && optionalStartCursor_ != null
+                            && optionalStartCursor_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getOptionalStartCursorBuilder().mergeFrom(value);
                     } else {
                         optionalStartCursor_ = value;
                     }
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.mergeFrom(value);
+                }
+                if (optionalStartCursor_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -760,13 +786,13 @@ public final class WatchServiceOuterClass {
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public Builder clearOptionalStartCursor() {
-                if (optionalStartCursorBuilder_ == null) {
-                    optionalStartCursor_ = null;
-                    onChanged();
-                } else {
-                    optionalStartCursor_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                optionalStartCursor_ = null;
+                if (optionalStartCursorBuilder_ != null) {
+                    optionalStartCursorBuilder_.dispose();
                     optionalStartCursorBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -774,6 +800,7 @@ public final class WatchServiceOuterClass {
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getOptionalStartCursorBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getOptionalStartCursorFieldBuilder().getBuilder();
             }
@@ -939,11 +966,6 @@ public final class WatchServiceOuterClass {
             return new WatchResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.WatchServiceOuterClass.internal_static_authzed_api_v1_WatchResponse_descriptor;
         }
@@ -955,8 +977,11 @@ public final class WatchServiceOuterClass {
                             com.authzed.api.v1.WatchServiceOuterClass.WatchResponse.Builder.class);
         }
 
+        private int bitField0_;
+
         public static final int UPDATES_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.Core.RelationshipUpdate> updates_;
 
         /**
@@ -1010,7 +1035,7 @@ public final class WatchServiceOuterClass {
          */
         @java.lang.Override
         public boolean hasChangesThrough() {
-            return changesThrough_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -1028,7 +1053,7 @@ public final class WatchServiceOuterClass {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getChangesThroughOrBuilder() {
-            return getChangesThrough();
+            return changesThrough_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : changesThrough_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -1049,7 +1074,7 @@ public final class WatchServiceOuterClass {
             for (int i = 0; i < updates_.size(); i++) {
                 output.writeMessage(1, updates_.get(i));
             }
-            if (changesThrough_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(2, getChangesThrough());
             }
             getUnknownFields().writeTo(output);
@@ -1064,7 +1089,7 @@ public final class WatchServiceOuterClass {
             for (int i = 0; i < updates_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, updates_.get(i));
             }
-            if (changesThrough_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getChangesThrough());
             }
             size += getUnknownFields().getSerializedSize();
@@ -1228,15 +1253,25 @@ public final class WatchServiceOuterClass {
 
             // Construct using com.authzed.api.v1.WatchServiceOuterClass.WatchResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getUpdatesFieldBuilder();
+                    getChangesThroughFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (updatesBuilder_ == null) {
                     updates_ = java.util.Collections.emptyList();
                 } else {
@@ -1244,10 +1279,9 @@ public final class WatchServiceOuterClass {
                     updatesBuilder_.clear();
                 }
                 bitField0_ = (bitField0_ & ~0x00000001);
-                if (changesThroughBuilder_ == null) {
-                    changesThrough_ = null;
-                } else {
-                    changesThrough_ = null;
+                changesThrough_ = null;
+                if (changesThroughBuilder_ != null) {
+                    changesThroughBuilder_.dispose();
                     changesThroughBuilder_ = null;
                 }
                 return this;
@@ -1276,7 +1310,15 @@ public final class WatchServiceOuterClass {
             public com.authzed.api.v1.WatchServiceOuterClass.WatchResponse buildPartial() {
                 com.authzed.api.v1.WatchServiceOuterClass.WatchResponse result = new com.authzed.api.v1.WatchServiceOuterClass.WatchResponse(
                         this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.WatchServiceOuterClass.WatchResponse result) {
                 if (updatesBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         updates_ = java.util.Collections.unmodifiableList(updates_);
@@ -1286,13 +1328,16 @@ public final class WatchServiceOuterClass {
                 } else {
                     result.updates_ = updatesBuilder_.build();
                 }
-                if (changesThroughBuilder_ == null) {
-                    result.changesThrough_ = changesThrough_;
-                } else {
-                    result.changesThrough_ = changesThroughBuilder_.build();
+            }
+
+            private void buildPartial0(com.authzed.api.v1.WatchServiceOuterClass.WatchResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.changesThrough_ = changesThroughBuilder_ == null ? changesThrough_ : changesThroughBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
                 }
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -1406,6 +1451,7 @@ public final class WatchServiceOuterClass {
                             // case 10
                             case 18: {
                                 input.readMessage(getChangesThroughFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -1680,7 +1726,7 @@ public final class WatchServiceOuterClass {
              * @return Whether the changesThrough field is set.
              */
             public boolean hasChangesThrough() {
-                return changesThroughBuilder_ != null || changesThrough_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -1705,10 +1751,11 @@ public final class WatchServiceOuterClass {
                         throw new NullPointerException();
                     }
                     changesThrough_ = value;
-                    onChanged();
                 } else {
                     changesThroughBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -1718,10 +1765,11 @@ public final class WatchServiceOuterClass {
             public Builder setChangesThrough(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (changesThroughBuilder_ == null) {
                     changesThrough_ = builderForValue.build();
-                    onChanged();
                 } else {
                     changesThroughBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -1730,15 +1778,18 @@ public final class WatchServiceOuterClass {
              */
             public Builder mergeChangesThrough(com.authzed.api.v1.Core.ZedToken value) {
                 if (changesThroughBuilder_ == null) {
-                    if (changesThrough_ != null) {
-                        changesThrough_ = com.authzed.api.v1.Core.ZedToken.newBuilder(changesThrough_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && changesThrough_ != null
+                            && changesThrough_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getChangesThroughBuilder().mergeFrom(value);
                     } else {
                         changesThrough_ = value;
                     }
-                    onChanged();
                 } else {
                     changesThroughBuilder_.mergeFrom(value);
+                }
+                if (changesThrough_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -1747,13 +1798,13 @@ public final class WatchServiceOuterClass {
              * <code>.authzed.api.v1.ZedToken changes_through = 2;</code>
              */
             public Builder clearChangesThrough() {
-                if (changesThroughBuilder_ == null) {
-                    changesThrough_ = null;
-                    onChanged();
-                } else {
-                    changesThrough_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                changesThrough_ = null;
+                if (changesThroughBuilder_ != null) {
+                    changesThroughBuilder_.dispose();
                     changesThroughBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1761,6 +1812,7 @@ public final class WatchServiceOuterClass {
              * <code>.authzed.api.v1.ZedToken changes_through = 2;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getChangesThroughBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getChangesThroughFieldBuilder().getBuilder();
             }
@@ -1864,16 +1916,16 @@ public final class WatchServiceOuterClass {
     static {
         java.lang.String[] descriptorData = { "\n\"authzed/api/v1/watch_service.proto\022\016au"
                 + "thzed.api.v1\032\034google/api/annotations.pro" + "to\032\027validate/validate.proto\032\031authzed/api"
-                + "/v1/core.proto\"\275\001\n\014WatchRequest\022t\n\025optio"
-                + "nal_object_types\030\001 \003(\tBU\372B\005\222\001\002\010\000\372BJ\222\001G\"E"
-                + "rC(\200\0012>^([a-z][a-z0-9_]{1,62}[a-z0-9]/)?" + "[a-z][a-z0-9_]{1,62}[a-z0-9]$\0227\n\025optiona"
-                + "l_start_cursor\030\002 \001(\0132\030.authzed.api.v1.Ze"
-                + "dToken\"w\n\rWatchResponse\0223\n\007updates\030\001 \003(\013"
-                + "2\".authzed.api.v1.RelationshipUpdate\0221\n\017" + "changes_through\030\002 \001(\0132\030.authzed.api.v1.Z"
-                + "edToken2l\n\014WatchService\022\\\n\005Watch\022\034.authz"
-                + "ed.api.v1.WatchRequest\032\035.authzed.api.v1."
-                + "WatchResponse\"\024\202\323\344\223\002\016\"\t/v1/watch:\001*0\001BH\n"
-                + "\022com.authzed.api.v1Z2github.com/authzed/" + "authzed-go/proto/authzed/api/v1b\006proto3" };
+                + "/v1/core.proto\"\267\001\n\014WatchRequest\022n\n\025optio"
+                + "nal_object_types\030\001 \003(\tBO\372BL\222\001I\010\000\"ErC(\200\0012"
+                + ">^([a-z][a-z0-9_]{1,62}[a-z0-9]/)?[a-z][" + "a-z0-9_]{1,62}[a-z0-9]$\0227\n\025optional_star"
+                + "t_cursor\030\002 \001(\0132\030.authzed.api.v1.ZedToken"
+                + "\"w\n\rWatchResponse\0223\n\007updates\030\001 \003(\0132\".aut"
+                + "hzed.api.v1.RelationshipUpdate\0221\n\017change" + "s_through\030\002 \001(\0132\030.authzed.api.v1.ZedToke"
+                + "n2l\n\014WatchService\022\\\n\005Watch\022\034.authzed.api"
+                + ".v1.WatchRequest\032\035.authzed.api.v1.WatchR"
+                + "esponse\"\024\202\323\344\223\002\016\"\t/v1/watch:\001*0\001BH\n\022com.a"
+                + "uthzed.api.v1Z2github.com/authzed/authze" + "d-go/proto/authzed/api/v1b\006proto3" };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
                 new com.google.protobuf.Descriptors.FileDescriptor[] { com.google.api.AnnotationsProto.getDescriptor(),
                         io.envoyproxy.pgv.validate.Validate.getDescriptor(), com.authzed.api.v1.Core.getDescriptor() });

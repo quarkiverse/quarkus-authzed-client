@@ -131,11 +131,6 @@ public final class Core {
             return new Relationship();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_Relationship_descriptor;
         }
@@ -146,6 +141,8 @@ public final class Core {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.Relationship.class,
                             com.authzed.api.v1.Core.Relationship.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int RESOURCE_FIELD_NUMBER = 1;
 
@@ -162,7 +159,7 @@ public final class Core {
          */
         @java.lang.Override
         public boolean hasResource() {
-            return resource_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -188,12 +185,13 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int RELATION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object relation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object relation_ = "";
 
         /**
          * <pre>
@@ -253,7 +251,7 @@ public final class Core {
          */
         @java.lang.Override
         public boolean hasSubject() {
-            return subject_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -279,7 +277,7 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
-            return getSubject();
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -297,13 +295,13 @@ public final class Core {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(relation_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, relation_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(3, getSubject());
             }
             getUnknownFields().writeTo(output);
@@ -315,13 +313,13 @@ public final class Core {
             if (size != -1)
                 return size;
             size = 0;
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(relation_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, relation_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getSubject());
             }
             size += getUnknownFields().getSerializedSize();
@@ -490,26 +488,34 @@ public final class Core {
 
             // Construct using com.authzed.api.v1.Core.Relationship.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getResourceFieldBuilder();
+                    getSubjectFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                bitField0_ = 0;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 relation_ = "";
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                } else {
-                    subject_ = null;
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
                 return this;
@@ -537,19 +543,28 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.Relationship buildPartial() {
                 com.authzed.api.v1.Core.Relationship result = new com.authzed.api.v1.Core.Relationship(this);
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
-                }
-                result.relation_ = relation_;
-                if (subjectBuilder_ == null) {
-                    result.subject_ = subject_;
-                } else {
-                    result.subject_ = subjectBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.Relationship result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relation_ = relation_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -601,6 +616,7 @@ public final class Core {
                 }
                 if (!other.getRelation().isEmpty()) {
                     relation_ = other.relation_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.hasSubject()) {
@@ -632,16 +648,19 @@ public final class Core {
                                 break;
                             case 10: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 relation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -665,6 +684,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ObjectReference resource_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> resourceBuilder_;
@@ -679,7 +700,7 @@ public final class Core {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -712,10 +733,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -729,10 +751,11 @@ public final class Core {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -745,15 +768,18 @@ public final class Core {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
+                }
+                if (resource_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -766,13 +792,13 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -784,6 +810,7 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -877,6 +904,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 relation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -892,6 +920,7 @@ public final class Core {
              */
             public Builder clearRelation() {
                 relation_ = getDefaultInstance().getRelation();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -912,6 +941,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 relation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -930,7 +960,7 @@ public final class Core {
              * @return Whether the subject field is set.
              */
             public boolean hasSubject() {
-                return subjectBuilder_ != null || subject_ != null;
+                return ((bitField0_ & 0x00000004) != 0);
             }
 
             /**
@@ -963,10 +993,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     subject_ = value;
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -980,10 +1011,11 @@ public final class Core {
             public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
                 if (subjectBuilder_ == null) {
                     subject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -996,15 +1028,18 @@ public final class Core {
              */
             public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
                 if (subjectBuilder_ == null) {
-                    if (subject_ != null) {
-                        subject_ = com.authzed.api.v1.Core.SubjectReference.newBuilder(subject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000004) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
                     } else {
                         subject_ = value;
                     }
-                    onChanged();
                 } else {
                     subjectBuilder_.mergeFrom(value);
+                }
+                if (subject_ != null) {
+                    bitField0_ |= 0x00000004;
+                    onChanged();
                 }
                 return this;
             }
@@ -1017,13 +1052,13 @@ public final class Core {
              * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
              */
             public Builder clearSubject() {
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                    onChanged();
-                } else {
-                    subject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1035,6 +1070,7 @@ public final class Core {
              * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return getSubjectFieldBuilder().getBuilder();
             }
@@ -1195,11 +1231,6 @@ public final class Core {
             return new SubjectReference();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_SubjectReference_descriptor;
         }
@@ -1210,6 +1241,8 @@ public final class Core {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.SubjectReference.class,
                             com.authzed.api.v1.Core.SubjectReference.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int OBJECT_FIELD_NUMBER = 1;
 
@@ -1222,7 +1255,7 @@ public final class Core {
          */
         @java.lang.Override
         public boolean hasObject() {
-            return object_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -1240,12 +1273,13 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getObjectOrBuilder() {
-            return getObject();
+            return object_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : object_;
         }
 
         public static final int OPTIONAL_RELATION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object optionalRelation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalRelation_ = "";
 
         /**
          * <code>string optional_relation = 2 [(.validate.rules) = { ... }</code>
@@ -1297,7 +1331,7 @@ public final class Core {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (object_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getObject());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalRelation_)) {
@@ -1312,7 +1346,7 @@ public final class Core {
             if (size != -1)
                 return size;
             size = 0;
-            if (object_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getObject());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalRelation_)) {
@@ -1474,19 +1508,27 @@ public final class Core {
 
             // Construct using com.authzed.api.v1.Core.SubjectReference.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getObjectFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (objectBuilder_ == null) {
-                    object_ = null;
-                } else {
-                    object_ = null;
+                bitField0_ = 0;
+                object_ = null;
+                if (objectBuilder_ != null) {
+                    objectBuilder_.dispose();
                     objectBuilder_ = null;
                 }
                 optionalRelation_ = "";
@@ -1515,14 +1557,24 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.SubjectReference buildPartial() {
                 com.authzed.api.v1.Core.SubjectReference result = new com.authzed.api.v1.Core.SubjectReference(this);
-                if (objectBuilder_ == null) {
-                    result.object_ = object_;
-                } else {
-                    result.object_ = objectBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.optionalRelation_ = optionalRelation_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.SubjectReference result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.object_ = objectBuilder_ == null ? object_ : objectBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.optionalRelation_ = optionalRelation_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -1574,6 +1626,7 @@ public final class Core {
                 }
                 if (!other.getOptionalRelation().isEmpty()) {
                     optionalRelation_ = other.optionalRelation_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -1602,11 +1655,13 @@ public final class Core {
                                 break;
                             case 10: {
                                 input.readMessage(getObjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 optionalRelation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -1630,6 +1685,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ObjectReference object_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> objectBuilder_;
@@ -1640,7 +1697,7 @@ public final class Core {
              * @return Whether the object field is set.
              */
             public boolean hasObject() {
-                return objectBuilder_ != null || object_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -1665,10 +1722,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     object_ = value;
-                    onChanged();
                 } else {
                     objectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -1678,10 +1736,11 @@ public final class Core {
             public Builder setObject(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (objectBuilder_ == null) {
                     object_ = builderForValue.build();
-                    onChanged();
                 } else {
                     objectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -1690,14 +1749,18 @@ public final class Core {
              */
             public Builder mergeObject(com.authzed.api.v1.Core.ObjectReference value) {
                 if (objectBuilder_ == null) {
-                    if (object_ != null) {
-                        object_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(object_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && object_ != null
+                            && object_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getObjectBuilder().mergeFrom(value);
                     } else {
                         object_ = value;
                     }
-                    onChanged();
                 } else {
                     objectBuilder_.mergeFrom(value);
+                }
+                if (object_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -1706,13 +1769,13 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference object = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearObject() {
-                if (objectBuilder_ == null) {
-                    object_ = null;
-                    onChanged();
-                } else {
-                    object_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                object_ = null;
+                if (objectBuilder_ != null) {
+                    objectBuilder_.dispose();
                     objectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1720,6 +1783,7 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference object = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getObjectBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getObjectFieldBuilder().getBuilder();
             }
@@ -1793,6 +1857,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 optionalRelation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1804,6 +1869,7 @@ public final class Core {
              */
             public Builder clearOptionalRelation() {
                 optionalRelation_ = getDefaultInstance().getOptionalRelation();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -1820,6 +1886,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 optionalRelation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1943,11 +2010,6 @@ public final class Core {
             return new ObjectReference();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ObjectReference_descriptor;
         }
@@ -1961,7 +2023,8 @@ public final class Core {
 
         public static final int OBJECT_TYPE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object objectType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object objectType_ = "";
 
         /**
          * <code>string object_type = 1 [(.validate.rules) = { ... }</code>
@@ -2000,7 +2063,8 @@ public final class Core {
 
         public static final int OBJECT_ID_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object objectId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object objectId_ = "";
 
         /**
          * <code>string object_id = 2 [(.validate.rules) = { ... }</code>
@@ -2230,6 +2294,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 objectType_ = "";
                 objectId_ = "";
                 return this;
@@ -2257,10 +2322,21 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.ObjectReference buildPartial() {
                 com.authzed.api.v1.Core.ObjectReference result = new com.authzed.api.v1.Core.ObjectReference(this);
-                result.objectType_ = objectType_;
-                result.objectId_ = objectId_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.ObjectReference result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.objectType_ = objectType_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.objectId_ = objectId_;
+                }
             }
 
             @java.lang.Override
@@ -2309,10 +2385,12 @@ public final class Core {
                     return this;
                 if (!other.getObjectType().isEmpty()) {
                     objectType_ = other.objectType_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getObjectId().isEmpty()) {
                     objectId_ = other.objectId_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -2341,11 +2419,13 @@ public final class Core {
                                 break;
                             case 10: {
                                 objectType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 objectId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -2368,6 +2448,8 @@ public final class Core {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object objectType_ = "";
 
@@ -2415,6 +2497,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 objectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2426,6 +2509,7 @@ public final class Core {
              */
             public Builder clearObjectType() {
                 objectType_ = getDefaultInstance().getObjectType();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -2442,6 +2526,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 objectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2492,6 +2577,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 objectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2503,6 +2589,7 @@ public final class Core {
              */
             public Builder clearObjectId() {
                 objectId_ = getDefaultInstance().getObjectId();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -2519,6 +2606,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 objectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2604,6 +2692,7 @@ public final class Core {
      * <pre>
      * ZedToken is used to provide causality metadata between Write and Check
      * requests.
+     *
      * See the authzed.api.v1.Consistency message for more information.
      * </pre>
      *
@@ -2629,11 +2718,6 @@ public final class Core {
             return new ZedToken();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ZedToken_descriptor;
         }
@@ -2647,7 +2731,8 @@ public final class Core {
 
         public static final int TOKEN_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object token_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object token_ = "";
 
         /**
          * <code>string token = 1 [(.validate.rules) = { ... }</code>
@@ -2839,6 +2924,7 @@ public final class Core {
          * <pre>
          * ZedToken is used to provide causality metadata between Write and Check
          * requests.
+         *
          * See the authzed.api.v1.Consistency message for more information.
          * </pre>
          *
@@ -2869,6 +2955,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 token_ = "";
                 return this;
             }
@@ -2895,9 +2982,18 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.ZedToken buildPartial() {
                 com.authzed.api.v1.Core.ZedToken result = new com.authzed.api.v1.Core.ZedToken(this);
-                result.token_ = token_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.ZedToken result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.token_ = token_;
+                }
             }
 
             @java.lang.Override
@@ -2946,6 +3042,7 @@ public final class Core {
                     return this;
                 if (!other.getToken().isEmpty()) {
                     token_ = other.token_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -2974,6 +3071,7 @@ public final class Core {
                                 break;
                             case 10: {
                                 token_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -2996,6 +3094,8 @@ public final class Core {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object token_ = "";
 
@@ -3043,6 +3143,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 token_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3054,6 +3155,7 @@ public final class Core {
              */
             public Builder clearToken() {
                 token_ = getDefaultInstance().getToken();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -3070,6 +3172,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 token_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3174,10 +3277,13 @@ public final class Core {
      * <pre>
      * RelationshipUpdate is used for mutating a single relationship within the
      * service.
+     *
      * CREATE will create the relationship only if it doesn't exist, and error
      * otherwise.
+     *
      * TOUCH will upsert the relationship, and will not error if it
      * already exists.
+     *
      * DELETE will delete the relationship and error if it doesn't
      * exist.
      * </pre>
@@ -3202,11 +3308,6 @@ public final class Core {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new RelationshipUpdate();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -3344,9 +3445,11 @@ public final class Core {
             }
         }
 
+        private int bitField0_;
+
         public static final int OPERATION_FIELD_NUMBER = 1;
 
-        private int operation_;
+        private int operation_ = 0;
 
         /**
          * <code>.authzed.api.v1.RelationshipUpdate.Operation operation = 1 [(.validate.rules) = { ... }</code>
@@ -3365,9 +3468,8 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.RelationshipUpdate.Operation getOperation() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Core.RelationshipUpdate.Operation result = com.authzed.api.v1.Core.RelationshipUpdate.Operation
-                    .valueOf(operation_);
+                    .forNumber(operation_);
             return result == null ? com.authzed.api.v1.Core.RelationshipUpdate.Operation.UNRECOGNIZED : result;
         }
 
@@ -3382,7 +3484,7 @@ public final class Core {
          */
         @java.lang.Override
         public boolean hasRelationship() {
-            return relationship_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -3400,7 +3502,7 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.RelationshipOrBuilder getRelationshipOrBuilder() {
-            return getRelationship();
+            return relationship_ == null ? com.authzed.api.v1.Core.Relationship.getDefaultInstance() : relationship_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -3421,7 +3523,7 @@ public final class Core {
             if (operation_ != com.authzed.api.v1.Core.RelationshipUpdate.Operation.OPERATION_UNSPECIFIED.getNumber()) {
                 output.writeEnum(1, operation_);
             }
-            if (relationship_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(2, getRelationship());
             }
             getUnknownFields().writeTo(output);
@@ -3436,7 +3538,7 @@ public final class Core {
             if (operation_ != com.authzed.api.v1.Core.RelationshipUpdate.Operation.OPERATION_UNSPECIFIED.getNumber()) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, operation_);
             }
-            if (relationship_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getRelationship());
             }
             size += getUnknownFields().getSerializedSize();
@@ -3575,10 +3677,13 @@ public final class Core {
          * <pre>
          * RelationshipUpdate is used for mutating a single relationship within the
          * service.
+         *
          * CREATE will create the relationship only if it doesn't exist, and error
          * otherwise.
+         *
          * TOUCH will upsert the relationship, and will not error if it
          * already exists.
+         *
          * DELETE will delete the relationship and error if it doesn't
          * exist.
          * </pre>
@@ -3601,20 +3706,28 @@ public final class Core {
 
             // Construct using com.authzed.api.v1.Core.RelationshipUpdate.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getRelationshipFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 operation_ = 0;
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                } else {
-                    relationship_ = null;
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
                 return this;
@@ -3642,14 +3755,24 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.RelationshipUpdate buildPartial() {
                 com.authzed.api.v1.Core.RelationshipUpdate result = new com.authzed.api.v1.Core.RelationshipUpdate(this);
-                result.operation_ = operation_;
-                if (relationshipBuilder_ == null) {
-                    result.relationship_ = relationship_;
-                } else {
-                    result.relationship_ = relationshipBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.RelationshipUpdate result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.operation_ = operation_;
+                }
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relationship_ = relationshipBuilder_ == null ? relationship_ : relationshipBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -3728,11 +3851,13 @@ public final class Core {
                                 break;
                             case 8: {
                                 operation_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 8
                             case 18: {
                                 input.readMessage(getRelationshipFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -3756,6 +3881,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private int operation_ = 0;
 
             /**
@@ -3776,6 +3903,7 @@ public final class Core {
              */
             public Builder setOperationValue(int value) {
                 operation_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3787,9 +3915,8 @@ public final class Core {
              */
             @java.lang.Override
             public com.authzed.api.v1.Core.RelationshipUpdate.Operation getOperation() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Core.RelationshipUpdate.Operation result = com.authzed.api.v1.Core.RelationshipUpdate.Operation
-                        .valueOf(operation_);
+                        .forNumber(operation_);
                 return result == null ? com.authzed.api.v1.Core.RelationshipUpdate.Operation.UNRECOGNIZED : result;
             }
 
@@ -3803,6 +3930,7 @@ public final class Core {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000001;
                 operation_ = value.getNumber();
                 onChanged();
                 return this;
@@ -3814,6 +3942,7 @@ public final class Core {
              * @return This builder for chaining.
              */
             public Builder clearOperation() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 operation_ = 0;
                 onChanged();
                 return this;
@@ -3829,7 +3958,7 @@ public final class Core {
              * @return Whether the relationship field is set.
              */
             public boolean hasRelationship() {
-                return relationshipBuilder_ != null || relationship_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -3854,10 +3983,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     relationship_ = value;
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -3867,10 +3997,11 @@ public final class Core {
             public Builder setRelationship(com.authzed.api.v1.Core.Relationship.Builder builderForValue) {
                 if (relationshipBuilder_ == null) {
                     relationship_ = builderForValue.build();
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -3879,15 +4010,18 @@ public final class Core {
              */
             public Builder mergeRelationship(com.authzed.api.v1.Core.Relationship value) {
                 if (relationshipBuilder_ == null) {
-                    if (relationship_ != null) {
-                        relationship_ = com.authzed.api.v1.Core.Relationship.newBuilder(relationship_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && relationship_ != null
+                            && relationship_ != com.authzed.api.v1.Core.Relationship.getDefaultInstance()) {
+                        getRelationshipBuilder().mergeFrom(value);
                     } else {
                         relationship_ = value;
                     }
-                    onChanged();
                 } else {
                     relationshipBuilder_.mergeFrom(value);
+                }
+                if (relationship_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -3896,13 +4030,13 @@ public final class Core {
              * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearRelationship() {
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                    onChanged();
-                } else {
-                    relationship_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3910,6 +4044,7 @@ public final class Core {
              * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.Relationship.Builder getRelationshipBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getRelationshipFieldBuilder().getBuilder();
             }
@@ -4070,7 +4205,7 @@ public final class Core {
          */
         com.google.protobuf.ByteString getExpandedRelationBytes();
 
-        public com.authzed.api.v1.Core.PermissionRelationshipTree.TreeTypeCase getTreeTypeCase();
+        com.authzed.api.v1.Core.PermissionRelationshipTree.TreeTypeCase getTreeTypeCase();
     }
 
     /**
@@ -4101,11 +4236,6 @@ public final class Core {
             return new PermissionRelationshipTree();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_PermissionRelationshipTree_descriptor;
         }
@@ -4117,8 +4247,11 @@ public final class Core {
                             com.authzed.api.v1.Core.PermissionRelationshipTree.Builder.class);
         }
 
+        private int bitField0_;
+
         private int treeTypeCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object treeType_;
 
         public enum TreeTypeCase
@@ -4249,7 +4382,7 @@ public final class Core {
          */
         @java.lang.Override
         public boolean hasExpandedObject() {
-            return expandedObject_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -4267,12 +4400,13 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getExpandedObjectOrBuilder() {
-            return getExpandedObject();
+            return expandedObject_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : expandedObject_;
         }
 
         public static final int EXPANDED_RELATION_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object expandedRelation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object expandedRelation_ = "";
 
         /**
          * <code>string expanded_relation = 4;</code>
@@ -4330,7 +4464,7 @@ public final class Core {
             if (treeTypeCase_ == 2) {
                 output.writeMessage(2, (com.authzed.api.v1.Core.DirectSubjectSet) treeType_);
             }
-            if (expandedObject_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(3, getExpandedObject());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expandedRelation_)) {
@@ -4353,7 +4487,7 @@ public final class Core {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2,
                         (com.authzed.api.v1.Core.DirectSubjectSet) treeType_);
             }
-            if (expandedObject_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getExpandedObject());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expandedRelation_)) {
@@ -4541,25 +4675,33 @@ public final class Core {
 
             // Construct using com.authzed.api.v1.Core.PermissionRelationshipTree.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getExpandedObjectFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (intermediateBuilder_ != null) {
                     intermediateBuilder_.clear();
                 }
                 if (leafBuilder_ != null) {
                     leafBuilder_.clear();
                 }
-                if (expandedObjectBuilder_ == null) {
-                    expandedObject_ = null;
-                } else {
-                    expandedObject_ = null;
+                expandedObject_ = null;
+                if (expandedObjectBuilder_ != null) {
+                    expandedObjectBuilder_.dispose();
                     expandedObjectBuilder_ = null;
                 }
                 expandedRelation_ = "";
@@ -4591,29 +4733,36 @@ public final class Core {
             public com.authzed.api.v1.Core.PermissionRelationshipTree buildPartial() {
                 com.authzed.api.v1.Core.PermissionRelationshipTree result = new com.authzed.api.v1.Core.PermissionRelationshipTree(
                         this);
-                if (treeTypeCase_ == 1) {
-                    if (intermediateBuilder_ == null) {
-                        result.treeType_ = treeType_;
-                    } else {
-                        result.treeType_ = intermediateBuilder_.build();
-                    }
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (treeTypeCase_ == 2) {
-                    if (leafBuilder_ == null) {
-                        result.treeType_ = treeType_;
-                    } else {
-                        result.treeType_ = leafBuilder_.build();
-                    }
-                }
-                if (expandedObjectBuilder_ == null) {
-                    result.expandedObject_ = expandedObject_;
-                } else {
-                    result.expandedObject_ = expandedObjectBuilder_.build();
-                }
-                result.expandedRelation_ = expandedRelation_;
-                result.treeTypeCase_ = treeTypeCase_;
+                buildPartialOneofs(result);
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.PermissionRelationshipTree result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.expandedObject_ = expandedObjectBuilder_ == null ? expandedObject_ : expandedObjectBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.expandedRelation_ = expandedRelation_;
+                }
+                result.bitField0_ |= to_bitField0_;
+            }
+
+            private void buildPartialOneofs(com.authzed.api.v1.Core.PermissionRelationshipTree result) {
+                result.treeTypeCase_ = treeTypeCase_;
+                result.treeType_ = this.treeType_;
+                if (treeTypeCase_ == 1 && intermediateBuilder_ != null) {
+                    result.treeType_ = intermediateBuilder_.build();
+                }
+                if (treeTypeCase_ == 2 && leafBuilder_ != null) {
+                    result.treeType_ = leafBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -4665,6 +4814,7 @@ public final class Core {
                 }
                 if (!other.getExpandedRelation().isEmpty()) {
                     expandedRelation_ = other.expandedRelation_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 switch (other.getTreeTypeCase()) {
@@ -4718,11 +4868,13 @@ public final class Core {
                             // case 18
                             case 26: {
                                 input.readMessage(getExpandedObjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 expandedRelation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -4760,6 +4912,8 @@ public final class Core {
                 onChanged();
                 return this;
             }
+
+            private int bitField0_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.AlgebraicSubjectSet, com.authzed.api.v1.Core.AlgebraicSubjectSet.Builder, com.authzed.api.v1.Core.AlgebraicSubjectSetOrBuilder> intermediateBuilder_;
 
@@ -4840,8 +4994,9 @@ public final class Core {
                 } else {
                     if (treeTypeCase_ == 1) {
                         intermediateBuilder_.mergeFrom(value);
+                    } else {
+                        intermediateBuilder_.setMessage(value);
                     }
-                    intermediateBuilder_.setMessage(value);
                 }
                 treeTypeCase_ = 1;
                 return this;
@@ -4903,7 +5058,6 @@ public final class Core {
                 }
                 treeTypeCase_ = 1;
                 onChanged();
-                ;
                 return intermediateBuilder_;
             }
 
@@ -4986,8 +5140,9 @@ public final class Core {
                 } else {
                     if (treeTypeCase_ == 2) {
                         leafBuilder_.mergeFrom(value);
+                    } else {
+                        leafBuilder_.setMessage(value);
                     }
-                    leafBuilder_.setMessage(value);
                 }
                 treeTypeCase_ = 2;
                 return this;
@@ -5049,7 +5204,6 @@ public final class Core {
                 }
                 treeTypeCase_ = 2;
                 onChanged();
-                ;
                 return leafBuilder_;
             }
 
@@ -5063,7 +5217,7 @@ public final class Core {
              * @return Whether the expandedObject field is set.
              */
             public boolean hasExpandedObject() {
-                return expandedObjectBuilder_ != null || expandedObject_ != null;
+                return ((bitField0_ & 0x00000004) != 0);
             }
 
             /**
@@ -5089,10 +5243,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     expandedObject_ = value;
-                    onChanged();
                 } else {
                     expandedObjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -5102,10 +5257,11 @@ public final class Core {
             public Builder setExpandedObject(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (expandedObjectBuilder_ == null) {
                     expandedObject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     expandedObjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -5114,15 +5270,18 @@ public final class Core {
              */
             public Builder mergeExpandedObject(com.authzed.api.v1.Core.ObjectReference value) {
                 if (expandedObjectBuilder_ == null) {
-                    if (expandedObject_ != null) {
-                        expandedObject_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(expandedObject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000004) != 0) && expandedObject_ != null
+                            && expandedObject_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getExpandedObjectBuilder().mergeFrom(value);
                     } else {
                         expandedObject_ = value;
                     }
-                    onChanged();
                 } else {
                     expandedObjectBuilder_.mergeFrom(value);
+                }
+                if (expandedObject_ != null) {
+                    bitField0_ |= 0x00000004;
+                    onChanged();
                 }
                 return this;
             }
@@ -5131,13 +5290,13 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference expanded_object = 3;</code>
              */
             public Builder clearExpandedObject() {
-                if (expandedObjectBuilder_ == null) {
-                    expandedObject_ = null;
-                    onChanged();
-                } else {
-                    expandedObject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                expandedObject_ = null;
+                if (expandedObjectBuilder_ != null) {
+                    expandedObjectBuilder_.dispose();
                     expandedObjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -5145,6 +5304,7 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference expanded_object = 3;</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getExpandedObjectBuilder() {
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return getExpandedObjectFieldBuilder().getBuilder();
             }
@@ -5219,6 +5379,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 expandedRelation_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -5230,6 +5391,7 @@ public final class Core {
              */
             public Builder clearExpandedRelation() {
                 expandedRelation_ = getDefaultInstance().getExpandedRelation();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -5246,6 +5408,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 expandedRelation_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -5356,9 +5519,12 @@ public final class Core {
      * <pre>
      * AlgebraicSubjectSet is a subject set which is computed based on applying the
      * specified operation to the operands according to the algebra of sets.
+     *
      * UNION is a logical set containing the subject members from all operands.
+     *
      * INTERSECTION is a logical set containing only the subject members which are
      * present in all operands.
+     *
      * EXCLUSION is a logical set containing only the subject members which are
      * present in the first operand, and none of the other operands.
      * </pre>
@@ -5384,11 +5550,6 @@ public final class Core {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new AlgebraicSubjectSet();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -5528,7 +5689,7 @@ public final class Core {
 
         public static final int OPERATION_FIELD_NUMBER = 1;
 
-        private int operation_;
+        private int operation_ = 0;
 
         /**
          * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
@@ -5547,14 +5708,14 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation getOperation() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation result = com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation
-                    .valueOf(operation_);
+                    .forNumber(operation_);
             return result == null ? com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation.UNRECOGNIZED : result;
         }
 
         public static final int CHILDREN_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.Core.PermissionRelationshipTree> children_;
 
         /**
@@ -5765,9 +5926,12 @@ public final class Core {
          * <pre>
          * AlgebraicSubjectSet is a subject set which is computed based on applying the
          * specified operation to the operands according to the algebra of sets.
+         *
          * UNION is a logical set containing the subject members from all operands.
+         *
          * INTERSECTION is a logical set containing only the subject members which are
          * present in all operands.
+         *
          * EXCLUSION is a logical set containing only the subject members which are
          * present in the first operand, and none of the other operands.
          * </pre>
@@ -5799,6 +5963,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 operation_ = 0;
                 if (childrenBuilder_ == null) {
                     children_ = java.util.Collections.emptyList();
@@ -5806,7 +5971,7 @@ public final class Core {
                     children_ = null;
                     childrenBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -5832,19 +5997,31 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.AlgebraicSubjectSet buildPartial() {
                 com.authzed.api.v1.Core.AlgebraicSubjectSet result = new com.authzed.api.v1.Core.AlgebraicSubjectSet(this);
-                int from_bitField0_ = bitField0_;
-                result.operation_ = operation_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.Core.AlgebraicSubjectSet result) {
                 if (childrenBuilder_ == null) {
-                    if (((bitField0_ & 0x00000001) != 0)) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
                         children_ = java.util.Collections.unmodifiableList(children_);
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000002);
                     }
                     result.children_ = children_;
                 } else {
                     result.children_ = childrenBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.AlgebraicSubjectSet result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.operation_ = operation_;
+                }
             }
 
             @java.lang.Override
@@ -5898,7 +6075,7 @@ public final class Core {
                     if (!other.children_.isEmpty()) {
                         if (children_.isEmpty()) {
                             children_ = other.children_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                         } else {
                             ensureChildrenIsMutable();
                             children_.addAll(other.children_);
@@ -5911,7 +6088,7 @@ public final class Core {
                             childrenBuilder_.dispose();
                             childrenBuilder_ = null;
                             children_ = other.children_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                             childrenBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                     ? getChildrenFieldBuilder()
                                     : null;
@@ -5946,6 +6123,7 @@ public final class Core {
                                 break;
                             case 8: {
                                 operation_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 8
@@ -6003,6 +6181,7 @@ public final class Core {
              */
             public Builder setOperationValue(int value) {
                 operation_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6014,9 +6193,8 @@ public final class Core {
              */
             @java.lang.Override
             public com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation getOperation() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation result = com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation
-                        .valueOf(operation_);
+                        .forNumber(operation_);
                 return result == null ? com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation.UNRECOGNIZED : result;
             }
 
@@ -6030,6 +6208,7 @@ public final class Core {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000001;
                 operation_ = value.getNumber();
                 onChanged();
                 return this;
@@ -6041,6 +6220,7 @@ public final class Core {
              * @return This builder for chaining.
              */
             public Builder clearOperation() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 operation_ = 0;
                 onChanged();
                 return this;
@@ -6050,9 +6230,9 @@ public final class Core {
                     .emptyList();
 
             private void ensureChildrenIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     children_ = new java.util.ArrayList<com.authzed.api.v1.Core.PermissionRelationshipTree>(children_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
 
@@ -6205,7 +6385,7 @@ public final class Core {
             public Builder clearChildren() {
                 if (childrenBuilder_ == null) {
                     children_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                     onChanged();
                 } else {
                     childrenBuilder_.clear();
@@ -6282,7 +6462,7 @@ public final class Core {
             private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.Core.PermissionRelationshipTree, com.authzed.api.v1.Core.PermissionRelationshipTree.Builder, com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder> getChildrenFieldBuilder() {
                 if (childrenBuilder_ == null) {
                     childrenBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.Core.PermissionRelationshipTree, com.authzed.api.v1.Core.PermissionRelationshipTree.Builder, com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder>(
-                            children_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+                            children_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
                     children_ = null;
                 }
                 return childrenBuilder_;
@@ -6403,11 +6583,6 @@ public final class Core {
             return new DirectSubjectSet();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_DirectSubjectSet_descriptor;
         }
@@ -6421,6 +6596,7 @@ public final class Core {
 
         public static final int SUBJECTS_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.Core.SubjectReference> subjects_;
 
         /**
@@ -6648,6 +6824,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (subjectsBuilder_ == null) {
                     subjects_ = java.util.Collections.emptyList();
                 } else {
@@ -6680,7 +6857,15 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.DirectSubjectSet buildPartial() {
                 com.authzed.api.v1.Core.DirectSubjectSet result = new com.authzed.api.v1.Core.DirectSubjectSet(this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.Core.DirectSubjectSet result) {
                 if (subjectsBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         subjects_ = java.util.Collections.unmodifiableList(subjects_);
@@ -6690,8 +6875,10 @@ public final class Core {
                 } else {
                     result.subjects_ = subjectsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.DirectSubjectSet result) {
+                int from_bitField0_ = bitField0_;
             }
 
             @java.lang.Override
