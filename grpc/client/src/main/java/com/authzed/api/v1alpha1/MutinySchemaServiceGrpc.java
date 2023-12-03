@@ -3,7 +3,7 @@ package com.authzed.api.v1alpha1;
 import static com.authzed.api.v1alpha1.SchemaServiceGrpc.getServiceDescriptor;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
 public final class MutinySchemaServiceGrpc implements io.quarkus.grpc.MutinyGrpc {
 
     private MutinySchemaServiceGrpc() {

@@ -8,14 +8,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * specific (resource type, permission, subject) combination.
  * </pre>
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.50.2)", comments = "Source: authzed/api/v1alpha1/watchresources_service.proto")
+@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.59.0)", comments = "Source: authzed/api/v1alpha1/watchresources_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WatchResourcesServiceGrpc {
 
     private WatchResourcesServiceGrpc() {
     }
 
-    public static final String SERVICE_NAME = "authzed.api.v1alpha1.WatchResourcesService";
+    public static final java.lang.String SERVICE_NAME = "authzed.api.v1alpha1.WatchResourcesService";
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest, com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse> getWatchResourcesMethod;
@@ -90,7 +90,7 @@ public final class WatchResourcesServiceGrpc {
      * specific (resource type, permission, subject) combination.
      * </pre>
      */
-    public static abstract class WatchResourcesServiceImplBase implements io.grpc.BindableService {
+    public interface AsyncService {
 
         /**
          * <pre>
@@ -98,22 +98,31 @@ public final class WatchResourcesServiceGrpc {
          * (resource type, permission, subject) pair.
          * </pre>
          */
-        public void watchResources(com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest request,
+        default void watchResources(com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWatchResourcesMethod(), responseObserver);
-        }
-
-        @java.lang.Override
-        public io.grpc.ServerServiceDefinition bindService() {
-            return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-                    .addMethod(getWatchResourcesMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest, com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse>(
-                                    this, METHODID_WATCH_RESOURCES)))
-                    .build();
         }
     }
 
     /**
+     * Base class for the server implementation of the service WatchResourcesService.
+     *
+     * <pre>
+     * WatchResourcesService is used to receive a stream of updates for resources of a
+     * specific (resource type, permission, subject) combination.
+     * </pre>
+     */
+    public static abstract class WatchResourcesServiceImplBase implements io.grpc.BindableService, AsyncService {
+
+        @java.lang.Override
+        public io.grpc.ServerServiceDefinition bindService() {
+            return WatchResourcesServiceGrpc.bindService(this);
+        }
+    }
+
+    /**
+     * A stub to allow clients to do asynchronous rpc calls to service WatchResourcesService.
+     *
      * <pre>
      * WatchResourcesService is used to receive a stream of updates for resources of a
      * specific (resource type, permission, subject) combination.
@@ -144,6 +153,8 @@ public final class WatchResourcesServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do synchronous rpc calls to service WatchResourcesService.
+     *
      * <pre>
      * WatchResourcesService is used to receive a stream of updates for resources of a
      * specific (resource type, permission, subject) combination.
@@ -175,6 +186,8 @@ public final class WatchResourcesServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do ListenableFuture-style rpc calls to service WatchResourcesService.
+     *
      * <pre>
      * WatchResourcesService is used to receive a stream of updates for resources of a
      * specific (resource type, permission, subject) combination.
@@ -199,11 +212,11 @@ public final class WatchResourcesServiceGrpc {
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>, io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
 
-        private final WatchResourcesServiceImplBase serviceImpl;
+        private final AsyncService serviceImpl;
 
         private final int methodId;
 
-        MethodHandlers(WatchResourcesServiceImplBase serviceImpl, int methodId) {
+        MethodHandlers(AsyncService serviceImpl, int methodId) {
             this.serviceImpl = serviceImpl;
             this.methodId = methodId;
         }
@@ -229,6 +242,14 @@ public final class WatchResourcesServiceGrpc {
                     throw new AssertionError();
             }
         }
+    }
+
+    public static io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+        return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+                .addMethod(getWatchResourcesMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+                        new MethodHandlers<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest, com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse>(
+                                service, METHODID_WATCH_RESOURCES)))
+                .build();
     }
 
     private static abstract class WatchResourcesServiceBaseDescriptorSupplier
@@ -257,9 +278,9 @@ public final class WatchResourcesServiceGrpc {
     private static final class WatchResourcesServiceMethodDescriptorSupplier extends WatchResourcesServiceBaseDescriptorSupplier
             implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
 
-        private final String methodName;
+        private final java.lang.String methodName;
 
-        WatchResourcesServiceMethodDescriptorSupplier(String methodName) {
+        WatchResourcesServiceMethodDescriptorSupplier(java.lang.String methodName) {
             this.methodName = methodName;
         }
 

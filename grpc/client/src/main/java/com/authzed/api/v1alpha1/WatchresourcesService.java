@@ -164,11 +164,6 @@ public final class WatchresourcesService {
             return new WatchResourcesRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1alpha1.WatchresourcesService.internal_static_authzed_api_v1alpha1_WatchResourcesRequest_descriptor;
         }
@@ -180,9 +175,12 @@ public final class WatchresourcesService {
                             com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest.Builder.class);
         }
 
+        private int bitField0_;
+
         public static final int RESOURCE_OBJECT_TYPE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object resourceObjectType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object resourceObjectType_ = "";
 
         /**
          * <pre>
@@ -231,7 +229,8 @@ public final class WatchresourcesService {
 
         public static final int PERMISSION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object permission_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
 
         /**
          * <pre>
@@ -280,7 +279,8 @@ public final class WatchresourcesService {
 
         public static final int SUBJECT_OBJECT_TYPE_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object subjectObjectType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object subjectObjectType_ = "";
 
         /**
          * <pre>
@@ -329,7 +329,8 @@ public final class WatchresourcesService {
 
         public static final int OPTIONAL_SUBJECT_RELATION_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object optionalSubjectRelation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalSubjectRelation_ = "";
 
         /**
          * <pre>
@@ -387,7 +388,7 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public boolean hasOptionalStartCursor() {
-            return optionalStartCursor_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -405,7 +406,7 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getOptionalStartCursorOrBuilder() {
-            return getOptionalStartCursor();
+            return optionalStartCursor_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : optionalStartCursor_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -435,7 +436,7 @@ public final class WatchresourcesService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalSubjectRelation_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 4, optionalSubjectRelation_);
             }
-            if (optionalStartCursor_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(5, getOptionalStartCursor());
             }
             getUnknownFields().writeTo(output);
@@ -459,7 +460,7 @@ public final class WatchresourcesService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalSubjectRelation_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, optionalSubjectRelation_);
             }
-            if (optionalStartCursor_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getOptionalStartCursor());
             }
             size += getUnknownFields().getSerializedSize();
@@ -633,23 +634,31 @@ public final class WatchresourcesService {
 
             // Construct using com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getOptionalStartCursorFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 resourceObjectType_ = "";
                 permission_ = "";
                 subjectObjectType_ = "";
                 optionalSubjectRelation_ = "";
-                if (optionalStartCursorBuilder_ == null) {
-                    optionalStartCursor_ = null;
-                } else {
-                    optionalStartCursor_ = null;
+                optionalStartCursor_ = null;
+                if (optionalStartCursorBuilder_ != null) {
+                    optionalStartCursorBuilder_.dispose();
                     optionalStartCursorBuilder_ = null;
                 }
                 return this;
@@ -678,17 +687,34 @@ public final class WatchresourcesService {
             public com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest buildPartial() {
                 com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest result = new com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest(
                         this);
-                result.resourceObjectType_ = resourceObjectType_;
-                result.permission_ = permission_;
-                result.subjectObjectType_ = subjectObjectType_;
-                result.optionalSubjectRelation_ = optionalSubjectRelation_;
-                if (optionalStartCursorBuilder_ == null) {
-                    result.optionalStartCursor_ = optionalStartCursor_;
-                } else {
-                    result.optionalStartCursor_ = optionalStartCursorBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.resourceObjectType_ = resourceObjectType_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.permission_ = permission_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.subjectObjectType_ = subjectObjectType_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.optionalSubjectRelation_ = optionalSubjectRelation_;
+                }
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.optionalStartCursor_ = optionalStartCursorBuilder_ == null ? optionalStartCursor_
+                            : optionalStartCursorBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -737,18 +763,22 @@ public final class WatchresourcesService {
                     return this;
                 if (!other.getResourceObjectType().isEmpty()) {
                     resourceObjectType_ = other.resourceObjectType_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getPermission().isEmpty()) {
                     permission_ = other.permission_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getSubjectObjectType().isEmpty()) {
                     subjectObjectType_ = other.subjectObjectType_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getOptionalSubjectRelation().isEmpty()) {
                     optionalSubjectRelation_ = other.optionalSubjectRelation_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (other.hasOptionalStartCursor()) {
@@ -780,26 +810,31 @@ public final class WatchresourcesService {
                                 break;
                             case 10: {
                                 resourceObjectType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 subjectObjectType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 optionalSubjectRelation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
                             case 42: {
                                 input.readMessage(getOptionalStartCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 42
@@ -822,6 +857,8 @@ public final class WatchresourcesService {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object resourceObjectType_ = "";
 
@@ -884,6 +921,7 @@ public final class WatchresourcesService {
                     throw new NullPointerException();
                 }
                 resourceObjectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -900,6 +938,7 @@ public final class WatchresourcesService {
              */
             public Builder clearResourceObjectType() {
                 resourceObjectType_ = getDefaultInstance().getResourceObjectType();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -921,6 +960,7 @@ public final class WatchresourcesService {
                 }
                 checkByteStringIsUtf8(value);
                 resourceObjectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -986,6 +1026,7 @@ public final class WatchresourcesService {
                     throw new NullPointerException();
                 }
                 permission_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1002,6 +1043,7 @@ public final class WatchresourcesService {
              */
             public Builder clearPermission() {
                 permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -1023,6 +1065,7 @@ public final class WatchresourcesService {
                 }
                 checkByteStringIsUtf8(value);
                 permission_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1088,6 +1131,7 @@ public final class WatchresourcesService {
                     throw new NullPointerException();
                 }
                 subjectObjectType_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -1104,6 +1148,7 @@ public final class WatchresourcesService {
              */
             public Builder clearSubjectObjectType() {
                 subjectObjectType_ = getDefaultInstance().getSubjectObjectType();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -1125,6 +1170,7 @@ public final class WatchresourcesService {
                 }
                 checkByteStringIsUtf8(value);
                 subjectObjectType_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -1190,6 +1236,7 @@ public final class WatchresourcesService {
                     throw new NullPointerException();
                 }
                 optionalSubjectRelation_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -1206,6 +1253,7 @@ public final class WatchresourcesService {
              */
             public Builder clearOptionalSubjectRelation() {
                 optionalSubjectRelation_ = getDefaultInstance().getOptionalSubjectRelation();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -1227,6 +1275,7 @@ public final class WatchresourcesService {
                 }
                 checkByteStringIsUtf8(value);
                 optionalSubjectRelation_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -1241,7 +1290,7 @@ public final class WatchresourcesService {
              * @return Whether the optionalStartCursor field is set.
              */
             public boolean hasOptionalStartCursor() {
-                return optionalStartCursorBuilder_ != null || optionalStartCursor_ != null;
+                return ((bitField0_ & 0x00000010) != 0);
             }
 
             /**
@@ -1267,10 +1316,11 @@ public final class WatchresourcesService {
                         throw new NullPointerException();
                     }
                     optionalStartCursor_ = value;
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -1280,10 +1330,11 @@ public final class WatchresourcesService {
             public Builder setOptionalStartCursor(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (optionalStartCursorBuilder_ == null) {
                     optionalStartCursor_ = builderForValue.build();
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -1292,15 +1343,18 @@ public final class WatchresourcesService {
              */
             public Builder mergeOptionalStartCursor(com.authzed.api.v1.Core.ZedToken value) {
                 if (optionalStartCursorBuilder_ == null) {
-                    if (optionalStartCursor_ != null) {
-                        optionalStartCursor_ = com.authzed.api.v1.Core.ZedToken.newBuilder(optionalStartCursor_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000010) != 0) && optionalStartCursor_ != null
+                            && optionalStartCursor_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getOptionalStartCursorBuilder().mergeFrom(value);
                     } else {
                         optionalStartCursor_ = value;
                     }
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.mergeFrom(value);
+                }
+                if (optionalStartCursor_ != null) {
+                    bitField0_ |= 0x00000010;
+                    onChanged();
                 }
                 return this;
             }
@@ -1309,13 +1363,13 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 5;</code>
              */
             public Builder clearOptionalStartCursor() {
-                if (optionalStartCursorBuilder_ == null) {
-                    optionalStartCursor_ = null;
-                    onChanged();
-                } else {
-                    optionalStartCursor_ = null;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                optionalStartCursor_ = null;
+                if (optionalStartCursorBuilder_ != null) {
+                    optionalStartCursorBuilder_.dispose();
                     optionalStartCursorBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1323,6 +1377,7 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 5;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getOptionalStartCursorBuilder() {
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return getOptionalStartCursorFieldBuilder().getBuilder();
             }
@@ -1533,11 +1588,6 @@ public final class WatchresourcesService {
             return new PermissionUpdate();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1alpha1.WatchresourcesService.internal_static_authzed_api_v1alpha1_PermissionUpdate_descriptor;
         }
@@ -1667,6 +1717,8 @@ public final class WatchresourcesService {
             }
         }
 
+        private int bitField0_;
+
         public static final int SUBJECT_FIELD_NUMBER = 1;
 
         private com.authzed.api.v1.Core.SubjectReference subject_;
@@ -1682,7 +1734,7 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public boolean hasSubject() {
-            return subject_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -1708,7 +1760,7 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
-            return getSubject();
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
         public static final int RESOURCE_FIELD_NUMBER = 2;
@@ -1726,7 +1778,7 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public boolean hasResource() {
-            return resource_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -1752,12 +1804,13 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int RELATION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object relation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object relation_ = "";
 
         /**
          * <code>string relation = 3;</code>
@@ -1796,7 +1849,7 @@ public final class WatchresourcesService {
 
         public static final int UPDATED_PERMISSION_FIELD_NUMBER = 4;
 
-        private int updatedPermission_;
+        private int updatedPermission_ = 0;
 
         /**
          * <code>.authzed.api.v1alpha1.PermissionUpdate.Permissionship updated_permission = 4;</code>
@@ -1815,9 +1868,8 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship getUpdatedPermission() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship result = com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship
-                    .valueOf(updatedPermission_);
+                    .forNumber(updatedPermission_);
             return result == null ? com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship.UNRECOGNIZED
                     : result;
         }
@@ -1837,10 +1889,10 @@ public final class WatchresourcesService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getSubject());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(relation_)) {
@@ -1859,10 +1911,10 @@ public final class WatchresourcesService {
             if (size != -1)
                 return size;
             size = 0;
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getSubject());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(relation_)) {
@@ -2044,25 +2096,33 @@ public final class WatchresourcesService {
 
             // Construct using com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getSubjectFieldBuilder();
+                    getResourceFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                } else {
-                    subject_ = null;
+                bitField0_ = 0;
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 relation_ = "";
@@ -2093,20 +2153,31 @@ public final class WatchresourcesService {
             public com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate buildPartial() {
                 com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate result = new com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate(
                         this);
-                if (subjectBuilder_ == null) {
-                    result.subject_ = subject_;
-                } else {
-                    result.subject_ = subjectBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
-                }
-                result.relation_ = relation_;
-                result.updatedPermission_ = updatedPermission_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.relation_ = relation_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.updatedPermission_ = updatedPermission_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -2161,6 +2232,7 @@ public final class WatchresourcesService {
                 }
                 if (!other.getRelation().isEmpty()) {
                     relation_ = other.relation_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (other.updatedPermission_ != 0) {
@@ -2192,21 +2264,25 @@ public final class WatchresourcesService {
                                 break;
                             case 10: {
                                 input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 relation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 32: {
                                 updatedPermission_ = input.readEnum();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 32
@@ -2230,6 +2306,8 @@ public final class WatchresourcesService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.SubjectReference subject_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.SubjectReference, com.authzed.api.v1.Core.SubjectReference.Builder, com.authzed.api.v1.Core.SubjectReferenceOrBuilder> subjectBuilder_;
@@ -2244,7 +2322,7 @@ public final class WatchresourcesService {
              * @return Whether the subject field is set.
              */
             public boolean hasSubject() {
-                return subjectBuilder_ != null || subject_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -2277,10 +2355,11 @@ public final class WatchresourcesService {
                         throw new NullPointerException();
                     }
                     subject_ = value;
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -2294,10 +2373,11 @@ public final class WatchresourcesService {
             public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
                 if (subjectBuilder_ == null) {
                     subject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -2310,15 +2390,18 @@ public final class WatchresourcesService {
              */
             public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
                 if (subjectBuilder_ == null) {
-                    if (subject_ != null) {
-                        subject_ = com.authzed.api.v1.Core.SubjectReference.newBuilder(subject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
                     } else {
                         subject_ = value;
                     }
-                    onChanged();
                 } else {
                     subjectBuilder_.mergeFrom(value);
+                }
+                if (subject_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -2331,13 +2414,13 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.SubjectReference subject = 1;</code>
              */
             public Builder clearSubject() {
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                    onChanged();
-                } else {
-                    subject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -2349,6 +2432,7 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.SubjectReference subject = 1;</code>
              */
             public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getSubjectFieldBuilder().getBuilder();
             }
@@ -2398,7 +2482,7 @@ public final class WatchresourcesService {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -2431,10 +2515,11 @@ public final class WatchresourcesService {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -2448,10 +2533,11 @@ public final class WatchresourcesService {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -2464,15 +2550,18 @@ public final class WatchresourcesService {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
+                }
+                if (resource_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -2485,13 +2574,13 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.ObjectReference resource = 2;</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -2503,6 +2592,7 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.ObjectReference resource = 2;</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -2584,6 +2674,7 @@ public final class WatchresourcesService {
                     throw new NullPointerException();
                 }
                 relation_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -2595,6 +2686,7 @@ public final class WatchresourcesService {
              */
             public Builder clearRelation() {
                 relation_ = getDefaultInstance().getRelation();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -2611,6 +2703,7 @@ public final class WatchresourcesService {
                 }
                 checkByteStringIsUtf8(value);
                 relation_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -2635,6 +2728,7 @@ public final class WatchresourcesService {
              */
             public Builder setUpdatedPermissionValue(int value) {
                 updatedPermission_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -2646,9 +2740,8 @@ public final class WatchresourcesService {
              */
             @java.lang.Override
             public com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship getUpdatedPermission() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship result = com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship
-                        .valueOf(updatedPermission_);
+                        .forNumber(updatedPermission_);
                 return result == null
                         ? com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate.Permissionship.UNRECOGNIZED
                         : result;
@@ -2665,6 +2758,7 @@ public final class WatchresourcesService {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000008;
                 updatedPermission_ = value.getNumber();
                 onChanged();
                 return this;
@@ -2676,6 +2770,7 @@ public final class WatchresourcesService {
              * @return This builder for chaining.
              */
             public Builder clearUpdatedPermission() {
+                bitField0_ = (bitField0_ & ~0x00000008);
                 updatedPermission_ = 0;
                 onChanged();
                 return this;
@@ -2816,11 +2911,6 @@ public final class WatchresourcesService {
             return new WatchResourcesResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1alpha1.WatchresourcesService.internal_static_authzed_api_v1alpha1_WatchResourcesResponse_descriptor;
         }
@@ -2833,8 +2923,11 @@ public final class WatchresourcesService {
                             com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse.Builder.class);
         }
 
+        private int bitField0_;
+
         public static final int UPDATES_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1alpha1.WatchresourcesService.PermissionUpdate> updates_;
 
         /**
@@ -2888,7 +2981,7 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public boolean hasChangesThrough() {
-            return changesThrough_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -2906,7 +2999,7 @@ public final class WatchresourcesService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getChangesThroughOrBuilder() {
-            return getChangesThrough();
+            return changesThrough_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : changesThrough_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -2927,7 +3020,7 @@ public final class WatchresourcesService {
             for (int i = 0; i < updates_.size(); i++) {
                 output.writeMessage(1, updates_.get(i));
             }
-            if (changesThrough_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(2, getChangesThrough());
             }
             getUnknownFields().writeTo(output);
@@ -2942,7 +3035,7 @@ public final class WatchresourcesService {
             for (int i = 0; i < updates_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, updates_.get(i));
             }
-            if (changesThrough_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getChangesThrough());
             }
             size += getUnknownFields().getSerializedSize();
@@ -3106,15 +3199,25 @@ public final class WatchresourcesService {
 
             // Construct using com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getUpdatesFieldBuilder();
+                    getChangesThroughFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (updatesBuilder_ == null) {
                     updates_ = java.util.Collections.emptyList();
                 } else {
@@ -3122,10 +3225,9 @@ public final class WatchresourcesService {
                     updatesBuilder_.clear();
                 }
                 bitField0_ = (bitField0_ & ~0x00000001);
-                if (changesThroughBuilder_ == null) {
-                    changesThrough_ = null;
-                } else {
-                    changesThrough_ = null;
+                changesThrough_ = null;
+                if (changesThroughBuilder_ != null) {
+                    changesThroughBuilder_.dispose();
                     changesThroughBuilder_ = null;
                 }
                 return this;
@@ -3154,7 +3256,16 @@ public final class WatchresourcesService {
             public com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse buildPartial() {
                 com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse result = new com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse(
                         this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(
+                    com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse result) {
                 if (updatesBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         updates_ = java.util.Collections.unmodifiableList(updates_);
@@ -3164,13 +3275,16 @@ public final class WatchresourcesService {
                 } else {
                     result.updates_ = updatesBuilder_.build();
                 }
-                if (changesThroughBuilder_ == null) {
-                    result.changesThrough_ = changesThrough_;
-                } else {
-                    result.changesThrough_ = changesThroughBuilder_.build();
+            }
+
+            private void buildPartial0(com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.changesThrough_ = changesThroughBuilder_ == null ? changesThrough_ : changesThroughBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
                 }
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -3285,6 +3399,7 @@ public final class WatchresourcesService {
                             // case 10
                             case 18: {
                                 input.readMessage(getChangesThroughFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -3565,7 +3680,7 @@ public final class WatchresourcesService {
              * @return Whether the changesThrough field is set.
              */
             public boolean hasChangesThrough() {
-                return changesThroughBuilder_ != null || changesThrough_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -3590,10 +3705,11 @@ public final class WatchresourcesService {
                         throw new NullPointerException();
                     }
                     changesThrough_ = value;
-                    onChanged();
                 } else {
                     changesThroughBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -3603,10 +3719,11 @@ public final class WatchresourcesService {
             public Builder setChangesThrough(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (changesThroughBuilder_ == null) {
                     changesThrough_ = builderForValue.build();
-                    onChanged();
                 } else {
                     changesThroughBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -3615,15 +3732,18 @@ public final class WatchresourcesService {
              */
             public Builder mergeChangesThrough(com.authzed.api.v1.Core.ZedToken value) {
                 if (changesThroughBuilder_ == null) {
-                    if (changesThrough_ != null) {
-                        changesThrough_ = com.authzed.api.v1.Core.ZedToken.newBuilder(changesThrough_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && changesThrough_ != null
+                            && changesThrough_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getChangesThroughBuilder().mergeFrom(value);
                     } else {
                         changesThrough_ = value;
                     }
-                    onChanged();
                 } else {
                     changesThroughBuilder_.mergeFrom(value);
+                }
+                if (changesThrough_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -3632,13 +3752,13 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.ZedToken changes_through = 2;</code>
              */
             public Builder clearChangesThrough() {
-                if (changesThroughBuilder_ == null) {
-                    changesThrough_ = null;
-                    onChanged();
-                } else {
-                    changesThrough_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                changesThrough_ = null;
+                if (changesThroughBuilder_ != null) {
+                    changesThroughBuilder_.dispose();
                     changesThroughBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3646,6 +3766,7 @@ public final class WatchresourcesService {
              * <code>.authzed.api.v1.ZedToken changes_through = 2;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getChangesThroughBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getChangesThroughFieldBuilder().getBuilder();
             }

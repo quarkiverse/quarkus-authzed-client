@@ -55,11 +55,6 @@ public final class Developer {
             return new FormatSchemaRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_FormatSchemaRequest_descriptor;
         }
@@ -73,7 +68,8 @@ public final class Developer {
 
         public static final int SCHEMA_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schema_ = "";
 
         /**
          * <code>string schema = 1;</code>
@@ -290,6 +286,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schema_ = "";
                 return this;
             }
@@ -317,9 +314,18 @@ public final class Developer {
             public com.authzed.api.v0.Developer.FormatSchemaRequest buildPartial() {
                 com.authzed.api.v0.Developer.FormatSchemaRequest result = new com.authzed.api.v0.Developer.FormatSchemaRequest(
                         this);
-                result.schema_ = schema_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.FormatSchemaRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schema_ = schema_;
+                }
             }
 
             @java.lang.Override
@@ -368,6 +374,7 @@ public final class Developer {
                     return this;
                 if (!other.getSchema().isEmpty()) {
                     schema_ = other.schema_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -396,6 +403,7 @@ public final class Developer {
                                 break;
                             case 10: {
                                 schema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -418,6 +426,8 @@ public final class Developer {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object schema_ = "";
 
@@ -465,6 +475,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -476,6 +487,7 @@ public final class Developer {
              */
             public Builder clearSchema() {
                 schema_ = getDefaultInstance().getSchema();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -492,6 +504,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -615,11 +628,6 @@ public final class Developer {
             return new FormatSchemaResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_FormatSchemaResponse_descriptor;
         }
@@ -630,6 +638,8 @@ public final class Developer {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v0.Developer.FormatSchemaResponse.class,
                             com.authzed.api.v0.Developer.FormatSchemaResponse.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int ERROR_FIELD_NUMBER = 1;
 
@@ -642,7 +652,7 @@ public final class Developer {
          */
         @java.lang.Override
         public boolean hasError() {
-            return error_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -660,12 +670,13 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.DeveloperErrorOrBuilder getErrorOrBuilder() {
-            return getError();
+            return error_ == null ? com.authzed.api.v0.Developer.DeveloperError.getDefaultInstance() : error_;
         }
 
         public static final int FORMATTED_SCHEMA_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object formattedSchema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object formattedSchema_ = "";
 
         /**
          * <code>string formatted_schema = 2;</code>
@@ -717,7 +728,7 @@ public final class Developer {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (error_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getError());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(formattedSchema_)) {
@@ -732,7 +743,7 @@ public final class Developer {
             if (size != -1)
                 return size;
             size = 0;
-            if (error_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getError());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(formattedSchema_)) {
@@ -889,19 +900,27 @@ public final class Developer {
 
             // Construct using com.authzed.api.v0.Developer.FormatSchemaResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getErrorFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                } else {
-                    error_ = null;
+                bitField0_ = 0;
+                error_ = null;
+                if (errorBuilder_ != null) {
+                    errorBuilder_.dispose();
                     errorBuilder_ = null;
                 }
                 formattedSchema_ = "";
@@ -931,14 +950,24 @@ public final class Developer {
             public com.authzed.api.v0.Developer.FormatSchemaResponse buildPartial() {
                 com.authzed.api.v0.Developer.FormatSchemaResponse result = new com.authzed.api.v0.Developer.FormatSchemaResponse(
                         this);
-                if (errorBuilder_ == null) {
-                    result.error_ = error_;
-                } else {
-                    result.error_ = errorBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.formattedSchema_ = formattedSchema_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.FormatSchemaResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.error_ = errorBuilder_ == null ? error_ : errorBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.formattedSchema_ = formattedSchema_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -990,6 +1019,7 @@ public final class Developer {
                 }
                 if (!other.getFormattedSchema().isEmpty()) {
                     formattedSchema_ = other.formattedSchema_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -1018,11 +1048,13 @@ public final class Developer {
                                 break;
                             case 10: {
                                 input.readMessage(getErrorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 formattedSchema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -1046,6 +1078,8 @@ public final class Developer {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v0.Developer.DeveloperError error_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v0.Developer.DeveloperError, com.authzed.api.v0.Developer.DeveloperError.Builder, com.authzed.api.v0.Developer.DeveloperErrorOrBuilder> errorBuilder_;
@@ -1056,7 +1090,7 @@ public final class Developer {
              * @return Whether the error field is set.
              */
             public boolean hasError() {
-                return errorBuilder_ != null || error_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -1081,10 +1115,11 @@ public final class Developer {
                         throw new NullPointerException();
                     }
                     error_ = value;
-                    onChanged();
                 } else {
                     errorBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -1094,10 +1129,11 @@ public final class Developer {
             public Builder setError(com.authzed.api.v0.Developer.DeveloperError.Builder builderForValue) {
                 if (errorBuilder_ == null) {
                     error_ = builderForValue.build();
-                    onChanged();
                 } else {
                     errorBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -1106,14 +1142,18 @@ public final class Developer {
              */
             public Builder mergeError(com.authzed.api.v0.Developer.DeveloperError value) {
                 if (errorBuilder_ == null) {
-                    if (error_ != null) {
-                        error_ = com.authzed.api.v0.Developer.DeveloperError.newBuilder(error_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && error_ != null
+                            && error_ != com.authzed.api.v0.Developer.DeveloperError.getDefaultInstance()) {
+                        getErrorBuilder().mergeFrom(value);
                     } else {
                         error_ = value;
                     }
-                    onChanged();
                 } else {
                     errorBuilder_.mergeFrom(value);
+                }
+                if (error_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -1122,13 +1162,13 @@ public final class Developer {
              * <code>.authzed.api.v0.DeveloperError error = 1;</code>
              */
             public Builder clearError() {
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                    onChanged();
-                } else {
-                    error_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                error_ = null;
+                if (errorBuilder_ != null) {
+                    errorBuilder_.dispose();
                     errorBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1136,6 +1176,7 @@ public final class Developer {
              * <code>.authzed.api.v0.DeveloperError error = 1;</code>
              */
             public com.authzed.api.v0.Developer.DeveloperError.Builder getErrorBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getErrorFieldBuilder().getBuilder();
             }
@@ -1209,6 +1250,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 formattedSchema_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1220,6 +1262,7 @@ public final class Developer {
              */
             public Builder clearFormattedSchema() {
                 formattedSchema_ = getDefaultInstance().getFormattedSchema();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -1236,6 +1279,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 formattedSchema_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1347,18 +1391,13 @@ public final class Developer {
         }
 
         private UpgradeSchemaRequest() {
-            namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.emptyList();
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new UpgradeSchemaRequest();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -1374,7 +1413,8 @@ public final class Developer {
 
         public static final int NAMESPACE_CONFIGS_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.LazyStringList namespaceConfigs_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <code>repeated string namespace_configs = 1;</code>
@@ -1601,8 +1641,8 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = 0;
+                namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 return this;
             }
 
@@ -1629,14 +1669,19 @@ public final class Developer {
             public com.authzed.api.v0.Developer.UpgradeSchemaRequest buildPartial() {
                 com.authzed.api.v0.Developer.UpgradeSchemaRequest result = new com.authzed.api.v0.Developer.UpgradeSchemaRequest(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    namespaceConfigs_ = namespaceConfigs_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.namespaceConfigs_ = namespaceConfigs_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.UpgradeSchemaRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    namespaceConfigs_.makeImmutable();
+                    result.namespaceConfigs_ = namespaceConfigs_;
+                }
             }
 
             @java.lang.Override
@@ -1686,7 +1731,7 @@ public final class Developer {
                 if (!other.namespaceConfigs_.isEmpty()) {
                     if (namespaceConfigs_.isEmpty()) {
                         namespaceConfigs_ = other.namespaceConfigs_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000001;
                     } else {
                         ensureNamespaceConfigsIsMutable();
                         namespaceConfigs_.addAll(other.namespaceConfigs_);
@@ -1746,13 +1791,14 @@ public final class Developer {
 
             private int bitField0_;
 
-            private com.google.protobuf.LazyStringList namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList namespaceConfigs_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
 
             private void ensureNamespaceConfigsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!namespaceConfigs_.isModifiable()) {
                     namespaceConfigs_ = new com.google.protobuf.LazyStringArrayList(namespaceConfigs_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000001;
             }
 
             /**
@@ -1761,7 +1807,8 @@ public final class Developer {
              * @return A list containing the namespaceConfigs.
              */
             public com.google.protobuf.ProtocolStringList getNamespaceConfigsList() {
-                return namespaceConfigs_.getUnmodifiableView();
+                namespaceConfigs_.makeImmutable();
+                return namespaceConfigs_;
             }
 
             /**
@@ -1806,6 +1853,7 @@ public final class Developer {
                 }
                 ensureNamespaceConfigsIsMutable();
                 namespaceConfigs_.set(index, value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1822,6 +1870,7 @@ public final class Developer {
                 }
                 ensureNamespaceConfigsIsMutable();
                 namespaceConfigs_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1835,6 +1884,7 @@ public final class Developer {
             public Builder addAllNamespaceConfigs(java.lang.Iterable<java.lang.String> values) {
                 ensureNamespaceConfigsIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, namespaceConfigs_);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1845,8 +1895,9 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearNamespaceConfigs() {
-                namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                namespaceConfigs_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000001);
+                ;
                 onChanged();
                 return this;
             }
@@ -1864,6 +1915,7 @@ public final class Developer {
                 checkByteStringIsUtf8(value);
                 ensureNamespaceConfigsIsMutable();
                 namespaceConfigs_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1987,11 +2039,6 @@ public final class Developer {
             return new UpgradeSchemaResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_UpgradeSchemaResponse_descriptor;
         }
@@ -2002,6 +2049,8 @@ public final class Developer {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v0.Developer.UpgradeSchemaResponse.class,
                             com.authzed.api.v0.Developer.UpgradeSchemaResponse.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int ERROR_FIELD_NUMBER = 1;
 
@@ -2014,7 +2063,7 @@ public final class Developer {
          */
         @java.lang.Override
         public boolean hasError() {
-            return error_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -2032,12 +2081,13 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.DeveloperErrorOrBuilder getErrorOrBuilder() {
-            return getError();
+            return error_ == null ? com.authzed.api.v0.Developer.DeveloperError.getDefaultInstance() : error_;
         }
 
         public static final int UPGRADED_SCHEMA_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object upgradedSchema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object upgradedSchema_ = "";
 
         /**
          * <code>string upgraded_schema = 2;</code>
@@ -2089,7 +2139,7 @@ public final class Developer {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (error_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getError());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(upgradedSchema_)) {
@@ -2104,7 +2154,7 @@ public final class Developer {
             if (size != -1)
                 return size;
             size = 0;
-            if (error_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getError());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(upgradedSchema_)) {
@@ -2261,19 +2311,27 @@ public final class Developer {
 
             // Construct using com.authzed.api.v0.Developer.UpgradeSchemaResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getErrorFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                } else {
-                    error_ = null;
+                bitField0_ = 0;
+                error_ = null;
+                if (errorBuilder_ != null) {
+                    errorBuilder_.dispose();
                     errorBuilder_ = null;
                 }
                 upgradedSchema_ = "";
@@ -2303,14 +2361,24 @@ public final class Developer {
             public com.authzed.api.v0.Developer.UpgradeSchemaResponse buildPartial() {
                 com.authzed.api.v0.Developer.UpgradeSchemaResponse result = new com.authzed.api.v0.Developer.UpgradeSchemaResponse(
                         this);
-                if (errorBuilder_ == null) {
-                    result.error_ = error_;
-                } else {
-                    result.error_ = errorBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.upgradedSchema_ = upgradedSchema_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.UpgradeSchemaResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.error_ = errorBuilder_ == null ? error_ : errorBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.upgradedSchema_ = upgradedSchema_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -2362,6 +2430,7 @@ public final class Developer {
                 }
                 if (!other.getUpgradedSchema().isEmpty()) {
                     upgradedSchema_ = other.upgradedSchema_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -2390,11 +2459,13 @@ public final class Developer {
                                 break;
                             case 10: {
                                 input.readMessage(getErrorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 upgradedSchema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -2418,6 +2489,8 @@ public final class Developer {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v0.Developer.DeveloperError error_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v0.Developer.DeveloperError, com.authzed.api.v0.Developer.DeveloperError.Builder, com.authzed.api.v0.Developer.DeveloperErrorOrBuilder> errorBuilder_;
@@ -2428,7 +2501,7 @@ public final class Developer {
              * @return Whether the error field is set.
              */
             public boolean hasError() {
-                return errorBuilder_ != null || error_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -2453,10 +2526,11 @@ public final class Developer {
                         throw new NullPointerException();
                     }
                     error_ = value;
-                    onChanged();
                 } else {
                     errorBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -2466,10 +2540,11 @@ public final class Developer {
             public Builder setError(com.authzed.api.v0.Developer.DeveloperError.Builder builderForValue) {
                 if (errorBuilder_ == null) {
                     error_ = builderForValue.build();
-                    onChanged();
                 } else {
                     errorBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -2478,14 +2553,18 @@ public final class Developer {
              */
             public Builder mergeError(com.authzed.api.v0.Developer.DeveloperError value) {
                 if (errorBuilder_ == null) {
-                    if (error_ != null) {
-                        error_ = com.authzed.api.v0.Developer.DeveloperError.newBuilder(error_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && error_ != null
+                            && error_ != com.authzed.api.v0.Developer.DeveloperError.getDefaultInstance()) {
+                        getErrorBuilder().mergeFrom(value);
                     } else {
                         error_ = value;
                     }
-                    onChanged();
                 } else {
                     errorBuilder_.mergeFrom(value);
+                }
+                if (error_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -2494,13 +2573,13 @@ public final class Developer {
              * <code>.authzed.api.v0.DeveloperError error = 1;</code>
              */
             public Builder clearError() {
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                    onChanged();
-                } else {
-                    error_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                error_ = null;
+                if (errorBuilder_ != null) {
+                    errorBuilder_.dispose();
                     errorBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -2508,6 +2587,7 @@ public final class Developer {
              * <code>.authzed.api.v0.DeveloperError error = 1;</code>
              */
             public com.authzed.api.v0.Developer.DeveloperError.Builder getErrorBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getErrorFieldBuilder().getBuilder();
             }
@@ -2581,6 +2661,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 upgradedSchema_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2592,6 +2673,7 @@ public final class Developer {
              */
             public Builder clearUpgradedSchema() {
                 upgradedSchema_ = getDefaultInstance().getUpgradedSchema();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -2608,6 +2690,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 upgradedSchema_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2757,11 +2840,6 @@ public final class Developer {
             return new ShareRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_ShareRequest_descriptor;
         }
@@ -2775,7 +2853,8 @@ public final class Developer {
 
         public static final int SCHEMA_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schema_ = "";
 
         /**
          * <code>string schema = 1;</code>
@@ -2814,7 +2893,8 @@ public final class Developer {
 
         public static final int RELATIONSHIPS_YAML_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object relationshipsYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object relationshipsYaml_ = "";
 
         /**
          * <code>string relationships_yaml = 2;</code>
@@ -2853,7 +2933,8 @@ public final class Developer {
 
         public static final int VALIDATION_YAML_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object validationYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object validationYaml_ = "";
 
         /**
          * <code>string validation_yaml = 3;</code>
@@ -2892,7 +2973,8 @@ public final class Developer {
 
         public static final int ASSERTIONS_YAML_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object assertionsYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object assertionsYaml_ = "";
 
         /**
          * <code>string assertions_yaml = 4;</code>
@@ -3139,6 +3221,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schema_ = "";
                 relationshipsYaml_ = "";
                 validationYaml_ = "";
@@ -3168,12 +3251,27 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.ShareRequest buildPartial() {
                 com.authzed.api.v0.Developer.ShareRequest result = new com.authzed.api.v0.Developer.ShareRequest(this);
-                result.schema_ = schema_;
-                result.relationshipsYaml_ = relationshipsYaml_;
-                result.validationYaml_ = validationYaml_;
-                result.assertionsYaml_ = assertionsYaml_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.ShareRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schema_ = schema_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relationshipsYaml_ = relationshipsYaml_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.validationYaml_ = validationYaml_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.assertionsYaml_ = assertionsYaml_;
+                }
             }
 
             @java.lang.Override
@@ -3222,18 +3320,22 @@ public final class Developer {
                     return this;
                 if (!other.getSchema().isEmpty()) {
                     schema_ = other.schema_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getRelationshipsYaml().isEmpty()) {
                     relationshipsYaml_ = other.relationshipsYaml_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getValidationYaml().isEmpty()) {
                     validationYaml_ = other.validationYaml_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getAssertionsYaml().isEmpty()) {
                     assertionsYaml_ = other.assertionsYaml_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -3262,21 +3364,25 @@ public final class Developer {
                                 break;
                             case 10: {
                                 schema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 relationshipsYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 validationYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 assertionsYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -3299,6 +3405,8 @@ public final class Developer {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object schema_ = "";
 
@@ -3346,6 +3454,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3357,6 +3466,7 @@ public final class Developer {
              */
             public Builder clearSchema() {
                 schema_ = getDefaultInstance().getSchema();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -3373,6 +3483,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3423,6 +3534,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 relationshipsYaml_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3434,6 +3546,7 @@ public final class Developer {
              */
             public Builder clearRelationshipsYaml() {
                 relationshipsYaml_ = getDefaultInstance().getRelationshipsYaml();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -3450,6 +3563,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 relationshipsYaml_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3500,6 +3614,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 validationYaml_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -3511,6 +3626,7 @@ public final class Developer {
              */
             public Builder clearValidationYaml() {
                 validationYaml_ = getDefaultInstance().getValidationYaml();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -3527,6 +3643,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 validationYaml_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -3577,6 +3694,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 assertionsYaml_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -3588,6 +3706,7 @@ public final class Developer {
              */
             public Builder clearAssertionsYaml() {
                 assertionsYaml_ = getDefaultInstance().getAssertionsYaml();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -3604,6 +3723,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 assertionsYaml_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -3708,11 +3828,6 @@ public final class Developer {
             return new ShareResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_ShareResponse_descriptor;
         }
@@ -3726,7 +3841,8 @@ public final class Developer {
 
         public static final int SHARE_REFERENCE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object shareReference_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object shareReference_ = "";
 
         /**
          * <code>string share_reference = 1;</code>
@@ -3943,6 +4059,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 shareReference_ = "";
                 return this;
             }
@@ -3969,9 +4086,18 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.ShareResponse buildPartial() {
                 com.authzed.api.v0.Developer.ShareResponse result = new com.authzed.api.v0.Developer.ShareResponse(this);
-                result.shareReference_ = shareReference_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.ShareResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.shareReference_ = shareReference_;
+                }
             }
 
             @java.lang.Override
@@ -4020,6 +4146,7 @@ public final class Developer {
                     return this;
                 if (!other.getShareReference().isEmpty()) {
                     shareReference_ = other.shareReference_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -4048,6 +4175,7 @@ public final class Developer {
                                 break;
                             case 10: {
                                 shareReference_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -4070,6 +4198,8 @@ public final class Developer {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object shareReference_ = "";
 
@@ -4117,6 +4247,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 shareReference_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -4128,6 +4259,7 @@ public final class Developer {
              */
             public Builder clearShareReference() {
                 shareReference_ = getDefaultInstance().getShareReference();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -4144,6 +4276,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 shareReference_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -4248,11 +4381,6 @@ public final class Developer {
             return new LookupShareRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_LookupShareRequest_descriptor;
         }
@@ -4266,7 +4394,8 @@ public final class Developer {
 
         public static final int SHARE_REFERENCE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object shareReference_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object shareReference_ = "";
 
         /**
          * <code>string share_reference = 1;</code>
@@ -4483,6 +4612,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 shareReference_ = "";
                 return this;
             }
@@ -4510,9 +4640,18 @@ public final class Developer {
             public com.authzed.api.v0.Developer.LookupShareRequest buildPartial() {
                 com.authzed.api.v0.Developer.LookupShareRequest result = new com.authzed.api.v0.Developer.LookupShareRequest(
                         this);
-                result.shareReference_ = shareReference_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.LookupShareRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.shareReference_ = shareReference_;
+                }
             }
 
             @java.lang.Override
@@ -4561,6 +4700,7 @@ public final class Developer {
                     return this;
                 if (!other.getShareReference().isEmpty()) {
                     shareReference_ = other.shareReference_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -4589,6 +4729,7 @@ public final class Developer {
                                 break;
                             case 10: {
                                 shareReference_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -4611,6 +4752,8 @@ public final class Developer {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object shareReference_ = "";
 
@@ -4658,6 +4801,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 shareReference_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -4669,6 +4813,7 @@ public final class Developer {
              */
             public Builder clearShareReference() {
                 shareReference_ = getDefaultInstance().getShareReference();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -4685,6 +4830,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 shareReference_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -4849,11 +4995,6 @@ public final class Developer {
             return new LookupShareResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_LookupShareResponse_descriptor;
         }
@@ -4991,7 +5132,7 @@ public final class Developer {
 
         public static final int STATUS_FIELD_NUMBER = 1;
 
-        private int status_;
+        private int status_ = 0;
 
         /**
          * <code>.authzed.api.v0.LookupShareResponse.LookupStatus status = 1;</code>
@@ -5010,15 +5151,15 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus getStatus() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus result = com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus
-                    .valueOf(status_);
+                    .forNumber(status_);
             return result == null ? com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus.UNRECOGNIZED : result;
         }
 
         public static final int SCHEMA_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object schema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schema_ = "";
 
         /**
          * <code>string schema = 2;</code>
@@ -5057,7 +5198,8 @@ public final class Developer {
 
         public static final int RELATIONSHIPS_YAML_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object relationshipsYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object relationshipsYaml_ = "";
 
         /**
          * <code>string relationships_yaml = 3;</code>
@@ -5096,7 +5238,8 @@ public final class Developer {
 
         public static final int VALIDATION_YAML_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object validationYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object validationYaml_ = "";
 
         /**
          * <code>string validation_yaml = 4;</code>
@@ -5135,7 +5278,8 @@ public final class Developer {
 
         public static final int ASSERTIONS_YAML_FIELD_NUMBER = 5;
 
-        private volatile java.lang.Object assertionsYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object assertionsYaml_ = "";
 
         /**
          * <code>string assertions_yaml = 5;</code>
@@ -5392,6 +5536,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 status_ = 0;
                 schema_ = "";
                 relationshipsYaml_ = "";
@@ -5423,13 +5568,30 @@ public final class Developer {
             public com.authzed.api.v0.Developer.LookupShareResponse buildPartial() {
                 com.authzed.api.v0.Developer.LookupShareResponse result = new com.authzed.api.v0.Developer.LookupShareResponse(
                         this);
-                result.status_ = status_;
-                result.schema_ = schema_;
-                result.relationshipsYaml_ = relationshipsYaml_;
-                result.validationYaml_ = validationYaml_;
-                result.assertionsYaml_ = assertionsYaml_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.LookupShareResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.status_ = status_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.schema_ = schema_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.relationshipsYaml_ = relationshipsYaml_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.validationYaml_ = validationYaml_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.assertionsYaml_ = assertionsYaml_;
+                }
             }
 
             @java.lang.Override
@@ -5481,18 +5643,22 @@ public final class Developer {
                 }
                 if (!other.getSchema().isEmpty()) {
                     schema_ = other.schema_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getRelationshipsYaml().isEmpty()) {
                     relationshipsYaml_ = other.relationshipsYaml_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getValidationYaml().isEmpty()) {
                     validationYaml_ = other.validationYaml_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (!other.getAssertionsYaml().isEmpty()) {
                     assertionsYaml_ = other.assertionsYaml_;
+                    bitField0_ |= 0x00000010;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -5521,26 +5687,31 @@ public final class Developer {
                                 break;
                             case 8: {
                                 status_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 8
                             case 18: {
                                 schema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 relationshipsYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 validationYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
                             case 42: {
                                 assertionsYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 42
@@ -5564,6 +5735,8 @@ public final class Developer {
                 return this;
             }
 
+            private int bitField0_;
+
             private int status_ = 0;
 
             /**
@@ -5584,6 +5757,7 @@ public final class Developer {
              */
             public Builder setStatusValue(int value) {
                 status_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -5595,9 +5769,8 @@ public final class Developer {
              */
             @java.lang.Override
             public com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus getStatus() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus result = com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus
-                        .valueOf(status_);
+                        .forNumber(status_);
                 return result == null ? com.authzed.api.v0.Developer.LookupShareResponse.LookupStatus.UNRECOGNIZED : result;
             }
 
@@ -5611,6 +5784,7 @@ public final class Developer {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000001;
                 status_ = value.getNumber();
                 onChanged();
                 return this;
@@ -5622,6 +5796,7 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearStatus() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 status_ = 0;
                 onChanged();
                 return this;
@@ -5673,6 +5848,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 schema_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -5684,6 +5860,7 @@ public final class Developer {
              */
             public Builder clearSchema() {
                 schema_ = getDefaultInstance().getSchema();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -5700,6 +5877,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 schema_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -5750,6 +5928,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 relationshipsYaml_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -5761,6 +5940,7 @@ public final class Developer {
              */
             public Builder clearRelationshipsYaml() {
                 relationshipsYaml_ = getDefaultInstance().getRelationshipsYaml();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -5777,6 +5957,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 relationshipsYaml_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -5827,6 +6008,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 validationYaml_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -5838,6 +6020,7 @@ public final class Developer {
              */
             public Builder clearValidationYaml() {
                 validationYaml_ = getDefaultInstance().getValidationYaml();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -5854,6 +6037,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 validationYaml_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -5904,6 +6088,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 assertionsYaml_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -5915,6 +6100,7 @@ public final class Developer {
              */
             public Builder clearAssertionsYaml() {
                 assertionsYaml_ = getDefaultInstance().getAssertionsYaml();
+                bitField0_ = (bitField0_ & ~0x00000010);
                 onChanged();
                 return this;
             }
@@ -5931,6 +6117,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 assertionsYaml_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -6061,11 +6248,6 @@ public final class Developer {
             return new RequestContext();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_RequestContext_descriptor;
         }
@@ -6079,7 +6261,8 @@ public final class Developer {
 
         public static final int SCHEMA_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schema_ = "";
 
         /**
          * <code>string schema = 1;</code>
@@ -6118,6 +6301,7 @@ public final class Developer {
 
         public static final int RELATIONSHIPS_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v0.Core.RelationTuple> relationships_;
 
         /**
@@ -6352,6 +6536,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schema_ = "";
                 if (relationshipsBuilder_ == null) {
                     relationships_ = java.util.Collections.emptyList();
@@ -6359,7 +6544,7 @@ public final class Developer {
                     relationships_ = null;
                     relationshipsBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -6385,19 +6570,31 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.RequestContext buildPartial() {
                 com.authzed.api.v0.Developer.RequestContext result = new com.authzed.api.v0.Developer.RequestContext(this);
-                int from_bitField0_ = bitField0_;
-                result.schema_ = schema_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v0.Developer.RequestContext result) {
                 if (relationshipsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000001) != 0)) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
                         relationships_ = java.util.Collections.unmodifiableList(relationships_);
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000002);
                     }
                     result.relationships_ = relationships_;
                 } else {
                     result.relationships_ = relationshipsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.RequestContext result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schema_ = schema_;
+                }
             }
 
             @java.lang.Override
@@ -6446,13 +6643,14 @@ public final class Developer {
                     return this;
                 if (!other.getSchema().isEmpty()) {
                     schema_ = other.schema_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (relationshipsBuilder_ == null) {
                     if (!other.relationships_.isEmpty()) {
                         if (relationships_.isEmpty()) {
                             relationships_ = other.relationships_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                         } else {
                             ensureRelationshipsIsMutable();
                             relationships_.addAll(other.relationships_);
@@ -6465,7 +6663,7 @@ public final class Developer {
                             relationshipsBuilder_.dispose();
                             relationshipsBuilder_ = null;
                             relationships_ = other.relationships_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                             relationshipsBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                     ? getRelationshipsFieldBuilder()
                                     : null;
@@ -6500,6 +6698,7 @@ public final class Developer {
                                 break;
                             case 10: {
                                 schema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -6583,6 +6782,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6594,6 +6794,7 @@ public final class Developer {
              */
             public Builder clearSchema() {
                 schema_ = getDefaultInstance().getSchema();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -6610,6 +6811,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6617,9 +6819,9 @@ public final class Developer {
             private java.util.List<com.authzed.api.v0.Core.RelationTuple> relationships_ = java.util.Collections.emptyList();
 
             private void ensureRelationshipsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     relationships_ = new java.util.ArrayList<com.authzed.api.v0.Core.RelationTuple>(relationships_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
 
@@ -6771,7 +6973,7 @@ public final class Developer {
             public Builder clearRelationships() {
                 if (relationshipsBuilder_ == null) {
                     relationships_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                     onChanged();
                 } else {
                     relationshipsBuilder_.clear();
@@ -6847,7 +7049,7 @@ public final class Developer {
             private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v0.Core.RelationTuple, com.authzed.api.v0.Core.RelationTuple.Builder, com.authzed.api.v0.Core.RelationTupleOrBuilder> getRelationshipsFieldBuilder() {
                 if (relationshipsBuilder_ == null) {
                     relationshipsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v0.Core.RelationTuple, com.authzed.api.v0.Core.RelationTuple.Builder, com.authzed.api.v0.Core.RelationTupleOrBuilder>(
-                            relationships_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+                            relationships_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
                     relationships_ = null;
                 }
                 return relationshipsBuilder_;
@@ -6983,11 +7185,6 @@ public final class Developer {
             return new EditCheckRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_EditCheckRequest_descriptor;
         }
@@ -6998,6 +7195,8 @@ public final class Developer {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v0.Developer.EditCheckRequest.class,
                             com.authzed.api.v0.Developer.EditCheckRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CONTEXT_FIELD_NUMBER = 1;
 
@@ -7010,7 +7209,7 @@ public final class Developer {
          */
         @java.lang.Override
         public boolean hasContext() {
-            return context_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -7028,11 +7227,12 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.RequestContextOrBuilder getContextOrBuilder() {
-            return getContext();
+            return context_ == null ? com.authzed.api.v0.Developer.RequestContext.getDefaultInstance() : context_;
         }
 
         public static final int CHECK_RELATIONSHIPS_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v0.Core.RelationTuple> checkRelationships_;
 
         /**
@@ -7090,7 +7290,7 @@ public final class Developer {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (context_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getContext());
             }
             for (int i = 0; i < checkRelationships_.size(); i++) {
@@ -7105,7 +7305,7 @@ public final class Developer {
             if (size != -1)
                 return size;
             size = 0;
-            if (context_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getContext());
             }
             for (int i = 0; i < checkRelationships_.size(); i++) {
@@ -7264,19 +7464,28 @@ public final class Developer {
 
             // Construct using com.authzed.api.v0.Developer.EditCheckRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getContextFieldBuilder();
+                    getCheckRelationshipsFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (contextBuilder_ == null) {
-                    context_ = null;
-                } else {
-                    context_ = null;
+                bitField0_ = 0;
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
                     contextBuilder_ = null;
                 }
                 if (checkRelationshipsBuilder_ == null) {
@@ -7285,7 +7494,7 @@ public final class Developer {
                     checkRelationships_ = null;
                     checkRelationshipsBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -7311,23 +7520,34 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.EditCheckRequest buildPartial() {
                 com.authzed.api.v0.Developer.EditCheckRequest result = new com.authzed.api.v0.Developer.EditCheckRequest(this);
-                int from_bitField0_ = bitField0_;
-                if (contextBuilder_ == null) {
-                    result.context_ = context_;
-                } else {
-                    result.context_ = contextBuilder_.build();
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v0.Developer.EditCheckRequest result) {
                 if (checkRelationshipsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000001) != 0)) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
                         checkRelationships_ = java.util.Collections.unmodifiableList(checkRelationships_);
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000002);
                     }
                     result.checkRelationships_ = checkRelationships_;
                 } else {
                     result.checkRelationships_ = checkRelationshipsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.EditCheckRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -7381,7 +7601,7 @@ public final class Developer {
                     if (!other.checkRelationships_.isEmpty()) {
                         if (checkRelationships_.isEmpty()) {
                             checkRelationships_ = other.checkRelationships_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                         } else {
                             ensureCheckRelationshipsIsMutable();
                             checkRelationships_.addAll(other.checkRelationships_);
@@ -7394,7 +7614,7 @@ public final class Developer {
                             checkRelationshipsBuilder_.dispose();
                             checkRelationshipsBuilder_ = null;
                             checkRelationships_ = other.checkRelationships_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                             checkRelationshipsBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                     ? getCheckRelationshipsFieldBuilder()
                                     : null;
@@ -7429,6 +7649,7 @@ public final class Developer {
                                 break;
                             case 10: {
                                 input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -7476,7 +7697,7 @@ public final class Developer {
              * @return Whether the context field is set.
              */
             public boolean hasContext() {
-                return contextBuilder_ != null || context_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -7501,10 +7722,11 @@ public final class Developer {
                         throw new NullPointerException();
                     }
                     context_ = value;
-                    onChanged();
                 } else {
                     contextBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -7514,10 +7736,11 @@ public final class Developer {
             public Builder setContext(com.authzed.api.v0.Developer.RequestContext.Builder builderForValue) {
                 if (contextBuilder_ == null) {
                     context_ = builderForValue.build();
-                    onChanged();
                 } else {
                     contextBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -7526,15 +7749,18 @@ public final class Developer {
              */
             public Builder mergeContext(com.authzed.api.v0.Developer.RequestContext value) {
                 if (contextBuilder_ == null) {
-                    if (context_ != null) {
-                        context_ = com.authzed.api.v0.Developer.RequestContext.newBuilder(context_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && context_ != null
+                            && context_ != com.authzed.api.v0.Developer.RequestContext.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
                     } else {
                         context_ = value;
                     }
-                    onChanged();
                 } else {
                     contextBuilder_.mergeFrom(value);
+                }
+                if (context_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -7543,13 +7769,13 @@ public final class Developer {
              * <code>.authzed.api.v0.RequestContext context = 1;</code>
              */
             public Builder clearContext() {
-                if (contextBuilder_ == null) {
-                    context_ = null;
-                    onChanged();
-                } else {
-                    context_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
                     contextBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -7557,6 +7783,7 @@ public final class Developer {
              * <code>.authzed.api.v0.RequestContext context = 1;</code>
              */
             public com.authzed.api.v0.Developer.RequestContext.Builder getContextBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getContextFieldBuilder().getBuilder();
             }
@@ -7588,9 +7815,9 @@ public final class Developer {
                     .emptyList();
 
             private void ensureCheckRelationshipsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     checkRelationships_ = new java.util.ArrayList<com.authzed.api.v0.Core.RelationTuple>(checkRelationships_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
 
@@ -7743,7 +7970,7 @@ public final class Developer {
             public Builder clearCheckRelationships() {
                 if (checkRelationshipsBuilder_ == null) {
                     checkRelationships_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                     onChanged();
                 } else {
                     checkRelationshipsBuilder_.clear();
@@ -7820,7 +8047,7 @@ public final class Developer {
             private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v0.Core.RelationTuple, com.authzed.api.v0.Core.RelationTuple.Builder, com.authzed.api.v0.Core.RelationTupleOrBuilder> getCheckRelationshipsFieldBuilder() {
                 if (checkRelationshipsBuilder_ == null) {
                     checkRelationshipsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v0.Core.RelationTuple, com.authzed.api.v0.Core.RelationTuple.Builder, com.authzed.api.v0.Core.RelationTupleOrBuilder>(
-                            checkRelationships_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+                            checkRelationships_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
                     checkRelationships_ = null;
                 }
                 return checkRelationshipsBuilder_;
@@ -7956,11 +8183,6 @@ public final class Developer {
             return new EditCheckResult();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_EditCheckResult_descriptor;
         }
@@ -7971,6 +8193,8 @@ public final class Developer {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v0.Developer.EditCheckResult.class,
                             com.authzed.api.v0.Developer.EditCheckResult.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int RELATIONSHIP_FIELD_NUMBER = 1;
 
@@ -7983,7 +8207,7 @@ public final class Developer {
          */
         @java.lang.Override
         public boolean hasRelationship() {
-            return relationship_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -8001,12 +8225,12 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Core.RelationTupleOrBuilder getRelationshipOrBuilder() {
-            return getRelationship();
+            return relationship_ == null ? com.authzed.api.v0.Core.RelationTuple.getDefaultInstance() : relationship_;
         }
 
         public static final int IS_MEMBER_FIELD_NUMBER = 2;
 
-        private boolean isMember_;
+        private boolean isMember_ = false;
 
         /**
          * <code>bool is_member = 2;</code>
@@ -8029,7 +8253,7 @@ public final class Developer {
          */
         @java.lang.Override
         public boolean hasError() {
-            return error_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -8047,7 +8271,7 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.DeveloperErrorOrBuilder getErrorOrBuilder() {
-            return getError();
+            return error_ == null ? com.authzed.api.v0.Developer.DeveloperError.getDefaultInstance() : error_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -8065,13 +8289,13 @@ public final class Developer {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (relationship_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getRelationship());
             }
             if (isMember_ != false) {
                 output.writeBool(2, isMember_);
             }
-            if (error_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(3, getError());
             }
             getUnknownFields().writeTo(output);
@@ -8083,13 +8307,13 @@ public final class Developer {
             if (size != -1)
                 return size;
             size = 0;
-            if (relationship_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getRelationship());
             }
             if (isMember_ != false) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, isMember_);
             }
-            if (error_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getError());
             }
             size += getUnknownFields().getSerializedSize();
@@ -8253,26 +8477,34 @@ public final class Developer {
 
             // Construct using com.authzed.api.v0.Developer.EditCheckResult.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getRelationshipFieldBuilder();
+                    getErrorFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                } else {
-                    relationship_ = null;
+                bitField0_ = 0;
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
                 isMember_ = false;
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                } else {
-                    error_ = null;
+                error_ = null;
+                if (errorBuilder_ != null) {
+                    errorBuilder_.dispose();
                     errorBuilder_ = null;
                 }
                 return this;
@@ -8300,19 +8532,28 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.EditCheckResult buildPartial() {
                 com.authzed.api.v0.Developer.EditCheckResult result = new com.authzed.api.v0.Developer.EditCheckResult(this);
-                if (relationshipBuilder_ == null) {
-                    result.relationship_ = relationship_;
-                } else {
-                    result.relationship_ = relationshipBuilder_.build();
-                }
-                result.isMember_ = isMember_;
-                if (errorBuilder_ == null) {
-                    result.error_ = error_;
-                } else {
-                    result.error_ = errorBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.EditCheckResult result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.relationship_ = relationshipBuilder_ == null ? relationship_ : relationshipBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.isMember_ = isMember_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.error_ = errorBuilder_ == null ? error_ : errorBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -8394,16 +8635,19 @@ public final class Developer {
                                 break;
                             case 10: {
                                 input.readMessage(getRelationshipFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 16: {
                                 isMember_ = input.readBool();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 16
                             case 26: {
                                 input.readMessage(getErrorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -8427,6 +8671,8 @@ public final class Developer {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v0.Core.RelationTuple relationship_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v0.Core.RelationTuple, com.authzed.api.v0.Core.RelationTuple.Builder, com.authzed.api.v0.Core.RelationTupleOrBuilder> relationshipBuilder_;
@@ -8437,7 +8683,7 @@ public final class Developer {
              * @return Whether the relationship field is set.
              */
             public boolean hasRelationship() {
-                return relationshipBuilder_ != null || relationship_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -8462,10 +8708,11 @@ public final class Developer {
                         throw new NullPointerException();
                     }
                     relationship_ = value;
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -8475,10 +8722,11 @@ public final class Developer {
             public Builder setRelationship(com.authzed.api.v0.Core.RelationTuple.Builder builderForValue) {
                 if (relationshipBuilder_ == null) {
                     relationship_ = builderForValue.build();
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -8487,15 +8735,18 @@ public final class Developer {
              */
             public Builder mergeRelationship(com.authzed.api.v0.Core.RelationTuple value) {
                 if (relationshipBuilder_ == null) {
-                    if (relationship_ != null) {
-                        relationship_ = com.authzed.api.v0.Core.RelationTuple.newBuilder(relationship_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && relationship_ != null
+                            && relationship_ != com.authzed.api.v0.Core.RelationTuple.getDefaultInstance()) {
+                        getRelationshipBuilder().mergeFrom(value);
                     } else {
                         relationship_ = value;
                     }
-                    onChanged();
                 } else {
                     relationshipBuilder_.mergeFrom(value);
+                }
+                if (relationship_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -8504,13 +8755,13 @@ public final class Developer {
              * <code>.authzed.api.v0.RelationTuple relationship = 1;</code>
              */
             public Builder clearRelationship() {
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                    onChanged();
-                } else {
-                    relationship_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -8518,6 +8769,7 @@ public final class Developer {
              * <code>.authzed.api.v0.RelationTuple relationship = 1;</code>
              */
             public com.authzed.api.v0.Core.RelationTuple.Builder getRelationshipBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getRelationshipFieldBuilder().getBuilder();
             }
@@ -8565,6 +8817,7 @@ public final class Developer {
              */
             public Builder setIsMember(boolean value) {
                 isMember_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -8575,6 +8828,7 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearIsMember() {
+                bitField0_ = (bitField0_ & ~0x00000002);
                 isMember_ = false;
                 onChanged();
                 return this;
@@ -8590,7 +8844,7 @@ public final class Developer {
              * @return Whether the error field is set.
              */
             public boolean hasError() {
-                return errorBuilder_ != null || error_ != null;
+                return ((bitField0_ & 0x00000004) != 0);
             }
 
             /**
@@ -8615,10 +8869,11 @@ public final class Developer {
                         throw new NullPointerException();
                     }
                     error_ = value;
-                    onChanged();
                 } else {
                     errorBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -8628,10 +8883,11 @@ public final class Developer {
             public Builder setError(com.authzed.api.v0.Developer.DeveloperError.Builder builderForValue) {
                 if (errorBuilder_ == null) {
                     error_ = builderForValue.build();
-                    onChanged();
                 } else {
                     errorBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -8640,14 +8896,18 @@ public final class Developer {
              */
             public Builder mergeError(com.authzed.api.v0.Developer.DeveloperError value) {
                 if (errorBuilder_ == null) {
-                    if (error_ != null) {
-                        error_ = com.authzed.api.v0.Developer.DeveloperError.newBuilder(error_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000004) != 0) && error_ != null
+                            && error_ != com.authzed.api.v0.Developer.DeveloperError.getDefaultInstance()) {
+                        getErrorBuilder().mergeFrom(value);
                     } else {
                         error_ = value;
                     }
-                    onChanged();
                 } else {
                     errorBuilder_.mergeFrom(value);
+                }
+                if (error_ != null) {
+                    bitField0_ |= 0x00000004;
+                    onChanged();
                 }
                 return this;
             }
@@ -8656,13 +8916,13 @@ public final class Developer {
              * <code>.authzed.api.v0.DeveloperError error = 3;</code>
              */
             public Builder clearError() {
-                if (errorBuilder_ == null) {
-                    error_ = null;
-                    onChanged();
-                } else {
-                    error_ = null;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                error_ = null;
+                if (errorBuilder_ != null) {
+                    errorBuilder_.dispose();
                     errorBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -8670,6 +8930,7 @@ public final class Developer {
              * <code>.authzed.api.v0.DeveloperError error = 3;</code>
              */
             public com.authzed.api.v0.Developer.DeveloperError.Builder getErrorBuilder() {
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return getErrorFieldBuilder().getBuilder();
             }
@@ -8834,11 +9095,6 @@ public final class Developer {
             return new EditCheckResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_EditCheckResponse_descriptor;
         }
@@ -8852,6 +9108,7 @@ public final class Developer {
 
         public static final int REQUEST_ERRORS_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v0.Developer.DeveloperError> requestErrors_;
 
         /**
@@ -8896,6 +9153,7 @@ public final class Developer {
 
         public static final int CHECK_RESULTS_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v0.Developer.EditCheckResult> checkResults_;
 
         /**
@@ -9132,6 +9390,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (requestErrorsBuilder_ == null) {
                     requestErrors_ = java.util.Collections.emptyList();
                 } else {
@@ -9172,7 +9431,15 @@ public final class Developer {
             public com.authzed.api.v0.Developer.EditCheckResponse buildPartial() {
                 com.authzed.api.v0.Developer.EditCheckResponse result = new com.authzed.api.v0.Developer.EditCheckResponse(
                         this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v0.Developer.EditCheckResponse result) {
                 if (requestErrorsBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         requestErrors_ = java.util.Collections.unmodifiableList(requestErrors_);
@@ -9191,8 +9458,10 @@ public final class Developer {
                 } else {
                     result.checkResults_ = checkResultsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.EditCheckResponse result) {
+                int from_bitField0_ = bitField0_;
             }
 
             @java.lang.Override
@@ -9986,11 +10255,6 @@ public final class Developer {
             return new ValidateRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_ValidateRequest_descriptor;
         }
@@ -10001,6 +10265,8 @@ public final class Developer {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v0.Developer.ValidateRequest.class,
                             com.authzed.api.v0.Developer.ValidateRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CONTEXT_FIELD_NUMBER = 1;
 
@@ -10013,7 +10279,7 @@ public final class Developer {
          */
         @java.lang.Override
         public boolean hasContext() {
-            return context_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -10031,12 +10297,13 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.RequestContextOrBuilder getContextOrBuilder() {
-            return getContext();
+            return context_ == null ? com.authzed.api.v0.Developer.RequestContext.getDefaultInstance() : context_;
         }
 
         public static final int VALIDATION_YAML_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object validationYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object validationYaml_ = "";
 
         /**
          * <code>string validation_yaml = 3;</code>
@@ -10075,7 +10342,7 @@ public final class Developer {
 
         public static final int UPDATE_VALIDATION_YAML_FIELD_NUMBER = 4;
 
-        private boolean updateValidationYaml_;
+        private boolean updateValidationYaml_ = false;
 
         /**
          * <code>bool update_validation_yaml = 4;</code>
@@ -10089,7 +10356,8 @@ public final class Developer {
 
         public static final int ASSERTIONS_YAML_FIELD_NUMBER = 5;
 
-        private volatile java.lang.Object assertionsYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object assertionsYaml_ = "";
 
         /**
          * <code>string assertions_yaml = 5;</code>
@@ -10141,7 +10409,7 @@ public final class Developer {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (context_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getContext());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validationYaml_)) {
@@ -10162,7 +10430,7 @@ public final class Developer {
             if (size != -1)
                 return size;
             size = 0;
-            if (context_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getContext());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(validationYaml_)) {
@@ -10333,19 +10601,27 @@ public final class Developer {
 
             // Construct using com.authzed.api.v0.Developer.ValidateRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getContextFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (contextBuilder_ == null) {
-                    context_ = null;
-                } else {
-                    context_ = null;
+                bitField0_ = 0;
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
                     contextBuilder_ = null;
                 }
                 validationYaml_ = "";
@@ -10376,16 +10652,30 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.ValidateRequest buildPartial() {
                 com.authzed.api.v0.Developer.ValidateRequest result = new com.authzed.api.v0.Developer.ValidateRequest(this);
-                if (contextBuilder_ == null) {
-                    result.context_ = context_;
-                } else {
-                    result.context_ = contextBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.validationYaml_ = validationYaml_;
-                result.updateValidationYaml_ = updateValidationYaml_;
-                result.assertionsYaml_ = assertionsYaml_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.ValidateRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.validationYaml_ = validationYaml_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.updateValidationYaml_ = updateValidationYaml_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.assertionsYaml_ = assertionsYaml_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -10437,6 +10727,7 @@ public final class Developer {
                 }
                 if (!other.getValidationYaml().isEmpty()) {
                     validationYaml_ = other.validationYaml_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.getUpdateValidationYaml() != false) {
@@ -10444,6 +10735,7 @@ public final class Developer {
                 }
                 if (!other.getAssertionsYaml().isEmpty()) {
                     assertionsYaml_ = other.assertionsYaml_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -10472,21 +10764,25 @@ public final class Developer {
                                 break;
                             case 10: {
                                 input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 26: {
                                 validationYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 26
                             case 32: {
                                 updateValidationYaml_ = input.readBool();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 32
                             case 42: {
                                 assertionsYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 42
@@ -10510,6 +10806,8 @@ public final class Developer {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v0.Developer.RequestContext context_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v0.Developer.RequestContext, com.authzed.api.v0.Developer.RequestContext.Builder, com.authzed.api.v0.Developer.RequestContextOrBuilder> contextBuilder_;
@@ -10520,7 +10818,7 @@ public final class Developer {
              * @return Whether the context field is set.
              */
             public boolean hasContext() {
-                return contextBuilder_ != null || context_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -10545,10 +10843,11 @@ public final class Developer {
                         throw new NullPointerException();
                     }
                     context_ = value;
-                    onChanged();
                 } else {
                     contextBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -10558,10 +10857,11 @@ public final class Developer {
             public Builder setContext(com.authzed.api.v0.Developer.RequestContext.Builder builderForValue) {
                 if (contextBuilder_ == null) {
                     context_ = builderForValue.build();
-                    onChanged();
                 } else {
                     contextBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -10570,15 +10870,18 @@ public final class Developer {
              */
             public Builder mergeContext(com.authzed.api.v0.Developer.RequestContext value) {
                 if (contextBuilder_ == null) {
-                    if (context_ != null) {
-                        context_ = com.authzed.api.v0.Developer.RequestContext.newBuilder(context_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && context_ != null
+                            && context_ != com.authzed.api.v0.Developer.RequestContext.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
                     } else {
                         context_ = value;
                     }
-                    onChanged();
                 } else {
                     contextBuilder_.mergeFrom(value);
+                }
+                if (context_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -10587,13 +10890,13 @@ public final class Developer {
              * <code>.authzed.api.v0.RequestContext context = 1;</code>
              */
             public Builder clearContext() {
-                if (contextBuilder_ == null) {
-                    context_ = null;
-                    onChanged();
-                } else {
-                    context_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
                     contextBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -10601,6 +10904,7 @@ public final class Developer {
              * <code>.authzed.api.v0.RequestContext context = 1;</code>
              */
             public com.authzed.api.v0.Developer.RequestContext.Builder getContextBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getContextFieldBuilder().getBuilder();
             }
@@ -10674,6 +10978,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 validationYaml_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -10685,6 +10990,7 @@ public final class Developer {
              */
             public Builder clearValidationYaml() {
                 validationYaml_ = getDefaultInstance().getValidationYaml();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -10701,6 +11007,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 validationYaml_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -10725,6 +11032,7 @@ public final class Developer {
              */
             public Builder setUpdateValidationYaml(boolean value) {
                 updateValidationYaml_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -10735,6 +11043,7 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearUpdateValidationYaml() {
+                bitField0_ = (bitField0_ & ~0x00000004);
                 updateValidationYaml_ = false;
                 onChanged();
                 return this;
@@ -10786,6 +11095,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 assertionsYaml_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -10797,6 +11107,7 @@ public final class Developer {
              */
             public Builder clearAssertionsYaml() {
                 assertionsYaml_ = getDefaultInstance().getAssertionsYaml();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -10813,6 +11124,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 assertionsYaml_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -10969,11 +11281,6 @@ public final class Developer {
             return new ValidateResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Developer.internal_static_authzed_api_v0_ValidateResponse_descriptor;
         }
@@ -10987,6 +11294,7 @@ public final class Developer {
 
         public static final int REQUEST_ERRORS_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v0.Developer.DeveloperError> requestErrors_;
 
         /**
@@ -11031,6 +11339,7 @@ public final class Developer {
 
         public static final int VALIDATION_ERRORS_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v0.Developer.DeveloperError> validationErrors_;
 
         /**
@@ -11075,7 +11384,8 @@ public final class Developer {
 
         public static final int UPDATED_VALIDATION_YAML_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object updatedValidationYaml_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object updatedValidationYaml_ = "";
 
         /**
          * <code>string updated_validation_yaml = 3;</code>
@@ -11316,6 +11626,7 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (requestErrorsBuilder_ == null) {
                     requestErrors_ = java.util.Collections.emptyList();
                 } else {
@@ -11356,7 +11667,15 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.ValidateResponse buildPartial() {
                 com.authzed.api.v0.Developer.ValidateResponse result = new com.authzed.api.v0.Developer.ValidateResponse(this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v0.Developer.ValidateResponse result) {
                 if (requestErrorsBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         requestErrors_ = java.util.Collections.unmodifiableList(requestErrors_);
@@ -11375,9 +11694,13 @@ public final class Developer {
                 } else {
                     result.validationErrors_ = validationErrorsBuilder_.build();
                 }
-                result.updatedValidationYaml_ = updatedValidationYaml_;
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.ValidateResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.updatedValidationYaml_ = updatedValidationYaml_;
+                }
             }
 
             @java.lang.Override
@@ -11478,6 +11801,7 @@ public final class Developer {
                 }
                 if (!other.getUpdatedValidationYaml().isEmpty()) {
                     updatedValidationYaml_ = other.updatedValidationYaml_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -11530,6 +11854,7 @@ public final class Developer {
                             // case 18
                             case 26: {
                                 updatedValidationYaml_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -12085,6 +12410,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 updatedValidationYaml_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -12096,6 +12422,7 @@ public final class Developer {
              */
             public Builder clearUpdatedValidationYaml() {
                 updatedValidationYaml_ = getDefaultInstance().getUpdatedValidationYaml();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -12112,6 +12439,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 updatedValidationYaml_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -12306,7 +12634,7 @@ public final class Developer {
             message_ = "";
             source_ = 0;
             kind_ = 0;
-            path_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            path_ = com.google.protobuf.LazyStringArrayList.emptyList();
             context_ = "";
         }
 
@@ -12314,11 +12642,6 @@ public final class Developer {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new DeveloperError();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -12670,7 +12993,8 @@ public final class Developer {
 
         public static final int MESSAGE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object message_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object message_ = "";
 
         /**
          * <code>string message = 1;</code>
@@ -12709,7 +13033,7 @@ public final class Developer {
 
         public static final int LINE_FIELD_NUMBER = 2;
 
-        private int line_;
+        private int line_ = 0;
 
         /**
          * <code>uint32 line = 2;</code>
@@ -12723,7 +13047,7 @@ public final class Developer {
 
         public static final int COLUMN_FIELD_NUMBER = 3;
 
-        private int column_;
+        private int column_ = 0;
 
         /**
          * <code>uint32 column = 3;</code>
@@ -12737,7 +13061,7 @@ public final class Developer {
 
         public static final int SOURCE_FIELD_NUMBER = 4;
 
-        private int source_;
+        private int source_ = 0;
 
         /**
          * <code>.authzed.api.v0.DeveloperError.Source source = 4;</code>
@@ -12756,15 +13080,14 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.DeveloperError.Source getSource() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v0.Developer.DeveloperError.Source result = com.authzed.api.v0.Developer.DeveloperError.Source
-                    .valueOf(source_);
+                    .forNumber(source_);
             return result == null ? com.authzed.api.v0.Developer.DeveloperError.Source.UNRECOGNIZED : result;
         }
 
         public static final int KIND_FIELD_NUMBER = 5;
 
-        private int kind_;
+        private int kind_ = 0;
 
         /**
          * <code>.authzed.api.v0.DeveloperError.ErrorKind kind = 5;</code>
@@ -12783,15 +13106,15 @@ public final class Developer {
          */
         @java.lang.Override
         public com.authzed.api.v0.Developer.DeveloperError.ErrorKind getKind() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v0.Developer.DeveloperError.ErrorKind result = com.authzed.api.v0.Developer.DeveloperError.ErrorKind
-                    .valueOf(kind_);
+                    .forNumber(kind_);
             return result == null ? com.authzed.api.v0.Developer.DeveloperError.ErrorKind.UNRECOGNIZED : result;
         }
 
         public static final int PATH_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.LazyStringList path_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList path_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <code>repeated string path = 6;</code>
@@ -12833,7 +13156,8 @@ public final class Developer {
 
         public static final int CONTEXT_FIELD_NUMBER = 7;
 
-        private volatile java.lang.Object context_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object context_ = "";
 
         /**
          * <pre>
@@ -13127,13 +13451,13 @@ public final class Developer {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 message_ = "";
                 line_ = 0;
                 column_ = 0;
                 source_ = 0;
                 kind_ = 0;
-                path_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                path_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 context_ = "";
                 return this;
             }
@@ -13160,20 +13484,37 @@ public final class Developer {
             @java.lang.Override
             public com.authzed.api.v0.Developer.DeveloperError buildPartial() {
                 com.authzed.api.v0.Developer.DeveloperError result = new com.authzed.api.v0.Developer.DeveloperError(this);
-                int from_bitField0_ = bitField0_;
-                result.message_ = message_;
-                result.line_ = line_;
-                result.column_ = column_;
-                result.source_ = source_;
-                result.kind_ = kind_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    path_ = path_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.path_ = path_;
-                result.context_ = context_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Developer.DeveloperError result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.message_ = message_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.line_ = line_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.column_ = column_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.source_ = source_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.kind_ = kind_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    path_.makeImmutable();
+                    result.path_ = path_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.context_ = context_;
+                }
             }
 
             @java.lang.Override
@@ -13222,6 +13563,7 @@ public final class Developer {
                     return this;
                 if (!other.getMessage().isEmpty()) {
                     message_ = other.message_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (other.getLine() != 0) {
@@ -13239,7 +13581,7 @@ public final class Developer {
                 if (!other.path_.isEmpty()) {
                     if (path_.isEmpty()) {
                         path_ = other.path_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensurePathIsMutable();
                         path_.addAll(other.path_);
@@ -13248,6 +13590,7 @@ public final class Developer {
                 }
                 if (!other.getContext().isEmpty()) {
                     context_ = other.context_;
+                    bitField0_ |= 0x00000040;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -13276,26 +13619,31 @@ public final class Developer {
                                 break;
                             case 10: {
                                 message_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 16: {
                                 line_ = input.readUInt32();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 16
                             case 24: {
                                 column_ = input.readUInt32();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 24
                             case 32: {
                                 source_ = input.readEnum();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 32
                             case 40: {
                                 kind_ = input.readEnum();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 40
@@ -13308,6 +13656,7 @@ public final class Developer {
                             // case 50
                             case 58: {
                                 context_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000040;
                                 break;
                             }
                             // case 58
@@ -13379,6 +13728,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 message_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -13390,6 +13740,7 @@ public final class Developer {
              */
             public Builder clearMessage() {
                 message_ = getDefaultInstance().getMessage();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -13406,6 +13757,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 message_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -13430,6 +13782,7 @@ public final class Developer {
              */
             public Builder setLine(int value) {
                 line_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -13440,6 +13793,7 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearLine() {
+                bitField0_ = (bitField0_ & ~0x00000002);
                 line_ = 0;
                 onChanged();
                 return this;
@@ -13465,6 +13819,7 @@ public final class Developer {
              */
             public Builder setColumn(int value) {
                 column_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -13475,6 +13830,7 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearColumn() {
+                bitField0_ = (bitField0_ & ~0x00000004);
                 column_ = 0;
                 onChanged();
                 return this;
@@ -13500,6 +13856,7 @@ public final class Developer {
              */
             public Builder setSourceValue(int value) {
                 source_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -13511,9 +13868,8 @@ public final class Developer {
              */
             @java.lang.Override
             public com.authzed.api.v0.Developer.DeveloperError.Source getSource() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v0.Developer.DeveloperError.Source result = com.authzed.api.v0.Developer.DeveloperError.Source
-                        .valueOf(source_);
+                        .forNumber(source_);
                 return result == null ? com.authzed.api.v0.Developer.DeveloperError.Source.UNRECOGNIZED : result;
             }
 
@@ -13527,6 +13883,7 @@ public final class Developer {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000008;
                 source_ = value.getNumber();
                 onChanged();
                 return this;
@@ -13538,6 +13895,7 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearSource() {
+                bitField0_ = (bitField0_ & ~0x00000008);
                 source_ = 0;
                 onChanged();
                 return this;
@@ -13563,6 +13921,7 @@ public final class Developer {
              */
             public Builder setKindValue(int value) {
                 kind_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -13574,9 +13933,8 @@ public final class Developer {
              */
             @java.lang.Override
             public com.authzed.api.v0.Developer.DeveloperError.ErrorKind getKind() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v0.Developer.DeveloperError.ErrorKind result = com.authzed.api.v0.Developer.DeveloperError.ErrorKind
-                        .valueOf(kind_);
+                        .forNumber(kind_);
                 return result == null ? com.authzed.api.v0.Developer.DeveloperError.ErrorKind.UNRECOGNIZED : result;
             }
 
@@ -13590,6 +13948,7 @@ public final class Developer {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000010;
                 kind_ = value.getNumber();
                 onChanged();
                 return this;
@@ -13601,18 +13960,19 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearKind() {
+                bitField0_ = (bitField0_ & ~0x00000010);
                 kind_ = 0;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList path_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList path_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensurePathIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!path_.isModifiable()) {
                     path_ = new com.google.protobuf.LazyStringArrayList(path_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -13621,7 +13981,8 @@ public final class Developer {
              * @return A list containing the path.
              */
             public com.google.protobuf.ProtocolStringList getPathList() {
-                return path_.getUnmodifiableView();
+                path_.makeImmutable();
+                return path_;
             }
 
             /**
@@ -13666,6 +14027,7 @@ public final class Developer {
                 }
                 ensurePathIsMutable();
                 path_.set(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13682,6 +14044,7 @@ public final class Developer {
                 }
                 ensurePathIsMutable();
                 path_.add(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13695,6 +14058,7 @@ public final class Developer {
             public Builder addAllPath(java.lang.Iterable<java.lang.String> values) {
                 ensurePathIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, path_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13705,8 +14069,9 @@ public final class Developer {
              * @return This builder for chaining.
              */
             public Builder clearPath() {
-                path_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                path_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000020);
+                ;
                 onChanged();
                 return this;
             }
@@ -13724,6 +14089,7 @@ public final class Developer {
                 checkByteStringIsUtf8(value);
                 ensurePathIsMutable();
                 path_.add(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13789,6 +14155,7 @@ public final class Developer {
                     throw new NullPointerException();
                 }
                 context_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -13805,6 +14172,7 @@ public final class Developer {
              */
             public Builder clearContext() {
                 context_ = getDefaultInstance().getContext();
+                bitField0_ = (bitField0_ & ~0x00000040);
                 onChanged();
                 return this;
             }
@@ -13826,6 +14194,7 @@ public final class Developer {
                 }
                 checkByteStringIsUtf8(value);
                 context_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }

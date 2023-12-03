@@ -598,7 +598,7 @@ public final class Validate {
          */
         io.envoyproxy.pgv.validate.Validate.TimestampRulesOrBuilder getTimestampOrBuilder();
 
-        public io.envoyproxy.pgv.validate.Validate.FieldRules.TypeCase getTypeCase();
+        io.envoyproxy.pgv.validate.Validate.FieldRules.TypeCase getTypeCase();
     }
 
     /**
@@ -628,11 +628,6 @@ public final class Validate {
             return new FieldRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_FieldRules_descriptor;
         }
@@ -648,6 +643,7 @@ public final class Validate {
 
         private int typeCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object type_;
 
         public enum TypeCase
@@ -2100,12 +2096,12 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (messageBuilder_ == null) {
-                    message_ = null;
-                } else {
-                    messageBuilder_.clear();
+                bitField0_ = 0;
+                message_ = null;
+                if (messageBuilder_ != null) {
+                    messageBuilder_.dispose();
+                    messageBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000001);
                 if (floatBuilder_ != null) {
                     floatBuilder_.clear();
                 }
@@ -2197,167 +2193,90 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.FieldRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.FieldRules result = new io.envoyproxy.pgv.validate.Validate.FieldRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                buildPartialOneofs(result);
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.FieldRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
-                    if (messageBuilder_ == null) {
-                        result.message_ = message_;
-                    } else {
-                        result.message_ = messageBuilder_.build();
-                    }
+                    result.message_ = messageBuilder_ == null ? message_ : messageBuilder_.build();
                     to_bitField0_ |= 0x00000001;
                 }
-                if (typeCase_ == 1) {
-                    if (floatBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = floatBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 2) {
-                    if (doubleBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = doubleBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 3) {
-                    if (int32Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = int32Builder_.build();
-                    }
-                }
-                if (typeCase_ == 4) {
-                    if (int64Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = int64Builder_.build();
-                    }
-                }
-                if (typeCase_ == 5) {
-                    if (uint32Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = uint32Builder_.build();
-                    }
-                }
-                if (typeCase_ == 6) {
-                    if (uint64Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = uint64Builder_.build();
-                    }
-                }
-                if (typeCase_ == 7) {
-                    if (sint32Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = sint32Builder_.build();
-                    }
-                }
-                if (typeCase_ == 8) {
-                    if (sint64Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = sint64Builder_.build();
-                    }
-                }
-                if (typeCase_ == 9) {
-                    if (fixed32Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = fixed32Builder_.build();
-                    }
-                }
-                if (typeCase_ == 10) {
-                    if (fixed64Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = fixed64Builder_.build();
-                    }
-                }
-                if (typeCase_ == 11) {
-                    if (sfixed32Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = sfixed32Builder_.build();
-                    }
-                }
-                if (typeCase_ == 12) {
-                    if (sfixed64Builder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = sfixed64Builder_.build();
-                    }
-                }
-                if (typeCase_ == 13) {
-                    if (boolBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = boolBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 14) {
-                    if (stringBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = stringBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 15) {
-                    if (bytesBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = bytesBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 16) {
-                    if (enumBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = enumBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 18) {
-                    if (repeatedBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = repeatedBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 19) {
-                    if (mapBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = mapBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 20) {
-                    if (anyBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = anyBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 21) {
-                    if (durationBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = durationBuilder_.build();
-                    }
-                }
-                if (typeCase_ == 22) {
-                    if (timestampBuilder_ == null) {
-                        result.type_ = type_;
-                    } else {
-                        result.type_ = timestampBuilder_.build();
-                    }
-                }
-                result.bitField0_ = to_bitField0_;
+                result.bitField0_ |= to_bitField0_;
+            }
+
+            private void buildPartialOneofs(io.envoyproxy.pgv.validate.Validate.FieldRules result) {
                 result.typeCase_ = typeCase_;
-                onBuilt();
-                return result;
+                result.type_ = this.type_;
+                if (typeCase_ == 1 && floatBuilder_ != null) {
+                    result.type_ = floatBuilder_.build();
+                }
+                if (typeCase_ == 2 && doubleBuilder_ != null) {
+                    result.type_ = doubleBuilder_.build();
+                }
+                if (typeCase_ == 3 && int32Builder_ != null) {
+                    result.type_ = int32Builder_.build();
+                }
+                if (typeCase_ == 4 && int64Builder_ != null) {
+                    result.type_ = int64Builder_.build();
+                }
+                if (typeCase_ == 5 && uint32Builder_ != null) {
+                    result.type_ = uint32Builder_.build();
+                }
+                if (typeCase_ == 6 && uint64Builder_ != null) {
+                    result.type_ = uint64Builder_.build();
+                }
+                if (typeCase_ == 7 && sint32Builder_ != null) {
+                    result.type_ = sint32Builder_.build();
+                }
+                if (typeCase_ == 8 && sint64Builder_ != null) {
+                    result.type_ = sint64Builder_.build();
+                }
+                if (typeCase_ == 9 && fixed32Builder_ != null) {
+                    result.type_ = fixed32Builder_.build();
+                }
+                if (typeCase_ == 10 && fixed64Builder_ != null) {
+                    result.type_ = fixed64Builder_.build();
+                }
+                if (typeCase_ == 11 && sfixed32Builder_ != null) {
+                    result.type_ = sfixed32Builder_.build();
+                }
+                if (typeCase_ == 12 && sfixed64Builder_ != null) {
+                    result.type_ = sfixed64Builder_.build();
+                }
+                if (typeCase_ == 13 && boolBuilder_ != null) {
+                    result.type_ = boolBuilder_.build();
+                }
+                if (typeCase_ == 14 && stringBuilder_ != null) {
+                    result.type_ = stringBuilder_.build();
+                }
+                if (typeCase_ == 15 && bytesBuilder_ != null) {
+                    result.type_ = bytesBuilder_.build();
+                }
+                if (typeCase_ == 16 && enumBuilder_ != null) {
+                    result.type_ = enumBuilder_.build();
+                }
+                if (typeCase_ == 18 && repeatedBuilder_ != null) {
+                    result.type_ = repeatedBuilder_.build();
+                }
+                if (typeCase_ == 19 && mapBuilder_ != null) {
+                    result.type_ = mapBuilder_.build();
+                }
+                if (typeCase_ == 20 && anyBuilder_ != null) {
+                    result.type_ = anyBuilder_.build();
+                }
+                if (typeCase_ == 21 && durationBuilder_ != null) {
+                    result.type_ = durationBuilder_.build();
+                }
+                if (typeCase_ == 22 && timestampBuilder_ != null) {
+                    result.type_ = timestampBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -2724,11 +2643,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     message_ = value;
-                    onChanged();
                 } else {
                     messageBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -2738,11 +2657,11 @@ public final class Validate {
             public Builder setMessage(io.envoyproxy.pgv.validate.Validate.MessageRules.Builder builderForValue) {
                 if (messageBuilder_ == null) {
                     message_ = builderForValue.build();
-                    onChanged();
                 } else {
                     messageBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -2753,16 +2672,17 @@ public final class Validate {
                 if (messageBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0) && message_ != null
                             && message_ != io.envoyproxy.pgv.validate.Validate.MessageRules.getDefaultInstance()) {
-                        message_ = io.envoyproxy.pgv.validate.Validate.MessageRules.newBuilder(message_).mergeFrom(value)
-                                .buildPartial();
+                        getMessageBuilder().mergeFrom(value);
                     } else {
                         message_ = value;
                     }
-                    onChanged();
                 } else {
                     messageBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000001;
+                if (message_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -2770,13 +2690,13 @@ public final class Validate {
              * <code>optional .validate.MessageRules message = 17;</code>
              */
             public Builder clearMessage() {
-                if (messageBuilder_ == null) {
-                    message_ = null;
-                    onChanged();
-                } else {
-                    messageBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000001);
+                message_ = null;
+                if (messageBuilder_ != null) {
+                    messageBuilder_.dispose();
+                    messageBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -2911,8 +2831,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 1) {
                         floatBuilder_.mergeFrom(value);
+                    } else {
+                        floatBuilder_.setMessage(value);
                     }
-                    floatBuilder_.setMessage(value);
                 }
                 typeCase_ = 1;
                 return this;
@@ -2990,7 +2911,6 @@ public final class Validate {
                 }
                 typeCase_ = 1;
                 onChanged();
-                ;
                 return floatBuilder_;
             }
 
@@ -3073,8 +2993,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 2) {
                         doubleBuilder_.mergeFrom(value);
+                    } else {
+                        doubleBuilder_.setMessage(value);
                     }
-                    doubleBuilder_.setMessage(value);
                 }
                 typeCase_ = 2;
                 return this;
@@ -3136,7 +3057,6 @@ public final class Validate {
                 }
                 typeCase_ = 2;
                 onChanged();
-                ;
                 return doubleBuilder_;
             }
 
@@ -3219,8 +3139,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 3) {
                         int32Builder_.mergeFrom(value);
+                    } else {
+                        int32Builder_.setMessage(value);
                     }
-                    int32Builder_.setMessage(value);
                 }
                 typeCase_ = 3;
                 return this;
@@ -3282,7 +3203,6 @@ public final class Validate {
                 }
                 typeCase_ = 3;
                 onChanged();
-                ;
                 return int32Builder_;
             }
 
@@ -3365,8 +3285,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 4) {
                         int64Builder_.mergeFrom(value);
+                    } else {
+                        int64Builder_.setMessage(value);
                     }
-                    int64Builder_.setMessage(value);
                 }
                 typeCase_ = 4;
                 return this;
@@ -3428,7 +3349,6 @@ public final class Validate {
                 }
                 typeCase_ = 4;
                 onChanged();
-                ;
                 return int64Builder_;
             }
 
@@ -3511,8 +3431,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 5) {
                         uint32Builder_.mergeFrom(value);
+                    } else {
+                        uint32Builder_.setMessage(value);
                     }
-                    uint32Builder_.setMessage(value);
                 }
                 typeCase_ = 5;
                 return this;
@@ -3574,7 +3495,6 @@ public final class Validate {
                 }
                 typeCase_ = 5;
                 onChanged();
-                ;
                 return uint32Builder_;
             }
 
@@ -3657,8 +3577,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 6) {
                         uint64Builder_.mergeFrom(value);
+                    } else {
+                        uint64Builder_.setMessage(value);
                     }
-                    uint64Builder_.setMessage(value);
                 }
                 typeCase_ = 6;
                 return this;
@@ -3720,7 +3641,6 @@ public final class Validate {
                 }
                 typeCase_ = 6;
                 onChanged();
-                ;
                 return uint64Builder_;
             }
 
@@ -3803,8 +3723,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 7) {
                         sint32Builder_.mergeFrom(value);
+                    } else {
+                        sint32Builder_.setMessage(value);
                     }
-                    sint32Builder_.setMessage(value);
                 }
                 typeCase_ = 7;
                 return this;
@@ -3866,7 +3787,6 @@ public final class Validate {
                 }
                 typeCase_ = 7;
                 onChanged();
-                ;
                 return sint32Builder_;
             }
 
@@ -3949,8 +3869,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 8) {
                         sint64Builder_.mergeFrom(value);
+                    } else {
+                        sint64Builder_.setMessage(value);
                     }
-                    sint64Builder_.setMessage(value);
                 }
                 typeCase_ = 8;
                 return this;
@@ -4012,7 +3933,6 @@ public final class Validate {
                 }
                 typeCase_ = 8;
                 onChanged();
-                ;
                 return sint64Builder_;
             }
 
@@ -4095,8 +4015,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 9) {
                         fixed32Builder_.mergeFrom(value);
+                    } else {
+                        fixed32Builder_.setMessage(value);
                     }
-                    fixed32Builder_.setMessage(value);
                 }
                 typeCase_ = 9;
                 return this;
@@ -4158,7 +4079,6 @@ public final class Validate {
                 }
                 typeCase_ = 9;
                 onChanged();
-                ;
                 return fixed32Builder_;
             }
 
@@ -4241,8 +4161,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 10) {
                         fixed64Builder_.mergeFrom(value);
+                    } else {
+                        fixed64Builder_.setMessage(value);
                     }
-                    fixed64Builder_.setMessage(value);
                 }
                 typeCase_ = 10;
                 return this;
@@ -4304,7 +4225,6 @@ public final class Validate {
                 }
                 typeCase_ = 10;
                 onChanged();
-                ;
                 return fixed64Builder_;
             }
 
@@ -4387,8 +4307,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 11) {
                         sfixed32Builder_.mergeFrom(value);
+                    } else {
+                        sfixed32Builder_.setMessage(value);
                     }
-                    sfixed32Builder_.setMessage(value);
                 }
                 typeCase_ = 11;
                 return this;
@@ -4450,7 +4371,6 @@ public final class Validate {
                 }
                 typeCase_ = 11;
                 onChanged();
-                ;
                 return sfixed32Builder_;
             }
 
@@ -4533,8 +4453,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 12) {
                         sfixed64Builder_.mergeFrom(value);
+                    } else {
+                        sfixed64Builder_.setMessage(value);
                     }
-                    sfixed64Builder_.setMessage(value);
                 }
                 typeCase_ = 12;
                 return this;
@@ -4596,7 +4517,6 @@ public final class Validate {
                 }
                 typeCase_ = 12;
                 onChanged();
-                ;
                 return sfixed64Builder_;
             }
 
@@ -4679,8 +4599,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 13) {
                         boolBuilder_.mergeFrom(value);
+                    } else {
+                        boolBuilder_.setMessage(value);
                     }
-                    boolBuilder_.setMessage(value);
                 }
                 typeCase_ = 13;
                 return this;
@@ -4742,7 +4663,6 @@ public final class Validate {
                 }
                 typeCase_ = 13;
                 onChanged();
-                ;
                 return boolBuilder_;
             }
 
@@ -4825,8 +4745,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 14) {
                         stringBuilder_.mergeFrom(value);
+                    } else {
+                        stringBuilder_.setMessage(value);
                     }
-                    stringBuilder_.setMessage(value);
                 }
                 typeCase_ = 14;
                 return this;
@@ -4888,7 +4809,6 @@ public final class Validate {
                 }
                 typeCase_ = 14;
                 onChanged();
-                ;
                 return stringBuilder_;
             }
 
@@ -4971,8 +4891,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 15) {
                         bytesBuilder_.mergeFrom(value);
+                    } else {
+                        bytesBuilder_.setMessage(value);
                     }
-                    bytesBuilder_.setMessage(value);
                 }
                 typeCase_ = 15;
                 return this;
@@ -5034,7 +4955,6 @@ public final class Validate {
                 }
                 typeCase_ = 15;
                 onChanged();
-                ;
                 return bytesBuilder_;
             }
 
@@ -5137,8 +5057,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 16) {
                         enumBuilder_.mergeFrom(value);
+                    } else {
+                        enumBuilder_.setMessage(value);
                     }
-                    enumBuilder_.setMessage(value);
                 }
                 typeCase_ = 16;
                 return this;
@@ -5216,7 +5137,6 @@ public final class Validate {
                 }
                 typeCase_ = 16;
                 onChanged();
-                ;
                 return enumBuilder_;
             }
 
@@ -5299,8 +5219,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 18) {
                         repeatedBuilder_.mergeFrom(value);
+                    } else {
+                        repeatedBuilder_.setMessage(value);
                     }
-                    repeatedBuilder_.setMessage(value);
                 }
                 typeCase_ = 18;
                 return this;
@@ -5362,7 +5283,6 @@ public final class Validate {
                 }
                 typeCase_ = 18;
                 onChanged();
-                ;
                 return repeatedBuilder_;
             }
 
@@ -5445,8 +5365,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 19) {
                         mapBuilder_.mergeFrom(value);
+                    } else {
+                        mapBuilder_.setMessage(value);
                     }
-                    mapBuilder_.setMessage(value);
                 }
                 typeCase_ = 19;
                 return this;
@@ -5508,7 +5429,6 @@ public final class Validate {
                 }
                 typeCase_ = 19;
                 onChanged();
-                ;
                 return mapBuilder_;
             }
 
@@ -5611,8 +5531,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 20) {
                         anyBuilder_.mergeFrom(value);
+                    } else {
+                        anyBuilder_.setMessage(value);
                     }
-                    anyBuilder_.setMessage(value);
                 }
                 typeCase_ = 20;
                 return this;
@@ -5690,7 +5611,6 @@ public final class Validate {
                 }
                 typeCase_ = 20;
                 onChanged();
-                ;
                 return anyBuilder_;
             }
 
@@ -5773,8 +5693,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 21) {
                         durationBuilder_.mergeFrom(value);
+                    } else {
+                        durationBuilder_.setMessage(value);
                     }
-                    durationBuilder_.setMessage(value);
                 }
                 typeCase_ = 21;
                 return this;
@@ -5836,7 +5757,6 @@ public final class Validate {
                 }
                 typeCase_ = 21;
                 onChanged();
-                ;
                 return durationBuilder_;
             }
 
@@ -5919,8 +5839,9 @@ public final class Validate {
                 } else {
                     if (typeCase_ == 22) {
                         timestampBuilder_.mergeFrom(value);
+                    } else {
+                        timestampBuilder_.setMessage(value);
                     }
-                    timestampBuilder_.setMessage(value);
                 }
                 typeCase_ = 22;
                 return this;
@@ -5982,7 +5903,6 @@ public final class Validate {
                 }
                 typeCase_ = 22;
                 onChanged();
-                ;
                 return timestampBuilder_;
             }
 
@@ -6298,11 +6218,6 @@ public final class Validate {
             return new FloatRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_FloatRules_descriptor;
         }
@@ -6318,7 +6233,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private float const_;
+        private float const_ = 0F;
 
         /**
          * <pre>
@@ -6350,7 +6265,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private float lt_;
+        private float lt_ = 0F;
 
         /**
          * <pre>
@@ -6384,7 +6299,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private float lte_;
+        private float lte_ = 0F;
 
         /**
          * <pre>
@@ -6418,7 +6333,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private float gt_;
+        private float gt_ = 0F;
 
         /**
          * <pre>
@@ -6454,7 +6369,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private float gte_;
+        private float gte_ = 0F;
 
         /**
          * <pre>
@@ -6490,7 +6405,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.FloatList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.FloatList in_ = emptyFloatList();
 
         /**
          * <pre>
@@ -6538,7 +6454,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.FloatList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.FloatList notIn_ = emptyFloatList();
 
         /**
          * <pre>
@@ -6586,7 +6503,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -6918,22 +6835,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0F;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0F;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0F;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0F;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0F;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyFloatList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyFloatList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -6960,6 +6870,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.FloatRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.FloatRules result = new io.envoyproxy.pgv.validate.Validate.FloatRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.FloatRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -6982,23 +6900,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -7063,7 +6977,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -7073,7 +6988,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -7147,7 +7063,8 @@ public final class Validate {
                             case 50: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureInIsMutable(alloc / 4);
                                 while (input.getBytesUntilLimit() > 0) {
                                     in_.addFloat(input.readFloat());
                                 }
@@ -7165,7 +7082,8 @@ public final class Validate {
                             case 58: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureNotInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureNotInIsMutable(alloc / 4);
                                 while (input.getBytesUntilLimit() > 0) {
                                     notIn_.addFloat(input.readFloat());
                                 }
@@ -7242,8 +7160,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(float value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -7308,8 +7226,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(float value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -7375,8 +7293,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(float value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -7445,8 +7363,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(float value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -7516,8 +7434,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(float value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -7543,10 +7461,17 @@ public final class Validate {
             private com.google.protobuf.Internal.FloatList in_ = emptyFloatList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
+            }
+
+            private void ensureInIsMutable(int capacity) {
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_, capacity);
+                }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -7560,7 +7485,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Float> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -7607,6 +7533,7 @@ public final class Validate {
             public Builder setIn(int index, float value) {
                 ensureInIsMutable();
                 in_.setFloat(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -7625,6 +7552,7 @@ public final class Validate {
             public Builder addIn(float value) {
                 ensureInIsMutable();
                 in_.addFloat(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -7643,6 +7571,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Float> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -7667,10 +7596,17 @@ public final class Validate {
             private com.google.protobuf.Internal.FloatList notIn_ = emptyFloatList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
+            }
+
+            private void ensureNotInIsMutable(int capacity) {
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_, capacity);
+                }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -7684,7 +7620,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Float> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -7731,6 +7668,7 @@ public final class Validate {
             public Builder setNotIn(int index, float value) {
                 ensureNotInIsMutable();
                 notIn_.setFloat(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -7749,6 +7687,7 @@ public final class Validate {
             public Builder addNotIn(float value) {
                 ensureNotInIsMutable();
                 notIn_.addFloat(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -7767,6 +7706,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Float> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -7832,8 +7772,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -8167,11 +8107,6 @@ public final class Validate {
             return new DoubleRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_DoubleRules_descriptor;
         }
@@ -8187,7 +8122,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private double const_;
+        private double const_ = 0D;
 
         /**
          * <pre>
@@ -8219,7 +8154,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private double lt_;
+        private double lt_ = 0D;
 
         /**
          * <pre>
@@ -8253,7 +8188,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private double lte_;
+        private double lte_ = 0D;
 
         /**
          * <pre>
@@ -8287,7 +8222,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private double gt_;
+        private double gt_ = 0D;
 
         /**
          * <pre>
@@ -8323,7 +8258,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private double gte_;
+        private double gte_ = 0D;
 
         /**
          * <pre>
@@ -8359,7 +8294,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.DoubleList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.DoubleList in_ = emptyDoubleList();
 
         /**
          * <pre>
@@ -8407,7 +8343,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.DoubleList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.DoubleList notIn_ = emptyDoubleList();
 
         /**
          * <pre>
@@ -8455,7 +8392,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -8787,22 +8724,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0D;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0D;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0D;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0D;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0D;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyDoubleList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyDoubleList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -8829,6 +8759,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.DoubleRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.DoubleRules result = new io.envoyproxy.pgv.validate.Validate.DoubleRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.DoubleRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -8851,23 +8789,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -8932,7 +8866,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -8942,7 +8877,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -9016,7 +8952,8 @@ public final class Validate {
                             case 50: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureInIsMutable(alloc / 8);
                                 while (input.getBytesUntilLimit() > 0) {
                                     in_.addDouble(input.readDouble());
                                 }
@@ -9034,7 +8971,8 @@ public final class Validate {
                             case 58: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureNotInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureNotInIsMutable(alloc / 8);
                                 while (input.getBytesUntilLimit() > 0) {
                                     notIn_.addDouble(input.readDouble());
                                 }
@@ -9111,8 +9049,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(double value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -9177,8 +9115,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(double value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -9244,8 +9182,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(double value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -9314,8 +9252,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(double value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -9385,8 +9323,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(double value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -9412,10 +9350,17 @@ public final class Validate {
             private com.google.protobuf.Internal.DoubleList in_ = emptyDoubleList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
+            }
+
+            private void ensureInIsMutable(int capacity) {
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_, capacity);
+                }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -9429,7 +9374,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Double> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -9476,6 +9422,7 @@ public final class Validate {
             public Builder setIn(int index, double value) {
                 ensureInIsMutable();
                 in_.setDouble(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -9494,6 +9441,7 @@ public final class Validate {
             public Builder addIn(double value) {
                 ensureInIsMutable();
                 in_.addDouble(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -9512,6 +9460,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Double> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -9536,10 +9485,17 @@ public final class Validate {
             private com.google.protobuf.Internal.DoubleList notIn_ = emptyDoubleList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
+            }
+
+            private void ensureNotInIsMutable(int capacity) {
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_, capacity);
+                }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -9553,7 +9509,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Double> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -9600,6 +9557,7 @@ public final class Validate {
             public Builder setNotIn(int index, double value) {
                 ensureNotInIsMutable();
                 notIn_.setDouble(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -9618,6 +9576,7 @@ public final class Validate {
             public Builder addNotIn(double value) {
                 ensureNotInIsMutable();
                 notIn_.addDouble(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -9636,6 +9595,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Double> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -9701,8 +9661,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -10036,11 +9996,6 @@ public final class Validate {
             return new Int32Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_Int32Rules_descriptor;
         }
@@ -10056,7 +10011,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private int const_;
+        private int const_ = 0;
 
         /**
          * <pre>
@@ -10088,7 +10043,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private int lt_;
+        private int lt_ = 0;
 
         /**
          * <pre>
@@ -10122,7 +10077,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private int lte_;
+        private int lte_ = 0;
 
         /**
          * <pre>
@@ -10156,7 +10111,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private int gt_;
+        private int gt_ = 0;
 
         /**
          * <pre>
@@ -10192,7 +10147,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private int gte_;
+        private int gte_ = 0;
 
         /**
          * <pre>
@@ -10228,7 +10183,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.IntList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
         /**
          * <pre>
@@ -10276,7 +10232,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.IntList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
         /**
          * <pre>
@@ -10324,7 +10281,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -10660,22 +10617,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -10702,6 +10652,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.Int32Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.Int32Rules result = new io.envoyproxy.pgv.validate.Validate.Int32Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.Int32Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -10724,23 +10682,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -10805,7 +10759,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -10815,7 +10770,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -10984,8 +10940,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(int value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -11050,8 +11006,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(int value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -11117,8 +11073,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(int value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -11187,8 +11143,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(int value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -11258,8 +11214,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(int value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -11285,10 +11241,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -11302,7 +11258,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Integer> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -11349,6 +11306,7 @@ public final class Validate {
             public Builder setIn(int index, int value) {
                 ensureInIsMutable();
                 in_.setInt(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -11367,6 +11325,7 @@ public final class Validate {
             public Builder addIn(int value) {
                 ensureInIsMutable();
                 in_.addInt(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -11385,6 +11344,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -11409,10 +11369,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -11426,7 +11386,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Integer> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -11473,6 +11434,7 @@ public final class Validate {
             public Builder setNotIn(int index, int value) {
                 ensureNotInIsMutable();
                 notIn_.setInt(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -11491,6 +11453,7 @@ public final class Validate {
             public Builder addNotIn(int value) {
                 ensureNotInIsMutable();
                 notIn_.addInt(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -11509,6 +11472,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -11574,8 +11538,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -11909,11 +11873,6 @@ public final class Validate {
             return new Int64Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_Int64Rules_descriptor;
         }
@@ -11929,7 +11888,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private long const_;
+        private long const_ = 0L;
 
         /**
          * <pre>
@@ -11961,7 +11920,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private long lt_;
+        private long lt_ = 0L;
 
         /**
          * <pre>
@@ -11995,7 +11954,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private long lte_;
+        private long lte_ = 0L;
 
         /**
          * <pre>
@@ -12029,7 +11988,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private long gt_;
+        private long gt_ = 0L;
 
         /**
          * <pre>
@@ -12065,7 +12024,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private long gte_;
+        private long gte_ = 0L;
 
         /**
          * <pre>
@@ -12101,7 +12060,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.LongList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
         /**
          * <pre>
@@ -12149,7 +12109,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.LongList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
         /**
          * <pre>
@@ -12197,7 +12158,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -12533,22 +12494,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -12575,6 +12529,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.Int64Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.Int64Rules result = new io.envoyproxy.pgv.validate.Validate.Int64Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.Int64Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -12597,23 +12559,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -12678,7 +12636,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -12688,7 +12647,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -12857,8 +12817,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(long value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -12923,8 +12883,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(long value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -12990,8 +12950,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(long value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -13060,8 +13020,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(long value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -13131,8 +13091,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(long value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -13158,10 +13118,10 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -13175,7 +13135,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Long> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -13222,6 +13183,7 @@ public final class Validate {
             public Builder setIn(int index, long value) {
                 ensureInIsMutable();
                 in_.setLong(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13240,6 +13202,7 @@ public final class Validate {
             public Builder addIn(long value) {
                 ensureInIsMutable();
                 in_.addLong(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13258,6 +13221,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13282,10 +13246,10 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -13299,7 +13263,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Long> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -13346,6 +13311,7 @@ public final class Validate {
             public Builder setNotIn(int index, long value) {
                 ensureNotInIsMutable();
                 notIn_.setLong(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -13364,6 +13330,7 @@ public final class Validate {
             public Builder addNotIn(long value) {
                 ensureNotInIsMutable();
                 notIn_.addLong(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -13382,6 +13349,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -13447,8 +13415,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -13782,11 +13750,6 @@ public final class Validate {
             return new UInt32Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_UInt32Rules_descriptor;
         }
@@ -13802,7 +13765,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private int const_;
+        private int const_ = 0;
 
         /**
          * <pre>
@@ -13834,7 +13797,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private int lt_;
+        private int lt_ = 0;
 
         /**
          * <pre>
@@ -13868,7 +13831,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private int lte_;
+        private int lte_ = 0;
 
         /**
          * <pre>
@@ -13902,7 +13865,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private int gt_;
+        private int gt_ = 0;
 
         /**
          * <pre>
@@ -13938,7 +13901,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private int gte_;
+        private int gte_ = 0;
 
         /**
          * <pre>
@@ -13974,7 +13937,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.IntList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
         /**
          * <pre>
@@ -14022,7 +13986,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.IntList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
         /**
          * <pre>
@@ -14070,7 +14035,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -14406,22 +14371,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -14448,6 +14406,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.UInt32Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.UInt32Rules result = new io.envoyproxy.pgv.validate.Validate.UInt32Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.UInt32Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -14470,23 +14436,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -14551,7 +14513,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -14561,7 +14524,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -14730,8 +14694,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(int value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -14796,8 +14760,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(int value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -14863,8 +14827,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(int value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -14933,8 +14897,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(int value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -15004,8 +14968,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(int value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -15031,10 +14995,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -15048,7 +15012,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Integer> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -15095,6 +15060,7 @@ public final class Validate {
             public Builder setIn(int index, int value) {
                 ensureInIsMutable();
                 in_.setInt(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -15113,6 +15079,7 @@ public final class Validate {
             public Builder addIn(int value) {
                 ensureInIsMutable();
                 in_.addInt(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -15131,6 +15098,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -15155,10 +15123,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -15172,7 +15140,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Integer> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -15219,6 +15188,7 @@ public final class Validate {
             public Builder setNotIn(int index, int value) {
                 ensureNotInIsMutable();
                 notIn_.setInt(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -15237,6 +15207,7 @@ public final class Validate {
             public Builder addNotIn(int value) {
                 ensureNotInIsMutable();
                 notIn_.addInt(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -15255,6 +15226,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -15320,8 +15292,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -15655,11 +15627,6 @@ public final class Validate {
             return new UInt64Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_UInt64Rules_descriptor;
         }
@@ -15675,7 +15642,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private long const_;
+        private long const_ = 0L;
 
         /**
          * <pre>
@@ -15707,7 +15674,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private long lt_;
+        private long lt_ = 0L;
 
         /**
          * <pre>
@@ -15741,7 +15708,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private long lte_;
+        private long lte_ = 0L;
 
         /**
          * <pre>
@@ -15775,7 +15742,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private long gt_;
+        private long gt_ = 0L;
 
         /**
          * <pre>
@@ -15811,7 +15778,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private long gte_;
+        private long gte_ = 0L;
 
         /**
          * <pre>
@@ -15847,7 +15814,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.LongList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
         /**
          * <pre>
@@ -15895,7 +15863,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.LongList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
         /**
          * <pre>
@@ -15943,7 +15912,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -16279,22 +16248,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -16321,6 +16283,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.UInt64Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.UInt64Rules result = new io.envoyproxy.pgv.validate.Validate.UInt64Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.UInt64Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -16343,23 +16313,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -16424,7 +16390,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -16434,7 +16401,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -16603,8 +16571,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(long value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -16669,8 +16637,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(long value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -16736,8 +16704,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(long value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -16806,8 +16774,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(long value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -16877,8 +16845,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(long value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -16904,10 +16872,10 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -16921,7 +16889,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Long> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -16968,6 +16937,7 @@ public final class Validate {
             public Builder setIn(int index, long value) {
                 ensureInIsMutable();
                 in_.setLong(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -16986,6 +16956,7 @@ public final class Validate {
             public Builder addIn(long value) {
                 ensureInIsMutable();
                 in_.addLong(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -17004,6 +16975,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -17028,10 +17000,10 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -17045,7 +17017,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Long> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -17092,6 +17065,7 @@ public final class Validate {
             public Builder setNotIn(int index, long value) {
                 ensureNotInIsMutable();
                 notIn_.setLong(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -17110,6 +17084,7 @@ public final class Validate {
             public Builder addNotIn(long value) {
                 ensureNotInIsMutable();
                 notIn_.addLong(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -17128,6 +17103,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -17193,8 +17169,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -17528,11 +17504,6 @@ public final class Validate {
             return new SInt32Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_SInt32Rules_descriptor;
         }
@@ -17548,7 +17519,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private int const_;
+        private int const_ = 0;
 
         /**
          * <pre>
@@ -17580,7 +17551,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private int lt_;
+        private int lt_ = 0;
 
         /**
          * <pre>
@@ -17614,7 +17585,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private int lte_;
+        private int lte_ = 0;
 
         /**
          * <pre>
@@ -17648,7 +17619,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private int gt_;
+        private int gt_ = 0;
 
         /**
          * <pre>
@@ -17684,7 +17655,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private int gte_;
+        private int gte_ = 0;
 
         /**
          * <pre>
@@ -17720,7 +17691,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.IntList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
         /**
          * <pre>
@@ -17768,7 +17740,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.IntList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
         /**
          * <pre>
@@ -17816,7 +17789,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -18152,22 +18125,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -18194,6 +18160,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.SInt32Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.SInt32Rules result = new io.envoyproxy.pgv.validate.Validate.SInt32Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.SInt32Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -18216,23 +18190,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -18297,7 +18267,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -18307,7 +18278,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -18476,8 +18448,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(int value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -18542,8 +18514,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(int value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -18609,8 +18581,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(int value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -18679,8 +18651,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(int value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -18750,8 +18722,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(int value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -18777,10 +18749,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -18794,7 +18766,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Integer> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -18841,6 +18814,7 @@ public final class Validate {
             public Builder setIn(int index, int value) {
                 ensureInIsMutable();
                 in_.setInt(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -18859,6 +18833,7 @@ public final class Validate {
             public Builder addIn(int value) {
                 ensureInIsMutable();
                 in_.addInt(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -18877,6 +18852,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -18901,10 +18877,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -18918,7 +18894,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Integer> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -18965,6 +18942,7 @@ public final class Validate {
             public Builder setNotIn(int index, int value) {
                 ensureNotInIsMutable();
                 notIn_.setInt(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -18983,6 +18961,7 @@ public final class Validate {
             public Builder addNotIn(int value) {
                 ensureNotInIsMutable();
                 notIn_.addInt(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -19001,6 +18980,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -19066,8 +19046,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -19401,11 +19381,6 @@ public final class Validate {
             return new SInt64Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_SInt64Rules_descriptor;
         }
@@ -19421,7 +19396,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private long const_;
+        private long const_ = 0L;
 
         /**
          * <pre>
@@ -19453,7 +19428,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private long lt_;
+        private long lt_ = 0L;
 
         /**
          * <pre>
@@ -19487,7 +19462,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private long lte_;
+        private long lte_ = 0L;
 
         /**
          * <pre>
@@ -19521,7 +19496,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private long gt_;
+        private long gt_ = 0L;
 
         /**
          * <pre>
@@ -19557,7 +19532,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private long gte_;
+        private long gte_ = 0L;
 
         /**
          * <pre>
@@ -19593,7 +19568,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.LongList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
         /**
          * <pre>
@@ -19641,7 +19617,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.LongList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
         /**
          * <pre>
@@ -19689,7 +19666,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -20025,22 +20002,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -20067,6 +20037,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.SInt64Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.SInt64Rules result = new io.envoyproxy.pgv.validate.Validate.SInt64Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.SInt64Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -20089,23 +20067,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -20170,7 +20144,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -20180,7 +20155,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -20349,8 +20325,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(long value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -20415,8 +20391,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(long value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -20482,8 +20458,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(long value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -20552,8 +20528,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(long value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -20623,8 +20599,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(long value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -20650,10 +20626,10 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -20667,7 +20643,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Long> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -20714,6 +20691,7 @@ public final class Validate {
             public Builder setIn(int index, long value) {
                 ensureInIsMutable();
                 in_.setLong(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -20732,6 +20710,7 @@ public final class Validate {
             public Builder addIn(long value) {
                 ensureInIsMutable();
                 in_.addLong(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -20750,6 +20729,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -20774,10 +20754,10 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -20791,7 +20771,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Long> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -20838,6 +20819,7 @@ public final class Validate {
             public Builder setNotIn(int index, long value) {
                 ensureNotInIsMutable();
                 notIn_.setLong(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -20856,6 +20838,7 @@ public final class Validate {
             public Builder addNotIn(long value) {
                 ensureNotInIsMutable();
                 notIn_.addLong(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -20874,6 +20857,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -20939,8 +20923,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -21274,11 +21258,6 @@ public final class Validate {
             return new Fixed32Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_Fixed32Rules_descriptor;
         }
@@ -21294,7 +21273,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private int const_;
+        private int const_ = 0;
 
         /**
          * <pre>
@@ -21326,7 +21305,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private int lt_;
+        private int lt_ = 0;
 
         /**
          * <pre>
@@ -21360,7 +21339,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private int lte_;
+        private int lte_ = 0;
 
         /**
          * <pre>
@@ -21394,7 +21373,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private int gt_;
+        private int gt_ = 0;
 
         /**
          * <pre>
@@ -21430,7 +21409,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private int gte_;
+        private int gte_ = 0;
 
         /**
          * <pre>
@@ -21466,7 +21445,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.IntList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
         /**
          * <pre>
@@ -21514,7 +21494,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.IntList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
         /**
          * <pre>
@@ -21562,7 +21543,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -21894,22 +21875,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -21936,6 +21910,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.Fixed32Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.Fixed32Rules result = new io.envoyproxy.pgv.validate.Validate.Fixed32Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.Fixed32Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -21958,23 +21940,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -22039,7 +22017,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -22049,7 +22028,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -22123,7 +22103,8 @@ public final class Validate {
                             case 50: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureInIsMutable(alloc / 4);
                                 while (input.getBytesUntilLimit() > 0) {
                                     in_.addInt(input.readFixed32());
                                 }
@@ -22141,7 +22122,8 @@ public final class Validate {
                             case 58: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureNotInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureNotInIsMutable(alloc / 4);
                                 while (input.getBytesUntilLimit() > 0) {
                                     notIn_.addInt(input.readFixed32());
                                 }
@@ -22218,8 +22200,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(int value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -22284,8 +22266,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(int value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -22351,8 +22333,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(int value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -22421,8 +22403,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(int value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -22492,8 +22474,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(int value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -22519,10 +22501,17 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
+            }
+
+            private void ensureInIsMutable(int capacity) {
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_, capacity);
+                }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -22536,7 +22525,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Integer> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -22583,6 +22573,7 @@ public final class Validate {
             public Builder setIn(int index, int value) {
                 ensureInIsMutable();
                 in_.setInt(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -22601,6 +22592,7 @@ public final class Validate {
             public Builder addIn(int value) {
                 ensureInIsMutable();
                 in_.addInt(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -22619,6 +22611,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -22643,10 +22636,17 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
+            }
+
+            private void ensureNotInIsMutable(int capacity) {
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_, capacity);
+                }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -22660,7 +22660,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Integer> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -22707,6 +22708,7 @@ public final class Validate {
             public Builder setNotIn(int index, int value) {
                 ensureNotInIsMutable();
                 notIn_.setInt(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -22725,6 +22727,7 @@ public final class Validate {
             public Builder addNotIn(int value) {
                 ensureNotInIsMutable();
                 notIn_.addInt(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -22743,6 +22746,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -22808,8 +22812,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -23143,11 +23147,6 @@ public final class Validate {
             return new Fixed64Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_Fixed64Rules_descriptor;
         }
@@ -23163,7 +23162,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private long const_;
+        private long const_ = 0L;
 
         /**
          * <pre>
@@ -23195,7 +23194,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private long lt_;
+        private long lt_ = 0L;
 
         /**
          * <pre>
@@ -23229,7 +23228,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private long lte_;
+        private long lte_ = 0L;
 
         /**
          * <pre>
@@ -23263,7 +23262,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private long gt_;
+        private long gt_ = 0L;
 
         /**
          * <pre>
@@ -23299,7 +23298,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private long gte_;
+        private long gte_ = 0L;
 
         /**
          * <pre>
@@ -23335,7 +23334,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.LongList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
         /**
          * <pre>
@@ -23383,7 +23383,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.LongList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
         /**
          * <pre>
@@ -23431,7 +23432,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -23763,22 +23764,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -23805,6 +23799,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.Fixed64Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.Fixed64Rules result = new io.envoyproxy.pgv.validate.Validate.Fixed64Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.Fixed64Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -23827,23 +23829,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -23908,7 +23906,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -23918,7 +23917,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -23992,7 +23992,8 @@ public final class Validate {
                             case 50: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureInIsMutable(alloc / 8);
                                 while (input.getBytesUntilLimit() > 0) {
                                     in_.addLong(input.readFixed64());
                                 }
@@ -24010,7 +24011,8 @@ public final class Validate {
                             case 58: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureNotInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureNotInIsMutable(alloc / 8);
                                 while (input.getBytesUntilLimit() > 0) {
                                     notIn_.addLong(input.readFixed64());
                                 }
@@ -24087,8 +24089,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(long value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -24153,8 +24155,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(long value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -24220,8 +24222,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(long value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -24290,8 +24292,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(long value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -24361,8 +24363,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(long value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -24388,10 +24390,17 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
+            }
+
+            private void ensureInIsMutable(int capacity) {
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_, capacity);
+                }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -24405,7 +24414,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Long> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -24452,6 +24462,7 @@ public final class Validate {
             public Builder setIn(int index, long value) {
                 ensureInIsMutable();
                 in_.setLong(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -24470,6 +24481,7 @@ public final class Validate {
             public Builder addIn(long value) {
                 ensureInIsMutable();
                 in_.addLong(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -24488,6 +24500,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -24512,10 +24525,17 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
+            }
+
+            private void ensureNotInIsMutable(int capacity) {
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_, capacity);
+                }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -24529,7 +24549,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Long> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -24576,6 +24597,7 @@ public final class Validate {
             public Builder setNotIn(int index, long value) {
                 ensureNotInIsMutable();
                 notIn_.setLong(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -24594,6 +24616,7 @@ public final class Validate {
             public Builder addNotIn(long value) {
                 ensureNotInIsMutable();
                 notIn_.addLong(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -24612,6 +24635,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -24677,8 +24701,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -25012,11 +25036,6 @@ public final class Validate {
             return new SFixed32Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_SFixed32Rules_descriptor;
         }
@@ -25032,7 +25051,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private int const_;
+        private int const_ = 0;
 
         /**
          * <pre>
@@ -25064,7 +25083,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private int lt_;
+        private int lt_ = 0;
 
         /**
          * <pre>
@@ -25098,7 +25117,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private int lte_;
+        private int lte_ = 0;
 
         /**
          * <pre>
@@ -25132,7 +25151,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private int gt_;
+        private int gt_ = 0;
 
         /**
          * <pre>
@@ -25168,7 +25187,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private int gte_;
+        private int gte_ = 0;
 
         /**
          * <pre>
@@ -25204,7 +25223,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.IntList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
         /**
          * <pre>
@@ -25252,7 +25272,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.IntList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
         /**
          * <pre>
@@ -25300,7 +25321,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -25632,22 +25653,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -25674,6 +25688,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.SFixed32Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.SFixed32Rules result = new io.envoyproxy.pgv.validate.Validate.SFixed32Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.SFixed32Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -25696,23 +25718,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -25777,7 +25795,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -25787,7 +25806,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -25861,7 +25881,8 @@ public final class Validate {
                             case 50: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureInIsMutable(alloc / 4);
                                 while (input.getBytesUntilLimit() > 0) {
                                     in_.addInt(input.readSFixed32());
                                 }
@@ -25879,7 +25900,8 @@ public final class Validate {
                             case 58: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureNotInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureNotInIsMutable(alloc / 4);
                                 while (input.getBytesUntilLimit() > 0) {
                                     notIn_.addInt(input.readSFixed32());
                                 }
@@ -25956,8 +25978,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(int value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -26022,8 +26044,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(int value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -26089,8 +26111,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(int value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -26159,8 +26181,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(int value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -26230,8 +26252,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(int value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -26257,10 +26279,17 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
+            }
+
+            private void ensureInIsMutable(int capacity) {
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_, capacity);
+                }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -26274,7 +26303,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Integer> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -26321,6 +26351,7 @@ public final class Validate {
             public Builder setIn(int index, int value) {
                 ensureInIsMutable();
                 in_.setInt(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -26339,6 +26370,7 @@ public final class Validate {
             public Builder addIn(int value) {
                 ensureInIsMutable();
                 in_.addInt(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -26357,6 +26389,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -26381,10 +26414,17 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
+            }
+
+            private void ensureNotInIsMutable(int capacity) {
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_, capacity);
+                }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -26398,7 +26438,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Integer> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -26445,6 +26486,7 @@ public final class Validate {
             public Builder setNotIn(int index, int value) {
                 ensureNotInIsMutable();
                 notIn_.setInt(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -26463,6 +26505,7 @@ public final class Validate {
             public Builder addNotIn(int value) {
                 ensureNotInIsMutable();
                 notIn_.addInt(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -26481,6 +26524,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -26546,8 +26590,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -26881,11 +26925,6 @@ public final class Validate {
             return new SFixed64Rules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_SFixed64Rules_descriptor;
         }
@@ -26901,7 +26940,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private long const_;
+        private long const_ = 0L;
 
         /**
          * <pre>
@@ -26933,7 +26972,7 @@ public final class Validate {
 
         public static final int LT_FIELD_NUMBER = 2;
 
-        private long lt_;
+        private long lt_ = 0L;
 
         /**
          * <pre>
@@ -26967,7 +27006,7 @@ public final class Validate {
 
         public static final int LTE_FIELD_NUMBER = 3;
 
-        private long lte_;
+        private long lte_ = 0L;
 
         /**
          * <pre>
@@ -27001,7 +27040,7 @@ public final class Validate {
 
         public static final int GT_FIELD_NUMBER = 4;
 
-        private long gt_;
+        private long gt_ = 0L;
 
         /**
          * <pre>
@@ -27037,7 +27076,7 @@ public final class Validate {
 
         public static final int GTE_FIELD_NUMBER = 5;
 
-        private long gte_;
+        private long gte_ = 0L;
 
         /**
          * <pre>
@@ -27073,7 +27112,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.Internal.LongList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
         /**
          * <pre>
@@ -27121,7 +27161,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.Internal.LongList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
         /**
          * <pre>
@@ -27169,7 +27210,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 8;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -27501,22 +27542,15 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 lt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 lte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 gt_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 gte_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 in_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000020);
                 notIn_ = emptyLongList();
-                bitField0_ = (bitField0_ & ~0x00000040);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -27543,6 +27577,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.SFixed64Rules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.SFixed64Rules result = new io.envoyproxy.pgv.validate.Validate.SFixed64Rules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.SFixed64Rules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -27565,23 +27607,19 @@ public final class Validate {
                     result.gte_ = gte_;
                     to_bitField0_ |= 0x00000010;
                 }
-                if (((bitField0_ & 0x00000020) != 0)) {
+                if (((from_bitField0_ & 0x00000020) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000040) != 0)) {
+                if (((from_bitField0_ & 0x00000040) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -27646,7 +27684,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -27656,7 +27695,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -27730,7 +27770,8 @@ public final class Validate {
                             case 50: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureInIsMutable(alloc / 8);
                                 while (input.getBytesUntilLimit() > 0) {
                                     in_.addLong(input.readSFixed64());
                                 }
@@ -27748,7 +27789,8 @@ public final class Validate {
                             case 58: {
                                 int length = input.readRawVarint32();
                                 int limit = input.pushLimit(length);
-                                ensureNotInIsMutable();
+                                int alloc = length > 4096 ? 4096 : length;
+                                ensureNotInIsMutable(alloc / 8);
                                 while (input.getBytesUntilLimit() > 0) {
                                     notIn_.addLong(input.readSFixed64());
                                 }
@@ -27825,8 +27867,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(long value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -27891,8 +27933,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLt(long value) {
-                bitField0_ |= 0x00000002;
                 lt_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -27958,8 +28000,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLte(long value) {
-                bitField0_ |= 0x00000004;
                 lte_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -28028,8 +28070,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGt(long value) {
-                bitField0_ |= 0x00000008;
                 gt_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -28099,8 +28141,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGte(long value) {
-                bitField0_ |= 0x00000010;
                 gte_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -28126,10 +28168,17 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList in_ = emptyLongList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000020;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000020;
+            }
+
+            private void ensureInIsMutable(int capacity) {
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_, capacity);
+                }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -28143,7 +28192,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Long> getInList() {
-                return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -28190,6 +28240,7 @@ public final class Validate {
             public Builder setIn(int index, long value) {
                 ensureInIsMutable();
                 in_.setLong(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -28208,6 +28259,7 @@ public final class Validate {
             public Builder addIn(long value) {
                 ensureInIsMutable();
                 in_.addLong(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -28226,6 +28278,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -28250,10 +28303,17 @@ public final class Validate {
             private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000040;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000040;
+            }
+
+            private void ensureNotInIsMutable(int capacity) {
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_, capacity);
+                }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -28267,7 +28327,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Long> getNotInList() {
-                return ((bitField0_ & 0x00000040) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -28314,6 +28375,7 @@ public final class Validate {
             public Builder setNotIn(int index, long value) {
                 ensureNotInIsMutable();
                 notIn_.setLong(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -28332,6 +28394,7 @@ public final class Validate {
             public Builder addNotIn(long value) {
                 ensureNotInIsMutable();
                 notIn_.addLong(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -28350,6 +28413,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Long> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -28415,8 +28479,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000080;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -28550,11 +28614,6 @@ public final class Validate {
             return new BoolRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_BoolRules_descriptor;
         }
@@ -28570,7 +28629,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private boolean const_;
+        private boolean const_ = false;
 
         /**
          * <pre>
@@ -28790,8 +28849,8 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = false;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 return this;
             }
 
@@ -28817,15 +28876,21 @@ public final class Validate {
             @java.lang.Override
             public io.envoyproxy.pgv.validate.Validate.BoolRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.BoolRules result = new io.envoyproxy.pgv.validate.Validate.BoolRules(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.BoolRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
                     result.const_ = const_;
                     to_bitField0_ |= 0x00000001;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -28968,8 +29033,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(boolean value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -29811,7 +29876,7 @@ public final class Validate {
          */
         boolean getIgnoreEmpty();
 
-        public io.envoyproxy.pgv.validate.Validate.StringRules.WellKnownCase getWellKnownCase();
+        io.envoyproxy.pgv.validate.Validate.StringRules.WellKnownCase getWellKnownCase();
     }
 
     /**
@@ -29838,8 +29903,8 @@ public final class Validate {
             suffix_ = "";
             contains_ = "";
             notContains_ = "";
-            in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-            notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            in_ = com.google.protobuf.LazyStringArrayList.emptyList();
+            notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
             strict_ = true;
         }
 
@@ -29847,11 +29912,6 @@ public final class Validate {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new StringRules();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -29869,6 +29929,7 @@ public final class Validate {
 
         private int wellKnownCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object wellKnown_;
 
         public enum WellKnownCase
@@ -29942,7 +30003,8 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object const_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object const_ = "";
 
         /**
          * <pre>
@@ -30005,7 +30067,7 @@ public final class Validate {
 
         public static final int LEN_FIELD_NUMBER = 19;
 
-        private long len_;
+        private long len_ = 0L;
 
         /**
          * <pre>
@@ -30041,7 +30103,7 @@ public final class Validate {
 
         public static final int MIN_LEN_FIELD_NUMBER = 2;
 
-        private long minLen_;
+        private long minLen_ = 0L;
 
         /**
          * <pre>
@@ -30077,7 +30139,7 @@ public final class Validate {
 
         public static final int MAX_LEN_FIELD_NUMBER = 3;
 
-        private long maxLen_;
+        private long maxLen_ = 0L;
 
         /**
          * <pre>
@@ -30113,7 +30175,7 @@ public final class Validate {
 
         public static final int LEN_BYTES_FIELD_NUMBER = 20;
 
-        private long lenBytes_;
+        private long lenBytes_ = 0L;
 
         /**
          * <pre>
@@ -30145,7 +30207,7 @@ public final class Validate {
 
         public static final int MIN_BYTES_FIELD_NUMBER = 4;
 
-        private long minBytes_;
+        private long minBytes_ = 0L;
 
         /**
          * <pre>
@@ -30179,7 +30241,7 @@ public final class Validate {
 
         public static final int MAX_BYTES_FIELD_NUMBER = 5;
 
-        private long maxBytes_;
+        private long maxBytes_ = 0L;
 
         /**
          * <pre>
@@ -30213,7 +30275,8 @@ public final class Validate {
 
         public static final int PATTERN_FIELD_NUMBER = 6;
 
-        private volatile java.lang.Object pattern_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object pattern_ = "";
 
         /**
          * <pre>
@@ -30282,7 +30345,8 @@ public final class Validate {
 
         public static final int PREFIX_FIELD_NUMBER = 7;
 
-        private volatile java.lang.Object prefix_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object prefix_ = "";
 
         /**
          * <pre>
@@ -30348,7 +30412,8 @@ public final class Validate {
 
         public static final int SUFFIX_FIELD_NUMBER = 8;
 
-        private volatile java.lang.Object suffix_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object suffix_ = "";
 
         /**
          * <pre>
@@ -30414,7 +30479,8 @@ public final class Validate {
 
         public static final int CONTAINS_FIELD_NUMBER = 9;
 
-        private volatile java.lang.Object contains_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object contains_ = "";
 
         /**
          * <pre>
@@ -30480,7 +30546,8 @@ public final class Validate {
 
         public static final int NOT_CONTAINS_FIELD_NUMBER = 23;
 
-        private volatile java.lang.Object notContains_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object notContains_ = "";
 
         /**
          * <pre>
@@ -30546,7 +30613,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 10;
 
-        private com.google.protobuf.LazyStringList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList in_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -30608,7 +30676,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 11;
 
-        private com.google.protobuf.LazyStringList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -31011,9 +31080,8 @@ public final class Validate {
          */
         public io.envoyproxy.pgv.validate.Validate.KnownRegex getWellKnownRegex() {
             if (wellKnownCase_ == 24) {
-                @SuppressWarnings("deprecation")
                 io.envoyproxy.pgv.validate.Validate.KnownRegex result = io.envoyproxy.pgv.validate.Validate.KnownRegex
-                        .valueOf((java.lang.Integer) wellKnown_);
+                        .forNumber((java.lang.Integer) wellKnown_);
                 return result == null ? io.envoyproxy.pgv.validate.Validate.KnownRegex.UNKNOWN : result;
             }
             return io.envoyproxy.pgv.validate.Validate.KnownRegex.UNKNOWN;
@@ -31021,7 +31089,7 @@ public final class Validate {
 
         public static final int STRICT_FIELD_NUMBER = 25;
 
-        private boolean strict_;
+        private boolean strict_ = true;
 
         /**
          * <pre>
@@ -31038,7 +31106,7 @@ public final class Validate {
          */
         @java.lang.Override
         public boolean hasStrict() {
-            return ((bitField0_ & 0x00400000) != 0);
+            return ((bitField0_ & 0x00001000) != 0);
         }
 
         /**
@@ -31061,7 +31129,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 26;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -31075,7 +31143,7 @@ public final class Validate {
          */
         @java.lang.Override
         public boolean hasIgnoreEmpty() {
-            return ((bitField0_ & 0x00800000) != 0);
+            return ((bitField0_ & 0x00002000) != 0);
         }
 
         /**
@@ -31180,10 +31248,10 @@ public final class Validate {
             if (wellKnownCase_ == 24) {
                 output.writeEnum(24, ((java.lang.Integer) wellKnown_));
             }
-            if (((bitField0_ & 0x00400000) != 0)) {
+            if (((bitField0_ & 0x00001000) != 0)) {
                 output.writeBool(25, strict_);
             }
-            if (((bitField0_ & 0x00800000) != 0)) {
+            if (((bitField0_ & 0x00002000) != 0)) {
                 output.writeBool(26, ignoreEmpty_);
             }
             getUnknownFields().writeTo(output);
@@ -31277,10 +31345,10 @@ public final class Validate {
             if (wellKnownCase_ == 24) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(24, ((java.lang.Integer) wellKnown_));
             }
-            if (((bitField0_ & 0x00400000) != 0)) {
+            if (((bitField0_ & 0x00001000) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(25, strict_);
             }
-            if (((bitField0_ & 0x00800000) != 0)) {
+            if (((bitField0_ & 0x00002000) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(26, ignoreEmpty_);
             }
             size += getUnknownFields().getSerializedSize();
@@ -31675,38 +31743,23 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = "";
-                bitField0_ = (bitField0_ & ~0x00000001);
                 len_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 minLen_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 maxLen_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 lenBytes_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 minBytes_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000020);
                 maxBytes_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000040);
                 pattern_ = "";
-                bitField0_ = (bitField0_ & ~0x00000080);
                 prefix_ = "";
-                bitField0_ = (bitField0_ & ~0x00000100);
                 suffix_ = "";
-                bitField0_ = (bitField0_ & ~0x00000200);
                 contains_ = "";
-                bitField0_ = (bitField0_ & ~0x00000400);
                 notContains_ = "";
-                bitField0_ = (bitField0_ & ~0x00000800);
-                in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00001000);
-                notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00002000);
+                in_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 strict_ = true;
-                bitField0_ = (bitField0_ & ~0x01000000);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x02000000);
                 wellKnownCase_ = 0;
                 wellKnown_ = null;
                 return this;
@@ -31735,12 +31788,21 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.StringRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.StringRules result = new io.envoyproxy.pgv.validate.Validate.StringRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                buildPartialOneofs(result);
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.StringRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.const_ = const_;
                     to_bitField0_ |= 0x00000001;
                 }
-                result.const_ = const_;
                 if (((from_bitField0_ & 0x00000002) != 0)) {
                     result.len_ = len_;
                     to_bitField0_ |= 0x00000002;
@@ -31766,77 +31828,47 @@ public final class Validate {
                     to_bitField0_ |= 0x00000040;
                 }
                 if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.pattern_ = pattern_;
                     to_bitField0_ |= 0x00000080;
                 }
-                result.pattern_ = pattern_;
                 if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.prefix_ = prefix_;
                     to_bitField0_ |= 0x00000100;
                 }
-                result.prefix_ = prefix_;
                 if (((from_bitField0_ & 0x00000200) != 0)) {
+                    result.suffix_ = suffix_;
                     to_bitField0_ |= 0x00000200;
                 }
-                result.suffix_ = suffix_;
                 if (((from_bitField0_ & 0x00000400) != 0)) {
+                    result.contains_ = contains_;
                     to_bitField0_ |= 0x00000400;
                 }
-                result.contains_ = contains_;
                 if (((from_bitField0_ & 0x00000800) != 0)) {
+                    result.notContains_ = notContains_;
                     to_bitField0_ |= 0x00000800;
                 }
-                result.notContains_ = notContains_;
-                if (((bitField0_ & 0x00001000) != 0)) {
-                    in_ = in_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00001000);
+                if (((from_bitField0_ & 0x00001000) != 0)) {
+                    in_.makeImmutable();
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00002000) != 0)) {
-                    notIn_ = notIn_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00002000);
-                }
-                result.notIn_ = notIn_;
-                if (wellKnownCase_ == 12) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 13) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 14) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 15) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 16) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 17) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 18) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 21) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 22) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 24) {
-                    result.wellKnown_ = wellKnown_;
+                if (((from_bitField0_ & 0x00002000) != 0)) {
+                    notIn_.makeImmutable();
+                    result.notIn_ = notIn_;
                 }
                 if (((from_bitField0_ & 0x01000000) != 0)) {
-                    to_bitField0_ |= 0x00400000;
+                    result.strict_ = strict_;
+                    to_bitField0_ |= 0x00001000;
                 }
-                result.strict_ = strict_;
                 if (((from_bitField0_ & 0x02000000) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
-                    to_bitField0_ |= 0x00800000;
+                    to_bitField0_ |= 0x00002000;
                 }
-                result.bitField0_ = to_bitField0_;
+                result.bitField0_ |= to_bitField0_;
+            }
+
+            private void buildPartialOneofs(io.envoyproxy.pgv.validate.Validate.StringRules result) {
                 result.wellKnownCase_ = wellKnownCase_;
-                onBuilt();
-                return result;
+                result.wellKnown_ = this.wellKnown_;
             }
 
             @java.lang.Override
@@ -31884,8 +31916,8 @@ public final class Validate {
                 if (other == io.envoyproxy.pgv.validate.Validate.StringRules.getDefaultInstance())
                     return this;
                 if (other.hasConst()) {
-                    bitField0_ |= 0x00000001;
                     const_ = other.const_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (other.hasLen()) {
@@ -31907,34 +31939,34 @@ public final class Validate {
                     setMaxBytes(other.getMaxBytes());
                 }
                 if (other.hasPattern()) {
-                    bitField0_ |= 0x00000080;
                     pattern_ = other.pattern_;
+                    bitField0_ |= 0x00000080;
                     onChanged();
                 }
                 if (other.hasPrefix()) {
-                    bitField0_ |= 0x00000100;
                     prefix_ = other.prefix_;
+                    bitField0_ |= 0x00000100;
                     onChanged();
                 }
                 if (other.hasSuffix()) {
-                    bitField0_ |= 0x00000200;
                     suffix_ = other.suffix_;
+                    bitField0_ |= 0x00000200;
                     onChanged();
                 }
                 if (other.hasContains()) {
-                    bitField0_ |= 0x00000400;
                     contains_ = other.contains_;
+                    bitField0_ |= 0x00000400;
                     onChanged();
                 }
                 if (other.hasNotContains()) {
-                    bitField0_ |= 0x00000800;
                     notContains_ = other.notContains_;
+                    bitField0_ |= 0x00000800;
                     onChanged();
                 }
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00001000);
+                        bitField0_ |= 0x00001000;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -31944,7 +31976,7 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00002000);
+                        bitField0_ |= 0x00002000;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -32300,8 +32332,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -32316,8 +32348,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearConst() {
-                bitField0_ = (bitField0_ & ~0x00000001);
                 const_ = getDefaultInstance().getConst();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -32336,8 +32368,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -32389,8 +32421,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLen(long value) {
-                bitField0_ |= 0x00000002;
                 len_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -32460,8 +32492,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMinLen(long value) {
-                bitField0_ |= 0x00000004;
                 minLen_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -32531,8 +32563,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMaxLen(long value) {
-                bitField0_ |= 0x00000008;
                 maxLen_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -32596,8 +32628,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLenBytes(long value) {
-                bitField0_ |= 0x00000010;
                 lenBytes_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -32662,8 +32694,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMinBytes(long value) {
-                bitField0_ |= 0x00000020;
                 minBytes_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -32729,8 +32761,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMaxBytes(long value) {
-                bitField0_ |= 0x00000040;
                 maxBytes_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -32832,8 +32864,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000080;
                 pattern_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -32850,8 +32882,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearPattern() {
-                bitField0_ = (bitField0_ & ~0x00000080);
                 pattern_ = getDefaultInstance().getPattern();
+                bitField0_ = (bitField0_ & ~0x00000080);
                 onChanged();
                 return this;
             }
@@ -32872,8 +32904,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000080;
                 pattern_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -32954,8 +32986,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000100;
                 prefix_ = value;
+                bitField0_ |= 0x00000100;
                 onChanged();
                 return this;
             }
@@ -32971,8 +33003,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearPrefix() {
-                bitField0_ = (bitField0_ & ~0x00000100);
                 prefix_ = getDefaultInstance().getPrefix();
+                bitField0_ = (bitField0_ & ~0x00000100);
                 onChanged();
                 return this;
             }
@@ -32992,8 +33024,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000100;
                 prefix_ = value;
+                bitField0_ |= 0x00000100;
                 onChanged();
                 return this;
             }
@@ -33074,8 +33106,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000200;
                 suffix_ = value;
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -33091,8 +33123,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearSuffix() {
-                bitField0_ = (bitField0_ & ~0x00000200);
                 suffix_ = getDefaultInstance().getSuffix();
+                bitField0_ = (bitField0_ & ~0x00000200);
                 onChanged();
                 return this;
             }
@@ -33112,8 +33144,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000200;
                 suffix_ = value;
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -33194,8 +33226,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000400;
                 contains_ = value;
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return this;
             }
@@ -33211,8 +33243,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearContains() {
-                bitField0_ = (bitField0_ & ~0x00000400);
                 contains_ = getDefaultInstance().getContains();
+                bitField0_ = (bitField0_ & ~0x00000400);
                 onChanged();
                 return this;
             }
@@ -33232,8 +33264,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000400;
                 contains_ = value;
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return this;
             }
@@ -33314,8 +33346,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000800;
                 notContains_ = value;
+                bitField0_ |= 0x00000800;
                 onChanged();
                 return this;
             }
@@ -33331,8 +33363,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearNotContains() {
-                bitField0_ = (bitField0_ & ~0x00000800);
                 notContains_ = getDefaultInstance().getNotContains();
+                bitField0_ = (bitField0_ & ~0x00000800);
                 onChanged();
                 return this;
             }
@@ -33352,19 +33384,19 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000800;
                 notContains_ = value;
+                bitField0_ |= 0x00000800;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList in_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00001000) != 0)) {
+                if (!in_.isModifiable()) {
                     in_ = new com.google.protobuf.LazyStringArrayList(in_);
-                    bitField0_ |= 0x00001000;
                 }
+                bitField0_ |= 0x00001000;
             }
 
             /**
@@ -33378,7 +33410,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public com.google.protobuf.ProtocolStringList getInList() {
-                return in_.getUnmodifiableView();
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -33443,6 +33476,7 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.set(index, value);
+                bitField0_ |= 0x00001000;
                 onChanged();
                 return this;
             }
@@ -33464,6 +33498,7 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.add(value);
+                bitField0_ |= 0x00001000;
                 onChanged();
                 return this;
             }
@@ -33482,6 +33517,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<java.lang.String> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00001000;
                 onChanged();
                 return this;
             }
@@ -33497,8 +33533,9 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearIn() {
-                in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                in_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00001000);
+                ;
                 onChanged();
                 return this;
             }
@@ -33520,17 +33557,18 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.add(value);
+                bitField0_ |= 0x00001000;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00002000) != 0)) {
+                if (!notIn_.isModifiable()) {
                     notIn_ = new com.google.protobuf.LazyStringArrayList(notIn_);
-                    bitField0_ |= 0x00002000;
                 }
+                bitField0_ |= 0x00002000;
             }
 
             /**
@@ -33544,7 +33582,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public com.google.protobuf.ProtocolStringList getNotInList() {
-                return notIn_.getUnmodifiableView();
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -33609,6 +33648,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.set(index, value);
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -33630,6 +33670,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.add(value);
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -33648,6 +33689,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<java.lang.String> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -33663,8 +33705,9 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearNotIn() {
-                notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00002000);
+                ;
                 onChanged();
                 return this;
             }
@@ -33686,6 +33729,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.add(value);
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -34332,9 +34376,8 @@ public final class Validate {
             @java.lang.Override
             public io.envoyproxy.pgv.validate.Validate.KnownRegex getWellKnownRegex() {
                 if (wellKnownCase_ == 24) {
-                    @SuppressWarnings("deprecation")
                     io.envoyproxy.pgv.validate.Validate.KnownRegex result = io.envoyproxy.pgv.validate.Validate.KnownRegex
-                            .valueOf((java.lang.Integer) wellKnown_);
+                            .forNumber((java.lang.Integer) wellKnown_);
                     return result == null ? io.envoyproxy.pgv.validate.Validate.KnownRegex.UNKNOWN : result;
                 }
                 return io.envoyproxy.pgv.validate.Validate.KnownRegex.UNKNOWN;
@@ -34431,8 +34474,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setStrict(boolean value) {
-                bitField0_ |= 0x01000000;
                 strict_ = value;
+                bitField0_ |= 0x01000000;
                 onChanged();
                 return this;
             }
@@ -34501,8 +34544,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x02000000;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x02000000;
                 onChanged();
                 return this;
             }
@@ -34960,7 +35003,7 @@ public final class Validate {
          */
         boolean getIgnoreEmpty();
 
-        public io.envoyproxy.pgv.validate.Validate.BytesRules.WellKnownCase getWellKnownCase();
+        io.envoyproxy.pgv.validate.Validate.BytesRules.WellKnownCase getWellKnownCase();
     }
 
     /**
@@ -34986,19 +35029,14 @@ public final class Validate {
             prefix_ = com.google.protobuf.ByteString.EMPTY;
             suffix_ = com.google.protobuf.ByteString.EMPTY;
             contains_ = com.google.protobuf.ByteString.EMPTY;
-            in_ = java.util.Collections.emptyList();
-            notIn_ = java.util.Collections.emptyList();
+            in_ = emptyList(com.google.protobuf.ByteString.class);
+            notIn_ = emptyList(com.google.protobuf.ByteString.class);
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new BytesRules();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -35016,6 +35054,7 @@ public final class Validate {
 
         private int wellKnownCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object wellKnown_;
 
         public enum WellKnownCase
@@ -35068,7 +35107,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.ByteString const_;
+        private com.google.protobuf.ByteString const_ = com.google.protobuf.ByteString.EMPTY;
 
         /**
          * <pre>
@@ -35100,7 +35139,7 @@ public final class Validate {
 
         public static final int LEN_FIELD_NUMBER = 13;
 
-        private long len_;
+        private long len_ = 0L;
 
         /**
          * <pre>
@@ -35132,7 +35171,7 @@ public final class Validate {
 
         public static final int MIN_LEN_FIELD_NUMBER = 2;
 
-        private long minLen_;
+        private long minLen_ = 0L;
 
         /**
          * <pre>
@@ -35166,7 +35205,7 @@ public final class Validate {
 
         public static final int MAX_LEN_FIELD_NUMBER = 3;
 
-        private long maxLen_;
+        private long maxLen_ = 0L;
 
         /**
          * <pre>
@@ -35200,7 +35239,8 @@ public final class Validate {
 
         public static final int PATTERN_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object pattern_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object pattern_ = "";
 
         /**
          * <pre>
@@ -35269,7 +35309,7 @@ public final class Validate {
 
         public static final int PREFIX_FIELD_NUMBER = 5;
 
-        private com.google.protobuf.ByteString prefix_;
+        private com.google.protobuf.ByteString prefix_ = com.google.protobuf.ByteString.EMPTY;
 
         /**
          * <pre>
@@ -35303,7 +35343,7 @@ public final class Validate {
 
         public static final int SUFFIX_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.ByteString suffix_;
+        private com.google.protobuf.ByteString suffix_ = com.google.protobuf.ByteString.EMPTY;
 
         /**
          * <pre>
@@ -35337,7 +35377,7 @@ public final class Validate {
 
         public static final int CONTAINS_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.ByteString contains_;
+        private com.google.protobuf.ByteString contains_ = com.google.protobuf.ByteString.EMPTY;
 
         /**
          * <pre>
@@ -35371,7 +35411,9 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 8;
 
-        private java.util.List<com.google.protobuf.ByteString> in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> in_ = emptyList(
+                com.google.protobuf.ByteString.class);
 
         /**
          * <pre>
@@ -35419,7 +35461,9 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 9;
 
-        private java.util.List<com.google.protobuf.ByteString> notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> notIn_ = emptyList(
+                com.google.protobuf.ByteString.class);
 
         /**
          * <pre>
@@ -35572,7 +35616,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 14;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -35586,7 +35630,7 @@ public final class Validate {
          */
         @java.lang.Override
         public boolean hasIgnoreEmpty() {
-            return ((bitField0_ & 0x00000800) != 0);
+            return ((bitField0_ & 0x00000100) != 0);
         }
 
         /**
@@ -35658,7 +35702,7 @@ public final class Validate {
             if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeUInt64(13, len_);
             }
-            if (((bitField0_ & 0x00000800) != 0)) {
+            if (((bitField0_ & 0x00000100) != 0)) {
                 output.writeBool(14, ignoreEmpty_);
             }
             getUnknownFields().writeTo(output);
@@ -35719,7 +35763,7 @@ public final class Validate {
             if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeUInt64Size(13, len_);
             }
-            if (((bitField0_ & 0x00000800) != 0)) {
+            if (((bitField0_ & 0x00000100) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(14, ignoreEmpty_);
             }
             size += getUnknownFields().getSerializedSize();
@@ -36008,28 +36052,18 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = com.google.protobuf.ByteString.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 len_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 minLen_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000004);
                 maxLen_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000008);
                 pattern_ = "";
-                bitField0_ = (bitField0_ & ~0x00000010);
                 prefix_ = com.google.protobuf.ByteString.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000020);
                 suffix_ = com.google.protobuf.ByteString.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000040);
                 contains_ = com.google.protobuf.ByteString.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                in_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000100);
-                notIn_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000200);
+                in_ = emptyList(com.google.protobuf.ByteString.class);
+                notIn_ = emptyList(com.google.protobuf.ByteString.class);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00002000);
                 wellKnownCase_ = 0;
                 wellKnown_ = null;
                 return this;
@@ -36058,12 +36092,21 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.BytesRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.BytesRules result = new io.envoyproxy.pgv.validate.Validate.BytesRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                buildPartialOneofs(result);
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.BytesRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.const_ = const_;
                     to_bitField0_ |= 0x00000001;
                 }
-                result.const_ = const_;
                 if (((from_bitField0_ & 0x00000002) != 0)) {
                     result.len_ = len_;
                     to_bitField0_ |= 0x00000002;
@@ -36077,48 +36120,39 @@ public final class Validate {
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.pattern_ = pattern_;
                     to_bitField0_ |= 0x00000010;
                 }
-                result.pattern_ = pattern_;
                 if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.prefix_ = prefix_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.prefix_ = prefix_;
                 if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.suffix_ = suffix_;
                     to_bitField0_ |= 0x00000040;
                 }
-                result.suffix_ = suffix_;
                 if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.contains_ = contains_;
                     to_bitField0_ |= 0x00000080;
                 }
-                result.contains_ = contains_;
-                if (((bitField0_ & 0x00000100) != 0)) {
-                    in_ = java.util.Collections.unmodifiableList(in_);
-                    bitField0_ = (bitField0_ & ~0x00000100);
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    in_.makeImmutable();
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000200) != 0)) {
-                    notIn_ = java.util.Collections.unmodifiableList(notIn_);
-                    bitField0_ = (bitField0_ & ~0x00000200);
-                }
-                result.notIn_ = notIn_;
-                if (wellKnownCase_ == 10) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 11) {
-                    result.wellKnown_ = wellKnown_;
-                }
-                if (wellKnownCase_ == 12) {
-                    result.wellKnown_ = wellKnown_;
+                if (((from_bitField0_ & 0x00000200) != 0)) {
+                    notIn_.makeImmutable();
+                    result.notIn_ = notIn_;
                 }
                 if (((from_bitField0_ & 0x00002000) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
-                    to_bitField0_ |= 0x00000800;
+                    to_bitField0_ |= 0x00000100;
                 }
-                result.bitField0_ = to_bitField0_;
+                result.bitField0_ |= to_bitField0_;
+            }
+
+            private void buildPartialOneofs(io.envoyproxy.pgv.validate.Validate.BytesRules result) {
                 result.wellKnownCase_ = wellKnownCase_;
-                onBuilt();
-                return result;
+                result.wellKnown_ = this.wellKnown_;
             }
 
             @java.lang.Override
@@ -36178,8 +36212,8 @@ public final class Validate {
                     setMaxLen(other.getMaxLen());
                 }
                 if (other.hasPattern()) {
-                    bitField0_ |= 0x00000010;
                     pattern_ = other.pattern_;
+                    bitField0_ |= 0x00000010;
                     onChanged();
                 }
                 if (other.hasPrefix()) {
@@ -36194,7 +36228,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000100);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000100;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -36204,7 +36239,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000200);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000200;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -36422,8 +36458,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -36485,8 +36521,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLen(long value) {
-                bitField0_ |= 0x00000002;
                 len_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -36551,8 +36587,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMinLen(long value) {
-                bitField0_ |= 0x00000004;
                 minLen_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -36618,8 +36654,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMaxLen(long value) {
-                bitField0_ |= 0x00000008;
                 maxLen_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -36721,8 +36757,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000010;
                 pattern_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -36739,8 +36775,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearPattern() {
-                bitField0_ = (bitField0_ & ~0x00000010);
                 pattern_ = getDefaultInstance().getPattern();
+                bitField0_ = (bitField0_ & ~0x00000010);
                 onChanged();
                 return this;
             }
@@ -36761,8 +36797,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000010;
                 pattern_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -36814,8 +36850,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000020;
                 prefix_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -36884,8 +36920,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000040;
                 suffix_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -36954,8 +36990,8 @@ public final class Validate {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000080;
                 contains_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -36977,13 +37013,14 @@ public final class Validate {
                 return this;
             }
 
-            private java.util.List<com.google.protobuf.ByteString> in_ = java.util.Collections.emptyList();
+            private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> in_ = emptyList(
+                    com.google.protobuf.ByteString.class);
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000100) != 0)) {
-                    in_ = new java.util.ArrayList<com.google.protobuf.ByteString>(in_);
-                    bitField0_ |= 0x00000100;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000100;
             }
 
             /**
@@ -36997,7 +37034,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<com.google.protobuf.ByteString> getInList() {
-                return ((bitField0_ & 0x00000100) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -37047,6 +37085,7 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.set(index, value);
+                bitField0_ |= 0x00000100;
                 onChanged();
                 return this;
             }
@@ -37068,6 +37107,7 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.add(value);
+                bitField0_ |= 0x00000100;
                 onChanged();
                 return this;
             }
@@ -37086,6 +37126,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000100;
                 onChanged();
                 return this;
             }
@@ -37101,19 +37142,20 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearIn() {
-                in_ = java.util.Collections.emptyList();
+                in_ = emptyList(com.google.protobuf.ByteString.class);
                 bitField0_ = (bitField0_ & ~0x00000100);
                 onChanged();
                 return this;
             }
 
-            private java.util.List<com.google.protobuf.ByteString> notIn_ = java.util.Collections.emptyList();
+            private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> notIn_ = emptyList(
+                    com.google.protobuf.ByteString.class);
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000200) != 0)) {
-                    notIn_ = new java.util.ArrayList<com.google.protobuf.ByteString>(notIn_);
-                    bitField0_ |= 0x00000200;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000200;
             }
 
             /**
@@ -37127,7 +37169,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<com.google.protobuf.ByteString> getNotInList() {
-                return ((bitField0_ & 0x00000200) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -37177,6 +37220,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.set(index, value);
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -37198,6 +37242,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.add(value);
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -37216,6 +37261,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -37231,7 +37277,7 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearNotIn() {
-                notIn_ = java.util.Collections.emptyList();
+                notIn_ = emptyList(com.google.protobuf.ByteString.class);
                 bitField0_ = (bitField0_ & ~0x00000200);
                 onChanged();
                 return this;
@@ -37485,8 +37531,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00002000;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -37720,11 +37766,6 @@ public final class Validate {
             return new EnumRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_EnumRules_descriptor;
         }
@@ -37740,7 +37781,7 @@ public final class Validate {
 
         public static final int CONST_FIELD_NUMBER = 1;
 
-        private int const_;
+        private int const_ = 0;
 
         /**
          * <pre>
@@ -37772,7 +37813,7 @@ public final class Validate {
 
         public static final int DEFINED_ONLY_FIELD_NUMBER = 2;
 
-        private boolean definedOnly_;
+        private boolean definedOnly_ = false;
 
         /**
          * <pre>
@@ -37806,7 +37847,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 3;
 
-        private com.google.protobuf.Internal.IntList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
         /**
          * <pre>
@@ -37854,7 +37896,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 4;
 
-        private com.google.protobuf.Internal.IntList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
         /**
          * <pre>
@@ -38140,14 +38183,11 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 const_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 definedOnly_ = false;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 in_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000004);
                 notIn_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000008);
                 return this;
             }
 
@@ -38173,6 +38213,14 @@ public final class Validate {
             @java.lang.Override
             public io.envoyproxy.pgv.validate.Validate.EnumRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.EnumRules result = new io.envoyproxy.pgv.validate.Validate.EnumRules(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.EnumRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -38183,19 +38231,15 @@ public final class Validate {
                     result.definedOnly_ = definedOnly_;
                     to_bitField0_ |= 0x00000002;
                 }
-                if (((bitField0_ & 0x00000004) != 0)) {
+                if (((from_bitField0_ & 0x00000004) != 0)) {
                     in_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000004);
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000008) != 0)) {
+                if (((from_bitField0_ & 0x00000008) != 0)) {
                     notIn_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000008);
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -38251,7 +38295,8 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000004);
+                        in_.makeImmutable();
+                        bitField0_ |= 0x00000004;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -38261,7 +38306,8 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000008);
+                        notIn_.makeImmutable();
+                        bitField0_ |= 0x00000008;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -38403,8 +38449,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setConst(int value) {
-                bitField0_ |= 0x00000001;
                 const_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -38469,8 +38515,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setDefinedOnly(boolean value) {
-                bitField0_ |= 0x00000002;
                 definedOnly_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -38495,10 +38541,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList in_ = emptyIntList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000004) != 0)) {
-                    in_ = mutableCopy(in_);
-                    bitField0_ |= 0x00000004;
+                if (!in_.isModifiable()) {
+                    in_ = makeMutableCopy(in_);
                 }
+                bitField0_ |= 0x00000004;
             }
 
             /**
@@ -38512,7 +38558,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public java.util.List<java.lang.Integer> getInList() {
-                return ((bitField0_ & 0x00000004) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -38559,6 +38606,7 @@ public final class Validate {
             public Builder setIn(int index, int value) {
                 ensureInIsMutable();
                 in_.setInt(index, value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -38577,6 +38625,7 @@ public final class Validate {
             public Builder addIn(int value) {
                 ensureInIsMutable();
                 in_.addInt(value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -38595,6 +38644,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -38619,10 +38669,10 @@ public final class Validate {
             private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000008) != 0)) {
-                    notIn_ = mutableCopy(notIn_);
-                    bitField0_ |= 0x00000008;
+                if (!notIn_.isModifiable()) {
+                    notIn_ = makeMutableCopy(notIn_);
                 }
+                bitField0_ |= 0x00000008;
             }
 
             /**
@@ -38636,7 +38686,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public java.util.List<java.lang.Integer> getNotInList() {
-                return ((bitField0_ & 0x00000008) != 0) ? java.util.Collections.unmodifiableList(notIn_) : notIn_;
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -38683,6 +38734,7 @@ public final class Validate {
             public Builder setNotIn(int index, int value) {
                 ensureNotInIsMutable();
                 notIn_.setInt(index, value);
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -38701,6 +38753,7 @@ public final class Validate {
             public Builder addNotIn(int value) {
                 ensureNotInIsMutable();
                 notIn_.addInt(value);
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -38719,6 +38772,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -38877,11 +38931,6 @@ public final class Validate {
             return new MessageRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_MessageRules_descriptor;
         }
@@ -38897,7 +38946,7 @@ public final class Validate {
 
         public static final int SKIP_FIELD_NUMBER = 1;
 
-        private boolean skip_;
+        private boolean skip_ = false;
 
         /**
          * <pre>
@@ -38931,7 +38980,7 @@ public final class Validate {
 
         public static final int REQUIRED_FIELD_NUMBER = 2;
 
-        private boolean required_;
+        private boolean required_ = false;
 
         /**
          * <pre>
@@ -39168,10 +39217,9 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 skip_ = false;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 required_ = false;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -39198,6 +39246,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.MessageRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.MessageRules result = new io.envoyproxy.pgv.validate.Validate.MessageRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.MessageRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -39208,9 +39264,7 @@ public final class Validate {
                     result.required_ = required_;
                     to_bitField0_ |= 0x00000002;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -39365,8 +39419,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setSkip(boolean value) {
-                bitField0_ |= 0x00000001;
                 skip_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -39429,8 +39483,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setRequired(boolean value) {
-                bitField0_ |= 0x00000002;
                 required_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -39676,11 +39730,6 @@ public final class Validate {
             return new RepeatedRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_RepeatedRules_descriptor;
         }
@@ -39696,7 +39745,7 @@ public final class Validate {
 
         public static final int MIN_ITEMS_FIELD_NUMBER = 1;
 
-        private long minItems_;
+        private long minItems_ = 0L;
 
         /**
          * <pre>
@@ -39730,7 +39779,7 @@ public final class Validate {
 
         public static final int MAX_ITEMS_FIELD_NUMBER = 2;
 
-        private long maxItems_;
+        private long maxItems_ = 0L;
 
         /**
          * <pre>
@@ -39764,7 +39813,7 @@ public final class Validate {
 
         public static final int UNIQUE_FIELD_NUMBER = 3;
 
-        private boolean unique_;
+        private boolean unique_ = false;
 
         /**
          * <pre>
@@ -39850,7 +39899,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 5;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -40144,20 +40193,16 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 minItems_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 maxItems_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 unique_ = false;
-                bitField0_ = (bitField0_ & ~0x00000004);
-                if (itemsBuilder_ == null) {
-                    items_ = null;
-                } else {
-                    itemsBuilder_.clear();
+                items_ = null;
+                if (itemsBuilder_ != null) {
+                    itemsBuilder_.dispose();
+                    itemsBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000008);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 return this;
             }
 
@@ -40184,6 +40229,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.RepeatedRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.RepeatedRules result = new io.envoyproxy.pgv.validate.Validate.RepeatedRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.RepeatedRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -40199,20 +40252,14 @@ public final class Validate {
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    if (itemsBuilder_ == null) {
-                        result.items_ = items_;
-                    } else {
-                        result.items_ = itemsBuilder_.build();
-                    }
+                    result.items_ = itemsBuilder_ == null ? items_ : itemsBuilder_.build();
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000010;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -40394,8 +40441,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMinItems(long value) {
-                bitField0_ |= 0x00000001;
                 minItems_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -40461,8 +40508,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMaxItems(long value) {
-                bitField0_ |= 0x00000002;
                 maxItems_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -40531,8 +40578,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setUnique(boolean value) {
-                bitField0_ |= 0x00000004;
                 unique_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -40608,11 +40655,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     items_ = value;
-                    onChanged();
                 } else {
                     itemsBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -40628,11 +40675,11 @@ public final class Validate {
             public Builder setItems(io.envoyproxy.pgv.validate.Validate.FieldRules.Builder builderForValue) {
                 if (itemsBuilder_ == null) {
                     items_ = builderForValue.build();
-                    onChanged();
                 } else {
                     itemsBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -40649,16 +40696,17 @@ public final class Validate {
                 if (itemsBuilder_ == null) {
                     if (((bitField0_ & 0x00000008) != 0) && items_ != null
                             && items_ != io.envoyproxy.pgv.validate.Validate.FieldRules.getDefaultInstance()) {
-                        items_ = io.envoyproxy.pgv.validate.Validate.FieldRules.newBuilder(items_).mergeFrom(value)
-                                .buildPartial();
+                        getItemsBuilder().mergeFrom(value);
                     } else {
                         items_ = value;
                     }
-                    onChanged();
                 } else {
                     itemsBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000008;
+                if (items_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -40672,13 +40720,13 @@ public final class Validate {
              * <code>optional .validate.FieldRules items = 4;</code>
              */
             public Builder clearItems() {
-                if (itemsBuilder_ == null) {
-                    items_ = null;
-                    onChanged();
-                } else {
-                    itemsBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000008);
+                items_ = null;
+                if (itemsBuilder_ != null) {
+                    itemsBuilder_.dispose();
+                    itemsBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -40776,8 +40824,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000010;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -41053,11 +41101,6 @@ public final class Validate {
             return new MapRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_MapRules_descriptor;
         }
@@ -41073,7 +41116,7 @@ public final class Validate {
 
         public static final int MIN_PAIRS_FIELD_NUMBER = 1;
 
-        private long minPairs_;
+        private long minPairs_ = 0L;
 
         /**
          * <pre>
@@ -41107,7 +41150,7 @@ public final class Validate {
 
         public static final int MAX_PAIRS_FIELD_NUMBER = 2;
 
-        private long maxPairs_;
+        private long maxPairs_ = 0L;
 
         /**
          * <pre>
@@ -41141,7 +41184,7 @@ public final class Validate {
 
         public static final int NO_SPARSE_FIELD_NUMBER = 3;
 
-        private boolean noSparse_;
+        private boolean noSparse_ = false;
 
         /**
          * <pre>
@@ -41269,7 +41312,7 @@ public final class Validate {
 
         public static final int IGNORE_EMPTY_FIELD_NUMBER = 6;
 
-        private boolean ignoreEmpty_;
+        private boolean ignoreEmpty_ = false;
 
         /**
          * <pre>
@@ -41580,26 +41623,21 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 minPairs_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000001);
                 maxPairs_ = 0L;
-                bitField0_ = (bitField0_ & ~0x00000002);
                 noSparse_ = false;
-                bitField0_ = (bitField0_ & ~0x00000004);
-                if (keysBuilder_ == null) {
-                    keys_ = null;
-                } else {
-                    keysBuilder_.clear();
+                keys_ = null;
+                if (keysBuilder_ != null) {
+                    keysBuilder_.dispose();
+                    keysBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000008);
-                if (valuesBuilder_ == null) {
-                    values_ = null;
-                } else {
-                    valuesBuilder_.clear();
+                values_ = null;
+                if (valuesBuilder_ != null) {
+                    valuesBuilder_.dispose();
+                    valuesBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000010);
                 ignoreEmpty_ = false;
-                bitField0_ = (bitField0_ & ~0x00000020);
                 return this;
             }
 
@@ -41625,6 +41663,14 @@ public final class Validate {
             @java.lang.Override
             public io.envoyproxy.pgv.validate.Validate.MapRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.MapRules result = new io.envoyproxy.pgv.validate.Validate.MapRules(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.MapRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -41640,28 +41686,18 @@ public final class Validate {
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    if (keysBuilder_ == null) {
-                        result.keys_ = keys_;
-                    } else {
-                        result.keys_ = keysBuilder_.build();
-                    }
+                    result.keys_ = keysBuilder_ == null ? keys_ : keysBuilder_.build();
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
-                    if (valuesBuilder_ == null) {
-                        result.values_ = values_;
-                    } else {
-                        result.values_ = valuesBuilder_.build();
-                    }
+                    result.values_ = valuesBuilder_ == null ? values_ : valuesBuilder_.build();
                     to_bitField0_ |= 0x00000010;
                 }
                 if (((from_bitField0_ & 0x00000020) != 0)) {
                     result.ignoreEmpty_ = ignoreEmpty_;
                     to_bitField0_ |= 0x00000020;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -41852,8 +41888,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMinPairs(long value) {
-                bitField0_ |= 0x00000001;
                 minPairs_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -41919,8 +41955,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setMaxPairs(long value) {
-                bitField0_ |= 0x00000002;
                 maxPairs_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -41986,8 +42022,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setNoSparse(boolean value) {
-                bitField0_ |= 0x00000004;
                 noSparse_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -42056,11 +42092,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     keys_ = value;
-                    onChanged();
                 } else {
                     keysBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -42074,11 +42110,11 @@ public final class Validate {
             public Builder setKeys(io.envoyproxy.pgv.validate.Validate.FieldRules.Builder builderForValue) {
                 if (keysBuilder_ == null) {
                     keys_ = builderForValue.build();
-                    onChanged();
                 } else {
                     keysBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -42093,16 +42129,17 @@ public final class Validate {
                 if (keysBuilder_ == null) {
                     if (((bitField0_ & 0x00000008) != 0) && keys_ != null
                             && keys_ != io.envoyproxy.pgv.validate.Validate.FieldRules.getDefaultInstance()) {
-                        keys_ = io.envoyproxy.pgv.validate.Validate.FieldRules.newBuilder(keys_).mergeFrom(value)
-                                .buildPartial();
+                        getKeysBuilder().mergeFrom(value);
                     } else {
                         keys_ = value;
                     }
-                    onChanged();
                 } else {
                     keysBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000008;
+                if (keys_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -42114,13 +42151,13 @@ public final class Validate {
              * <code>optional .validate.FieldRules keys = 4;</code>
              */
             public Builder clearKeys() {
-                if (keysBuilder_ == null) {
-                    keys_ = null;
-                    onChanged();
-                } else {
-                    keysBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000008);
+                keys_ = null;
+                if (keysBuilder_ != null) {
+                    keysBuilder_.dispose();
+                    keysBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -42221,11 +42258,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     values_ = value;
-                    onChanged();
                 } else {
                     valuesBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -42241,11 +42278,11 @@ public final class Validate {
             public Builder setValues(io.envoyproxy.pgv.validate.Validate.FieldRules.Builder builderForValue) {
                 if (valuesBuilder_ == null) {
                     values_ = builderForValue.build();
-                    onChanged();
                 } else {
                     valuesBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -42262,16 +42299,17 @@ public final class Validate {
                 if (valuesBuilder_ == null) {
                     if (((bitField0_ & 0x00000010) != 0) && values_ != null
                             && values_ != io.envoyproxy.pgv.validate.Validate.FieldRules.getDefaultInstance()) {
-                        values_ = io.envoyproxy.pgv.validate.Validate.FieldRules.newBuilder(values_).mergeFrom(value)
-                                .buildPartial();
+                        getValuesBuilder().mergeFrom(value);
                     } else {
                         values_ = value;
                     }
-                    onChanged();
                 } else {
                     valuesBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000010;
+                if (values_ != null) {
+                    bitField0_ |= 0x00000010;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -42285,13 +42323,13 @@ public final class Validate {
              * <code>optional .validate.FieldRules values = 5;</code>
              */
             public Builder clearValues() {
-                if (valuesBuilder_ == null) {
-                    values_ = null;
-                    onChanged();
-                } else {
-                    valuesBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000010);
+                values_ = null;
+                if (valuesBuilder_ != null) {
+                    valuesBuilder_.dispose();
+                    valuesBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -42389,8 +42427,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setIgnoreEmpty(boolean value) {
-                bitField0_ |= 0x00000020;
                 ignoreEmpty_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -42617,19 +42655,14 @@ public final class Validate {
         }
 
         private AnyRules() {
-            in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-            notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            in_ = com.google.protobuf.LazyStringArrayList.emptyList();
+            notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new AnyRules();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -42647,7 +42680,7 @@ public final class Validate {
 
         public static final int REQUIRED_FIELD_NUMBER = 1;
 
-        private boolean required_;
+        private boolean required_ = false;
 
         /**
          * <pre>
@@ -42679,7 +42712,8 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 2;
 
-        private com.google.protobuf.LazyStringList in_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList in_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -42741,7 +42775,8 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 3;
 
-        private com.google.protobuf.LazyStringList notIn_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -43026,12 +43061,10 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 required_ = false;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
-                notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                in_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 return this;
             }
 
@@ -43057,25 +43090,29 @@ public final class Validate {
             @java.lang.Override
             public io.envoyproxy.pgv.validate.Validate.AnyRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.AnyRules result = new io.envoyproxy.pgv.validate.Validate.AnyRules(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.AnyRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
                     result.required_ = required_;
                     to_bitField0_ |= 0x00000001;
                 }
-                if (((bitField0_ & 0x00000002) != 0)) {
-                    in_ = in_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000002);
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    in_.makeImmutable();
+                    result.in_ = in_;
                 }
-                result.in_ = in_;
-                if (((bitField0_ & 0x00000004) != 0)) {
-                    notIn_ = notIn_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000004);
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    notIn_.makeImmutable();
+                    result.notIn_ = notIn_;
                 }
-                result.notIn_ = notIn_;
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -43128,7 +43165,7 @@ public final class Validate {
                 if (!other.in_.isEmpty()) {
                     if (in_.isEmpty()) {
                         in_ = other.in_;
-                        bitField0_ = (bitField0_ & ~0x00000002);
+                        bitField0_ |= 0x00000002;
                     } else {
                         ensureInIsMutable();
                         in_.addAll(other.in_);
@@ -43138,7 +43175,7 @@ public final class Validate {
                 if (!other.notIn_.isEmpty()) {
                     if (notIn_.isEmpty()) {
                         notIn_ = other.notIn_;
-                        bitField0_ = (bitField0_ & ~0x00000004);
+                        bitField0_ |= 0x00000004;
                     } else {
                         ensureNotInIsMutable();
                         notIn_.addAll(other.notIn_);
@@ -43252,8 +43289,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setRequired(boolean value) {
-                bitField0_ |= 0x00000001;
                 required_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -43274,13 +43311,13 @@ public final class Validate {
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList in_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureInIsMutable() {
-                if (!((bitField0_ & 0x00000002) != 0)) {
+                if (!in_.isModifiable()) {
                     in_ = new com.google.protobuf.LazyStringArrayList(in_);
-                    bitField0_ |= 0x00000002;
                 }
+                bitField0_ |= 0x00000002;
             }
 
             /**
@@ -43294,7 +43331,8 @@ public final class Validate {
              * @return A list containing the in.
              */
             public com.google.protobuf.ProtocolStringList getInList() {
-                return in_.getUnmodifiableView();
+                in_.makeImmutable();
+                return in_;
             }
 
             /**
@@ -43359,6 +43397,7 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.set(index, value);
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -43380,6 +43419,7 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.add(value);
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -43398,6 +43438,7 @@ public final class Validate {
             public Builder addAllIn(java.lang.Iterable<java.lang.String> values) {
                 ensureInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -43413,8 +43454,9 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearIn() {
-                in_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                in_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000002);
+                ;
                 onChanged();
                 return this;
             }
@@ -43436,17 +43478,18 @@ public final class Validate {
                 }
                 ensureInIsMutable();
                 in_.add(value);
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureNotInIsMutable() {
-                if (!((bitField0_ & 0x00000004) != 0)) {
+                if (!notIn_.isModifiable()) {
                     notIn_ = new com.google.protobuf.LazyStringArrayList(notIn_);
-                    bitField0_ |= 0x00000004;
                 }
+                bitField0_ |= 0x00000004;
             }
 
             /**
@@ -43460,7 +43503,8 @@ public final class Validate {
              * @return A list containing the notIn.
              */
             public com.google.protobuf.ProtocolStringList getNotInList() {
-                return notIn_.getUnmodifiableView();
+                notIn_.makeImmutable();
+                return notIn_;
             }
 
             /**
@@ -43525,6 +43569,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.set(index, value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -43546,6 +43591,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.add(value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -43564,6 +43610,7 @@ public final class Validate {
             public Builder addAllNotIn(java.lang.Iterable<java.lang.String> values) {
                 ensureNotInIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -43579,8 +43626,9 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder clearNotIn() {
-                notIn_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000004);
+                ;
                 onChanged();
                 return this;
             }
@@ -43602,6 +43650,7 @@ public final class Validate {
                 }
                 ensureNotInIsMutable();
                 notIn_.add(value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -43988,11 +44037,6 @@ public final class Validate {
             return new DurationRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_DurationRules_descriptor;
         }
@@ -44008,7 +44052,7 @@ public final class Validate {
 
         public static final int REQUIRED_FIELD_NUMBER = 1;
 
-        private boolean required_;
+        private boolean required_ = false;
 
         /**
          * <pre>
@@ -44272,6 +44316,7 @@ public final class Validate {
 
         public static final int IN_FIELD_NUMBER = 7;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.google.protobuf.Duration> in_;
 
         /**
@@ -44341,6 +44386,7 @@ public final class Validate {
 
         public static final int NOT_IN_FIELD_NUMBER = 8;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.google.protobuf.Duration> notIn_;
 
         /**
@@ -44717,38 +44763,33 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 required_ = false;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                if (constBuilder_ == null) {
-                    const_ = null;
-                } else {
-                    constBuilder_.clear();
+                const_ = null;
+                if (constBuilder_ != null) {
+                    constBuilder_.dispose();
+                    constBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000002);
-                if (ltBuilder_ == null) {
-                    lt_ = null;
-                } else {
-                    ltBuilder_.clear();
+                lt_ = null;
+                if (ltBuilder_ != null) {
+                    ltBuilder_.dispose();
+                    ltBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000004);
-                if (lteBuilder_ == null) {
-                    lte_ = null;
-                } else {
-                    lteBuilder_.clear();
+                lte_ = null;
+                if (lteBuilder_ != null) {
+                    lteBuilder_.dispose();
+                    lteBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000008);
-                if (gtBuilder_ == null) {
-                    gt_ = null;
-                } else {
-                    gtBuilder_.clear();
+                gt_ = null;
+                if (gtBuilder_ != null) {
+                    gtBuilder_.dispose();
+                    gtBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000010);
-                if (gteBuilder_ == null) {
-                    gte_ = null;
-                } else {
-                    gteBuilder_.clear();
+                gte_ = null;
+                if (gteBuilder_ != null) {
+                    gteBuilder_.dispose();
+                    gteBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000020);
                 if (inBuilder_ == null) {
                     in_ = java.util.Collections.emptyList();
                 } else {
@@ -44789,52 +44830,15 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.DurationRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.DurationRules result = new io.envoyproxy.pgv.validate.Validate.DurationRules(
                         this);
-                int from_bitField0_ = bitField0_;
-                int to_bitField0_ = 0;
-                if (((from_bitField0_ & 0x00000001) != 0)) {
-                    result.required_ = required_;
-                    to_bitField0_ |= 0x00000001;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (((from_bitField0_ & 0x00000002) != 0)) {
-                    if (constBuilder_ == null) {
-                        result.const_ = const_;
-                    } else {
-                        result.const_ = constBuilder_.build();
-                    }
-                    to_bitField0_ |= 0x00000002;
-                }
-                if (((from_bitField0_ & 0x00000004) != 0)) {
-                    if (ltBuilder_ == null) {
-                        result.lt_ = lt_;
-                    } else {
-                        result.lt_ = ltBuilder_.build();
-                    }
-                    to_bitField0_ |= 0x00000004;
-                }
-                if (((from_bitField0_ & 0x00000008) != 0)) {
-                    if (lteBuilder_ == null) {
-                        result.lte_ = lte_;
-                    } else {
-                        result.lte_ = lteBuilder_.build();
-                    }
-                    to_bitField0_ |= 0x00000008;
-                }
-                if (((from_bitField0_ & 0x00000010) != 0)) {
-                    if (gtBuilder_ == null) {
-                        result.gt_ = gt_;
-                    } else {
-                        result.gt_ = gtBuilder_.build();
-                    }
-                    to_bitField0_ |= 0x00000010;
-                }
-                if (((from_bitField0_ & 0x00000020) != 0)) {
-                    if (gteBuilder_ == null) {
-                        result.gte_ = gte_;
-                    } else {
-                        result.gte_ = gteBuilder_.build();
-                    }
-                    to_bitField0_ |= 0x00000020;
-                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(io.envoyproxy.pgv.validate.Validate.DurationRules result) {
                 if (inBuilder_ == null) {
                     if (((bitField0_ & 0x00000040) != 0)) {
                         in_ = java.util.Collections.unmodifiableList(in_);
@@ -44853,9 +44857,36 @@ public final class Validate {
                 } else {
                     result.notIn_ = notInBuilder_.build();
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.DurationRules result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.required_ = required_;
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.const_ = constBuilder_ == null ? const_ : constBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.lt_ = ltBuilder_ == null ? lt_ : ltBuilder_.build();
+                    to_bitField0_ |= 0x00000004;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.lte_ = lteBuilder_ == null ? lte_ : lteBuilder_.build();
+                    to_bitField0_ |= 0x00000008;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.gt_ = gtBuilder_ == null ? gt_ : gtBuilder_.build();
+                    to_bitField0_ |= 0x00000010;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.gte_ = gteBuilder_ == null ? gte_ : gteBuilder_.build();
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -45118,8 +45149,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setRequired(boolean value) {
-                bitField0_ |= 0x00000001;
                 required_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -45187,11 +45218,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     const_ = value;
-                    onChanged();
                 } else {
                     constBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -45205,11 +45236,11 @@ public final class Validate {
             public Builder setConst(com.google.protobuf.Duration.Builder builderForValue) {
                 if (constBuilder_ == null) {
                     const_ = builderForValue.build();
-                    onChanged();
                 } else {
                     constBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -45224,15 +45255,17 @@ public final class Validate {
                 if (constBuilder_ == null) {
                     if (((bitField0_ & 0x00000002) != 0) && const_ != null
                             && const_ != com.google.protobuf.Duration.getDefaultInstance()) {
-                        const_ = com.google.protobuf.Duration.newBuilder(const_).mergeFrom(value).buildPartial();
+                        getConstBuilder().mergeFrom(value);
                     } else {
                         const_ = value;
                     }
-                    onChanged();
                 } else {
                     constBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000002;
+                if (const_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -45244,13 +45277,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Duration const = 2;</code>
              */
             public Builder clearConst() {
-                if (constBuilder_ == null) {
-                    const_ = null;
-                    onChanged();
-                } else {
-                    constBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000002);
+                const_ = null;
+                if (constBuilder_ != null) {
+                    constBuilder_.dispose();
+                    constBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -45348,11 +45381,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     lt_ = value;
-                    onChanged();
                 } else {
                     ltBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -45367,11 +45400,11 @@ public final class Validate {
             public Builder setLt(com.google.protobuf.Duration.Builder builderForValue) {
                 if (ltBuilder_ == null) {
                     lt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     ltBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -45387,15 +45420,17 @@ public final class Validate {
                 if (ltBuilder_ == null) {
                     if (((bitField0_ & 0x00000004) != 0) && lt_ != null
                             && lt_ != com.google.protobuf.Duration.getDefaultInstance()) {
-                        lt_ = com.google.protobuf.Duration.newBuilder(lt_).mergeFrom(value).buildPartial();
+                        getLtBuilder().mergeFrom(value);
                     } else {
                         lt_ = value;
                     }
-                    onChanged();
                 } else {
                     ltBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000004;
+                if (lt_ != null) {
+                    bitField0_ |= 0x00000004;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -45408,13 +45443,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Duration lt = 3;</code>
              */
             public Builder clearLt() {
-                if (ltBuilder_ == null) {
-                    lt_ = null;
-                    onChanged();
-                } else {
-                    ltBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000004);
+                lt_ = null;
+                if (ltBuilder_ != null) {
+                    ltBuilder_.dispose();
+                    ltBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -45515,11 +45550,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     lte_ = value;
-                    onChanged();
                 } else {
                     lteBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -45534,11 +45569,11 @@ public final class Validate {
             public Builder setLte(com.google.protobuf.Duration.Builder builderForValue) {
                 if (lteBuilder_ == null) {
                     lte_ = builderForValue.build();
-                    onChanged();
                 } else {
                     lteBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -45554,15 +45589,17 @@ public final class Validate {
                 if (lteBuilder_ == null) {
                     if (((bitField0_ & 0x00000008) != 0) && lte_ != null
                             && lte_ != com.google.protobuf.Duration.getDefaultInstance()) {
-                        lte_ = com.google.protobuf.Duration.newBuilder(lte_).mergeFrom(value).buildPartial();
+                        getLteBuilder().mergeFrom(value);
                     } else {
                         lte_ = value;
                     }
-                    onChanged();
                 } else {
                     lteBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000008;
+                if (lte_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -45575,13 +45612,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Duration lte = 4;</code>
              */
             public Builder clearLte() {
-                if (lteBuilder_ == null) {
-                    lte_ = null;
-                    onChanged();
-                } else {
-                    lteBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000008);
+                lte_ = null;
+                if (lteBuilder_ != null) {
+                    lteBuilder_.dispose();
+                    lteBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -45682,11 +45719,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     gt_ = value;
-                    onChanged();
                 } else {
                     gtBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -45701,11 +45738,11 @@ public final class Validate {
             public Builder setGt(com.google.protobuf.Duration.Builder builderForValue) {
                 if (gtBuilder_ == null) {
                     gt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     gtBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -45721,15 +45758,17 @@ public final class Validate {
                 if (gtBuilder_ == null) {
                     if (((bitField0_ & 0x00000010) != 0) && gt_ != null
                             && gt_ != com.google.protobuf.Duration.getDefaultInstance()) {
-                        gt_ = com.google.protobuf.Duration.newBuilder(gt_).mergeFrom(value).buildPartial();
+                        getGtBuilder().mergeFrom(value);
                     } else {
                         gt_ = value;
                     }
-                    onChanged();
                 } else {
                     gtBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000010;
+                if (gt_ != null) {
+                    bitField0_ |= 0x00000010;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -45742,13 +45781,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Duration gt = 5;</code>
              */
             public Builder clearGt() {
-                if (gtBuilder_ == null) {
-                    gt_ = null;
-                    onChanged();
-                } else {
-                    gtBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000010);
+                gt_ = null;
+                if (gtBuilder_ != null) {
+                    gtBuilder_.dispose();
+                    gtBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -45849,11 +45888,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     gte_ = value;
-                    onChanged();
                 } else {
                     gteBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000020;
+                onChanged();
                 return this;
             }
 
@@ -45868,11 +45907,11 @@ public final class Validate {
             public Builder setGte(com.google.protobuf.Duration.Builder builderForValue) {
                 if (gteBuilder_ == null) {
                     gte_ = builderForValue.build();
-                    onChanged();
                 } else {
                     gteBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000020;
+                onChanged();
                 return this;
             }
 
@@ -45888,15 +45927,17 @@ public final class Validate {
                 if (gteBuilder_ == null) {
                     if (((bitField0_ & 0x00000020) != 0) && gte_ != null
                             && gte_ != com.google.protobuf.Duration.getDefaultInstance()) {
-                        gte_ = com.google.protobuf.Duration.newBuilder(gte_).mergeFrom(value).buildPartial();
+                        getGteBuilder().mergeFrom(value);
                     } else {
                         gte_ = value;
                     }
-                    onChanged();
                 } else {
                     gteBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000020;
+                if (gte_ != null) {
+                    bitField0_ |= 0x00000020;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -45909,13 +45950,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Duration gte = 6;</code>
              */
             public Builder clearGte() {
-                if (gteBuilder_ == null) {
-                    gte_ = null;
-                    onChanged();
-                } else {
-                    gteBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000020);
+                gte_ = null;
+                if (gteBuilder_ != null) {
+                    gteBuilder_.dispose();
+                    gteBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -46987,11 +47028,6 @@ public final class Validate {
             return new TimestampRules();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return io.envoyproxy.pgv.validate.Validate.internal_static_validate_TimestampRules_descriptor;
         }
@@ -47007,7 +47043,7 @@ public final class Validate {
 
         public static final int REQUIRED_FIELD_NUMBER = 1;
 
-        private boolean required_;
+        private boolean required_ = false;
 
         /**
          * <pre>
@@ -47271,7 +47307,7 @@ public final class Validate {
 
         public static final int LT_NOW_FIELD_NUMBER = 7;
 
-        private boolean ltNow_;
+        private boolean ltNow_ = false;
 
         /**
          * <pre>
@@ -47305,7 +47341,7 @@ public final class Validate {
 
         public static final int GT_NOW_FIELD_NUMBER = 8;
 
-        private boolean gtNow_;
+        private boolean gtNow_ = false;
 
         /**
          * <pre>
@@ -47719,48 +47755,40 @@ public final class Validate {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 required_ = false;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                if (constBuilder_ == null) {
-                    const_ = null;
-                } else {
-                    constBuilder_.clear();
+                const_ = null;
+                if (constBuilder_ != null) {
+                    constBuilder_.dispose();
+                    constBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000002);
-                if (ltBuilder_ == null) {
-                    lt_ = null;
-                } else {
-                    ltBuilder_.clear();
+                lt_ = null;
+                if (ltBuilder_ != null) {
+                    ltBuilder_.dispose();
+                    ltBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000004);
-                if (lteBuilder_ == null) {
-                    lte_ = null;
-                } else {
-                    lteBuilder_.clear();
+                lte_ = null;
+                if (lteBuilder_ != null) {
+                    lteBuilder_.dispose();
+                    lteBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000008);
-                if (gtBuilder_ == null) {
-                    gt_ = null;
-                } else {
-                    gtBuilder_.clear();
+                gt_ = null;
+                if (gtBuilder_ != null) {
+                    gtBuilder_.dispose();
+                    gtBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000010);
-                if (gteBuilder_ == null) {
-                    gte_ = null;
-                } else {
-                    gteBuilder_.clear();
+                gte_ = null;
+                if (gteBuilder_ != null) {
+                    gteBuilder_.dispose();
+                    gteBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000020);
                 ltNow_ = false;
-                bitField0_ = (bitField0_ & ~0x00000040);
                 gtNow_ = false;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                if (withinBuilder_ == null) {
-                    within_ = null;
-                } else {
-                    withinBuilder_.clear();
+                within_ = null;
+                if (withinBuilder_ != null) {
+                    withinBuilder_.dispose();
+                    withinBuilder_ = null;
                 }
-                bitField0_ = (bitField0_ & ~0x00000100);
                 return this;
             }
 
@@ -47787,6 +47815,14 @@ public final class Validate {
             public io.envoyproxy.pgv.validate.Validate.TimestampRules buildPartial() {
                 io.envoyproxy.pgv.validate.Validate.TimestampRules result = new io.envoyproxy.pgv.validate.Validate.TimestampRules(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(io.envoyproxy.pgv.validate.Validate.TimestampRules result) {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -47794,43 +47830,23 @@ public final class Validate {
                     to_bitField0_ |= 0x00000001;
                 }
                 if (((from_bitField0_ & 0x00000002) != 0)) {
-                    if (constBuilder_ == null) {
-                        result.const_ = const_;
-                    } else {
-                        result.const_ = constBuilder_.build();
-                    }
+                    result.const_ = constBuilder_ == null ? const_ : constBuilder_.build();
                     to_bitField0_ |= 0x00000002;
                 }
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    if (ltBuilder_ == null) {
-                        result.lt_ = lt_;
-                    } else {
-                        result.lt_ = ltBuilder_.build();
-                    }
+                    result.lt_ = ltBuilder_ == null ? lt_ : ltBuilder_.build();
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    if (lteBuilder_ == null) {
-                        result.lte_ = lte_;
-                    } else {
-                        result.lte_ = lteBuilder_.build();
-                    }
+                    result.lte_ = lteBuilder_ == null ? lte_ : lteBuilder_.build();
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
-                    if (gtBuilder_ == null) {
-                        result.gt_ = gt_;
-                    } else {
-                        result.gt_ = gtBuilder_.build();
-                    }
+                    result.gt_ = gtBuilder_ == null ? gt_ : gtBuilder_.build();
                     to_bitField0_ |= 0x00000010;
                 }
                 if (((from_bitField0_ & 0x00000020) != 0)) {
-                    if (gteBuilder_ == null) {
-                        result.gte_ = gte_;
-                    } else {
-                        result.gte_ = gteBuilder_.build();
-                    }
+                    result.gte_ = gteBuilder_ == null ? gte_ : gteBuilder_.build();
                     to_bitField0_ |= 0x00000020;
                 }
                 if (((from_bitField0_ & 0x00000040) != 0)) {
@@ -47842,16 +47858,10 @@ public final class Validate {
                     to_bitField0_ |= 0x00000080;
                 }
                 if (((from_bitField0_ & 0x00000100) != 0)) {
-                    if (withinBuilder_ == null) {
-                        result.within_ = within_;
-                    } else {
-                        result.within_ = withinBuilder_.build();
-                    }
+                    result.within_ = withinBuilder_ == null ? within_ : withinBuilder_.build();
                     to_bitField0_ |= 0x00000100;
                 }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -48066,8 +48076,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setRequired(boolean value) {
-                bitField0_ |= 0x00000001;
                 required_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -48135,11 +48145,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     const_ = value;
-                    onChanged();
                 } else {
                     constBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -48153,11 +48163,11 @@ public final class Validate {
             public Builder setConst(com.google.protobuf.Timestamp.Builder builderForValue) {
                 if (constBuilder_ == null) {
                     const_ = builderForValue.build();
-                    onChanged();
                 } else {
                     constBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -48172,15 +48182,17 @@ public final class Validate {
                 if (constBuilder_ == null) {
                     if (((bitField0_ & 0x00000002) != 0) && const_ != null
                             && const_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-                        const_ = com.google.protobuf.Timestamp.newBuilder(const_).mergeFrom(value).buildPartial();
+                        getConstBuilder().mergeFrom(value);
                     } else {
                         const_ = value;
                     }
-                    onChanged();
                 } else {
                     constBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000002;
+                if (const_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -48192,13 +48204,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Timestamp const = 2;</code>
              */
             public Builder clearConst() {
-                if (constBuilder_ == null) {
-                    const_ = null;
-                    onChanged();
-                } else {
-                    constBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000002);
+                const_ = null;
+                if (constBuilder_ != null) {
+                    constBuilder_.dispose();
+                    constBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -48296,11 +48308,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     lt_ = value;
-                    onChanged();
                 } else {
                     ltBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -48315,11 +48327,11 @@ public final class Validate {
             public Builder setLt(com.google.protobuf.Timestamp.Builder builderForValue) {
                 if (ltBuilder_ == null) {
                     lt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     ltBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -48335,15 +48347,17 @@ public final class Validate {
                 if (ltBuilder_ == null) {
                     if (((bitField0_ & 0x00000004) != 0) && lt_ != null
                             && lt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-                        lt_ = com.google.protobuf.Timestamp.newBuilder(lt_).mergeFrom(value).buildPartial();
+                        getLtBuilder().mergeFrom(value);
                     } else {
                         lt_ = value;
                     }
-                    onChanged();
                 } else {
                     ltBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000004;
+                if (lt_ != null) {
+                    bitField0_ |= 0x00000004;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -48356,13 +48370,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Timestamp lt = 3;</code>
              */
             public Builder clearLt() {
-                if (ltBuilder_ == null) {
-                    lt_ = null;
-                    onChanged();
-                } else {
-                    ltBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000004);
+                lt_ = null;
+                if (ltBuilder_ != null) {
+                    ltBuilder_.dispose();
+                    ltBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -48463,11 +48477,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     lte_ = value;
-                    onChanged();
                 } else {
                     lteBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -48482,11 +48496,11 @@ public final class Validate {
             public Builder setLte(com.google.protobuf.Timestamp.Builder builderForValue) {
                 if (lteBuilder_ == null) {
                     lte_ = builderForValue.build();
-                    onChanged();
                 } else {
                     lteBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -48502,15 +48516,17 @@ public final class Validate {
                 if (lteBuilder_ == null) {
                     if (((bitField0_ & 0x00000008) != 0) && lte_ != null
                             && lte_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-                        lte_ = com.google.protobuf.Timestamp.newBuilder(lte_).mergeFrom(value).buildPartial();
+                        getLteBuilder().mergeFrom(value);
                     } else {
                         lte_ = value;
                     }
-                    onChanged();
                 } else {
                     lteBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000008;
+                if (lte_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -48523,13 +48539,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Timestamp lte = 4;</code>
              */
             public Builder clearLte() {
-                if (lteBuilder_ == null) {
-                    lte_ = null;
-                    onChanged();
-                } else {
-                    lteBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000008);
+                lte_ = null;
+                if (lteBuilder_ != null) {
+                    lteBuilder_.dispose();
+                    lteBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -48630,11 +48646,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     gt_ = value;
-                    onChanged();
                 } else {
                     gtBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -48649,11 +48665,11 @@ public final class Validate {
             public Builder setGt(com.google.protobuf.Timestamp.Builder builderForValue) {
                 if (gtBuilder_ == null) {
                     gt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     gtBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -48669,15 +48685,17 @@ public final class Validate {
                 if (gtBuilder_ == null) {
                     if (((bitField0_ & 0x00000010) != 0) && gt_ != null
                             && gt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-                        gt_ = com.google.protobuf.Timestamp.newBuilder(gt_).mergeFrom(value).buildPartial();
+                        getGtBuilder().mergeFrom(value);
                     } else {
                         gt_ = value;
                     }
-                    onChanged();
                 } else {
                     gtBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000010;
+                if (gt_ != null) {
+                    bitField0_ |= 0x00000010;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -48690,13 +48708,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Timestamp gt = 5;</code>
              */
             public Builder clearGt() {
-                if (gtBuilder_ == null) {
-                    gt_ = null;
-                    onChanged();
-                } else {
-                    gtBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000010);
+                gt_ = null;
+                if (gtBuilder_ != null) {
+                    gtBuilder_.dispose();
+                    gtBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -48797,11 +48815,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     gte_ = value;
-                    onChanged();
                 } else {
                     gteBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000020;
+                onChanged();
                 return this;
             }
 
@@ -48816,11 +48834,11 @@ public final class Validate {
             public Builder setGte(com.google.protobuf.Timestamp.Builder builderForValue) {
                 if (gteBuilder_ == null) {
                     gte_ = builderForValue.build();
-                    onChanged();
                 } else {
                     gteBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000020;
+                onChanged();
                 return this;
             }
 
@@ -48836,15 +48854,17 @@ public final class Validate {
                 if (gteBuilder_ == null) {
                     if (((bitField0_ & 0x00000020) != 0) && gte_ != null
                             && gte_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-                        gte_ = com.google.protobuf.Timestamp.newBuilder(gte_).mergeFrom(value).buildPartial();
+                        getGteBuilder().mergeFrom(value);
                     } else {
                         gte_ = value;
                     }
-                    onChanged();
                 } else {
                     gteBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000020;
+                if (gte_ != null) {
+                    bitField0_ |= 0x00000020;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -48857,13 +48877,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Timestamp gte = 6;</code>
              */
             public Builder clearGte() {
-                if (gteBuilder_ == null) {
-                    gte_ = null;
-                    onChanged();
-                } else {
-                    gteBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000020);
+                gte_ = null;
+                if (gteBuilder_ != null) {
+                    gteBuilder_.dispose();
+                    gteBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 
@@ -48958,8 +48978,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setLtNow(boolean value) {
-                bitField0_ |= 0x00000040;
                 ltNow_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -49025,8 +49045,8 @@ public final class Validate {
              * @return This builder for chaining.
              */
             public Builder setGtNow(boolean value) {
-                bitField0_ |= 0x00000080;
                 gtNow_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -49101,11 +49121,11 @@ public final class Validate {
                         throw new NullPointerException();
                     }
                     within_ = value;
-                    onChanged();
                 } else {
                     withinBuilder_.setMessage(value);
                 }
                 bitField0_ |= 0x00000100;
+                onChanged();
                 return this;
             }
 
@@ -49121,11 +49141,11 @@ public final class Validate {
             public Builder setWithin(com.google.protobuf.Duration.Builder builderForValue) {
                 if (withinBuilder_ == null) {
                     within_ = builderForValue.build();
-                    onChanged();
                 } else {
                     withinBuilder_.setMessage(builderForValue.build());
                 }
                 bitField0_ |= 0x00000100;
+                onChanged();
                 return this;
             }
 
@@ -49142,15 +49162,17 @@ public final class Validate {
                 if (withinBuilder_ == null) {
                     if (((bitField0_ & 0x00000100) != 0) && within_ != null
                             && within_ != com.google.protobuf.Duration.getDefaultInstance()) {
-                        within_ = com.google.protobuf.Duration.newBuilder(within_).mergeFrom(value).buildPartial();
+                        getWithinBuilder().mergeFrom(value);
                     } else {
                         within_ = value;
                     }
-                    onChanged();
                 } else {
                     withinBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000100;
+                if (within_ != null) {
+                    bitField0_ |= 0x00000100;
+                    onChanged();
+                }
                 return this;
             }
 
@@ -49164,13 +49186,13 @@ public final class Validate {
              * <code>optional .google.protobuf.Duration within = 9;</code>
              */
             public Builder clearWithin() {
-                if (withinBuilder_ == null) {
-                    within_ = null;
-                    onChanged();
-                } else {
-                    withinBuilder_.clear();
-                }
                 bitField0_ = (bitField0_ & ~0x00000100);
+                within_ = null;
+                if (withinBuilder_ != null) {
+                    withinBuilder_.dispose();
+                    withinBuilder_ = null;
+                }
+                onChanged();
                 return this;
             }
 

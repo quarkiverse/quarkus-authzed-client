@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 import io.quarkus.grpc.MutinyClient;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v0/developer.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v0/developer.proto")
 public class DeveloperServiceClient
         implements DeveloperService, MutinyClient<MutinyDeveloperServiceGrpc.MutinyDeveloperServiceStub> {
 
