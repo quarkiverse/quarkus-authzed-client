@@ -45,6 +45,16 @@ public class PermissionsServiceBean extends MutinyPermissionsServiceGrpc.Permiss
     }
 
     @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+        try {
+            return delegate.checkBulkPermissions(request);
+        } catch (UnsupportedOperationException e) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+    }
+
+    @Override
     public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> expandPermissionTree(
             com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request) {
         try {

@@ -114,6 +114,31 @@ public final class PermissionsServiceGrpc {
         return getCheckPermissionMethod;
     }
 
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> getCheckBulkPermissionsMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "CheckBulkPermissions", requestType = com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.class, responseType = com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> getCheckBulkPermissionsMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> getCheckBulkPermissionsMethod;
+        if ((getCheckBulkPermissionsMethod = PermissionsServiceGrpc.getCheckBulkPermissionsMethod) == null) {
+            synchronized (PermissionsServiceGrpc.class) {
+                if ((getCheckBulkPermissionsMethod = PermissionsServiceGrpc.getCheckBulkPermissionsMethod) == null) {
+                    PermissionsServiceGrpc.getCheckBulkPermissionsMethod = getCheckBulkPermissionsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckBulkPermissions"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(new PermissionsServiceMethodDescriptorSupplier("CheckBulkPermissions"))
+                            .build();
+                }
+            }
+        }
+        return getCheckBulkPermissionsMethod;
+    }
+
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest, com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> getExpandPermissionTreeMethod;
 
     @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
@@ -286,6 +311,17 @@ public final class PermissionsServiceGrpc {
 
         /**
          * <pre>
+         * CheckBulkPermissions evaluates the given list of permission checks
+         * and returns the list of results.
+         * </pre>
+         */
+        default void checkBulkPermissions(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckBulkPermissionsMethod(), responseObserver);
+        }
+
+        /**
+         * <pre>
          * ExpandPermissionTree reveals the graph structure for a resource's
          * permission or relation. This RPC does not recurse infinitely deep and may
          * require multiple calls to fully unnest a deeply nested graph.
@@ -407,6 +443,18 @@ public final class PermissionsServiceGrpc {
 
         /**
          * <pre>
+         * CheckBulkPermissions evaluates the given list of permission checks
+         * and returns the list of results.
+         * </pre>
+         */
+        public void checkBulkPermissions(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(getChannel().newCall(getCheckBulkPermissionsMethod(), getCallOptions()),
+                    request, responseObserver);
+        }
+
+        /**
+         * <pre>
          * ExpandPermissionTree reveals the graph structure for a resource's
          * permission or relation. This RPC does not recurse infinitely deep and may
          * require multiple calls to fully unnest a deeply nested graph.
@@ -516,6 +564,18 @@ public final class PermissionsServiceGrpc {
 
         /**
          * <pre>
+         * CheckBulkPermissions evaluates the given list of permission checks
+         * and returns the list of results.
+         * </pre>
+         */
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse checkBulkPermissions(
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getCheckBulkPermissionsMethod(), getCallOptions(),
+                    request);
+        }
+
+        /**
+         * <pre>
          * ExpandPermissionTree reveals the graph structure for a resource's
          * permission or relation. This RPC does not recurse infinitely deep and may
          * require multiple calls to fully unnest a deeply nested graph.
@@ -612,6 +672,18 @@ public final class PermissionsServiceGrpc {
 
         /**
          * <pre>
+         * CheckBulkPermissions evaluates the given list of permission checks
+         * and returns the list of results.
+         * </pre>
+         */
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+            return io.grpc.stub.ClientCalls
+                    .futureUnaryCall(getChannel().newCall(getCheckBulkPermissionsMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
          * ExpandPermissionTree reveals the graph structure for a resource's
          * permission or relation. This RPC does not recurse infinitely deep and may
          * require multiple calls to fully unnest a deeply nested graph.
@@ -632,11 +704,13 @@ public final class PermissionsServiceGrpc {
 
     private static final int METHODID_CHECK_PERMISSION = 3;
 
-    private static final int METHODID_EXPAND_PERMISSION_TREE = 4;
+    private static final int METHODID_CHECK_BULK_PERMISSIONS = 4;
 
-    private static final int METHODID_LOOKUP_RESOURCES = 5;
+    private static final int METHODID_EXPAND_PERMISSION_TREE = 5;
 
-    private static final int METHODID_LOOKUP_SUBJECTS = 6;
+    private static final int METHODID_LOOKUP_RESOURCES = 6;
+
+    private static final int METHODID_LOOKUP_SUBJECTS = 7;
 
     private static final class MethodHandlers<Req, Resp> implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
@@ -670,6 +744,10 @@ public final class PermissionsServiceGrpc {
                 case METHODID_CHECK_PERMISSION:
                     serviceImpl.checkPermission((com.authzed.api.v1.PermissionService.CheckPermissionRequest) request,
                             (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckPermissionResponse>) responseObserver);
+                    break;
+                case METHODID_CHECK_BULK_PERMISSIONS:
+                    serviceImpl.checkBulkPermissions((com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse>) responseObserver);
                     break;
                 case METHODID_EXPAND_PERMISSION_TREE:
                     serviceImpl.expandPermissionTree((com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest) request,
@@ -712,6 +790,9 @@ public final class PermissionsServiceGrpc {
                 .addMethod(getCheckPermissionMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
                         new MethodHandlers<com.authzed.api.v1.PermissionService.CheckPermissionRequest, com.authzed.api.v1.PermissionService.CheckPermissionResponse>(
                                 service, METHODID_CHECK_PERMISSION)))
+                .addMethod(getCheckBulkPermissionsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse>(
+                                service, METHODID_CHECK_BULK_PERMISSIONS)))
                 .addMethod(getExpandPermissionTreeMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
                         new MethodHandlers<com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest, com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse>(
                                 service, METHODID_EXPAND_PERMISSION_TREE)))
@@ -774,8 +855,8 @@ public final class PermissionsServiceGrpc {
                             .setSchemaDescriptor(new PermissionsServiceFileDescriptorSupplier())
                             .addMethod(getReadRelationshipsMethod()).addMethod(getWriteRelationshipsMethod())
                             .addMethod(getDeleteRelationshipsMethod()).addMethod(getCheckPermissionMethod())
-                            .addMethod(getExpandPermissionTreeMethod()).addMethod(getLookupResourcesMethod())
-                            .addMethod(getLookupSubjectsMethod()).build();
+                            .addMethod(getCheckBulkPermissionsMethod()).addMethod(getExpandPermissionTreeMethod())
+                            .addMethod(getLookupResourcesMethod()).addMethod(getLookupSubjectsMethod()).build();
                 }
             }
         }

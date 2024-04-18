@@ -21,7 +21,7 @@ docker run --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export
 docker run --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export buf.build/authzed/api:${PROTO_SHA} -o $PROTO_DIR_IN_DOCKER
 
 # Need to put _ between watch and resources due to MacOS case sensitive, else maven will fail
-mv $PROTO_DIR/authzed/api/v1alpha1/watchresources_service.proto $PROTO_DIR/authzed/api/v1alpha1/watch_resources_service.proto
+sudo mv $PROTO_DIR/authzed/api/v1alpha1/watchresources_service.proto $PROTO_DIR/authzed/api/v1alpha1/watch_resources_service.proto
 
 echo "Generating gRPC client"
 mvn clean package -Pgenerate -pl :quarkus-authzed-grpc-generator

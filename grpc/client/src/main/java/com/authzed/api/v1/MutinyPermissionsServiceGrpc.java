@@ -78,6 +78,17 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
 
         /**
          * <pre>
+         *  CheckBulkPermissions evaluates the given list of permission checks
+         *  and returns the list of results.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::checkBulkPermissions);
+        }
+
+        /**
+         * <pre>
          *  ExpandPermissionTree reveals the graph structure for a resource&#39;s
          *  permission or relation. This RPC does not recurse infinitely deep and may
          *  require multiple calls to fully unnest a deeply nested graph.
@@ -180,6 +191,17 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
 
         /**
          * <pre>
+         *  CheckBulkPermissions evaluates the given list of permission checks
+         *  and returns the list of results.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
          *  ExpandPermissionTree reveals the graph structure for a resource&#39;s
          *  permission or relation. This RPC does not recurse infinitely deep and may
          *  require multiple calls to fully unnest a deeply nested graph.
@@ -238,6 +260,9 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getCheckPermissionMethod(), asyncUnaryCall(
                             new MethodHandlers<com.authzed.api.v1.PermissionService.CheckPermissionRequest, com.authzed.api.v1.PermissionService.CheckPermissionResponse>(
                                     this, METHODID_CHECK_PERMISSION, compression)))
+                    .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getCheckBulkPermissionsMethod(), asyncUnaryCall(
+                            new MethodHandlers<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse>(
+                                    this, METHODID_CHECK_BULK_PERMISSIONS, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getExpandPermissionTreeMethod(), asyncUnaryCall(
                             new MethodHandlers<com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest, com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse>(
                                     this, METHODID_EXPAND_PERMISSION_TREE, compression)))
@@ -259,11 +284,13 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
 
     private static final int METHODID_CHECK_PERMISSION = 3;
 
-    private static final int METHODID_EXPAND_PERMISSION_TREE = 4;
+    private static final int METHODID_CHECK_BULK_PERMISSIONS = 4;
 
-    private static final int METHODID_LOOKUP_RESOURCES = 5;
+    private static final int METHODID_EXPAND_PERMISSION_TREE = 5;
 
-    private static final int METHODID_LOOKUP_SUBJECTS = 6;
+    private static final int METHODID_LOOKUP_RESOURCES = 6;
+
+    private static final int METHODID_LOOKUP_SUBJECTS = 7;
 
     private static final class MethodHandlers<Req, Resp> implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
@@ -308,6 +335,12 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
                             (com.authzed.api.v1.PermissionService.CheckPermissionRequest) request,
                             (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckPermissionResponse>) responseObserver,
                             compression, serviceImpl::checkPermission);
+                    break;
+                case METHODID_CHECK_BULK_PERMISSIONS:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
+                            (com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse>) responseObserver,
+                            compression, serviceImpl::checkBulkPermissions);
                     break;
                 case METHODID_EXPAND_PERMISSION_TREE:
                     io.quarkus.grpc.stubs.ServerCalls.oneToOne(

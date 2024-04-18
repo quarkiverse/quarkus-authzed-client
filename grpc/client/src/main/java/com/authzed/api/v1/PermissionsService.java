@@ -37,6 +37,15 @@ public interface PermissionsService extends MutinyService {
 
     /**
      * <pre>
+     *  CheckBulkPermissions evaluates the given list of permission checks
+     *  and returns the list of results.
+     * </pre>
+     */
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request);
+
+    /**
+     * <pre>
      *  ExpandPermissionTree reveals the graph structure for a resource&#39;s
      *  permission or relation. This RPC does not recurse infinitely deep and may
      *  require multiple calls to fully unnest a deeply nested graph.

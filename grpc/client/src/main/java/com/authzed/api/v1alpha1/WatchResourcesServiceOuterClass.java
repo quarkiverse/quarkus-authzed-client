@@ -3752,7 +3752,7 @@ public final class WatchResourcesServiceOuterClass {
                 + "ervice.proto\022\024authzed.api.v1alpha1\032\034goog" + "le/api/annotations.proto\032\027validate/valid"
                 + "ate.proto\032\031authzed/api/v1/core.proto\"\265\002\n"
                 + "\025WatchResourcesRequest\022f\n\024resource_objec"
-                + "t_type\030\001 \001(\tBH\372BErC(\200\0012>^([a-z][a-z0-9_]" + "{1,61}[a-z0-9]/)?[a-z][a-z0-9_]{1,62}[a-"
+                + "t_type\030\001 \001(\tBH\372BErC(\200\0012>^([a-z][a-z0-9_]" + "{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-"
                 + "z0-9]$\022;\n\npermission\030\002 \001(\tB\'\372B$r\"(@2\036^[a"
                 + "-z][a-z0-9_]{1,62}[a-z0-9]$\022\033\n\023subject_o"
                 + "bject_type\030\003 \001(\t\022!\n\031optional_subject_rel"

@@ -47,6 +47,12 @@ public class PermissionsServiceClient
     }
 
     @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+        return stub.checkBulkPermissions(request);
+    }
+
+    @Override
     public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> expandPermissionTree(
             com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request) {
         return stub.expandPermissionTree(request);

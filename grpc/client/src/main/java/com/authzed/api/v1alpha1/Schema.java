@@ -3328,7 +3328,7 @@ public final class Schema {
                 + "hzed.api.v1alpha1\032\027validate/validate.pro"
                 + "to\"\204\001\n\021ReadSchemaRequest\022o\n\030object_defin"
                 + "itions_names\030\001 \003(\tBM\372BJ\222\001G\"ErC(\200\0012>^([a-"
-                + "z][a-z0-9_]{1,62}[a-z0-9]/)?[a-z][a-z0-9" + "_]{1,62}[a-z0-9]$\"W\n\022ReadSchemaResponse\022"
+                + "z][a-z0-9_]{1,62}[a-z0-9]/)*[a-z][a-z0-9" + "_]{1,62}[a-z0-9]$\"W\n\022ReadSchemaResponse\022"
                 + "\032\n\022object_definitions\030\001 \003(\t\022%\n\035computed_"
                 + "definitions_revision\030\002 \001(\t\"c\n\022WriteSchem"
                 + "aRequest\022\031\n\006schema\030\001 \001(\tB\t\372B\006r\004(\200\200\020\0222\n*o"

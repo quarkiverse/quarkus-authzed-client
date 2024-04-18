@@ -14,6 +14,123 @@ public final class PermissionService {
         registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
     }
 
+    /**
+     * <pre>
+     * LookupPermissionship represents whether a Lookup response was partially evaluated or not
+     * </pre>
+     *
+     * Protobuf enum {@code authzed.api.v1.LookupPermissionship}
+     */
+    public enum LookupPermissionship implements com.google.protobuf.ProtocolMessageEnum {
+
+        /**
+         * <code>LOOKUP_PERMISSIONSHIP_UNSPECIFIED = 0;</code>
+         */
+        LOOKUP_PERMISSIONSHIP_UNSPECIFIED(0),
+        /**
+         * <code>LOOKUP_PERMISSIONSHIP_HAS_PERMISSION = 1;</code>
+         */
+        LOOKUP_PERMISSIONSHIP_HAS_PERMISSION(1),
+        /**
+         * <code>LOOKUP_PERMISSIONSHIP_CONDITIONAL_PERMISSION = 2;</code>
+         */
+        LOOKUP_PERMISSIONSHIP_CONDITIONAL_PERMISSION(2),
+        UNRECOGNIZED(-1);
+
+        /**
+         * <code>LOOKUP_PERMISSIONSHIP_UNSPECIFIED = 0;</code>
+         */
+        public static final int LOOKUP_PERMISSIONSHIP_UNSPECIFIED_VALUE = 0;
+
+        /**
+         * <code>LOOKUP_PERMISSIONSHIP_HAS_PERMISSION = 1;</code>
+         */
+        public static final int LOOKUP_PERMISSIONSHIP_HAS_PERMISSION_VALUE = 1;
+
+        /**
+         * <code>LOOKUP_PERMISSIONSHIP_CONDITIONAL_PERMISSION = 2;</code>
+         */
+        public static final int LOOKUP_PERMISSIONSHIP_CONDITIONAL_PERMISSION_VALUE = 2;
+
+        public final int getNumber() {
+            if (this == UNRECOGNIZED) {
+                throw new java.lang.IllegalArgumentException("Can't get the number of an unknown enum value.");
+            }
+            return value;
+        }
+
+        /**
+         * @param value The numeric wire value of the corresponding enum entry.
+         * @return The enum associated with the given numeric wire value.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static LookupPermissionship valueOf(int value) {
+            return forNumber(value);
+        }
+
+        /**
+         * @param value The numeric wire value of the corresponding enum entry.
+         * @return The enum associated with the given numeric wire value.
+         */
+        public static LookupPermissionship forNumber(int value) {
+            switch (value) {
+                case 0:
+                    return LOOKUP_PERMISSIONSHIP_UNSPECIFIED;
+                case 1:
+                    return LOOKUP_PERMISSIONSHIP_HAS_PERMISSION;
+                case 2:
+                    return LOOKUP_PERMISSIONSHIP_CONDITIONAL_PERMISSION;
+                default:
+                    return null;
+            }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<LookupPermissionship> internalGetValueMap() {
+            return internalValueMap;
+        }
+
+        private static final com.google.protobuf.Internal.EnumLiteMap<LookupPermissionship> internalValueMap = new com.google.protobuf.Internal.EnumLiteMap<LookupPermissionship>() {
+
+            public LookupPermissionship findValueByNumber(int number) {
+                return LookupPermissionship.forNumber(number);
+            }
+        };
+
+        public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+            if (this == UNRECOGNIZED) {
+                throw new java.lang.IllegalStateException("Can't get the descriptor of an unrecognized enum value.");
+            }
+            return getDescriptor().getValues().get(ordinal());
+        }
+
+        public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+            return getDescriptor();
+        }
+
+        public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+            return com.authzed.api.v1.PermissionService.getDescriptor().getEnumTypes().get(0);
+        }
+
+        private static final LookupPermissionship[] VALUES = values();
+
+        public static LookupPermissionship valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            if (desc.getType() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+            }
+            if (desc.getIndex() == -1) {
+                return UNRECOGNIZED;
+            }
+            return VALUES[desc.getIndex()];
+        }
+
+        private final int value;
+
+        private LookupPermissionship(int value) {
+            this.value = value;
+        }
+    }
+
     public interface ConsistencyOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.Consistency)
             com.google.protobuf.MessageOrBuilder {
 
@@ -1465,6 +1582,11 @@ public final class PermissionService {
             com.google.protobuf.MessageOrBuilder {
 
         /**
+         * <pre>
+         * resource_type is the *optional* resource type of the relationship.
+         * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+         * </pre>
+         *
          * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The resourceType.
@@ -1472,6 +1594,11 @@ public final class PermissionService {
         java.lang.String getResourceType();
 
         /**
+         * <pre>
+         * resource_type is the *optional* resource type of the relationship.
+         * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+         * </pre>
+         *
          * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The bytes for resourceType.
@@ -1479,6 +1606,11 @@ public final class PermissionService {
         com.google.protobuf.ByteString getResourceTypeBytes();
 
         /**
+         * <pre>
+         * optional_resource_id is the *optional* resource ID of the relationship.
+         * If specified, optional_resource_id_prefix cannot be specified.
+         * </pre>
+         *
          * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The optionalResourceId.
@@ -1486,6 +1618,11 @@ public final class PermissionService {
         java.lang.String getOptionalResourceId();
 
         /**
+         * <pre>
+         * optional_resource_id is the *optional* resource ID of the relationship.
+         * If specified, optional_resource_id_prefix cannot be specified.
+         * </pre>
+         *
          * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The bytes for optionalResourceId.
@@ -1493,6 +1630,34 @@ public final class PermissionService {
         com.google.protobuf.ByteString getOptionalResourceIdBytes();
 
         /**
+         * <pre>
+         * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+         * If specified, optional_resource_id cannot be specified.
+         * </pre>
+         *
+         * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalResourceIdPrefix.
+         */
+        java.lang.String getOptionalResourceIdPrefix();
+
+        /**
+         * <pre>
+         * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+         * If specified, optional_resource_id cannot be specified.
+         * </pre>
+         *
+         * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for optionalResourceIdPrefix.
+         */
+        com.google.protobuf.ByteString getOptionalResourceIdPrefixBytes();
+
+        /**
+         * <pre>
+         * relation is the *optional* relation of the relationship.
+         * </pre>
+         *
          * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The optionalRelation.
@@ -1500,6 +1665,10 @@ public final class PermissionService {
         java.lang.String getOptionalRelation();
 
         /**
+         * <pre>
+         * relation is the *optional* relation of the relationship.
+         * </pre>
+         *
          * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The bytes for optionalRelation.
@@ -1507,6 +1676,10 @@ public final class PermissionService {
         com.google.protobuf.ByteString getOptionalRelationBytes();
 
         /**
+         * <pre>
+         * optional_subject_filter is the optional filter for the subjects of the relationships.
+         * </pre>
+         *
          * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
          *
          * @return Whether the optionalSubjectFilter field is set.
@@ -1514,6 +1687,10 @@ public final class PermissionService {
         boolean hasOptionalSubjectFilter();
 
         /**
+         * <pre>
+         * optional_subject_filter is the optional filter for the subjects of the relationships.
+         * </pre>
+         *
          * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
          *
          * @return The optionalSubjectFilter.
@@ -1521,6 +1698,10 @@ public final class PermissionService {
         com.authzed.api.v1.PermissionService.SubjectFilter getOptionalSubjectFilter();
 
         /**
+         * <pre>
+         * optional_subject_filter is the optional filter for the subjects of the relationships.
+         * </pre>
+         *
          * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
          */
         com.authzed.api.v1.PermissionService.SubjectFilterOrBuilder getOptionalSubjectFilterOrBuilder();
@@ -1531,8 +1712,12 @@ public final class PermissionService {
      * RelationshipFilter is a collection of filters which when applied to a
      * relationship will return relationships that have exactly matching fields.
      *
-     * resource_type is required. All other fields are optional and if left
-     * unspecified will not filter relationships.
+     * All fields are optional and if left unspecified will not filter relationships,
+     * but at least one field must be specified.
+     *
+     * NOTE: The performance of the API will be affected by the selection of fields
+     * on which to filter. If a field is not indexed, the performance of the API
+     * can be significantly slower.
      * </pre>
      *
      * Protobuf type {@code authzed.api.v1.RelationshipFilter}
@@ -1550,6 +1735,7 @@ public final class PermissionService {
         private RelationshipFilter() {
             resourceType_ = "";
             optionalResourceId_ = "";
+            optionalResourceIdPrefix_ = "";
             optionalRelation_ = "";
         }
 
@@ -1576,6 +1762,11 @@ public final class PermissionService {
         private volatile java.lang.Object resourceType_ = "";
 
         /**
+         * <pre>
+         * resource_type is the *optional* resource type of the relationship.
+         * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+         * </pre>
+         *
          * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The resourceType.
@@ -1594,6 +1785,11 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * resource_type is the *optional* resource type of the relationship.
+         * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+         * </pre>
+         *
          * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The bytes for resourceType.
@@ -1616,6 +1812,11 @@ public final class PermissionService {
         private volatile java.lang.Object optionalResourceId_ = "";
 
         /**
+         * <pre>
+         * optional_resource_id is the *optional* resource ID of the relationship.
+         * If specified, optional_resource_id_prefix cannot be specified.
+         * </pre>
+         *
          * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The optionalResourceId.
@@ -1634,6 +1835,11 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * optional_resource_id is the *optional* resource ID of the relationship.
+         * If specified, optional_resource_id_prefix cannot be specified.
+         * </pre>
+         *
          * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The bytes for optionalResourceId.
@@ -1650,12 +1856,66 @@ public final class PermissionService {
             }
         }
 
+        public static final int OPTIONAL_RESOURCE_ID_PREFIX_FIELD_NUMBER = 5;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalResourceIdPrefix_ = "";
+
+        /**
+         * <pre>
+         * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+         * If specified, optional_resource_id cannot be specified.
+         * </pre>
+         *
+         * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalResourceIdPrefix.
+         */
+        @java.lang.Override
+        public java.lang.String getOptionalResourceIdPrefix() {
+            java.lang.Object ref = optionalResourceIdPrefix_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                optionalResourceIdPrefix_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <pre>
+         * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+         * If specified, optional_resource_id cannot be specified.
+         * </pre>
+         *
+         * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for optionalResourceIdPrefix.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getOptionalResourceIdPrefixBytes() {
+            java.lang.Object ref = optionalResourceIdPrefix_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                optionalResourceIdPrefix_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
         public static final int OPTIONAL_RELATION_FIELD_NUMBER = 3;
 
         @SuppressWarnings("serial")
         private volatile java.lang.Object optionalRelation_ = "";
 
         /**
+         * <pre>
+         * relation is the *optional* relation of the relationship.
+         * </pre>
+         *
          * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The optionalRelation.
@@ -1674,6 +1934,10 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * relation is the *optional* relation of the relationship.
+         * </pre>
+         *
          * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The bytes for optionalRelation.
@@ -1695,6 +1959,10 @@ public final class PermissionService {
         private com.authzed.api.v1.PermissionService.SubjectFilter optionalSubjectFilter_;
 
         /**
+         * <pre>
+         * optional_subject_filter is the optional filter for the subjects of the relationships.
+         * </pre>
+         *
          * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
          *
          * @return Whether the optionalSubjectFilter field is set.
@@ -1705,6 +1973,10 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * optional_subject_filter is the optional filter for the subjects of the relationships.
+         * </pre>
+         *
          * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
          *
          * @return The optionalSubjectFilter.
@@ -1716,6 +1988,10 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * optional_subject_filter is the optional filter for the subjects of the relationships.
+         * </pre>
+         *
          * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
          */
         @java.lang.Override
@@ -1751,6 +2027,9 @@ public final class PermissionService {
             if (optionalSubjectFilter_ != null) {
                 output.writeMessage(4, getOptionalSubjectFilter());
             }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalResourceIdPrefix_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 5, optionalResourceIdPrefix_);
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -1772,6 +2051,9 @@ public final class PermissionService {
             if (optionalSubjectFilter_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getOptionalSubjectFilter());
             }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalResourceIdPrefix_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, optionalResourceIdPrefix_);
+            }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
@@ -1789,6 +2071,8 @@ public final class PermissionService {
             if (!getResourceType().equals(other.getResourceType()))
                 return false;
             if (!getOptionalResourceId().equals(other.getOptionalResourceId()))
+                return false;
+            if (!getOptionalResourceIdPrefix().equals(other.getOptionalResourceIdPrefix()))
                 return false;
             if (!getOptionalRelation().equals(other.getOptionalRelation()))
                 return false;
@@ -1814,6 +2098,8 @@ public final class PermissionService {
             hash = (53 * hash) + getResourceType().hashCode();
             hash = (37 * hash) + OPTIONAL_RESOURCE_ID_FIELD_NUMBER;
             hash = (53 * hash) + getOptionalResourceId().hashCode();
+            hash = (37 * hash) + OPTIONAL_RESOURCE_ID_PREFIX_FIELD_NUMBER;
+            hash = (53 * hash) + getOptionalResourceIdPrefix().hashCode();
             hash = (37 * hash) + OPTIONAL_RELATION_FIELD_NUMBER;
             hash = (53 * hash) + getOptionalRelation().hashCode();
             if (hasOptionalSubjectFilter()) {
@@ -1918,8 +2204,12 @@ public final class PermissionService {
          * RelationshipFilter is a collection of filters which when applied to a
          * relationship will return relationships that have exactly matching fields.
          *
-         * resource_type is required. All other fields are optional and if left
-         * unspecified will not filter relationships.
+         * All fields are optional and if left unspecified will not filter relationships,
+         * but at least one field must be specified.
+         *
+         * NOTE: The performance of the API will be affected by the selection of fields
+         * on which to filter. If a field is not indexed, the performance of the API
+         * can be significantly slower.
          * </pre>
          *
          * Protobuf type {@code authzed.api.v1.RelationshipFilter}
@@ -1952,6 +2242,7 @@ public final class PermissionService {
                 bitField0_ = 0;
                 resourceType_ = "";
                 optionalResourceId_ = "";
+                optionalResourceIdPrefix_ = "";
                 optionalRelation_ = "";
                 optionalSubjectFilter_ = null;
                 if (optionalSubjectFilterBuilder_ != null) {
@@ -2000,9 +2291,12 @@ public final class PermissionService {
                     result.optionalResourceId_ = optionalResourceId_;
                 }
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    result.optionalRelation_ = optionalRelation_;
+                    result.optionalResourceIdPrefix_ = optionalResourceIdPrefix_;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.optionalRelation_ = optionalRelation_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
                     result.optionalSubjectFilter_ = optionalSubjectFilterBuilder_ == null ? optionalSubjectFilter_
                             : optionalSubjectFilterBuilder_.build();
                 }
@@ -2031,9 +2325,14 @@ public final class PermissionService {
                     bitField0_ |= 0x00000002;
                     onChanged();
                 }
+                if (!other.getOptionalResourceIdPrefix().isEmpty()) {
+                    optionalResourceIdPrefix_ = other.optionalResourceIdPrefix_;
+                    bitField0_ |= 0x00000004;
+                    onChanged();
+                }
                 if (!other.getOptionalRelation().isEmpty()) {
                     optionalRelation_ = other.optionalRelation_;
-                    bitField0_ |= 0x00000004;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (other.hasOptionalSubjectFilter()) {
@@ -2077,16 +2376,22 @@ public final class PermissionService {
                             // case 18
                             case 26: {
                                 optionalRelation_ = input.readStringRequireUtf8();
-                                bitField0_ |= 0x00000004;
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 input.readMessage(getOptionalSubjectFilterFieldBuilder().getBuilder(), extensionRegistry);
-                                bitField0_ |= 0x00000008;
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 34
+                            case 42: {
+                                optionalResourceIdPrefix_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 42
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -2112,6 +2417,11 @@ public final class PermissionService {
             private java.lang.Object resourceType_ = "";
 
             /**
+             * <pre>
+             * resource_type is the *optional* resource type of the relationship.
+             * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+             * </pre>
+             *
              * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
              *
              * @return The resourceType.
@@ -2129,6 +2439,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_type is the *optional* resource type of the relationship.
+             * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+             * </pre>
+             *
              * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
              *
              * @return The bytes for resourceType.
@@ -2145,6 +2460,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_type is the *optional* resource type of the relationship.
+             * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+             * </pre>
+             *
              * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
              *
              * @param value The resourceType to set.
@@ -2161,6 +2481,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_type is the *optional* resource type of the relationship.
+             * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+             * </pre>
+             *
              * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
@@ -2173,6 +2498,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_type is the *optional* resource type of the relationship.
+             * NOTE: It is not prefixed with "optional_" for legacy compatibility.
+             * </pre>
+             *
              * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
              *
              * @param value The bytes for resourceType to set.
@@ -2192,6 +2522,11 @@ public final class PermissionService {
             private java.lang.Object optionalResourceId_ = "";
 
             /**
+             * <pre>
+             * optional_resource_id is the *optional* resource ID of the relationship.
+             * If specified, optional_resource_id_prefix cannot be specified.
+             * </pre>
+             *
              * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
              *
              * @return The optionalResourceId.
@@ -2209,6 +2544,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * optional_resource_id is the *optional* resource ID of the relationship.
+             * If specified, optional_resource_id_prefix cannot be specified.
+             * </pre>
+             *
              * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
              *
              * @return The bytes for optionalResourceId.
@@ -2225,6 +2565,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * optional_resource_id is the *optional* resource ID of the relationship.
+             * If specified, optional_resource_id_prefix cannot be specified.
+             * </pre>
+             *
              * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
              *
              * @param value The optionalResourceId to set.
@@ -2241,6 +2586,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * optional_resource_id is the *optional* resource ID of the relationship.
+             * If specified, optional_resource_id_prefix cannot be specified.
+             * </pre>
+             *
              * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
@@ -2253,6 +2603,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * optional_resource_id is the *optional* resource ID of the relationship.
+             * If specified, optional_resource_id_prefix cannot be specified.
+             * </pre>
+             *
              * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
              *
              * @param value The bytes for optionalResourceId to set.
@@ -2269,9 +2624,118 @@ public final class PermissionService {
                 return this;
             }
 
+            private java.lang.Object optionalResourceIdPrefix_ = "";
+
+            /**
+             * <pre>
+             * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+             * If specified, optional_resource_id cannot be specified.
+             * </pre>
+             *
+             * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @return The optionalResourceIdPrefix.
+             */
+            public java.lang.String getOptionalResourceIdPrefix() {
+                java.lang.Object ref = optionalResourceIdPrefix_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    optionalResourceIdPrefix_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+             * If specified, optional_resource_id cannot be specified.
+             * </pre>
+             *
+             * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @return The bytes for optionalResourceIdPrefix.
+             */
+            public com.google.protobuf.ByteString getOptionalResourceIdPrefixBytes() {
+                java.lang.Object ref = optionalResourceIdPrefix_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    optionalResourceIdPrefix_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+             * If specified, optional_resource_id cannot be specified.
+             * </pre>
+             *
+             * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The optionalResourceIdPrefix to set.
+             * @return This builder for chaining.
+             */
+            public Builder setOptionalResourceIdPrefix(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                optionalResourceIdPrefix_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+             * If specified, optional_resource_id cannot be specified.
+             * </pre>
+             *
+             * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearOptionalResourceIdPrefix() {
+                optionalResourceIdPrefix_ = getDefaultInstance().getOptionalResourceIdPrefix();
+                bitField0_ = (bitField0_ & ~0x00000004);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
+             * If specified, optional_resource_id cannot be specified.
+             * </pre>
+             *
+             * <code>string optional_resource_id_prefix = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The bytes for optionalResourceIdPrefix to set.
+             * @return This builder for chaining.
+             */
+            public Builder setOptionalResourceIdPrefixBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                optionalResourceIdPrefix_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
             private java.lang.Object optionalRelation_ = "";
 
             /**
+             * <pre>
+             * relation is the *optional* relation of the relationship.
+             * </pre>
+             *
              * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
              *
              * @return The optionalRelation.
@@ -2289,6 +2753,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relation is the *optional* relation of the relationship.
+             * </pre>
+             *
              * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
              *
              * @return The bytes for optionalRelation.
@@ -2305,6 +2773,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relation is the *optional* relation of the relationship.
+             * </pre>
+             *
              * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
              *
              * @param value The optionalRelation to set.
@@ -2315,24 +2787,32 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 optionalRelation_ = value;
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * relation is the *optional* relation of the relationship.
+             * </pre>
+             *
              * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
              */
             public Builder clearOptionalRelation() {
                 optionalRelation_ = getDefaultInstance().getOptionalRelation();
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * relation is the *optional* relation of the relationship.
+             * </pre>
+             *
              * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
              *
              * @param value The bytes for optionalRelation to set.
@@ -2344,7 +2824,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 optionalRelation_ = value;
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -2354,15 +2834,23 @@ public final class PermissionService {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.SubjectFilter, com.authzed.api.v1.PermissionService.SubjectFilter.Builder, com.authzed.api.v1.PermissionService.SubjectFilterOrBuilder> optionalSubjectFilterBuilder_;
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              *
              * @return Whether the optionalSubjectFilter field is set.
              */
             public boolean hasOptionalSubjectFilter() {
-                return ((bitField0_ & 0x00000008) != 0);
+                return ((bitField0_ & 0x00000010) != 0);
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              *
              * @return The optionalSubjectFilter.
@@ -2378,6 +2866,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public Builder setOptionalSubjectFilter(com.authzed.api.v1.PermissionService.SubjectFilter value) {
@@ -2389,12 +2881,16 @@ public final class PermissionService {
                 } else {
                     optionalSubjectFilterBuilder_.setMessage(value);
                 }
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public Builder setOptionalSubjectFilter(
@@ -2404,17 +2900,21 @@ public final class PermissionService {
                 } else {
                     optionalSubjectFilterBuilder_.setMessage(builderForValue.build());
                 }
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public Builder mergeOptionalSubjectFilter(com.authzed.api.v1.PermissionService.SubjectFilter value) {
                 if (optionalSubjectFilterBuilder_ == null) {
-                    if (((bitField0_ & 0x00000008) != 0) && optionalSubjectFilter_ != null
+                    if (((bitField0_ & 0x00000010) != 0) && optionalSubjectFilter_ != null
                             && optionalSubjectFilter_ != com.authzed.api.v1.PermissionService.SubjectFilter
                                     .getDefaultInstance()) {
                         getOptionalSubjectFilterBuilder().mergeFrom(value);
@@ -2424,16 +2924,20 @@ public final class PermissionService {
                 } else {
                     optionalSubjectFilterBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public Builder clearOptionalSubjectFilter() {
-                bitField0_ = (bitField0_ & ~0x00000008);
+                bitField0_ = (bitField0_ & ~0x00000010);
                 optionalSubjectFilter_ = null;
                 if (optionalSubjectFilterBuilder_ != null) {
                     optionalSubjectFilterBuilder_.dispose();
@@ -2444,15 +2948,23 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public com.authzed.api.v1.PermissionService.SubjectFilter.Builder getOptionalSubjectFilterBuilder() {
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return getOptionalSubjectFilterFieldBuilder().getBuilder();
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public com.authzed.api.v1.PermissionService.SubjectFilterOrBuilder getOptionalSubjectFilterOrBuilder() {
@@ -2466,6 +2978,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * optional_subject_filter is the optional filter for the subjects of the relationships.
+             * </pre>
+             *
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.SubjectFilter, com.authzed.api.v1.PermissionService.SubjectFilter.Builder, com.authzed.api.v1.PermissionService.SubjectFilterOrBuilder> getOptionalSubjectFilterFieldBuilder() {
@@ -4000,6 +4516,11 @@ public final class PermissionService {
         com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder();
 
         /**
+         * <pre>
+         * relationship_filter defines the filter to be applied to the relationships
+         * to be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the relationshipFilter field is set.
@@ -4007,6 +4528,11 @@ public final class PermissionService {
         boolean hasRelationshipFilter();
 
         /**
+         * <pre>
+         * relationship_filter defines the filter to be applied to the relationships
+         * to be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The relationshipFilter.
@@ -4014,9 +4540,62 @@ public final class PermissionService {
         com.authzed.api.v1.PermissionService.RelationshipFilter getRelationshipFilter();
 
         /**
+         * <pre>
+         * relationship_filter defines the filter to be applied to the relationships
+         * to be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getRelationshipFilterOrBuilder();
+
+        /**
+         * <pre>
+         * optional_limit, if non-zero, specifies the limit on the number of relationships to return
+         * before the stream is closed on the server side. By default, the stream will continue
+         * resolving relationships until exhausted or the stream is closed due to the client or a
+         * network issue.
+         * </pre>
+         *
+         * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalLimit.
+         */
+        int getOptionalLimit();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the ReadRelationshipsResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+         *
+         * @return Whether the optionalCursor field is set.
+         */
+        boolean hasOptionalCursor();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the ReadRelationshipsResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+         *
+         * @return The optionalCursor.
+         */
+        com.authzed.api.v1.Core.Cursor getOptionalCursor();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the ReadRelationshipsResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+         */
+        com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder();
     }
 
     /**
@@ -4094,6 +4673,11 @@ public final class PermissionService {
         private com.authzed.api.v1.PermissionService.RelationshipFilter relationshipFilter_;
 
         /**
+         * <pre>
+         * relationship_filter defines the filter to be applied to the relationships
+         * to be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the relationshipFilter field is set.
@@ -4104,6 +4688,11 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * relationship_filter defines the filter to be applied to the relationships
+         * to be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The relationshipFilter.
@@ -4115,12 +4704,85 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * relationship_filter defines the filter to be applied to the relationships
+         * to be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getRelationshipFilterOrBuilder() {
             return relationshipFilter_ == null ? com.authzed.api.v1.PermissionService.RelationshipFilter.getDefaultInstance()
                     : relationshipFilter_;
+        }
+
+        public static final int OPTIONAL_LIMIT_FIELD_NUMBER = 3;
+
+        private int optionalLimit_ = 0;
+
+        /**
+         * <pre>
+         * optional_limit, if non-zero, specifies the limit on the number of relationships to return
+         * before the stream is closed on the server side. By default, the stream will continue
+         * resolving relationships until exhausted or the stream is closed due to the client or a
+         * network issue.
+         * </pre>
+         *
+         * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalLimit.
+         */
+        @java.lang.Override
+        public int getOptionalLimit() {
+            return optionalLimit_;
+        }
+
+        public static final int OPTIONAL_CURSOR_FIELD_NUMBER = 4;
+
+        private com.authzed.api.v1.Core.Cursor optionalCursor_;
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the ReadRelationshipsResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+         *
+         * @return Whether the optionalCursor field is set.
+         */
+        @java.lang.Override
+        public boolean hasOptionalCursor() {
+            return optionalCursor_ != null;
+        }
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the ReadRelationshipsResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+         *
+         * @return The optionalCursor.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.Cursor getOptionalCursor() {
+            return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+        }
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the ReadRelationshipsResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder() {
+            return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -4144,6 +4806,12 @@ public final class PermissionService {
             if (relationshipFilter_ != null) {
                 output.writeMessage(2, getRelationshipFilter());
             }
+            if (optionalLimit_ != 0) {
+                output.writeUInt32(3, optionalLimit_);
+            }
+            if (optionalCursor_ != null) {
+                output.writeMessage(4, getOptionalCursor());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -4158,6 +4826,12 @@ public final class PermissionService {
             }
             if (relationshipFilter_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getRelationshipFilter());
+            }
+            if (optionalLimit_ != 0) {
+                size += com.google.protobuf.CodedOutputStream.computeUInt32Size(3, optionalLimit_);
+            }
+            if (optionalCursor_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getOptionalCursor());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -4185,6 +4859,14 @@ public final class PermissionService {
                 if (!getRelationshipFilter().equals(other.getRelationshipFilter()))
                     return false;
             }
+            if (getOptionalLimit() != other.getOptionalLimit())
+                return false;
+            if (hasOptionalCursor() != other.hasOptionalCursor())
+                return false;
+            if (hasOptionalCursor()) {
+                if (!getOptionalCursor().equals(other.getOptionalCursor()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -4204,6 +4886,12 @@ public final class PermissionService {
             if (hasRelationshipFilter()) {
                 hash = (37 * hash) + RELATIONSHIP_FILTER_FIELD_NUMBER;
                 hash = (53 * hash) + getRelationshipFilter().hashCode();
+            }
+            hash = (37 * hash) + OPTIONAL_LIMIT_FIELD_NUMBER;
+            hash = (53 * hash) + getOptionalLimit();
+            if (hasOptionalCursor()) {
+                hash = (37 * hash) + OPTIONAL_CURSOR_FIELD_NUMBER;
+                hash = (53 * hash) + getOptionalCursor().hashCode();
             }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
@@ -4343,6 +5031,12 @@ public final class PermissionService {
                     relationshipFilterBuilder_.dispose();
                     relationshipFilterBuilder_ = null;
                 }
+                optionalLimit_ = 0;
+                optionalCursor_ = null;
+                if (optionalCursorBuilder_ != null) {
+                    optionalCursorBuilder_.dispose();
+                    optionalCursorBuilder_ = null;
+                }
                 return this;
             }
 
@@ -4385,6 +5079,12 @@ public final class PermissionService {
                     result.relationshipFilter_ = relationshipFilterBuilder_ == null ? relationshipFilter_
                             : relationshipFilterBuilder_.build();
                 }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.optionalLimit_ = optionalLimit_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.optionalCursor_ = optionalCursorBuilder_ == null ? optionalCursor_ : optionalCursorBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -4405,6 +5105,12 @@ public final class PermissionService {
                 }
                 if (other.hasRelationshipFilter()) {
                     mergeRelationshipFilter(other.getRelationshipFilter());
+                }
+                if (other.getOptionalLimit() != 0) {
+                    setOptionalLimit(other.getOptionalLimit());
+                }
+                if (other.hasOptionalCursor()) {
+                    mergeOptionalCursor(other.getOptionalCursor());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -4442,6 +5148,18 @@ public final class PermissionService {
                                 break;
                             }
                             // case 18
+                            case 24: {
+                                optionalLimit_ = input.readUInt32();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 24
+                            case 34: {
+                                input.readMessage(getOptionalCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 34
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -4593,6 +5311,11 @@ public final class PermissionService {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.RelationshipFilter, com.authzed.api.v1.PermissionService.RelationshipFilter.Builder, com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder> relationshipFilterBuilder_;
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              *
              * @return Whether the relationshipFilter field is set.
@@ -4602,6 +5325,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              *
              * @return The relationshipFilter.
@@ -4617,6 +5345,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder setRelationshipFilter(com.authzed.api.v1.PermissionService.RelationshipFilter value) {
@@ -4634,6 +5367,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder setRelationshipFilter(
@@ -4649,6 +5387,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder mergeRelationshipFilter(com.authzed.api.v1.PermissionService.RelationshipFilter value) {
@@ -4669,6 +5412,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearRelationshipFilter() {
@@ -4683,6 +5431,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.PermissionService.RelationshipFilter.Builder getRelationshipFilterBuilder() {
@@ -4692,6 +5445,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getRelationshipFilterOrBuilder() {
@@ -4705,6 +5463,11 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * relationship_filter defines the filter to be applied to the relationships
+             * to be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.RelationshipFilter, com.authzed.api.v1.PermissionService.RelationshipFilter.Builder, com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder> getRelationshipFilterFieldBuilder() {
@@ -4714,6 +5477,231 @@ public final class PermissionService {
                     relationshipFilter_ = null;
                 }
                 return relationshipFilterBuilder_;
+            }
+
+            private int optionalLimit_;
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of relationships to return
+             * before the stream is closed on the server side. By default, the stream will continue
+             * resolving relationships until exhausted or the stream is closed due to the client or a
+             * network issue.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return The optionalLimit.
+             */
+            @java.lang.Override
+            public int getOptionalLimit() {
+                return optionalLimit_;
+            }
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of relationships to return
+             * before the stream is closed on the server side. By default, the stream will continue
+             * resolving relationships until exhausted or the stream is closed due to the client or a
+             * network issue.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The optionalLimit to set.
+             * @return This builder for chaining.
+             */
+            public Builder setOptionalLimit(int value) {
+                optionalLimit_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of relationships to return
+             * before the stream is closed on the server side. By default, the stream will continue
+             * resolving relationships until exhausted or the stream is closed due to the client or a
+             * network issue.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearOptionalLimit() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                optionalLimit_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.Cursor optionalCursor_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> optionalCursorBuilder_;
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             *
+             * @return Whether the optionalCursor field is set.
+             */
+            public boolean hasOptionalCursor() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             *
+             * @return The optionalCursor.
+             */
+            public com.authzed.api.v1.Core.Cursor getOptionalCursor() {
+                if (optionalCursorBuilder_ == null) {
+                    return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+                } else {
+                    return optionalCursorBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             */
+            public Builder setOptionalCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (optionalCursorBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    optionalCursor_ = value;
+                } else {
+                    optionalCursorBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             */
+            public Builder setOptionalCursor(com.authzed.api.v1.Core.Cursor.Builder builderForValue) {
+                if (optionalCursorBuilder_ == null) {
+                    optionalCursor_ = builderForValue.build();
+                } else {
+                    optionalCursorBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             */
+            public Builder mergeOptionalCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (optionalCursorBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) && optionalCursor_ != null
+                            && optionalCursor_ != com.authzed.api.v1.Core.Cursor.getDefaultInstance()) {
+                        getOptionalCursorBuilder().mergeFrom(value);
+                    } else {
+                        optionalCursor_ = value;
+                    }
+                } else {
+                    optionalCursorBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             */
+            public Builder clearOptionalCursor() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                optionalCursor_ = null;
+                if (optionalCursorBuilder_ != null) {
+                    optionalCursorBuilder_.dispose();
+                    optionalCursorBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             */
+            public com.authzed.api.v1.Core.Cursor.Builder getOptionalCursorBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getOptionalCursorFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             */
+            public com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder() {
+                if (optionalCursorBuilder_ != null) {
+                    return optionalCursorBuilder_.getMessageOrBuilder();
+                } else {
+                    return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the ReadRelationshipsResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 4;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> getOptionalCursorFieldBuilder() {
+                if (optionalCursorBuilder_ == null) {
+                    optionalCursorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder>(
+                            getOptionalCursor(), getParentForChildren(), isClean());
+                    optionalCursor_ = null;
+                }
+                return optionalCursorBuilder_;
             }
 
             @java.lang.Override
@@ -4779,42 +5767,100 @@ public final class PermissionService {
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+         * <pre>
+         * read_at is the ZedToken at which the relationship was found.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the readAt field is set.
          */
         boolean hasReadAt();
 
         /**
-         * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+         * <pre>
+         * read_at is the ZedToken at which the relationship was found.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The readAt.
          */
         com.authzed.api.v1.Core.ZedToken getReadAt();
 
         /**
-         * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+         * <pre>
+         * read_at is the ZedToken at which the relationship was found.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.ZedTokenOrBuilder getReadAtOrBuilder();
 
         /**
-         * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+         * <pre>
+         * relationship is the found relationship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the relationship field is set.
          */
         boolean hasRelationship();
 
         /**
-         * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+         * <pre>
+         * relationship is the found relationship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The relationship.
          */
         com.authzed.api.v1.Core.Relationship getRelationship();
 
         /**
-         * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+         * <pre>
+         * relationship is the found relationship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.RelationshipOrBuilder getRelationshipOrBuilder();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+         *
+         * @return Whether the afterResultCursor field is set.
+         */
+        boolean hasAfterResultCursor();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+         *
+         * @return The afterResultCursor.
+         */
+        com.authzed.api.v1.Core.Cursor getAfterResultCursor();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+         */
+        com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder();
     }
 
     /**
@@ -4861,7 +5907,11 @@ public final class PermissionService {
         private com.authzed.api.v1.Core.ZedToken readAt_;
 
         /**
-         * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+         * <pre>
+         * read_at is the ZedToken at which the relationship was found.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the readAt field is set.
          */
@@ -4871,7 +5921,11 @@ public final class PermissionService {
         }
 
         /**
-         * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+         * <pre>
+         * read_at is the ZedToken at which the relationship was found.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The readAt.
          */
@@ -4881,7 +5935,11 @@ public final class PermissionService {
         }
 
         /**
-         * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+         * <pre>
+         * read_at is the ZedToken at which the relationship was found.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getReadAtOrBuilder() {
@@ -4893,7 +5951,11 @@ public final class PermissionService {
         private com.authzed.api.v1.Core.Relationship relationship_;
 
         /**
-         * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+         * <pre>
+         * relationship is the found relationship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the relationship field is set.
          */
@@ -4903,7 +5965,11 @@ public final class PermissionService {
         }
 
         /**
-         * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+         * <pre>
+         * relationship is the found relationship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The relationship.
          */
@@ -4913,11 +5979,62 @@ public final class PermissionService {
         }
 
         /**
-         * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+         * <pre>
+         * relationship is the found relationship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.RelationshipOrBuilder getRelationshipOrBuilder() {
             return relationship_ == null ? com.authzed.api.v1.Core.Relationship.getDefaultInstance() : relationship_;
+        }
+
+        public static final int AFTER_RESULT_CURSOR_FIELD_NUMBER = 3;
+
+        private com.authzed.api.v1.Core.Cursor afterResultCursor_;
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+         *
+         * @return Whether the afterResultCursor field is set.
+         */
+        @java.lang.Override
+        public boolean hasAfterResultCursor() {
+            return afterResultCursor_ != null;
+        }
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+         *
+         * @return The afterResultCursor.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.Cursor getAfterResultCursor() {
+            return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : afterResultCursor_;
+        }
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder() {
+            return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : afterResultCursor_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -4941,6 +6058,9 @@ public final class PermissionService {
             if (relationship_ != null) {
                 output.writeMessage(2, getRelationship());
             }
+            if (afterResultCursor_ != null) {
+                output.writeMessage(3, getAfterResultCursor());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -4955,6 +6075,9 @@ public final class PermissionService {
             }
             if (relationship_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getRelationship());
+            }
+            if (afterResultCursor_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getAfterResultCursor());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -4982,6 +6105,12 @@ public final class PermissionService {
                 if (!getRelationship().equals(other.getRelationship()))
                     return false;
             }
+            if (hasAfterResultCursor() != other.hasAfterResultCursor())
+                return false;
+            if (hasAfterResultCursor()) {
+                if (!getAfterResultCursor().equals(other.getAfterResultCursor()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -5001,6 +6130,10 @@ public final class PermissionService {
             if (hasRelationship()) {
                 hash = (37 * hash) + RELATIONSHIP_FIELD_NUMBER;
                 hash = (53 * hash) + getRelationship().hashCode();
+            }
+            if (hasAfterResultCursor()) {
+                hash = (37 * hash) + AFTER_RESULT_CURSOR_FIELD_NUMBER;
+                hash = (53 * hash) + getAfterResultCursor().hashCode();
             }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
@@ -5141,6 +6274,11 @@ public final class PermissionService {
                     relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
+                afterResultCursor_ = null;
+                if (afterResultCursorBuilder_ != null) {
+                    afterResultCursorBuilder_.dispose();
+                    afterResultCursorBuilder_ = null;
+                }
                 return this;
             }
 
@@ -5182,6 +6320,10 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000002) != 0)) {
                     result.relationship_ = relationshipBuilder_ == null ? relationship_ : relationshipBuilder_.build();
                 }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.afterResultCursor_ = afterResultCursorBuilder_ == null ? afterResultCursor_
+                            : afterResultCursorBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -5202,6 +6344,9 @@ public final class PermissionService {
                 }
                 if (other.hasRelationship()) {
                     mergeRelationship(other.getRelationship());
+                }
+                if (other.hasAfterResultCursor()) {
+                    mergeAfterResultCursor(other.getAfterResultCursor());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -5239,6 +6384,12 @@ public final class PermissionService {
                                 break;
                             }
                             // case 18
+                            case 26: {
+                                input.readMessage(getAfterResultCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 26
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -5266,7 +6417,11 @@ public final class PermissionService {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> readAtBuilder_;
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              *
              * @return Whether the readAt field is set.
              */
@@ -5275,7 +6430,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              *
              * @return The readAt.
              */
@@ -5288,7 +6447,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder setReadAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (readAtBuilder_ == null) {
@@ -5305,7 +6468,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder setReadAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (readAtBuilder_ == null) {
@@ -5319,7 +6486,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder mergeReadAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (readAtBuilder_ == null) {
@@ -5338,7 +6509,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearReadAt() {
                 bitField0_ = (bitField0_ & ~0x00000001);
@@ -5352,7 +6527,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getReadAtBuilder() {
                 bitField0_ |= 0x00000001;
@@ -5361,7 +6540,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ZedTokenOrBuilder getReadAtOrBuilder() {
                 if (readAtBuilder_ != null) {
@@ -5372,7 +6555,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
+             * <pre>
+             * read_at is the ZedToken at which the relationship was found.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 1 [(.validate.rules) = { ... }</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getReadAtFieldBuilder() {
                 if (readAtBuilder_ == null) {
@@ -5388,7 +6575,11 @@ public final class PermissionService {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Relationship, com.authzed.api.v1.Core.Relationship.Builder, com.authzed.api.v1.Core.RelationshipOrBuilder> relationshipBuilder_;
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              *
              * @return Whether the relationship field is set.
              */
@@ -5397,7 +6588,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              *
              * @return The relationship.
              */
@@ -5410,7 +6605,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder setRelationship(com.authzed.api.v1.Core.Relationship value) {
                 if (relationshipBuilder_ == null) {
@@ -5427,7 +6626,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder setRelationship(com.authzed.api.v1.Core.Relationship.Builder builderForValue) {
                 if (relationshipBuilder_ == null) {
@@ -5441,7 +6644,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder mergeRelationship(com.authzed.api.v1.Core.Relationship value) {
                 if (relationshipBuilder_ == null) {
@@ -5460,7 +6667,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearRelationship() {
                 bitField0_ = (bitField0_ & ~0x00000002);
@@ -5474,7 +6685,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.Relationship.Builder getRelationshipBuilder() {
                 bitField0_ |= 0x00000002;
@@ -5483,7 +6698,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.RelationshipOrBuilder getRelationshipOrBuilder() {
                 if (relationshipBuilder_ != null) {
@@ -5494,7 +6713,11 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.Relationship relationship = 2;</code>
+             * <pre>
+             * relationship is the found relationship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Relationship, com.authzed.api.v1.Core.Relationship.Builder, com.authzed.api.v1.Core.RelationshipOrBuilder> getRelationshipFieldBuilder() {
                 if (relationshipBuilder_ == null) {
@@ -5503,6 +6726,175 @@ public final class PermissionService {
                     relationship_ = null;
                 }
                 return relationshipBuilder_;
+            }
+
+            private com.authzed.api.v1.Core.Cursor afterResultCursor_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> afterResultCursorBuilder_;
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             *
+             * @return Whether the afterResultCursor field is set.
+             */
+            public boolean hasAfterResultCursor() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             *
+             * @return The afterResultCursor.
+             */
+            public com.authzed.api.v1.Core.Cursor getAfterResultCursor() {
+                if (afterResultCursorBuilder_ == null) {
+                    return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance()
+                            : afterResultCursor_;
+                } else {
+                    return afterResultCursorBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             */
+            public Builder setAfterResultCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (afterResultCursorBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    afterResultCursor_ = value;
+                } else {
+                    afterResultCursorBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             */
+            public Builder setAfterResultCursor(com.authzed.api.v1.Core.Cursor.Builder builderForValue) {
+                if (afterResultCursorBuilder_ == null) {
+                    afterResultCursor_ = builderForValue.build();
+                } else {
+                    afterResultCursorBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             */
+            public Builder mergeAfterResultCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (afterResultCursorBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) && afterResultCursor_ != null
+                            && afterResultCursor_ != com.authzed.api.v1.Core.Cursor.getDefaultInstance()) {
+                        getAfterResultCursorBuilder().mergeFrom(value);
+                    } else {
+                        afterResultCursor_ = value;
+                    }
+                } else {
+                    afterResultCursorBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             */
+            public Builder clearAfterResultCursor() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                afterResultCursor_ = null;
+                if (afterResultCursorBuilder_ != null) {
+                    afterResultCursorBuilder_.dispose();
+                    afterResultCursorBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             */
+            public com.authzed.api.v1.Core.Cursor.Builder getAfterResultCursorBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getAfterResultCursorFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             */
+            public com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder() {
+                if (afterResultCursorBuilder_ != null) {
+                    return afterResultCursorBuilder_.getMessageOrBuilder();
+                } else {
+                    return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance()
+                            : afterResultCursor_;
+                }
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 3;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> getAfterResultCursorFieldBuilder() {
+                if (afterResultCursorBuilder_ == null) {
+                    afterResultCursorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder>(
+                            getAfterResultCursor(), getParentForChildren(), isClean());
+                    afterResultCursor_ = null;
+                }
+                return afterResultCursorBuilder_;
             }
 
             @java.lang.Override
@@ -8289,6 +9681,33 @@ public final class PermissionService {
          * <code>repeated .authzed.api.v1.Precondition optional_preconditions = 2 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.PermissionService.PreconditionOrBuilder getOptionalPreconditionsOrBuilder(int index);
+
+        /**
+         * <pre>
+         * optional_limit, if non-zero, specifies the limit on the number of relationships to be deleted.
+         * If there are more matching relationships found to be deleted than the limit specified here,
+         * the deletion call will fail with an error to prevent partial deletion. If partial deletion
+         * is needed, specify below that partial deletion is allowed. Partial deletions can be used
+         * in a loop to delete large amounts of relationships in a *non-transactional* manner.
+         * </pre>
+         *
+         * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalLimit.
+         */
+        int getOptionalLimit();
+
+        /**
+         * <pre>
+         * optional_allow_partial_deletions, if true and a limit is specified, will delete matching found
+         * relationships up to the count specified in optional_limit, and no more.
+         * </pre>
+         *
+         * <code>bool optional_allow_partial_deletions = 4;</code>
+         *
+         * @return The optionalAllowPartialDeletions.
+         */
+        boolean getOptionalAllowPartialDeletions();
     }
 
     /**
@@ -8432,6 +9851,47 @@ public final class PermissionService {
             return optionalPreconditions_.get(index);
         }
 
+        public static final int OPTIONAL_LIMIT_FIELD_NUMBER = 3;
+
+        private int optionalLimit_ = 0;
+
+        /**
+         * <pre>
+         * optional_limit, if non-zero, specifies the limit on the number of relationships to be deleted.
+         * If there are more matching relationships found to be deleted than the limit specified here,
+         * the deletion call will fail with an error to prevent partial deletion. If partial deletion
+         * is needed, specify below that partial deletion is allowed. Partial deletions can be used
+         * in a loop to delete large amounts of relationships in a *non-transactional* manner.
+         * </pre>
+         *
+         * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalLimit.
+         */
+        @java.lang.Override
+        public int getOptionalLimit() {
+            return optionalLimit_;
+        }
+
+        public static final int OPTIONAL_ALLOW_PARTIAL_DELETIONS_FIELD_NUMBER = 4;
+
+        private boolean optionalAllowPartialDeletions_ = false;
+
+        /**
+         * <pre>
+         * optional_allow_partial_deletions, if true and a limit is specified, will delete matching found
+         * relationships up to the count specified in optional_limit, and no more.
+         * </pre>
+         *
+         * <code>bool optional_allow_partial_deletions = 4;</code>
+         *
+         * @return The optionalAllowPartialDeletions.
+         */
+        @java.lang.Override
+        public boolean getOptionalAllowPartialDeletions() {
+            return optionalAllowPartialDeletions_;
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -8453,6 +9913,12 @@ public final class PermissionService {
             for (int i = 0; i < optionalPreconditions_.size(); i++) {
                 output.writeMessage(2, optionalPreconditions_.get(i));
             }
+            if (optionalLimit_ != 0) {
+                output.writeUInt32(3, optionalLimit_);
+            }
+            if (optionalAllowPartialDeletions_ != false) {
+                output.writeBool(4, optionalAllowPartialDeletions_);
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -8467,6 +9933,12 @@ public final class PermissionService {
             }
             for (int i = 0; i < optionalPreconditions_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, optionalPreconditions_.get(i));
+            }
+            if (optionalLimit_ != 0) {
+                size += com.google.protobuf.CodedOutputStream.computeUInt32Size(3, optionalLimit_);
+            }
+            if (optionalAllowPartialDeletions_ != false) {
+                size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, optionalAllowPartialDeletions_);
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -8490,6 +9962,10 @@ public final class PermissionService {
             }
             if (!getOptionalPreconditionsList().equals(other.getOptionalPreconditionsList()))
                 return false;
+            if (getOptionalLimit() != other.getOptionalLimit())
+                return false;
+            if (getOptionalAllowPartialDeletions() != other.getOptionalAllowPartialDeletions())
+                return false;
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -8510,6 +9986,10 @@ public final class PermissionService {
                 hash = (37 * hash) + OPTIONAL_PRECONDITIONS_FIELD_NUMBER;
                 hash = (53 * hash) + getOptionalPreconditionsList().hashCode();
             }
+            hash = (37 * hash) + OPTIONAL_LIMIT_FIELD_NUMBER;
+            hash = (53 * hash) + getOptionalLimit();
+            hash = (37 * hash) + OPTIONAL_ALLOW_PARTIAL_DELETIONS_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getOptionalAllowPartialDeletions());
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -8653,6 +10133,8 @@ public final class PermissionService {
                     optionalPreconditionsBuilder_.clear();
                 }
                 bitField0_ = (bitField0_ & ~0x00000002);
+                optionalLimit_ = 0;
+                optionalAllowPartialDeletions_ = false;
                 return this;
             }
 
@@ -8705,6 +10187,12 @@ public final class PermissionService {
                     result.relationshipFilter_ = relationshipFilterBuilder_ == null ? relationshipFilter_
                             : relationshipFilterBuilder_.build();
                 }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.optionalLimit_ = optionalLimit_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.optionalAllowPartialDeletions_ = optionalAllowPartialDeletions_;
+                }
             }
 
             @java.lang.Override
@@ -8749,6 +10237,12 @@ public final class PermissionService {
                         }
                     }
                 }
+                if (other.getOptionalLimit() != 0) {
+                    setOptionalLimit(other.getOptionalLimit());
+                }
+                if (other.getOptionalAllowPartialDeletions() != false) {
+                    setOptionalAllowPartialDeletions(other.getOptionalAllowPartialDeletions());
+                }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -8791,6 +10285,18 @@ public final class PermissionService {
                                 break;
                             }
                             // case 18
+                            case 24: {
+                                optionalLimit_ = input.readUInt32();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 24
+                            case 32: {
+                                optionalAllowPartialDeletions_ = input.readBool();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 32
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -9258,6 +10764,119 @@ public final class PermissionService {
                 return optionalPreconditionsBuilder_;
             }
 
+            private int optionalLimit_;
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of relationships to be deleted.
+             * If there are more matching relationships found to be deleted than the limit specified here,
+             * the deletion call will fail with an error to prevent partial deletion. If partial deletion
+             * is needed, specify below that partial deletion is allowed. Partial deletions can be used
+             * in a loop to delete large amounts of relationships in a *non-transactional* manner.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return The optionalLimit.
+             */
+            @java.lang.Override
+            public int getOptionalLimit() {
+                return optionalLimit_;
+            }
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of relationships to be deleted.
+             * If there are more matching relationships found to be deleted than the limit specified here,
+             * the deletion call will fail with an error to prevent partial deletion. If partial deletion
+             * is needed, specify below that partial deletion is allowed. Partial deletions can be used
+             * in a loop to delete large amounts of relationships in a *non-transactional* manner.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The optionalLimit to set.
+             * @return This builder for chaining.
+             */
+            public Builder setOptionalLimit(int value) {
+                optionalLimit_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of relationships to be deleted.
+             * If there are more matching relationships found to be deleted than the limit specified here,
+             * the deletion call will fail with an error to prevent partial deletion. If partial deletion
+             * is needed, specify below that partial deletion is allowed. Partial deletions can be used
+             * in a loop to delete large amounts of relationships in a *non-transactional* manner.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearOptionalLimit() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                optionalLimit_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private boolean optionalAllowPartialDeletions_;
+
+            /**
+             * <pre>
+             * optional_allow_partial_deletions, if true and a limit is specified, will delete matching found
+             * relationships up to the count specified in optional_limit, and no more.
+             * </pre>
+             *
+             * <code>bool optional_allow_partial_deletions = 4;</code>
+             *
+             * @return The optionalAllowPartialDeletions.
+             */
+            @java.lang.Override
+            public boolean getOptionalAllowPartialDeletions() {
+                return optionalAllowPartialDeletions_;
+            }
+
+            /**
+             * <pre>
+             * optional_allow_partial_deletions, if true and a limit is specified, will delete matching found
+             * relationships up to the count specified in optional_limit, and no more.
+             * </pre>
+             *
+             * <code>bool optional_allow_partial_deletions = 4;</code>
+             *
+             * @param value The optionalAllowPartialDeletions to set.
+             * @return This builder for chaining.
+             */
+            public Builder setOptionalAllowPartialDeletions(boolean value) {
+                optionalAllowPartialDeletions_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_allow_partial_deletions, if true and a limit is specified, will delete matching found
+             * relationships up to the count specified in optional_limit, and no more.
+             * </pre>
+             *
+             * <code>bool optional_allow_partial_deletions = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearOptionalAllowPartialDeletions() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                optionalAllowPartialDeletions_ = false;
+                onChanged();
+                return this;
+            }
+
             @java.lang.Override
             public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
                 return super.setUnknownFields(unknownFields);
@@ -9321,6 +10940,10 @@ public final class PermissionService {
             com.google.protobuf.MessageOrBuilder {
 
         /**
+         * <pre>
+         * deleted_at is the revision at which the relationships were deleted.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
          *
          * @return Whether the deletedAt field is set.
@@ -9328,6 +10951,10 @@ public final class PermissionService {
         boolean hasDeletedAt();
 
         /**
+         * <pre>
+         * deleted_at is the revision at which the relationships were deleted.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
          *
          * @return The deletedAt.
@@ -9335,9 +10962,35 @@ public final class PermissionService {
         com.authzed.api.v1.Core.ZedToken getDeletedAt();
 
         /**
+         * <pre>
+         * deleted_at is the revision at which the relationships were deleted.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
          */
         com.authzed.api.v1.Core.ZedTokenOrBuilder getDeletedAtOrBuilder();
+
+        /**
+         * <pre>
+         * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+         *
+         * @return The enum numeric value on the wire for deletionProgress.
+         */
+        int getDeletionProgressValue();
+
+        /**
+         * <pre>
+         * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+         *
+         * @return The deletionProgress.
+         */
+        com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress getDeletionProgress();
     }
 
     /**
@@ -9354,6 +11007,7 @@ public final class PermissionService {
         }
 
         private DeleteRelationshipsResponse() {
+            deletionProgress_ = 0;
         }
 
         @java.lang.Override
@@ -9373,11 +11027,152 @@ public final class PermissionService {
                             com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.Builder.class);
         }
 
+        /**
+         * Protobuf enum {@code authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress}
+         */
+        public enum DeletionProgress implements com.google.protobuf.ProtocolMessageEnum {
+
+            /**
+             * <code>DELETION_PROGRESS_UNSPECIFIED = 0;</code>
+             */
+            DELETION_PROGRESS_UNSPECIFIED(0),
+            /**
+             * <pre>
+             * DELETION_PROGRESS_COMPLETE indicates that all remaining relationships matching the filter
+             * were deleted. Will be returned even if no relationships were deleted.
+             * </pre>
+             *
+             * <code>DELETION_PROGRESS_COMPLETE = 1;</code>
+             */
+            DELETION_PROGRESS_COMPLETE(1),
+            /**
+             * <pre>
+             * DELETION_PROGRESS_PARTIAL indicates that a subset of the relationships matching the filter
+             * were deleted. Only returned if optional_allow_partial_deletions was true, an optional_limit was
+             * specified, and there existed more relationships matching the filter than optional_limit would allow.
+             * Once all remaining relationships have been deleted, DELETION_PROGRESS_COMPLETE will be returned.
+             * </pre>
+             *
+             * <code>DELETION_PROGRESS_PARTIAL = 2;</code>
+             */
+            DELETION_PROGRESS_PARTIAL(2),
+            UNRECOGNIZED(-1);
+
+            /**
+             * <code>DELETION_PROGRESS_UNSPECIFIED = 0;</code>
+             */
+            public static final int DELETION_PROGRESS_UNSPECIFIED_VALUE = 0;
+
+            /**
+             * <pre>
+             * DELETION_PROGRESS_COMPLETE indicates that all remaining relationships matching the filter
+             * were deleted. Will be returned even if no relationships were deleted.
+             * </pre>
+             *
+             * <code>DELETION_PROGRESS_COMPLETE = 1;</code>
+             */
+            public static final int DELETION_PROGRESS_COMPLETE_VALUE = 1;
+
+            /**
+             * <pre>
+             * DELETION_PROGRESS_PARTIAL indicates that a subset of the relationships matching the filter
+             * were deleted. Only returned if optional_allow_partial_deletions was true, an optional_limit was
+             * specified, and there existed more relationships matching the filter than optional_limit would allow.
+             * Once all remaining relationships have been deleted, DELETION_PROGRESS_COMPLETE will be returned.
+             * </pre>
+             *
+             * <code>DELETION_PROGRESS_PARTIAL = 2;</code>
+             */
+            public static final int DELETION_PROGRESS_PARTIAL_VALUE = 2;
+
+            public final int getNumber() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalArgumentException("Can't get the number of an unknown enum value.");
+                }
+                return value;
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             * @deprecated Use {@link #forNumber(int)} instead.
+             */
+            @java.lang.Deprecated
+            public static DeletionProgress valueOf(int value) {
+                return forNumber(value);
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             */
+            public static DeletionProgress forNumber(int value) {
+                switch (value) {
+                    case 0:
+                        return DELETION_PROGRESS_UNSPECIFIED;
+                    case 1:
+                        return DELETION_PROGRESS_COMPLETE;
+                    case 2:
+                        return DELETION_PROGRESS_PARTIAL;
+                    default:
+                        return null;
+                }
+            }
+
+            public static com.google.protobuf.Internal.EnumLiteMap<DeletionProgress> internalGetValueMap() {
+                return internalValueMap;
+            }
+
+            private static final com.google.protobuf.Internal.EnumLiteMap<DeletionProgress> internalValueMap = new com.google.protobuf.Internal.EnumLiteMap<DeletionProgress>() {
+
+                public DeletionProgress findValueByNumber(int number) {
+                    return DeletionProgress.forNumber(number);
+                }
+            };
+
+            public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalStateException("Can't get the descriptor of an unrecognized enum value.");
+                }
+                return getDescriptor().getValues().get(ordinal());
+            }
+
+            public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+                return getDescriptor();
+            }
+
+            public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.getDescriptor().getEnumTypes().get(0);
+            }
+
+            private static final DeletionProgress[] VALUES = values();
+
+            public static DeletionProgress valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+                if (desc.getType() != getDescriptor()) {
+                    throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+                }
+                if (desc.getIndex() == -1) {
+                    return UNRECOGNIZED;
+                }
+                return VALUES[desc.getIndex()];
+            }
+
+            private final int value;
+
+            private DeletionProgress(int value) {
+                this.value = value;
+            }
+        }
+
         public static final int DELETED_AT_FIELD_NUMBER = 1;
 
         private com.authzed.api.v1.Core.ZedToken deletedAt_;
 
         /**
+         * <pre>
+         * deleted_at is the revision at which the relationships were deleted.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
          *
          * @return Whether the deletedAt field is set.
@@ -9388,6 +11183,10 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * deleted_at is the revision at which the relationships were deleted.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
          *
          * @return The deletedAt.
@@ -9398,11 +11197,51 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * deleted_at is the revision at which the relationships were deleted.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getDeletedAtOrBuilder() {
             return deletedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : deletedAt_;
+        }
+
+        public static final int DELETION_PROGRESS_FIELD_NUMBER = 2;
+
+        private int deletionProgress_ = 0;
+
+        /**
+         * <pre>
+         * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+         *
+         * @return The enum numeric value on the wire for deletionProgress.
+         */
+        @java.lang.Override
+        public int getDeletionProgressValue() {
+            return deletionProgress_;
+        }
+
+        /**
+         * <pre>
+         * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+         *
+         * @return The deletionProgress.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress getDeletionProgress() {
+            com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress result = com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress
+                    .forNumber(deletionProgress_);
+            return result == null
+                    ? com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress.UNRECOGNIZED
+                    : result;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -9423,6 +11262,10 @@ public final class PermissionService {
             if (deletedAt_ != null) {
                 output.writeMessage(1, getDeletedAt());
             }
+            if (deletionProgress_ != com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress.DELETION_PROGRESS_UNSPECIFIED
+                    .getNumber()) {
+                output.writeEnum(2, deletionProgress_);
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -9434,6 +11277,10 @@ public final class PermissionService {
             size = 0;
             if (deletedAt_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getDeletedAt());
+            }
+            if (deletionProgress_ != com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress.DELETION_PROGRESS_UNSPECIFIED
+                    .getNumber()) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, deletionProgress_);
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -9455,6 +11302,8 @@ public final class PermissionService {
                 if (!getDeletedAt().equals(other.getDeletedAt()))
                     return false;
             }
+            if (deletionProgress_ != other.deletionProgress_)
+                return false;
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -9471,6 +11320,8 @@ public final class PermissionService {
                 hash = (37 * hash) + DELETED_AT_FIELD_NUMBER;
                 hash = (53 * hash) + getDeletedAt().hashCode();
             }
+            hash = (37 * hash) + DELETION_PROGRESS_FIELD_NUMBER;
+            hash = (53 * hash) + deletionProgress_;
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -9599,6 +11450,7 @@ public final class PermissionService {
                     deletedAtBuilder_.dispose();
                     deletedAtBuilder_ = null;
                 }
+                deletionProgress_ = 0;
                 return this;
             }
 
@@ -9637,6 +11489,9 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000001) != 0)) {
                     result.deletedAt_ = deletedAtBuilder_ == null ? deletedAt_ : deletedAtBuilder_.build();
                 }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.deletionProgress_ = deletionProgress_;
+                }
             }
 
             @java.lang.Override
@@ -9654,6 +11509,9 @@ public final class PermissionService {
                     return this;
                 if (other.hasDeletedAt()) {
                     mergeDeletedAt(other.getDeletedAt());
+                }
+                if (other.deletionProgress_ != 0) {
+                    setDeletionProgressValue(other.getDeletionProgressValue());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -9685,6 +11543,12 @@ public final class PermissionService {
                                 break;
                             }
                             // case 10
+                            case 16: {
+                                deletionProgress_ = input.readEnum();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            }
+                            // case 16
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -9712,6 +11576,10 @@ public final class PermissionService {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> deletedAtBuilder_;
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              *
              * @return Whether the deletedAt field is set.
@@ -9721,6 +11589,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              *
              * @return The deletedAt.
@@ -9734,6 +11606,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public Builder setDeletedAt(com.authzed.api.v1.Core.ZedToken value) {
@@ -9751,6 +11627,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public Builder setDeletedAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
@@ -9765,6 +11645,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public Builder mergeDeletedAt(com.authzed.api.v1.Core.ZedToken value) {
@@ -9784,6 +11668,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public Builder clearDeletedAt() {
@@ -9798,6 +11686,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getDeletedAtBuilder() {
@@ -9807,6 +11699,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedTokenOrBuilder getDeletedAtOrBuilder() {
@@ -9818,6 +11714,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * deleted_at is the revision at which the relationships were deleted.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getDeletedAtFieldBuilder() {
@@ -9827,6 +11727,94 @@ public final class PermissionService {
                     deletedAt_ = null;
                 }
                 return deletedAtBuilder_;
+            }
+
+            private int deletionProgress_ = 0;
+
+            /**
+             * <pre>
+             * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+             *
+             * @return The enum numeric value on the wire for deletionProgress.
+             */
+            @java.lang.Override
+            public int getDeletionProgressValue() {
+                return deletionProgress_;
+            }
+
+            /**
+             * <pre>
+             * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+             *
+             * @param value The enum numeric value on the wire for deletionProgress to set.
+             * @return This builder for chaining.
+             */
+            public Builder setDeletionProgressValue(int value) {
+                deletionProgress_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+             *
+             * @return The deletionProgress.
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress getDeletionProgress() {
+                com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress result = com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress
+                        .forNumber(deletionProgress_);
+                return result == null
+                        ? com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress.UNRECOGNIZED
+                        : result;
+            }
+
+            /**
+             * <pre>
+             * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+             *
+             * @param value The deletionProgress to set.
+             * @return This builder for chaining.
+             */
+            public Builder setDeletionProgress(
+                    com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.DeletionProgress value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                deletionProgress_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DeleteRelationshipsResponse.DeletionProgress deletion_progress = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearDeletionProgress() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                deletionProgress_ = 0;
+                onChanged();
+                return this;
             }
 
             @java.lang.Override
@@ -9995,6 +11983,50 @@ public final class PermissionService {
          * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        boolean hasContext();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        com.google.protobuf.Struct getContext();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         */
+        com.google.protobuf.StructOrBuilder getContextOrBuilder();
+
+        /**
+         * <pre>
+         * with_tracing, if true, indicates that the response should include a debug trace.
+         * This can be useful for debugging and performance analysis, but adds a small amount
+         * of compute overhead to the request.
+         * </pre>
+         *
+         * <code>bool with_tracing = 6;</code>
+         *
+         * @return The withTracing.
+         */
+        boolean getWithTracing();
     }
 
     /**
@@ -10206,6 +12238,70 @@ public final class PermissionService {
             return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
+        public static final int CONTEXT_FIELD_NUMBER = 5;
+
+        private com.google.protobuf.Struct context_;
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        @java.lang.Override
+        public boolean hasContext() {
+            return context_ != null;
+        }
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        @java.lang.Override
+        public com.google.protobuf.Struct getContext() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        public static final int WITH_TRACING_FIELD_NUMBER = 6;
+
+        private boolean withTracing_ = false;
+
+        /**
+         * <pre>
+         * with_tracing, if true, indicates that the response should include a debug trace.
+         * This can be useful for debugging and performance analysis, but adds a small amount
+         * of compute overhead to the request.
+         * </pre>
+         *
+         * <code>bool with_tracing = 6;</code>
+         *
+         * @return The withTracing.
+         */
+        @java.lang.Override
+        public boolean getWithTracing() {
+            return withTracing_;
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -10233,6 +12329,12 @@ public final class PermissionService {
             if (subject_ != null) {
                 output.writeMessage(4, getSubject());
             }
+            if (context_ != null) {
+                output.writeMessage(5, getContext());
+            }
+            if (withTracing_ != false) {
+                output.writeBool(6, withTracing_);
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -10253,6 +12355,12 @@ public final class PermissionService {
             }
             if (subject_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getSubject());
+            }
+            if (context_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getContext());
+            }
+            if (withTracing_ != false) {
+                size += com.google.protobuf.CodedOutputStream.computeBoolSize(6, withTracing_);
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -10288,6 +12396,14 @@ public final class PermissionService {
                 if (!getSubject().equals(other.getSubject()))
                     return false;
             }
+            if (hasContext() != other.hasContext())
+                return false;
+            if (hasContext()) {
+                if (!getContext().equals(other.getContext()))
+                    return false;
+            }
+            if (getWithTracing() != other.getWithTracing())
+                return false;
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -10314,6 +12430,12 @@ public final class PermissionService {
                 hash = (37 * hash) + SUBJECT_FIELD_NUMBER;
                 hash = (53 * hash) + getSubject().hashCode();
             }
+            if (hasContext()) {
+                hash = (37 * hash) + CONTEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getContext().hashCode();
+            }
+            hash = (37 * hash) + WITH_TRACING_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getWithTracing());
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -10457,6 +12579,12 @@ public final class PermissionService {
                     subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                withTracing_ = false;
                 return this;
             }
 
@@ -10504,6 +12632,12 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000008) != 0)) {
                     result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
                 }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.withTracing_ = withTracing_;
+                }
             }
 
             @java.lang.Override
@@ -10532,6 +12666,12 @@ public final class PermissionService {
                 }
                 if (other.hasSubject()) {
                     mergeSubject(other.getSubject());
+                }
+                if (other.hasContext()) {
+                    mergeContext(other.getContext());
+                }
+                if (other.getWithTracing() != false) {
+                    setWithTracing(other.getWithTracing());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -10581,6 +12721,18 @@ public final class PermissionService {
                                 break;
                             }
                             // case 34
+                            case 42: {
+                                input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000010;
+                                break;
+                            }
+                            // case 42
+                            case 48: {
+                                withTracing_ = input.readBool();
+                                bitField0_ |= 0x00000020;
+                                break;
+                            }
+                            // case 48
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -11148,6 +13300,219 @@ public final class PermissionService {
                 return subjectBuilder_;
             }
 
+            private com.google.protobuf.Struct context_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> contextBuilder_;
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the context field is set.
+             */
+            public boolean hasContext() {
+                return ((bitField0_ & 0x00000010) != 0);
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @return The context.
+             */
+            public com.google.protobuf.Struct getContext() {
+                if (contextBuilder_ == null) {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                } else {
+                    return contextBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    context_ = value;
+                } else {
+                    contextBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct.Builder builderForValue) {
+                if (contextBuilder_ == null) {
+                    context_ = builderForValue.build();
+                } else {
+                    contextBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) && context_ != null
+                            && context_ != com.google.protobuf.Struct.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
+                    } else {
+                        context_ = value;
+                    }
+                } else {
+                    contextBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearContext() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.Struct.Builder getContextBuilder() {
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return getContextFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+                if (contextBuilder_ != null) {
+                    return contextBuilder_.getMessageOrBuilder();
+                } else {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> getContextFieldBuilder() {
+                if (contextBuilder_ == null) {
+                    contextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                            getContext(), getParentForChildren(), isClean());
+                    context_ = null;
+                }
+                return contextBuilder_;
+            }
+
+            private boolean withTracing_;
+
+            /**
+             * <pre>
+             * with_tracing, if true, indicates that the response should include a debug trace.
+             * This can be useful for debugging and performance analysis, but adds a small amount
+             * of compute overhead to the request.
+             * </pre>
+             *
+             * <code>bool with_tracing = 6;</code>
+             *
+             * @return The withTracing.
+             */
+            @java.lang.Override
+            public boolean getWithTracing() {
+                return withTracing_;
+            }
+
+            /**
+             * <pre>
+             * with_tracing, if true, indicates that the response should include a debug trace.
+             * This can be useful for debugging and performance analysis, but adds a small amount
+             * of compute overhead to the request.
+             * </pre>
+             *
+             * <code>bool with_tracing = 6;</code>
+             *
+             * @param value The withTracing to set.
+             * @return This builder for chaining.
+             */
+            public Builder setWithTracing(boolean value) {
+                withTracing_ = value;
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * with_tracing, if true, indicates that the response should include a debug trace.
+             * This can be useful for debugging and performance analysis, but adds a small amount
+             * of compute overhead to the request.
+             * </pre>
+             *
+             * <code>bool with_tracing = 6;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearWithTracing() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                withTracing_ = false;
+                onChanged();
+                return this;
+            }
+
             @java.lang.Override
             public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
                 return super.setUnknownFields(unknownFields);
@@ -11211,21 +13576,21 @@ public final class PermissionService {
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the checkedAt field is set.
          */
         boolean hasCheckedAt();
 
         /**
-         * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The checkedAt.
          */
         com.authzed.api.v1.Core.ZedToken getCheckedAt();
 
         /**
-         * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.ZedTokenOrBuilder getCheckedAtOrBuilder();
 
@@ -11241,7 +13606,7 @@ public final class PermissionService {
          * to the given subject.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for permissionship.
          */
@@ -11259,11 +13624,73 @@ public final class PermissionService {
          * to the given subject.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The permissionship.
          */
         com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship getPermissionship();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        boolean hasPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder();
+
+        /**
+         * <pre>
+         * debug_trace is the debugging trace of this check, if requested.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+         *
+         * @return Whether the debugTrace field is set.
+         */
+        boolean hasDebugTrace();
+
+        /**
+         * <pre>
+         * debug_trace is the debugging trace of this check, if requested.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+         *
+         * @return The debugTrace.
+         */
+        com.authzed.api.v1.Debug.DebugInformation getDebugTrace();
+
+        /**
+         * <pre>
+         * debug_trace is the debugging trace of this check, if requested.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+         */
+        com.authzed.api.v1.Debug.DebugInformationOrBuilder getDebugTraceOrBuilder();
     }
 
     /**
@@ -11317,6 +13744,10 @@ public final class PermissionService {
              * <code>PERMISSIONSHIP_HAS_PERMISSION = 2;</code>
              */
             PERMISSIONSHIP_HAS_PERMISSION(2),
+            /**
+             * <code>PERMISSIONSHIP_CONDITIONAL_PERMISSION = 3;</code>
+             */
+            PERMISSIONSHIP_CONDITIONAL_PERMISSION(3),
             UNRECOGNIZED(-1);
 
             /**
@@ -11333,6 +13764,11 @@ public final class PermissionService {
              * <code>PERMISSIONSHIP_HAS_PERMISSION = 2;</code>
              */
             public static final int PERMISSIONSHIP_HAS_PERMISSION_VALUE = 2;
+
+            /**
+             * <code>PERMISSIONSHIP_CONDITIONAL_PERMISSION = 3;</code>
+             */
+            public static final int PERMISSIONSHIP_CONDITIONAL_PERMISSION_VALUE = 3;
 
             public final int getNumber() {
                 if (this == UNRECOGNIZED) {
@@ -11363,6 +13799,8 @@ public final class PermissionService {
                         return PERMISSIONSHIP_NO_PERMISSION;
                     case 2:
                         return PERMISSIONSHIP_HAS_PERMISSION;
+                    case 3:
+                        return PERMISSIONSHIP_CONDITIONAL_PERMISSION;
                     default:
                         return null;
                 }
@@ -11418,7 +13856,7 @@ public final class PermissionService {
         private com.authzed.api.v1.Core.ZedToken checkedAt_;
 
         /**
-         * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return Whether the checkedAt field is set.
          */
@@ -11428,7 +13866,7 @@ public final class PermissionService {
         }
 
         /**
-         * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The checkedAt.
          */
@@ -11438,7 +13876,7 @@ public final class PermissionService {
         }
 
         /**
-         * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getCheckedAtOrBuilder() {
@@ -11461,7 +13899,7 @@ public final class PermissionService {
          * to the given subject.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for permissionship.
          */
@@ -11482,7 +13920,7 @@ public final class PermissionService {
          * to the given subject.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
          *
          * @return The permissionship.
          */
@@ -11492,6 +13930,96 @@ public final class PermissionService {
                     .forNumber(permissionship_);
             return result == null ? com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.UNRECOGNIZED
                     : result;
+        }
+
+        public static final int PARTIAL_CAVEAT_INFO_FIELD_NUMBER = 3;
+
+        private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        @java.lang.Override
+        public boolean hasPartialCaveatInfo() {
+            return partialCaveatInfo_ != null;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        public static final int DEBUG_TRACE_FIELD_NUMBER = 4;
+
+        private com.authzed.api.v1.Debug.DebugInformation debugTrace_;
+
+        /**
+         * <pre>
+         * debug_trace is the debugging trace of this check, if requested.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+         *
+         * @return Whether the debugTrace field is set.
+         */
+        @java.lang.Override
+        public boolean hasDebugTrace() {
+            return debugTrace_ != null;
+        }
+
+        /**
+         * <pre>
+         * debug_trace is the debugging trace of this check, if requested.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+         *
+         * @return The debugTrace.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Debug.DebugInformation getDebugTrace() {
+            return debugTrace_ == null ? com.authzed.api.v1.Debug.DebugInformation.getDefaultInstance() : debugTrace_;
+        }
+
+        /**
+         * <pre>
+         * debug_trace is the debugging trace of this check, if requested.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Debug.DebugInformationOrBuilder getDebugTraceOrBuilder() {
+            return debugTrace_ == null ? com.authzed.api.v1.Debug.DebugInformation.getDefaultInstance() : debugTrace_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -11516,6 +14044,12 @@ public final class PermissionService {
                     .getNumber()) {
                 output.writeEnum(2, permissionship_);
             }
+            if (partialCaveatInfo_ != null) {
+                output.writeMessage(3, getPartialCaveatInfo());
+            }
+            if (debugTrace_ != null) {
+                output.writeMessage(4, getDebugTrace());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -11531,6 +14065,12 @@ public final class PermissionService {
             if (permissionship_ != com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.PERMISSIONSHIP_UNSPECIFIED
                     .getNumber()) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getPartialCaveatInfo());
+            }
+            if (debugTrace_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getDebugTrace());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -11554,6 +14094,18 @@ public final class PermissionService {
             }
             if (permissionship_ != other.permissionship_)
                 return false;
+            if (hasPartialCaveatInfo() != other.hasPartialCaveatInfo())
+                return false;
+            if (hasPartialCaveatInfo()) {
+                if (!getPartialCaveatInfo().equals(other.getPartialCaveatInfo()))
+                    return false;
+            }
+            if (hasDebugTrace() != other.hasDebugTrace())
+                return false;
+            if (hasDebugTrace()) {
+                if (!getDebugTrace().equals(other.getDebugTrace()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -11572,6 +14124,14 @@ public final class PermissionService {
             }
             hash = (37 * hash) + PERMISSIONSHIP_FIELD_NUMBER;
             hash = (53 * hash) + permissionship_;
+            if (hasPartialCaveatInfo()) {
+                hash = (37 * hash) + PARTIAL_CAVEAT_INFO_FIELD_NUMBER;
+                hash = (53 * hash) + getPartialCaveatInfo().hashCode();
+            }
+            if (hasDebugTrace()) {
+                hash = (37 * hash) + DEBUG_TRACE_FIELD_NUMBER;
+                hash = (53 * hash) + getDebugTrace().hashCode();
+            }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -11700,6 +14260,16 @@ public final class PermissionService {
                     checkedAtBuilder_ = null;
                 }
                 permissionship_ = 0;
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                debugTrace_ = null;
+                if (debugTraceBuilder_ != null) {
+                    debugTraceBuilder_.dispose();
+                    debugTraceBuilder_ = null;
+                }
                 return this;
             }
 
@@ -11741,6 +14311,13 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000002) != 0)) {
                     result.permissionship_ = permissionship_;
                 }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.partialCaveatInfo_ = partialCaveatInfoBuilder_ == null ? partialCaveatInfo_
+                            : partialCaveatInfoBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.debugTrace_ = debugTraceBuilder_ == null ? debugTrace_ : debugTraceBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -11761,6 +14338,12 @@ public final class PermissionService {
                 }
                 if (other.permissionship_ != 0) {
                     setPermissionshipValue(other.getPermissionshipValue());
+                }
+                if (other.hasPartialCaveatInfo()) {
+                    mergePartialCaveatInfo(other.getPartialCaveatInfo());
+                }
+                if (other.hasDebugTrace()) {
+                    mergeDebugTrace(other.getDebugTrace());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -11798,6 +14381,18 @@ public final class PermissionService {
                                 break;
                             }
                             // case 16
+                            case 26: {
+                                input.readMessage(getPartialCaveatInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 26
+                            case 34: {
+                                input.readMessage(getDebugTraceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 34
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -11825,7 +14420,7 @@ public final class PermissionService {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> checkedAtBuilder_;
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              *
              * @return Whether the checkedAt field is set.
              */
@@ -11834,7 +14429,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              *
              * @return The checkedAt.
              */
@@ -11847,7 +14442,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder setCheckedAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (checkedAtBuilder_ == null) {
@@ -11864,7 +14459,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder setCheckedAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (checkedAtBuilder_ == null) {
@@ -11878,7 +14473,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder mergeCheckedAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (checkedAtBuilder_ == null) {
@@ -11897,7 +14492,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearCheckedAt() {
                 bitField0_ = (bitField0_ & ~0x00000001);
@@ -11911,7 +14506,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getCheckedAtBuilder() {
                 bitField0_ |= 0x00000001;
@@ -11920,7 +14515,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ZedTokenOrBuilder getCheckedAtOrBuilder() {
                 if (checkedAtBuilder_ != null) {
@@ -11931,7 +14526,7 @@ public final class PermissionService {
             }
 
             /**
-             * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getCheckedAtFieldBuilder() {
                 if (checkedAtBuilder_ == null) {
@@ -11956,7 +14551,7 @@ public final class PermissionService {
              * to the given subject.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
              *
              * @return The enum numeric value on the wire for permissionship.
              */
@@ -11977,7 +14572,7 @@ public final class PermissionService {
              * to the given subject.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
              *
              * @param value The enum numeric value on the wire for permissionship to set.
              * @return This builder for chaining.
@@ -12001,7 +14596,7 @@ public final class PermissionService {
              * to the given subject.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
              *
              * @return The permissionship.
              */
@@ -12025,7 +14620,7 @@ public final class PermissionService {
              * to the given subject.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
              *
              * @param value The permissionship to set.
              * @return This builder for chaining.
@@ -12053,7 +14648,7 @@ public final class PermissionService {
              * to the given subject.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2;</code>
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 2 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
              */
@@ -12062,6 +14657,324 @@ public final class PermissionService {
                 permissionship_ = 0;
                 onChanged();
                 return this;
+            }
+
+            private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> partialCaveatInfoBuilder_;
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the partialCaveatInfo field is set.
+             */
+            public boolean hasPartialCaveatInfo() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return The partialCaveatInfo.
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                } else {
+                    return partialCaveatInfoBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    partialCaveatInfo_ = value;
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo.Builder builderForValue) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfo_ = builderForValue.build();
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergePartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) && partialCaveatInfo_ != null
+                            && partialCaveatInfo_ != com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()) {
+                        getPartialCaveatInfoBuilder().mergeFrom(value);
+                    } else {
+                        partialCaveatInfo_ = value;
+                    }
+                } else {
+                    partialCaveatInfoBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearPartialCaveatInfo() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo.Builder getPartialCaveatInfoBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getPartialCaveatInfoFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+                if (partialCaveatInfoBuilder_ != null) {
+                    return partialCaveatInfoBuilder_.getMessageOrBuilder();
+                } else {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> getPartialCaveatInfoFieldBuilder() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder>(
+                            getPartialCaveatInfo(), getParentForChildren(), isClean());
+                    partialCaveatInfo_ = null;
+                }
+                return partialCaveatInfoBuilder_;
+            }
+
+            private com.authzed.api.v1.Debug.DebugInformation debugTrace_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.DebugInformation, com.authzed.api.v1.Debug.DebugInformation.Builder, com.authzed.api.v1.Debug.DebugInformationOrBuilder> debugTraceBuilder_;
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             *
+             * @return Whether the debugTrace field is set.
+             */
+            public boolean hasDebugTrace() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             *
+             * @return The debugTrace.
+             */
+            public com.authzed.api.v1.Debug.DebugInformation getDebugTrace() {
+                if (debugTraceBuilder_ == null) {
+                    return debugTrace_ == null ? com.authzed.api.v1.Debug.DebugInformation.getDefaultInstance() : debugTrace_;
+                } else {
+                    return debugTraceBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             */
+            public Builder setDebugTrace(com.authzed.api.v1.Debug.DebugInformation value) {
+                if (debugTraceBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    debugTrace_ = value;
+                } else {
+                    debugTraceBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             */
+            public Builder setDebugTrace(com.authzed.api.v1.Debug.DebugInformation.Builder builderForValue) {
+                if (debugTraceBuilder_ == null) {
+                    debugTrace_ = builderForValue.build();
+                } else {
+                    debugTraceBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             */
+            public Builder mergeDebugTrace(com.authzed.api.v1.Debug.DebugInformation value) {
+                if (debugTraceBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) && debugTrace_ != null
+                            && debugTrace_ != com.authzed.api.v1.Debug.DebugInformation.getDefaultInstance()) {
+                        getDebugTraceBuilder().mergeFrom(value);
+                    } else {
+                        debugTrace_ = value;
+                    }
+                } else {
+                    debugTraceBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             */
+            public Builder clearDebugTrace() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                debugTrace_ = null;
+                if (debugTraceBuilder_ != null) {
+                    debugTraceBuilder_.dispose();
+                    debugTraceBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             */
+            public com.authzed.api.v1.Debug.DebugInformation.Builder getDebugTraceBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getDebugTraceFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             */
+            public com.authzed.api.v1.Debug.DebugInformationOrBuilder getDebugTraceOrBuilder() {
+                if (debugTraceBuilder_ != null) {
+                    return debugTraceBuilder_.getMessageOrBuilder();
+                } else {
+                    return debugTrace_ == null ? com.authzed.api.v1.Debug.DebugInformation.getDefaultInstance() : debugTrace_;
+                }
+            }
+
+            /**
+             * <pre>
+             * debug_trace is the debugging trace of this check, if requested.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.DebugInformation debug_trace = 4;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.DebugInformation, com.authzed.api.v1.Debug.DebugInformation.Builder, com.authzed.api.v1.Debug.DebugInformationOrBuilder> getDebugTraceFieldBuilder() {
+                if (debugTraceBuilder_ == null) {
+                    debugTraceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.DebugInformation, com.authzed.api.v1.Debug.DebugInformation.Builder, com.authzed.api.v1.Debug.DebugInformationOrBuilder>(
+                            getDebugTrace(), getParentForChildren(), isClean());
+                    debugTrace_ = null;
+                }
+                return debugTraceBuilder_;
             }
 
             @java.lang.Override
@@ -12119,6 +15032,4931 @@ public final class PermissionService {
 
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.CheckPermissionResponse getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
+    public interface CheckBulkPermissionsRequestOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.CheckBulkPermissionsRequest)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+         *
+         * @return Whether the consistency field is set.
+         */
+        boolean hasConsistency();
+
+        /**
+         * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+         *
+         * @return The consistency.
+         */
+        com.authzed.api.v1.PermissionService.Consistency getConsistency();
+
+        /**
+         * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+         */
+        com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem> getItemsList();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getItems(int index);
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        int getItemsCount();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        java.util.List<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder> getItemsOrBuilderList();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder getItemsOrBuilder(int index);
+    }
+
+    /**
+     * <pre>
+     * CheckBulkPermissionsRequest issues a check on whether a subject has permission
+     * or is a member of a relation on a specific resource for each item in the list.
+     *
+     * The ordering of the items in the response is maintained in the response.
+     * Checks with the same subject/permission will automatically be batched for performance optimization.
+     * </pre>
+     *
+     * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsRequest}
+     */
+    public static final class CheckBulkPermissionsRequest extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.CheckBulkPermissionsRequest)
+            CheckBulkPermissionsRequestOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use CheckBulkPermissionsRequest.newBuilder() to construct.
+        private CheckBulkPermissionsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private CheckBulkPermissionsRequest() {
+            items_ = java.util.Collections.emptyList();
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new CheckBulkPermissionsRequest();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequest_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequest_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.class,
+                            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.Builder.class);
+        }
+
+        public static final int CONSISTENCY_FIELD_NUMBER = 1;
+
+        private com.authzed.api.v1.PermissionService.Consistency consistency_;
+
+        /**
+         * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+         *
+         * @return Whether the consistency field is set.
+         */
+        @java.lang.Override
+        public boolean hasConsistency() {
+            return consistency_ != null;
+        }
+
+        /**
+         * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+         *
+         * @return The consistency.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.Consistency getConsistency() {
+            return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance() : consistency_;
+        }
+
+        /**
+         * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder() {
+            return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance() : consistency_;
+        }
+
+        public static final int ITEMS_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
+        private java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem> items_;
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem> getItemsList() {
+            return items_;
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder> getItemsOrBuilderList() {
+            return items_;
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public int getItemsCount() {
+            return items_.size();
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getItems(int index) {
+            return items_.get(index);
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder getItemsOrBuilder(int index) {
+            return items_.get(index);
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (consistency_ != null) {
+                output.writeMessage(1, getConsistency());
+            }
+            for (int i = 0; i < items_.size(); i++) {
+                output.writeMessage(2, items_.get(i));
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (consistency_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getConsistency());
+            }
+            for (int i = 0; i < items_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, items_.get(i));
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest other = (com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest) obj;
+            if (hasConsistency() != other.hasConsistency())
+                return false;
+            if (hasConsistency()) {
+                if (!getConsistency().equals(other.getConsistency()))
+                    return false;
+            }
+            if (!getItemsList().equals(other.getItemsList()))
+                return false;
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasConsistency()) {
+                hash = (37 * hash) + CONSISTENCY_FIELD_NUMBER;
+                hash = (53 * hash) + getConsistency().hashCode();
+            }
+            if (getItemsCount() > 0) {
+                hash = (37 * hash) + ITEMS_FIELD_NUMBER;
+                hash = (53 * hash) + getItemsList().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(
+                com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(
+                com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseDelimitedFrom(
+                java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseDelimitedFrom(
+                java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(
+                com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest parseFrom(
+                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * <pre>
+         * CheckBulkPermissionsRequest issues a check on whether a subject has permission
+         * or is a member of a relation on a specific resource for each item in the list.
+         *
+         * The ordering of the items in the response is maintained in the response.
+         * Checks with the same subject/permission will automatically be batched for performance optimization.
+         * </pre>
+         *
+         * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsRequest}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.CheckBulkPermissionsRequest)
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequest_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequest_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.class,
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
+                    consistencyBuilder_ = null;
+                }
+                if (itemsBuilder_ == null) {
+                    items_ = java.util.Collections.emptyList();
+                } else {
+                    items_ = null;
+                    itemsBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequest_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest getDefaultInstanceForType() {
+                return com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest build() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest buildPartial() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest result = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest(
+                        this);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest result) {
+                if (itemsBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
+                        items_ = java.util.Collections.unmodifiableList(items_);
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    }
+                    result.items_ = items_;
+                } else {
+                    result.items_ = itemsBuilder_.build();
+                }
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.consistency_ = consistencyBuilder_ == null ? consistency_ : consistencyBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest) {
+                    return mergeFrom((com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest other) {
+                if (other == com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest.getDefaultInstance())
+                    return this;
+                if (other.hasConsistency()) {
+                    mergeConsistency(other.getConsistency());
+                }
+                if (itemsBuilder_ == null) {
+                    if (!other.items_.isEmpty()) {
+                        if (items_.isEmpty()) {
+                            items_ = other.items_;
+                            bitField0_ = (bitField0_ & ~0x00000002);
+                        } else {
+                            ensureItemsIsMutable();
+                            items_.addAll(other.items_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.items_.isEmpty()) {
+                        if (itemsBuilder_.isEmpty()) {
+                            itemsBuilder_.dispose();
+                            itemsBuilder_ = null;
+                            items_ = other.items_;
+                            bitField0_ = (bitField0_ & ~0x00000002);
+                            itemsBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                                    ? getItemsFieldBuilder()
+                                    : null;
+                        } else {
+                            itemsBuilder_.addAllMessages(other.items_);
+                        }
+                    }
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                input.readMessage(getConsistencyFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem m = input.readMessage(
+                                        com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.parser(),
+                                        extensionRegistry);
+                                if (itemsBuilder_ == null) {
+                                    ensureItemsIsMutable();
+                                    items_.add(m);
+                                } else {
+                                    itemsBuilder_.addMessage(m);
+                                }
+                                break;
+                            }
+                            // case 18
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private com.authzed.api.v1.PermissionService.Consistency consistency_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder> consistencyBuilder_;
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             *
+             * @return Whether the consistency field is set.
+             */
+            public boolean hasConsistency() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             *
+             * @return The consistency.
+             */
+            public com.authzed.api.v1.PermissionService.Consistency getConsistency() {
+                if (consistencyBuilder_ == null) {
+                    return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()
+                            : consistency_;
+                } else {
+                    return consistencyBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             */
+            public Builder setConsistency(com.authzed.api.v1.PermissionService.Consistency value) {
+                if (consistencyBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    consistency_ = value;
+                } else {
+                    consistencyBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             */
+            public Builder setConsistency(com.authzed.api.v1.PermissionService.Consistency.Builder builderForValue) {
+                if (consistencyBuilder_ == null) {
+                    consistency_ = builderForValue.build();
+                } else {
+                    consistencyBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             */
+            public Builder mergeConsistency(com.authzed.api.v1.PermissionService.Consistency value) {
+                if (consistencyBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) && consistency_ != null
+                            && consistency_ != com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()) {
+                        getConsistencyBuilder().mergeFrom(value);
+                    } else {
+                        consistency_ = value;
+                    }
+                } else {
+                    consistencyBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             */
+            public Builder clearConsistency() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
+                    consistencyBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             */
+            public com.authzed.api.v1.PermissionService.Consistency.Builder getConsistencyBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getConsistencyFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder() {
+                if (consistencyBuilder_ != null) {
+                    return consistencyBuilder_.getMessageOrBuilder();
+                } else {
+                    return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()
+                            : consistency_;
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.Consistency consistency = 1;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder> getConsistencyFieldBuilder() {
+                if (consistencyBuilder_ == null) {
+                    consistencyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder>(
+                            getConsistency(), getParentForChildren(), isClean());
+                    consistency_ = null;
+                }
+                return consistencyBuilder_;
+            }
+
+            private java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem> items_ = java.util.Collections
+                    .emptyList();
+
+            private void ensureItemsIsMutable() {
+                if (!((bitField0_ & 0x00000002) != 0)) {
+                    items_ = new java.util.ArrayList<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem>(
+                            items_);
+                    bitField0_ |= 0x00000002;
+                }
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder> itemsBuilder_;
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem> getItemsList() {
+                if (itemsBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(items_);
+                } else {
+                    return itemsBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public int getItemsCount() {
+                if (itemsBuilder_ == null) {
+                    return items_.size();
+                } else {
+                    return itemsBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getItems(int index) {
+                if (itemsBuilder_ == null) {
+                    return items_.get(index);
+                } else {
+                    return itemsBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setItems(int index, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem value) {
+                if (itemsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureItemsIsMutable();
+                    items_.set(index, value);
+                    onChanged();
+                } else {
+                    itemsBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setItems(int index,
+                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder builderForValue) {
+                if (itemsBuilder_ == null) {
+                    ensureItemsIsMutable();
+                    items_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    itemsBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addItems(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem value) {
+                if (itemsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureItemsIsMutable();
+                    items_.add(value);
+                    onChanged();
+                } else {
+                    itemsBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addItems(int index, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem value) {
+                if (itemsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureItemsIsMutable();
+                    items_.add(index, value);
+                    onChanged();
+                } else {
+                    itemsBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addItems(
+                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder builderForValue) {
+                if (itemsBuilder_ == null) {
+                    ensureItemsIsMutable();
+                    items_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    itemsBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addItems(int index,
+                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder builderForValue) {
+                if (itemsBuilder_ == null) {
+                    ensureItemsIsMutable();
+                    items_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    itemsBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addAllItems(
+                    java.lang.Iterable<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem> values) {
+                if (itemsBuilder_ == null) {
+                    ensureItemsIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(values, items_);
+                    onChanged();
+                } else {
+                    itemsBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearItems() {
+                if (itemsBuilder_ == null) {
+                    items_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                    onChanged();
+                } else {
+                    itemsBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder removeItems(int index) {
+                if (itemsBuilder_ == null) {
+                    ensureItemsIsMutable();
+                    items_.remove(index);
+                    onChanged();
+                } else {
+                    itemsBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder getItemsBuilder(int index) {
+                return getItemsFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder getItemsOrBuilder(int index) {
+                if (itemsBuilder_ == null) {
+                    return items_.get(index);
+                } else {
+                    return itemsBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public java.util.List<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder> getItemsOrBuilderList() {
+                if (itemsBuilder_ != null) {
+                    return itemsBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(items_);
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder addItemsBuilder() {
+                return getItemsFieldBuilder()
+                        .addBuilder(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder addItemsBuilder(int index) {
+                return getItemsFieldBuilder().addBuilder(index,
+                        com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsRequestItem items = 2 [(.validate.rules) = { ... }</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder> getItemsBuilderList() {
+                return getItemsFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder> getItemsFieldBuilder() {
+                if (itemsBuilder_ == null) {
+                    itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder>(
+                            items_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
+                    items_ = null;
+                }
+                return itemsBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.CheckBulkPermissionsRequest)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.CheckBulkPermissionsRequest)
+        private static final com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest();
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<CheckBulkPermissionsRequest> PARSER = new com.google.protobuf.AbstractParser<CheckBulkPermissionsRequest>() {
+
+            @java.lang.Override
+            public CheckBulkPermissionsRequest parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<CheckBulkPermissionsRequest> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<CheckBulkPermissionsRequest> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
+    public interface CheckBulkPermissionsRequestItemOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.CheckBulkPermissionsRequestItem)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the resource field is set.
+         */
+        boolean hasResource();
+
+        /**
+         * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The resource.
+         */
+        com.authzed.api.v1.Core.ObjectReference getResource();
+
+        /**
+         * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder();
+
+        /**
+         * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permission.
+         */
+        java.lang.String getPermission();
+
+        /**
+         * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for permission.
+         */
+        com.google.protobuf.ByteString getPermissionBytes();
+
+        /**
+         * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the subject field is set.
+         */
+        boolean hasSubject();
+
+        /**
+         * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The subject.
+         */
+        com.authzed.api.v1.Core.SubjectReference getSubject();
+
+        /**
+         * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder();
+
+        /**
+         * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        boolean hasContext();
+
+        /**
+         * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        com.google.protobuf.Struct getContext();
+
+        /**
+         * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+         */
+        com.google.protobuf.StructOrBuilder getContextOrBuilder();
+    }
+
+    /**
+     * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsRequestItem}
+     */
+    public static final class CheckBulkPermissionsRequestItem extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.CheckBulkPermissionsRequestItem)
+            CheckBulkPermissionsRequestItemOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use CheckBulkPermissionsRequestItem.newBuilder() to construct.
+        private CheckBulkPermissionsRequestItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private CheckBulkPermissionsRequestItem() {
+            permission_ = "";
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new CheckBulkPermissionsRequestItem();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.class,
+                            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder.class);
+        }
+
+        public static final int RESOURCE_FIELD_NUMBER = 1;
+
+        private com.authzed.api.v1.Core.ObjectReference resource_;
+
+        /**
+         * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the resource field is set.
+         */
+        @java.lang.Override
+        public boolean hasResource() {
+            return resource_ != null;
+        }
+
+        /**
+         * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The resource.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ObjectReference getResource() {
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
+        }
+
+        /**
+         * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
+        }
+
+        public static final int PERMISSION_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
+
+        /**
+         * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permission.
+         */
+        @java.lang.Override
+        public java.lang.String getPermission() {
+            java.lang.Object ref = permission_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                permission_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for permission.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getPermissionBytes() {
+            java.lang.Object ref = permission_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                permission_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int SUBJECT_FIELD_NUMBER = 3;
+
+        private com.authzed.api.v1.Core.SubjectReference subject_;
+
+        /**
+         * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the subject field is set.
+         */
+        @java.lang.Override
+        public boolean hasSubject() {
+            return subject_ != null;
+        }
+
+        /**
+         * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The subject.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.SubjectReference getSubject() {
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
+        }
+
+        /**
+         * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
+        }
+
+        public static final int CONTEXT_FIELD_NUMBER = 4;
+
+        private com.google.protobuf.Struct context_;
+
+        /**
+         * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        @java.lang.Override
+        public boolean hasContext() {
+            return context_ != null;
+        }
+
+        /**
+         * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        @java.lang.Override
+        public com.google.protobuf.Struct getContext() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        /**
+         * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (resource_ != null) {
+                output.writeMessage(1, getResource());
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, permission_);
+            }
+            if (subject_ != null) {
+                output.writeMessage(3, getSubject());
+            }
+            if (context_ != null) {
+                output.writeMessage(4, getContext());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (resource_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getResource());
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, permission_);
+            }
+            if (subject_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getSubject());
+            }
+            if (context_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getContext());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem other = (com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem) obj;
+            if (hasResource() != other.hasResource())
+                return false;
+            if (hasResource()) {
+                if (!getResource().equals(other.getResource()))
+                    return false;
+            }
+            if (!getPermission().equals(other.getPermission()))
+                return false;
+            if (hasSubject() != other.hasSubject())
+                return false;
+            if (hasSubject()) {
+                if (!getSubject().equals(other.getSubject()))
+                    return false;
+            }
+            if (hasContext() != other.hasContext())
+                return false;
+            if (hasContext()) {
+                if (!getContext().equals(other.getContext()))
+                    return false;
+            }
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasResource()) {
+                hash = (37 * hash) + RESOURCE_FIELD_NUMBER;
+                hash = (53 * hash) + getResource().hashCode();
+            }
+            hash = (37 * hash) + PERMISSION_FIELD_NUMBER;
+            hash = (53 * hash) + getPermission().hashCode();
+            if (hasSubject()) {
+                hash = (37 * hash) + SUBJECT_FIELD_NUMBER;
+                hash = (53 * hash) + getSubject().hashCode();
+            }
+            if (hasContext()) {
+                hash = (37 * hash) + CONTEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getContext().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(
+                com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(
+                com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseDelimitedFrom(
+                java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseDelimitedFrom(
+                java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(
+                com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem parseFrom(
+                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsRequestItem}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.CheckBulkPermissionsRequestItem)
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.class,
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
+                    resourceBuilder_ = null;
+                }
+                permission_ = "";
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
+                    subjectBuilder_ = null;
+                }
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getDefaultInstanceForType() {
+                return com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem build() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem buildPartial() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem result = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem(
+                        this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.permission_ = permission_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem) {
+                    return mergeFrom((com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem other) {
+                if (other == com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance())
+                    return this;
+                if (other.hasResource()) {
+                    mergeResource(other.getResource());
+                }
+                if (!other.getPermission().isEmpty()) {
+                    permission_ = other.permission_;
+                    bitField0_ |= 0x00000002;
+                    onChanged();
+                }
+                if (other.hasSubject()) {
+                    mergeSubject(other.getSubject());
+                }
+                if (other.hasContext()) {
+                    mergeContext(other.getContext());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            }
+                            // case 18
+                            case 26: {
+                                input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 26
+                            case 34: {
+                                input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 34
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private com.authzed.api.v1.Core.ObjectReference resource_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> resourceBuilder_;
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the resource field is set.
+             */
+            public boolean hasResource() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The resource.
+             */
+            public com.authzed.api.v1.Core.ObjectReference getResource() {
+                if (resourceBuilder_ == null) {
+                    return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
+                } else {
+                    return resourceBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setResource(com.authzed.api.v1.Core.ObjectReference value) {
+                if (resourceBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    resource_ = value;
+                } else {
+                    resourceBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
+                if (resourceBuilder_ == null) {
+                    resource_ = builderForValue.build();
+                } else {
+                    resourceBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
+                if (resourceBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
+                    } else {
+                        resource_ = value;
+                    }
+                } else {
+                    resourceBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearResource() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
+                    resourceBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getResourceFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
+                if (resourceBuilder_ != null) {
+                    return resourceBuilder_.getMessageOrBuilder();
+                } else {
+                    return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> getResourceFieldBuilder() {
+                if (resourceBuilder_ == null) {
+                    resourceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder>(
+                            getResource(), getParentForChildren(), isClean());
+                    resource_ = null;
+                }
+                return resourceBuilder_;
+            }
+
+            private java.lang.Object permission_ = "";
+
+            /**
+             * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return The permission.
+             */
+            public java.lang.String getPermission() {
+                java.lang.Object ref = permission_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    permission_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return The bytes for permission.
+             */
+            public com.google.protobuf.ByteString getPermissionBytes() {
+                java.lang.Object ref = permission_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    permission_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The permission to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermission(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                permission_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearPermission() {
+                permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000002);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string permission = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The bytes for permission to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermissionBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                permission_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.SubjectReference subject_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.SubjectReference, com.authzed.api.v1.Core.SubjectReference.Builder, com.authzed.api.v1.Core.SubjectReferenceOrBuilder> subjectBuilder_;
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the subject field is set.
+             */
+            public boolean hasSubject() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return The subject.
+             */
+            public com.authzed.api.v1.Core.SubjectReference getSubject() {
+                if (subjectBuilder_ == null) {
+                    return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
+                } else {
+                    return subjectBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setSubject(com.authzed.api.v1.Core.SubjectReference value) {
+                if (subjectBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    subject_ = value;
+                } else {
+                    subjectBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
+                if (subjectBuilder_ == null) {
+                    subject_ = builderForValue.build();
+                } else {
+                    subjectBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
+                if (subjectBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
+                    } else {
+                        subject_ = value;
+                    }
+                } else {
+                    subjectBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearSubject() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
+                    subjectBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getSubjectFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
+                if (subjectBuilder_ != null) {
+                    return subjectBuilder_.getMessageOrBuilder();
+                } else {
+                    return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.SubjectReference, com.authzed.api.v1.Core.SubjectReference.Builder, com.authzed.api.v1.Core.SubjectReferenceOrBuilder> getSubjectFieldBuilder() {
+                if (subjectBuilder_ == null) {
+                    subjectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.SubjectReference, com.authzed.api.v1.Core.SubjectReference.Builder, com.authzed.api.v1.Core.SubjectReferenceOrBuilder>(
+                            getSubject(), getParentForChildren(), isClean());
+                    subject_ = null;
+                }
+                return subjectBuilder_;
+            }
+
+            private com.google.protobuf.Struct context_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> contextBuilder_;
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the context field is set.
+             */
+            public boolean hasContext() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             *
+             * @return The context.
+             */
+            public com.google.protobuf.Struct getContext() {
+                if (contextBuilder_ == null) {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                } else {
+                    return contextBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    context_ = value;
+                } else {
+                    contextBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct.Builder builderForValue) {
+                if (contextBuilder_ == null) {
+                    context_ = builderForValue.build();
+                } else {
+                    contextBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) && context_ != null
+                            && context_ != com.google.protobuf.Struct.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
+                    } else {
+                        context_ = value;
+                    }
+                } else {
+                    contextBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearContext() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.Struct.Builder getContextBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getContextFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+                if (contextBuilder_ != null) {
+                    return contextBuilder_.getMessageOrBuilder();
+                } else {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                }
+            }
+
+            /**
+             * <code>.google.protobuf.Struct context = 4 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> getContextFieldBuilder() {
+                if (contextBuilder_ == null) {
+                    contextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                            getContext(), getParentForChildren(), isClean());
+                    context_ = null;
+                }
+                return contextBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.CheckBulkPermissionsRequestItem)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.CheckBulkPermissionsRequestItem)
+        private static final com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem();
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<CheckBulkPermissionsRequestItem> PARSER = new com.google.protobuf.AbstractParser<CheckBulkPermissionsRequestItem>() {
+
+            @java.lang.Override
+            public CheckBulkPermissionsRequestItem parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<CheckBulkPermissionsRequestItem> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<CheckBulkPermissionsRequestItem> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
+    public interface CheckBulkPermissionsResponseOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.CheckBulkPermissionsResponse)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the checkedAt field is set.
+         */
+        boolean hasCheckedAt();
+
+        /**
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The checkedAt.
+         */
+        com.authzed.api.v1.Core.ZedToken getCheckedAt();
+
+        /**
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.ZedTokenOrBuilder getCheckedAtOrBuilder();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair> getPairsList();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair getPairs(int index);
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        int getPairsCount();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        java.util.List<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder> getPairsOrBuilderList();
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder getPairsOrBuilder(int index);
+    }
+
+    /**
+     * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsResponse}
+     */
+    public static final class CheckBulkPermissionsResponse extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.CheckBulkPermissionsResponse)
+            CheckBulkPermissionsResponseOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use CheckBulkPermissionsResponse.newBuilder() to construct.
+        private CheckBulkPermissionsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private CheckBulkPermissionsResponse() {
+            pairs_ = java.util.Collections.emptyList();
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new CheckBulkPermissionsResponse();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponse_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponse_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.class,
+                            com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.Builder.class);
+        }
+
+        public static final int CHECKED_AT_FIELD_NUMBER = 1;
+
+        private com.authzed.api.v1.Core.ZedToken checkedAt_;
+
+        /**
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the checkedAt field is set.
+         */
+        @java.lang.Override
+        public boolean hasCheckedAt() {
+            return checkedAt_ != null;
+        }
+
+        /**
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The checkedAt.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ZedToken getCheckedAt() {
+            return checkedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : checkedAt_;
+        }
+
+        /**
+         * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ZedTokenOrBuilder getCheckedAtOrBuilder() {
+            return checkedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : checkedAt_;
+        }
+
+        public static final int PAIRS_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
+        private java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair> pairs_;
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair> getPairsList() {
+            return pairs_;
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder> getPairsOrBuilderList() {
+            return pairs_;
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public int getPairsCount() {
+            return pairs_.size();
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair getPairs(int index) {
+            return pairs_.get(index);
+        }
+
+        /**
+         * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder getPairsOrBuilder(int index) {
+            return pairs_.get(index);
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (checkedAt_ != null) {
+                output.writeMessage(1, getCheckedAt());
+            }
+            for (int i = 0; i < pairs_.size(); i++) {
+                output.writeMessage(2, pairs_.get(i));
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (checkedAt_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getCheckedAt());
+            }
+            for (int i = 0; i < pairs_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, pairs_.get(i));
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse other = (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse) obj;
+            if (hasCheckedAt() != other.hasCheckedAt())
+                return false;
+            if (hasCheckedAt()) {
+                if (!getCheckedAt().equals(other.getCheckedAt()))
+                    return false;
+            }
+            if (!getPairsList().equals(other.getPairsList()))
+                return false;
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasCheckedAt()) {
+                hash = (37 * hash) + CHECKED_AT_FIELD_NUMBER;
+                hash = (53 * hash) + getCheckedAt().hashCode();
+            }
+            if (getPairsCount() > 0) {
+                hash = (37 * hash) + PAIRS_FIELD_NUMBER;
+                hash = (53 * hash) + getPairsList().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(
+                com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(
+                com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseDelimitedFrom(
+                java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseDelimitedFrom(
+                java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(
+                com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse parseFrom(
+                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsResponse}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.CheckBulkPermissionsResponse)
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponse_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponse_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.class,
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                checkedAt_ = null;
+                if (checkedAtBuilder_ != null) {
+                    checkedAtBuilder_.dispose();
+                    checkedAtBuilder_ = null;
+                }
+                if (pairsBuilder_ == null) {
+                    pairs_ = java.util.Collections.emptyList();
+                } else {
+                    pairs_ = null;
+                    pairsBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponse_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse getDefaultInstanceForType() {
+                return com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse build() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse buildPartial() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse result = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse(
+                        this);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse result) {
+                if (pairsBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
+                        pairs_ = java.util.Collections.unmodifiableList(pairs_);
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    }
+                    result.pairs_ = pairs_;
+                } else {
+                    result.pairs_ = pairsBuilder_.build();
+                }
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.checkedAt_ = checkedAtBuilder_ == null ? checkedAt_ : checkedAtBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse) {
+                    return mergeFrom((com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse other) {
+                if (other == com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse.getDefaultInstance())
+                    return this;
+                if (other.hasCheckedAt()) {
+                    mergeCheckedAt(other.getCheckedAt());
+                }
+                if (pairsBuilder_ == null) {
+                    if (!other.pairs_.isEmpty()) {
+                        if (pairs_.isEmpty()) {
+                            pairs_ = other.pairs_;
+                            bitField0_ = (bitField0_ & ~0x00000002);
+                        } else {
+                            ensurePairsIsMutable();
+                            pairs_.addAll(other.pairs_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.pairs_.isEmpty()) {
+                        if (pairsBuilder_.isEmpty()) {
+                            pairsBuilder_.dispose();
+                            pairsBuilder_ = null;
+                            pairs_ = other.pairs_;
+                            bitField0_ = (bitField0_ & ~0x00000002);
+                            pairsBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                                    ? getPairsFieldBuilder()
+                                    : null;
+                        } else {
+                            pairsBuilder_.addAllMessages(other.pairs_);
+                        }
+                    }
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                input.readMessage(getCheckedAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair m = input.readMessage(
+                                        com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.parser(),
+                                        extensionRegistry);
+                                if (pairsBuilder_ == null) {
+                                    ensurePairsIsMutable();
+                                    pairs_.add(m);
+                                } else {
+                                    pairsBuilder_.addMessage(m);
+                                }
+                                break;
+                            }
+                            // case 18
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private com.authzed.api.v1.Core.ZedToken checkedAt_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> checkedAtBuilder_;
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the checkedAt field is set.
+             */
+            public boolean hasCheckedAt() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The checkedAt.
+             */
+            public com.authzed.api.v1.Core.ZedToken getCheckedAt() {
+                if (checkedAtBuilder_ == null) {
+                    return checkedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : checkedAt_;
+                } else {
+                    return checkedAtBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setCheckedAt(com.authzed.api.v1.Core.ZedToken value) {
+                if (checkedAtBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    checkedAt_ = value;
+                } else {
+                    checkedAtBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setCheckedAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
+                if (checkedAtBuilder_ == null) {
+                    checkedAt_ = builderForValue.build();
+                } else {
+                    checkedAtBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeCheckedAt(com.authzed.api.v1.Core.ZedToken value) {
+                if (checkedAtBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) && checkedAt_ != null
+                            && checkedAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getCheckedAtBuilder().mergeFrom(value);
+                    } else {
+                        checkedAt_ = value;
+                    }
+                } else {
+                    checkedAtBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearCheckedAt() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                checkedAt_ = null;
+                if (checkedAtBuilder_ != null) {
+                    checkedAtBuilder_.dispose();
+                    checkedAtBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ZedToken.Builder getCheckedAtBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getCheckedAtFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ZedTokenOrBuilder getCheckedAtOrBuilder() {
+                if (checkedAtBuilder_ != null) {
+                    return checkedAtBuilder_.getMessageOrBuilder();
+                } else {
+                    return checkedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : checkedAt_;
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.ZedToken checked_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getCheckedAtFieldBuilder() {
+                if (checkedAtBuilder_ == null) {
+                    checkedAtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder>(
+                            getCheckedAt(), getParentForChildren(), isClean());
+                    checkedAt_ = null;
+                }
+                return checkedAtBuilder_;
+            }
+
+            private java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair> pairs_ = java.util.Collections
+                    .emptyList();
+
+            private void ensurePairsIsMutable() {
+                if (!((bitField0_ & 0x00000002) != 0)) {
+                    pairs_ = new java.util.ArrayList<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair>(pairs_);
+                    bitField0_ |= 0x00000002;
+                }
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder> pairsBuilder_;
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair> getPairsList() {
+                if (pairsBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(pairs_);
+                } else {
+                    return pairsBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public int getPairsCount() {
+                if (pairsBuilder_ == null) {
+                    return pairs_.size();
+                } else {
+                    return pairsBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair getPairs(int index) {
+                if (pairsBuilder_ == null) {
+                    return pairs_.get(index);
+                } else {
+                    return pairsBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPairs(int index, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair value) {
+                if (pairsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensurePairsIsMutable();
+                    pairs_.set(index, value);
+                    onChanged();
+                } else {
+                    pairsBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPairs(int index,
+                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder builderForValue) {
+                if (pairsBuilder_ == null) {
+                    ensurePairsIsMutable();
+                    pairs_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    pairsBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addPairs(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair value) {
+                if (pairsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensurePairsIsMutable();
+                    pairs_.add(value);
+                    onChanged();
+                } else {
+                    pairsBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addPairs(int index, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair value) {
+                if (pairsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensurePairsIsMutable();
+                    pairs_.add(index, value);
+                    onChanged();
+                } else {
+                    pairsBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addPairs(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder builderForValue) {
+                if (pairsBuilder_ == null) {
+                    ensurePairsIsMutable();
+                    pairs_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    pairsBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addPairs(int index,
+                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder builderForValue) {
+                if (pairsBuilder_ == null) {
+                    ensurePairsIsMutable();
+                    pairs_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    pairsBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder addAllPairs(
+                    java.lang.Iterable<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair> values) {
+                if (pairsBuilder_ == null) {
+                    ensurePairsIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(values, pairs_);
+                    onChanged();
+                } else {
+                    pairsBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearPairs() {
+                if (pairsBuilder_ == null) {
+                    pairs_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                    onChanged();
+                } else {
+                    pairsBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder removePairs(int index) {
+                if (pairsBuilder_ == null) {
+                    ensurePairsIsMutable();
+                    pairs_.remove(index);
+                    onChanged();
+                } else {
+                    pairsBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder getPairsBuilder(int index) {
+                return getPairsFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder getPairsOrBuilder(int index) {
+                if (pairsBuilder_ == null) {
+                    return pairs_.get(index);
+                } else {
+                    return pairsBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public java.util.List<? extends com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder> getPairsOrBuilderList() {
+                if (pairsBuilder_ != null) {
+                    return pairsBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(pairs_);
+                }
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder addPairsBuilder() {
+                return getPairsFieldBuilder()
+                        .addBuilder(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder addPairsBuilder(int index) {
+                return getPairsFieldBuilder().addBuilder(index,
+                        com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .authzed.api.v1.CheckBulkPermissionsPair pairs = 2 [(.validate.rules) = { ... }</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder> getPairsBuilderList() {
+                return getPairsFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder> getPairsFieldBuilder() {
+                if (pairsBuilder_ == null) {
+                    pairsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder>(
+                            pairs_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
+                    pairs_ = null;
+                }
+                return pairsBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.CheckBulkPermissionsResponse)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.CheckBulkPermissionsResponse)
+        private static final com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse();
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<CheckBulkPermissionsResponse> PARSER = new com.google.protobuf.AbstractParser<CheckBulkPermissionsResponse>() {
+
+            @java.lang.Override
+            public CheckBulkPermissionsResponse parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<CheckBulkPermissionsResponse> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<CheckBulkPermissionsResponse> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
+    public interface CheckBulkPermissionsPairOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.CheckBulkPermissionsPair)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+         *
+         * @return Whether the request field is set.
+         */
+        boolean hasRequest();
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+         *
+         * @return The request.
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getRequest();
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder getRequestOrBuilder();
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+         *
+         * @return Whether the item field is set.
+         */
+        boolean hasItem();
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+         *
+         * @return The item.
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem getItem();
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+         */
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItemOrBuilder getItemOrBuilder();
+
+        /**
+         * <code>.google.rpc.Status error = 3;</code>
+         *
+         * @return Whether the error field is set.
+         */
+        boolean hasError();
+
+        /**
+         * <code>.google.rpc.Status error = 3;</code>
+         *
+         * @return The error.
+         */
+        com.google.rpc.Status getError();
+
+        /**
+         * <code>.google.rpc.Status error = 3;</code>
+         */
+        com.google.rpc.StatusOrBuilder getErrorOrBuilder();
+
+        com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.ResponseCase getResponseCase();
+    }
+
+    /**
+     * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsPair}
+     */
+    public static final class CheckBulkPermissionsPair extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.CheckBulkPermissionsPair)
+            CheckBulkPermissionsPairOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use CheckBulkPermissionsPair.newBuilder() to construct.
+        private CheckBulkPermissionsPair(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private CheckBulkPermissionsPair() {
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new CheckBulkPermissionsPair();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsPair_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsPair_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.class,
+                            com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder.class);
+        }
+
+        private int responseCase_ = 0;
+
+        @SuppressWarnings("serial")
+        private java.lang.Object response_;
+
+        public enum ResponseCase
+                implements com.google.protobuf.Internal.EnumLite, com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+
+            ITEM(2),
+            ERROR(3),
+            RESPONSE_NOT_SET(0);
+
+            private final int value;
+
+            private ResponseCase(int value) {
+                this.value = value;
+            }
+
+            /**
+             * @param value The number of the enum to look for.
+             * @return The enum associated with the given number.
+             * @deprecated Use {@link #forNumber(int)} instead.
+             */
+            @java.lang.Deprecated
+            public static ResponseCase valueOf(int value) {
+                return forNumber(value);
+            }
+
+            public static ResponseCase forNumber(int value) {
+                switch (value) {
+                    case 2:
+                        return ITEM;
+                    case 3:
+                        return ERROR;
+                    case 0:
+                        return RESPONSE_NOT_SET;
+                    default:
+                        return null;
+                }
+            }
+
+            public int getNumber() {
+                return this.value;
+            }
+        }
+
+        public ResponseCase getResponseCase() {
+            return ResponseCase.forNumber(responseCase_);
+        }
+
+        public static final int REQUEST_FIELD_NUMBER = 1;
+
+        private com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem request_;
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+         *
+         * @return Whether the request field is set.
+         */
+        @java.lang.Override
+        public boolean hasRequest() {
+            return request_ != null;
+        }
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+         *
+         * @return The request.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getRequest() {
+            return request_ == null ? com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance()
+                    : request_;
+        }
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder getRequestOrBuilder() {
+            return request_ == null ? com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance()
+                    : request_;
+        }
+
+        public static final int ITEM_FIELD_NUMBER = 2;
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+         *
+         * @return Whether the item field is set.
+         */
+        @java.lang.Override
+        public boolean hasItem() {
+            return responseCase_ == 2;
+        }
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+         *
+         * @return The item.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem getItem() {
+            if (responseCase_ == 2) {
+                return (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_;
+            }
+            return com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance();
+        }
+
+        /**
+         * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItemOrBuilder getItemOrBuilder() {
+            if (responseCase_ == 2) {
+                return (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_;
+            }
+            return com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance();
+        }
+
+        public static final int ERROR_FIELD_NUMBER = 3;
+
+        /**
+         * <code>.google.rpc.Status error = 3;</code>
+         *
+         * @return Whether the error field is set.
+         */
+        @java.lang.Override
+        public boolean hasError() {
+            return responseCase_ == 3;
+        }
+
+        /**
+         * <code>.google.rpc.Status error = 3;</code>
+         *
+         * @return The error.
+         */
+        @java.lang.Override
+        public com.google.rpc.Status getError() {
+            if (responseCase_ == 3) {
+                return (com.google.rpc.Status) response_;
+            }
+            return com.google.rpc.Status.getDefaultInstance();
+        }
+
+        /**
+         * <code>.google.rpc.Status error = 3;</code>
+         */
+        @java.lang.Override
+        public com.google.rpc.StatusOrBuilder getErrorOrBuilder() {
+            if (responseCase_ == 3) {
+                return (com.google.rpc.Status) response_;
+            }
+            return com.google.rpc.Status.getDefaultInstance();
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (request_ != null) {
+                output.writeMessage(1, getRequest());
+            }
+            if (responseCase_ == 2) {
+                output.writeMessage(2, (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_);
+            }
+            if (responseCase_ == 3) {
+                output.writeMessage(3, (com.google.rpc.Status) response_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (request_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getRequest());
+            }
+            if (responseCase_ == 2) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(2,
+                        (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_);
+            }
+            if (responseCase_ == 3) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, (com.google.rpc.Status) response_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair other = (com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair) obj;
+            if (hasRequest() != other.hasRequest())
+                return false;
+            if (hasRequest()) {
+                if (!getRequest().equals(other.getRequest()))
+                    return false;
+            }
+            if (!getResponseCase().equals(other.getResponseCase()))
+                return false;
+            switch (responseCase_) {
+                case 2:
+                    if (!getItem().equals(other.getItem()))
+                        return false;
+                    break;
+                case 3:
+                    if (!getError().equals(other.getError()))
+                        return false;
+                    break;
+                case 0:
+                default:
+            }
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasRequest()) {
+                hash = (37 * hash) + REQUEST_FIELD_NUMBER;
+                hash = (53 * hash) + getRequest().hashCode();
+            }
+            switch (responseCase_) {
+                case 2:
+                    hash = (37 * hash) + ITEM_FIELD_NUMBER;
+                    hash = (53 * hash) + getItem().hashCode();
+                    break;
+                case 3:
+                    hash = (37 * hash) + ERROR_FIELD_NUMBER;
+                    hash = (53 * hash) + getError().hashCode();
+                    break;
+                case 0:
+                default:
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(
+                com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(
+                com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseDelimitedFrom(
+                java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseDelimitedFrom(
+                java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(
+                com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair parseFrom(
+                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsPair}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.CheckBulkPermissionsPair)
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsPairOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsPair_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsPair_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.class,
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                request_ = null;
+                if (requestBuilder_ != null) {
+                    requestBuilder_.dispose();
+                    requestBuilder_ = null;
+                }
+                if (itemBuilder_ != null) {
+                    itemBuilder_.clear();
+                }
+                if (errorBuilder_ != null) {
+                    errorBuilder_.clear();
+                }
+                responseCase_ = 0;
+                response_ = null;
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsPair_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair getDefaultInstanceForType() {
+                return com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair build() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair buildPartial() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair result = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair(
+                        this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                buildPartialOneofs(result);
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.request_ = requestBuilder_ == null ? request_ : requestBuilder_.build();
+                }
+            }
+
+            private void buildPartialOneofs(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair result) {
+                result.responseCase_ = responseCase_;
+                result.response_ = this.response_;
+                if (responseCase_ == 2 && itemBuilder_ != null) {
+                    result.response_ = itemBuilder_.build();
+                }
+                if (responseCase_ == 3 && errorBuilder_ != null) {
+                    result.response_ = errorBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair) {
+                    return mergeFrom((com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair other) {
+                if (other == com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair.getDefaultInstance())
+                    return this;
+                if (other.hasRequest()) {
+                    mergeRequest(other.getRequest());
+                }
+                switch (other.getResponseCase()) {
+                    case ITEM: {
+                        mergeItem(other.getItem());
+                        break;
+                    }
+                    case ERROR: {
+                        mergeError(other.getError());
+                        break;
+                    }
+                    case RESPONSE_NOT_SET: {
+                        break;
+                    }
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                input.readMessage(getRequestFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                input.readMessage(getItemFieldBuilder().getBuilder(), extensionRegistry);
+                                responseCase_ = 2;
+                                break;
+                            }
+                            // case 18
+                            case 26: {
+                                input.readMessage(getErrorFieldBuilder().getBuilder(), extensionRegistry);
+                                responseCase_ = 3;
+                                break;
+                            }
+                            // case 26
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int responseCase_ = 0;
+
+            private java.lang.Object response_;
+
+            public ResponseCase getResponseCase() {
+                return ResponseCase.forNumber(responseCase_);
+            }
+
+            public Builder clearResponse() {
+                responseCase_ = 0;
+                response_ = null;
+                onChanged();
+                return this;
+            }
+
+            private int bitField0_;
+
+            private com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem request_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder> requestBuilder_;
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             *
+             * @return Whether the request field is set.
+             */
+            public boolean hasRequest() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             *
+             * @return The request.
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem getRequest() {
+                if (requestBuilder_ == null) {
+                    return request_ == null
+                            ? com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance()
+                            : request_;
+                } else {
+                    return requestBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             */
+            public Builder setRequest(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem value) {
+                if (requestBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    request_ = value;
+                } else {
+                    requestBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             */
+            public Builder setRequest(
+                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder builderForValue) {
+                if (requestBuilder_ == null) {
+                    request_ = builderForValue.build();
+                } else {
+                    requestBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             */
+            public Builder mergeRequest(com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem value) {
+                if (requestBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) && request_ != null
+                            && request_ != com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem
+                                    .getDefaultInstance()) {
+                        getRequestBuilder().mergeFrom(value);
+                    } else {
+                        request_ = value;
+                    }
+                } else {
+                    requestBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             */
+            public Builder clearRequest() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                request_ = null;
+                if (requestBuilder_ != null) {
+                    requestBuilder_.dispose();
+                    requestBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder getRequestBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getRequestFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder getRequestOrBuilder() {
+                if (requestBuilder_ != null) {
+                    return requestBuilder_.getMessageOrBuilder();
+                } else {
+                    return request_ == null
+                            ? com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.getDefaultInstance()
+                            : request_;
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsRequestItem request = 1;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder> getRequestFieldBuilder() {
+                if (requestBuilder_ == null) {
+                    requestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequestItemOrBuilder>(
+                            getRequest(), getParentForChildren(), isClean());
+                    request_ = null;
+                }
+                return requestBuilder_;
+            }
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItemOrBuilder> itemBuilder_;
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             *
+             * @return Whether the item field is set.
+             */
+            @java.lang.Override
+            public boolean hasItem() {
+                return responseCase_ == 2;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             *
+             * @return The item.
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem getItem() {
+                if (itemBuilder_ == null) {
+                    if (responseCase_ == 2) {
+                        return (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_;
+                    }
+                    return com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance();
+                } else {
+                    if (responseCase_ == 2) {
+                        return itemBuilder_.getMessage();
+                    }
+                    return com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             */
+            public Builder setItem(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem value) {
+                if (itemBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    response_ = value;
+                    onChanged();
+                } else {
+                    itemBuilder_.setMessage(value);
+                }
+                responseCase_ = 2;
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             */
+            public Builder setItem(
+                    com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.Builder builderForValue) {
+                if (itemBuilder_ == null) {
+                    response_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    itemBuilder_.setMessage(builderForValue.build());
+                }
+                responseCase_ = 2;
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             */
+            public Builder mergeItem(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem value) {
+                if (itemBuilder_ == null) {
+                    if (responseCase_ == 2 && response_ != com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem
+                            .getDefaultInstance()) {
+                        response_ = com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem
+                                .newBuilder((com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_)
+                                .mergeFrom(value).buildPartial();
+                    } else {
+                        response_ = value;
+                    }
+                    onChanged();
+                } else {
+                    if (responseCase_ == 2) {
+                        itemBuilder_.mergeFrom(value);
+                    } else {
+                        itemBuilder_.setMessage(value);
+                    }
+                }
+                responseCase_ = 2;
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             */
+            public Builder clearItem() {
+                if (itemBuilder_ == null) {
+                    if (responseCase_ == 2) {
+                        responseCase_ = 0;
+                        response_ = null;
+                        onChanged();
+                    }
+                } else {
+                    if (responseCase_ == 2) {
+                        responseCase_ = 0;
+                        response_ = null;
+                    }
+                    itemBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             */
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.Builder getItemBuilder() {
+                return getItemFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItemOrBuilder getItemOrBuilder() {
+                if ((responseCase_ == 2) && (itemBuilder_ != null)) {
+                    return itemBuilder_.getMessageOrBuilder();
+                } else {
+                    if (responseCase_ == 2) {
+                        return (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_;
+                    }
+                    return com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckBulkPermissionsResponseItem item = 2;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItemOrBuilder> getItemFieldBuilder() {
+                if (itemBuilder_ == null) {
+                    if (!(responseCase_ == 2)) {
+                        response_ = com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance();
+                    }
+                    itemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.Builder, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItemOrBuilder>(
+                            (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) response_,
+                            getParentForChildren(), isClean());
+                    response_ = null;
+                }
+                responseCase_ = 2;
+                onChanged();
+                return itemBuilder_;
+            }
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.rpc.Status, com.google.rpc.Status.Builder, com.google.rpc.StatusOrBuilder> errorBuilder_;
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             *
+             * @return Whether the error field is set.
+             */
+            @java.lang.Override
+            public boolean hasError() {
+                return responseCase_ == 3;
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             *
+             * @return The error.
+             */
+            @java.lang.Override
+            public com.google.rpc.Status getError() {
+                if (errorBuilder_ == null) {
+                    if (responseCase_ == 3) {
+                        return (com.google.rpc.Status) response_;
+                    }
+                    return com.google.rpc.Status.getDefaultInstance();
+                } else {
+                    if (responseCase_ == 3) {
+                        return errorBuilder_.getMessage();
+                    }
+                    return com.google.rpc.Status.getDefaultInstance();
+                }
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             */
+            public Builder setError(com.google.rpc.Status value) {
+                if (errorBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    response_ = value;
+                    onChanged();
+                } else {
+                    errorBuilder_.setMessage(value);
+                }
+                responseCase_ = 3;
+                return this;
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             */
+            public Builder setError(com.google.rpc.Status.Builder builderForValue) {
+                if (errorBuilder_ == null) {
+                    response_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    errorBuilder_.setMessage(builderForValue.build());
+                }
+                responseCase_ = 3;
+                return this;
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             */
+            public Builder mergeError(com.google.rpc.Status value) {
+                if (errorBuilder_ == null) {
+                    if (responseCase_ == 3 && response_ != com.google.rpc.Status.getDefaultInstance()) {
+                        response_ = com.google.rpc.Status.newBuilder((com.google.rpc.Status) response_).mergeFrom(value)
+                                .buildPartial();
+                    } else {
+                        response_ = value;
+                    }
+                    onChanged();
+                } else {
+                    if (responseCase_ == 3) {
+                        errorBuilder_.mergeFrom(value);
+                    } else {
+                        errorBuilder_.setMessage(value);
+                    }
+                }
+                responseCase_ = 3;
+                return this;
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             */
+            public Builder clearError() {
+                if (errorBuilder_ == null) {
+                    if (responseCase_ == 3) {
+                        responseCase_ = 0;
+                        response_ = null;
+                        onChanged();
+                    }
+                } else {
+                    if (responseCase_ == 3) {
+                        responseCase_ = 0;
+                        response_ = null;
+                    }
+                    errorBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             */
+            public com.google.rpc.Status.Builder getErrorBuilder() {
+                return getErrorFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             */
+            @java.lang.Override
+            public com.google.rpc.StatusOrBuilder getErrorOrBuilder() {
+                if ((responseCase_ == 3) && (errorBuilder_ != null)) {
+                    return errorBuilder_.getMessageOrBuilder();
+                } else {
+                    if (responseCase_ == 3) {
+                        return (com.google.rpc.Status) response_;
+                    }
+                    return com.google.rpc.Status.getDefaultInstance();
+                }
+            }
+
+            /**
+             * <code>.google.rpc.Status error = 3;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.rpc.Status, com.google.rpc.Status.Builder, com.google.rpc.StatusOrBuilder> getErrorFieldBuilder() {
+                if (errorBuilder_ == null) {
+                    if (!(responseCase_ == 3)) {
+                        response_ = com.google.rpc.Status.getDefaultInstance();
+                    }
+                    errorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.rpc.Status, com.google.rpc.Status.Builder, com.google.rpc.StatusOrBuilder>(
+                            (com.google.rpc.Status) response_, getParentForChildren(), isClean());
+                    response_ = null;
+                }
+                responseCase_ = 3;
+                onChanged();
+                return errorBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.CheckBulkPermissionsPair)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.CheckBulkPermissionsPair)
+        private static final com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair();
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<CheckBulkPermissionsPair> PARSER = new com.google.protobuf.AbstractParser<CheckBulkPermissionsPair>() {
+
+            @java.lang.Override
+            public CheckBulkPermissionsPair parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<CheckBulkPermissionsPair> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<CheckBulkPermissionsPair> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsPair getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
+    public interface CheckBulkPermissionsResponseItemOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.CheckBulkPermissionsResponseItem)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        int getPermissionshipValue();
+
+        /**
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permissionship.
+         */
+        com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship getPermissionship();
+
+        /**
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        boolean hasPartialCaveatInfo();
+
+        /**
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo();
+
+        /**
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder();
+    }
+
+    /**
+     * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsResponseItem}
+     */
+    public static final class CheckBulkPermissionsResponseItem extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.CheckBulkPermissionsResponseItem)
+            CheckBulkPermissionsResponseItemOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use CheckBulkPermissionsResponseItem.newBuilder() to construct.
+        private CheckBulkPermissionsResponseItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private CheckBulkPermissionsResponseItem() {
+            permissionship_ = 0;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new CheckBulkPermissionsResponseItem();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.class,
+                            com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.Builder.class);
+        }
+
+        public static final int PERMISSIONSHIP_FIELD_NUMBER = 1;
+
+        private int permissionship_ = 0;
+
+        /**
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        @java.lang.Override
+        public int getPermissionshipValue() {
+            return permissionship_;
+        }
+
+        /**
+         * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permissionship.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship getPermissionship() {
+            com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship result = com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship
+                    .forNumber(permissionship_);
+            return result == null ? com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.UNRECOGNIZED
+                    : result;
+        }
+
+        public static final int PARTIAL_CAVEAT_INFO_FIELD_NUMBER = 2;
+
+        private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+        /**
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        @java.lang.Override
+        public boolean hasPartialCaveatInfo() {
+            return partialCaveatInfo_ != null;
+        }
+
+        /**
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        /**
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (permissionship_ != com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                output.writeEnum(1, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                output.writeMessage(2, getPartialCaveatInfo());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (permissionship_ != com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getPartialCaveatInfo());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem other = (com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) obj;
+            if (permissionship_ != other.permissionship_)
+                return false;
+            if (hasPartialCaveatInfo() != other.hasPartialCaveatInfo())
+                return false;
+            if (hasPartialCaveatInfo()) {
+                if (!getPartialCaveatInfo().equals(other.getPartialCaveatInfo()))
+                    return false;
+            }
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + PERMISSIONSHIP_FIELD_NUMBER;
+            hash = (53 * hash) + permissionship_;
+            if (hasPartialCaveatInfo()) {
+                hash = (37 * hash) + PARTIAL_CAVEAT_INFO_FIELD_NUMBER;
+                hash = (53 * hash) + getPartialCaveatInfo().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(
+                com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(
+                com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseDelimitedFrom(
+                java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseDelimitedFrom(
+                java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(
+                com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem parseFrom(
+                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code authzed.api.v1.CheckBulkPermissionsResponseItem}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.CheckBulkPermissionsResponseItem)
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItemOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.class,
+                                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                permissionship_ = 0;
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem getDefaultInstanceForType() {
+                return com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem build() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem buildPartial() {
+                com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem result = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem(
+                        this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.permissionship_ = permissionship_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.partialCaveatInfo_ = partialCaveatInfoBuilder_ == null ? partialCaveatInfo_
+                            : partialCaveatInfoBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) {
+                    return mergeFrom((com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem other) {
+                if (other == com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem.getDefaultInstance())
+                    return this;
+                if (other.permissionship_ != 0) {
+                    setPermissionshipValue(other.getPermissionshipValue());
+                }
+                if (other.hasPartialCaveatInfo()) {
+                    mergePartialCaveatInfo(other.getPartialCaveatInfo());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8: {
+                                permissionship_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 8
+                            case 18: {
+                                input.readMessage(getPartialCaveatInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
+                                break;
+                            }
+                            // case 18
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private int permissionship_ = 0;
+
+            /**
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The enum numeric value on the wire for permissionship.
+             */
+            @java.lang.Override
+            public int getPermissionshipValue() {
+                return permissionship_;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The enum numeric value on the wire for permissionship to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermissionshipValue(int value) {
+                permissionship_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The permissionship.
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship getPermissionship() {
+                com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship result = com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship
+                        .forNumber(permissionship_);
+                return result == null ? com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.UNRECOGNIZED
+                        : result;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The permissionship to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermissionship(
+                    com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                permissionship_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.CheckPermissionResponse.Permissionship permissionship = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearPermissionship() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                permissionship_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> partialCaveatInfoBuilder_;
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the partialCaveatInfo field is set.
+             */
+            public boolean hasPartialCaveatInfo() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return The partialCaveatInfo.
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                } else {
+                    return partialCaveatInfoBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    partialCaveatInfo_ = value;
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo.Builder builderForValue) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfo_ = builderForValue.build();
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergePartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) && partialCaveatInfo_ != null
+                            && partialCaveatInfo_ != com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()) {
+                        getPartialCaveatInfoBuilder().mergeFrom(value);
+                    } else {
+                        partialCaveatInfo_ = value;
+                    }
+                } else {
+                    partialCaveatInfoBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearPartialCaveatInfo() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo.Builder getPartialCaveatInfoBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getPartialCaveatInfoFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+                if (partialCaveatInfoBuilder_ != null) {
+                    return partialCaveatInfoBuilder_.getMessageOrBuilder();
+                } else {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                }
+            }
+
+            /**
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 2 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> getPartialCaveatInfoFieldBuilder() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder>(
+                            getPartialCaveatInfo(), getParentForChildren(), isClean());
+                    partialCaveatInfo_ = null;
+                }
+                return partialCaveatInfoBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.CheckBulkPermissionsResponseItem)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.CheckBulkPermissionsResponseItem)
+        private static final com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem();
+        }
+
+        public static com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<CheckBulkPermissionsResponseItem> PARSER = new com.google.protobuf.AbstractParser<CheckBulkPermissionsResponseItem>() {
+
+            @java.lang.Override
+            public CheckBulkPermissionsResponseItem parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<CheckBulkPermissionsResponseItem> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<CheckBulkPermissionsResponseItem> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponseItem getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
     }
@@ -14157,6 +21995,85 @@ public final class PermissionService {
          * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        boolean hasContext();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        com.google.protobuf.Struct getContext();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         */
+        com.google.protobuf.StructOrBuilder getContextOrBuilder();
+
+        /**
+         * <pre>
+         * optional_limit, if non-zero, specifies the limit on the number of resources to return
+         * before the stream is closed on the server side. By default, the stream will continue
+         * resolving resources until exhausted or the stream is closed due to the client or a
+         * network issue.
+         * </pre>
+         *
+         * <code>uint32 optional_limit = 6 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalLimit.
+         */
+        int getOptionalLimit();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupResourcesResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+         *
+         * @return Whether the optionalCursor field is set.
+         */
+        boolean hasOptionalCursor();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupResourcesResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+         *
+         * @return The optionalCursor.
+         */
+        com.authzed.api.v1.Core.Cursor getOptionalCursor();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupResourcesResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+         */
+        com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder();
     }
 
     /**
@@ -14376,6 +22293,118 @@ public final class PermissionService {
             return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
+        public static final int CONTEXT_FIELD_NUMBER = 5;
+
+        private com.google.protobuf.Struct context_;
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        @java.lang.Override
+        public boolean hasContext() {
+            return context_ != null;
+        }
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        @java.lang.Override
+        public com.google.protobuf.Struct getContext() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        public static final int OPTIONAL_LIMIT_FIELD_NUMBER = 6;
+
+        private int optionalLimit_ = 0;
+
+        /**
+         * <pre>
+         * optional_limit, if non-zero, specifies the limit on the number of resources to return
+         * before the stream is closed on the server side. By default, the stream will continue
+         * resolving resources until exhausted or the stream is closed due to the client or a
+         * network issue.
+         * </pre>
+         *
+         * <code>uint32 optional_limit = 6 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalLimit.
+         */
+        @java.lang.Override
+        public int getOptionalLimit() {
+            return optionalLimit_;
+        }
+
+        public static final int OPTIONAL_CURSOR_FIELD_NUMBER = 7;
+
+        private com.authzed.api.v1.Core.Cursor optionalCursor_;
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupResourcesResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+         *
+         * @return Whether the optionalCursor field is set.
+         */
+        @java.lang.Override
+        public boolean hasOptionalCursor() {
+            return optionalCursor_ != null;
+        }
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupResourcesResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+         *
+         * @return The optionalCursor.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.Cursor getOptionalCursor() {
+            return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+        }
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupResourcesResponse object.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder() {
+            return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -14403,6 +22432,15 @@ public final class PermissionService {
             if (subject_ != null) {
                 output.writeMessage(4, getSubject());
             }
+            if (context_ != null) {
+                output.writeMessage(5, getContext());
+            }
+            if (optionalLimit_ != 0) {
+                output.writeUInt32(6, optionalLimit_);
+            }
+            if (optionalCursor_ != null) {
+                output.writeMessage(7, getOptionalCursor());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -14423,6 +22461,15 @@ public final class PermissionService {
             }
             if (subject_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getSubject());
+            }
+            if (context_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getContext());
+            }
+            if (optionalLimit_ != 0) {
+                size += com.google.protobuf.CodedOutputStream.computeUInt32Size(6, optionalLimit_);
+            }
+            if (optionalCursor_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, getOptionalCursor());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -14454,6 +22501,20 @@ public final class PermissionService {
                 if (!getSubject().equals(other.getSubject()))
                     return false;
             }
+            if (hasContext() != other.hasContext())
+                return false;
+            if (hasContext()) {
+                if (!getContext().equals(other.getContext()))
+                    return false;
+            }
+            if (getOptionalLimit() != other.getOptionalLimit())
+                return false;
+            if (hasOptionalCursor() != other.hasOptionalCursor())
+                return false;
+            if (hasOptionalCursor()) {
+                if (!getOptionalCursor().equals(other.getOptionalCursor()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -14477,6 +22538,16 @@ public final class PermissionService {
             if (hasSubject()) {
                 hash = (37 * hash) + SUBJECT_FIELD_NUMBER;
                 hash = (53 * hash) + getSubject().hashCode();
+            }
+            if (hasContext()) {
+                hash = (37 * hash) + CONTEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getContext().hashCode();
+            }
+            hash = (37 * hash) + OPTIONAL_LIMIT_FIELD_NUMBER;
+            hash = (53 * hash) + getOptionalLimit();
+            if (hasOptionalCursor()) {
+                hash = (37 * hash) + OPTIONAL_CURSOR_FIELD_NUMBER;
+                hash = (53 * hash) + getOptionalCursor().hashCode();
             }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
@@ -14618,6 +22689,17 @@ public final class PermissionService {
                     subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                optionalLimit_ = 0;
+                optionalCursor_ = null;
+                if (optionalCursorBuilder_ != null) {
+                    optionalCursorBuilder_.dispose();
+                    optionalCursorBuilder_ = null;
+                }
                 return this;
             }
 
@@ -14665,6 +22747,15 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000008) != 0)) {
                     result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
                 }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.optionalLimit_ = optionalLimit_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.optionalCursor_ = optionalCursorBuilder_ == null ? optionalCursor_ : optionalCursorBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -14695,6 +22786,15 @@ public final class PermissionService {
                 }
                 if (other.hasSubject()) {
                     mergeSubject(other.getSubject());
+                }
+                if (other.hasContext()) {
+                    mergeContext(other.getContext());
+                }
+                if (other.getOptionalLimit() != 0) {
+                    setOptionalLimit(other.getOptionalLimit());
+                }
+                if (other.hasOptionalCursor()) {
+                    mergeOptionalCursor(other.getOptionalCursor());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -14744,6 +22844,24 @@ public final class PermissionService {
                                 break;
                             }
                             // case 34
+                            case 42: {
+                                input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000010;
+                                break;
+                            }
+                            // case 42
+                            case 48: {
+                                optionalLimit_ = input.readUInt32();
+                                bitField0_ |= 0x00000020;
+                                break;
+                            }
+                            // case 48
+                            case 58: {
+                                input.readMessage(getOptionalCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000040;
+                                break;
+                            }
+                            // case 58
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -15258,6 +23376,389 @@ public final class PermissionService {
                 return subjectBuilder_;
             }
 
+            private com.google.protobuf.Struct context_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> contextBuilder_;
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the context field is set.
+             */
+            public boolean hasContext() {
+                return ((bitField0_ & 0x00000010) != 0);
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             *
+             * @return The context.
+             */
+            public com.google.protobuf.Struct getContext() {
+                if (contextBuilder_ == null) {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                } else {
+                    return contextBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    context_ = value;
+                } else {
+                    contextBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct.Builder builderForValue) {
+                if (contextBuilder_ == null) {
+                    context_ = builderForValue.build();
+                } else {
+                    contextBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) && context_ != null
+                            && context_ != com.google.protobuf.Struct.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
+                    } else {
+                        context_ = value;
+                    }
+                } else {
+                    contextBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearContext() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.Struct.Builder getContextBuilder() {
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return getContextFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+                if (contextBuilder_ != null) {
+                    return contextBuilder_.getMessageOrBuilder();
+                } else {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 5 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> getContextFieldBuilder() {
+                if (contextBuilder_ == null) {
+                    contextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                            getContext(), getParentForChildren(), isClean());
+                    context_ = null;
+                }
+                return contextBuilder_;
+            }
+
+            private int optionalLimit_;
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of resources to return
+             * before the stream is closed on the server side. By default, the stream will continue
+             * resolving resources until exhausted or the stream is closed due to the client or a
+             * network issue.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 6 [(.validate.rules) = { ... }</code>
+             *
+             * @return The optionalLimit.
+             */
+            @java.lang.Override
+            public int getOptionalLimit() {
+                return optionalLimit_;
+            }
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of resources to return
+             * before the stream is closed on the server side. By default, the stream will continue
+             * resolving resources until exhausted or the stream is closed due to the client or a
+             * network issue.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 6 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The optionalLimit to set.
+             * @return This builder for chaining.
+             */
+            public Builder setOptionalLimit(int value) {
+                optionalLimit_ = value;
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_limit, if non-zero, specifies the limit on the number of resources to return
+             * before the stream is closed on the server side. By default, the stream will continue
+             * resolving resources until exhausted or the stream is closed due to the client or a
+             * network issue.
+             * </pre>
+             *
+             * <code>uint32 optional_limit = 6 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearOptionalLimit() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                optionalLimit_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.Cursor optionalCursor_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> optionalCursorBuilder_;
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             *
+             * @return Whether the optionalCursor field is set.
+             */
+            public boolean hasOptionalCursor() {
+                return ((bitField0_ & 0x00000040) != 0);
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             *
+             * @return The optionalCursor.
+             */
+            public com.authzed.api.v1.Core.Cursor getOptionalCursor() {
+                if (optionalCursorBuilder_ == null) {
+                    return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+                } else {
+                    return optionalCursorBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             */
+            public Builder setOptionalCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (optionalCursorBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    optionalCursor_ = value;
+                } else {
+                    optionalCursorBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             */
+            public Builder setOptionalCursor(com.authzed.api.v1.Core.Cursor.Builder builderForValue) {
+                if (optionalCursorBuilder_ == null) {
+                    optionalCursor_ = builderForValue.build();
+                } else {
+                    optionalCursorBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             */
+            public Builder mergeOptionalCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (optionalCursorBuilder_ == null) {
+                    if (((bitField0_ & 0x00000040) != 0) && optionalCursor_ != null
+                            && optionalCursor_ != com.authzed.api.v1.Core.Cursor.getDefaultInstance()) {
+                        getOptionalCursorBuilder().mergeFrom(value);
+                    } else {
+                        optionalCursor_ = value;
+                    }
+                } else {
+                    optionalCursorBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             */
+            public Builder clearOptionalCursor() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                optionalCursor_ = null;
+                if (optionalCursorBuilder_ != null) {
+                    optionalCursorBuilder_.dispose();
+                    optionalCursorBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             */
+            public com.authzed.api.v1.Core.Cursor.Builder getOptionalCursorBuilder() {
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return getOptionalCursorFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             */
+            public com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder() {
+                if (optionalCursorBuilder_ != null) {
+                    return optionalCursorBuilder_.getMessageOrBuilder();
+                } else {
+                    return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupResourcesResponse object.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 7;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> getOptionalCursorFieldBuilder() {
+                if (optionalCursorBuilder_ == null) {
+                    optionalCursorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder>(
+                            getOptionalCursor(), getParentForChildren(), isClean());
+                    optionalCursor_ = null;
+                }
+                return optionalCursorBuilder_;
+            }
+
             @java.lang.Override
             public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
                 return super.setUnknownFields(unknownFields);
@@ -15321,6 +23822,10 @@ public final class PermissionService {
             com.google.protobuf.MessageOrBuilder {
 
         /**
+         * <pre>
+         * looked_up_at is the ZedToken at which the resource was found.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
          *
          * @return Whether the lookedUpAt field is set.
@@ -15328,6 +23833,10 @@ public final class PermissionService {
         boolean hasLookedUpAt();
 
         /**
+         * <pre>
+         * looked_up_at is the ZedToken at which the resource was found.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
          *
          * @return The lookedUpAt.
@@ -15335,11 +23844,19 @@ public final class PermissionService {
         com.authzed.api.v1.Core.ZedToken getLookedUpAt();
 
         /**
+         * <pre>
+         * looked_up_at is the ZedToken at which the resource was found.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
          */
         com.authzed.api.v1.Core.ZedTokenOrBuilder getLookedUpAtOrBuilder();
 
         /**
+         * <pre>
+         * resource_object_id is the object ID of the found resource.
+         * </pre>
+         *
          * <code>string resource_object_id = 2;</code>
          *
          * @return The resourceObjectId.
@@ -15347,11 +23864,102 @@ public final class PermissionService {
         java.lang.String getResourceObjectId();
 
         /**
+         * <pre>
+         * resource_object_id is the object ID of the found resource.
+         * </pre>
+         *
          * <code>string resource_object_id = 2;</code>
          *
          * @return The bytes for resourceObjectId.
          */
         com.google.protobuf.ByteString getResourceObjectIdBytes();
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        int getPermissionshipValue();
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permissionship.
+         */
+        com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        boolean hasPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+         *
+         * @return Whether the afterResultCursor field is set.
+         */
+        boolean hasAfterResultCursor();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+         *
+         * @return The afterResultCursor.
+         */
+        com.authzed.api.v1.Core.Cursor getAfterResultCursor();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+         */
+        com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder();
     }
 
     /**
@@ -15374,6 +23982,7 @@ public final class PermissionService {
 
         private LookupResourcesResponse() {
             resourceObjectId_ = "";
+            permissionship_ = 0;
         }
 
         @java.lang.Override
@@ -15398,6 +24007,10 @@ public final class PermissionService {
         private com.authzed.api.v1.Core.ZedToken lookedUpAt_;
 
         /**
+         * <pre>
+         * looked_up_at is the ZedToken at which the resource was found.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
          *
          * @return Whether the lookedUpAt field is set.
@@ -15408,6 +24021,10 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * looked_up_at is the ZedToken at which the resource was found.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
          *
          * @return The lookedUpAt.
@@ -15418,6 +24035,10 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * looked_up_at is the ZedToken at which the resource was found.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
          */
         @java.lang.Override
@@ -15431,6 +24052,10 @@ public final class PermissionService {
         private volatile java.lang.Object resourceObjectId_ = "";
 
         /**
+         * <pre>
+         * resource_object_id is the object ID of the found resource.
+         * </pre>
+         *
          * <code>string resource_object_id = 2;</code>
          *
          * @return The resourceObjectId.
@@ -15449,6 +24074,10 @@ public final class PermissionService {
         }
 
         /**
+         * <pre>
+         * resource_object_id is the object ID of the found resource.
+         * </pre>
+         *
          * <code>string resource_object_id = 2;</code>
          *
          * @return The bytes for resourceObjectId.
@@ -15463,6 +24092,133 @@ public final class PermissionService {
             } else {
                 return (com.google.protobuf.ByteString) ref;
             }
+        }
+
+        public static final int PERMISSIONSHIP_FIELD_NUMBER = 3;
+
+        private int permissionship_ = 0;
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        @java.lang.Override
+        public int getPermissionshipValue() {
+            return permissionship_;
+        }
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permissionship.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship() {
+            com.authzed.api.v1.PermissionService.LookupPermissionship result = com.authzed.api.v1.PermissionService.LookupPermissionship
+                    .forNumber(permissionship_);
+            return result == null ? com.authzed.api.v1.PermissionService.LookupPermissionship.UNRECOGNIZED : result;
+        }
+
+        public static final int PARTIAL_CAVEAT_INFO_FIELD_NUMBER = 4;
+
+        private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        @java.lang.Override
+        public boolean hasPartialCaveatInfo() {
+            return partialCaveatInfo_ != null;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        public static final int AFTER_RESULT_CURSOR_FIELD_NUMBER = 5;
+
+        private com.authzed.api.v1.Core.Cursor afterResultCursor_;
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+         *
+         * @return Whether the afterResultCursor field is set.
+         */
+        @java.lang.Override
+        public boolean hasAfterResultCursor() {
+            return afterResultCursor_ != null;
+        }
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+         *
+         * @return The afterResultCursor.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.Cursor getAfterResultCursor() {
+            return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : afterResultCursor_;
+        }
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder() {
+            return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : afterResultCursor_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -15486,6 +24242,16 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resourceObjectId_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, resourceObjectId_);
             }
+            if (permissionship_ != com.authzed.api.v1.PermissionService.LookupPermissionship.LOOKUP_PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                output.writeEnum(3, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                output.writeMessage(4, getPartialCaveatInfo());
+            }
+            if (afterResultCursor_ != null) {
+                output.writeMessage(5, getAfterResultCursor());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -15500,6 +24266,16 @@ public final class PermissionService {
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resourceObjectId_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, resourceObjectId_);
+            }
+            if (permissionship_ != com.authzed.api.v1.PermissionService.LookupPermissionship.LOOKUP_PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getPartialCaveatInfo());
+            }
+            if (afterResultCursor_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getAfterResultCursor());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -15523,6 +24299,20 @@ public final class PermissionService {
             }
             if (!getResourceObjectId().equals(other.getResourceObjectId()))
                 return false;
+            if (permissionship_ != other.permissionship_)
+                return false;
+            if (hasPartialCaveatInfo() != other.hasPartialCaveatInfo())
+                return false;
+            if (hasPartialCaveatInfo()) {
+                if (!getPartialCaveatInfo().equals(other.getPartialCaveatInfo()))
+                    return false;
+            }
+            if (hasAfterResultCursor() != other.hasAfterResultCursor())
+                return false;
+            if (hasAfterResultCursor()) {
+                if (!getAfterResultCursor().equals(other.getAfterResultCursor()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -15541,6 +24331,16 @@ public final class PermissionService {
             }
             hash = (37 * hash) + RESOURCE_OBJECT_ID_FIELD_NUMBER;
             hash = (53 * hash) + getResourceObjectId().hashCode();
+            hash = (37 * hash) + PERMISSIONSHIP_FIELD_NUMBER;
+            hash = (53 * hash) + permissionship_;
+            if (hasPartialCaveatInfo()) {
+                hash = (37 * hash) + PARTIAL_CAVEAT_INFO_FIELD_NUMBER;
+                hash = (53 * hash) + getPartialCaveatInfo().hashCode();
+            }
+            if (hasAfterResultCursor()) {
+                hash = (37 * hash) + AFTER_RESULT_CURSOR_FIELD_NUMBER;
+                hash = (53 * hash) + getAfterResultCursor().hashCode();
+            }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -15674,6 +24474,17 @@ public final class PermissionService {
                     lookedUpAtBuilder_ = null;
                 }
                 resourceObjectId_ = "";
+                permissionship_ = 0;
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                afterResultCursor_ = null;
+                if (afterResultCursorBuilder_ != null) {
+                    afterResultCursorBuilder_.dispose();
+                    afterResultCursorBuilder_ = null;
+                }
                 return this;
             }
 
@@ -15715,6 +24526,17 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000002) != 0)) {
                     result.resourceObjectId_ = resourceObjectId_;
                 }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.permissionship_ = permissionship_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.partialCaveatInfo_ = partialCaveatInfoBuilder_ == null ? partialCaveatInfo_
+                            : partialCaveatInfoBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.afterResultCursor_ = afterResultCursorBuilder_ == null ? afterResultCursor_
+                            : afterResultCursorBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -15737,6 +24559,15 @@ public final class PermissionService {
                     resourceObjectId_ = other.resourceObjectId_;
                     bitField0_ |= 0x00000002;
                     onChanged();
+                }
+                if (other.permissionship_ != 0) {
+                    setPermissionshipValue(other.getPermissionshipValue());
+                }
+                if (other.hasPartialCaveatInfo()) {
+                    mergePartialCaveatInfo(other.getPartialCaveatInfo());
+                }
+                if (other.hasAfterResultCursor()) {
+                    mergeAfterResultCursor(other.getAfterResultCursor());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -15774,6 +24605,24 @@ public final class PermissionService {
                                 break;
                             }
                             // case 18
+                            case 24: {
+                                permissionship_ = input.readEnum();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 24
+                            case 34: {
+                                input.readMessage(getPartialCaveatInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 34
+                            case 42: {
+                                input.readMessage(getAfterResultCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000010;
+                                break;
+                            }
+                            // case 42
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -15801,6 +24650,10 @@ public final class PermissionService {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> lookedUpAtBuilder_;
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              *
              * @return Whether the lookedUpAt field is set.
@@ -15810,6 +24663,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              *
              * @return The lookedUpAt.
@@ -15823,6 +24680,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public Builder setLookedUpAt(com.authzed.api.v1.Core.ZedToken value) {
@@ -15840,6 +24701,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public Builder setLookedUpAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
@@ -15854,6 +24719,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public Builder mergeLookedUpAt(com.authzed.api.v1.Core.ZedToken value) {
@@ -15873,6 +24742,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public Builder clearLookedUpAt() {
@@ -15887,6 +24760,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getLookedUpAtBuilder() {
@@ -15896,6 +24773,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedTokenOrBuilder getLookedUpAtOrBuilder() {
@@ -15907,6 +24788,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * looked_up_at is the ZedToken at which the resource was found.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getLookedUpAtFieldBuilder() {
@@ -15921,6 +24806,10 @@ public final class PermissionService {
             private java.lang.Object resourceObjectId_ = "";
 
             /**
+             * <pre>
+             * resource_object_id is the object ID of the found resource.
+             * </pre>
+             *
              * <code>string resource_object_id = 2;</code>
              *
              * @return The resourceObjectId.
@@ -15938,6 +24827,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_object_id is the object ID of the found resource.
+             * </pre>
+             *
              * <code>string resource_object_id = 2;</code>
              *
              * @return The bytes for resourceObjectId.
@@ -15954,6 +24847,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_object_id is the object ID of the found resource.
+             * </pre>
+             *
              * <code>string resource_object_id = 2;</code>
              *
              * @param value The resourceObjectId to set.
@@ -15970,6 +24867,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_object_id is the object ID of the found resource.
+             * </pre>
+             *
              * <code>string resource_object_id = 2;</code>
              *
              * @return This builder for chaining.
@@ -15982,6 +24883,10 @@ public final class PermissionService {
             }
 
             /**
+             * <pre>
+             * resource_object_id is the object ID of the found resource.
+             * </pre>
+             *
              * <code>string resource_object_id = 2;</code>
              *
              * @param value The bytes for resourceObjectId to set.
@@ -15996,6 +24901,420 @@ public final class PermissionService {
                 bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
+            }
+
+            private int permissionship_ = 0;
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return The enum numeric value on the wire for permissionship.
+             */
+            @java.lang.Override
+            public int getPermissionshipValue() {
+                return permissionship_;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The enum numeric value on the wire for permissionship to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermissionshipValue(int value) {
+                permissionship_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return The permissionship.
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship() {
+                com.authzed.api.v1.PermissionService.LookupPermissionship result = com.authzed.api.v1.PermissionService.LookupPermissionship
+                        .forNumber(permissionship_);
+                return result == null ? com.authzed.api.v1.PermissionService.LookupPermissionship.UNRECOGNIZED : result;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The permissionship to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermissionship(com.authzed.api.v1.PermissionService.LookupPermissionship value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                permissionship_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearPermissionship() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                permissionship_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> partialCaveatInfoBuilder_;
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the partialCaveatInfo field is set.
+             */
+            public boolean hasPartialCaveatInfo() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             *
+             * @return The partialCaveatInfo.
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                } else {
+                    return partialCaveatInfoBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    partialCaveatInfo_ = value;
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo.Builder builderForValue) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfo_ = builderForValue.build();
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergePartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) && partialCaveatInfo_ != null
+                            && partialCaveatInfo_ != com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()) {
+                        getPartialCaveatInfoBuilder().mergeFrom(value);
+                    } else {
+                        partialCaveatInfo_ = value;
+                    }
+                } else {
+                    partialCaveatInfoBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearPartialCaveatInfo() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo.Builder getPartialCaveatInfoBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getPartialCaveatInfoFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+                if (partialCaveatInfoBuilder_ != null) {
+                    return partialCaveatInfoBuilder_.getMessageOrBuilder();
+                } else {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> getPartialCaveatInfoFieldBuilder() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder>(
+                            getPartialCaveatInfo(), getParentForChildren(), isClean());
+                    partialCaveatInfo_ = null;
+                }
+                return partialCaveatInfoBuilder_;
+            }
+
+            private com.authzed.api.v1.Core.Cursor afterResultCursor_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> afterResultCursorBuilder_;
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             *
+             * @return Whether the afterResultCursor field is set.
+             */
+            public boolean hasAfterResultCursor() {
+                return ((bitField0_ & 0x00000010) != 0);
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             *
+             * @return The afterResultCursor.
+             */
+            public com.authzed.api.v1.Core.Cursor getAfterResultCursor() {
+                if (afterResultCursorBuilder_ == null) {
+                    return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance()
+                            : afterResultCursor_;
+                } else {
+                    return afterResultCursorBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             */
+            public Builder setAfterResultCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (afterResultCursorBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    afterResultCursor_ = value;
+                } else {
+                    afterResultCursorBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             */
+            public Builder setAfterResultCursor(com.authzed.api.v1.Core.Cursor.Builder builderForValue) {
+                if (afterResultCursorBuilder_ == null) {
+                    afterResultCursor_ = builderForValue.build();
+                } else {
+                    afterResultCursorBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             */
+            public Builder mergeAfterResultCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (afterResultCursorBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) && afterResultCursor_ != null
+                            && afterResultCursor_ != com.authzed.api.v1.Core.Cursor.getDefaultInstance()) {
+                        getAfterResultCursorBuilder().mergeFrom(value);
+                    } else {
+                        afterResultCursor_ = value;
+                    }
+                } else {
+                    afterResultCursorBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             */
+            public Builder clearAfterResultCursor() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                afterResultCursor_ = null;
+                if (afterResultCursorBuilder_ != null) {
+                    afterResultCursorBuilder_.dispose();
+                    afterResultCursorBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             */
+            public com.authzed.api.v1.Core.Cursor.Builder getAfterResultCursorBuilder() {
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return getAfterResultCursorFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             */
+            public com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder() {
+                if (afterResultCursorBuilder_ != null) {
+                    return afterResultCursorBuilder_.getMessageOrBuilder();
+                } else {
+                    return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance()
+                            : afterResultCursor_;
+                }
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 5;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> getAfterResultCursorFieldBuilder() {
+                if (afterResultCursorBuilder_ == null) {
+                    afterResultCursorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder>(
+                            getAfterResultCursor(), getParentForChildren(), isClean());
+                    afterResultCursor_ = null;
+                }
+                return afterResultCursorBuilder_;
             }
 
             @java.lang.Override
@@ -16182,6 +25501,131 @@ public final class PermissionService {
          * @return The bytes for optionalSubjectRelation.
          */
         com.google.protobuf.ByteString getOptionalSubjectRelationBytes();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        boolean hasContext();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        com.google.protobuf.Struct getContext();
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+         */
+        com.google.protobuf.StructOrBuilder getContextOrBuilder();
+
+        /**
+         * <pre>
+         * optional_concrete_limit, if non-zero, specifies the limit on the number of
+         * *concrete* (non-wildcard) subjects to return before the stream is closed on the
+         * server side. With the default value of zero, the stream will continue resolving
+         * concrete subjects until exhausted or the stream is closed due to the client or
+         * a network issue.
+         *
+         * NOTE: Wildcard subjects ("*") have special treatment when cursors and limits are used. Because
+         * wildcards can apply to *any* concrete subjects, if a wildcard subject is found within the dataset,
+         * a wildcard subject can be returned for *all* LookupSubjects calls, regardless of the cursor or
+         * limit.
+         *
+         * For example, if wildcards are requested, a wildcard subject exists, there is a specified limit
+         * of 10 concrete subjects, and at least 10 concrete subjects exist, the API will return 11 subjects
+         * in total: the 10 concrete + the wildcard
+         *
+         * Furthermore, if a wildcard has a set of exclusions generated by the dataset,
+         * the exclusions *will respect the cursor* and only a *partial* set of exclusions will be returned
+         * for each invocation of the API.
+         *
+         * ***IT IS UP TO THE CALLER IN THIS CASE TO COMBINE THE EXCLUSIONS IF DESIRED***
+         * </pre>
+         *
+         * <code>uint32 optional_concrete_limit = 7 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalConcreteLimit.
+         */
+        int getOptionalConcreteLimit();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupSubjectsResponse object.
+         *
+         * NOTE: See above for notes about how cursors interact with wildcard subjects.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+         *
+         * @return Whether the optionalCursor field is set.
+         */
+        boolean hasOptionalCursor();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupSubjectsResponse object.
+         *
+         * NOTE: See above for notes about how cursors interact with wildcard subjects.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+         *
+         * @return The optionalCursor.
+         */
+        com.authzed.api.v1.Core.Cursor getOptionalCursor();
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupSubjectsResponse object.
+         *
+         * NOTE: See above for notes about how cursors interact with wildcard subjects.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+         */
+        com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder();
+
+        /**
+         * <pre>
+         * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+         * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+         *
+         * @return The enum numeric value on the wire for wildcardOption.
+         */
+        int getWildcardOptionValue();
+
+        /**
+         * <pre>
+         * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+         * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+         *
+         * @return The wildcardOption.
+         */
+        com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption getWildcardOption();
     }
 
     /**
@@ -16207,6 +25651,7 @@ public final class PermissionService {
             permission_ = "";
             subjectObjectType_ = "";
             optionalSubjectRelation_ = "";
+            wildcardOption_ = 0;
         }
 
         @java.lang.Override
@@ -16224,6 +25669,119 @@ public final class PermissionService {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_LookupSubjectsRequest_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.LookupSubjectsRequest.class,
                             com.authzed.api.v1.PermissionService.LookupSubjectsRequest.Builder.class);
+        }
+
+        /**
+         * Protobuf enum {@code authzed.api.v1.LookupSubjectsRequest.WildcardOption}
+         */
+        public enum WildcardOption implements com.google.protobuf.ProtocolMessageEnum {
+
+            /**
+             * <code>WILDCARD_OPTION_UNSPECIFIED = 0;</code>
+             */
+            WILDCARD_OPTION_UNSPECIFIED(0),
+            /**
+             * <code>WILDCARD_OPTION_INCLUDE_WILDCARDS = 1;</code>
+             */
+            WILDCARD_OPTION_INCLUDE_WILDCARDS(1),
+            /**
+             * <code>WILDCARD_OPTION_EXCLUDE_WILDCARDS = 2;</code>
+             */
+            WILDCARD_OPTION_EXCLUDE_WILDCARDS(2),
+            UNRECOGNIZED(-1);
+
+            /**
+             * <code>WILDCARD_OPTION_UNSPECIFIED = 0;</code>
+             */
+            public static final int WILDCARD_OPTION_UNSPECIFIED_VALUE = 0;
+
+            /**
+             * <code>WILDCARD_OPTION_INCLUDE_WILDCARDS = 1;</code>
+             */
+            public static final int WILDCARD_OPTION_INCLUDE_WILDCARDS_VALUE = 1;
+
+            /**
+             * <code>WILDCARD_OPTION_EXCLUDE_WILDCARDS = 2;</code>
+             */
+            public static final int WILDCARD_OPTION_EXCLUDE_WILDCARDS_VALUE = 2;
+
+            public final int getNumber() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalArgumentException("Can't get the number of an unknown enum value.");
+                }
+                return value;
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             * @deprecated Use {@link #forNumber(int)} instead.
+             */
+            @java.lang.Deprecated
+            public static WildcardOption valueOf(int value) {
+                return forNumber(value);
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             */
+            public static WildcardOption forNumber(int value) {
+                switch (value) {
+                    case 0:
+                        return WILDCARD_OPTION_UNSPECIFIED;
+                    case 1:
+                        return WILDCARD_OPTION_INCLUDE_WILDCARDS;
+                    case 2:
+                        return WILDCARD_OPTION_EXCLUDE_WILDCARDS;
+                    default:
+                        return null;
+                }
+            }
+
+            public static com.google.protobuf.Internal.EnumLiteMap<WildcardOption> internalGetValueMap() {
+                return internalValueMap;
+            }
+
+            private static final com.google.protobuf.Internal.EnumLiteMap<WildcardOption> internalValueMap = new com.google.protobuf.Internal.EnumLiteMap<WildcardOption>() {
+
+                public WildcardOption findValueByNumber(int number) {
+                    return WildcardOption.forNumber(number);
+                }
+            };
+
+            public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalStateException("Can't get the descriptor of an unrecognized enum value.");
+                }
+                return getDescriptor().getValues().get(ordinal());
+            }
+
+            public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+                return getDescriptor();
+            }
+
+            public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.LookupSubjectsRequest.getDescriptor().getEnumTypes().get(0);
+            }
+
+            private static final WildcardOption[] VALUES = values();
+
+            public static WildcardOption valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+                if (desc.getType() != getDescriptor()) {
+                    throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+                }
+                if (desc.getIndex() == -1) {
+                    return UNRECOGNIZED;
+                }
+                return VALUES[desc.getIndex()];
+            }
+
+            private final int value;
+
+            private WildcardOption(int value) {
+                this.value = value;
+            }
         }
 
         public static final int CONSISTENCY_FIELD_NUMBER = 1;
@@ -16453,6 +26011,177 @@ public final class PermissionService {
             }
         }
 
+        public static final int CONTEXT_FIELD_NUMBER = 6;
+
+        private com.google.protobuf.Struct context_;
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        @java.lang.Override
+        public boolean hasContext() {
+            return context_ != null;
+        }
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        @java.lang.Override
+        public com.google.protobuf.Struct getContext() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        /**
+         * <pre>
+         * context consists of named values that are injected into the caveat evaluation context
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        public static final int OPTIONAL_CONCRETE_LIMIT_FIELD_NUMBER = 7;
+
+        private int optionalConcreteLimit_ = 0;
+
+        /**
+         * <pre>
+         * optional_concrete_limit, if non-zero, specifies the limit on the number of
+         * *concrete* (non-wildcard) subjects to return before the stream is closed on the
+         * server side. With the default value of zero, the stream will continue resolving
+         * concrete subjects until exhausted or the stream is closed due to the client or
+         * a network issue.
+         *
+         * NOTE: Wildcard subjects ("*") have special treatment when cursors and limits are used. Because
+         * wildcards can apply to *any* concrete subjects, if a wildcard subject is found within the dataset,
+         * a wildcard subject can be returned for *all* LookupSubjects calls, regardless of the cursor or
+         * limit.
+         *
+         * For example, if wildcards are requested, a wildcard subject exists, there is a specified limit
+         * of 10 concrete subjects, and at least 10 concrete subjects exist, the API will return 11 subjects
+         * in total: the 10 concrete + the wildcard
+         *
+         * Furthermore, if a wildcard has a set of exclusions generated by the dataset,
+         * the exclusions *will respect the cursor* and only a *partial* set of exclusions will be returned
+         * for each invocation of the API.
+         *
+         * ***IT IS UP TO THE CALLER IN THIS CASE TO COMBINE THE EXCLUSIONS IF DESIRED***
+         * </pre>
+         *
+         * <code>uint32 optional_concrete_limit = 7 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalConcreteLimit.
+         */
+        @java.lang.Override
+        public int getOptionalConcreteLimit() {
+            return optionalConcreteLimit_;
+        }
+
+        public static final int OPTIONAL_CURSOR_FIELD_NUMBER = 8;
+
+        private com.authzed.api.v1.Core.Cursor optionalCursor_;
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupSubjectsResponse object.
+         *
+         * NOTE: See above for notes about how cursors interact with wildcard subjects.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+         *
+         * @return Whether the optionalCursor field is set.
+         */
+        @java.lang.Override
+        public boolean hasOptionalCursor() {
+            return optionalCursor_ != null;
+        }
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupSubjectsResponse object.
+         *
+         * NOTE: See above for notes about how cursors interact with wildcard subjects.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+         *
+         * @return The optionalCursor.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.Cursor getOptionalCursor() {
+            return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+        }
+
+        /**
+         * <pre>
+         * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+         * The cursor can be found on the LookupSubjectsResponse object.
+         *
+         * NOTE: See above for notes about how cursors interact with wildcard subjects.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder() {
+            return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+        }
+
+        public static final int WILDCARD_OPTION_FIELD_NUMBER = 9;
+
+        private int wildcardOption_ = 0;
+
+        /**
+         * <pre>
+         * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+         * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+         *
+         * @return The enum numeric value on the wire for wildcardOption.
+         */
+        @java.lang.Override
+        public int getWildcardOptionValue() {
+            return wildcardOption_;
+        }
+
+        /**
+         * <pre>
+         * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+         * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+         *
+         * @return The wildcardOption.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption getWildcardOption() {
+            com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption result = com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption
+                    .forNumber(wildcardOption_);
+            return result == null ? com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption.UNRECOGNIZED
+                    : result;
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -16483,6 +26212,19 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalSubjectRelation_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 5, optionalSubjectRelation_);
             }
+            if (context_ != null) {
+                output.writeMessage(6, getContext());
+            }
+            if (optionalConcreteLimit_ != 0) {
+                output.writeUInt32(7, optionalConcreteLimit_);
+            }
+            if (optionalCursor_ != null) {
+                output.writeMessage(8, getOptionalCursor());
+            }
+            if (wildcardOption_ != com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption.WILDCARD_OPTION_UNSPECIFIED
+                    .getNumber()) {
+                output.writeEnum(9, wildcardOption_);
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -16506,6 +26248,19 @@ public final class PermissionService {
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalSubjectRelation_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, optionalSubjectRelation_);
+            }
+            if (context_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getContext());
+            }
+            if (optionalConcreteLimit_ != 0) {
+                size += com.google.protobuf.CodedOutputStream.computeUInt32Size(7, optionalConcreteLimit_);
+            }
+            if (optionalCursor_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, getOptionalCursor());
+            }
+            if (wildcardOption_ != com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption.WILDCARD_OPTION_UNSPECIFIED
+                    .getNumber()) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(9, wildcardOption_);
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -16539,6 +26294,22 @@ public final class PermissionService {
                 return false;
             if (!getOptionalSubjectRelation().equals(other.getOptionalSubjectRelation()))
                 return false;
+            if (hasContext() != other.hasContext())
+                return false;
+            if (hasContext()) {
+                if (!getContext().equals(other.getContext()))
+                    return false;
+            }
+            if (getOptionalConcreteLimit() != other.getOptionalConcreteLimit())
+                return false;
+            if (hasOptionalCursor() != other.hasOptionalCursor())
+                return false;
+            if (hasOptionalCursor()) {
+                if (!getOptionalCursor().equals(other.getOptionalCursor()))
+                    return false;
+            }
+            if (wildcardOption_ != other.wildcardOption_)
+                return false;
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -16565,6 +26336,18 @@ public final class PermissionService {
             hash = (53 * hash) + getSubjectObjectType().hashCode();
             hash = (37 * hash) + OPTIONAL_SUBJECT_RELATION_FIELD_NUMBER;
             hash = (53 * hash) + getOptionalSubjectRelation().hashCode();
+            if (hasContext()) {
+                hash = (37 * hash) + CONTEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getContext().hashCode();
+            }
+            hash = (37 * hash) + OPTIONAL_CONCRETE_LIMIT_FIELD_NUMBER;
+            hash = (53 * hash) + getOptionalConcreteLimit();
+            if (hasOptionalCursor()) {
+                hash = (37 * hash) + OPTIONAL_CURSOR_FIELD_NUMBER;
+                hash = (53 * hash) + getOptionalCursor().hashCode();
+            }
+            hash = (37 * hash) + WILDCARD_OPTION_FIELD_NUMBER;
+            hash = (53 * hash) + wildcardOption_;
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -16706,6 +26489,18 @@ public final class PermissionService {
                 permission_ = "";
                 subjectObjectType_ = "";
                 optionalSubjectRelation_ = "";
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                optionalConcreteLimit_ = 0;
+                optionalCursor_ = null;
+                if (optionalCursorBuilder_ != null) {
+                    optionalCursorBuilder_.dispose();
+                    optionalCursorBuilder_ = null;
+                }
+                wildcardOption_ = 0;
                 return this;
             }
 
@@ -16756,6 +26551,18 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000010) != 0)) {
                     result.optionalSubjectRelation_ = optionalSubjectRelation_;
                 }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.optionalConcreteLimit_ = optionalConcreteLimit_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.optionalCursor_ = optionalCursorBuilder_ == null ? optionalCursor_ : optionalCursorBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.wildcardOption_ = wildcardOption_;
+                }
             }
 
             @java.lang.Override
@@ -16791,6 +26598,18 @@ public final class PermissionService {
                     optionalSubjectRelation_ = other.optionalSubjectRelation_;
                     bitField0_ |= 0x00000010;
                     onChanged();
+                }
+                if (other.hasContext()) {
+                    mergeContext(other.getContext());
+                }
+                if (other.getOptionalConcreteLimit() != 0) {
+                    setOptionalConcreteLimit(other.getOptionalConcreteLimit());
+                }
+                if (other.hasOptionalCursor()) {
+                    mergeOptionalCursor(other.getOptionalCursor());
+                }
+                if (other.wildcardOption_ != 0) {
+                    setWildcardOptionValue(other.getWildcardOptionValue());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -16846,6 +26665,30 @@ public final class PermissionService {
                                 break;
                             }
                             // case 42
+                            case 50: {
+                                input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000020;
+                                break;
+                            }
+                            // case 50
+                            case 56: {
+                                optionalConcreteLimit_ = input.readUInt32();
+                                bitField0_ |= 0x00000040;
+                                break;
+                            }
+                            // case 56
+                            case 66: {
+                                input.readMessage(getOptionalCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000080;
+                                break;
+                            }
+                            // case 66
+                            case 72: {
+                                wildcardOption_ = input.readEnum();
+                                bitField0_ |= 0x00000100;
+                                break;
+                            }
+                            // case 72
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -17469,6 +27312,546 @@ public final class PermissionService {
                 return this;
             }
 
+            private com.google.protobuf.Struct context_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> contextBuilder_;
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the context field is set.
+             */
+            public boolean hasContext() {
+                return ((bitField0_ & 0x00000020) != 0);
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             *
+             * @return The context.
+             */
+            public com.google.protobuf.Struct getContext() {
+                if (contextBuilder_ == null) {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                } else {
+                    return contextBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    context_ = value;
+                } else {
+                    contextBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct.Builder builderForValue) {
+                if (contextBuilder_ == null) {
+                    context_ = builderForValue.build();
+                } else {
+                    contextBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (((bitField0_ & 0x00000020) != 0) && context_ != null
+                            && context_ != com.google.protobuf.Struct.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
+                    } else {
+                        context_ = value;
+                    }
+                } else {
+                    contextBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearContext() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.Struct.Builder getContextBuilder() {
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return getContextFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+                if (contextBuilder_ != null) {
+                    return contextBuilder_.getMessageOrBuilder();
+                } else {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of named values that are injected into the caveat evaluation context
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 6 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> getContextFieldBuilder() {
+                if (contextBuilder_ == null) {
+                    contextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                            getContext(), getParentForChildren(), isClean());
+                    context_ = null;
+                }
+                return contextBuilder_;
+            }
+
+            private int optionalConcreteLimit_;
+
+            /**
+             * <pre>
+             * optional_concrete_limit, if non-zero, specifies the limit on the number of
+             * *concrete* (non-wildcard) subjects to return before the stream is closed on the
+             * server side. With the default value of zero, the stream will continue resolving
+             * concrete subjects until exhausted or the stream is closed due to the client or
+             * a network issue.
+             *
+             * NOTE: Wildcard subjects ("*") have special treatment when cursors and limits are used. Because
+             * wildcards can apply to *any* concrete subjects, if a wildcard subject is found within the dataset,
+             * a wildcard subject can be returned for *all* LookupSubjects calls, regardless of the cursor or
+             * limit.
+             *
+             * For example, if wildcards are requested, a wildcard subject exists, there is a specified limit
+             * of 10 concrete subjects, and at least 10 concrete subjects exist, the API will return 11 subjects
+             * in total: the 10 concrete + the wildcard
+             *
+             * Furthermore, if a wildcard has a set of exclusions generated by the dataset,
+             * the exclusions *will respect the cursor* and only a *partial* set of exclusions will be returned
+             * for each invocation of the API.
+             *
+             * ***IT IS UP TO THE CALLER IN THIS CASE TO COMBINE THE EXCLUSIONS IF DESIRED***
+             * </pre>
+             *
+             * <code>uint32 optional_concrete_limit = 7 [(.validate.rules) = { ... }</code>
+             *
+             * @return The optionalConcreteLimit.
+             */
+            @java.lang.Override
+            public int getOptionalConcreteLimit() {
+                return optionalConcreteLimit_;
+            }
+
+            /**
+             * <pre>
+             * optional_concrete_limit, if non-zero, specifies the limit on the number of
+             * *concrete* (non-wildcard) subjects to return before the stream is closed on the
+             * server side. With the default value of zero, the stream will continue resolving
+             * concrete subjects until exhausted or the stream is closed due to the client or
+             * a network issue.
+             *
+             * NOTE: Wildcard subjects ("*") have special treatment when cursors and limits are used. Because
+             * wildcards can apply to *any* concrete subjects, if a wildcard subject is found within the dataset,
+             * a wildcard subject can be returned for *all* LookupSubjects calls, regardless of the cursor or
+             * limit.
+             *
+             * For example, if wildcards are requested, a wildcard subject exists, there is a specified limit
+             * of 10 concrete subjects, and at least 10 concrete subjects exist, the API will return 11 subjects
+             * in total: the 10 concrete + the wildcard
+             *
+             * Furthermore, if a wildcard has a set of exclusions generated by the dataset,
+             * the exclusions *will respect the cursor* and only a *partial* set of exclusions will be returned
+             * for each invocation of the API.
+             *
+             * ***IT IS UP TO THE CALLER IN THIS CASE TO COMBINE THE EXCLUSIONS IF DESIRED***
+             * </pre>
+             *
+             * <code>uint32 optional_concrete_limit = 7 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The optionalConcreteLimit to set.
+             * @return This builder for chaining.
+             */
+            public Builder setOptionalConcreteLimit(int value) {
+                optionalConcreteLimit_ = value;
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_concrete_limit, if non-zero, specifies the limit on the number of
+             * *concrete* (non-wildcard) subjects to return before the stream is closed on the
+             * server side. With the default value of zero, the stream will continue resolving
+             * concrete subjects until exhausted or the stream is closed due to the client or
+             * a network issue.
+             *
+             * NOTE: Wildcard subjects ("*") have special treatment when cursors and limits are used. Because
+             * wildcards can apply to *any* concrete subjects, if a wildcard subject is found within the dataset,
+             * a wildcard subject can be returned for *all* LookupSubjects calls, regardless of the cursor or
+             * limit.
+             *
+             * For example, if wildcards are requested, a wildcard subject exists, there is a specified limit
+             * of 10 concrete subjects, and at least 10 concrete subjects exist, the API will return 11 subjects
+             * in total: the 10 concrete + the wildcard
+             *
+             * Furthermore, if a wildcard has a set of exclusions generated by the dataset,
+             * the exclusions *will respect the cursor* and only a *partial* set of exclusions will be returned
+             * for each invocation of the API.
+             *
+             * ***IT IS UP TO THE CALLER IN THIS CASE TO COMBINE THE EXCLUSIONS IF DESIRED***
+             * </pre>
+             *
+             * <code>uint32 optional_concrete_limit = 7 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearOptionalConcreteLimit() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                optionalConcreteLimit_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.Cursor optionalCursor_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> optionalCursorBuilder_;
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             *
+             * @return Whether the optionalCursor field is set.
+             */
+            public boolean hasOptionalCursor() {
+                return ((bitField0_ & 0x00000080) != 0);
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             *
+             * @return The optionalCursor.
+             */
+            public com.authzed.api.v1.Core.Cursor getOptionalCursor() {
+                if (optionalCursorBuilder_ == null) {
+                    return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+                } else {
+                    return optionalCursorBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             */
+            public Builder setOptionalCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (optionalCursorBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    optionalCursor_ = value;
+                } else {
+                    optionalCursorBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             */
+            public Builder setOptionalCursor(com.authzed.api.v1.Core.Cursor.Builder builderForValue) {
+                if (optionalCursorBuilder_ == null) {
+                    optionalCursor_ = builderForValue.build();
+                } else {
+                    optionalCursorBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             */
+            public Builder mergeOptionalCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (optionalCursorBuilder_ == null) {
+                    if (((bitField0_ & 0x00000080) != 0) && optionalCursor_ != null
+                            && optionalCursor_ != com.authzed.api.v1.Core.Cursor.getDefaultInstance()) {
+                        getOptionalCursorBuilder().mergeFrom(value);
+                    } else {
+                        optionalCursor_ = value;
+                    }
+                } else {
+                    optionalCursorBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             */
+            public Builder clearOptionalCursor() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                optionalCursor_ = null;
+                if (optionalCursorBuilder_ != null) {
+                    optionalCursorBuilder_.dispose();
+                    optionalCursorBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             */
+            public com.authzed.api.v1.Core.Cursor.Builder getOptionalCursorBuilder() {
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return getOptionalCursorFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             */
+            public com.authzed.api.v1.Core.CursorOrBuilder getOptionalCursorOrBuilder() {
+                if (optionalCursorBuilder_ != null) {
+                    return optionalCursorBuilder_.getMessageOrBuilder();
+                } else {
+                    return optionalCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : optionalCursor_;
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_cursor, if specified, indicates the cursor after which results should resume being returned.
+             * The cursor can be found on the LookupSubjectsResponse object.
+             *
+             * NOTE: See above for notes about how cursors interact with wildcard subjects.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor optional_cursor = 8;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> getOptionalCursorFieldBuilder() {
+                if (optionalCursorBuilder_ == null) {
+                    optionalCursorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder>(
+                            getOptionalCursor(), getParentForChildren(), isClean());
+                    optionalCursor_ = null;
+                }
+                return optionalCursorBuilder_;
+            }
+
+            private int wildcardOption_ = 0;
+
+            /**
+             * <pre>
+             * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+             * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+             *
+             * @return The enum numeric value on the wire for wildcardOption.
+             */
+            @java.lang.Override
+            public int getWildcardOptionValue() {
+                return wildcardOption_;
+            }
+
+            /**
+             * <pre>
+             * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+             * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+             *
+             * @param value The enum numeric value on the wire for wildcardOption to set.
+             * @return This builder for chaining.
+             */
+            public Builder setWildcardOptionValue(int value) {
+                wildcardOption_ = value;
+                bitField0_ |= 0x00000100;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+             * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+             *
+             * @return The wildcardOption.
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption getWildcardOption() {
+                com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption result = com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption
+                        .forNumber(wildcardOption_);
+                return result == null ? com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption.UNRECOGNIZED
+                        : result;
+            }
+
+            /**
+             * <pre>
+             * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+             * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+             *
+             * @param value The wildcardOption to set.
+             * @return This builder for chaining.
+             */
+            public Builder setWildcardOption(com.authzed.api.v1.PermissionService.LookupSubjectsRequest.WildcardOption value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000100;
+                wildcardOption_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * wildcard_option specifies whether wildcards should be returned by LookupSubjects.
+             * For backwards compatibility, defaults to WILDCARD_OPTION_INCLUDE_WILDCARDS if unspecified.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupSubjectsRequest.WildcardOption wildcard_option = 9;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearWildcardOption() {
+                bitField0_ = (bitField0_ & ~0x00000100);
+                wildcardOption_ = 0;
+                onChanged();
+                return this;
+            }
+
             @java.lang.Override
             public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
                 return super.setUnknownFields(unknownFields);
@@ -17554,24 +27937,32 @@ public final class PermissionService {
          * <pre>
          * subject_object_id is the Object ID of the subject found. May be a `*` if
          * a wildcard was found.
+         * deprecated: use `subject`
          * </pre>
          *
-         * <code>string subject_object_id = 2;</code>
+         * <code>string subject_object_id = 2 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=589
          * @return The subjectObjectId.
          */
+        @java.lang.Deprecated
         java.lang.String getSubjectObjectId();
 
         /**
          * <pre>
          * subject_object_id is the Object ID of the subject found. May be a `*` if
          * a wildcard was found.
+         * deprecated: use `subject`
          * </pre>
          *
-         * <code>string subject_object_id = 2;</code>
+         * <code>string subject_object_id = 2 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=589
          * @return The bytes for subjectObjectId.
          */
+        @java.lang.Deprecated
         com.google.protobuf.ByteString getSubjectObjectIdBytes();
 
         /**
@@ -17579,12 +27970,16 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @return A list containing the excludedSubjectIds.
          */
+        @java.lang.Deprecated
         java.util.List<java.lang.String> getExcludedSubjectIdsList();
 
         /**
@@ -17592,12 +27987,16 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @return The count of excludedSubjectIds.
          */
+        @java.lang.Deprecated
         int getExcludedSubjectIdsCount();
 
         /**
@@ -17605,13 +28004,17 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @param index The index of the element to return.
          * @return The excludedSubjectIds at the given index.
          */
+        @java.lang.Deprecated
         java.lang.String getExcludedSubjectIds(int index);
 
         /**
@@ -17619,14 +28022,209 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @param index The index of the value to return.
          * @return The bytes of the excludedSubjectIds at the given index.
          */
+        @java.lang.Deprecated
         com.google.protobuf.ByteString getExcludedSubjectIdsBytes(int index);
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * deprecated: use `subject.permissionship`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=599
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        @java.lang.Deprecated
+        int getPermissionshipValue();
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * deprecated: use `subject.permissionship`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=599
+         * @return The permissionship.
+         */
+        @java.lang.Deprecated
+        com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * deprecated: use `subject.partial_caveat_info`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.partial_caveat_info is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=603
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        @java.lang.Deprecated
+        boolean hasPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * deprecated: use `subject.partial_caveat_info`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.partial_caveat_info is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=603
+         * @return The partialCaveatInfo.
+         */
+        @java.lang.Deprecated
+        com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * deprecated: use `subject.partial_caveat_info`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+         */
+        @java.lang.Deprecated
+        com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder();
+
+        /**
+         * <pre>
+         * subject is the subject found, along with its permissionship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+         *
+         * @return Whether the subject field is set.
+         */
+        boolean hasSubject();
+
+        /**
+         * <pre>
+         * subject is the subject found, along with its permissionship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+         *
+         * @return The subject.
+         */
+        com.authzed.api.v1.PermissionService.ResolvedSubject getSubject();
+
+        /**
+         * <pre>
+         * subject is the subject found, along with its permissionship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+         */
+        com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder getSubjectOrBuilder();
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        java.util.List<com.authzed.api.v1.PermissionService.ResolvedSubject> getExcludedSubjectsList();
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        com.authzed.api.v1.PermissionService.ResolvedSubject getExcludedSubjects(int index);
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        int getExcludedSubjectsCount();
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        java.util.List<? extends com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder> getExcludedSubjectsOrBuilderList();
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder getExcludedSubjectsOrBuilder(int index);
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+         *
+         * @return Whether the afterResultCursor field is set.
+         */
+        boolean hasAfterResultCursor();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+         *
+         * @return The afterResultCursor.
+         */
+        com.authzed.api.v1.Core.Cursor getAfterResultCursor();
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+         */
+        com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder();
     }
 
     /**
@@ -17650,6 +28248,8 @@ public final class PermissionService {
         private LookupSubjectsResponse() {
             subjectObjectId_ = "";
             excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.emptyList();
+            permissionship_ = 0;
+            excludedSubjects_ = java.util.Collections.emptyList();
         }
 
         @java.lang.Override
@@ -17710,13 +28310,17 @@ public final class PermissionService {
          * <pre>
          * subject_object_id is the Object ID of the subject found. May be a `*` if
          * a wildcard was found.
+         * deprecated: use `subject`
          * </pre>
          *
-         * <code>string subject_object_id = 2;</code>
+         * <code>string subject_object_id = 2 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=589
          * @return The subjectObjectId.
          */
         @java.lang.Override
+        @java.lang.Deprecated
         public java.lang.String getSubjectObjectId() {
             java.lang.Object ref = subjectObjectId_;
             if (ref instanceof java.lang.String) {
@@ -17733,13 +28337,17 @@ public final class PermissionService {
          * <pre>
          * subject_object_id is the Object ID of the subject found. May be a `*` if
          * a wildcard was found.
+         * deprecated: use `subject`
          * </pre>
          *
-         * <code>string subject_object_id = 2;</code>
+         * <code>string subject_object_id = 2 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=589
          * @return The bytes for subjectObjectId.
          */
         @java.lang.Override
+        @java.lang.Deprecated
         public com.google.protobuf.ByteString getSubjectObjectIdBytes() {
             java.lang.Object ref = subjectObjectId_;
             if (ref instanceof java.lang.String) {
@@ -17762,12 +28370,16 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @return A list containing the excludedSubjectIds.
          */
+        @java.lang.Deprecated
         public com.google.protobuf.ProtocolStringList getExcludedSubjectIdsList() {
             return excludedSubjectIds_;
         }
@@ -17777,12 +28389,16 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @return The count of excludedSubjectIds.
          */
+        @java.lang.Deprecated
         public int getExcludedSubjectIdsCount() {
             return excludedSubjectIds_.size();
         }
@@ -17792,13 +28408,17 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @param index The index of the element to return.
          * @return The excludedSubjectIds at the given index.
          */
+        @java.lang.Deprecated
         public java.lang.String getExcludedSubjectIds(int index) {
             return excludedSubjectIds_.get(index);
         }
@@ -17808,15 +28428,283 @@ public final class PermissionService {
          * excluded_subject_ids are the Object IDs of the subjects excluded. This list
          * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
          * will only be populated if exclusions exist from the wildcard.
+         * deprecated: use `excluded_subjects`
          * </pre>
          *
-         * <code>repeated string excluded_subject_ids = 3;</code>
+         * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
          *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=595
          * @param index The index of the value to return.
          * @return The bytes of the excludedSubjectIds at the given index.
          */
+        @java.lang.Deprecated
         public com.google.protobuf.ByteString getExcludedSubjectIdsBytes(int index) {
             return excludedSubjectIds_.getByteString(index);
+        }
+
+        public static final int PERMISSIONSHIP_FIELD_NUMBER = 4;
+
+        private int permissionship_ = 0;
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * deprecated: use `subject.permissionship`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=599
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public int getPermissionshipValue() {
+            return permissionship_;
+        }
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * deprecated: use `subject.permissionship`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=599
+         * @return The permissionship.
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship() {
+            com.authzed.api.v1.PermissionService.LookupPermissionship result = com.authzed.api.v1.PermissionService.LookupPermissionship
+                    .forNumber(permissionship_);
+            return result == null ? com.authzed.api.v1.PermissionService.LookupPermissionship.UNRECOGNIZED : result;
+        }
+
+        public static final int PARTIAL_CAVEAT_INFO_FIELD_NUMBER = 5;
+
+        private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * deprecated: use `subject.partial_caveat_info`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.partial_caveat_info is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=603
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public boolean hasPartialCaveatInfo() {
+            return partialCaveatInfo_ != null;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * deprecated: use `subject.partial_caveat_info`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+         *
+         * @deprecated authzed.api.v1.LookupSubjectsResponse.partial_caveat_info is deprecated.
+         *             See authzed/api/v1/permission_service.proto;l=603
+         * @return The partialCaveatInfo.
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * deprecated: use `subject.partial_caveat_info`
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        public static final int SUBJECT_FIELD_NUMBER = 6;
+
+        private com.authzed.api.v1.PermissionService.ResolvedSubject subject_;
+
+        /**
+         * <pre>
+         * subject is the subject found, along with its permissionship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+         *
+         * @return Whether the subject field is set.
+         */
+        @java.lang.Override
+        public boolean hasSubject() {
+            return subject_ != null;
+        }
+
+        /**
+         * <pre>
+         * subject is the subject found, along with its permissionship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+         *
+         * @return The subject.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.ResolvedSubject getSubject() {
+            return subject_ == null ? com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance() : subject_;
+        }
+
+        /**
+         * <pre>
+         * subject is the subject found, along with its permissionship.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder getSubjectOrBuilder() {
+            return subject_ == null ? com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance() : subject_;
+        }
+
+        public static final int EXCLUDED_SUBJECTS_FIELD_NUMBER = 7;
+
+        @SuppressWarnings("serial")
+        private java.util.List<com.authzed.api.v1.PermissionService.ResolvedSubject> excludedSubjects_;
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.authzed.api.v1.PermissionService.ResolvedSubject> getExcludedSubjectsList() {
+            return excludedSubjects_;
+        }
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder> getExcludedSubjectsOrBuilderList() {
+            return excludedSubjects_;
+        }
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        @java.lang.Override
+        public int getExcludedSubjectsCount() {
+            return excludedSubjects_.size();
+        }
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.ResolvedSubject getExcludedSubjects(int index) {
+            return excludedSubjects_.get(index);
+        }
+
+        /**
+         * <pre>
+         * excluded_subjects are the subjects excluded. This list
+         * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+         * will only be populated if exclusions exist from the wildcard.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder getExcludedSubjectsOrBuilder(int index) {
+            return excludedSubjects_.get(index);
+        }
+
+        public static final int AFTER_RESULT_CURSOR_FIELD_NUMBER = 8;
+
+        private com.authzed.api.v1.Core.Cursor afterResultCursor_;
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+         *
+         * @return Whether the afterResultCursor field is set.
+         */
+        @java.lang.Override
+        public boolean hasAfterResultCursor() {
+            return afterResultCursor_ != null;
+        }
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+         *
+         * @return The afterResultCursor.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.Cursor getAfterResultCursor() {
+            return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : afterResultCursor_;
+        }
+
+        /**
+         * <pre>
+         * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+         * result.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder() {
+            return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance() : afterResultCursor_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -17843,6 +28731,22 @@ public final class PermissionService {
             for (int i = 0; i < excludedSubjectIds_.size(); i++) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 3, excludedSubjectIds_.getRaw(i));
             }
+            if (permissionship_ != com.authzed.api.v1.PermissionService.LookupPermissionship.LOOKUP_PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                output.writeEnum(4, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                output.writeMessage(5, getPartialCaveatInfo());
+            }
+            if (subject_ != null) {
+                output.writeMessage(6, getSubject());
+            }
+            for (int i = 0; i < excludedSubjects_.size(); i++) {
+                output.writeMessage(7, excludedSubjects_.get(i));
+            }
+            if (afterResultCursor_ != null) {
+                output.writeMessage(8, getAfterResultCursor());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -17865,6 +28769,22 @@ public final class PermissionService {
                 }
                 size += dataSize;
                 size += 1 * getExcludedSubjectIdsList().size();
+            }
+            if (permissionship_ != com.authzed.api.v1.PermissionService.LookupPermissionship.LOOKUP_PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getPartialCaveatInfo());
+            }
+            if (subject_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getSubject());
+            }
+            for (int i = 0; i < excludedSubjects_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, excludedSubjects_.get(i));
+            }
+            if (afterResultCursor_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, getAfterResultCursor());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -17890,6 +28810,28 @@ public final class PermissionService {
                 return false;
             if (!getExcludedSubjectIdsList().equals(other.getExcludedSubjectIdsList()))
                 return false;
+            if (permissionship_ != other.permissionship_)
+                return false;
+            if (hasPartialCaveatInfo() != other.hasPartialCaveatInfo())
+                return false;
+            if (hasPartialCaveatInfo()) {
+                if (!getPartialCaveatInfo().equals(other.getPartialCaveatInfo()))
+                    return false;
+            }
+            if (hasSubject() != other.hasSubject())
+                return false;
+            if (hasSubject()) {
+                if (!getSubject().equals(other.getSubject()))
+                    return false;
+            }
+            if (!getExcludedSubjectsList().equals(other.getExcludedSubjectsList()))
+                return false;
+            if (hasAfterResultCursor() != other.hasAfterResultCursor())
+                return false;
+            if (hasAfterResultCursor()) {
+                if (!getAfterResultCursor().equals(other.getAfterResultCursor()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -17911,6 +28853,24 @@ public final class PermissionService {
             if (getExcludedSubjectIdsCount() > 0) {
                 hash = (37 * hash) + EXCLUDED_SUBJECT_IDS_FIELD_NUMBER;
                 hash = (53 * hash) + getExcludedSubjectIdsList().hashCode();
+            }
+            hash = (37 * hash) + PERMISSIONSHIP_FIELD_NUMBER;
+            hash = (53 * hash) + permissionship_;
+            if (hasPartialCaveatInfo()) {
+                hash = (37 * hash) + PARTIAL_CAVEAT_INFO_FIELD_NUMBER;
+                hash = (53 * hash) + getPartialCaveatInfo().hashCode();
+            }
+            if (hasSubject()) {
+                hash = (37 * hash) + SUBJECT_FIELD_NUMBER;
+                hash = (53 * hash) + getSubject().hashCode();
+            }
+            if (getExcludedSubjectsCount() > 0) {
+                hash = (37 * hash) + EXCLUDED_SUBJECTS_FIELD_NUMBER;
+                hash = (53 * hash) + getExcludedSubjectsList().hashCode();
+            }
+            if (hasAfterResultCursor()) {
+                hash = (37 * hash) + AFTER_RESULT_CURSOR_FIELD_NUMBER;
+                hash = (53 * hash) + getAfterResultCursor().hashCode();
             }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
@@ -18046,6 +29006,29 @@ public final class PermissionService {
                 }
                 subjectObjectId_ = "";
                 excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                permissionship_ = 0;
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
+                    subjectBuilder_ = null;
+                }
+                if (excludedSubjectsBuilder_ == null) {
+                    excludedSubjects_ = java.util.Collections.emptyList();
+                } else {
+                    excludedSubjects_ = null;
+                    excludedSubjectsBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000040);
+                afterResultCursor_ = null;
+                if (afterResultCursorBuilder_ != null) {
+                    afterResultCursorBuilder_.dispose();
+                    afterResultCursorBuilder_ = null;
+                }
                 return this;
             }
 
@@ -18072,11 +29055,24 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.LookupSubjectsResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.LookupSubjectsResponse result = new com.authzed.api.v1.PermissionService.LookupSubjectsResponse(
                         this);
+                buildPartialRepeatedFields(result);
                 if (bitField0_ != 0) {
                     buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.PermissionService.LookupSubjectsResponse result) {
+                if (excludedSubjectsBuilder_ == null) {
+                    if (((bitField0_ & 0x00000040) != 0)) {
+                        excludedSubjects_ = java.util.Collections.unmodifiableList(excludedSubjects_);
+                        bitField0_ = (bitField0_ & ~0x00000040);
+                    }
+                    result.excludedSubjects_ = excludedSubjects_;
+                } else {
+                    result.excludedSubjects_ = excludedSubjectsBuilder_.build();
+                }
             }
 
             private void buildPartial0(com.authzed.api.v1.PermissionService.LookupSubjectsResponse result) {
@@ -18090,6 +29086,20 @@ public final class PermissionService {
                 if (((from_bitField0_ & 0x00000004) != 0)) {
                     excludedSubjectIds_.makeImmutable();
                     result.excludedSubjectIds_ = excludedSubjectIds_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.permissionship_ = permissionship_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.partialCaveatInfo_ = partialCaveatInfoBuilder_ == null ? partialCaveatInfo_
+                            : partialCaveatInfoBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.afterResultCursor_ = afterResultCursorBuilder_ == null ? afterResultCursor_
+                            : afterResultCursorBuilder_.build();
                 }
             }
 
@@ -18123,6 +29133,44 @@ public final class PermissionService {
                         excludedSubjectIds_.addAll(other.excludedSubjectIds_);
                     }
                     onChanged();
+                }
+                if (other.permissionship_ != 0) {
+                    setPermissionshipValue(other.getPermissionshipValue());
+                }
+                if (other.hasPartialCaveatInfo()) {
+                    mergePartialCaveatInfo(other.getPartialCaveatInfo());
+                }
+                if (other.hasSubject()) {
+                    mergeSubject(other.getSubject());
+                }
+                if (excludedSubjectsBuilder_ == null) {
+                    if (!other.excludedSubjects_.isEmpty()) {
+                        if (excludedSubjects_.isEmpty()) {
+                            excludedSubjects_ = other.excludedSubjects_;
+                            bitField0_ = (bitField0_ & ~0x00000040);
+                        } else {
+                            ensureExcludedSubjectsIsMutable();
+                            excludedSubjects_.addAll(other.excludedSubjects_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.excludedSubjects_.isEmpty()) {
+                        if (excludedSubjectsBuilder_.isEmpty()) {
+                            excludedSubjectsBuilder_.dispose();
+                            excludedSubjectsBuilder_ = null;
+                            excludedSubjects_ = other.excludedSubjects_;
+                            bitField0_ = (bitField0_ & ~0x00000040);
+                            excludedSubjectsBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                                    ? getExcludedSubjectsFieldBuilder()
+                                    : null;
+                        } else {
+                            excludedSubjectsBuilder_.addAllMessages(other.excludedSubjects_);
+                        }
+                    }
+                }
+                if (other.hasAfterResultCursor()) {
+                    mergeAfterResultCursor(other.getAfterResultCursor());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -18167,6 +29215,42 @@ public final class PermissionService {
                                 break;
                             }
                             // case 26
+                            case 32: {
+                                permissionship_ = input.readEnum();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 32
+                            case 42: {
+                                input.readMessage(getPartialCaveatInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000010;
+                                break;
+                            }
+                            // case 42
+                            case 50: {
+                                input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000020;
+                                break;
+                            }
+                            // case 50
+                            case 58: {
+                                com.authzed.api.v1.PermissionService.ResolvedSubject m = input.readMessage(
+                                        com.authzed.api.v1.PermissionService.ResolvedSubject.parser(), extensionRegistry);
+                                if (excludedSubjectsBuilder_ == null) {
+                                    ensureExcludedSubjectsIsMutable();
+                                    excludedSubjects_.add(m);
+                                } else {
+                                    excludedSubjectsBuilder_.addMessage(m);
+                                }
+                                break;
+                            }
+                            // case 58
+                            case 66: {
+                                input.readMessage(getAfterResultCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000080;
+                                break;
+                            }
+                            // case 66
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -18317,12 +29401,16 @@ public final class PermissionService {
              * <pre>
              * subject_object_id is the Object ID of the subject found. May be a `*` if
              * a wildcard was found.
+             * deprecated: use `subject`
              * </pre>
              *
-             * <code>string subject_object_id = 2;</code>
+             * <code>string subject_object_id = 2 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=589
              * @return The subjectObjectId.
              */
+            @java.lang.Deprecated
             public java.lang.String getSubjectObjectId() {
                 java.lang.Object ref = subjectObjectId_;
                 if (!(ref instanceof java.lang.String)) {
@@ -18339,12 +29427,16 @@ public final class PermissionService {
              * <pre>
              * subject_object_id is the Object ID of the subject found. May be a `*` if
              * a wildcard was found.
+             * deprecated: use `subject`
              * </pre>
              *
-             * <code>string subject_object_id = 2;</code>
+             * <code>string subject_object_id = 2 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=589
              * @return The bytes for subjectObjectId.
              */
+            @java.lang.Deprecated
             public com.google.protobuf.ByteString getSubjectObjectIdBytes() {
                 java.lang.Object ref = subjectObjectId_;
                 if (ref instanceof String) {
@@ -18360,13 +29452,17 @@ public final class PermissionService {
              * <pre>
              * subject_object_id is the Object ID of the subject found. May be a `*` if
              * a wildcard was found.
+             * deprecated: use `subject`
              * </pre>
              *
-             * <code>string subject_object_id = 2;</code>
+             * <code>string subject_object_id = 2 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=589
              * @param value The subjectObjectId to set.
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder setSubjectObjectId(java.lang.String value) {
                 if (value == null) {
                     throw new NullPointerException();
@@ -18381,12 +29477,16 @@ public final class PermissionService {
              * <pre>
              * subject_object_id is the Object ID of the subject found. May be a `*` if
              * a wildcard was found.
+             * deprecated: use `subject`
              * </pre>
              *
-             * <code>string subject_object_id = 2;</code>
+             * <code>string subject_object_id = 2 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=589
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder clearSubjectObjectId() {
                 subjectObjectId_ = getDefaultInstance().getSubjectObjectId();
                 bitField0_ = (bitField0_ & ~0x00000002);
@@ -18398,13 +29498,17 @@ public final class PermissionService {
              * <pre>
              * subject_object_id is the Object ID of the subject found. May be a `*` if
              * a wildcard was found.
+             * deprecated: use `subject`
              * </pre>
              *
-             * <code>string subject_object_id = 2;</code>
+             * <code>string subject_object_id = 2 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.subject_object_id is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=589
              * @param value The bytes for subjectObjectId to set.
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder setSubjectObjectIdBytes(com.google.protobuf.ByteString value) {
                 if (value == null) {
                     throw new NullPointerException();
@@ -18431,12 +29535,16 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @return A list containing the excludedSubjectIds.
              */
+            @java.lang.Deprecated
             public com.google.protobuf.ProtocolStringList getExcludedSubjectIdsList() {
                 excludedSubjectIds_.makeImmutable();
                 return excludedSubjectIds_;
@@ -18447,12 +29555,16 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @return The count of excludedSubjectIds.
              */
+            @java.lang.Deprecated
             public int getExcludedSubjectIdsCount() {
                 return excludedSubjectIds_.size();
             }
@@ -18462,13 +29574,17 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @param index The index of the element to return.
              * @return The excludedSubjectIds at the given index.
              */
+            @java.lang.Deprecated
             public java.lang.String getExcludedSubjectIds(int index) {
                 return excludedSubjectIds_.get(index);
             }
@@ -18478,13 +29594,17 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @param index The index of the value to return.
              * @return The bytes of the excludedSubjectIds at the given index.
              */
+            @java.lang.Deprecated
             public com.google.protobuf.ByteString getExcludedSubjectIdsBytes(int index) {
                 return excludedSubjectIds_.getByteString(index);
             }
@@ -18494,14 +29614,18 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @param index The index to set the value at.
              * @param value The excludedSubjectIds to set.
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder setExcludedSubjectIds(int index, java.lang.String value) {
                 if (value == null) {
                     throw new NullPointerException();
@@ -18518,13 +29642,17 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @param value The excludedSubjectIds to add.
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder addExcludedSubjectIds(java.lang.String value) {
                 if (value == null) {
                     throw new NullPointerException();
@@ -18541,13 +29669,17 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @param values The excludedSubjectIds to add.
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder addAllExcludedSubjectIds(java.lang.Iterable<java.lang.String> values) {
                 ensureExcludedSubjectIdsIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, excludedSubjectIds_);
@@ -18561,12 +29693,16 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder clearExcludedSubjectIds() {
                 excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000004);
@@ -18580,13 +29716,17 @@ public final class PermissionService {
              * excluded_subject_ids are the Object IDs of the subjects excluded. This list
              * will only contain object IDs if `subject_object_id` is a wildcard (`*`) and
              * will only be populated if exclusions exist from the wildcard.
+             * deprecated: use `excluded_subjects`
              * </pre>
              *
-             * <code>repeated string excluded_subject_ids = 3;</code>
+             * <code>repeated string excluded_subject_ids = 3 [deprecated = true];</code>
              *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.excluded_subject_ids is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=595
              * @param value The bytes of the excludedSubjectIds to add.
              * @return This builder for chaining.
              */
+            @java.lang.Deprecated
             public Builder addExcludedSubjectIdsBytes(com.google.protobuf.ByteString value) {
                 if (value == null) {
                     throw new NullPointerException();
@@ -18597,6 +29737,974 @@ public final class PermissionService {
                 bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
+            }
+
+            private int permissionship_ = 0;
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * deprecated: use `subject.permissionship`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+             *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=599
+             * @return The enum numeric value on the wire for permissionship.
+             */
+            @java.lang.Override
+            @java.lang.Deprecated
+            public int getPermissionshipValue() {
+                return permissionship_;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * deprecated: use `subject.permissionship`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+             *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=599
+             * @param value The enum numeric value on the wire for permissionship to set.
+             * @return This builder for chaining.
+             */
+            @java.lang.Deprecated
+            public Builder setPermissionshipValue(int value) {
+                permissionship_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * deprecated: use `subject.permissionship`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+             *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=599
+             * @return The permissionship.
+             */
+            @java.lang.Override
+            @java.lang.Deprecated
+            public com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship() {
+                com.authzed.api.v1.PermissionService.LookupPermissionship result = com.authzed.api.v1.PermissionService.LookupPermissionship
+                        .forNumber(permissionship_);
+                return result == null ? com.authzed.api.v1.PermissionService.LookupPermissionship.UNRECOGNIZED : result;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * deprecated: use `subject.permissionship`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+             *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=599
+             * @param value The permissionship to set.
+             * @return This builder for chaining.
+             */
+            @java.lang.Deprecated
+            public Builder setPermissionship(com.authzed.api.v1.PermissionService.LookupPermissionship value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000008;
+                permissionship_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * deprecated: use `subject.permissionship`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 4 [deprecated = true, (.validate.rules) = { ... }</code>
+             *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.permissionship is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=599
+             * @return This builder for chaining.
+             */
+            @java.lang.Deprecated
+            public Builder clearPermissionship() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                permissionship_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> partialCaveatInfoBuilder_;
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.partial_caveat_info is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=603
+             * @return Whether the partialCaveatInfo field is set.
+             */
+            @java.lang.Deprecated
+            public boolean hasPartialCaveatInfo() {
+                return ((bitField0_ & 0x00000010) != 0);
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             *
+             * @deprecated authzed.api.v1.LookupSubjectsResponse.partial_caveat_info is deprecated.
+             *             See authzed/api/v1/permission_service.proto;l=603
+             * @return The partialCaveatInfo.
+             */
+            @java.lang.Deprecated
+            public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                } else {
+                    return partialCaveatInfoBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             */
+            @java.lang.Deprecated
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    partialCaveatInfo_ = value;
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             */
+            @java.lang.Deprecated
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo.Builder builderForValue) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfo_ = builderForValue.build();
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             */
+            @java.lang.Deprecated
+            public Builder mergePartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) && partialCaveatInfo_ != null
+                            && partialCaveatInfo_ != com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()) {
+                        getPartialCaveatInfoBuilder().mergeFrom(value);
+                    } else {
+                        partialCaveatInfo_ = value;
+                    }
+                } else {
+                    partialCaveatInfoBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             */
+            @java.lang.Deprecated
+            public Builder clearPartialCaveatInfo() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             */
+            @java.lang.Deprecated
+            public com.authzed.api.v1.Core.PartialCaveatInfo.Builder getPartialCaveatInfoBuilder() {
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return getPartialCaveatInfoFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             */
+            @java.lang.Deprecated
+            public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+                if (partialCaveatInfoBuilder_ != null) {
+                    return partialCaveatInfoBuilder_.getMessageOrBuilder();
+                } else {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * deprecated: use `subject.partial_caveat_info`
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 5 [deprecated = true, (.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> getPartialCaveatInfoFieldBuilder() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder>(
+                            getPartialCaveatInfo(), getParentForChildren(), isClean());
+                    partialCaveatInfo_ = null;
+                }
+                return partialCaveatInfoBuilder_;
+            }
+
+            private com.authzed.api.v1.PermissionService.ResolvedSubject subject_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.ResolvedSubject, com.authzed.api.v1.PermissionService.ResolvedSubject.Builder, com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder> subjectBuilder_;
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             *
+             * @return Whether the subject field is set.
+             */
+            public boolean hasSubject() {
+                return ((bitField0_ & 0x00000020) != 0);
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             *
+             * @return The subject.
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubject getSubject() {
+                if (subjectBuilder_ == null) {
+                    return subject_ == null ? com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance()
+                            : subject_;
+                } else {
+                    return subjectBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             */
+            public Builder setSubject(com.authzed.api.v1.PermissionService.ResolvedSubject value) {
+                if (subjectBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    subject_ = value;
+                } else {
+                    subjectBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             */
+            public Builder setSubject(com.authzed.api.v1.PermissionService.ResolvedSubject.Builder builderForValue) {
+                if (subjectBuilder_ == null) {
+                    subject_ = builderForValue.build();
+                } else {
+                    subjectBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             */
+            public Builder mergeSubject(com.authzed.api.v1.PermissionService.ResolvedSubject value) {
+                if (subjectBuilder_ == null) {
+                    if (((bitField0_ & 0x00000020) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
+                    } else {
+                        subject_ = value;
+                    }
+                } else {
+                    subjectBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             */
+            public Builder clearSubject() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
+                    subjectBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubject.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return getSubjectFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder getSubjectOrBuilder() {
+                if (subjectBuilder_ != null) {
+                    return subjectBuilder_.getMessageOrBuilder();
+                } else {
+                    return subject_ == null ? com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance()
+                            : subject_;
+                }
+            }
+
+            /**
+             * <pre>
+             * subject is the subject found, along with its permissionship.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ResolvedSubject subject = 6;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.ResolvedSubject, com.authzed.api.v1.PermissionService.ResolvedSubject.Builder, com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder> getSubjectFieldBuilder() {
+                if (subjectBuilder_ == null) {
+                    subjectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.ResolvedSubject, com.authzed.api.v1.PermissionService.ResolvedSubject.Builder, com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder>(
+                            getSubject(), getParentForChildren(), isClean());
+                    subject_ = null;
+                }
+                return subjectBuilder_;
+            }
+
+            private java.util.List<com.authzed.api.v1.PermissionService.ResolvedSubject> excludedSubjects_ = java.util.Collections
+                    .emptyList();
+
+            private void ensureExcludedSubjectsIsMutable() {
+                if (!((bitField0_ & 0x00000040) != 0)) {
+                    excludedSubjects_ = new java.util.ArrayList<com.authzed.api.v1.PermissionService.ResolvedSubject>(
+                            excludedSubjects_);
+                    bitField0_ |= 0x00000040;
+                }
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.ResolvedSubject, com.authzed.api.v1.PermissionService.ResolvedSubject.Builder, com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder> excludedSubjectsBuilder_;
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.ResolvedSubject> getExcludedSubjectsList() {
+                if (excludedSubjectsBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(excludedSubjects_);
+                } else {
+                    return excludedSubjectsBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public int getExcludedSubjectsCount() {
+                if (excludedSubjectsBuilder_ == null) {
+                    return excludedSubjects_.size();
+                } else {
+                    return excludedSubjectsBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubject getExcludedSubjects(int index) {
+                if (excludedSubjectsBuilder_ == null) {
+                    return excludedSubjects_.get(index);
+                } else {
+                    return excludedSubjectsBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder setExcludedSubjects(int index, com.authzed.api.v1.PermissionService.ResolvedSubject value) {
+                if (excludedSubjectsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureExcludedSubjectsIsMutable();
+                    excludedSubjects_.set(index, value);
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder setExcludedSubjects(int index,
+                    com.authzed.api.v1.PermissionService.ResolvedSubject.Builder builderForValue) {
+                if (excludedSubjectsBuilder_ == null) {
+                    ensureExcludedSubjectsIsMutable();
+                    excludedSubjects_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder addExcludedSubjects(com.authzed.api.v1.PermissionService.ResolvedSubject value) {
+                if (excludedSubjectsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureExcludedSubjectsIsMutable();
+                    excludedSubjects_.add(value);
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder addExcludedSubjects(int index, com.authzed.api.v1.PermissionService.ResolvedSubject value) {
+                if (excludedSubjectsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureExcludedSubjectsIsMutable();
+                    excludedSubjects_.add(index, value);
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder addExcludedSubjects(com.authzed.api.v1.PermissionService.ResolvedSubject.Builder builderForValue) {
+                if (excludedSubjectsBuilder_ == null) {
+                    ensureExcludedSubjectsIsMutable();
+                    excludedSubjects_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder addExcludedSubjects(int index,
+                    com.authzed.api.v1.PermissionService.ResolvedSubject.Builder builderForValue) {
+                if (excludedSubjectsBuilder_ == null) {
+                    ensureExcludedSubjectsIsMutable();
+                    excludedSubjects_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder addAllExcludedSubjects(
+                    java.lang.Iterable<? extends com.authzed.api.v1.PermissionService.ResolvedSubject> values) {
+                if (excludedSubjectsBuilder_ == null) {
+                    ensureExcludedSubjectsIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(values, excludedSubjects_);
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder clearExcludedSubjects() {
+                if (excludedSubjectsBuilder_ == null) {
+                    excludedSubjects_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000040);
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public Builder removeExcludedSubjects(int index) {
+                if (excludedSubjectsBuilder_ == null) {
+                    ensureExcludedSubjectsIsMutable();
+                    excludedSubjects_.remove(index);
+                    onChanged();
+                } else {
+                    excludedSubjectsBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubject.Builder getExcludedSubjectsBuilder(int index) {
+                return getExcludedSubjectsFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder getExcludedSubjectsOrBuilder(int index) {
+                if (excludedSubjectsBuilder_ == null) {
+                    return excludedSubjects_.get(index);
+                } else {
+                    return excludedSubjectsBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public java.util.List<? extends com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder> getExcludedSubjectsOrBuilderList() {
+                if (excludedSubjectsBuilder_ != null) {
+                    return excludedSubjectsBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(excludedSubjects_);
+                }
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubject.Builder addExcludedSubjectsBuilder() {
+                return getExcludedSubjectsFieldBuilder()
+                        .addBuilder(com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance());
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public com.authzed.api.v1.PermissionService.ResolvedSubject.Builder addExcludedSubjectsBuilder(int index) {
+                return getExcludedSubjectsFieldBuilder().addBuilder(index,
+                        com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance());
+            }
+
+            /**
+             * <pre>
+             * excluded_subjects are the subjects excluded. This list
+             * will only contain subjects if `subject.subject_object_id` is a wildcard (`*`) and
+             * will only be populated if exclusions exist from the wildcard.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.ResolvedSubject excluded_subjects = 7;</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.ResolvedSubject.Builder> getExcludedSubjectsBuilderList() {
+                return getExcludedSubjectsFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.ResolvedSubject, com.authzed.api.v1.PermissionService.ResolvedSubject.Builder, com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder> getExcludedSubjectsFieldBuilder() {
+                if (excludedSubjectsBuilder_ == null) {
+                    excludedSubjectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.ResolvedSubject, com.authzed.api.v1.PermissionService.ResolvedSubject.Builder, com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder>(
+                            excludedSubjects_, ((bitField0_ & 0x00000040) != 0), getParentForChildren(), isClean());
+                    excludedSubjects_ = null;
+                }
+                return excludedSubjectsBuilder_;
+            }
+
+            private com.authzed.api.v1.Core.Cursor afterResultCursor_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> afterResultCursorBuilder_;
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             *
+             * @return Whether the afterResultCursor field is set.
+             */
+            public boolean hasAfterResultCursor() {
+                return ((bitField0_ & 0x00000080) != 0);
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             *
+             * @return The afterResultCursor.
+             */
+            public com.authzed.api.v1.Core.Cursor getAfterResultCursor() {
+                if (afterResultCursorBuilder_ == null) {
+                    return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance()
+                            : afterResultCursor_;
+                } else {
+                    return afterResultCursorBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             */
+            public Builder setAfterResultCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (afterResultCursorBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    afterResultCursor_ = value;
+                } else {
+                    afterResultCursorBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             */
+            public Builder setAfterResultCursor(com.authzed.api.v1.Core.Cursor.Builder builderForValue) {
+                if (afterResultCursorBuilder_ == null) {
+                    afterResultCursor_ = builderForValue.build();
+                } else {
+                    afterResultCursorBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             */
+            public Builder mergeAfterResultCursor(com.authzed.api.v1.Core.Cursor value) {
+                if (afterResultCursorBuilder_ == null) {
+                    if (((bitField0_ & 0x00000080) != 0) && afterResultCursor_ != null
+                            && afterResultCursor_ != com.authzed.api.v1.Core.Cursor.getDefaultInstance()) {
+                        getAfterResultCursorBuilder().mergeFrom(value);
+                    } else {
+                        afterResultCursor_ = value;
+                    }
+                } else {
+                    afterResultCursorBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             */
+            public Builder clearAfterResultCursor() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                afterResultCursor_ = null;
+                if (afterResultCursorBuilder_ != null) {
+                    afterResultCursorBuilder_.dispose();
+                    afterResultCursorBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             */
+            public com.authzed.api.v1.Core.Cursor.Builder getAfterResultCursorBuilder() {
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return getAfterResultCursorFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             */
+            public com.authzed.api.v1.Core.CursorOrBuilder getAfterResultCursorOrBuilder() {
+                if (afterResultCursorBuilder_ != null) {
+                    return afterResultCursorBuilder_.getMessageOrBuilder();
+                } else {
+                    return afterResultCursor_ == null ? com.authzed.api.v1.Core.Cursor.getDefaultInstance()
+                            : afterResultCursor_;
+                }
+            }
+
+            /**
+             * <pre>
+             * after_result_cursor holds a cursor that can be used to resume the LookupSubjects stream after this
+             * result.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.Cursor after_result_cursor = 8;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder> getAfterResultCursorFieldBuilder() {
+                if (afterResultCursorBuilder_ == null) {
+                    afterResultCursorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.Cursor, com.authzed.api.v1.Core.Cursor.Builder, com.authzed.api.v1.Core.CursorOrBuilder>(
+                            getAfterResultCursor(), getParentForChildren(), isClean());
+                    afterResultCursor_ = null;
+                }
+                return afterResultCursorBuilder_;
             }
 
             @java.lang.Override
@@ -18658,6 +30766,1020 @@ public final class PermissionService {
         }
     }
 
+    public interface ResolvedSubjectOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.ResolvedSubject)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         * subject_object_id is the Object ID of the subject found. May be a `*` if
+         * a wildcard was found.
+         * </pre>
+         *
+         * <code>string subject_object_id = 1;</code>
+         *
+         * @return The subjectObjectId.
+         */
+        java.lang.String getSubjectObjectId();
+
+        /**
+         * <pre>
+         * subject_object_id is the Object ID of the subject found. May be a `*` if
+         * a wildcard was found.
+         * </pre>
+         *
+         * <code>string subject_object_id = 1;</code>
+         *
+         * @return The bytes for subjectObjectId.
+         */
+        com.google.protobuf.ByteString getSubjectObjectIdBytes();
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        int getPermissionshipValue();
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permissionship.
+         */
+        com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        boolean hasPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder();
+    }
+
+    /**
+     * <pre>
+     * ResolvedSubject is a single subject resolved within LookupSubjects.
+     * </pre>
+     *
+     * Protobuf type {@code authzed.api.v1.ResolvedSubject}
+     */
+    public static final class ResolvedSubject extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.ResolvedSubject)
+            ResolvedSubjectOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use ResolvedSubject.newBuilder() to construct.
+        private ResolvedSubject(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private ResolvedSubject() {
+            subjectObjectId_ = "";
+            permissionship_ = 0;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new ResolvedSubject();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ResolvedSubject_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ResolvedSubject_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.ResolvedSubject.class,
+                            com.authzed.api.v1.PermissionService.ResolvedSubject.Builder.class);
+        }
+
+        public static final int SUBJECT_OBJECT_ID_FIELD_NUMBER = 1;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object subjectObjectId_ = "";
+
+        /**
+         * <pre>
+         * subject_object_id is the Object ID of the subject found. May be a `*` if
+         * a wildcard was found.
+         * </pre>
+         *
+         * <code>string subject_object_id = 1;</code>
+         *
+         * @return The subjectObjectId.
+         */
+        @java.lang.Override
+        public java.lang.String getSubjectObjectId() {
+            java.lang.Object ref = subjectObjectId_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                subjectObjectId_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <pre>
+         * subject_object_id is the Object ID of the subject found. May be a `*` if
+         * a wildcard was found.
+         * </pre>
+         *
+         * <code>string subject_object_id = 1;</code>
+         *
+         * @return The bytes for subjectObjectId.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getSubjectObjectIdBytes() {
+            java.lang.Object ref = subjectObjectId_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                subjectObjectId_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int PERMISSIONSHIP_FIELD_NUMBER = 2;
+
+        private int permissionship_ = 0;
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The enum numeric value on the wire for permissionship.
+         */
+        @java.lang.Override
+        public int getPermissionshipValue() {
+            return permissionship_;
+        }
+
+        /**
+         * <pre>
+         * permissionship indicates whether the response was partially evaluated or not
+         * </pre>
+         *
+         * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The permissionship.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship() {
+            com.authzed.api.v1.PermissionService.LookupPermissionship result = com.authzed.api.v1.PermissionService.LookupPermissionship
+                    .forNumber(permissionship_);
+            return result == null ? com.authzed.api.v1.PermissionService.LookupPermissionship.UNRECOGNIZED : result;
+        }
+
+        public static final int PARTIAL_CAVEAT_INFO_FIELD_NUMBER = 3;
+
+        private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        @java.lang.Override
+        public boolean hasPartialCaveatInfo() {
+            return partialCaveatInfo_ != null;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(subjectObjectId_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, subjectObjectId_);
+            }
+            if (permissionship_ != com.authzed.api.v1.PermissionService.LookupPermissionship.LOOKUP_PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                output.writeEnum(2, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                output.writeMessage(3, getPartialCaveatInfo());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(subjectObjectId_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, subjectObjectId_);
+            }
+            if (permissionship_ != com.authzed.api.v1.PermissionService.LookupPermissionship.LOOKUP_PERMISSIONSHIP_UNSPECIFIED
+                    .getNumber()) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, permissionship_);
+            }
+            if (partialCaveatInfo_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getPartialCaveatInfo());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.PermissionService.ResolvedSubject)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.PermissionService.ResolvedSubject other = (com.authzed.api.v1.PermissionService.ResolvedSubject) obj;
+            if (!getSubjectObjectId().equals(other.getSubjectObjectId()))
+                return false;
+            if (permissionship_ != other.permissionship_)
+                return false;
+            if (hasPartialCaveatInfo() != other.hasPartialCaveatInfo())
+                return false;
+            if (hasPartialCaveatInfo()) {
+                if (!getPartialCaveatInfo().equals(other.getPartialCaveatInfo()))
+                    return false;
+            }
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + SUBJECT_OBJECT_ID_FIELD_NUMBER;
+            hash = (53 * hash) + getSubjectObjectId().hashCode();
+            hash = (37 * hash) + PERMISSIONSHIP_FIELD_NUMBER;
+            hash = (53 * hash) + permissionship_;
+            if (hasPartialCaveatInfo()) {
+                hash = (37 * hash) + PARTIAL_CAVEAT_INFO_FIELD_NUMBER;
+                hash = (53 * hash) + getPartialCaveatInfo().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseDelimitedFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject parseFrom(com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.PermissionService.ResolvedSubject prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * <pre>
+         * ResolvedSubject is a single subject resolved within LookupSubjects.
+         * </pre>
+         *
+         * Protobuf type {@code authzed.api.v1.ResolvedSubject}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.ResolvedSubject)
+                com.authzed.api.v1.PermissionService.ResolvedSubjectOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ResolvedSubject_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ResolvedSubject_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.ResolvedSubject.class,
+                                com.authzed.api.v1.PermissionService.ResolvedSubject.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.PermissionService.ResolvedSubject.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                subjectObjectId_ = "";
+                permissionship_ = 0;
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ResolvedSubject_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.ResolvedSubject getDefaultInstanceForType() {
+                return com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.ResolvedSubject build() {
+                com.authzed.api.v1.PermissionService.ResolvedSubject result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.ResolvedSubject buildPartial() {
+                com.authzed.api.v1.PermissionService.ResolvedSubject result = new com.authzed.api.v1.PermissionService.ResolvedSubject(
+                        this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.ResolvedSubject result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.subjectObjectId_ = subjectObjectId_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.permissionship_ = permissionship_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.partialCaveatInfo_ = partialCaveatInfoBuilder_ == null ? partialCaveatInfo_
+                            : partialCaveatInfoBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.PermissionService.ResolvedSubject) {
+                    return mergeFrom((com.authzed.api.v1.PermissionService.ResolvedSubject) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.PermissionService.ResolvedSubject other) {
+                if (other == com.authzed.api.v1.PermissionService.ResolvedSubject.getDefaultInstance())
+                    return this;
+                if (!other.getSubjectObjectId().isEmpty()) {
+                    subjectObjectId_ = other.subjectObjectId_;
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
+                if (other.permissionship_ != 0) {
+                    setPermissionshipValue(other.getPermissionshipValue());
+                }
+                if (other.hasPartialCaveatInfo()) {
+                    mergePartialCaveatInfo(other.getPartialCaveatInfo());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                subjectObjectId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            case 16: {
+                                permissionship_ = input.readEnum();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            }
+                            // case 16
+                            case 26: {
+                                input.readMessage(getPartialCaveatInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 26
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private java.lang.Object subjectObjectId_ = "";
+
+            /**
+             * <pre>
+             * subject_object_id is the Object ID of the subject found. May be a `*` if
+             * a wildcard was found.
+             * </pre>
+             *
+             * <code>string subject_object_id = 1;</code>
+             *
+             * @return The subjectObjectId.
+             */
+            public java.lang.String getSubjectObjectId() {
+                java.lang.Object ref = subjectObjectId_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    subjectObjectId_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * subject_object_id is the Object ID of the subject found. May be a `*` if
+             * a wildcard was found.
+             * </pre>
+             *
+             * <code>string subject_object_id = 1;</code>
+             *
+             * @return The bytes for subjectObjectId.
+             */
+            public com.google.protobuf.ByteString getSubjectObjectIdBytes() {
+                java.lang.Object ref = subjectObjectId_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    subjectObjectId_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * subject_object_id is the Object ID of the subject found. May be a `*` if
+             * a wildcard was found.
+             * </pre>
+             *
+             * <code>string subject_object_id = 1;</code>
+             *
+             * @param value The subjectObjectId to set.
+             * @return This builder for chaining.
+             */
+            public Builder setSubjectObjectId(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                subjectObjectId_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * subject_object_id is the Object ID of the subject found. May be a `*` if
+             * a wildcard was found.
+             * </pre>
+             *
+             * <code>string subject_object_id = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearSubjectObjectId() {
+                subjectObjectId_ = getDefaultInstance().getSubjectObjectId();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * subject_object_id is the Object ID of the subject found. May be a `*` if
+             * a wildcard was found.
+             * </pre>
+             *
+             * <code>string subject_object_id = 1;</code>
+             *
+             * @param value The bytes for subjectObjectId to set.
+             * @return This builder for chaining.
+             */
+            public Builder setSubjectObjectIdBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                subjectObjectId_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            private int permissionship_ = 0;
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return The enum numeric value on the wire for permissionship.
+             */
+            @java.lang.Override
+            public int getPermissionshipValue() {
+                return permissionship_;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The enum numeric value on the wire for permissionship to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermissionshipValue(int value) {
+                permissionship_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return The permissionship.
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.PermissionService.LookupPermissionship getPermissionship() {
+                com.authzed.api.v1.PermissionService.LookupPermissionship result = com.authzed.api.v1.PermissionService.LookupPermissionship
+                        .forNumber(permissionship_);
+                return result == null ? com.authzed.api.v1.PermissionService.LookupPermissionship.UNRECOGNIZED : result;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The permissionship to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPermissionship(com.authzed.api.v1.PermissionService.LookupPermissionship value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                permissionship_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * permissionship indicates whether the response was partially evaluated or not
+             * </pre>
+             *
+             * <code>.authzed.api.v1.LookupPermissionship permissionship = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearPermissionship() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                permissionship_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> partialCaveatInfoBuilder_;
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the partialCaveatInfo field is set.
+             */
+            public boolean hasPartialCaveatInfo() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             *
+             * @return The partialCaveatInfo.
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                } else {
+                    return partialCaveatInfoBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    partialCaveatInfo_ = value;
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo.Builder builderForValue) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfo_ = builderForValue.build();
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergePartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) && partialCaveatInfo_ != null
+                            && partialCaveatInfo_ != com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()) {
+                        getPartialCaveatInfoBuilder().mergeFrom(value);
+                    } else {
+                        partialCaveatInfo_ = value;
+                    }
+                } else {
+                    partialCaveatInfoBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearPartialCaveatInfo() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo.Builder getPartialCaveatInfoBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getPartialCaveatInfoFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+                if (partialCaveatInfoBuilder_ != null) {
+                    return partialCaveatInfoBuilder_.getMessageOrBuilder();
+                } else {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 3 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> getPartialCaveatInfoFieldBuilder() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder>(
+                            getPartialCaveatInfo(), getParentForChildren(), isClean());
+                    partialCaveatInfo_ = null;
+                }
+                return partialCaveatInfoBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.ResolvedSubject)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.ResolvedSubject)
+        private static final com.authzed.api.v1.PermissionService.ResolvedSubject DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.PermissionService.ResolvedSubject();
+        }
+
+        public static com.authzed.api.v1.PermissionService.ResolvedSubject getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<ResolvedSubject> PARSER = new com.google.protobuf.AbstractParser<ResolvedSubject>() {
+
+            @java.lang.Override
+            public ResolvedSubject parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<ResolvedSubject> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<ResolvedSubject> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.ResolvedSubject getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_Consistency_descriptor;
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_Consistency_fieldAccessorTable;
@@ -18710,6 +31832,26 @@ public final class PermissionService {
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CheckPermissionResponse_fieldAccessorTable;
 
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_CheckBulkPermissionsRequest_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CheckBulkPermissionsRequest_fieldAccessorTable;
+
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_fieldAccessorTable;
+
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_CheckBulkPermissionsResponse_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CheckBulkPermissionsResponse_fieldAccessorTable;
+
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_CheckBulkPermissionsPair_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CheckBulkPermissionsPair_fieldAccessorTable;
+
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_fieldAccessorTable;
+
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_ExpandPermissionTreeRequest_descriptor;
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_ExpandPermissionTreeRequest_fieldAccessorTable;
@@ -18734,6 +31876,10 @@ public final class PermissionService {
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_LookupSubjectsResponse_fieldAccessorTable;
 
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_ResolvedSubject_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_ResolvedSubject_fieldAccessorTable;
+
     public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
         return descriptor;
     }
@@ -18742,123 +31888,200 @@ public final class PermissionService {
 
     static {
         java.lang.String[] descriptorData = { "\n\'authzed/api/v1/permission_service.prot"
-                + "o\022\016authzed.api.v1\032\034google/api/annotation"
-                + "s.proto\032\027validate/validate.proto\032\031authze"
-                + "d/api/v1/core.proto\"\331\001\n\013Consistency\022#\n\020m"
-                + "inimize_latency\030\001 \001(\010B\007\372B\004j\002\010\001H\000\0225\n\021at_l"
-                + "east_as_fresh\030\002 \001(\0132\030.authzed.api.v1.Zed"
-                + "TokenH\000\0225\n\021at_exact_snapshot\030\003 \001(\0132\030.aut"
-                + "hzed.api.v1.ZedTokenH\000\022#\n\020fully_consiste"
-                + "nt\030\004 \001(\010B\007\372B\004j\002\010\001H\000B\022\n\013requirement\022\003\370B\001\""
-                + "\315\002\n\022RelationshipFilter\022_\n\rresource_type\030"
-                + "\001 \001(\tBH\372BErC(\200\0012>^([a-z][a-z0-9_]{1,61}[" + "a-z0-9]/)?[a-z][a-z0-9_]{1,62}[a-z0-9]$\022"
-                + "O\n\024optional_resource_id\030\002 \001(\tB1\372B.r,(\200\0012"
-                + "\'^([a-zA-Z0-9_][a-zA-Z0-9/_|-]{0,127})?$" + "\022E\n\021optional_relation\030\003 \001(\tB*\372B\'r%(@2!^("
-                + "[a-z][a-z0-9_]{1,62}[a-z0-9])?$\022>\n\027optio" + "nal_subject_filter\030\004 \001(\0132\035.authzed.api.v"
-                + "1.SubjectFilter\"\335\002\n\rSubjectFilter\022^\n\014sub"
-                + "ject_type\030\001 \001(\tBH\372BErC(\200\0012>^([a-z][a-z0-" + "9_]{1,61}[a-z0-9]/)?[a-z][a-z0-9_]{1,62}"
-                + "[a-z0-9]$\022S\n\023optional_subject_id\030\002 \001(\tB6"
-                + "\372B3r1(\200\0012,^(([a-zA-Z0-9_][a-zA-Z0-9/_|-]"
-                + "{0,127})|\\*)?$\022G\n\021optional_relation\030\003 \001(" + "\0132,.authzed.api.v1.SubjectFilter.Relatio"
-                + "nFilter\032N\n\016RelationFilter\022<\n\010relation\030\001 "
-                + "\001(\tB*\372B\'r%(@2!^([a-z][a-z0-9_]{1,62}[a-z"
-                + "0-9])?$\"\227\001\n\030ReadRelationshipsRequest\0220\n\013"
-                + "consistency\030\001 \001(\0132\033.authzed.api.v1.Consi"
-                + "stency\022I\n\023relationship_filter\030\002 \001(\0132\".au"
-                + "thzed.api.v1.RelationshipFilterB\010\372B\005\212\001\002\020"
-                + "\001\"z\n\031ReadRelationshipsResponse\022)\n\007read_a"
-                + "t\030\001 \001(\0132\030.authzed.api.v1.ZedToken\0222\n\014rel"
-                + "ationship\030\002 \001(\0132\034.authzed.api.v1.Relatio"
-                + "nship\"\361\001\n\014Precondition\022C\n\toperation\030\001 \001("
-                + "\0162&.authzed.api.v1.Precondition.Operatio"
-                + "nB\010\372B\005\202\001\002\020\001\022<\n\006filter\030\002 \001(\0132\".authzed.ap"
-                + "i.v1.RelationshipFilterB\010\372B\005\212\001\002\020\001\"^\n\tOpe"
-                + "ration\022\031\n\025OPERATION_UNSPECIFIED\020\000\022\034\n\030OPE"
-                + "RATION_MUST_NOT_MATCH\020\001\022\030\n\024OPERATION_MUS"
-                + "T_MATCH\020\002\"\254\001\n\031WriteRelationshipsRequest\022"
-                + "B\n\007updates\030\001 \003(\0132\".authzed.api.v1.Relati"
-                + "onshipUpdateB\r\372B\n\222\001\007\"\005\212\001\002\020\001\022K\n\026optional_"
-                + "preconditions\030\002 \003(\0132\034.authzed.api.v1.Pre"
-                + "conditionB\r\372B\n\222\001\007\"\005\212\001\002\020\001\"J\n\032WriteRelatio"
-                + "nshipsResponse\022,\n\nwritten_at\030\001 \001(\0132\030.aut"
-                + "hzed.api.v1.ZedToken\"\264\001\n\032DeleteRelations"
-                + "hipsRequest\022I\n\023relationship_filter\030\001 \001(\013"
-                + "2\".authzed.api.v1.RelationshipFilterB\010\372B"
+                + "o\022\016authzed.api.v1\032\034google/protobuf/struc"
+                + "t.proto\032\034google/api/annotations.proto\032\027g" + "oogle/rpc/status.proto\032\027validate/validat"
+                + "e.proto\032\031authzed/api/v1/core.proto\032\032auth"
+                + "zed/api/v1/debug.proto\"\331\001\n\013Consistency\022#"
+                + "\n\020minimize_latency\030\001 \001(\010B\007\372B\004j\002\010\001H\000\0225\n\021a"
+                + "t_least_as_fresh\030\002 \001(\0132\030.authzed.api.v1."
+                + "ZedTokenH\000\0225\n\021at_exact_snapshot\030\003 \001(\0132\030."
+                + "authzed.api.v1.ZedTokenH\000\022#\n\020fully_consi"
+                + "stent\030\004 \001(\010B\007\372B\004j\002\010\001H\000B\022\n\013requirement\022\003\370"
+                + "B\001\"\220\003\n\022RelationshipFilter\022b\n\rresource_ty"
+                + "pe\030\001 \001(\tBK\372BHrF(\200\0012A^(([a-z][a-z0-9_]{1," + "61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-"
+                + "9])?$\022C\n\024optional_resource_id\030\002 \001(\tB%\372B\""
+                + "r (\200\0102\033^([a-zA-Z0-9/_|\\-=+]{1,})?$\022J\n\033op"
+                + "tional_resource_id_prefix\030\005 \001(\tB%\372B\"r (\200"
+                + "\0102\033^([a-zA-Z0-9/_|\\-=+]{1,})?$\022E\n\021option"
+                + "al_relation\030\003 \001(\tB*\372B\'r%(@2!^([a-z][a-z0" + "-9_]{1,62}[a-z0-9])?$\022>\n\027optional_subjec"
+                + "t_filter\030\004 \001(\0132\035.authzed.api.v1.SubjectF"
+                + "ilter\"\321\002\n\rSubjectFilter\022^\n\014subject_type\030"
+                + "\001 \001(\tBH\372BErC(\200\0012>^([a-z][a-z0-9_]{1,61}[" + "a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$\022"
+                + "G\n\023optional_subject_id\030\002 \001(\tB*\372B\'r%(\200\0102 "
+                + "^(([a-zA-Z0-9/_|\\-=+]{1,})|\\*)?$\022G\n\021opti" + "onal_relation\030\003 \001(\0132,.authzed.api.v1.Sub"
+                + "jectFilter.RelationFilter\032N\n\016RelationFil"
+                + "ter\022<\n\010relation\030\001 \001(\tB*\372B\'r%(@2!^([a-z]["
+                + "a-z0-9_]{1,62}[a-z0-9])?$\"\354\001\n\030ReadRelati"
+                + "onshipsRequest\0220\n\013consistency\030\001 \001(\0132\033.au"
+                + "thzed.api.v1.Consistency\022I\n\023relationship" + "_filter\030\002 \001(\0132\".authzed.api.v1.Relations"
+                + "hipFilterB\010\372B\005\212\001\002\020\001\022\"\n\016optional_limit\030\003 "
+                + "\001(\rB\n\372B\007*\005\030\350\007(\000\022/\n\017optional_cursor\030\004 \001(\013"
+                + "2\026.authzed.api.v1.Cursor\"\303\001\n\031ReadRelatio"
+                + "nshipsResponse\0223\n\007read_at\030\001 \001(\0132\030.authze"
+                + "d.api.v1.ZedTokenB\010\372B\005\212\001\002\020\001\022<\n\014relations"
+                + "hip\030\002 \001(\0132\034.authzed.api.v1.RelationshipB"
+                + "\010\372B\005\212\001\002\020\001\0223\n\023after_result_cursor\030\003 \001(\0132\026"
+                + ".authzed.api.v1.Cursor\"\363\001\n\014Precondition\022"
+                + "E\n\toperation\030\001 \001(\0162&.authzed.api.v1.Prec"
+                + "ondition.OperationB\n\372B\007\202\001\004\020\001 \000\022<\n\006filter"
+                + "\030\002 \001(\0132\".authzed.api.v1.RelationshipFilt"
+                + "erB\010\372B\005\212\001\002\020\001\"^\n\tOperation\022\031\n\025OPERATION_U"
+                + "NSPECIFIED\020\000\022\034\n\030OPERATION_MUST_NOT_MATCH"
+                + "\020\001\022\030\n\024OPERATION_MUST_MATCH\020\002\"\254\001\n\031WriteRe"
+                + "lationshipsRequest\022B\n\007updates\030\001 \003(\0132\".au"
+                + "thzed.api.v1.RelationshipUpdateB\r\372B\n\222\001\007\""
                 + "\005\212\001\002\020\001\022K\n\026optional_preconditions\030\002 \003(\0132\034"
                 + ".authzed.api.v1.PreconditionB\r\372B\n\222\001\007\"\005\212\001"
-                + "\002\020\001\"K\n\033DeleteRelationshipsResponse\022,\n\nde"
-                + "leted_at\030\001 \001(\0132\030.authzed.api.v1.ZedToken"
-                + "\"\204\002\n\026CheckPermissionRequest\0220\n\013consisten"
-                + "cy\030\001 \001(\0132\033.authzed.api.v1.Consistency\022;\n"
-                + "\010resource\030\002 \001(\0132\037.authzed.api.v1.ObjectR"
-                + "eferenceB\010\372B\005\212\001\002\020\001\022>\n\npermission\030\003 \001(\tB*"
-                + "\372B\'r%(@2!^([a-z][a-z0-9_]{1,62}[a-z0-9])" + "?$\022;\n\007subject\030\004 \001(\0132 .authzed.api.v1.Sub"
-                + "jectReferenceB\010\372B\005\212\001\002\020\001\"\216\002\n\027CheckPermiss"
-                + "ionResponse\022,\n\nchecked_at\030\001 \001(\0132\030.authze"
-                + "d.api.v1.ZedToken\022N\n\016permissionship\030\002 \001(" + "\01626.authzed.api.v1.CheckPermissionRespon"
-                + "se.Permissionship\"u\n\016Permissionship\022\036\n\032P"
-                + "ERMISSIONSHIP_UNSPECIFIED\020\000\022 \n\034PERMISSIO"
-                + "NSHIP_NO_PERMISSION\020\001\022!\n\035PERMISSIONSHIP_"
-                + "HAS_PERMISSION\020\002\"\314\001\n\033ExpandPermissionTre"
-                + "eRequest\0220\n\013consistency\030\001 \001(\0132\033.authzed."
-                + "api.v1.Consistency\022;\n\010resource\030\002 \001(\0132\037.a"
-                + "uthzed.api.v1.ObjectReferenceB\010\372B\005\212\001\002\020\001\022"
-                + ">\n\npermission\030\003 \001(\tB*\372B\'r%(@2!^([a-z][a-"
-                + "z0-9_]{1,62}[a-z0-9])?$\"\214\001\n\034ExpandPermis"
-                + "sionTreeResponse\022-\n\013expanded_at\030\001 \001(\0132\030."
-                + "authzed.api.v1.ZedToken\022=\n\ttree_root\030\002 \001" + "(\0132*.authzed.api.v1.PermissionRelationsh"
-                + "ipTree\"\254\002\n\026LookupResourcesRequest\0220\n\013con"
-                + "sistency\030\001 \001(\0132\033.authzed.api.v1.Consiste"
-                + "ncy\022f\n\024resource_object_type\030\002 \001(\tBH\372BErC"
-                + "(\200\0012>^([a-z][a-z0-9_]{1,61}[a-z0-9]/)?[a" + "-z][a-z0-9_]{1,62}[a-z0-9]$\022;\n\npermissio"
-                + "n\030\003 \001(\tB\'\372B$r\"(@2\036^[a-z][a-z0-9_]{1,62}["
-                + "a-z0-9]$\022;\n\007subject\030\004 \001(\0132 .authzed.api."
-                + "v1.SubjectReferenceB\010\372B\005\212\001\002\020\001\"e\n\027LookupR"
-                + "esourcesResponse\022.\n\014looked_up_at\030\001 \001(\0132\030"
-                + ".authzed.api.v1.ZedToken\022\032\n\022resource_obj"
-                + "ect_id\030\002 \001(\t\"\374\002\n\025LookupSubjectsRequest\0220"
-                + "\n\013consistency\030\001 \001(\0132\033.authzed.api.v1.Con"
-                + "sistency\022;\n\010resource\030\002 \001(\0132\037.authzed.api"
-                + ".v1.ObjectReferenceB\010\372B\005\212\001\002\020\001\022>\n\npermiss"
-                + "ion\030\003 \001(\tB*\372B\'r%(@2!^([a-z][a-z0-9_]{1,6"
-                + "2}[a-z0-9])?$\022e\n\023subject_object_type\030\004 \001"
-                + "(\tBH\372BErC(\200\0012>^([a-z][a-z0-9_]{1,61}[a-z" + "0-9]/)?[a-z][a-z0-9_]{1,62}[a-z0-9]$\022M\n\031"
-                + "optional_subject_relation\030\005 \001(\tB*\372B\'r%(@"
-                + "2!^([a-z][a-z0-9_]{1,62}[a-z0-9])?$\"\201\001\n\026"
-                + "LookupSubjectsResponse\022.\n\014looked_up_at\030\001"
-                + " \001(\0132\030.authzed.api.v1.ZedToken\022\031\n\021subjec"
-                + "t_object_id\030\002 \001(\t\022\034\n\024excluded_subject_id"
-                + "s\030\003 \003(\t2\200\010\n\022PermissionsService\022\215\001\n\021ReadR"
-                + "elationships\022(.authzed.api.v1.ReadRelati" + "onshipsRequest\032).authzed.api.v1.ReadRela"
-                + "tionshipsResponse\"!\202\323\344\223\002\033\"\026/v1/relations"
-                + "hips/read:\001*0\001\022\217\001\n\022WriteRelationships\022)." + "authzed.api.v1.WriteRelationshipsRequest"
-                + "\032*.authzed.api.v1.WriteRelationshipsResp"
-                + "onse\"\"\202\323\344\223\002\034\"\027/v1/relationships/write:\001*"
-                + "\022\223\001\n\023DeleteRelationships\022*.authzed.api.v" + "1.DeleteRelationshipsRequest\032+.authzed.a"
-                + "pi.v1.DeleteRelationshipsResponse\"#\202\323\344\223\002"
-                + "\035\"\030/v1/relationships/delete:\001*\022\204\001\n\017Check"
-                + "Permission\022&.authzed.api.v1.CheckPermiss" + "ionRequest\032\'.authzed.api.v1.CheckPermiss"
-                + "ionResponse\" \202\323\344\223\002\032\"\025/v1/permissions/che"
-                + "ck:\001*\022\224\001\n\024ExpandPermissionTree\022+.authzed" + ".api.v1.ExpandPermissionTreeRequest\032,.au"
-                + "thzed.api.v1.ExpandPermissionTreeRespons"
-                + "e\"!\202\323\344\223\002\033\"\026/v1/permissions/expand:\001*\022\212\001\n"
-                + "\017LookupResources\022&.authzed.api.v1.Lookup" + "ResourcesRequest\032\'.authzed.api.v1.Lookup"
-                + "ResourcesResponse\"$\202\323\344\223\002\036\"\031/v1/permissio"
-                + "ns/resources:\001*0\001\022\206\001\n\016LookupSubjects\022%.a"
-                + "uthzed.api.v1.LookupSubjectsRequest\032&.au" + "thzed.api.v1.LookupSubjectsResponse\"#\202\323\344"
-                + "\223\002\035\"\030/v1/permissions/subjects:\001*0\001BH\n\022co" + "m.authzed.api.v1Z2github.com/authzed/aut"
-                + "hzed-go/proto/authzed/api/v1b\006proto3" };
+                + "\002\020\001\"J\n\032WriteRelationshipsResponse\022,\n\nwri"
+                + "tten_at\030\001 \001(\0132\030.authzed.api.v1.ZedToken\""
+                + "\202\002\n\032DeleteRelationshipsRequest\022I\n\023relati"
+                + "onship_filter\030\001 \001(\0132\".authzed.api.v1.Rel"
+                + "ationshipFilterB\010\372B\005\212\001\002\020\001\022K\n\026optional_pr"
+                + "econditions\030\002 \003(\0132\034.authzed.api.v1.Preco"
+                + "nditionB\r\372B\n\222\001\007\"\005\212\001\002\020\001\022\"\n\016optional_limit"
+                + "\030\003 \001(\rB\n\372B\007*\005\030\350\007(\000\022(\n optional_allow_par"
+                + "tial_deletions\030\004 \001(\010\"\232\002\n\033DeleteRelations"
+                + "hipsResponse\022,\n\ndeleted_at\030\001 \001(\0132\030.authz"
+                + "ed.api.v1.ZedToken\022W\n\021deletion_progress\030" + "\002 \001(\0162<.authzed.api.v1.DeleteRelationshi"
+                + "psResponse.DeletionProgress\"t\n\020DeletionP" + "rogress\022!\n\035DELETION_PROGRESS_UNSPECIFIED"
+                + "\020\000\022\036\n\032DELETION_PROGRESS_COMPLETE\020\001\022\035\n\031DE"
+                + "LETION_PROGRESS_PARTIAL\020\002\"\316\002\n\026CheckPermi"
+                + "ssionRequest\0220\n\013consistency\030\001 \001(\0132\033.auth"
+                + "zed.api.v1.Consistency\022;\n\010resource\030\002 \001(\013"
+                + "2\037.authzed.api.v1.ObjectReferenceB\010\372B\005\212\001"
+                + "\002\020\001\022>\n\npermission\030\003 \001(\tB*\372B\'r%(@2!^([a-z"
+                + "][a-z0-9_]{1,62}[a-z0-9])?$\022;\n\007subject\030\004" + " \001(\0132 .authzed.api.v1.SubjectReferenceB\010"
+                + "\372B\005\212\001\002\020\001\0222\n\007context\030\005 \001(\0132\027.google.proto"
+                + "buf.StructB\010\372B\005\212\001\002\020\000\022\024\n\014with_tracing\030\006 \001"
+                + "(\010\"\321\003\n\027CheckPermissionResponse\0226\n\nchecke"
+                + "d_at\030\001 \001(\0132\030.authzed.api.v1.ZedTokenB\010\372B"
+                + "\005\212\001\002\020\000\022Z\n\016permissionship\030\002 \001(\01626.authzed"
+                + ".api.v1.CheckPermissionResponse.Permissi"
+                + "onshipB\n\372B\007\202\001\004\020\001 \000\022H\n\023partial_caveat_inf"
+                + "o\030\003 \001(\0132!.authzed.api.v1.PartialCaveatIn"
+                + "foB\010\372B\005\212\001\002\020\000\0225\n\013debug_trace\030\004 \001(\0132 .auth"
+                + "zed.api.v1.DebugInformation\"\240\001\n\016Permissi"
+                + "onship\022\036\n\032PERMISSIONSHIP_UNSPECIFIED\020\000\022 "
+                + "\n\034PERMISSIONSHIP_NO_PERMISSION\020\001\022!\n\035PERM"
+                + "ISSIONSHIP_HAS_PERMISSION\020\002\022)\n%PERMISSIO"
+                + "NSHIP_CONDITIONAL_PERMISSION\020\003\"\236\001\n\033Check"
+                + "BulkPermissionsRequest\0220\n\013consistency\030\001 "
+                + "\001(\0132\033.authzed.api.v1.Consistency\022M\n\005item"
+                + "s\030\002 \003(\0132/.authzed.api.v1.CheckBulkPermis"
+                + "sionsRequestItemB\r\372B\n\222\001\007\"\005\212\001\002\020\001\"\217\002\n\037Chec"
+                + "kBulkPermissionsRequestItem\022;\n\010resource\030"
+                + "\001 \001(\0132\037.authzed.api.v1.ObjectReferenceB\010"
+                + "\372B\005\212\001\002\020\001\022>\n\npermission\030\002 \001(\tB*\372B\'r%(@2!^"
+                + "([a-z][a-z0-9_]{1,62}[a-z0-9])?$\022;\n\007subj" + "ect\030\003 \001(\0132 .authzed.api.v1.SubjectRefere"
+                + "nceB\010\372B\005\212\001\002\020\001\0222\n\007context\030\004 \001(\0132\027.google."
+                + "protobuf.StructB\010\372B\005\212\001\002\020\000\"\236\001\n\034CheckBulkP"
+                + "ermissionsResponse\0226\n\nchecked_at\030\001 \001(\0132\030"
+                + ".authzed.api.v1.ZedTokenB\010\372B\005\212\001\002\020\000\022F\n\005pa"
+                + "irs\030\002 \003(\0132(.authzed.api.v1.CheckBulkPerm"
+                + "issionsPairB\r\372B\n\222\001\007\"\005\212\001\002\020\001\"\317\001\n\030CheckBulk"
+                + "PermissionsPair\022@\n\007request\030\001 \001(\0132/.authz" + "ed.api.v1.CheckBulkPermissionsRequestIte"
+                + "m\022@\n\004item\030\002 \001(\01320.authzed.api.v1.CheckBu"
+                + "lkPermissionsResponseItemH\000\022#\n\005error\030\003 \001"
+                + "(\0132\022.google.rpc.StatusH\000B\n\n\010response\"\310\001\n"
+                + " CheckBulkPermissionsResponseItem\022Z\n\016per" + "missionship\030\001 \001(\01626.authzed.api.v1.Check"
+                + "PermissionResponse.PermissionshipB\n\372B\007\202\001"
+                + "\004\020\001 \000\022H\n\023partial_caveat_info\030\002 \001(\0132!.aut"
+                + "hzed.api.v1.PartialCaveatInfoB\010\372B\005\212\001\002\020\000\""
+                + "\314\001\n\033ExpandPermissionTreeRequest\0220\n\013consi"
+                + "stency\030\001 \001(\0132\033.authzed.api.v1.Consistenc"
+                + "y\022;\n\010resource\030\002 \001(\0132\037.authzed.api.v1.Obj"
+                + "ectReferenceB\010\372B\005\212\001\002\020\001\022>\n\npermission\030\003 \001"
+                + "(\tB*\372B\'r%(@2!^([a-z][a-z0-9_]{1,62}[a-z0" + "-9])?$\"\214\001\n\034ExpandPermissionTreeResponse\022"
+                + "-\n\013expanded_at\030\001 \001(\0132\030.authzed.api.v1.Ze"
+                + "dToken\022=\n\ttree_root\030\002 \001(\0132*.authzed.api."
+                + "v1.PermissionRelationshipTree\"\265\003\n\026Lookup"
+                + "ResourcesRequest\0220\n\013consistency\030\001 \001(\0132\033."
+                + "authzed.api.v1.Consistency\022f\n\024resource_o"
+                + "bject_type\030\002 \001(\tBH\372BErC(\200\0012>^([a-z][a-z0" + "-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62"
+                + "}[a-z0-9]$\022;\n\npermission\030\003 \001(\tB\'\372B$r\"(@2"
+                + "\036^[a-z][a-z0-9_]{1,62}[a-z0-9]$\022;\n\007subje" + "ct\030\004 \001(\0132 .authzed.api.v1.SubjectReferen"
+                + "ceB\010\372B\005\212\001\002\020\001\0222\n\007context\030\005 \001(\0132\027.google.p"
+                + "rotobuf.StructB\010\372B\005\212\001\002\020\000\022\"\n\016optional_lim"
+                + "it\030\006 \001(\rB\n\372B\007*\005\030\350\007(\000\022/\n\017optional_cursor\030"
+                + "\007 \001(\0132\026.authzed.api.v1.Cursor\"\256\002\n\027Lookup"
+                + "ResourcesResponse\022.\n\014looked_up_at\030\001 \001(\0132"
+                + "\030.authzed.api.v1.ZedToken\022\032\n\022resource_ob"
+                + "ject_id\030\002 \001(\t\022H\n\016permissionship\030\003 \001(\0162$."
+                + "authzed.api.v1.LookupPermissionshipB\n\372B\007"
+                + "\202\001\004\020\001 \000\022H\n\023partial_caveat_info\030\004 \001(\0132!.a"
+                + "uthzed.api.v1.PartialCaveatInfoB\010\372B\005\212\001\002\020"
+                + "\000\0223\n\023after_result_cursor\030\005 \001(\0132\026.authzed"
+                + ".api.v1.Cursor\"\336\005\n\025LookupSubjectsRequest"
+                + "\0220\n\013consistency\030\001 \001(\0132\033.authzed.api.v1.C"
+                + "onsistency\022;\n\010resource\030\002 \001(\0132\037.authzed.a"
+                + "pi.v1.ObjectReferenceB\010\372B\005\212\001\002\020\001\022>\n\npermi"
+                + "ssion\030\003 \001(\tB*\372B\'r%(@2!^([a-z][a-z0-9_]{1"
+                + ",62}[a-z0-9])?$\022e\n\023subject_object_type\030\004"
+                + " \001(\tBH\372BErC(\200\0012>^([a-z][a-z0-9_]{1,61}[a" + "-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$\022M"
+                + "\n\031optional_subject_relation\030\005 \001(\tB*\372B\'r%" + "(@2!^([a-z][a-z0-9_]{1,62}[a-z0-9])?$\0222\n"
+                + "\007context\030\006 \001(\0132\027.google.protobuf.StructB"
+                + "\010\372B\005\212\001\002\020\000\022+\n\027optional_concrete_limit\030\007 \001"
+                + "(\rB\n\372B\007*\005\030\350\007(\000\022/\n\017optional_cursor\030\010 \001(\0132"
+                + "\026.authzed.api.v1.Cursor\022M\n\017wildcard_opti" + "on\030\t \001(\01624.authzed.api.v1.LookupSubjects"
+                + "Request.WildcardOption\"\177\n\016WildcardOption"
+                + "\022\037\n\033WILDCARD_OPTION_UNSPECIFIED\020\000\022%\n!WIL"
+                + "DCARD_OPTION_INCLUDE_WILDCARDS\020\001\022%\n!WILD"
+                + "CARD_OPTION_EXCLUDE_WILDCARDS\020\002\"\304\003\n\026Look"
+                + "upSubjectsResponse\022.\n\014looked_up_at\030\001 \001(\013"
+                + "2\030.authzed.api.v1.ZedToken\022\035\n\021subject_ob"
+                + "ject_id\030\002 \001(\tB\002\030\001\022 \n\024excluded_subject_id"
+                + "s\030\003 \003(\tB\002\030\001\022J\n\016permissionship\030\004 \001(\0162$.au"
+                + "thzed.api.v1.LookupPermissionshipB\014\030\001\372B\007"
+                + "\202\001\004\020\001 \000\022J\n\023partial_caveat_info\030\005 \001(\0132!.a"
+                + "uthzed.api.v1.PartialCaveatInfoB\n\030\001\372B\005\212\001"
+                + "\002\020\000\0220\n\007subject\030\006 \001(\0132\037.authzed.api.v1.Re"
+                + "solvedSubject\022:\n\021excluded_subjects\030\007 \003(\013"
+                + "2\037.authzed.api.v1.ResolvedSubject\0223\n\023aft"
+                + "er_result_cursor\030\010 \001(\0132\026.authzed.api.v1."
+                + "Cursor\"\300\001\n\017ResolvedSubject\022\031\n\021subject_ob"
+                + "ject_id\030\001 \001(\t\022H\n\016permissionship\030\002 \001(\0162$."
+                + "authzed.api.v1.LookupPermissionshipB\n\372B\007"
+                + "\202\001\004\020\001 \000\022H\n\023partial_caveat_info\030\003 \001(\0132!.a"
+                + "uthzed.api.v1.PartialCaveatInfoB\010\372B\005\212\001\002\020"
+                + "\000*\231\001\n\024LookupPermissionship\022%\n!LOOKUP_PER"
+                + "MISSIONSHIP_UNSPECIFIED\020\000\022(\n$LOOKUP_PERM" + "ISSIONSHIP_HAS_PERMISSION\020\001\0220\n,LOOKUP_PE"
+                + "RMISSIONSHIP_CONDITIONAL_PERMISSION\020\0022\232\t"
+                + "\n\022PermissionsService\022\215\001\n\021ReadRelationshi" + "ps\022(.authzed.api.v1.ReadRelationshipsReq"
+                + "uest\032).authzed.api.v1.ReadRelationshipsR"
+                + "esponse\"!\202\323\344\223\002\033\"\026/v1/relationships/read:"
+                + "\001*0\001\022\217\001\n\022WriteRelationships\022).authzed.ap"
+                + "i.v1.WriteRelationshipsRequest\032*.authzed" + ".api.v1.WriteRelationshipsResponse\"\"\202\323\344\223"
+                + "\002\034\"\027/v1/relationships/write:\001*\022\223\001\n\023Delet"
+                + "eRelationships\022*.authzed.api.v1.DeleteRe" + "lationshipsRequest\032+.authzed.api.v1.Dele"
+                + "teRelationshipsResponse\"#\202\323\344\223\002\035\"\030/v1/rel"
+                + "ationships/delete:\001*\022\204\001\n\017CheckPermission" + "\022&.authzed.api.v1.CheckPermissionRequest"
+                + "\032\'.authzed.api.v1.CheckPermissionRespons"
+                + "e\" \202\323\344\223\002\032\"\025/v1/permissions/check:\001*\022\227\001\n\024"
+                + "CheckBulkPermissions\022+.authzed.api.v1.Ch" + "eckBulkPermissionsRequest\032,.authzed.api."
+                + "v1.CheckBulkPermissionsResponse\"$\202\323\344\223\002\036\""
+                + "\031/v1/permissions/checkbulk:\001*\022\224\001\n\024Expand" + "PermissionTree\022+.authzed.api.v1.ExpandPe"
+                + "rmissionTreeRequest\032,.authzed.api.v1.Exp"
+                + "andPermissionTreeResponse\"!\202\323\344\223\002\033\"\026/v1/p"
+                + "ermissions/expand:\001*\022\212\001\n\017LookupResources" + "\022&.authzed.api.v1.LookupResourcesRequest"
+                + "\032\'.authzed.api.v1.LookupResourcesRespons"
+                + "e\"$\202\323\344\223\002\036\"\031/v1/permissions/resources:\001*0"
+                + "\001\022\206\001\n\016LookupSubjects\022%.authzed.api.v1.Lo" + "okupSubjectsRequest\032&.authzed.api.v1.Loo"
+                + "kupSubjectsResponse\"#\202\323\344\223\002\035\"\030/v1/permiss"
+                + "ions/subjects:\001*0\001BH\n\022com.authzed.api.v1" + "Z2github.com/authzed/authzed-go/proto/au"
+                + "thzed/api/v1b\006proto3" };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
-                new com.google.protobuf.Descriptors.FileDescriptor[] { com.google.api.AnnotationsProto.getDescriptor(),
-                        io.envoyproxy.pgv.validate.Validate.getDescriptor(), com.authzed.api.v1.Core.getDescriptor() });
+                new com.google.protobuf.Descriptors.FileDescriptor[] { com.google.protobuf.StructProto.getDescriptor(),
+                        com.google.api.AnnotationsProto.getDescriptor(), com.google.rpc.StatusProto.getDescriptor(),
+                        io.envoyproxy.pgv.validate.Validate.getDescriptor(), com.authzed.api.v1.Core.getDescriptor(),
+                        com.authzed.api.v1.Debug.getDescriptor() });
         internal_static_authzed_api_v1_Consistency_descriptor = getDescriptor().getMessageTypes().get(0);
         internal_static_authzed_api_v1_Consistency_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_Consistency_descriptor, new java.lang.String[] { "MinimizeLatency",
                         "AtLeastAsFresh", "AtExactSnapshot", "FullyConsistent", "Requirement" });
         internal_static_authzed_api_v1_RelationshipFilter_descriptor = getDescriptor().getMessageTypes().get(1);
         internal_static_authzed_api_v1_RelationshipFilter_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_RelationshipFilter_descriptor,
-                new java.lang.String[] { "ResourceType", "OptionalResourceId", "OptionalRelation", "OptionalSubjectFilter" });
+                internal_static_authzed_api_v1_RelationshipFilter_descriptor, new java.lang.String[] { "ResourceType",
+                        "OptionalResourceId", "OptionalResourceIdPrefix", "OptionalRelation", "OptionalSubjectFilter" });
         internal_static_authzed_api_v1_SubjectFilter_descriptor = getDescriptor().getMessageTypes().get(2);
         internal_static_authzed_api_v1_SubjectFilter_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_SubjectFilter_descriptor,
@@ -18870,11 +32093,11 @@ public final class PermissionService {
         internal_static_authzed_api_v1_ReadRelationshipsRequest_descriptor = getDescriptor().getMessageTypes().get(3);
         internal_static_authzed_api_v1_ReadRelationshipsRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_ReadRelationshipsRequest_descriptor,
-                new java.lang.String[] { "Consistency", "RelationshipFilter" });
+                new java.lang.String[] { "Consistency", "RelationshipFilter", "OptionalLimit", "OptionalCursor" });
         internal_static_authzed_api_v1_ReadRelationshipsResponse_descriptor = getDescriptor().getMessageTypes().get(4);
         internal_static_authzed_api_v1_ReadRelationshipsResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_ReadRelationshipsResponse_descriptor,
-                new java.lang.String[] { "ReadAt", "Relationship" });
+                new java.lang.String[] { "ReadAt", "Relationship", "AfterResultCursor" });
         internal_static_authzed_api_v1_Precondition_descriptor = getDescriptor().getMessageTypes().get(5);
         internal_static_authzed_api_v1_Precondition_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_Precondition_descriptor, new java.lang.String[] { "Operation", "Filter" });
@@ -18887,51 +32110,81 @@ public final class PermissionService {
                 internal_static_authzed_api_v1_WriteRelationshipsResponse_descriptor, new java.lang.String[] { "WrittenAt" });
         internal_static_authzed_api_v1_DeleteRelationshipsRequest_descriptor = getDescriptor().getMessageTypes().get(8);
         internal_static_authzed_api_v1_DeleteRelationshipsRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_DeleteRelationshipsRequest_descriptor,
-                new java.lang.String[] { "RelationshipFilter", "OptionalPreconditions" });
+                internal_static_authzed_api_v1_DeleteRelationshipsRequest_descriptor, new java.lang.String[] {
+                        "RelationshipFilter", "OptionalPreconditions", "OptionalLimit", "OptionalAllowPartialDeletions" });
         internal_static_authzed_api_v1_DeleteRelationshipsResponse_descriptor = getDescriptor().getMessageTypes().get(9);
         internal_static_authzed_api_v1_DeleteRelationshipsResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_DeleteRelationshipsResponse_descriptor, new java.lang.String[] { "DeletedAt" });
+                internal_static_authzed_api_v1_DeleteRelationshipsResponse_descriptor,
+                new java.lang.String[] { "DeletedAt", "DeletionProgress" });
         internal_static_authzed_api_v1_CheckPermissionRequest_descriptor = getDescriptor().getMessageTypes().get(10);
         internal_static_authzed_api_v1_CheckPermissionRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_CheckPermissionRequest_descriptor,
-                new java.lang.String[] { "Consistency", "Resource", "Permission", "Subject" });
+                new java.lang.String[] { "Consistency", "Resource", "Permission", "Subject", "Context", "WithTracing" });
         internal_static_authzed_api_v1_CheckPermissionResponse_descriptor = getDescriptor().getMessageTypes().get(11);
         internal_static_authzed_api_v1_CheckPermissionResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_CheckPermissionResponse_descriptor,
-                new java.lang.String[] { "CheckedAt", "Permissionship" });
-        internal_static_authzed_api_v1_ExpandPermissionTreeRequest_descriptor = getDescriptor().getMessageTypes().get(12);
+                new java.lang.String[] { "CheckedAt", "Permissionship", "PartialCaveatInfo", "DebugTrace" });
+        internal_static_authzed_api_v1_CheckBulkPermissionsRequest_descriptor = getDescriptor().getMessageTypes().get(12);
+        internal_static_authzed_api_v1_CheckBulkPermissionsRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_CheckBulkPermissionsRequest_descriptor,
+                new java.lang.String[] { "Consistency", "Items" });
+        internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_descriptor = getDescriptor().getMessageTypes().get(13);
+        internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_CheckBulkPermissionsRequestItem_descriptor,
+                new java.lang.String[] { "Resource", "Permission", "Subject", "Context" });
+        internal_static_authzed_api_v1_CheckBulkPermissionsResponse_descriptor = getDescriptor().getMessageTypes().get(14);
+        internal_static_authzed_api_v1_CheckBulkPermissionsResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_CheckBulkPermissionsResponse_descriptor,
+                new java.lang.String[] { "CheckedAt", "Pairs" });
+        internal_static_authzed_api_v1_CheckBulkPermissionsPair_descriptor = getDescriptor().getMessageTypes().get(15);
+        internal_static_authzed_api_v1_CheckBulkPermissionsPair_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_CheckBulkPermissionsPair_descriptor,
+                new java.lang.String[] { "Request", "Item", "Error", "Response" });
+        internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_descriptor = getDescriptor().getMessageTypes().get(16);
+        internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_CheckBulkPermissionsResponseItem_descriptor,
+                new java.lang.String[] { "Permissionship", "PartialCaveatInfo" });
+        internal_static_authzed_api_v1_ExpandPermissionTreeRequest_descriptor = getDescriptor().getMessageTypes().get(17);
         internal_static_authzed_api_v1_ExpandPermissionTreeRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_ExpandPermissionTreeRequest_descriptor,
                 new java.lang.String[] { "Consistency", "Resource", "Permission" });
-        internal_static_authzed_api_v1_ExpandPermissionTreeResponse_descriptor = getDescriptor().getMessageTypes().get(13);
+        internal_static_authzed_api_v1_ExpandPermissionTreeResponse_descriptor = getDescriptor().getMessageTypes().get(18);
         internal_static_authzed_api_v1_ExpandPermissionTreeResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_ExpandPermissionTreeResponse_descriptor,
                 new java.lang.String[] { "ExpandedAt", "TreeRoot" });
-        internal_static_authzed_api_v1_LookupResourcesRequest_descriptor = getDescriptor().getMessageTypes().get(14);
+        internal_static_authzed_api_v1_LookupResourcesRequest_descriptor = getDescriptor().getMessageTypes().get(19);
         internal_static_authzed_api_v1_LookupResourcesRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_LookupResourcesRequest_descriptor,
-                new java.lang.String[] { "Consistency", "ResourceObjectType", "Permission", "Subject" });
-        internal_static_authzed_api_v1_LookupResourcesResponse_descriptor = getDescriptor().getMessageTypes().get(15);
+                internal_static_authzed_api_v1_LookupResourcesRequest_descriptor, new java.lang.String[] { "Consistency",
+                        "ResourceObjectType", "Permission", "Subject", "Context", "OptionalLimit", "OptionalCursor" });
+        internal_static_authzed_api_v1_LookupResourcesResponse_descriptor = getDescriptor().getMessageTypes().get(20);
         internal_static_authzed_api_v1_LookupResourcesResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_LookupResourcesResponse_descriptor,
-                new java.lang.String[] { "LookedUpAt", "ResourceObjectId" });
-        internal_static_authzed_api_v1_LookupSubjectsRequest_descriptor = getDescriptor().getMessageTypes().get(16);
+                internal_static_authzed_api_v1_LookupResourcesResponse_descriptor, new java.lang.String[] { "LookedUpAt",
+                        "ResourceObjectId", "Permissionship", "PartialCaveatInfo", "AfterResultCursor" });
+        internal_static_authzed_api_v1_LookupSubjectsRequest_descriptor = getDescriptor().getMessageTypes().get(21);
         internal_static_authzed_api_v1_LookupSubjectsRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_LookupSubjectsRequest_descriptor, new java.lang.String[] { "Consistency",
-                        "Resource", "Permission", "SubjectObjectType", "OptionalSubjectRelation" });
-        internal_static_authzed_api_v1_LookupSubjectsResponse_descriptor = getDescriptor().getMessageTypes().get(17);
+                internal_static_authzed_api_v1_LookupSubjectsRequest_descriptor,
+                new java.lang.String[] { "Consistency", "Resource", "Permission", "SubjectObjectType",
+                        "OptionalSubjectRelation", "Context", "OptionalConcreteLimit", "OptionalCursor", "WildcardOption" });
+        internal_static_authzed_api_v1_LookupSubjectsResponse_descriptor = getDescriptor().getMessageTypes().get(22);
         internal_static_authzed_api_v1_LookupSubjectsResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_LookupSubjectsResponse_descriptor,
-                new java.lang.String[] { "LookedUpAt", "SubjectObjectId", "ExcludedSubjectIds" });
+                new java.lang.String[] { "LookedUpAt", "SubjectObjectId", "ExcludedSubjectIds", "Permissionship",
+                        "PartialCaveatInfo", "Subject", "ExcludedSubjects", "AfterResultCursor" });
+        internal_static_authzed_api_v1_ResolvedSubject_descriptor = getDescriptor().getMessageTypes().get(23);
+        internal_static_authzed_api_v1_ResolvedSubject_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_ResolvedSubject_descriptor,
+                new java.lang.String[] { "SubjectObjectId", "Permissionship", "PartialCaveatInfo" });
         com.google.protobuf.ExtensionRegistry registry = com.google.protobuf.ExtensionRegistry.newInstance();
         registry.add(com.google.api.AnnotationsProto.http);
         registry.add(io.envoyproxy.pgv.validate.Validate.required);
         registry.add(io.envoyproxy.pgv.validate.Validate.rules);
         com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(descriptor, registry);
+        com.google.protobuf.StructProto.getDescriptor();
         com.google.api.AnnotationsProto.getDescriptor();
+        com.google.rpc.StatusProto.getDescriptor();
         io.envoyproxy.pgv.validate.Validate.getDescriptor();
         com.authzed.api.v1.Core.getDescriptor();
+        com.authzed.api.v1.Debug.getDescriptor();
     }
     // @@protoc_insertion_point(outer_class_scope)
 }
