@@ -4,7 +4,7 @@ import io.grpc.BindableService;
 import io.quarkus.grpc.GrpcService;
 import io.quarkus.grpc.MutinyBean;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
 public class SchemaServiceBean extends MutinySchemaServiceGrpc.SchemaServiceImplBase implements BindableService, MutinyBean {
 
     private final SchemaService delegate;

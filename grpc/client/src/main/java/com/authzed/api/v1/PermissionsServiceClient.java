@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 import io.quarkus.grpc.MutinyClient;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
 public class PermissionsServiceClient
         implements PermissionsService, MutinyClient<MutinyPermissionsServiceGrpc.MutinyPermissionsServiceStub> {
 

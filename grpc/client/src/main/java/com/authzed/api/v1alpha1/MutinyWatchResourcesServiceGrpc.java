@@ -3,7 +3,7 @@ package com.authzed.api.v1alpha1;
 import static com.authzed.api.v1alpha1.WatchResourcesServiceGrpc.getServiceDescriptor;
 import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watchresources_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watch_resources_service.proto")
 public final class MutinyWatchResourcesServiceGrpc implements io.quarkus.grpc.MutinyGrpc {
 
     private MutinyWatchResourcesServiceGrpc() {
@@ -45,8 +45,8 @@ public final class MutinyWatchResourcesServiceGrpc implements io.quarkus.grpc.Mu
          *  (resource type, permission, subject) pair.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse> watchResources(
-                com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesResponse> watchResources(
+                com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToMany(request, delegateStub::watchResources);
         }
     }
@@ -77,8 +77,8 @@ public final class MutinyWatchResourcesServiceGrpc implements io.quarkus.grpc.Mu
          *  (resource type, permission, subject) pair.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse> watchResources(
-                com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesResponse> watchResources(
+                com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -87,7 +87,7 @@ public final class MutinyWatchResourcesServiceGrpc implements io.quarkus.grpc.Mu
             return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor()).addMethod(
                     com.authzed.api.v1alpha1.WatchResourcesServiceGrpc.getWatchResourcesMethod(),
                     asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest, com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse>(
+                            new MethodHandlers<com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesRequest, com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesResponse>(
                                     this, METHODID_WATCH_RESOURCES, compression)))
                     .build();
         }
@@ -117,8 +117,8 @@ public final class MutinyWatchResourcesServiceGrpc implements io.quarkus.grpc.Mu
             switch (methodId) {
                 case METHODID_WATCH_RESOURCES:
                     io.quarkus.grpc.stubs.ServerCalls.oneToMany(
-                            (com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse>) responseObserver,
+                            (com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesResponse>) responseObserver,
                             compression, serviceImpl::watchResources);
                     break;
                 default:

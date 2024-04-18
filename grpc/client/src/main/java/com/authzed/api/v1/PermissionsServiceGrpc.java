@@ -8,7 +8,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * relationships and permissions.
  * </pre>
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.50.2)", comments = "Source: authzed/api/v1/permission_service.proto")
+@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v1/permission_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class PermissionsServiceGrpc {
 
@@ -235,7 +235,7 @@ public final class PermissionsServiceGrpc {
      * relationships and permissions.
      * </pre>
      */
-    public static abstract class PermissionsServiceImplBase implements io.grpc.BindableService {
+    public interface AsyncService {
 
         /**
          * <pre>
@@ -243,7 +243,7 @@ public final class PermissionsServiceGrpc {
          * filters.
          * </pre>
          */
-        public void readRelationships(com.authzed.api.v1.PermissionService.ReadRelationshipsRequest request,
+        default void readRelationships(com.authzed.api.v1.PermissionService.ReadRelationshipsRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.ReadRelationshipsResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReadRelationshipsMethod(), responseObserver);
         }
@@ -255,7 +255,7 @@ public final class PermissionsServiceGrpc {
          * be satisfied for the operation to commit.
          * </pre>
          */
-        public void writeRelationships(com.authzed.api.v1.PermissionService.WriteRelationshipsRequest request,
+        default void writeRelationships(com.authzed.api.v1.PermissionService.WriteRelationshipsRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.WriteRelationshipsResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWriteRelationshipsMethod(), responseObserver);
         }
@@ -268,7 +268,7 @@ public final class PermissionsServiceGrpc {
          * be satisfied for the operation to commit.
          * </pre>
          */
-        public void deleteRelationships(com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest request,
+        default void deleteRelationships(com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteRelationshipsMethod(), responseObserver);
         }
@@ -279,7 +279,7 @@ public final class PermissionsServiceGrpc {
          * to having a permission or is a direct member of a particular relation.
          * </pre>
          */
-        public void checkPermission(com.authzed.api.v1.PermissionService.CheckPermissionRequest request,
+        default void checkPermission(com.authzed.api.v1.PermissionService.CheckPermissionRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckPermissionResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckPermissionMethod(), responseObserver);
         }
@@ -291,7 +291,7 @@ public final class PermissionsServiceGrpc {
          * require multiple calls to fully unnest a deeply nested graph.
          * </pre>
          */
-        public void expandPermissionTree(com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request,
+        default void expandPermissionTree(com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExpandPermissionTreeMethod(), responseObserver);
         }
@@ -302,7 +302,7 @@ public final class PermissionsServiceGrpc {
          * can access whether via a computed permission or relation membership.
          * </pre>
          */
-        public void lookupResources(com.authzed.api.v1.PermissionService.LookupResourcesRequest request,
+        default void lookupResources(com.authzed.api.v1.PermissionService.LookupResourcesRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.LookupResourcesResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLookupResourcesMethod(), responseObserver);
         }
@@ -313,40 +313,31 @@ public final class PermissionsServiceGrpc {
          * have access whether via a computed permission or relation membership.
          * </pre>
          */
-        public void lookupSubjects(com.authzed.api.v1.PermissionService.LookupSubjectsRequest request,
+        default void lookupSubjects(com.authzed.api.v1.PermissionService.LookupSubjectsRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.LookupSubjectsResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLookupSubjectsMethod(), responseObserver);
-        }
-
-        @java.lang.Override
-        public io.grpc.ServerServiceDefinition bindService() {
-            return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-                    .addMethod(getReadRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.ReadRelationshipsRequest, com.authzed.api.v1.PermissionService.ReadRelationshipsResponse>(
-                                    this, METHODID_READ_RELATIONSHIPS)))
-                    .addMethod(getWriteRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.WriteRelationshipsRequest, com.authzed.api.v1.PermissionService.WriteRelationshipsResponse>(
-                                    this, METHODID_WRITE_RELATIONSHIPS)))
-                    .addMethod(getDeleteRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest, com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse>(
-                                    this, METHODID_DELETE_RELATIONSHIPS)))
-                    .addMethod(getCheckPermissionMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.CheckPermissionRequest, com.authzed.api.v1.PermissionService.CheckPermissionResponse>(
-                                    this, METHODID_CHECK_PERMISSION)))
-                    .addMethod(getExpandPermissionTreeMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest, com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse>(
-                                    this, METHODID_EXPAND_PERMISSION_TREE)))
-                    .addMethod(getLookupResourcesMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.LookupResourcesRequest, com.authzed.api.v1.PermissionService.LookupResourcesResponse>(
-                                    this, METHODID_LOOKUP_RESOURCES)))
-                    .addMethod(getLookupSubjectsMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.LookupSubjectsRequest, com.authzed.api.v1.PermissionService.LookupSubjectsResponse>(
-                                    this, METHODID_LOOKUP_SUBJECTS)))
-                    .build();
         }
     }
 
     /**
+     * Base class for the server implementation of the service PermissionsService.
+     *
+     * <pre>
+     * PermissionsService implements a set of RPCs that perform operations on
+     * relationships and permissions.
+     * </pre>
+     */
+    public static abstract class PermissionsServiceImplBase implements io.grpc.BindableService, AsyncService {
+
+        @java.lang.Override
+        public io.grpc.ServerServiceDefinition bindService() {
+            return PermissionsServiceGrpc.bindService(this);
+        }
+    }
+
+    /**
+     * A stub to allow clients to do asynchronous rpc calls to service PermissionsService.
+     *
      * <pre>
      * PermissionsService implements a set of RPCs that perform operations on
      * relationships and permissions.
@@ -453,6 +444,8 @@ public final class PermissionsServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do synchronous rpc calls to service PermissionsService.
+     *
      * <pre>
      * PermissionsService implements a set of RPCs that perform operations on
      * relationships and permissions.
@@ -560,6 +553,8 @@ public final class PermissionsServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do ListenableFuture-style rpc calls to service PermissionsService.
+     *
      * <pre>
      * PermissionsService implements a set of RPCs that perform operations on
      * relationships and permissions.
@@ -647,11 +642,11 @@ public final class PermissionsServiceGrpc {
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>, io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
 
-        private final PermissionsServiceImplBase serviceImpl;
+        private final AsyncService serviceImpl;
 
         private final int methodId;
 
-        MethodHandlers(PermissionsServiceImplBase serviceImpl, int methodId) {
+        MethodHandlers(AsyncService serviceImpl, int methodId) {
             this.serviceImpl = serviceImpl;
             this.methodId = methodId;
         }
@@ -701,6 +696,32 @@ public final class PermissionsServiceGrpc {
                     throw new AssertionError();
             }
         }
+    }
+
+    public static io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+        return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+                .addMethod(getReadRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.ReadRelationshipsRequest, com.authzed.api.v1.PermissionService.ReadRelationshipsResponse>(
+                                service, METHODID_READ_RELATIONSHIPS)))
+                .addMethod(getWriteRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.WriteRelationshipsRequest, com.authzed.api.v1.PermissionService.WriteRelationshipsResponse>(
+                                service, METHODID_WRITE_RELATIONSHIPS)))
+                .addMethod(getDeleteRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest, com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse>(
+                                service, METHODID_DELETE_RELATIONSHIPS)))
+                .addMethod(getCheckPermissionMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.CheckPermissionRequest, com.authzed.api.v1.PermissionService.CheckPermissionResponse>(
+                                service, METHODID_CHECK_PERMISSION)))
+                .addMethod(getExpandPermissionTreeMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest, com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse>(
+                                service, METHODID_EXPAND_PERMISSION_TREE)))
+                .addMethod(getLookupResourcesMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.LookupResourcesRequest, com.authzed.api.v1.PermissionService.LookupResourcesResponse>(
+                                service, METHODID_LOOKUP_RESOURCES)))
+                .addMethod(getLookupSubjectsMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+                        new MethodHandlers<com.authzed.api.v1.PermissionService.LookupSubjectsRequest, com.authzed.api.v1.PermissionService.LookupSubjectsResponse>(
+                                service, METHODID_LOOKUP_SUBJECTS)))
+                .build();
     }
 
     private static abstract class PermissionsServiceBaseDescriptorSupplier
