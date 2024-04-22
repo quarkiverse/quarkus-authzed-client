@@ -22,6 +22,7 @@ public final class Core {
          * Each tupleset specifies keys of a set of relation tuples. The set can
          * include a single tuple key, or all tuples with a given object ID or
          * userset in a namespace, optionally constrained by a relation name.
+         *
          * examples:
          * doc:readme#viewer&#64;group:eng#member (fully specified)
          * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -42,6 +43,7 @@ public final class Core {
          * Each tupleset specifies keys of a set of relation tuples. The set can
          * include a single tuple key, or all tuples with a given object ID or
          * userset in a namespace, optionally constrained by a relation name.
+         *
          * examples:
          * doc:readme#viewer&#64;group:eng#member (fully specified)
          * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -62,6 +64,7 @@ public final class Core {
          * Each tupleset specifies keys of a set of relation tuples. The set can
          * include a single tuple key, or all tuples with a given object ID or
          * userset in a namespace, optionally constrained by a relation name.
+         *
          * examples:
          * doc:readme#viewer&#64;group:eng#member (fully specified)
          * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -117,11 +120,6 @@ public final class Core {
             return new RelationTuple();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Core.internal_static_authzed_api_v0_RelationTuple_descriptor;
         }
@@ -133,6 +131,8 @@ public final class Core {
                             com.authzed.api.v0.Core.RelationTuple.Builder.class);
         }
 
+        private int bitField0_;
+
         public static final int OBJECT_AND_RELATION_FIELD_NUMBER = 1;
 
         private com.authzed.api.v0.Core.ObjectAndRelation objectAndRelation_;
@@ -142,6 +142,7 @@ public final class Core {
          * Each tupleset specifies keys of a set of relation tuples. The set can
          * include a single tuple key, or all tuples with a given object ID or
          * userset in a namespace, optionally constrained by a relation name.
+         *
          * examples:
          * doc:readme#viewer&#64;group:eng#member (fully specified)
          * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -157,7 +158,7 @@ public final class Core {
          */
         @java.lang.Override
         public boolean hasObjectAndRelation() {
-            return objectAndRelation_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -165,6 +166,7 @@ public final class Core {
          * Each tupleset specifies keys of a set of relation tuples. The set can
          * include a single tuple key, or all tuples with a given object ID or
          * userset in a namespace, optionally constrained by a relation name.
+         *
          * examples:
          * doc:readme#viewer&#64;group:eng#member (fully specified)
          * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -189,6 +191,7 @@ public final class Core {
          * Each tupleset specifies keys of a set of relation tuples. The set can
          * include a single tuple key, or all tuples with a given object ID or
          * userset in a namespace, optionally constrained by a relation name.
+         *
          * examples:
          * doc:readme#viewer&#64;group:eng#member (fully specified)
          * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -202,7 +205,8 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v0.Core.ObjectAndRelationOrBuilder getObjectAndRelationOrBuilder() {
-            return getObjectAndRelation();
+            return objectAndRelation_ == null ? com.authzed.api.v0.Core.ObjectAndRelation.getDefaultInstance()
+                    : objectAndRelation_;
         }
 
         public static final int USER_FIELD_NUMBER = 2;
@@ -216,7 +220,7 @@ public final class Core {
          */
         @java.lang.Override
         public boolean hasUser() {
-            return user_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -234,7 +238,7 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v0.Core.UserOrBuilder getUserOrBuilder() {
-            return getUser();
+            return user_ == null ? com.authzed.api.v0.Core.User.getDefaultInstance() : user_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -252,10 +256,10 @@ public final class Core {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (objectAndRelation_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getObjectAndRelation());
             }
-            if (user_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getUser());
             }
             getUnknownFields().writeTo(output);
@@ -267,10 +271,10 @@ public final class Core {
             if (size != -1)
                 return size;
             size = 0;
-            if (objectAndRelation_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getObjectAndRelation());
             }
-            if (user_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getUser());
             }
             size += getUnknownFields().getSerializedSize();
@@ -429,25 +433,33 @@ public final class Core {
 
             // Construct using com.authzed.api.v0.Core.RelationTuple.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getObjectAndRelationFieldBuilder();
+                    getUserFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (objectAndRelationBuilder_ == null) {
-                    objectAndRelation_ = null;
-                } else {
-                    objectAndRelation_ = null;
+                bitField0_ = 0;
+                objectAndRelation_ = null;
+                if (objectAndRelationBuilder_ != null) {
+                    objectAndRelationBuilder_.dispose();
                     objectAndRelationBuilder_ = null;
                 }
-                if (userBuilder_ == null) {
-                    user_ = null;
-                } else {
-                    user_ = null;
+                user_ = null;
+                if (userBuilder_ != null) {
+                    userBuilder_.dispose();
                     userBuilder_ = null;
                 }
                 return this;
@@ -475,18 +487,26 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v0.Core.RelationTuple buildPartial() {
                 com.authzed.api.v0.Core.RelationTuple result = new com.authzed.api.v0.Core.RelationTuple(this);
-                if (objectAndRelationBuilder_ == null) {
-                    result.objectAndRelation_ = objectAndRelation_;
-                } else {
-                    result.objectAndRelation_ = objectAndRelationBuilder_.build();
-                }
-                if (userBuilder_ == null) {
-                    result.user_ = user_;
-                } else {
-                    result.user_ = userBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Core.RelationTuple result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.objectAndRelation_ = objectAndRelationBuilder_ == null ? objectAndRelation_
+                            : objectAndRelationBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.user_ = userBuilder_ == null ? user_ : userBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -565,11 +585,13 @@ public final class Core {
                                 break;
                             case 10: {
                                 input.readMessage(getObjectAndRelationFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getUserFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -593,6 +615,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v0.Core.ObjectAndRelation objectAndRelation_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v0.Core.ObjectAndRelation, com.authzed.api.v0.Core.ObjectAndRelation.Builder, com.authzed.api.v0.Core.ObjectAndRelationOrBuilder> objectAndRelationBuilder_;
@@ -602,6 +626,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -616,7 +641,7 @@ public final class Core {
              * @return Whether the objectAndRelation field is set.
              */
             public boolean hasObjectAndRelation() {
-                return objectAndRelationBuilder_ != null || objectAndRelation_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -624,6 +649,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -651,6 +677,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -668,10 +695,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     objectAndRelation_ = value;
-                    onChanged();
                 } else {
                     objectAndRelationBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -680,6 +708,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -694,10 +723,11 @@ public final class Core {
             public Builder setObjectAndRelation(com.authzed.api.v0.Core.ObjectAndRelation.Builder builderForValue) {
                 if (objectAndRelationBuilder_ == null) {
                     objectAndRelation_ = builderForValue.build();
-                    onChanged();
                 } else {
                     objectAndRelationBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -706,6 +736,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -719,15 +750,18 @@ public final class Core {
              */
             public Builder mergeObjectAndRelation(com.authzed.api.v0.Core.ObjectAndRelation value) {
                 if (objectAndRelationBuilder_ == null) {
-                    if (objectAndRelation_ != null) {
-                        objectAndRelation_ = com.authzed.api.v0.Core.ObjectAndRelation.newBuilder(objectAndRelation_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && objectAndRelation_ != null
+                            && objectAndRelation_ != com.authzed.api.v0.Core.ObjectAndRelation.getDefaultInstance()) {
+                        getObjectAndRelationBuilder().mergeFrom(value);
                     } else {
                         objectAndRelation_ = value;
                     }
-                    onChanged();
                 } else {
                     objectAndRelationBuilder_.mergeFrom(value);
+                }
+                if (objectAndRelation_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -737,6 +771,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -749,13 +784,13 @@ public final class Core {
              * <code>.authzed.api.v0.ObjectAndRelation object_and_relation = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearObjectAndRelation() {
-                if (objectAndRelationBuilder_ == null) {
-                    objectAndRelation_ = null;
-                    onChanged();
-                } else {
-                    objectAndRelation_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                objectAndRelation_ = null;
+                if (objectAndRelationBuilder_ != null) {
+                    objectAndRelationBuilder_.dispose();
                     objectAndRelationBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -764,6 +799,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -776,6 +812,7 @@ public final class Core {
              * <code>.authzed.api.v0.ObjectAndRelation object_and_relation = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v0.Core.ObjectAndRelation.Builder getObjectAndRelationBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getObjectAndRelationFieldBuilder().getBuilder();
             }
@@ -785,6 +822,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -810,6 +848,7 @@ public final class Core {
              * Each tupleset specifies keys of a set of relation tuples. The set can
              * include a single tuple key, or all tuples with a given object ID or
              * userset in a namespace, optionally constrained by a relation name.
+             *
              * examples:
              * doc:readme#viewer&#64;group:eng#member (fully specified)
              * doc:*#*#group:eng#member (all tuples that this userset relates to)
@@ -840,7 +879,7 @@ public final class Core {
              * @return Whether the user field is set.
              */
             public boolean hasUser() {
-                return userBuilder_ != null || user_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -865,10 +904,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     user_ = value;
-                    onChanged();
                 } else {
                     userBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -878,10 +918,11 @@ public final class Core {
             public Builder setUser(com.authzed.api.v0.Core.User.Builder builderForValue) {
                 if (userBuilder_ == null) {
                     user_ = builderForValue.build();
-                    onChanged();
                 } else {
                     userBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -890,14 +931,18 @@ public final class Core {
              */
             public Builder mergeUser(com.authzed.api.v0.Core.User value) {
                 if (userBuilder_ == null) {
-                    if (user_ != null) {
-                        user_ = com.authzed.api.v0.Core.User.newBuilder(user_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && user_ != null
+                            && user_ != com.authzed.api.v0.Core.User.getDefaultInstance()) {
+                        getUserBuilder().mergeFrom(value);
                     } else {
                         user_ = value;
                     }
-                    onChanged();
                 } else {
                     userBuilder_.mergeFrom(value);
+                }
+                if (user_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -906,13 +951,13 @@ public final class Core {
              * <code>.authzed.api.v0.User user = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearUser() {
-                if (userBuilder_ == null) {
-                    user_ = null;
-                    onChanged();
-                } else {
-                    user_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                user_ = null;
+                if (userBuilder_ != null) {
+                    userBuilder_.dispose();
                     userBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -920,6 +965,7 @@ public final class Core {
              * <code>.authzed.api.v0.User user = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v0.Core.User.Builder getUserBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getUserFieldBuilder().getBuilder();
             }
@@ -1077,11 +1123,6 @@ public final class Core {
             return new ObjectAndRelation();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Core.internal_static_authzed_api_v0_ObjectAndRelation_descriptor;
         }
@@ -1095,7 +1136,8 @@ public final class Core {
 
         public static final int NAMESPACE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object namespace_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object namespace_ = "";
 
         /**
          * <code>string namespace = 1 [(.validate.rules) = { ... }</code>
@@ -1134,7 +1176,8 @@ public final class Core {
 
         public static final int OBJECT_ID_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object objectId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object objectId_ = "";
 
         /**
          * <code>string object_id = 2 [(.validate.rules) = { ... }</code>
@@ -1173,7 +1216,8 @@ public final class Core {
 
         public static final int RELATION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object relation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object relation_ = "";
 
         /**
          * <code>string relation = 3 [(.validate.rules) = { ... }</code>
@@ -1410,6 +1454,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 namespace_ = "";
                 objectId_ = "";
                 relation_ = "";
@@ -1438,11 +1483,24 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v0.Core.ObjectAndRelation buildPartial() {
                 com.authzed.api.v0.Core.ObjectAndRelation result = new com.authzed.api.v0.Core.ObjectAndRelation(this);
-                result.namespace_ = namespace_;
-                result.objectId_ = objectId_;
-                result.relation_ = relation_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Core.ObjectAndRelation result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.namespace_ = namespace_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.objectId_ = objectId_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.relation_ = relation_;
+                }
             }
 
             @java.lang.Override
@@ -1491,14 +1549,17 @@ public final class Core {
                     return this;
                 if (!other.getNamespace().isEmpty()) {
                     namespace_ = other.namespace_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getObjectId().isEmpty()) {
                     objectId_ = other.objectId_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getRelation().isEmpty()) {
                     relation_ = other.relation_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -1527,16 +1588,19 @@ public final class Core {
                                 break;
                             case 10: {
                                 namespace_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 objectId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 relation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -1559,6 +1623,8 @@ public final class Core {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object namespace_ = "";
 
@@ -1606,6 +1672,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 namespace_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1617,6 +1684,7 @@ public final class Core {
              */
             public Builder clearNamespace() {
                 namespace_ = getDefaultInstance().getNamespace();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -1633,6 +1701,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 namespace_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1683,6 +1752,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 objectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1694,6 +1764,7 @@ public final class Core {
              */
             public Builder clearObjectId() {
                 objectId_ = getDefaultInstance().getObjectId();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -1710,6 +1781,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 objectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1760,6 +1832,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 relation_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -1771,6 +1844,7 @@ public final class Core {
              */
             public Builder clearRelation() {
                 relation_ = getDefaultInstance().getRelation();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -1787,6 +1861,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 relation_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -1906,11 +1981,6 @@ public final class Core {
             return new RelationReference();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Core.internal_static_authzed_api_v0_RelationReference_descriptor;
         }
@@ -1924,7 +1994,8 @@ public final class Core {
 
         public static final int NAMESPACE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object namespace_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object namespace_ = "";
 
         /**
          * <code>string namespace = 1 [(.validate.rules) = { ... }</code>
@@ -1963,7 +2034,8 @@ public final class Core {
 
         public static final int RELATION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object relation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object relation_ = "";
 
         /**
          * <code>string relation = 3 [(.validate.rules) = { ... }</code>
@@ -2190,6 +2262,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 namespace_ = "";
                 relation_ = "";
                 return this;
@@ -2217,10 +2290,21 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v0.Core.RelationReference buildPartial() {
                 com.authzed.api.v0.Core.RelationReference result = new com.authzed.api.v0.Core.RelationReference(this);
-                result.namespace_ = namespace_;
-                result.relation_ = relation_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Core.RelationReference result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.namespace_ = namespace_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relation_ = relation_;
+                }
             }
 
             @java.lang.Override
@@ -2269,10 +2353,12 @@ public final class Core {
                     return this;
                 if (!other.getNamespace().isEmpty()) {
                     namespace_ = other.namespace_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getRelation().isEmpty()) {
                     relation_ = other.relation_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -2301,11 +2387,13 @@ public final class Core {
                                 break;
                             case 10: {
                                 namespace_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 26: {
                                 relation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 26
@@ -2328,6 +2416,8 @@ public final class Core {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object namespace_ = "";
 
@@ -2375,6 +2465,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 namespace_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2386,6 +2477,7 @@ public final class Core {
              */
             public Builder clearNamespace() {
                 namespace_ = getDefaultInstance().getNamespace();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -2402,6 +2494,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 namespace_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2452,6 +2545,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 relation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2463,6 +2557,7 @@ public final class Core {
              */
             public Builder clearRelation() {
                 relation_ = getDefaultInstance().getRelation();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -2479,6 +2574,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 relation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2564,7 +2660,7 @@ public final class Core {
          */
         com.authzed.api.v0.Core.ObjectAndRelationOrBuilder getUsersetOrBuilder();
 
-        public com.authzed.api.v0.Core.User.UserOneofCase getUserOneofCase();
+        com.authzed.api.v0.Core.User.UserOneofCase getUserOneofCase();
     }
 
     /**
@@ -2589,11 +2685,6 @@ public final class Core {
             return new User();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v0.Core.internal_static_authzed_api_v0_User_descriptor;
         }
@@ -2607,6 +2698,7 @@ public final class Core {
 
         private int userOneofCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object userOneof_;
 
         public enum UserOneofCase
@@ -2880,6 +2972,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (usersetBuilder_ != null) {
                     usersetBuilder_.clear();
                 }
@@ -2910,16 +3003,24 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v0.Core.User buildPartial() {
                 com.authzed.api.v0.Core.User result = new com.authzed.api.v0.Core.User(this);
-                if (userOneofCase_ == 2) {
-                    if (usersetBuilder_ == null) {
-                        result.userOneof_ = userOneof_;
-                    } else {
-                        result.userOneof_ = usersetBuilder_.build();
-                    }
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.userOneofCase_ = userOneofCase_;
+                buildPartialOneofs(result);
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v0.Core.User result) {
+                int from_bitField0_ = bitField0_;
+            }
+
+            private void buildPartialOneofs(com.authzed.api.v0.Core.User result) {
+                result.userOneofCase_ = userOneofCase_;
+                result.userOneof_ = this.userOneof_;
+                if (userOneofCase_ == 2 && usersetBuilder_ != null) {
+                    result.userOneof_ = usersetBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -3040,6 +3141,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v0.Core.ObjectAndRelation, com.authzed.api.v0.Core.ObjectAndRelation.Builder, com.authzed.api.v0.Core.ObjectAndRelationOrBuilder> usersetBuilder_;
 
             /**
@@ -3119,8 +3222,9 @@ public final class Core {
                 } else {
                     if (userOneofCase_ == 2) {
                         usersetBuilder_.mergeFrom(value);
+                    } else {
+                        usersetBuilder_.setMessage(value);
                     }
-                    usersetBuilder_.setMessage(value);
                 }
                 userOneofCase_ = 2;
                 return this;
@@ -3182,7 +3286,6 @@ public final class Core {
                 }
                 userOneofCase_ = 2;
                 onChanged();
-                ;
                 return usersetBuilder_;
             }
 

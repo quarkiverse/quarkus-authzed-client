@@ -3,7 +3,7 @@ package com.authzed.api.v1alpha1;
 import static com.authzed.api.v1alpha1.WatchResourcesServiceGrpc.getServiceDescriptor;
 import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watchresources_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watchresources_service.proto")
 public final class MutinyWatchResourcesServiceGrpc implements io.quarkus.grpc.MutinyGrpc {
 
     private MutinyWatchResourcesServiceGrpc() {

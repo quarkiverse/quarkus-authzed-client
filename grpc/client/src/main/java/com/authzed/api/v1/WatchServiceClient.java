@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 import io.quarkus.grpc.MutinyClient;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/watch_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/watch_service.proto")
 public class WatchServiceClient implements WatchService, MutinyClient<MutinyWatchServiceGrpc.MutinyWatchServiceStub> {
 
     private final MutinyWatchServiceGrpc.MutinyWatchServiceStub stub;

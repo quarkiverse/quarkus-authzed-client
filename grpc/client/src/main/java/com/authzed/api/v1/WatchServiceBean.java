@@ -4,7 +4,7 @@ import io.grpc.BindableService;
 import io.quarkus.grpc.GrpcService;
 import io.quarkus.grpc.MutinyBean;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/watch_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/watch_service.proto")
 public class WatchServiceBean extends MutinyWatchServiceGrpc.WatchServiceImplBase implements BindableService, MutinyBean {
 
     private final WatchService delegate;

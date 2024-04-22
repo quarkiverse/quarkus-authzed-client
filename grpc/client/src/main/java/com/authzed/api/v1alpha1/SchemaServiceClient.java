@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 import io.quarkus.grpc.MutinyClient;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
 public class SchemaServiceClient implements SchemaService, MutinyClient<MutinySchemaServiceGrpc.MutinySchemaServiceStub> {
 
     private final MutinySchemaServiceGrpc.MutinySchemaServiceStub stub;

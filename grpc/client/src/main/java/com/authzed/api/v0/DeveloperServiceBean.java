@@ -4,7 +4,7 @@ import io.grpc.BindableService;
 import io.quarkus.grpc.GrpcService;
 import io.quarkus.grpc.MutinyBean;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v0/developer.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v0/developer.proto")
 public class DeveloperServiceBean extends MutinyDeveloperServiceGrpc.DeveloperServiceImplBase
         implements BindableService, MutinyBean {
 

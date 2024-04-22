@@ -119,6 +119,7 @@ public final class PermissionService {
          * <pre>
          * fully_consistent indicates that all data used in the API call *must* be
          * at the most recent snapshot found.
+         *
          * NOTE: using this method can be *quite slow*, so unless there is a need to
          * do so, it is recommended to use `at_least_as_fresh` with a stored
          * ZedToken.
@@ -134,6 +135,7 @@ public final class PermissionService {
          * <pre>
          * fully_consistent indicates that all data used in the API call *must* be
          * at the most recent snapshot found.
+         *
          * NOTE: using this method can be *quite slow*, so unless there is a need to
          * do so, it is recommended to use `at_least_as_fresh` with a stored
          * ZedToken.
@@ -145,7 +147,7 @@ public final class PermissionService {
          */
         boolean getFullyConsistent();
 
-        public com.authzed.api.v1.PermissionService.Consistency.RequirementCase getRequirementCase();
+        com.authzed.api.v1.PermissionService.Consistency.RequirementCase getRequirementCase();
     }
 
     /**
@@ -176,11 +178,6 @@ public final class PermissionService {
             return new Consistency();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_Consistency_descriptor;
         }
@@ -194,6 +191,7 @@ public final class PermissionService {
 
         private int requirementCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object requirement_;
 
         public enum RequirementCase
@@ -396,6 +394,7 @@ public final class PermissionService {
          * <pre>
          * fully_consistent indicates that all data used in the API call *must* be
          * at the most recent snapshot found.
+         *
          * NOTE: using this method can be *quite slow*, so unless there is a need to
          * do so, it is recommended to use `at_least_as_fresh` with a stored
          * ZedToken.
@@ -414,6 +413,7 @@ public final class PermissionService {
          * <pre>
          * fully_consistent indicates that all data used in the API call *must* be
          * at the most recent snapshot found.
+         *
          * NOTE: using this method can be *quite slow*, so unless there is a need to
          * do so, it is recommended to use `at_least_as_fresh` with a stored
          * ZedToken.
@@ -675,6 +675,7 @@ public final class PermissionService {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (atLeastAsFreshBuilder_ != null) {
                     atLeastAsFreshBuilder_.clear();
                 }
@@ -709,29 +710,27 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.Consistency buildPartial() {
                 com.authzed.api.v1.PermissionService.Consistency result = new com.authzed.api.v1.PermissionService.Consistency(
                         this);
-                if (requirementCase_ == 1) {
-                    result.requirement_ = requirement_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (requirementCase_ == 2) {
-                    if (atLeastAsFreshBuilder_ == null) {
-                        result.requirement_ = requirement_;
-                    } else {
-                        result.requirement_ = atLeastAsFreshBuilder_.build();
-                    }
-                }
-                if (requirementCase_ == 3) {
-                    if (atExactSnapshotBuilder_ == null) {
-                        result.requirement_ = requirement_;
-                    } else {
-                        result.requirement_ = atExactSnapshotBuilder_.build();
-                    }
-                }
-                if (requirementCase_ == 4) {
-                    result.requirement_ = requirement_;
-                }
-                result.requirementCase_ = requirementCase_;
+                buildPartialOneofs(result);
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.Consistency result) {
+                int from_bitField0_ = bitField0_;
+            }
+
+            private void buildPartialOneofs(com.authzed.api.v1.PermissionService.Consistency result) {
+                result.requirementCase_ = requirementCase_;
+                result.requirement_ = this.requirement_;
+                if (requirementCase_ == 2 && atLeastAsFreshBuilder_ != null) {
+                    result.requirement_ = atLeastAsFreshBuilder_.build();
+                }
+                if (requirementCase_ == 3 && atExactSnapshotBuilder_ != null) {
+                    result.requirement_ = atExactSnapshotBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -881,6 +880,8 @@ public final class PermissionService {
                 onChanged();
                 return this;
             }
+
+            private int bitField0_;
 
             /**
              * <pre>
@@ -1058,8 +1059,9 @@ public final class PermissionService {
                 } else {
                     if (requirementCase_ == 2) {
                         atLeastAsFreshBuilder_.mergeFrom(value);
+                    } else {
+                        atLeastAsFreshBuilder_.setMessage(value);
                     }
-                    atLeastAsFreshBuilder_.setMessage(value);
                 }
                 requirementCase_ = 2;
                 return this;
@@ -1145,7 +1147,6 @@ public final class PermissionService {
                 }
                 requirementCase_ = 2;
                 onChanged();
-                ;
                 return atLeastAsFreshBuilder_;
             }
 
@@ -1257,8 +1258,9 @@ public final class PermissionService {
                 } else {
                     if (requirementCase_ == 3) {
                         atExactSnapshotBuilder_.mergeFrom(value);
+                    } else {
+                        atExactSnapshotBuilder_.setMessage(value);
                     }
-                    atExactSnapshotBuilder_.setMessage(value);
                 }
                 requirementCase_ = 3;
                 return this;
@@ -1344,7 +1346,6 @@ public final class PermissionService {
                 }
                 requirementCase_ = 3;
                 onChanged();
-                ;
                 return atExactSnapshotBuilder_;
             }
 
@@ -1352,6 +1353,7 @@ public final class PermissionService {
              * <pre>
              * fully_consistent indicates that all data used in the API call *must* be
              * at the most recent snapshot found.
+             *
              * NOTE: using this method can be *quite slow*, so unless there is a need to
              * do so, it is recommended to use `at_least_as_fresh` with a stored
              * ZedToken.
@@ -1369,6 +1371,7 @@ public final class PermissionService {
              * <pre>
              * fully_consistent indicates that all data used in the API call *must* be
              * at the most recent snapshot found.
+             *
              * NOTE: using this method can be *quite slow*, so unless there is a need to
              * do so, it is recommended to use `at_least_as_fresh` with a stored
              * ZedToken.
@@ -1389,6 +1392,7 @@ public final class PermissionService {
              * <pre>
              * fully_consistent indicates that all data used in the API call *must* be
              * at the most recent snapshot found.
+             *
              * NOTE: using this method can be *quite slow*, so unless there is a need to
              * do so, it is recommended to use `at_least_as_fresh` with a stored
              * ZedToken.
@@ -1410,6 +1414,7 @@ public final class PermissionService {
              * <pre>
              * fully_consistent indicates that all data used in the API call *must* be
              * at the most recent snapshot found.
+             *
              * NOTE: using this method can be *quite slow*, so unless there is a need to
              * do so, it is recommended to use `at_least_as_fresh` with a stored
              * ZedToken.
@@ -1556,6 +1561,7 @@ public final class PermissionService {
      * <pre>
      * RelationshipFilter is a collection of filters which when applied to a
      * relationship will return relationships that have exactly matching fields.
+     *
      * resource_type is required. All other fields are optional and if left
      * unspecified will not filter relationships.
      * </pre>
@@ -1584,11 +1590,6 @@ public final class PermissionService {
             return new RelationshipFilter();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_RelationshipFilter_descriptor;
         }
@@ -1600,9 +1601,12 @@ public final class PermissionService {
                             com.authzed.api.v1.PermissionService.RelationshipFilter.Builder.class);
         }
 
+        private int bitField0_;
+
         public static final int RESOURCE_TYPE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object resourceType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object resourceType_ = "";
 
         /**
          * <code>string resource_type = 1 [(.validate.rules) = { ... }</code>
@@ -1641,7 +1645,8 @@ public final class PermissionService {
 
         public static final int OPTIONAL_RESOURCE_ID_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object optionalResourceId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalResourceId_ = "";
 
         /**
          * <code>string optional_resource_id = 2 [(.validate.rules) = { ... }</code>
@@ -1680,7 +1685,8 @@ public final class PermissionService {
 
         public static final int OPTIONAL_RELATION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object optionalRelation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalRelation_ = "";
 
         /**
          * <code>string optional_relation = 3 [(.validate.rules) = { ... }</code>
@@ -1728,7 +1734,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasOptionalSubjectFilter() {
-            return optionalSubjectFilter_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -1747,7 +1753,8 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.SubjectFilterOrBuilder getOptionalSubjectFilterOrBuilder() {
-            return getOptionalSubjectFilter();
+            return optionalSubjectFilter_ == null ? com.authzed.api.v1.PermissionService.SubjectFilter.getDefaultInstance()
+                    : optionalSubjectFilter_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -1774,7 +1781,7 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalRelation_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 3, optionalRelation_);
             }
-            if (optionalSubjectFilter_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(4, getOptionalSubjectFilter());
             }
             getUnknownFields().writeTo(output);
@@ -1795,7 +1802,7 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalRelation_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, optionalRelation_);
             }
-            if (optionalSubjectFilter_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getOptionalSubjectFilter());
             }
             size += getUnknownFields().getSerializedSize();
@@ -1943,6 +1950,7 @@ public final class PermissionService {
          * <pre>
          * RelationshipFilter is a collection of filters which when applied to a
          * relationship will return relationships that have exactly matching fields.
+         *
          * resource_type is required. All other fields are optional and if left
          * unspecified will not filter relationships.
          * </pre>
@@ -1965,22 +1973,30 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.RelationshipFilter.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getOptionalSubjectFilterFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 resourceType_ = "";
                 optionalResourceId_ = "";
                 optionalRelation_ = "";
-                if (optionalSubjectFilterBuilder_ == null) {
-                    optionalSubjectFilter_ = null;
-                } else {
-                    optionalSubjectFilter_ = null;
+                optionalSubjectFilter_ = null;
+                if (optionalSubjectFilterBuilder_ != null) {
+                    optionalSubjectFilterBuilder_.dispose();
                     optionalSubjectFilterBuilder_ = null;
                 }
                 return this;
@@ -2009,16 +2025,31 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.RelationshipFilter buildPartial() {
                 com.authzed.api.v1.PermissionService.RelationshipFilter result = new com.authzed.api.v1.PermissionService.RelationshipFilter(
                         this);
-                result.resourceType_ = resourceType_;
-                result.optionalResourceId_ = optionalResourceId_;
-                result.optionalRelation_ = optionalRelation_;
-                if (optionalSubjectFilterBuilder_ == null) {
-                    result.optionalSubjectFilter_ = optionalSubjectFilter_;
-                } else {
-                    result.optionalSubjectFilter_ = optionalSubjectFilterBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.RelationshipFilter result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.resourceType_ = resourceType_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.optionalResourceId_ = optionalResourceId_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.optionalRelation_ = optionalRelation_;
+                }
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.optionalSubjectFilter_ = optionalSubjectFilterBuilder_ == null ? optionalSubjectFilter_
+                            : optionalSubjectFilterBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -2067,14 +2098,17 @@ public final class PermissionService {
                     return this;
                 if (!other.getResourceType().isEmpty()) {
                     resourceType_ = other.resourceType_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getOptionalResourceId().isEmpty()) {
                     optionalResourceId_ = other.optionalResourceId_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getOptionalRelation().isEmpty()) {
                     optionalRelation_ = other.optionalRelation_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (other.hasOptionalSubjectFilter()) {
@@ -2106,21 +2140,25 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 resourceType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 optionalResourceId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 optionalRelation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 input.readMessage(getOptionalSubjectFilterFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -2143,6 +2181,8 @@ public final class PermissionService {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object resourceType_ = "";
 
@@ -2190,6 +2230,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 resourceType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2201,6 +2242,7 @@ public final class PermissionService {
              */
             public Builder clearResourceType() {
                 resourceType_ = getDefaultInstance().getResourceType();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -2217,6 +2259,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 resourceType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2267,6 +2310,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 optionalResourceId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2278,6 +2322,7 @@ public final class PermissionService {
              */
             public Builder clearOptionalResourceId() {
                 optionalResourceId_ = getDefaultInstance().getOptionalResourceId();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -2294,6 +2339,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 optionalResourceId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2344,6 +2390,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 optionalRelation_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -2355,6 +2402,7 @@ public final class PermissionService {
              */
             public Builder clearOptionalRelation() {
                 optionalRelation_ = getDefaultInstance().getOptionalRelation();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -2371,6 +2419,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 optionalRelation_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -2385,7 +2434,7 @@ public final class PermissionService {
              * @return Whether the optionalSubjectFilter field is set.
              */
             public boolean hasOptionalSubjectFilter() {
-                return optionalSubjectFilterBuilder_ != null || optionalSubjectFilter_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -2412,10 +2461,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     optionalSubjectFilter_ = value;
-                    onChanged();
                 } else {
                     optionalSubjectFilterBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -2426,10 +2476,11 @@ public final class PermissionService {
                     com.authzed.api.v1.PermissionService.SubjectFilter.Builder builderForValue) {
                 if (optionalSubjectFilterBuilder_ == null) {
                     optionalSubjectFilter_ = builderForValue.build();
-                    onChanged();
                 } else {
                     optionalSubjectFilterBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -2438,15 +2489,19 @@ public final class PermissionService {
              */
             public Builder mergeOptionalSubjectFilter(com.authzed.api.v1.PermissionService.SubjectFilter value) {
                 if (optionalSubjectFilterBuilder_ == null) {
-                    if (optionalSubjectFilter_ != null) {
-                        optionalSubjectFilter_ = com.authzed.api.v1.PermissionService.SubjectFilter
-                                .newBuilder(optionalSubjectFilter_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && optionalSubjectFilter_ != null
+                            && optionalSubjectFilter_ != com.authzed.api.v1.PermissionService.SubjectFilter
+                                    .getDefaultInstance()) {
+                        getOptionalSubjectFilterBuilder().mergeFrom(value);
                     } else {
                         optionalSubjectFilter_ = value;
                     }
-                    onChanged();
                 } else {
                     optionalSubjectFilterBuilder_.mergeFrom(value);
+                }
+                if (optionalSubjectFilter_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
                 }
                 return this;
             }
@@ -2455,13 +2510,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public Builder clearOptionalSubjectFilter() {
-                if (optionalSubjectFilterBuilder_ == null) {
-                    optionalSubjectFilter_ = null;
-                    onChanged();
-                } else {
-                    optionalSubjectFilter_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                optionalSubjectFilter_ = null;
+                if (optionalSubjectFilterBuilder_ != null) {
+                    optionalSubjectFilterBuilder_.dispose();
                     optionalSubjectFilterBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -2469,6 +2524,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectFilter optional_subject_filter = 4;</code>
              */
             public com.authzed.api.v1.PermissionService.SubjectFilter.Builder getOptionalSubjectFilterBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getOptionalSubjectFilterFieldBuilder().getBuilder();
             }
@@ -2611,6 +2667,7 @@ public final class PermissionService {
     /**
      * <pre>
      * SubjectFilter specifies a filter on the subject of a relationship.
+     *
      * subject_type is required and all other fields are optional, and will not
      * impose any additional requirements if left unspecified.
      * </pre>
@@ -2636,11 +2693,6 @@ public final class PermissionService {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new SubjectFilter();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -2695,11 +2747,6 @@ public final class PermissionService {
                 return new RelationFilter();
             }
 
-            @java.lang.Override
-            public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-                return this.unknownFields;
-            }
-
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
                 return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_SubjectFilter_RelationFilter_descriptor;
             }
@@ -2714,7 +2761,8 @@ public final class PermissionService {
 
             public static final int RELATION_FIELD_NUMBER = 1;
 
-            private volatile java.lang.Object relation_;
+            @SuppressWarnings("serial")
+            private volatile java.lang.Object relation_ = "";
 
             /**
              * <code>string relation = 1 [(.validate.rules) = { ... }</code>
@@ -2934,6 +2982,7 @@ public final class PermissionService {
                 @java.lang.Override
                 public Builder clear() {
                     super.clear();
+                    bitField0_ = 0;
                     relation_ = "";
                     return this;
                 }
@@ -2961,9 +3010,18 @@ public final class PermissionService {
                 public com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter buildPartial() {
                     com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter result = new com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter(
                             this);
-                    result.relation_ = relation_;
+                    if (bitField0_ != 0) {
+                        buildPartial0(result);
+                    }
                     onBuilt();
                     return result;
+                }
+
+                private void buildPartial0(com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter result) {
+                    int from_bitField0_ = bitField0_;
+                    if (((from_bitField0_ & 0x00000001) != 0)) {
+                        result.relation_ = relation_;
+                    }
                 }
 
                 @java.lang.Override
@@ -3012,6 +3070,7 @@ public final class PermissionService {
                         return this;
                     if (!other.getRelation().isEmpty()) {
                         relation_ = other.relation_;
+                        bitField0_ |= 0x00000001;
                         onChanged();
                     }
                     this.mergeUnknownFields(other.getUnknownFields());
@@ -3040,6 +3099,7 @@ public final class PermissionService {
                                     break;
                                 case 10: {
                                     relation_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000001;
                                     break;
                                 }
                                 // case 10
@@ -3062,6 +3122,8 @@ public final class PermissionService {
                     // finally
                     return this;
                 }
+
+                private int bitField0_;
 
                 private java.lang.Object relation_ = "";
 
@@ -3109,6 +3171,7 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     relation_ = value;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -3120,6 +3183,7 @@ public final class PermissionService {
                  */
                 public Builder clearRelation() {
                     relation_ = getDefaultInstance().getRelation();
+                    bitField0_ = (bitField0_ & ~0x00000001);
                     onChanged();
                     return this;
                 }
@@ -3136,6 +3200,7 @@ public final class PermissionService {
                     }
                     checkByteStringIsUtf8(value);
                     relation_ = value;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -3199,9 +3264,12 @@ public final class PermissionService {
             }
         }
 
+        private int bitField0_;
+
         public static final int SUBJECT_TYPE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object subjectType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object subjectType_ = "";
 
         /**
          * <code>string subject_type = 1 [(.validate.rules) = { ... }</code>
@@ -3240,7 +3308,8 @@ public final class PermissionService {
 
         public static final int OPTIONAL_SUBJECT_ID_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object optionalSubjectId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalSubjectId_ = "";
 
         /**
          * <code>string optional_subject_id = 2 [(.validate.rules) = { ... }</code>
@@ -3288,7 +3357,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasOptionalRelation() {
-            return optionalRelation_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -3308,7 +3377,9 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilterOrBuilder getOptionalRelationOrBuilder() {
-            return getOptionalRelation();
+            return optionalRelation_ == null
+                    ? com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter.getDefaultInstance()
+                    : optionalRelation_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -3332,7 +3403,7 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalSubjectId_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, optionalSubjectId_);
             }
-            if (optionalRelation_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(3, getOptionalRelation());
             }
             getUnknownFields().writeTo(output);
@@ -3350,7 +3421,7 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(optionalSubjectId_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, optionalSubjectId_);
             }
-            if (optionalRelation_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getOptionalRelation());
             }
             size += getUnknownFields().getSerializedSize();
@@ -3492,6 +3563,7 @@ public final class PermissionService {
         /**
          * <pre>
          * SubjectFilter specifies a filter on the subject of a relationship.
+         *
          * subject_type is required and all other fields are optional, and will not
          * impose any additional requirements if left unspecified.
          * </pre>
@@ -3514,21 +3586,29 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.SubjectFilter.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getOptionalRelationFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 subjectType_ = "";
                 optionalSubjectId_ = "";
-                if (optionalRelationBuilder_ == null) {
-                    optionalRelation_ = null;
-                } else {
-                    optionalRelation_ = null;
+                optionalRelation_ = null;
+                if (optionalRelationBuilder_ != null) {
+                    optionalRelationBuilder_.dispose();
                     optionalRelationBuilder_ = null;
                 }
                 return this;
@@ -3557,15 +3637,28 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.SubjectFilter buildPartial() {
                 com.authzed.api.v1.PermissionService.SubjectFilter result = new com.authzed.api.v1.PermissionService.SubjectFilter(
                         this);
-                result.subjectType_ = subjectType_;
-                result.optionalSubjectId_ = optionalSubjectId_;
-                if (optionalRelationBuilder_ == null) {
-                    result.optionalRelation_ = optionalRelation_;
-                } else {
-                    result.optionalRelation_ = optionalRelationBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.SubjectFilter result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.subjectType_ = subjectType_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.optionalSubjectId_ = optionalSubjectId_;
+                }
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.optionalRelation_ = optionalRelationBuilder_ == null ? optionalRelation_
+                            : optionalRelationBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -3614,10 +3707,12 @@ public final class PermissionService {
                     return this;
                 if (!other.getSubjectType().isEmpty()) {
                     subjectType_ = other.subjectType_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getOptionalSubjectId().isEmpty()) {
                     optionalSubjectId_ = other.optionalSubjectId_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.hasOptionalRelation()) {
@@ -3649,16 +3744,19 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 subjectType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 optionalSubjectId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 input.readMessage(getOptionalRelationFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -3681,6 +3779,8 @@ public final class PermissionService {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object subjectType_ = "";
 
@@ -3728,6 +3828,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 subjectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3739,6 +3840,7 @@ public final class PermissionService {
              */
             public Builder clearSubjectType() {
                 subjectType_ = getDefaultInstance().getSubjectType();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -3755,6 +3857,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 subjectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3805,6 +3908,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 optionalSubjectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3816,6 +3920,7 @@ public final class PermissionService {
              */
             public Builder clearOptionalSubjectId() {
                 optionalSubjectId_ = getDefaultInstance().getOptionalSubjectId();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -3832,6 +3937,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 optionalSubjectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3846,7 +3952,7 @@ public final class PermissionService {
              * @return Whether the optionalRelation field is set.
              */
             public boolean hasOptionalRelation() {
-                return optionalRelationBuilder_ != null || optionalRelation_ != null;
+                return ((bitField0_ & 0x00000004) != 0);
             }
 
             /**
@@ -3873,10 +3979,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     optionalRelation_ = value;
-                    onChanged();
                 } else {
                     optionalRelationBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -3887,10 +3994,11 @@ public final class PermissionService {
                     com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter.Builder builderForValue) {
                 if (optionalRelationBuilder_ == null) {
                     optionalRelation_ = builderForValue.build();
-                    onChanged();
                 } else {
                     optionalRelationBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -3899,15 +4007,19 @@ public final class PermissionService {
              */
             public Builder mergeOptionalRelation(com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter value) {
                 if (optionalRelationBuilder_ == null) {
-                    if (optionalRelation_ != null) {
-                        optionalRelation_ = com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter
-                                .newBuilder(optionalRelation_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000004) != 0) && optionalRelation_ != null
+                            && optionalRelation_ != com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter
+                                    .getDefaultInstance()) {
+                        getOptionalRelationBuilder().mergeFrom(value);
                     } else {
                         optionalRelation_ = value;
                     }
-                    onChanged();
                 } else {
                     optionalRelationBuilder_.mergeFrom(value);
+                }
+                if (optionalRelation_ != null) {
+                    bitField0_ |= 0x00000004;
+                    onChanged();
                 }
                 return this;
             }
@@ -3916,13 +4028,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectFilter.RelationFilter optional_relation = 3;</code>
              */
             public Builder clearOptionalRelation() {
-                if (optionalRelationBuilder_ == null) {
-                    optionalRelation_ = null;
-                    onChanged();
-                } else {
-                    optionalRelation_ = null;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                optionalRelation_ = null;
+                if (optionalRelationBuilder_ != null) {
+                    optionalRelationBuilder_.dispose();
                     optionalRelationBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3930,6 +4042,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectFilter.RelationFilter optional_relation = 3;</code>
              */
             public com.authzed.api.v1.PermissionService.SubjectFilter.RelationFilter.Builder getOptionalRelationBuilder() {
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return getOptionalRelationFieldBuilder().getBuilder();
             }
@@ -4087,11 +4200,6 @@ public final class PermissionService {
             return new ReadRelationshipsRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ReadRelationshipsRequest_descriptor;
         }
@@ -4102,6 +4210,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.ReadRelationshipsRequest.class,
                             com.authzed.api.v1.PermissionService.ReadRelationshipsRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CONSISTENCY_FIELD_NUMBER = 1;
 
@@ -4114,7 +4224,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasConsistency() {
-            return consistency_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -4132,7 +4242,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder() {
-            return getConsistency();
+            return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance() : consistency_;
         }
 
         public static final int RELATIONSHIP_FILTER_FIELD_NUMBER = 2;
@@ -4146,7 +4256,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasRelationshipFilter() {
-            return relationshipFilter_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -4165,7 +4275,8 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getRelationshipFilterOrBuilder() {
-            return getRelationshipFilter();
+            return relationshipFilter_ == null ? com.authzed.api.v1.PermissionService.RelationshipFilter.getDefaultInstance()
+                    : relationshipFilter_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -4183,10 +4294,10 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getConsistency());
             }
-            if (relationshipFilter_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getRelationshipFilter());
             }
             getUnknownFields().writeTo(output);
@@ -4198,10 +4309,10 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getConsistency());
             }
-            if (relationshipFilter_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getRelationshipFilter());
             }
             size += getUnknownFields().getSerializedSize();
@@ -4368,25 +4479,33 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.ReadRelationshipsRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getConsistencyFieldBuilder();
+                    getRelationshipFilterFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                } else {
-                    consistency_ = null;
+                bitField0_ = 0;
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
-                if (relationshipFilterBuilder_ == null) {
-                    relationshipFilter_ = null;
-                } else {
-                    relationshipFilter_ = null;
+                relationshipFilter_ = null;
+                if (relationshipFilterBuilder_ != null) {
+                    relationshipFilterBuilder_.dispose();
                     relationshipFilterBuilder_ = null;
                 }
                 return this;
@@ -4415,18 +4534,26 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.ReadRelationshipsRequest buildPartial() {
                 com.authzed.api.v1.PermissionService.ReadRelationshipsRequest result = new com.authzed.api.v1.PermissionService.ReadRelationshipsRequest(
                         this);
-                if (consistencyBuilder_ == null) {
-                    result.consistency_ = consistency_;
-                } else {
-                    result.consistency_ = consistencyBuilder_.build();
-                }
-                if (relationshipFilterBuilder_ == null) {
-                    result.relationshipFilter_ = relationshipFilter_;
-                } else {
-                    result.relationshipFilter_ = relationshipFilterBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.ReadRelationshipsRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.consistency_ = consistencyBuilder_ == null ? consistency_ : consistencyBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relationshipFilter_ = relationshipFilterBuilder_ == null ? relationshipFilter_
+                            : relationshipFilterBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -4505,11 +4632,13 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getConsistencyFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getRelationshipFilterFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -4533,6 +4662,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.PermissionService.Consistency consistency_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder> consistencyBuilder_;
@@ -4543,7 +4674,7 @@ public final class PermissionService {
              * @return Whether the consistency field is set.
              */
             public boolean hasConsistency() {
-                return consistencyBuilder_ != null || consistency_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -4569,10 +4700,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     consistency_ = value;
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -4582,10 +4714,11 @@ public final class PermissionService {
             public Builder setConsistency(com.authzed.api.v1.PermissionService.Consistency.Builder builderForValue) {
                 if (consistencyBuilder_ == null) {
                     consistency_ = builderForValue.build();
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -4594,15 +4727,18 @@ public final class PermissionService {
              */
             public Builder mergeConsistency(com.authzed.api.v1.PermissionService.Consistency value) {
                 if (consistencyBuilder_ == null) {
-                    if (consistency_ != null) {
-                        consistency_ = com.authzed.api.v1.PermissionService.Consistency.newBuilder(consistency_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && consistency_ != null
+                            && consistency_ != com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()) {
+                        getConsistencyBuilder().mergeFrom(value);
                     } else {
                         consistency_ = value;
                     }
-                    onChanged();
                 } else {
                     consistencyBuilder_.mergeFrom(value);
+                }
+                if (consistency_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -4611,13 +4747,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public Builder clearConsistency() {
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                    onChanged();
-                } else {
-                    consistency_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -4625,6 +4761,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public com.authzed.api.v1.PermissionService.Consistency.Builder getConsistencyBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getConsistencyFieldBuilder().getBuilder();
             }
@@ -4663,7 +4800,7 @@ public final class PermissionService {
              * @return Whether the relationshipFilter field is set.
              */
             public boolean hasRelationshipFilter() {
-                return relationshipFilterBuilder_ != null || relationshipFilter_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -4690,10 +4827,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     relationshipFilter_ = value;
-                    onChanged();
                 } else {
                     relationshipFilterBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -4704,10 +4842,11 @@ public final class PermissionService {
                     com.authzed.api.v1.PermissionService.RelationshipFilter.Builder builderForValue) {
                 if (relationshipFilterBuilder_ == null) {
                     relationshipFilter_ = builderForValue.build();
-                    onChanged();
                 } else {
                     relationshipFilterBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -4716,15 +4855,19 @@ public final class PermissionService {
              */
             public Builder mergeRelationshipFilter(com.authzed.api.v1.PermissionService.RelationshipFilter value) {
                 if (relationshipFilterBuilder_ == null) {
-                    if (relationshipFilter_ != null) {
-                        relationshipFilter_ = com.authzed.api.v1.PermissionService.RelationshipFilter
-                                .newBuilder(relationshipFilter_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && relationshipFilter_ != null
+                            && relationshipFilter_ != com.authzed.api.v1.PermissionService.RelationshipFilter
+                                    .getDefaultInstance()) {
+                        getRelationshipFilterBuilder().mergeFrom(value);
                     } else {
                         relationshipFilter_ = value;
                     }
-                    onChanged();
                 } else {
                     relationshipFilterBuilder_.mergeFrom(value);
+                }
+                if (relationshipFilter_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -4733,13 +4876,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearRelationshipFilter() {
-                if (relationshipFilterBuilder_ == null) {
-                    relationshipFilter_ = null;
-                    onChanged();
-                } else {
-                    relationshipFilter_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                relationshipFilter_ = null;
+                if (relationshipFilterBuilder_ != null) {
+                    relationshipFilterBuilder_.dispose();
                     relationshipFilterBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -4747,6 +4890,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.PermissionService.RelationshipFilter.Builder getRelationshipFilterBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getRelationshipFilterFieldBuilder().getBuilder();
             }
@@ -4905,11 +5049,6 @@ public final class PermissionService {
             return new ReadRelationshipsResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ReadRelationshipsResponse_descriptor;
         }
@@ -4920,6 +5059,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.ReadRelationshipsResponse.class,
                             com.authzed.api.v1.PermissionService.ReadRelationshipsResponse.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int READ_AT_FIELD_NUMBER = 1;
 
@@ -4932,7 +5073,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasReadAt() {
-            return readAt_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -4950,7 +5091,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getReadAtOrBuilder() {
-            return getReadAt();
+            return readAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : readAt_;
         }
 
         public static final int RELATIONSHIP_FIELD_NUMBER = 2;
@@ -4964,7 +5105,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasRelationship() {
-            return relationship_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -4982,7 +5123,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.RelationshipOrBuilder getRelationshipOrBuilder() {
-            return getRelationship();
+            return relationship_ == null ? com.authzed.api.v1.Core.Relationship.getDefaultInstance() : relationship_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -5000,10 +5141,10 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (readAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getReadAt());
             }
-            if (relationship_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getRelationship());
             }
             getUnknownFields().writeTo(output);
@@ -5015,10 +5156,10 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (readAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getReadAt());
             }
-            if (relationship_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getRelationship());
             }
             size += getUnknownFields().getSerializedSize();
@@ -5186,25 +5327,33 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.ReadRelationshipsResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getReadAtFieldBuilder();
+                    getRelationshipFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (readAtBuilder_ == null) {
-                    readAt_ = null;
-                } else {
-                    readAt_ = null;
+                bitField0_ = 0;
+                readAt_ = null;
+                if (readAtBuilder_ != null) {
+                    readAtBuilder_.dispose();
                     readAtBuilder_ = null;
                 }
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                } else {
-                    relationship_ = null;
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
                 return this;
@@ -5233,18 +5382,25 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.ReadRelationshipsResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.ReadRelationshipsResponse result = new com.authzed.api.v1.PermissionService.ReadRelationshipsResponse(
                         this);
-                if (readAtBuilder_ == null) {
-                    result.readAt_ = readAt_;
-                } else {
-                    result.readAt_ = readAtBuilder_.build();
-                }
-                if (relationshipBuilder_ == null) {
-                    result.relationship_ = relationship_;
-                } else {
-                    result.relationship_ = relationshipBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.ReadRelationshipsResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.readAt_ = readAtBuilder_ == null ? readAt_ : readAtBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relationship_ = relationshipBuilder_ == null ? relationship_ : relationshipBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -5323,11 +5479,13 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getReadAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getRelationshipFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -5351,6 +5509,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ZedToken readAt_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> readAtBuilder_;
@@ -5361,7 +5521,7 @@ public final class PermissionService {
              * @return Whether the readAt field is set.
              */
             public boolean hasReadAt() {
-                return readAtBuilder_ != null || readAt_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -5386,10 +5546,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     readAt_ = value;
-                    onChanged();
                 } else {
                     readAtBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -5399,10 +5560,11 @@ public final class PermissionService {
             public Builder setReadAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (readAtBuilder_ == null) {
                     readAt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     readAtBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -5411,14 +5573,18 @@ public final class PermissionService {
              */
             public Builder mergeReadAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (readAtBuilder_ == null) {
-                    if (readAt_ != null) {
-                        readAt_ = com.authzed.api.v1.Core.ZedToken.newBuilder(readAt_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && readAt_ != null
+                            && readAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getReadAtBuilder().mergeFrom(value);
                     } else {
                         readAt_ = value;
                     }
-                    onChanged();
                 } else {
                     readAtBuilder_.mergeFrom(value);
+                }
+                if (readAt_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -5427,13 +5593,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
              */
             public Builder clearReadAt() {
-                if (readAtBuilder_ == null) {
-                    readAt_ = null;
-                    onChanged();
-                } else {
-                    readAt_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                readAt_ = null;
+                if (readAtBuilder_ != null) {
+                    readAtBuilder_.dispose();
                     readAtBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -5441,6 +5607,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken read_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getReadAtBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getReadAtFieldBuilder().getBuilder();
             }
@@ -5478,7 +5645,7 @@ public final class PermissionService {
              * @return Whether the relationship field is set.
              */
             public boolean hasRelationship() {
-                return relationshipBuilder_ != null || relationship_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -5503,10 +5670,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     relationship_ = value;
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -5516,10 +5684,11 @@ public final class PermissionService {
             public Builder setRelationship(com.authzed.api.v1.Core.Relationship.Builder builderForValue) {
                 if (relationshipBuilder_ == null) {
                     relationship_ = builderForValue.build();
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -5528,15 +5697,18 @@ public final class PermissionService {
              */
             public Builder mergeRelationship(com.authzed.api.v1.Core.Relationship value) {
                 if (relationshipBuilder_ == null) {
-                    if (relationship_ != null) {
-                        relationship_ = com.authzed.api.v1.Core.Relationship.newBuilder(relationship_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && relationship_ != null
+                            && relationship_ != com.authzed.api.v1.Core.Relationship.getDefaultInstance()) {
+                        getRelationshipBuilder().mergeFrom(value);
                     } else {
                         relationship_ = value;
                     }
-                    onChanged();
                 } else {
                     relationshipBuilder_.mergeFrom(value);
+                }
+                if (relationship_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -5545,13 +5717,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Relationship relationship = 2;</code>
              */
             public Builder clearRelationship() {
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                    onChanged();
-                } else {
-                    relationship_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -5559,6 +5731,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Relationship relationship = 2;</code>
              */
             public com.authzed.api.v1.Core.Relationship.Builder getRelationshipBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getRelationshipFieldBuilder().getBuilder();
             }
@@ -5687,6 +5860,7 @@ public final class PermissionService {
      * Precondition specifies how and the existence or absence of certain
      * relationships as expressed through the accompanying filter should affect
      * whether or not the operation proceeds.
+     *
      * MUST_NOT_MATCH will fail the parent request if any relationships match the
      * relationships filter.
      * MUST_MATCH will fail the parent request if there are no
@@ -5713,11 +5887,6 @@ public final class PermissionService {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new Precondition();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -5844,9 +6013,11 @@ public final class PermissionService {
             }
         }
 
+        private int bitField0_;
+
         public static final int OPERATION_FIELD_NUMBER = 1;
 
-        private int operation_;
+        private int operation_ = 0;
 
         /**
          * <code>.authzed.api.v1.Precondition.Operation operation = 1 [(.validate.rules) = { ... }</code>
@@ -5865,9 +6036,8 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.Precondition.Operation getOperation() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.PermissionService.Precondition.Operation result = com.authzed.api.v1.PermissionService.Precondition.Operation
-                    .valueOf(operation_);
+                    .forNumber(operation_);
             return result == null ? com.authzed.api.v1.PermissionService.Precondition.Operation.UNRECOGNIZED : result;
         }
 
@@ -5882,7 +6052,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasFilter() {
-            return filter_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -5900,7 +6070,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getFilterOrBuilder() {
-            return getFilter();
+            return filter_ == null ? com.authzed.api.v1.PermissionService.RelationshipFilter.getDefaultInstance() : filter_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -5921,7 +6091,7 @@ public final class PermissionService {
             if (operation_ != com.authzed.api.v1.PermissionService.Precondition.Operation.OPERATION_UNSPECIFIED.getNumber()) {
                 output.writeEnum(1, operation_);
             }
-            if (filter_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(2, getFilter());
             }
             getUnknownFields().writeTo(output);
@@ -5936,7 +6106,7 @@ public final class PermissionService {
             if (operation_ != com.authzed.api.v1.PermissionService.Precondition.Operation.OPERATION_UNSPECIFIED.getNumber()) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, operation_);
             }
-            if (filter_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getFilter());
             }
             size += getUnknownFields().getSerializedSize();
@@ -6076,6 +6246,7 @@ public final class PermissionService {
          * Precondition specifies how and the existence or absence of certain
          * relationships as expressed through the accompanying filter should affect
          * whether or not the operation proceeds.
+         *
          * MUST_NOT_MATCH will fail the parent request if any relationships match the
          * relationships filter.
          * MUST_MATCH will fail the parent request if there are no
@@ -6100,20 +6271,28 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.Precondition.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getFilterFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 operation_ = 0;
-                if (filterBuilder_ == null) {
-                    filter_ = null;
-                } else {
-                    filter_ = null;
+                filter_ = null;
+                if (filterBuilder_ != null) {
+                    filterBuilder_.dispose();
                     filterBuilder_ = null;
                 }
                 return this;
@@ -6142,14 +6321,24 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.Precondition buildPartial() {
                 com.authzed.api.v1.PermissionService.Precondition result = new com.authzed.api.v1.PermissionService.Precondition(
                         this);
-                result.operation_ = operation_;
-                if (filterBuilder_ == null) {
-                    result.filter_ = filter_;
-                } else {
-                    result.filter_ = filterBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.Precondition result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.operation_ = operation_;
+                }
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.filter_ = filterBuilder_ == null ? filter_ : filterBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -6228,11 +6417,13 @@ public final class PermissionService {
                                 break;
                             case 8: {
                                 operation_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 8
                             case 18: {
                                 input.readMessage(getFilterFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -6256,6 +6447,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private int operation_ = 0;
 
             /**
@@ -6276,6 +6469,7 @@ public final class PermissionService {
              */
             public Builder setOperationValue(int value) {
                 operation_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6287,9 +6481,8 @@ public final class PermissionService {
              */
             @java.lang.Override
             public com.authzed.api.v1.PermissionService.Precondition.Operation getOperation() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.PermissionService.Precondition.Operation result = com.authzed.api.v1.PermissionService.Precondition.Operation
-                        .valueOf(operation_);
+                        .forNumber(operation_);
                 return result == null ? com.authzed.api.v1.PermissionService.Precondition.Operation.UNRECOGNIZED : result;
             }
 
@@ -6303,6 +6496,7 @@ public final class PermissionService {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000001;
                 operation_ = value.getNumber();
                 onChanged();
                 return this;
@@ -6314,6 +6508,7 @@ public final class PermissionService {
              * @return This builder for chaining.
              */
             public Builder clearOperation() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 operation_ = 0;
                 onChanged();
                 return this;
@@ -6329,7 +6524,7 @@ public final class PermissionService {
              * @return Whether the filter field is set.
              */
             public boolean hasFilter() {
-                return filterBuilder_ != null || filter_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -6355,10 +6550,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     filter_ = value;
-                    onChanged();
                 } else {
                     filterBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -6368,10 +6564,11 @@ public final class PermissionService {
             public Builder setFilter(com.authzed.api.v1.PermissionService.RelationshipFilter.Builder builderForValue) {
                 if (filterBuilder_ == null) {
                     filter_ = builderForValue.build();
-                    onChanged();
                 } else {
                     filterBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -6380,15 +6577,18 @@ public final class PermissionService {
              */
             public Builder mergeFilter(com.authzed.api.v1.PermissionService.RelationshipFilter value) {
                 if (filterBuilder_ == null) {
-                    if (filter_ != null) {
-                        filter_ = com.authzed.api.v1.PermissionService.RelationshipFilter.newBuilder(filter_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && filter_ != null
+                            && filter_ != com.authzed.api.v1.PermissionService.RelationshipFilter.getDefaultInstance()) {
+                        getFilterBuilder().mergeFrom(value);
                     } else {
                         filter_ = value;
                     }
-                    onChanged();
                 } else {
                     filterBuilder_.mergeFrom(value);
+                }
+                if (filter_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -6397,13 +6597,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.RelationshipFilter filter = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearFilter() {
-                if (filterBuilder_ == null) {
-                    filter_ = null;
-                    onChanged();
-                } else {
-                    filter_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                filter_ = null;
+                if (filterBuilder_ != null) {
+                    filterBuilder_.dispose();
                     filterBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -6411,6 +6611,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.RelationshipFilter filter = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.PermissionService.RelationshipFilter.Builder getFilterBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getFilterFieldBuilder().getBuilder();
             }
@@ -6603,11 +6804,6 @@ public final class PermissionService {
             return new WriteRelationshipsRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_WriteRelationshipsRequest_descriptor;
         }
@@ -6621,6 +6817,7 @@ public final class PermissionService {
 
         public static final int UPDATES_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.Core.RelationshipUpdate> updates_;
 
         /**
@@ -6665,6 +6862,7 @@ public final class PermissionService {
 
         public static final int OPTIONAL_PRECONDITIONS_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.PermissionService.Precondition> optionalPreconditions_;
 
         /**
@@ -6930,6 +7128,7 @@ public final class PermissionService {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (updatesBuilder_ == null) {
                     updates_ = java.util.Collections.emptyList();
                 } else {
@@ -6970,7 +7169,15 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.WriteRelationshipsRequest buildPartial() {
                 com.authzed.api.v1.PermissionService.WriteRelationshipsRequest result = new com.authzed.api.v1.PermissionService.WriteRelationshipsRequest(
                         this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.PermissionService.WriteRelationshipsRequest result) {
                 if (updatesBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         updates_ = java.util.Collections.unmodifiableList(updates_);
@@ -6989,8 +7196,10 @@ public final class PermissionService {
                 } else {
                     result.optionalPreconditions_ = optionalPreconditionsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.WriteRelationshipsRequest result) {
+                int from_bitField0_ = bitField0_;
             }
 
             @java.lang.Override
@@ -7819,11 +8028,6 @@ public final class PermissionService {
             return new WriteRelationshipsResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_WriteRelationshipsResponse_descriptor;
         }
@@ -7834,6 +8038,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.WriteRelationshipsResponse.class,
                             com.authzed.api.v1.PermissionService.WriteRelationshipsResponse.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int WRITTEN_AT_FIELD_NUMBER = 1;
 
@@ -7846,7 +8052,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasWrittenAt() {
-            return writtenAt_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -7864,7 +8070,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getWrittenAtOrBuilder() {
-            return getWrittenAt();
+            return writtenAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : writtenAt_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -7882,7 +8088,7 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (writtenAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getWrittenAt());
             }
             getUnknownFields().writeTo(output);
@@ -7894,7 +8100,7 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (writtenAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getWrittenAt());
             }
             size += getUnknownFields().getSerializedSize();
@@ -8046,19 +8252,27 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.WriteRelationshipsResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getWrittenAtFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (writtenAtBuilder_ == null) {
-                    writtenAt_ = null;
-                } else {
-                    writtenAt_ = null;
+                bitField0_ = 0;
+                writtenAt_ = null;
+                if (writtenAtBuilder_ != null) {
+                    writtenAtBuilder_.dispose();
                     writtenAtBuilder_ = null;
                 }
                 return this;
@@ -8087,13 +8301,21 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.WriteRelationshipsResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.WriteRelationshipsResponse result = new com.authzed.api.v1.PermissionService.WriteRelationshipsResponse(
                         this);
-                if (writtenAtBuilder_ == null) {
-                    result.writtenAt_ = writtenAt_;
-                } else {
-                    result.writtenAt_ = writtenAtBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.WriteRelationshipsResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.writtenAt_ = writtenAtBuilder_ == null ? writtenAt_ : writtenAtBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -8169,6 +8391,7 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getWrittenAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -8192,6 +8415,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ZedToken writtenAt_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> writtenAtBuilder_;
@@ -8202,7 +8427,7 @@ public final class PermissionService {
              * @return Whether the writtenAt field is set.
              */
             public boolean hasWrittenAt() {
-                return writtenAtBuilder_ != null || writtenAt_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -8227,10 +8452,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     writtenAt_ = value;
-                    onChanged();
                 } else {
                     writtenAtBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -8240,10 +8466,11 @@ public final class PermissionService {
             public Builder setWrittenAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (writtenAtBuilder_ == null) {
                     writtenAt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     writtenAtBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -8252,14 +8479,18 @@ public final class PermissionService {
              */
             public Builder mergeWrittenAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (writtenAtBuilder_ == null) {
-                    if (writtenAt_ != null) {
-                        writtenAt_ = com.authzed.api.v1.Core.ZedToken.newBuilder(writtenAt_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && writtenAt_ != null
+                            && writtenAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getWrittenAtBuilder().mergeFrom(value);
                     } else {
                         writtenAt_ = value;
                     }
-                    onChanged();
                 } else {
                     writtenAtBuilder_.mergeFrom(value);
+                }
+                if (writtenAt_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -8268,13 +8499,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken written_at = 1;</code>
              */
             public Builder clearWrittenAt() {
-                if (writtenAtBuilder_ == null) {
-                    writtenAt_ = null;
-                    onChanged();
-                } else {
-                    writtenAt_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                writtenAt_ = null;
+                if (writtenAtBuilder_ != null) {
+                    writtenAtBuilder_.dispose();
                     writtenAtBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -8282,6 +8513,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken written_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getWrittenAtBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getWrittenAtFieldBuilder().getBuilder();
             }
@@ -8467,11 +8699,6 @@ public final class PermissionService {
             return new DeleteRelationshipsRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_DeleteRelationshipsRequest_descriptor;
         }
@@ -8482,6 +8709,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest.class,
                             com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int RELATIONSHIP_FILTER_FIELD_NUMBER = 1;
 
@@ -8494,7 +8723,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasRelationshipFilter() {
-            return relationshipFilter_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -8513,11 +8742,13 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getRelationshipFilterOrBuilder() {
-            return getRelationshipFilter();
+            return relationshipFilter_ == null ? com.authzed.api.v1.PermissionService.RelationshipFilter.getDefaultInstance()
+                    : relationshipFilter_;
         }
 
         public static final int OPTIONAL_PRECONDITIONS_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.PermissionService.Precondition> optionalPreconditions_;
 
         /**
@@ -8595,7 +8826,7 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (relationshipFilter_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getRelationshipFilter());
             }
             for (int i = 0; i < optionalPreconditions_.size(); i++) {
@@ -8610,7 +8841,7 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (relationshipFilter_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getRelationshipFilter());
             }
             for (int i = 0; i < optionalPreconditions_.size(); i++) {
@@ -8779,19 +9010,28 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getRelationshipFilterFieldBuilder();
+                    getOptionalPreconditionsFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (relationshipFilterBuilder_ == null) {
-                    relationshipFilter_ = null;
-                } else {
-                    relationshipFilter_ = null;
+                bitField0_ = 0;
+                relationshipFilter_ = null;
+                if (relationshipFilterBuilder_ != null) {
+                    relationshipFilterBuilder_.dispose();
                     relationshipFilterBuilder_ = null;
                 }
                 if (optionalPreconditionsBuilder_ == null) {
@@ -8800,7 +9040,7 @@ public final class PermissionService {
                     optionalPreconditions_ = null;
                     optionalPreconditionsBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -8827,23 +9067,35 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest buildPartial() {
                 com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest result = new com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (relationshipFilterBuilder_ == null) {
-                    result.relationshipFilter_ = relationshipFilter_;
-                } else {
-                    result.relationshipFilter_ = relationshipFilterBuilder_.build();
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest result) {
                 if (optionalPreconditionsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000001) != 0)) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
                         optionalPreconditions_ = java.util.Collections.unmodifiableList(optionalPreconditions_);
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000002);
                     }
                     result.optionalPreconditions_ = optionalPreconditions_;
                 } else {
                     result.optionalPreconditions_ = optionalPreconditionsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.relationshipFilter_ = relationshipFilterBuilder_ == null ? relationshipFilter_
+                            : relationshipFilterBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -8897,7 +9149,7 @@ public final class PermissionService {
                     if (!other.optionalPreconditions_.isEmpty()) {
                         if (optionalPreconditions_.isEmpty()) {
                             optionalPreconditions_ = other.optionalPreconditions_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                         } else {
                             ensureOptionalPreconditionsIsMutable();
                             optionalPreconditions_.addAll(other.optionalPreconditions_);
@@ -8910,7 +9162,7 @@ public final class PermissionService {
                             optionalPreconditionsBuilder_.dispose();
                             optionalPreconditionsBuilder_ = null;
                             optionalPreconditions_ = other.optionalPreconditions_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                             optionalPreconditionsBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                     ? getOptionalPreconditionsFieldBuilder()
                                     : null;
@@ -8945,6 +9197,7 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getRelationshipFilterFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -8992,7 +9245,7 @@ public final class PermissionService {
              * @return Whether the relationshipFilter field is set.
              */
             public boolean hasRelationshipFilter() {
-                return relationshipFilterBuilder_ != null || relationshipFilter_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -9019,10 +9272,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     relationshipFilter_ = value;
-                    onChanged();
                 } else {
                     relationshipFilterBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -9033,10 +9287,11 @@ public final class PermissionService {
                     com.authzed.api.v1.PermissionService.RelationshipFilter.Builder builderForValue) {
                 if (relationshipFilterBuilder_ == null) {
                     relationshipFilter_ = builderForValue.build();
-                    onChanged();
                 } else {
                     relationshipFilterBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -9045,15 +9300,19 @@ public final class PermissionService {
              */
             public Builder mergeRelationshipFilter(com.authzed.api.v1.PermissionService.RelationshipFilter value) {
                 if (relationshipFilterBuilder_ == null) {
-                    if (relationshipFilter_ != null) {
-                        relationshipFilter_ = com.authzed.api.v1.PermissionService.RelationshipFilter
-                                .newBuilder(relationshipFilter_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && relationshipFilter_ != null
+                            && relationshipFilter_ != com.authzed.api.v1.PermissionService.RelationshipFilter
+                                    .getDefaultInstance()) {
+                        getRelationshipFilterBuilder().mergeFrom(value);
                     } else {
                         relationshipFilter_ = value;
                     }
-                    onChanged();
                 } else {
                     relationshipFilterBuilder_.mergeFrom(value);
+                }
+                if (relationshipFilter_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -9062,13 +9321,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearRelationshipFilter() {
-                if (relationshipFilterBuilder_ == null) {
-                    relationshipFilter_ = null;
-                    onChanged();
-                } else {
-                    relationshipFilter_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                relationshipFilter_ = null;
+                if (relationshipFilterBuilder_ != null) {
+                    relationshipFilterBuilder_.dispose();
                     relationshipFilterBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -9076,6 +9335,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.RelationshipFilter relationship_filter = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.PermissionService.RelationshipFilter.Builder getRelationshipFilterBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getRelationshipFilterFieldBuilder().getBuilder();
             }
@@ -9109,10 +9369,10 @@ public final class PermissionService {
                     .emptyList();
 
             private void ensureOptionalPreconditionsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     optionalPreconditions_ = new java.util.ArrayList<com.authzed.api.v1.PermissionService.Precondition>(
                             optionalPreconditions_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
 
@@ -9311,7 +9571,7 @@ public final class PermissionService {
             public Builder clearOptionalPreconditions() {
                 if (optionalPreconditionsBuilder_ == null) {
                     optionalPreconditions_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                     onChanged();
                 } else {
                     optionalPreconditionsBuilder_.clear();
@@ -9416,7 +9676,7 @@ public final class PermissionService {
             private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.Precondition, com.authzed.api.v1.PermissionService.Precondition.Builder, com.authzed.api.v1.PermissionService.PreconditionOrBuilder> getOptionalPreconditionsFieldBuilder() {
                 if (optionalPreconditionsBuilder_ == null) {
                     optionalPreconditionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.Precondition, com.authzed.api.v1.PermissionService.Precondition.Builder, com.authzed.api.v1.PermissionService.PreconditionOrBuilder>(
-                            optionalPreconditions_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+                            optionalPreconditions_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
                     optionalPreconditions_ = null;
                 }
                 return optionalPreconditionsBuilder_;
@@ -9526,11 +9786,6 @@ public final class PermissionService {
             return new DeleteRelationshipsResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_DeleteRelationshipsResponse_descriptor;
         }
@@ -9541,6 +9796,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.class,
                             com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int DELETED_AT_FIELD_NUMBER = 1;
 
@@ -9553,7 +9810,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasDeletedAt() {
-            return deletedAt_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -9571,7 +9828,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getDeletedAtOrBuilder() {
-            return getDeletedAt();
+            return deletedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : deletedAt_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -9589,7 +9846,7 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (deletedAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getDeletedAt());
             }
             getUnknownFields().writeTo(output);
@@ -9601,7 +9858,7 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (deletedAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getDeletedAt());
             }
             size += getUnknownFields().getSerializedSize();
@@ -9753,19 +10010,27 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getDeletedAtFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (deletedAtBuilder_ == null) {
-                    deletedAt_ = null;
-                } else {
-                    deletedAt_ = null;
+                bitField0_ = 0;
+                deletedAt_ = null;
+                if (deletedAtBuilder_ != null) {
+                    deletedAtBuilder_.dispose();
                     deletedAtBuilder_ = null;
                 }
                 return this;
@@ -9794,13 +10059,21 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse result = new com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse(
                         this);
-                if (deletedAtBuilder_ == null) {
-                    result.deletedAt_ = deletedAt_;
-                } else {
-                    result.deletedAt_ = deletedAtBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.deletedAt_ = deletedAtBuilder_ == null ? deletedAt_ : deletedAtBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -9876,6 +10149,7 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getDeletedAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -9899,6 +10173,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ZedToken deletedAt_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> deletedAtBuilder_;
@@ -9909,7 +10185,7 @@ public final class PermissionService {
              * @return Whether the deletedAt field is set.
              */
             public boolean hasDeletedAt() {
-                return deletedAtBuilder_ != null || deletedAt_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -9934,10 +10210,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     deletedAt_ = value;
-                    onChanged();
                 } else {
                     deletedAtBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -9947,10 +10224,11 @@ public final class PermissionService {
             public Builder setDeletedAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (deletedAtBuilder_ == null) {
                     deletedAt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     deletedAtBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -9959,14 +10237,18 @@ public final class PermissionService {
              */
             public Builder mergeDeletedAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (deletedAtBuilder_ == null) {
-                    if (deletedAt_ != null) {
-                        deletedAt_ = com.authzed.api.v1.Core.ZedToken.newBuilder(deletedAt_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && deletedAt_ != null
+                            && deletedAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getDeletedAtBuilder().mergeFrom(value);
                     } else {
                         deletedAt_ = value;
                     }
-                    onChanged();
                 } else {
                     deletedAtBuilder_.mergeFrom(value);
+                }
+                if (deletedAt_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -9975,13 +10257,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public Builder clearDeletedAt() {
-                if (deletedAtBuilder_ == null) {
-                    deletedAt_ = null;
-                    onChanged();
-                } else {
-                    deletedAt_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                deletedAt_ = null;
+                if (deletedAtBuilder_ != null) {
+                    deletedAtBuilder_.dispose();
                     deletedAtBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -9989,6 +10271,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken deleted_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getDeletedAtBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getDeletedAtFieldBuilder().getBuilder();
             }
@@ -10212,11 +10495,6 @@ public final class PermissionService {
             return new CheckPermissionRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_CheckPermissionRequest_descriptor;
         }
@@ -10227,6 +10505,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.CheckPermissionRequest.class,
                             com.authzed.api.v1.PermissionService.CheckPermissionRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CONSISTENCY_FIELD_NUMBER = 1;
 
@@ -10239,7 +10519,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasConsistency() {
-            return consistency_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -10257,7 +10537,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder() {
-            return getConsistency();
+            return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance() : consistency_;
         }
 
         public static final int RESOURCE_FIELD_NUMBER = 2;
@@ -10275,7 +10555,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasResource() {
-            return resource_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -10301,12 +10581,13 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int PERMISSION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object permission_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
 
         /**
          * <pre>
@@ -10368,7 +10649,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasSubject() {
-            return subject_ != null;
+            return ((bitField0_ & 0x00000004) != 0);
         }
 
         /**
@@ -10394,7 +10675,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
-            return getSubject();
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -10412,16 +10693,16 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getConsistency());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 3, permission_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000004) != 0)) {
                 output.writeMessage(4, getSubject());
             }
             getUnknownFields().writeTo(output);
@@ -10433,16 +10714,16 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getConsistency());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, permission_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getSubject());
             }
             size += getUnknownFields().getSerializedSize();
@@ -10622,32 +10903,40 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.CheckPermissionRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getConsistencyFieldBuilder();
+                    getResourceFieldBuilder();
+                    getSubjectFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                } else {
-                    consistency_ = null;
+                bitField0_ = 0;
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 permission_ = "";
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                } else {
-                    subject_ = null;
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
                 return this;
@@ -10676,24 +10965,32 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.CheckPermissionRequest buildPartial() {
                 com.authzed.api.v1.PermissionService.CheckPermissionRequest result = new com.authzed.api.v1.PermissionService.CheckPermissionRequest(
                         this);
-                if (consistencyBuilder_ == null) {
-                    result.consistency_ = consistency_;
-                } else {
-                    result.consistency_ = consistencyBuilder_.build();
-                }
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
-                }
-                result.permission_ = permission_;
-                if (subjectBuilder_ == null) {
-                    result.subject_ = subject_;
-                } else {
-                    result.subject_ = subjectBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.CheckPermissionRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.consistency_ = consistencyBuilder_ == null ? consistency_ : consistencyBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.permission_ = permission_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -10748,6 +11045,7 @@ public final class PermissionService {
                 }
                 if (!other.getPermission().isEmpty()) {
                     permission_ = other.permission_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (other.hasSubject()) {
@@ -10779,21 +11077,25 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getConsistencyFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -10817,6 +11119,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.PermissionService.Consistency consistency_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder> consistencyBuilder_;
@@ -10827,7 +11131,7 @@ public final class PermissionService {
              * @return Whether the consistency field is set.
              */
             public boolean hasConsistency() {
-                return consistencyBuilder_ != null || consistency_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -10853,10 +11157,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     consistency_ = value;
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -10866,10 +11171,11 @@ public final class PermissionService {
             public Builder setConsistency(com.authzed.api.v1.PermissionService.Consistency.Builder builderForValue) {
                 if (consistencyBuilder_ == null) {
                     consistency_ = builderForValue.build();
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -10878,15 +11184,18 @@ public final class PermissionService {
              */
             public Builder mergeConsistency(com.authzed.api.v1.PermissionService.Consistency value) {
                 if (consistencyBuilder_ == null) {
-                    if (consistency_ != null) {
-                        consistency_ = com.authzed.api.v1.PermissionService.Consistency.newBuilder(consistency_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && consistency_ != null
+                            && consistency_ != com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()) {
+                        getConsistencyBuilder().mergeFrom(value);
                     } else {
                         consistency_ = value;
                     }
-                    onChanged();
                 } else {
                     consistencyBuilder_.mergeFrom(value);
+                }
+                if (consistency_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -10895,13 +11204,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public Builder clearConsistency() {
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                    onChanged();
-                } else {
-                    consistency_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -10909,6 +11218,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public com.authzed.api.v1.PermissionService.Consistency.Builder getConsistencyBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getConsistencyFieldBuilder().getBuilder();
             }
@@ -10951,7 +11261,7 @@ public final class PermissionService {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -10984,10 +11294,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -11001,10 +11312,11 @@ public final class PermissionService {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -11017,15 +11329,18 @@ public final class PermissionService {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
+                }
+                if (resource_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -11038,13 +11353,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ObjectReference resource = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -11056,6 +11371,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ObjectReference resource = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -11152,6 +11468,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -11168,6 +11485,7 @@ public final class PermissionService {
              */
             public Builder clearPermission() {
                 permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -11189,6 +11507,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -11207,7 +11526,7 @@ public final class PermissionService {
              * @return Whether the subject field is set.
              */
             public boolean hasSubject() {
-                return subjectBuilder_ != null || subject_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -11240,10 +11559,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     subject_ = value;
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -11257,10 +11577,11 @@ public final class PermissionService {
             public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
                 if (subjectBuilder_ == null) {
                     subject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -11273,15 +11594,18 @@ public final class PermissionService {
              */
             public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
                 if (subjectBuilder_ == null) {
-                    if (subject_ != null) {
-                        subject_ = com.authzed.api.v1.Core.SubjectReference.newBuilder(subject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
                     } else {
                         subject_ = value;
                     }
-                    onChanged();
                 } else {
                     subjectBuilder_.mergeFrom(value);
+                }
+                if (subject_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
                 }
                 return this;
             }
@@ -11294,13 +11618,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public Builder clearSubject() {
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                    onChanged();
-                } else {
-                    subject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -11312,6 +11636,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getSubjectFieldBuilder().getBuilder();
             }
@@ -11433,6 +11758,7 @@ public final class PermissionService {
          * Permissionship communicates whether or not the subject has the requested
          * permission or has a relationship with the given resource, over the given
          * relation.
+         *
          * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
          * requested subject is a member of the computed permission set or there
          * exists a relationship with the requested relation from the given resource
@@ -11450,6 +11776,7 @@ public final class PermissionService {
          * Permissionship communicates whether or not the subject has the requested
          * permission or has a relationship with the given resource, over the given
          * relation.
+         *
          * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
          * requested subject is a member of the computed permission set or there
          * exists a relationship with the requested relation from the given resource
@@ -11484,11 +11811,6 @@ public final class PermissionService {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new CheckPermissionResponse();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -11615,6 +11937,8 @@ public final class PermissionService {
             }
         }
 
+        private int bitField0_;
+
         public static final int CHECKED_AT_FIELD_NUMBER = 1;
 
         private com.authzed.api.v1.Core.ZedToken checkedAt_;
@@ -11626,7 +11950,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasCheckedAt() {
-            return checkedAt_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -11644,18 +11968,19 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getCheckedAtOrBuilder() {
-            return getCheckedAt();
+            return checkedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : checkedAt_;
         }
 
         public static final int PERMISSIONSHIP_FIELD_NUMBER = 2;
 
-        private int permissionship_;
+        private int permissionship_ = 0;
 
         /**
          * <pre>
          * Permissionship communicates whether or not the subject has the requested
          * permission or has a relationship with the given resource, over the given
          * relation.
+         *
          * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
          * requested subject is a member of the computed permission set or there
          * exists a relationship with the requested relation from the given resource
@@ -11676,6 +12001,7 @@ public final class PermissionService {
          * Permissionship communicates whether or not the subject has the requested
          * permission or has a relationship with the given resource, over the given
          * relation.
+         *
          * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
          * requested subject is a member of the computed permission set or there
          * exists a relationship with the requested relation from the given resource
@@ -11688,9 +12014,8 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship getPermissionship() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship result = com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship
-                    .valueOf(permissionship_);
+                    .forNumber(permissionship_);
             return result == null ? com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.UNRECOGNIZED
                     : result;
         }
@@ -11710,7 +12035,7 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (checkedAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getCheckedAt());
             }
             if (permissionship_ != com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.PERMISSIONSHIP_UNSPECIFIED
@@ -11726,7 +12051,7 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (checkedAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getCheckedAt());
             }
             if (permissionship_ != com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.PERMISSIONSHIP_UNSPECIFIED
@@ -11885,19 +12210,27 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.CheckPermissionResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getCheckedAtFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (checkedAtBuilder_ == null) {
-                    checkedAt_ = null;
-                } else {
-                    checkedAt_ = null;
+                bitField0_ = 0;
+                checkedAt_ = null;
+                if (checkedAtBuilder_ != null) {
+                    checkedAtBuilder_.dispose();
                     checkedAtBuilder_ = null;
                 }
                 permissionship_ = 0;
@@ -11927,14 +12260,24 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.CheckPermissionResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.CheckPermissionResponse result = new com.authzed.api.v1.PermissionService.CheckPermissionResponse(
                         this);
-                if (checkedAtBuilder_ == null) {
-                    result.checkedAt_ = checkedAt_;
-                } else {
-                    result.checkedAt_ = checkedAtBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.permissionship_ = permissionship_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.CheckPermissionResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.checkedAt_ = checkedAtBuilder_ == null ? checkedAt_ : checkedAtBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.permissionship_ = permissionship_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -12013,11 +12356,13 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getCheckedAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 16: {
                                 permissionship_ = input.readEnum();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 16
@@ -12041,6 +12386,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ZedToken checkedAt_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> checkedAtBuilder_;
@@ -12051,7 +12398,7 @@ public final class PermissionService {
              * @return Whether the checkedAt field is set.
              */
             public boolean hasCheckedAt() {
-                return checkedAtBuilder_ != null || checkedAt_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -12076,10 +12423,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     checkedAt_ = value;
-                    onChanged();
                 } else {
                     checkedAtBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -12089,10 +12437,11 @@ public final class PermissionService {
             public Builder setCheckedAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (checkedAtBuilder_ == null) {
                     checkedAt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     checkedAtBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -12101,14 +12450,18 @@ public final class PermissionService {
              */
             public Builder mergeCheckedAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (checkedAtBuilder_ == null) {
-                    if (checkedAt_ != null) {
-                        checkedAt_ = com.authzed.api.v1.Core.ZedToken.newBuilder(checkedAt_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && checkedAt_ != null
+                            && checkedAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getCheckedAtBuilder().mergeFrom(value);
                     } else {
                         checkedAt_ = value;
                     }
-                    onChanged();
                 } else {
                     checkedAtBuilder_.mergeFrom(value);
+                }
+                if (checkedAt_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -12117,13 +12470,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
              */
             public Builder clearCheckedAt() {
-                if (checkedAtBuilder_ == null) {
-                    checkedAt_ = null;
-                    onChanged();
-                } else {
-                    checkedAt_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                checkedAt_ = null;
+                if (checkedAtBuilder_ != null) {
+                    checkedAtBuilder_.dispose();
                     checkedAtBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -12131,6 +12484,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken checked_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getCheckedAtBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getCheckedAtFieldBuilder().getBuilder();
             }
@@ -12165,6 +12519,7 @@ public final class PermissionService {
              * Permissionship communicates whether or not the subject has the requested
              * permission or has a relationship with the given resource, over the given
              * relation.
+             *
              * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
              * requested subject is a member of the computed permission set or there
              * exists a relationship with the requested relation from the given resource
@@ -12185,6 +12540,7 @@ public final class PermissionService {
              * Permissionship communicates whether or not the subject has the requested
              * permission or has a relationship with the given resource, over the given
              * relation.
+             *
              * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
              * requested subject is a member of the computed permission set or there
              * exists a relationship with the requested relation from the given resource
@@ -12198,6 +12554,7 @@ public final class PermissionService {
              */
             public Builder setPermissionshipValue(int value) {
                 permissionship_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -12207,6 +12564,7 @@ public final class PermissionService {
              * Permissionship communicates whether or not the subject has the requested
              * permission or has a relationship with the given resource, over the given
              * relation.
+             *
              * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
              * requested subject is a member of the computed permission set or there
              * exists a relationship with the requested relation from the given resource
@@ -12219,9 +12577,8 @@ public final class PermissionService {
              */
             @java.lang.Override
             public com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship getPermissionship() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship result = com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship
-                        .valueOf(permissionship_);
+                        .forNumber(permissionship_);
                 return result == null ? com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship.UNRECOGNIZED
                         : result;
             }
@@ -12231,6 +12588,7 @@ public final class PermissionService {
              * Permissionship communicates whether or not the subject has the requested
              * permission or has a relationship with the given resource, over the given
              * relation.
+             *
              * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
              * requested subject is a member of the computed permission set or there
              * exists a relationship with the requested relation from the given resource
@@ -12247,6 +12605,7 @@ public final class PermissionService {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000002;
                 permissionship_ = value.getNumber();
                 onChanged();
                 return this;
@@ -12257,6 +12616,7 @@ public final class PermissionService {
              * Permissionship communicates whether or not the subject has the requested
              * permission or has a relationship with the given resource, over the given
              * relation.
+             *
              * This value will be authzed.api.v1.PERMISSIONSHIP_HAS_PERMISSION if the
              * requested subject is a member of the computed permission set or there
              * exists a relationship with the requested relation from the given resource
@@ -12268,6 +12628,7 @@ public final class PermissionService {
              * @return This builder for chaining.
              */
             public Builder clearPermissionship() {
+                bitField0_ = (bitField0_ & ~0x00000002);
                 permissionship_ = 0;
                 onChanged();
                 return this;
@@ -12415,6 +12776,7 @@ public final class PermissionService {
      * ExpandPermissionTreeRequest returns a tree representing the expansion of all
      * relationships found accessible from a permission or relation on a particular
      * resource.
+     *
      * ExpandPermissionTreeRequest is typically used to determine the full set of
      * subjects with a permission, along with the relationships that grant said
      * access.
@@ -12442,11 +12804,6 @@ public final class PermissionService {
             return new ExpandPermissionTreeRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ExpandPermissionTreeRequest_descriptor;
         }
@@ -12457,6 +12814,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest.class,
                             com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CONSISTENCY_FIELD_NUMBER = 1;
 
@@ -12469,7 +12828,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasConsistency() {
-            return consistency_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -12487,7 +12846,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder() {
-            return getConsistency();
+            return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance() : consistency_;
         }
 
         public static final int RESOURCE_FIELD_NUMBER = 2;
@@ -12505,7 +12864,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasResource() {
-            return resource_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -12531,12 +12890,13 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int PERMISSION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object permission_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
 
         /**
          * <pre>
@@ -12598,10 +12958,10 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getConsistency());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
@@ -12616,10 +12976,10 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getConsistency());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
@@ -12774,6 +13134,7 @@ public final class PermissionService {
          * ExpandPermissionTreeRequest returns a tree representing the expansion of all
          * relationships found accessible from a permission or relation on a particular
          * resource.
+         *
          * ExpandPermissionTreeRequest is typically used to determine the full set of
          * subjects with a permission, along with the relationships that grant said
          * access.
@@ -12797,25 +13158,33 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getConsistencyFieldBuilder();
+                    getResourceFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                } else {
-                    consistency_ = null;
+                bitField0_ = 0;
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 permission_ = "";
@@ -12845,19 +13214,28 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest buildPartial() {
                 com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest result = new com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest(
                         this);
-                if (consistencyBuilder_ == null) {
-                    result.consistency_ = consistency_;
-                } else {
-                    result.consistency_ = consistencyBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
-                }
-                result.permission_ = permission_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.consistency_ = consistencyBuilder_ == null ? consistency_ : consistencyBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.permission_ = permission_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -12912,6 +13290,7 @@ public final class PermissionService {
                 }
                 if (!other.getPermission().isEmpty()) {
                     permission_ = other.permission_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -12940,16 +13319,19 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getConsistencyFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -12973,6 +13355,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.PermissionService.Consistency consistency_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder> consistencyBuilder_;
@@ -12983,7 +13367,7 @@ public final class PermissionService {
              * @return Whether the consistency field is set.
              */
             public boolean hasConsistency() {
-                return consistencyBuilder_ != null || consistency_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -13009,10 +13393,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     consistency_ = value;
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -13022,10 +13407,11 @@ public final class PermissionService {
             public Builder setConsistency(com.authzed.api.v1.PermissionService.Consistency.Builder builderForValue) {
                 if (consistencyBuilder_ == null) {
                     consistency_ = builderForValue.build();
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -13034,15 +13420,18 @@ public final class PermissionService {
              */
             public Builder mergeConsistency(com.authzed.api.v1.PermissionService.Consistency value) {
                 if (consistencyBuilder_ == null) {
-                    if (consistency_ != null) {
-                        consistency_ = com.authzed.api.v1.PermissionService.Consistency.newBuilder(consistency_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && consistency_ != null
+                            && consistency_ != com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()) {
+                        getConsistencyBuilder().mergeFrom(value);
                     } else {
                         consistency_ = value;
                     }
-                    onChanged();
                 } else {
                     consistencyBuilder_.mergeFrom(value);
+                }
+                if (consistency_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -13051,13 +13440,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public Builder clearConsistency() {
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                    onChanged();
-                } else {
-                    consistency_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -13065,6 +13454,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public com.authzed.api.v1.PermissionService.Consistency.Builder getConsistencyBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getConsistencyFieldBuilder().getBuilder();
             }
@@ -13107,7 +13497,7 @@ public final class PermissionService {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -13140,10 +13530,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -13157,10 +13548,11 @@ public final class PermissionService {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -13173,15 +13565,18 @@ public final class PermissionService {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
+                }
+                if (resource_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -13194,13 +13589,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ObjectReference resource = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -13212,6 +13607,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ObjectReference resource = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -13308,6 +13704,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -13324,6 +13721,7 @@ public final class PermissionService {
              */
             public Builder clearPermission() {
                 permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -13345,6 +13743,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -13490,11 +13889,6 @@ public final class PermissionService {
             return new ExpandPermissionTreeResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_ExpandPermissionTreeResponse_descriptor;
         }
@@ -13505,6 +13899,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse.class,
                             com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int EXPANDED_AT_FIELD_NUMBER = 1;
 
@@ -13517,7 +13913,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasExpandedAt() {
-            return expandedAt_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -13535,7 +13931,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getExpandedAtOrBuilder() {
-            return getExpandedAt();
+            return expandedAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : expandedAt_;
         }
 
         public static final int TREE_ROOT_FIELD_NUMBER = 2;
@@ -13555,7 +13951,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasTreeRoot() {
-            return treeRoot_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -13585,7 +13981,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder getTreeRootOrBuilder() {
-            return getTreeRoot();
+            return treeRoot_ == null ? com.authzed.api.v1.Core.PermissionRelationshipTree.getDefaultInstance() : treeRoot_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -13603,10 +13999,10 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (expandedAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getExpandedAt());
             }
-            if (treeRoot_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getTreeRoot());
             }
             getUnknownFields().writeTo(output);
@@ -13618,10 +14014,10 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (expandedAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getExpandedAt());
             }
-            if (treeRoot_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getTreeRoot());
             }
             size += getUnknownFields().getSerializedSize();
@@ -13784,25 +14180,33 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getExpandedAtFieldBuilder();
+                    getTreeRootFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (expandedAtBuilder_ == null) {
-                    expandedAt_ = null;
-                } else {
-                    expandedAt_ = null;
+                bitField0_ = 0;
+                expandedAt_ = null;
+                if (expandedAtBuilder_ != null) {
+                    expandedAtBuilder_.dispose();
                     expandedAtBuilder_ = null;
                 }
-                if (treeRootBuilder_ == null) {
-                    treeRoot_ = null;
-                } else {
-                    treeRoot_ = null;
+                treeRoot_ = null;
+                if (treeRootBuilder_ != null) {
+                    treeRootBuilder_.dispose();
                     treeRootBuilder_ = null;
                 }
                 return this;
@@ -13831,18 +14235,25 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse result = new com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse(
                         this);
-                if (expandedAtBuilder_ == null) {
-                    result.expandedAt_ = expandedAt_;
-                } else {
-                    result.expandedAt_ = expandedAtBuilder_.build();
-                }
-                if (treeRootBuilder_ == null) {
-                    result.treeRoot_ = treeRoot_;
-                } else {
-                    result.treeRoot_ = treeRootBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.expandedAt_ = expandedAtBuilder_ == null ? expandedAt_ : expandedAtBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.treeRoot_ = treeRootBuilder_ == null ? treeRoot_ : treeRootBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -13921,11 +14332,13 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getExpandedAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getTreeRootFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -13949,6 +14362,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ZedToken expandedAt_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> expandedAtBuilder_;
@@ -13959,7 +14374,7 @@ public final class PermissionService {
              * @return Whether the expandedAt field is set.
              */
             public boolean hasExpandedAt() {
-                return expandedAtBuilder_ != null || expandedAt_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -13984,10 +14399,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     expandedAt_ = value;
-                    onChanged();
                 } else {
                     expandedAtBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -13997,10 +14413,11 @@ public final class PermissionService {
             public Builder setExpandedAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (expandedAtBuilder_ == null) {
                     expandedAt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     expandedAtBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -14009,14 +14426,18 @@ public final class PermissionService {
              */
             public Builder mergeExpandedAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (expandedAtBuilder_ == null) {
-                    if (expandedAt_ != null) {
-                        expandedAt_ = com.authzed.api.v1.Core.ZedToken.newBuilder(expandedAt_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && expandedAt_ != null
+                            && expandedAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getExpandedAtBuilder().mergeFrom(value);
                     } else {
                         expandedAt_ = value;
                     }
-                    onChanged();
                 } else {
                     expandedAtBuilder_.mergeFrom(value);
+                }
+                if (expandedAt_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -14025,13 +14446,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken expanded_at = 1;</code>
              */
             public Builder clearExpandedAt() {
-                if (expandedAtBuilder_ == null) {
-                    expandedAt_ = null;
-                    onChanged();
-                } else {
-                    expandedAt_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                expandedAt_ = null;
+                if (expandedAtBuilder_ != null) {
+                    expandedAtBuilder_.dispose();
                     expandedAtBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -14039,6 +14460,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken expanded_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getExpandedAtBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getExpandedAtFieldBuilder().getBuilder();
             }
@@ -14082,7 +14504,7 @@ public final class PermissionService {
              * @return Whether the treeRoot field is set.
              */
             public boolean hasTreeRoot() {
-                return treeRootBuilder_ != null || treeRoot_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -14120,10 +14542,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     treeRoot_ = value;
-                    onChanged();
                 } else {
                     treeRootBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -14139,10 +14562,11 @@ public final class PermissionService {
             public Builder setTreeRoot(com.authzed.api.v1.Core.PermissionRelationshipTree.Builder builderForValue) {
                 if (treeRootBuilder_ == null) {
                     treeRoot_ = builderForValue.build();
-                    onChanged();
                 } else {
                     treeRootBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -14157,15 +14581,18 @@ public final class PermissionService {
              */
             public Builder mergeTreeRoot(com.authzed.api.v1.Core.PermissionRelationshipTree value) {
                 if (treeRootBuilder_ == null) {
-                    if (treeRoot_ != null) {
-                        treeRoot_ = com.authzed.api.v1.Core.PermissionRelationshipTree.newBuilder(treeRoot_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && treeRoot_ != null
+                            && treeRoot_ != com.authzed.api.v1.Core.PermissionRelationshipTree.getDefaultInstance()) {
+                        getTreeRootBuilder().mergeFrom(value);
                     } else {
                         treeRoot_ = value;
                     }
-                    onChanged();
                 } else {
                     treeRootBuilder_.mergeFrom(value);
+                }
+                if (treeRoot_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -14180,13 +14607,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.PermissionRelationshipTree tree_root = 2;</code>
              */
             public Builder clearTreeRoot() {
-                if (treeRootBuilder_ == null) {
-                    treeRoot_ = null;
-                    onChanged();
-                } else {
-                    treeRoot_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                treeRoot_ = null;
+                if (treeRootBuilder_ != null) {
+                    treeRootBuilder_.dispose();
                     treeRootBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -14200,6 +14627,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.PermissionRelationshipTree tree_root = 2;</code>
              */
             public com.authzed.api.v1.Core.PermissionRelationshipTree.Builder getTreeRootBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getTreeRootFieldBuilder().getBuilder();
             }
@@ -14431,11 +14859,6 @@ public final class PermissionService {
             return new LookupResourcesRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_LookupResourcesRequest_descriptor;
         }
@@ -14446,6 +14869,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.LookupResourcesRequest.class,
                             com.authzed.api.v1.PermissionService.LookupResourcesRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CONSISTENCY_FIELD_NUMBER = 1;
 
@@ -14458,7 +14883,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasConsistency() {
-            return consistency_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -14476,12 +14901,13 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder() {
-            return getConsistency();
+            return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance() : consistency_;
         }
 
         public static final int RESOURCE_OBJECT_TYPE_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object resourceObjectType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object resourceObjectType_ = "";
 
         /**
          * <pre>
@@ -14530,7 +14956,8 @@ public final class PermissionService {
 
         public static final int PERMISSION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object permission_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
 
         /**
          * <pre>
@@ -14592,7 +15019,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasSubject() {
-            return subject_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -14618,7 +15045,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
-            return getSubject();
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -14636,7 +15063,7 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getConsistency());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resourceObjectType_)) {
@@ -14645,7 +15072,7 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 3, permission_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(4, getSubject());
             }
             getUnknownFields().writeTo(output);
@@ -14657,7 +15084,7 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getConsistency());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resourceObjectType_)) {
@@ -14666,7 +15093,7 @@ public final class PermissionService {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, permission_);
             }
-            if (subject_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getSubject());
             }
             size += getUnknownFields().getSerializedSize();
@@ -14841,27 +15268,35 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.LookupResourcesRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getConsistencyFieldBuilder();
+                    getSubjectFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                } else {
-                    consistency_ = null;
+                bitField0_ = 0;
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
                 resourceObjectType_ = "";
                 permission_ = "";
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                } else {
-                    subject_ = null;
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
                 return this;
@@ -14890,20 +15325,31 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.LookupResourcesRequest buildPartial() {
                 com.authzed.api.v1.PermissionService.LookupResourcesRequest result = new com.authzed.api.v1.PermissionService.LookupResourcesRequest(
                         this);
-                if (consistencyBuilder_ == null) {
-                    result.consistency_ = consistency_;
-                } else {
-                    result.consistency_ = consistencyBuilder_.build();
-                }
-                result.resourceObjectType_ = resourceObjectType_;
-                result.permission_ = permission_;
-                if (subjectBuilder_ == null) {
-                    result.subject_ = subject_;
-                } else {
-                    result.subject_ = subjectBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.LookupResourcesRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.consistency_ = consistencyBuilder_ == null ? consistency_ : consistencyBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.resourceObjectType_ = resourceObjectType_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.permission_ = permission_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -14955,10 +15401,12 @@ public final class PermissionService {
                 }
                 if (!other.getResourceObjectType().isEmpty()) {
                     resourceObjectType_ = other.resourceObjectType_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getPermission().isEmpty()) {
                     permission_ = other.permission_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (other.hasSubject()) {
@@ -14990,21 +15438,25 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getConsistencyFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 resourceObjectType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -15028,6 +15480,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.PermissionService.Consistency consistency_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder> consistencyBuilder_;
@@ -15038,7 +15492,7 @@ public final class PermissionService {
              * @return Whether the consistency field is set.
              */
             public boolean hasConsistency() {
-                return consistencyBuilder_ != null || consistency_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -15064,10 +15518,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     consistency_ = value;
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -15077,10 +15532,11 @@ public final class PermissionService {
             public Builder setConsistency(com.authzed.api.v1.PermissionService.Consistency.Builder builderForValue) {
                 if (consistencyBuilder_ == null) {
                     consistency_ = builderForValue.build();
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -15089,15 +15545,18 @@ public final class PermissionService {
              */
             public Builder mergeConsistency(com.authzed.api.v1.PermissionService.Consistency value) {
                 if (consistencyBuilder_ == null) {
-                    if (consistency_ != null) {
-                        consistency_ = com.authzed.api.v1.PermissionService.Consistency.newBuilder(consistency_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && consistency_ != null
+                            && consistency_ != com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()) {
+                        getConsistencyBuilder().mergeFrom(value);
                     } else {
                         consistency_ = value;
                     }
-                    onChanged();
                 } else {
                     consistencyBuilder_.mergeFrom(value);
+                }
+                if (consistency_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -15106,13 +15565,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public Builder clearConsistency() {
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                    onChanged();
-                } else {
-                    consistency_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -15120,6 +15579,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public com.authzed.api.v1.PermissionService.Consistency.Builder getConsistencyBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getConsistencyFieldBuilder().getBuilder();
             }
@@ -15209,6 +15669,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 resourceObjectType_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -15225,6 +15686,7 @@ public final class PermissionService {
              */
             public Builder clearResourceObjectType() {
                 resourceObjectType_ = getDefaultInstance().getResourceObjectType();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -15246,6 +15708,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 resourceObjectType_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -15311,6 +15774,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -15327,6 +15791,7 @@ public final class PermissionService {
              */
             public Builder clearPermission() {
                 permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -15348,6 +15813,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -15366,7 +15832,7 @@ public final class PermissionService {
              * @return Whether the subject field is set.
              */
             public boolean hasSubject() {
-                return subjectBuilder_ != null || subject_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -15399,10 +15865,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     subject_ = value;
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -15416,10 +15883,11 @@ public final class PermissionService {
             public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
                 if (subjectBuilder_ == null) {
                     subject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -15432,15 +15900,18 @@ public final class PermissionService {
              */
             public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
                 if (subjectBuilder_ == null) {
-                    if (subject_ != null) {
-                        subject_ = com.authzed.api.v1.Core.SubjectReference.newBuilder(subject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
                     } else {
                         subject_ = value;
                     }
-                    onChanged();
                 } else {
                     subjectBuilder_.mergeFrom(value);
+                }
+                if (subject_ != null) {
+                    bitField0_ |= 0x00000008;
+                    onChanged();
                 }
                 return this;
             }
@@ -15453,13 +15924,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public Builder clearSubject() {
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                    onChanged();
-                } else {
-                    subject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -15471,6 +15942,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getSubjectFieldBuilder().getBuilder();
             }
@@ -15630,11 +16102,6 @@ public final class PermissionService {
             return new LookupResourcesResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_LookupResourcesResponse_descriptor;
         }
@@ -15645,6 +16112,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.LookupResourcesResponse.class,
                             com.authzed.api.v1.PermissionService.LookupResourcesResponse.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int LOOKED_UP_AT_FIELD_NUMBER = 1;
 
@@ -15657,7 +16126,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasLookedUpAt() {
-            return lookedUpAt_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -15675,12 +16144,13 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getLookedUpAtOrBuilder() {
-            return getLookedUpAt();
+            return lookedUpAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : lookedUpAt_;
         }
 
         public static final int RESOURCE_OBJECT_ID_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object resourceObjectId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object resourceObjectId_ = "";
 
         /**
          * <code>string resource_object_id = 2;</code>
@@ -15732,7 +16202,7 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (lookedUpAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getLookedUpAt());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resourceObjectId_)) {
@@ -15747,7 +16217,7 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (lookedUpAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getLookedUpAt());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resourceObjectId_)) {
@@ -15910,19 +16380,27 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.LookupResourcesResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getLookedUpAtFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (lookedUpAtBuilder_ == null) {
-                    lookedUpAt_ = null;
-                } else {
-                    lookedUpAt_ = null;
+                bitField0_ = 0;
+                lookedUpAt_ = null;
+                if (lookedUpAtBuilder_ != null) {
+                    lookedUpAtBuilder_.dispose();
                     lookedUpAtBuilder_ = null;
                 }
                 resourceObjectId_ = "";
@@ -15952,14 +16430,24 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.LookupResourcesResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.LookupResourcesResponse result = new com.authzed.api.v1.PermissionService.LookupResourcesResponse(
                         this);
-                if (lookedUpAtBuilder_ == null) {
-                    result.lookedUpAt_ = lookedUpAt_;
-                } else {
-                    result.lookedUpAt_ = lookedUpAtBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.resourceObjectId_ = resourceObjectId_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.LookupResourcesResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.lookedUpAt_ = lookedUpAtBuilder_ == null ? lookedUpAt_ : lookedUpAtBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.resourceObjectId_ = resourceObjectId_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -16011,6 +16499,7 @@ public final class PermissionService {
                 }
                 if (!other.getResourceObjectId().isEmpty()) {
                     resourceObjectId_ = other.resourceObjectId_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -16039,11 +16528,13 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getLookedUpAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 resourceObjectId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -16067,6 +16558,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ZedToken lookedUpAt_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> lookedUpAtBuilder_;
@@ -16077,7 +16570,7 @@ public final class PermissionService {
              * @return Whether the lookedUpAt field is set.
              */
             public boolean hasLookedUpAt() {
-                return lookedUpAtBuilder_ != null || lookedUpAt_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -16102,10 +16595,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     lookedUpAt_ = value;
-                    onChanged();
                 } else {
                     lookedUpAtBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -16115,10 +16609,11 @@ public final class PermissionService {
             public Builder setLookedUpAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (lookedUpAtBuilder_ == null) {
                     lookedUpAt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     lookedUpAtBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -16127,14 +16622,18 @@ public final class PermissionService {
              */
             public Builder mergeLookedUpAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (lookedUpAtBuilder_ == null) {
-                    if (lookedUpAt_ != null) {
-                        lookedUpAt_ = com.authzed.api.v1.Core.ZedToken.newBuilder(lookedUpAt_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && lookedUpAt_ != null
+                            && lookedUpAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getLookedUpAtBuilder().mergeFrom(value);
                     } else {
                         lookedUpAt_ = value;
                     }
-                    onChanged();
                 } else {
                     lookedUpAtBuilder_.mergeFrom(value);
+                }
+                if (lookedUpAt_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -16143,13 +16642,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public Builder clearLookedUpAt() {
-                if (lookedUpAtBuilder_ == null) {
-                    lookedUpAt_ = null;
-                    onChanged();
-                } else {
-                    lookedUpAt_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                lookedUpAt_ = null;
+                if (lookedUpAtBuilder_ != null) {
+                    lookedUpAtBuilder_.dispose();
                     lookedUpAtBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -16157,6 +16656,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getLookedUpAtBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getLookedUpAtFieldBuilder().getBuilder();
             }
@@ -16230,6 +16730,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 resourceObjectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -16241,6 +16742,7 @@ public final class PermissionService {
              */
             public Builder clearResourceObjectId() {
                 resourceObjectId_ = getDefaultInstance().getResourceObjectId();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -16257,6 +16759,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 resourceObjectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -16478,11 +16981,6 @@ public final class PermissionService {
             return new LookupSubjectsRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.PermissionService.internal_static_authzed_api_v1_LookupSubjectsRequest_descriptor;
         }
@@ -16493,6 +16991,8 @@ public final class PermissionService {
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.PermissionService.LookupSubjectsRequest.class,
                             com.authzed.api.v1.PermissionService.LookupSubjectsRequest.Builder.class);
         }
+
+        private int bitField0_;
 
         public static final int CONSISTENCY_FIELD_NUMBER = 1;
 
@@ -16505,7 +17005,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasConsistency() {
-            return consistency_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -16523,7 +17023,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.PermissionService.ConsistencyOrBuilder getConsistencyOrBuilder() {
-            return getConsistency();
+            return consistency_ == null ? com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance() : consistency_;
         }
 
         public static final int RESOURCE_FIELD_NUMBER = 2;
@@ -16542,7 +17042,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasResource() {
-            return resource_ != null;
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
         /**
@@ -16570,12 +17070,13 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int PERMISSION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object permission_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
 
         /**
          * <pre>
@@ -16624,7 +17125,8 @@ public final class PermissionService {
 
         public static final int SUBJECT_OBJECT_TYPE_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object subjectObjectType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object subjectObjectType_ = "";
 
         /**
          * <pre>
@@ -16673,7 +17175,8 @@ public final class PermissionService {
 
         public static final int OPTIONAL_SUBJECT_RELATION_FIELD_NUMBER = 5;
 
-        private volatile java.lang.Object optionalSubjectRelation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalSubjectRelation_ = "";
 
         /**
          * <pre>
@@ -16733,10 +17236,10 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getConsistency());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeMessage(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
@@ -16757,10 +17260,10 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (consistency_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getConsistency());
             }
-            if (resource_ != null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getResource());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(permission_)) {
@@ -16948,25 +17451,33 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.LookupSubjectsRequest.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getConsistencyFieldBuilder();
+                    getResourceFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                } else {
-                    consistency_ = null;
+                bitField0_ = 0;
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 permission_ = "";
@@ -16998,21 +17509,34 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.LookupSubjectsRequest buildPartial() {
                 com.authzed.api.v1.PermissionService.LookupSubjectsRequest result = new com.authzed.api.v1.PermissionService.LookupSubjectsRequest(
                         this);
-                if (consistencyBuilder_ == null) {
-                    result.consistency_ = consistency_;
-                } else {
-                    result.consistency_ = consistencyBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
-                }
-                result.permission_ = permission_;
-                result.subjectObjectType_ = subjectObjectType_;
-                result.optionalSubjectRelation_ = optionalSubjectRelation_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.LookupSubjectsRequest result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.consistency_ = consistencyBuilder_ == null ? consistency_ : consistencyBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.permission_ = permission_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.subjectObjectType_ = subjectObjectType_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.optionalSubjectRelation_ = optionalSubjectRelation_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -17067,14 +17591,17 @@ public final class PermissionService {
                 }
                 if (!other.getPermission().isEmpty()) {
                     permission_ = other.permission_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getSubjectObjectType().isEmpty()) {
                     subjectObjectType_ = other.subjectObjectType_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (!other.getOptionalSubjectRelation().isEmpty()) {
                     optionalSubjectRelation_ = other.optionalSubjectRelation_;
+                    bitField0_ |= 0x00000010;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -17103,26 +17630,31 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getConsistencyFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 subjectObjectType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
                             case 42: {
                                 optionalSubjectRelation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 42
@@ -17146,6 +17678,8 @@ public final class PermissionService {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.PermissionService.Consistency consistency_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.PermissionService.Consistency, com.authzed.api.v1.PermissionService.Consistency.Builder, com.authzed.api.v1.PermissionService.ConsistencyOrBuilder> consistencyBuilder_;
@@ -17156,7 +17690,7 @@ public final class PermissionService {
              * @return Whether the consistency field is set.
              */
             public boolean hasConsistency() {
-                return consistencyBuilder_ != null || consistency_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -17182,10 +17716,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     consistency_ = value;
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -17195,10 +17730,11 @@ public final class PermissionService {
             public Builder setConsistency(com.authzed.api.v1.PermissionService.Consistency.Builder builderForValue) {
                 if (consistencyBuilder_ == null) {
                     consistency_ = builderForValue.build();
-                    onChanged();
                 } else {
                     consistencyBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -17207,15 +17743,18 @@ public final class PermissionService {
              */
             public Builder mergeConsistency(com.authzed.api.v1.PermissionService.Consistency value) {
                 if (consistencyBuilder_ == null) {
-                    if (consistency_ != null) {
-                        consistency_ = com.authzed.api.v1.PermissionService.Consistency.newBuilder(consistency_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && consistency_ != null
+                            && consistency_ != com.authzed.api.v1.PermissionService.Consistency.getDefaultInstance()) {
+                        getConsistencyBuilder().mergeFrom(value);
                     } else {
                         consistency_ = value;
                     }
-                    onChanged();
                 } else {
                     consistencyBuilder_.mergeFrom(value);
+                }
+                if (consistency_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -17224,13 +17763,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public Builder clearConsistency() {
-                if (consistencyBuilder_ == null) {
-                    consistency_ = null;
-                    onChanged();
-                } else {
-                    consistency_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                consistency_ = null;
+                if (consistencyBuilder_ != null) {
+                    consistencyBuilder_.dispose();
                     consistencyBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -17238,6 +17777,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.Consistency consistency = 1;</code>
              */
             public com.authzed.api.v1.PermissionService.Consistency.Builder getConsistencyBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getConsistencyFieldBuilder().getBuilder();
             }
@@ -17281,7 +17821,7 @@ public final class PermissionService {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -17316,10 +17856,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -17334,10 +17875,11 @@ public final class PermissionService {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -17351,15 +17893,18 @@ public final class PermissionService {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
+                }
+                if (resource_ != null) {
+                    bitField0_ |= 0x00000002;
+                    onChanged();
                 }
                 return this;
             }
@@ -17373,13 +17918,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ObjectReference resource = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -17392,6 +17937,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ObjectReference resource = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -17490,6 +18036,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -17506,6 +18053,7 @@ public final class PermissionService {
              */
             public Builder clearPermission() {
                 permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -17527,6 +18075,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 permission_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -17592,6 +18141,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 subjectObjectType_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -17608,6 +18158,7 @@ public final class PermissionService {
              */
             public Builder clearSubjectObjectType() {
                 subjectObjectType_ = getDefaultInstance().getSubjectObjectType();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -17629,6 +18180,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 subjectObjectType_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -17691,6 +18243,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 optionalSubjectRelation_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -17706,6 +18259,7 @@ public final class PermissionService {
              */
             public Builder clearOptionalSubjectRelation() {
                 optionalSubjectRelation_ = getDefaultInstance().getOptionalSubjectRelation();
+                bitField0_ = (bitField0_ & ~0x00000010);
                 onChanged();
                 return this;
             }
@@ -17726,6 +18280,7 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 optionalSubjectRelation_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -17910,18 +18465,13 @@ public final class PermissionService {
 
         private LookupSubjectsResponse() {
             subjectObjectId_ = "";
-            excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.emptyList();
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new LookupSubjectsResponse();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -17935,6 +18485,8 @@ public final class PermissionService {
                             com.authzed.api.v1.PermissionService.LookupSubjectsResponse.Builder.class);
         }
 
+        private int bitField0_;
+
         public static final int LOOKED_UP_AT_FIELD_NUMBER = 1;
 
         private com.authzed.api.v1.Core.ZedToken lookedUpAt_;
@@ -17946,7 +18498,7 @@ public final class PermissionService {
          */
         @java.lang.Override
         public boolean hasLookedUpAt() {
-            return lookedUpAt_ != null;
+            return ((bitField0_ & 0x00000001) != 0);
         }
 
         /**
@@ -17964,12 +18516,13 @@ public final class PermissionService {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getLookedUpAtOrBuilder() {
-            return getLookedUpAt();
+            return lookedUpAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : lookedUpAt_;
         }
 
         public static final int SUBJECT_OBJECT_ID_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object subjectObjectId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object subjectObjectId_ = "";
 
         /**
          * <pre>
@@ -18018,7 +18571,9 @@ public final class PermissionService {
 
         public static final int EXCLUDED_SUBJECT_IDS_FIELD_NUMBER = 3;
 
-        private com.google.protobuf.LazyStringList excludedSubjectIds_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList
+                .emptyList();
 
         /**
          * <pre>
@@ -18097,7 +18652,7 @@ public final class PermissionService {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-            if (lookedUpAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 output.writeMessage(1, getLookedUpAt());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(subjectObjectId_)) {
@@ -18115,7 +18670,7 @@ public final class PermissionService {
             if (size != -1)
                 return size;
             size = 0;
-            if (lookedUpAt_ != null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getLookedUpAt());
             }
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(subjectObjectId_)) {
@@ -18292,24 +18847,31 @@ public final class PermissionService {
 
             // Construct using com.authzed.api.v1.PermissionService.LookupSubjectsResponse.newBuilder()
             private Builder() {
+                maybeForceBuilderInitialization();
             }
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+                    getLookedUpAtFieldBuilder();
+                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (lookedUpAtBuilder_ == null) {
-                    lookedUpAt_ = null;
-                } else {
-                    lookedUpAt_ = null;
+                bitField0_ = 0;
+                lookedUpAt_ = null;
+                if (lookedUpAtBuilder_ != null) {
+                    lookedUpAtBuilder_.dispose();
                     lookedUpAtBuilder_ = null;
                 }
                 subjectObjectId_ = "";
-                excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 return this;
             }
 
@@ -18336,20 +18898,28 @@ public final class PermissionService {
             public com.authzed.api.v1.PermissionService.LookupSubjectsResponse buildPartial() {
                 com.authzed.api.v1.PermissionService.LookupSubjectsResponse result = new com.authzed.api.v1.PermissionService.LookupSubjectsResponse(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (lookedUpAtBuilder_ == null) {
-                    result.lookedUpAt_ = lookedUpAt_;
-                } else {
-                    result.lookedUpAt_ = lookedUpAtBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.subjectObjectId_ = subjectObjectId_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    excludedSubjectIds_ = excludedSubjectIds_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
-                }
-                result.excludedSubjectIds_ = excludedSubjectIds_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.PermissionService.LookupSubjectsResponse result) {
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.lookedUpAt_ = lookedUpAtBuilder_ == null ? lookedUpAt_ : lookedUpAtBuilder_.build();
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.subjectObjectId_ = subjectObjectId_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    excludedSubjectIds_.makeImmutable();
+                    result.excludedSubjectIds_ = excludedSubjectIds_;
+                }
+                result.bitField0_ |= to_bitField0_;
             }
 
             @java.lang.Override
@@ -18401,12 +18971,13 @@ public final class PermissionService {
                 }
                 if (!other.getSubjectObjectId().isEmpty()) {
                     subjectObjectId_ = other.subjectObjectId_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.excludedSubjectIds_.isEmpty()) {
                     if (excludedSubjectIds_.isEmpty()) {
                         excludedSubjectIds_ = other.excludedSubjectIds_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000004;
                     } else {
                         ensureExcludedSubjectIdsIsMutable();
                         excludedSubjectIds_.addAll(other.excludedSubjectIds_);
@@ -18439,11 +19010,13 @@ public final class PermissionService {
                                 break;
                             case 10: {
                                 input.readMessage(getLookedUpAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 subjectObjectId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -18486,7 +19059,7 @@ public final class PermissionService {
              * @return Whether the lookedUpAt field is set.
              */
             public boolean hasLookedUpAt() {
-                return lookedUpAtBuilder_ != null || lookedUpAt_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -18511,10 +19084,11 @@ public final class PermissionService {
                         throw new NullPointerException();
                     }
                     lookedUpAt_ = value;
-                    onChanged();
                 } else {
                     lookedUpAtBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -18524,10 +19098,11 @@ public final class PermissionService {
             public Builder setLookedUpAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (lookedUpAtBuilder_ == null) {
                     lookedUpAt_ = builderForValue.build();
-                    onChanged();
                 } else {
                     lookedUpAtBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -18536,14 +19111,18 @@ public final class PermissionService {
              */
             public Builder mergeLookedUpAt(com.authzed.api.v1.Core.ZedToken value) {
                 if (lookedUpAtBuilder_ == null) {
-                    if (lookedUpAt_ != null) {
-                        lookedUpAt_ = com.authzed.api.v1.Core.ZedToken.newBuilder(lookedUpAt_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && lookedUpAt_ != null
+                            && lookedUpAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getLookedUpAtBuilder().mergeFrom(value);
                     } else {
                         lookedUpAt_ = value;
                     }
-                    onChanged();
                 } else {
                     lookedUpAtBuilder_.mergeFrom(value);
+                }
+                if (lookedUpAt_ != null) {
+                    bitField0_ |= 0x00000001;
+                    onChanged();
                 }
                 return this;
             }
@@ -18552,13 +19131,13 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public Builder clearLookedUpAt() {
-                if (lookedUpAtBuilder_ == null) {
-                    lookedUpAt_ = null;
-                    onChanged();
-                } else {
-                    lookedUpAt_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                lookedUpAt_ = null;
+                if (lookedUpAtBuilder_ != null) {
+                    lookedUpAtBuilder_.dispose();
                     lookedUpAtBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -18566,6 +19145,7 @@ public final class PermissionService {
              * <code>.authzed.api.v1.ZedToken looked_up_at = 1;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getLookedUpAtBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getLookedUpAtFieldBuilder().getBuilder();
             }
@@ -18654,6 +19234,7 @@ public final class PermissionService {
                     throw new NullPointerException();
                 }
                 subjectObjectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -18670,6 +19251,7 @@ public final class PermissionService {
              */
             public Builder clearSubjectObjectId() {
                 subjectObjectId_ = getDefaultInstance().getSubjectObjectId();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -18691,17 +19273,19 @@ public final class PermissionService {
                 }
                 checkByteStringIsUtf8(value);
                 subjectObjectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
 
             private void ensureExcludedSubjectIdsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!excludedSubjectIds_.isModifiable()) {
                     excludedSubjectIds_ = new com.google.protobuf.LazyStringArrayList(excludedSubjectIds_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000004;
             }
 
             /**
@@ -18716,7 +19300,8 @@ public final class PermissionService {
              * @return A list containing the excludedSubjectIds.
              */
             public com.google.protobuf.ProtocolStringList getExcludedSubjectIdsList() {
-                return excludedSubjectIds_.getUnmodifiableView();
+                excludedSubjectIds_.makeImmutable();
+                return excludedSubjectIds_;
             }
 
             /**
@@ -18785,6 +19370,7 @@ public final class PermissionService {
                 }
                 ensureExcludedSubjectIdsIsMutable();
                 excludedSubjectIds_.set(index, value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -18807,6 +19393,7 @@ public final class PermissionService {
                 }
                 ensureExcludedSubjectIdsIsMutable();
                 excludedSubjectIds_.add(value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -18826,6 +19413,7 @@ public final class PermissionService {
             public Builder addAllExcludedSubjectIds(java.lang.Iterable<java.lang.String> values) {
                 ensureExcludedSubjectIdsIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, excludedSubjectIds_);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -18842,8 +19430,9 @@ public final class PermissionService {
              * @return This builder for chaining.
              */
             public Builder clearExcludedSubjectIds() {
-                excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                excludedSubjectIds_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000004);
+                ;
                 onChanged();
                 return this;
             }
@@ -18867,6 +19456,7 @@ public final class PermissionService {
                 checkByteStringIsUtf8(value);
                 ensureExcludedSubjectIdsIsMutable();
                 excludedSubjectIds_.add(value);
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }

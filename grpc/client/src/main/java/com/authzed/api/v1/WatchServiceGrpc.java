@@ -4,14 +4,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.50.2)", comments = "Source: authzed/api/v1/watch_service.proto")
+@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.59.0)", comments = "Source: authzed/api/v1/watch_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WatchServiceGrpc {
 
     private WatchServiceGrpc() {
     }
 
-    public static final String SERVICE_NAME = "authzed.api.v1.WatchService";
+    public static final java.lang.String SERVICE_NAME = "authzed.api.v1.WatchService";
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> getWatchMethod;
@@ -81,26 +81,29 @@ public final class WatchServiceGrpc {
 
     /**
      */
-    public static abstract class WatchServiceImplBase implements io.grpc.BindableService {
+    public interface AsyncService {
 
         /**
          */
-        public void watch(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request,
+        default void watch(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWatchMethod(), responseObserver);
-        }
-
-        @java.lang.Override
-        public io.grpc.ServerServiceDefinition bindService() {
-            return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-                    .addMethod(getWatchMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse>(
-                                    this, METHODID_WATCH)))
-                    .build();
         }
     }
 
     /**
+     * Base class for the server implementation of the service WatchService.
+     */
+    public static abstract class WatchServiceImplBase implements io.grpc.BindableService, AsyncService {
+
+        @java.lang.Override
+        public io.grpc.ServerServiceDefinition bindService() {
+            return WatchServiceGrpc.bindService(this);
+        }
+    }
+
+    /**
+     * A stub to allow clients to do asynchronous rpc calls to service WatchService.
      */
     public static class WatchServiceStub extends io.grpc.stub.AbstractAsyncStub<WatchServiceStub> {
 
@@ -123,6 +126,7 @@ public final class WatchServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do synchronous rpc calls to service WatchService.
      */
     public static class WatchServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<WatchServiceBlockingStub> {
 
@@ -145,6 +149,7 @@ public final class WatchServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do ListenableFuture-style rpc calls to service WatchService.
      */
     public static class WatchServiceFutureStub extends io.grpc.stub.AbstractFutureStub<WatchServiceFutureStub> {
 
@@ -164,11 +169,11 @@ public final class WatchServiceGrpc {
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>, io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
 
-        private final WatchServiceImplBase serviceImpl;
+        private final AsyncService serviceImpl;
 
         private final int methodId;
 
-        MethodHandlers(WatchServiceImplBase serviceImpl, int methodId) {
+        MethodHandlers(AsyncService serviceImpl, int methodId) {
             this.serviceImpl = serviceImpl;
             this.methodId = methodId;
         }
@@ -194,6 +199,14 @@ public final class WatchServiceGrpc {
                     throw new AssertionError();
             }
         }
+    }
+
+    public static io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+        return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+                .addMethod(getWatchMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+                        new MethodHandlers<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse>(
+                                service, METHODID_WATCH)))
+                .build();
     }
 
     private static abstract class WatchServiceBaseDescriptorSupplier
@@ -222,9 +235,9 @@ public final class WatchServiceGrpc {
     private static final class WatchServiceMethodDescriptorSupplier extends WatchServiceBaseDescriptorSupplier
             implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
 
-        private final String methodName;
+        private final java.lang.String methodName;
 
-        WatchServiceMethodDescriptorSupplier(String methodName) {
+        WatchServiceMethodDescriptorSupplier(java.lang.String methodName) {
             this.methodName = methodName;
         }
 
