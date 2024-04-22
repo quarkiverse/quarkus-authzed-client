@@ -4,7 +4,7 @@ import io.grpc.BindableService;
 import io.quarkus.grpc.GrpcService;
 import io.quarkus.grpc.MutinyBean;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
 public class PermissionsServiceBean extends MutinyPermissionsServiceGrpc.PermissionsServiceImplBase
         implements BindableService, MutinyBean {
 
@@ -39,6 +39,16 @@ public class PermissionsServiceBean extends MutinyPermissionsServiceGrpc.Permiss
             com.authzed.api.v1.PermissionService.CheckPermissionRequest request) {
         try {
             return delegate.checkPermission(request);
+        } catch (UnsupportedOperationException e) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+    }
+
+    @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+        try {
+            return delegate.checkBulkPermissions(request);
         } catch (UnsupportedOperationException e) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }

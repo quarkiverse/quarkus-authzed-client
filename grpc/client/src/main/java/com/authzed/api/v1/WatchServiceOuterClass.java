@@ -18,6 +18,12 @@ public final class WatchServiceOuterClass {
             com.google.protobuf.MessageOrBuilder {
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @return A list containing the optionalObjectTypes.
@@ -25,6 +31,12 @@ public final class WatchServiceOuterClass {
         java.util.List<java.lang.String> getOptionalObjectTypesList();
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The count of optionalObjectTypes.
@@ -32,6 +44,12 @@ public final class WatchServiceOuterClass {
         int getOptionalObjectTypesCount();
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @param index The index of the element to return.
@@ -40,6 +58,12 @@ public final class WatchServiceOuterClass {
         java.lang.String getOptionalObjectTypes(int index);
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @param index The index of the value to return.
@@ -48,6 +72,16 @@ public final class WatchServiceOuterClass {
         com.google.protobuf.ByteString getOptionalObjectTypesBytes(int index);
 
         /**
+         * <pre>
+         * optional_start_cursor is the ZedToken holding the point-in-time at
+         * which to start watching for changes.
+         * If not specified, the watch will begin at the current head revision
+         * of the datastore, returning any updates that occur after the caller
+         * makes the request.
+         * Note that if this cursor references a point-in-time containing data
+         * that has been garbage collected, an error will be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
          *
          * @return Whether the optionalStartCursor field is set.
@@ -55,6 +89,16 @@ public final class WatchServiceOuterClass {
         boolean hasOptionalStartCursor();
 
         /**
+         * <pre>
+         * optional_start_cursor is the ZedToken holding the point-in-time at
+         * which to start watching for changes.
+         * If not specified, the watch will begin at the current head revision
+         * of the datastore, returning any updates that occur after the caller
+         * makes the request.
+         * Note that if this cursor references a point-in-time containing data
+         * that has been garbage collected, an error will be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
          *
          * @return The optionalStartCursor.
@@ -62,9 +106,84 @@ public final class WatchServiceOuterClass {
         com.authzed.api.v1.Core.ZedToken getOptionalStartCursor();
 
         /**
+         * <pre>
+         * optional_start_cursor is the ZedToken holding the point-in-time at
+         * which to start watching for changes.
+         * If not specified, the watch will begin at the current head revision
+         * of the datastore, returning any updates that occur after the caller
+         * makes the request.
+         * Note that if this cursor references a point-in-time containing data
+         * that has been garbage collected, an error will be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
          */
         com.authzed.api.v1.Core.ZedTokenOrBuilder getOptionalStartCursorOrBuilder();
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        java.util.List<com.authzed.api.v1.PermissionService.RelationshipFilter> getOptionalRelationshipFiltersList();
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        com.authzed.api.v1.PermissionService.RelationshipFilter getOptionalRelationshipFilters(int index);
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        int getOptionalRelationshipFiltersCount();
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        java.util.List<? extends com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder> getOptionalRelationshipFiltersOrBuilderList();
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getOptionalRelationshipFiltersOrBuilder(int index);
     }
 
     /**
@@ -87,18 +206,14 @@ public final class WatchServiceOuterClass {
         }
 
         private WatchRequest() {
-            optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+            optionalRelationshipFilters_ = java.util.Collections.emptyList();
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new WatchRequest();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -114,9 +229,17 @@ public final class WatchServiceOuterClass {
 
         public static final int OPTIONAL_OBJECT_TYPES_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.LazyStringList optionalObjectTypes_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList
+                .emptyList();
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @return A list containing the optionalObjectTypes.
@@ -126,6 +249,12 @@ public final class WatchServiceOuterClass {
         }
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The count of optionalObjectTypes.
@@ -135,6 +264,12 @@ public final class WatchServiceOuterClass {
         }
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @param index The index of the element to return.
@@ -145,6 +280,12 @@ public final class WatchServiceOuterClass {
         }
 
         /**
+         * <pre>
+         * optional_object_types is a filter of resource object types to watch for changes.
+         * If specified, only changes to the specified object types will be returned and
+         * optional_relationship_filters cannot be used.
+         * </pre>
+         *
          * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
          *
          * @param index The index of the value to return.
@@ -159,6 +300,16 @@ public final class WatchServiceOuterClass {
         private com.authzed.api.v1.Core.ZedToken optionalStartCursor_;
 
         /**
+         * <pre>
+         * optional_start_cursor is the ZedToken holding the point-in-time at
+         * which to start watching for changes.
+         * If not specified, the watch will begin at the current head revision
+         * of the datastore, returning any updates that occur after the caller
+         * makes the request.
+         * Note that if this cursor references a point-in-time containing data
+         * that has been garbage collected, an error will be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
          *
          * @return Whether the optionalStartCursor field is set.
@@ -169,6 +320,16 @@ public final class WatchServiceOuterClass {
         }
 
         /**
+         * <pre>
+         * optional_start_cursor is the ZedToken holding the point-in-time at
+         * which to start watching for changes.
+         * If not specified, the watch will begin at the current head revision
+         * of the datastore, returning any updates that occur after the caller
+         * makes the request.
+         * Note that if this cursor references a point-in-time containing data
+         * that has been garbage collected, an error will be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
          *
          * @return The optionalStartCursor.
@@ -179,11 +340,107 @@ public final class WatchServiceOuterClass {
         }
 
         /**
+         * <pre>
+         * optional_start_cursor is the ZedToken holding the point-in-time at
+         * which to start watching for changes.
+         * If not specified, the watch will begin at the current head revision
+         * of the datastore, returning any updates that occur after the caller
+         * makes the request.
+         * Note that if this cursor references a point-in-time containing data
+         * that has been garbage collected, an error will be returned.
+         * </pre>
+         *
          * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getOptionalStartCursorOrBuilder() {
-            return getOptionalStartCursor();
+            return optionalStartCursor_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : optionalStartCursor_;
+        }
+
+        public static final int OPTIONAL_RELATIONSHIP_FILTERS_FIELD_NUMBER = 3;
+
+        @SuppressWarnings("serial")
+        private java.util.List<com.authzed.api.v1.PermissionService.RelationshipFilter> optionalRelationshipFilters_;
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.authzed.api.v1.PermissionService.RelationshipFilter> getOptionalRelationshipFiltersList() {
+            return optionalRelationshipFilters_;
+        }
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder> getOptionalRelationshipFiltersOrBuilderList() {
+            return optionalRelationshipFilters_;
+        }
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        @java.lang.Override
+        public int getOptionalRelationshipFiltersCount() {
+            return optionalRelationshipFilters_.size();
+        }
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.RelationshipFilter getOptionalRelationshipFilters(int index) {
+            return optionalRelationshipFilters_.get(index);
+        }
+
+        /**
+         * <pre>
+         * optional_relationship_filters, if specified, indicates the
+         * filter(s) to apply to each relationship to be returned by watch.
+         * The relationship will be returned as long as at least one filter matches,
+         * this allows clients to match relationships on multiple filters on a single watch call.
+         * If specified, optional_object_types cannot be used.
+         * </pre>
+         *
+         * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getOptionalRelationshipFiltersOrBuilder(
+                int index) {
+            return optionalRelationshipFilters_.get(index);
         }
 
         private byte memoizedIsInitialized = -1;
@@ -207,6 +464,9 @@ public final class WatchServiceOuterClass {
             if (optionalStartCursor_ != null) {
                 output.writeMessage(2, getOptionalStartCursor());
             }
+            for (int i = 0; i < optionalRelationshipFilters_.size(); i++) {
+                output.writeMessage(3, optionalRelationshipFilters_.get(i));
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -226,6 +486,9 @@ public final class WatchServiceOuterClass {
             }
             if (optionalStartCursor_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getOptionalStartCursor());
+            }
+            for (int i = 0; i < optionalRelationshipFilters_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, optionalRelationshipFilters_.get(i));
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -249,6 +512,8 @@ public final class WatchServiceOuterClass {
                 if (!getOptionalStartCursor().equals(other.getOptionalStartCursor()))
                     return false;
             }
+            if (!getOptionalRelationshipFiltersList().equals(other.getOptionalRelationshipFiltersList()))
+                return false;
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -268,6 +533,10 @@ public final class WatchServiceOuterClass {
             if (hasOptionalStartCursor()) {
                 hash = (37 * hash) + OPTIONAL_START_CURSOR_FIELD_NUMBER;
                 hash = (53 * hash) + getOptionalStartCursor().hashCode();
+            }
+            if (getOptionalRelationshipFiltersCount() > 0) {
+                hash = (37 * hash) + OPTIONAL_RELATIONSHIP_FILTERS_FIELD_NUMBER;
+                hash = (53 * hash) + getOptionalRelationshipFiltersList().hashCode();
             }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
@@ -396,14 +665,20 @@ public final class WatchServiceOuterClass {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                if (optionalStartCursorBuilder_ == null) {
-                    optionalStartCursor_ = null;
-                } else {
-                    optionalStartCursor_ = null;
+                bitField0_ = 0;
+                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                optionalStartCursor_ = null;
+                if (optionalStartCursorBuilder_ != null) {
+                    optionalStartCursorBuilder_.dispose();
                     optionalStartCursorBuilder_ = null;
                 }
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    optionalRelationshipFilters_ = java.util.Collections.emptyList();
+                } else {
+                    optionalRelationshipFilters_ = null;
+                    optionalRelationshipFiltersBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
                 return this;
             }
 
@@ -430,50 +705,36 @@ public final class WatchServiceOuterClass {
             public com.authzed.api.v1.WatchServiceOuterClass.WatchRequest buildPartial() {
                 com.authzed.api.v1.WatchServiceOuterClass.WatchRequest result = new com.authzed.api.v1.WatchServiceOuterClass.WatchRequest(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    optionalObjectTypes_ = optionalObjectTypes_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
-                }
-                result.optionalObjectTypes_ = optionalObjectTypes_;
-                if (optionalStartCursorBuilder_ == null) {
-                    result.optionalStartCursor_ = optionalStartCursor_;
-                } else {
-                    result.optionalStartCursor_ = optionalStartCursorBuilder_.build();
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
+            private void buildPartialRepeatedFields(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest result) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0)) {
+                        optionalRelationshipFilters_ = java.util.Collections.unmodifiableList(optionalRelationshipFilters_);
+                        bitField0_ = (bitField0_ & ~0x00000004);
+                    }
+                    result.optionalRelationshipFilters_ = optionalRelationshipFilters_;
+                } else {
+                    result.optionalRelationshipFilters_ = optionalRelationshipFiltersBuilder_.build();
+                }
             }
 
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    optionalObjectTypes_.makeImmutable();
+                    result.optionalObjectTypes_ = optionalObjectTypes_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.optionalStartCursor_ = optionalStartCursorBuilder_ == null ? optionalStartCursor_
+                            : optionalStartCursorBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -492,7 +753,7 @@ public final class WatchServiceOuterClass {
                 if (!other.optionalObjectTypes_.isEmpty()) {
                     if (optionalObjectTypes_.isEmpty()) {
                         optionalObjectTypes_ = other.optionalObjectTypes_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000001;
                     } else {
                         ensureOptionalObjectTypesIsMutable();
                         optionalObjectTypes_.addAll(other.optionalObjectTypes_);
@@ -501,6 +762,32 @@ public final class WatchServiceOuterClass {
                 }
                 if (other.hasOptionalStartCursor()) {
                     mergeOptionalStartCursor(other.getOptionalStartCursor());
+                }
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    if (!other.optionalRelationshipFilters_.isEmpty()) {
+                        if (optionalRelationshipFilters_.isEmpty()) {
+                            optionalRelationshipFilters_ = other.optionalRelationshipFilters_;
+                            bitField0_ = (bitField0_ & ~0x00000004);
+                        } else {
+                            ensureOptionalRelationshipFiltersIsMutable();
+                            optionalRelationshipFilters_.addAll(other.optionalRelationshipFilters_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.optionalRelationshipFilters_.isEmpty()) {
+                        if (optionalRelationshipFiltersBuilder_.isEmpty()) {
+                            optionalRelationshipFiltersBuilder_.dispose();
+                            optionalRelationshipFiltersBuilder_ = null;
+                            optionalRelationshipFilters_ = other.optionalRelationshipFilters_;
+                            bitField0_ = (bitField0_ & ~0x00000004);
+                            optionalRelationshipFiltersBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                                    ? getOptionalRelationshipFiltersFieldBuilder()
+                                    : null;
+                        } else {
+                            optionalRelationshipFiltersBuilder_.addAllMessages(other.optionalRelationshipFilters_);
+                        }
+                    }
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -535,9 +822,22 @@ public final class WatchServiceOuterClass {
                             // case 10
                             case 18: {
                                 input.readMessage(getOptionalStartCursorFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
+                            case 26: {
+                                com.authzed.api.v1.PermissionService.RelationshipFilter m = input.readMessage(
+                                        com.authzed.api.v1.PermissionService.RelationshipFilter.parser(), extensionRegistry);
+                                if (optionalRelationshipFiltersBuilder_ == null) {
+                                    ensureOptionalRelationshipFiltersIsMutable();
+                                    optionalRelationshipFilters_.add(m);
+                                } else {
+                                    optionalRelationshipFiltersBuilder_.addMessage(m);
+                                }
+                                break;
+                            }
+                            // case 26
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -560,25 +860,39 @@ public final class WatchServiceOuterClass {
 
             private int bitField0_;
 
-            private com.google.protobuf.LazyStringList optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
 
             private void ensureOptionalObjectTypesIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!optionalObjectTypes_.isModifiable()) {
                     optionalObjectTypes_ = new com.google.protobuf.LazyStringArrayList(optionalObjectTypes_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000001;
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @return A list containing the optionalObjectTypes.
              */
             public com.google.protobuf.ProtocolStringList getOptionalObjectTypesList() {
-                return optionalObjectTypes_.getUnmodifiableView();
+                optionalObjectTypes_.makeImmutable();
+                return optionalObjectTypes_;
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @return The count of optionalObjectTypes.
@@ -588,6 +902,12 @@ public final class WatchServiceOuterClass {
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @param index The index of the element to return.
@@ -598,6 +918,12 @@ public final class WatchServiceOuterClass {
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @param index The index of the value to return.
@@ -608,6 +934,12 @@ public final class WatchServiceOuterClass {
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @param index The index to set the value at.
@@ -620,11 +952,18 @@ public final class WatchServiceOuterClass {
                 }
                 ensureOptionalObjectTypesIsMutable();
                 optionalObjectTypes_.set(index, value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @param value The optionalObjectTypes to add.
@@ -636,11 +975,18 @@ public final class WatchServiceOuterClass {
                 }
                 ensureOptionalObjectTypesIsMutable();
                 optionalObjectTypes_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @param values The optionalObjectTypes to add.
@@ -649,23 +995,37 @@ public final class WatchServiceOuterClass {
             public Builder addAllOptionalObjectTypes(java.lang.Iterable<java.lang.String> values) {
                 ensureOptionalObjectTypesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, optionalObjectTypes_);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
              */
             public Builder clearOptionalObjectTypes() {
-                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                optionalObjectTypes_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000001);
+                ;
                 onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_object_types is a filter of resource object types to watch for changes.
+             * If specified, only changes to the specified object types will be returned and
+             * optional_relationship_filters cannot be used.
+             * </pre>
+             *
              * <code>repeated string optional_object_types = 1 [(.validate.rules) = { ... }</code>
              *
              * @param value The bytes of the optionalObjectTypes to add.
@@ -678,6 +1038,7 @@ public final class WatchServiceOuterClass {
                 checkByteStringIsUtf8(value);
                 ensureOptionalObjectTypesIsMutable();
                 optionalObjectTypes_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -687,15 +1048,35 @@ public final class WatchServiceOuterClass {
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> optionalStartCursorBuilder_;
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              *
              * @return Whether the optionalStartCursor field is set.
              */
             public boolean hasOptionalStartCursor() {
-                return optionalStartCursorBuilder_ != null || optionalStartCursor_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              *
              * @return The optionalStartCursor.
@@ -710,6 +1091,16 @@ public final class WatchServiceOuterClass {
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public Builder setOptionalStartCursor(com.authzed.api.v1.Core.ZedToken value) {
@@ -718,67 +1109,121 @@ public final class WatchServiceOuterClass {
                         throw new NullPointerException();
                     }
                     optionalStartCursor_ = value;
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public Builder setOptionalStartCursor(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (optionalStartCursorBuilder_ == null) {
                     optionalStartCursor_ = builderForValue.build();
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public Builder mergeOptionalStartCursor(com.authzed.api.v1.Core.ZedToken value) {
                 if (optionalStartCursorBuilder_ == null) {
-                    if (optionalStartCursor_ != null) {
-                        optionalStartCursor_ = com.authzed.api.v1.Core.ZedToken.newBuilder(optionalStartCursor_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && optionalStartCursor_ != null
+                            && optionalStartCursor_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getOptionalStartCursorBuilder().mergeFrom(value);
                     } else {
                         optionalStartCursor_ = value;
                     }
-                    onChanged();
                 } else {
                     optionalStartCursorBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public Builder clearOptionalStartCursor() {
-                if (optionalStartCursorBuilder_ == null) {
-                    optionalStartCursor_ = null;
-                    onChanged();
-                } else {
-                    optionalStartCursor_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                optionalStartCursor_ = null;
+                if (optionalStartCursorBuilder_ != null) {
+                    optionalStartCursorBuilder_.dispose();
                     optionalStartCursorBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getOptionalStartCursorBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getOptionalStartCursorFieldBuilder().getBuilder();
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             public com.authzed.api.v1.Core.ZedTokenOrBuilder getOptionalStartCursorOrBuilder() {
@@ -791,6 +1236,16 @@ public final class WatchServiceOuterClass {
             }
 
             /**
+             * <pre>
+             * optional_start_cursor is the ZedToken holding the point-in-time at
+             * which to start watching for changes.
+             * If not specified, the watch will begin at the current head revision
+             * of the datastore, returning any updates that occur after the caller
+             * makes the request.
+             * Note that if this cursor references a point-in-time containing data
+             * that has been garbage collected, an error will be returned.
+             * </pre>
+             *
              * <code>.authzed.api.v1.ZedToken optional_start_cursor = 2;</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getOptionalStartCursorFieldBuilder() {
@@ -800,6 +1255,401 @@ public final class WatchServiceOuterClass {
                     optionalStartCursor_ = null;
                 }
                 return optionalStartCursorBuilder_;
+            }
+
+            private java.util.List<com.authzed.api.v1.PermissionService.RelationshipFilter> optionalRelationshipFilters_ = java.util.Collections
+                    .emptyList();
+
+            private void ensureOptionalRelationshipFiltersIsMutable() {
+                if (!((bitField0_ & 0x00000004) != 0)) {
+                    optionalRelationshipFilters_ = new java.util.ArrayList<com.authzed.api.v1.PermissionService.RelationshipFilter>(
+                            optionalRelationshipFilters_);
+                    bitField0_ |= 0x00000004;
+                }
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.RelationshipFilter, com.authzed.api.v1.PermissionService.RelationshipFilter.Builder, com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder> optionalRelationshipFiltersBuilder_;
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.RelationshipFilter> getOptionalRelationshipFiltersList() {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(optionalRelationshipFilters_);
+                } else {
+                    return optionalRelationshipFiltersBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public int getOptionalRelationshipFiltersCount() {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    return optionalRelationshipFilters_.size();
+                } else {
+                    return optionalRelationshipFiltersBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public com.authzed.api.v1.PermissionService.RelationshipFilter getOptionalRelationshipFilters(int index) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    return optionalRelationshipFilters_.get(index);
+                } else {
+                    return optionalRelationshipFiltersBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder setOptionalRelationshipFilters(int index,
+                    com.authzed.api.v1.PermissionService.RelationshipFilter value) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    optionalRelationshipFilters_.set(index, value);
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder setOptionalRelationshipFilters(int index,
+                    com.authzed.api.v1.PermissionService.RelationshipFilter.Builder builderForValue) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    optionalRelationshipFilters_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder addOptionalRelationshipFilters(com.authzed.api.v1.PermissionService.RelationshipFilter value) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    optionalRelationshipFilters_.add(value);
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder addOptionalRelationshipFilters(int index,
+                    com.authzed.api.v1.PermissionService.RelationshipFilter value) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    optionalRelationshipFilters_.add(index, value);
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder addOptionalRelationshipFilters(
+                    com.authzed.api.v1.PermissionService.RelationshipFilter.Builder builderForValue) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    optionalRelationshipFilters_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder addOptionalRelationshipFilters(int index,
+                    com.authzed.api.v1.PermissionService.RelationshipFilter.Builder builderForValue) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    optionalRelationshipFilters_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder addAllOptionalRelationshipFilters(
+                    java.lang.Iterable<? extends com.authzed.api.v1.PermissionService.RelationshipFilter> values) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(values, optionalRelationshipFilters_);
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder clearOptionalRelationshipFilters() {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    optionalRelationshipFilters_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000004);
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public Builder removeOptionalRelationshipFilters(int index) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    ensureOptionalRelationshipFiltersIsMutable();
+                    optionalRelationshipFilters_.remove(index);
+                    onChanged();
+                } else {
+                    optionalRelationshipFiltersBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public com.authzed.api.v1.PermissionService.RelationshipFilter.Builder getOptionalRelationshipFiltersBuilder(
+                    int index) {
+                return getOptionalRelationshipFiltersFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder getOptionalRelationshipFiltersOrBuilder(
+                    int index) {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    return optionalRelationshipFilters_.get(index);
+                } else {
+                    return optionalRelationshipFiltersBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public java.util.List<? extends com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder> getOptionalRelationshipFiltersOrBuilderList() {
+                if (optionalRelationshipFiltersBuilder_ != null) {
+                    return optionalRelationshipFiltersBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(optionalRelationshipFilters_);
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public com.authzed.api.v1.PermissionService.RelationshipFilter.Builder addOptionalRelationshipFiltersBuilder() {
+                return getOptionalRelationshipFiltersFieldBuilder()
+                        .addBuilder(com.authzed.api.v1.PermissionService.RelationshipFilter.getDefaultInstance());
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public com.authzed.api.v1.PermissionService.RelationshipFilter.Builder addOptionalRelationshipFiltersBuilder(
+                    int index) {
+                return getOptionalRelationshipFiltersFieldBuilder().addBuilder(index,
+                        com.authzed.api.v1.PermissionService.RelationshipFilter.getDefaultInstance());
+            }
+
+            /**
+             * <pre>
+             * optional_relationship_filters, if specified, indicates the
+             * filter(s) to apply to each relationship to be returned by watch.
+             * The relationship will be returned as long as at least one filter matches,
+             * this allows clients to match relationships on multiple filters on a single watch call.
+             * If specified, optional_object_types cannot be used.
+             * </pre>
+             *
+             * <code>repeated .authzed.api.v1.RelationshipFilter optional_relationship_filters = 3;</code>
+             */
+            public java.util.List<com.authzed.api.v1.PermissionService.RelationshipFilter.Builder> getOptionalRelationshipFiltersBuilderList() {
+                return getOptionalRelationshipFiltersFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.RelationshipFilter, com.authzed.api.v1.PermissionService.RelationshipFilter.Builder, com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder> getOptionalRelationshipFiltersFieldBuilder() {
+                if (optionalRelationshipFiltersBuilder_ == null) {
+                    optionalRelationshipFiltersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.PermissionService.RelationshipFilter, com.authzed.api.v1.PermissionService.RelationshipFilter.Builder, com.authzed.api.v1.PermissionService.RelationshipFilterOrBuilder>(
+                            optionalRelationshipFilters_, ((bitField0_ & 0x00000004) != 0), getParentForChildren(), isClean());
+                    optionalRelationshipFilters_ = null;
+                }
+                return optionalRelationshipFiltersBuilder_;
             }
 
             @java.lang.Override
@@ -939,11 +1789,6 @@ public final class WatchServiceOuterClass {
             return new WatchResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.WatchServiceOuterClass.internal_static_authzed_api_v1_WatchResponse_descriptor;
         }
@@ -957,6 +1802,7 @@ public final class WatchServiceOuterClass {
 
         public static final int UPDATES_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.Core.RelationshipUpdate> updates_;
 
         /**
@@ -1028,7 +1874,7 @@ public final class WatchServiceOuterClass {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ZedTokenOrBuilder getChangesThroughOrBuilder() {
-            return getChangesThrough();
+            return changesThrough_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : changesThrough_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -1237,6 +2083,7 @@ public final class WatchServiceOuterClass {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (updatesBuilder_ == null) {
                     updates_ = java.util.Collections.emptyList();
                 } else {
@@ -1244,10 +2091,9 @@ public final class WatchServiceOuterClass {
                     updatesBuilder_.clear();
                 }
                 bitField0_ = (bitField0_ & ~0x00000001);
-                if (changesThroughBuilder_ == null) {
-                    changesThrough_ = null;
-                } else {
-                    changesThrough_ = null;
+                changesThrough_ = null;
+                if (changesThroughBuilder_ != null) {
+                    changesThroughBuilder_.dispose();
                     changesThroughBuilder_ = null;
                 }
                 return this;
@@ -1276,7 +2122,15 @@ public final class WatchServiceOuterClass {
             public com.authzed.api.v1.WatchServiceOuterClass.WatchResponse buildPartial() {
                 com.authzed.api.v1.WatchServiceOuterClass.WatchResponse result = new com.authzed.api.v1.WatchServiceOuterClass.WatchResponse(
                         this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.WatchServiceOuterClass.WatchResponse result) {
                 if (updatesBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         updates_ = java.util.Collections.unmodifiableList(updates_);
@@ -1286,44 +2140,13 @@ public final class WatchServiceOuterClass {
                 } else {
                     result.updates_ = updatesBuilder_.build();
                 }
-                if (changesThroughBuilder_ == null) {
-                    result.changesThrough_ = changesThrough_;
-                } else {
-                    result.changesThrough_ = changesThroughBuilder_.build();
+            }
+
+            private void buildPartial0(com.authzed.api.v1.WatchServiceOuterClass.WatchResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.changesThrough_ = changesThroughBuilder_ == null ? changesThrough_ : changesThroughBuilder_.build();
                 }
-                onBuilt();
-                return result;
-            }
-
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
             }
 
             @java.lang.Override
@@ -1406,6 +2229,7 @@ public final class WatchServiceOuterClass {
                             // case 10
                             case 18: {
                                 input.readMessage(getChangesThroughFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -1680,7 +2504,7 @@ public final class WatchServiceOuterClass {
              * @return Whether the changesThrough field is set.
              */
             public boolean hasChangesThrough() {
-                return changesThroughBuilder_ != null || changesThrough_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -1705,10 +2529,11 @@ public final class WatchServiceOuterClass {
                         throw new NullPointerException();
                     }
                     changesThrough_ = value;
-                    onChanged();
                 } else {
                     changesThroughBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -1718,10 +2543,11 @@ public final class WatchServiceOuterClass {
             public Builder setChangesThrough(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
                 if (changesThroughBuilder_ == null) {
                     changesThrough_ = builderForValue.build();
-                    onChanged();
                 } else {
                     changesThroughBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -1730,16 +2556,17 @@ public final class WatchServiceOuterClass {
              */
             public Builder mergeChangesThrough(com.authzed.api.v1.Core.ZedToken value) {
                 if (changesThroughBuilder_ == null) {
-                    if (changesThrough_ != null) {
-                        changesThrough_ = com.authzed.api.v1.Core.ZedToken.newBuilder(changesThrough_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && changesThrough_ != null
+                            && changesThrough_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getChangesThroughBuilder().mergeFrom(value);
                     } else {
                         changesThrough_ = value;
                     }
-                    onChanged();
                 } else {
                     changesThroughBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -1747,13 +2574,13 @@ public final class WatchServiceOuterClass {
              * <code>.authzed.api.v1.ZedToken changes_through = 2;</code>
              */
             public Builder clearChangesThrough() {
-                if (changesThroughBuilder_ == null) {
-                    changesThrough_ = null;
-                    onChanged();
-                } else {
-                    changesThrough_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                changesThrough_ = null;
+                if (changesThroughBuilder_ != null) {
+                    changesThroughBuilder_.dispose();
                     changesThroughBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1761,6 +2588,7 @@ public final class WatchServiceOuterClass {
              * <code>.authzed.api.v1.ZedToken changes_through = 2;</code>
              */
             public com.authzed.api.v1.Core.ZedToken.Builder getChangesThroughBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getChangesThroughFieldBuilder().getBuilder();
             }
@@ -1864,23 +2692,24 @@ public final class WatchServiceOuterClass {
     static {
         java.lang.String[] descriptorData = { "\n\"authzed/api/v1/watch_service.proto\022\016au"
                 + "thzed.api.v1\032\034google/api/annotations.pro" + "to\032\027validate/validate.proto\032\031authzed/api"
-                + "/v1/core.proto\"\275\001\n\014WatchRequest\022t\n\025optio"
-                + "nal_object_types\030\001 \003(\tBU\372B\005\222\001\002\010\000\372BJ\222\001G\"E"
-                + "rC(\200\0012>^([a-z][a-z0-9_]{1,62}[a-z0-9]/)?" + "[a-z][a-z0-9_]{1,62}[a-z0-9]$\0227\n\025optiona"
-                + "l_start_cursor\030\002 \001(\0132\030.authzed.api.v1.Ze"
-                + "dToken\"w\n\rWatchResponse\0223\n\007updates\030\001 \003(\013"
-                + "2\".authzed.api.v1.RelationshipUpdate\0221\n\017" + "changes_through\030\002 \001(\0132\030.authzed.api.v1.Z"
-                + "edToken2l\n\014WatchService\022\\\n\005Watch\022\034.authz"
-                + "ed.api.v1.WatchRequest\032\035.authzed.api.v1."
-                + "WatchResponse\"\024\202\323\344\223\002\016\"\t/v1/watch:\001*0\001BH\n"
-                + "\022com.authzed.api.v1Z2github.com/authzed/" + "authzed-go/proto/authzed/api/v1b\006proto3" };
+                + "/v1/core.proto\032\'authzed/api/v1/permissio" + "n_service.proto\"\202\002\n\014WatchRequest\022n\n\025opti"
+                + "onal_object_types\030\001 \003(\tBO\372BL\222\001I\010\000\"ErC(\200\001"
+                + "2>^([a-z][a-z0-9_]{1,62}[a-z0-9]/)*[a-z]" + "[a-z0-9_]{1,62}[a-z0-9]$\0227\n\025optional_sta"
+                + "rt_cursor\030\002 \001(\0132\030.authzed.api.v1.ZedToke"
+                + "n\022I\n\035optional_relationship_filters\030\003 \003(\013" + "2\".authzed.api.v1.RelationshipFilter\"w\n\r"
+                + "WatchResponse\0223\n\007updates\030\001 \003(\0132\".authzed"
+                + ".api.v1.RelationshipUpdate\0221\n\017changes_th" + "rough\030\002 \001(\0132\030.authzed.api.v1.ZedToken2l\n"
+                + "\014WatchService\022\\\n\005Watch\022\034.authzed.api.v1." + "WatchRequest\032\035.authzed.api.v1.WatchRespo"
+                + "nse\"\024\202\323\344\223\002\016\"\t/v1/watch:\001*0\001BH\n\022com.authz"
+                + "ed.api.v1Z2github.com/authzed/authzed-go" + "/proto/authzed/api/v1b\006proto3" };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
                 new com.google.protobuf.Descriptors.FileDescriptor[] { com.google.api.AnnotationsProto.getDescriptor(),
-                        io.envoyproxy.pgv.validate.Validate.getDescriptor(), com.authzed.api.v1.Core.getDescriptor() });
+                        io.envoyproxy.pgv.validate.Validate.getDescriptor(), com.authzed.api.v1.Core.getDescriptor(),
+                        com.authzed.api.v1.PermissionService.getDescriptor() });
         internal_static_authzed_api_v1_WatchRequest_descriptor = getDescriptor().getMessageTypes().get(0);
         internal_static_authzed_api_v1_WatchRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_WatchRequest_descriptor,
-                new java.lang.String[] { "OptionalObjectTypes", "OptionalStartCursor" });
+                new java.lang.String[] { "OptionalObjectTypes", "OptionalStartCursor", "OptionalRelationshipFilters" });
         internal_static_authzed_api_v1_WatchResponse_descriptor = getDescriptor().getMessageTypes().get(1);
         internal_static_authzed_api_v1_WatchResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_WatchResponse_descriptor,
@@ -1892,6 +2721,7 @@ public final class WatchServiceOuterClass {
         com.google.api.AnnotationsProto.getDescriptor();
         io.envoyproxy.pgv.validate.Validate.getDescriptor();
         com.authzed.api.v1.Core.getDescriptor();
+        com.authzed.api.v1.PermissionService.getDescriptor();
     }
     // @@protoc_insertion_point(outer_class_scope)
 }

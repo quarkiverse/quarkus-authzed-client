@@ -502,7 +502,8 @@ public final class Openapiv2 {
          *
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Response&gt; responses = 10;</code>
          */
-        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key,
+        /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response defaultValue);
 
         /**
@@ -661,7 +662,9 @@ public final class Openapiv2 {
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 15;</code>
          */
-        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue);
+        /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue);
 
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 15;</code>
@@ -672,8 +675,11 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Swagger` is a representation of OpenAPI v2 specification's Swagger object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#swaggerObject
+     *
      * Example:
+     *
      *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
      *    info: {
      *      title: "Echo API";
@@ -712,8 +718,8 @@ public final class Openapiv2 {
             host_ = "";
             basePath_ = "";
             schemes_ = java.util.Collections.emptyList();
-            consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-            produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+            produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
             security_ = java.util.Collections.emptyList();
         }
 
@@ -721,11 +727,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new Swagger();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -754,7 +755,8 @@ public final class Openapiv2 {
 
         public static final int SWAGGER_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object swagger_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object swagger_ = "";
 
         /**
          * <pre>
@@ -847,12 +849,13 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.InfoOrBuilder getInfoOrBuilder() {
-            return getInfo();
+            return info_ == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info.getDefaultInstance() : info_;
         }
 
         public static final int HOST_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object host_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object host_ = "";
 
         /**
          * <pre>
@@ -905,7 +908,8 @@ public final class Openapiv2 {
 
         public static final int BASE_PATH_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object basePath_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object basePath_ = "";
 
         /**
          * <pre>
@@ -968,14 +972,14 @@ public final class Openapiv2 {
 
         public static final int SCHEMES_FIELD_NUMBER = 5;
 
+        @SuppressWarnings("serial")
         private java.util.List<java.lang.Integer> schemes_;
 
         private static final com.google.protobuf.Internal.ListAdapter.Converter<java.lang.Integer, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme> schemes_converter_ = new com.google.protobuf.Internal.ListAdapter.Converter<java.lang.Integer, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme>() {
 
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme convert(java.lang.Integer from) {
-                @SuppressWarnings("deprecation")
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme
-                        .valueOf(from);
+                        .forNumber(from);
                 return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme.UNRECOGNIZED : result;
             }
         };
@@ -1067,7 +1071,8 @@ public final class Openapiv2 {
 
         public static final int CONSUMES_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.LazyStringList consumes_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -1133,7 +1138,8 @@ public final class Openapiv2 {
 
         public static final int PRODUCES_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.LazyStringList produces_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -1207,6 +1213,7 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> responses_;
 
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> internalGetResponses() {
@@ -1267,7 +1274,8 @@ public final class Openapiv2 {
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Response&gt; responses = 10;</code>
          */
         @java.lang.Override
-        public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key,
+        public /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
@@ -1341,11 +1349,14 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitionsOrBuilder getSecurityDefinitionsOrBuilder() {
-            return getSecurityDefinitions();
+            return securityDefinitions_ == null
+                    ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions.getDefaultInstance()
+                    : securityDefinitions_;
         }
 
         public static final int SECURITY_FIELD_NUMBER = 12;
 
+        @SuppressWarnings("serial")
         private java.util.List<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement> security_;
 
         /**
@@ -1467,7 +1478,9 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentationOrBuilder getExternalDocsOrBuilder() {
-            return getExternalDocs();
+            return externalDocs_ == null
+                    ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.getDefaultInstance()
+                    : externalDocs_;
         }
 
         public static final int EXTENSIONS_FIELD_NUMBER = 15;
@@ -1480,6 +1493,7 @@ public final class Openapiv2 {
                     com.google.protobuf.Value.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> extensions_;
 
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetExtensions() {
@@ -1525,7 +1539,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 15;</code>
          */
         @java.lang.Override
-        public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue) {
+        public /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -1872,8 +1888,11 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Swagger` is a representation of OpenAPI v2 specification's Swagger object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#swaggerObject
+         *
          * Example:
+         *
          *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
          *    info: {
          *      title: "Echo API";
@@ -1946,26 +1965,23 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 swagger_ = "";
-                if (infoBuilder_ == null) {
-                    info_ = null;
-                } else {
-                    info_ = null;
+                info_ = null;
+                if (infoBuilder_ != null) {
+                    infoBuilder_.dispose();
                     infoBuilder_ = null;
                 }
                 host_ = "";
                 basePath_ = "";
                 schemes_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000001);
-                consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
-                produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000010);
+                consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 internalGetMutableResponses().clear();
-                if (securityDefinitionsBuilder_ == null) {
-                    securityDefinitions_ = null;
-                } else {
-                    securityDefinitions_ = null;
+                securityDefinitions_ = null;
+                if (securityDefinitionsBuilder_ != null) {
+                    securityDefinitionsBuilder_.dispose();
                     securityDefinitionsBuilder_ = null;
                 }
                 if (securityBuilder_ == null) {
@@ -1974,11 +1990,10 @@ public final class Openapiv2 {
                     security_ = null;
                     securityBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000010);
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                } else {
-                    externalDocs_ = null;
+                bitField0_ = (bitField0_ & ~0x00000200);
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
                 internalGetMutableExtensions().clear();
@@ -2008,86 +2023,68 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Swagger buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Swagger result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Swagger(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.swagger_ = swagger_;
-                if (infoBuilder_ == null) {
-                    result.info_ = info_;
-                } else {
-                    result.info_ = infoBuilder_.build();
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.host_ = host_;
-                result.basePath_ = basePath_;
-                if (((bitField0_ & 0x00000001) != 0)) {
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Swagger result) {
+                if (((bitField0_ & 0x00000010) != 0)) {
                     schemes_ = java.util.Collections.unmodifiableList(schemes_);
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000010);
                 }
                 result.schemes_ = schemes_;
-                if (((bitField0_ & 0x00000002) != 0)) {
-                    consumes_ = consumes_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                }
-                result.consumes_ = consumes_;
-                if (((bitField0_ & 0x00000004) != 0)) {
-                    produces_ = produces_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000004);
-                }
-                result.produces_ = produces_;
-                result.responses_ = internalGetResponses();
-                result.responses_.makeImmutable();
-                if (securityDefinitionsBuilder_ == null) {
-                    result.securityDefinitions_ = securityDefinitions_;
-                } else {
-                    result.securityDefinitions_ = securityDefinitionsBuilder_.build();
-                }
                 if (securityBuilder_ == null) {
-                    if (((bitField0_ & 0x00000010) != 0)) {
+                    if (((bitField0_ & 0x00000200) != 0)) {
                         security_ = java.util.Collections.unmodifiableList(security_);
-                        bitField0_ = (bitField0_ & ~0x00000010);
+                        bitField0_ = (bitField0_ & ~0x00000200);
                     }
                     result.security_ = security_;
                 } else {
                     result.security_ = securityBuilder_.build();
                 }
-                if (externalDocsBuilder_ == null) {
-                    result.externalDocs_ = externalDocs_;
-                } else {
-                    result.externalDocs_ = externalDocsBuilder_.build();
+            }
+
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Swagger result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.swagger_ = swagger_;
                 }
-                result.extensions_ = internalGetExtensions();
-                result.extensions_.makeImmutable();
-                onBuilt();
-                return result;
-            }
-
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.info_ = infoBuilder_ == null ? info_ : infoBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.host_ = host_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.basePath_ = basePath_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    consumes_.makeImmutable();
+                    result.consumes_ = consumes_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    produces_.makeImmutable();
+                    result.produces_ = produces_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.responses_ = internalGetResponses();
+                    result.responses_.makeImmutable();
+                }
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.securityDefinitions_ = securityDefinitionsBuilder_ == null ? securityDefinitions_
+                            : securityDefinitionsBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000400) != 0)) {
+                    result.externalDocs_ = externalDocsBuilder_ == null ? externalDocs_ : externalDocsBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000800) != 0)) {
+                    result.extensions_ = internalGetExtensions();
+                    result.extensions_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -2105,6 +2102,7 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getSwagger().isEmpty()) {
                     swagger_ = other.swagger_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (other.hasInfo()) {
@@ -2112,16 +2110,18 @@ public final class Openapiv2 {
                 }
                 if (!other.getHost().isEmpty()) {
                     host_ = other.host_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getBasePath().isEmpty()) {
                     basePath_ = other.basePath_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (!other.schemes_.isEmpty()) {
                     if (schemes_.isEmpty()) {
                         schemes_ = other.schemes_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000010);
                     } else {
                         ensureSchemesIsMutable();
                         schemes_.addAll(other.schemes_);
@@ -2131,7 +2131,7 @@ public final class Openapiv2 {
                 if (!other.consumes_.isEmpty()) {
                     if (consumes_.isEmpty()) {
                         consumes_ = other.consumes_;
-                        bitField0_ = (bitField0_ & ~0x00000002);
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureConsumesIsMutable();
                         consumes_.addAll(other.consumes_);
@@ -2141,7 +2141,7 @@ public final class Openapiv2 {
                 if (!other.produces_.isEmpty()) {
                     if (produces_.isEmpty()) {
                         produces_ = other.produces_;
-                        bitField0_ = (bitField0_ & ~0x00000004);
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureProducesIsMutable();
                         produces_.addAll(other.produces_);
@@ -2149,6 +2149,7 @@ public final class Openapiv2 {
                     onChanged();
                 }
                 internalGetMutableResponses().mergeFrom(other.internalGetResponses());
+                bitField0_ |= 0x00000080;
                 if (other.hasSecurityDefinitions()) {
                     mergeSecurityDefinitions(other.getSecurityDefinitions());
                 }
@@ -2156,7 +2157,7 @@ public final class Openapiv2 {
                     if (!other.security_.isEmpty()) {
                         if (security_.isEmpty()) {
                             security_ = other.security_;
-                            bitField0_ = (bitField0_ & ~0x00000010);
+                            bitField0_ = (bitField0_ & ~0x00000200);
                         } else {
                             ensureSecurityIsMutable();
                             security_.addAll(other.security_);
@@ -2169,7 +2170,7 @@ public final class Openapiv2 {
                             securityBuilder_.dispose();
                             securityBuilder_ = null;
                             security_ = other.security_;
-                            bitField0_ = (bitField0_ & ~0x00000010);
+                            bitField0_ = (bitField0_ & ~0x00000200);
                             securityBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                     ? getSecurityFieldBuilder()
                                     : null;
@@ -2182,6 +2183,7 @@ public final class Openapiv2 {
                     mergeExternalDocs(other.getExternalDocs());
                 }
                 internalGetMutableExtensions().mergeFrom(other.internalGetExtensions());
+                bitField0_ |= 0x00000800;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -2208,21 +2210,25 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 swagger_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 host_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 basePath_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -2264,11 +2270,13 @@ public final class Openapiv2 {
                                         .readMessage(ResponsesDefaultEntryHolder.defaultEntry.getParserForType(),
                                                 extensionRegistry);
                                 internalGetMutableResponses().getMutableMap().put(responses__.getKey(), responses__.getValue());
+                                bitField0_ |= 0x00000080;
                                 break;
                             }
                             // case 82
                             case 90: {
                                 input.readMessage(getSecurityDefinitionsFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000100;
                                 break;
                             }
                             // case 90
@@ -2287,6 +2295,7 @@ public final class Openapiv2 {
                             // case 98
                             case 114: {
                                 input.readMessage(getExternalDocsFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000400;
                                 break;
                             }
                             // case 114
@@ -2296,6 +2305,7 @@ public final class Openapiv2 {
                                                 extensionRegistry);
                                 internalGetMutableExtensions().getMutableMap().put(extensions__.getKey(),
                                         extensions__.getValue());
+                                bitField0_ |= 0x00000800;
                                 break;
                             }
                             // case 122
@@ -2385,6 +2395,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 swagger_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2402,6 +2413,7 @@ public final class Openapiv2 {
              */
             public Builder clearSwagger() {
                 swagger_ = getDefaultInstance().getSwagger();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -2424,6 +2436,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 swagger_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2443,7 +2456,7 @@ public final class Openapiv2 {
              * @return Whether the info field is set.
              */
             public boolean hasInfo() {
-                return infoBuilder_ != null || info_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -2479,10 +2492,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     info_ = value;
-                    onChanged();
                 } else {
                     infoBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -2497,10 +2511,11 @@ public final class Openapiv2 {
             public Builder setInfo(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info.Builder builderForValue) {
                 if (infoBuilder_ == null) {
                     info_ = builderForValue.build();
-                    onChanged();
                 } else {
                     infoBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -2514,16 +2529,17 @@ public final class Openapiv2 {
              */
             public Builder mergeInfo(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info value) {
                 if (infoBuilder_ == null) {
-                    if (info_ != null) {
-                        info_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info.newBuilder(info_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && info_ != null
+                            && info_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info.getDefaultInstance()) {
+                        getInfoBuilder().mergeFrom(value);
                     } else {
                         info_ = value;
                     }
-                    onChanged();
                 } else {
                     infoBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -2536,13 +2552,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Info info = 2;</code>
              */
             public Builder clearInfo() {
-                if (infoBuilder_ == null) {
-                    info_ = null;
-                    onChanged();
-                } else {
-                    info_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                info_ = null;
+                if (infoBuilder_ != null) {
+                    infoBuilder_.dispose();
                     infoBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -2555,6 +2571,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Info info = 2;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info.Builder getInfoBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getInfoFieldBuilder().getBuilder();
             }
@@ -2660,6 +2677,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 host_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -2678,6 +2696,7 @@ public final class Openapiv2 {
              */
             public Builder clearHost() {
                 host_ = getDefaultInstance().getHost();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -2701,6 +2720,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 host_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -2787,6 +2807,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 basePath_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -2810,6 +2831,7 @@ public final class Openapiv2 {
              */
             public Builder clearBasePath() {
                 basePath_ = getDefaultInstance().getBasePath();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -2838,6 +2860,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 basePath_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -2845,9 +2868,9 @@ public final class Openapiv2 {
             private java.util.List<java.lang.Integer> schemes_ = java.util.Collections.emptyList();
 
             private void ensureSchemesIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000010) != 0)) {
                     schemes_ = new java.util.ArrayList<java.lang.Integer>(schemes_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000010;
                 }
             }
 
@@ -2978,7 +3001,7 @@ public final class Openapiv2 {
              */
             public Builder clearSchemes() {
                 schemes_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000010);
                 onChanged();
                 return this;
             }
@@ -3023,8 +3046,8 @@ public final class Openapiv2 {
              *
              * <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Scheme schemes = 5;</code>
              *
-             * @param index The index of the value to return.
-             * @return The enum numeric value on the wire of schemes at the given index.
+             * @param index The index to set the value at.
+             * @param value The enum numeric value on the wire for schemes to set.
              * @return This builder for chaining.
              */
             public Builder setSchemesValue(int index, int value) {
@@ -3074,13 +3097,13 @@ public final class Openapiv2 {
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureConsumesIsMutable() {
-                if (!((bitField0_ & 0x00000002) != 0)) {
+                if (!consumes_.isModifiable()) {
                     consumes_ = new com.google.protobuf.LazyStringArrayList(consumes_);
-                    bitField0_ |= 0x00000002;
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -3095,7 +3118,8 @@ public final class Openapiv2 {
              * @return A list containing the consumes.
              */
             public com.google.protobuf.ProtocolStringList getConsumesList() {
-                return consumes_.getUnmodifiableView();
+                consumes_.makeImmutable();
+                return consumes_;
             }
 
             /**
@@ -3164,6 +3188,7 @@ public final class Openapiv2 {
                 }
                 ensureConsumesIsMutable();
                 consumes_.set(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -3186,6 +3211,7 @@ public final class Openapiv2 {
                 }
                 ensureConsumesIsMutable();
                 consumes_.add(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -3205,6 +3231,7 @@ public final class Openapiv2 {
             public Builder addAllConsumes(java.lang.Iterable<java.lang.String> values) {
                 ensureConsumesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, consumes_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -3221,8 +3248,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearConsumes() {
-                consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
+                consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000020);
+                ;
                 onChanged();
                 return this;
             }
@@ -3246,17 +3274,18 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureConsumesIsMutable();
                 consumes_.add(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureProducesIsMutable() {
-                if (!((bitField0_ & 0x00000004) != 0)) {
+                if (!produces_.isModifiable()) {
                     produces_ = new com.google.protobuf.LazyStringArrayList(produces_);
-                    bitField0_ |= 0x00000004;
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -3271,7 +3300,8 @@ public final class Openapiv2 {
              * @return A list containing the produces.
              */
             public com.google.protobuf.ProtocolStringList getProducesList() {
-                return produces_.getUnmodifiableView();
+                produces_.makeImmutable();
+                return produces_;
             }
 
             /**
@@ -3340,6 +3370,7 @@ public final class Openapiv2 {
                 }
                 ensureProducesIsMutable();
                 produces_.set(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -3362,6 +3393,7 @@ public final class Openapiv2 {
                 }
                 ensureProducesIsMutable();
                 produces_.add(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -3381,6 +3413,7 @@ public final class Openapiv2 {
             public Builder addAllProduces(java.lang.Iterable<java.lang.String> values) {
                 ensureProducesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, produces_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -3397,8 +3430,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearProduces() {
-                produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000040);
+                ;
                 onChanged();
                 return this;
             }
@@ -3422,6 +3456,7 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureProducesIsMutable();
                 produces_.add(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -3436,14 +3471,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> internalGetMutableResponses() {
-                onChanged();
-                ;
                 if (responses_ == null) {
                     responses_ = com.google.protobuf.MapField.newMapField(ResponsesDefaultEntryHolder.defaultEntry);
                 }
                 if (!responses_.isMutable()) {
                     responses_ = responses_.copy();
                 }
+                bitField0_ |= 0x00000080;
+                onChanged();
                 return responses_;
             }
 
@@ -3498,7 +3533,10 @@ public final class Openapiv2 {
              * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Response&gt; responses = 10;</code>
              */
             @java.lang.Override
-            public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key,
+            public /* nullable */
+            grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key, /*
+                                                                                                                      * nullable
+                                                                                                                      */
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -3530,6 +3568,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearResponses() {
+                bitField0_ = (bitField0_ & ~0x00000080);
                 internalGetMutableResponses().getMutableMap().clear();
                 return this;
             }
@@ -3555,6 +3594,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> getMutableResponses() {
+                bitField0_ |= 0x00000080;
                 return internalGetMutableResponses().getMutableMap();
             }
 
@@ -3575,6 +3615,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableResponses().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000080;
                 return this;
             }
 
@@ -3589,6 +3630,7 @@ public final class Openapiv2 {
             public Builder putAllResponses(
                     java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> values) {
                 internalGetMutableResponses().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000080;
                 return this;
             }
 
@@ -3606,7 +3648,7 @@ public final class Openapiv2 {
              * @return Whether the securityDefinitions field is set.
              */
             public boolean hasSecurityDefinitions() {
-                return securityDefinitionsBuilder_ != null || securityDefinitions_ != null;
+                return ((bitField0_ & 0x00000100) != 0);
             }
 
             /**
@@ -3642,10 +3684,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     securityDefinitions_ = value;
-                    onChanged();
                 } else {
                     securityDefinitionsBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000100;
+                onChanged();
                 return this;
             }
 
@@ -3660,10 +3703,11 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions.Builder builderForValue) {
                 if (securityDefinitionsBuilder_ == null) {
                     securityDefinitions_ = builderForValue.build();
-                    onChanged();
                 } else {
                     securityDefinitionsBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000100;
+                onChanged();
                 return this;
             }
 
@@ -3677,16 +3721,18 @@ public final class Openapiv2 {
             public Builder mergeSecurityDefinitions(
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions value) {
                 if (securityDefinitionsBuilder_ == null) {
-                    if (securityDefinitions_ != null) {
-                        securityDefinitions_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions
-                                .newBuilder(securityDefinitions_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000100) != 0) && securityDefinitions_ != null
+                            && securityDefinitions_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions
+                                    .getDefaultInstance()) {
+                        getSecurityDefinitionsBuilder().mergeFrom(value);
                     } else {
                         securityDefinitions_ = value;
                     }
-                    onChanged();
                 } else {
                     securityDefinitionsBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000100;
+                onChanged();
                 return this;
             }
 
@@ -3698,13 +3744,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.SecurityDefinitions security_definitions = 11;</code>
              */
             public Builder clearSecurityDefinitions() {
-                if (securityDefinitionsBuilder_ == null) {
-                    securityDefinitions_ = null;
-                    onChanged();
-                } else {
-                    securityDefinitions_ = null;
+                bitField0_ = (bitField0_ & ~0x00000100);
+                securityDefinitions_ = null;
+                if (securityDefinitionsBuilder_ != null) {
+                    securityDefinitionsBuilder_.dispose();
                     securityDefinitionsBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3716,6 +3762,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.SecurityDefinitions security_definitions = 11;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions.Builder getSecurityDefinitionsBuilder() {
+                bitField0_ |= 0x00000100;
                 onChanged();
                 return getSecurityDefinitionsFieldBuilder().getBuilder();
             }
@@ -3757,10 +3804,10 @@ public final class Openapiv2 {
                     .emptyList();
 
             private void ensureSecurityIsMutable() {
-                if (!((bitField0_ & 0x00000010) != 0)) {
+                if (!((bitField0_ & 0x00000200) != 0)) {
                     security_ = new java.util.ArrayList<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement>(
                             security_);
-                    bitField0_ |= 0x00000010;
+                    bitField0_ |= 0x00000200;
                 }
             }
 
@@ -3995,7 +4042,7 @@ public final class Openapiv2 {
             public Builder clearSecurity() {
                 if (securityBuilder_ == null) {
                     security_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000010);
+                    bitField0_ = (bitField0_ & ~0x00000200);
                     onChanged();
                 } else {
                     securityBuilder_.clear();
@@ -4124,7 +4171,7 @@ public final class Openapiv2 {
             private com.google.protobuf.RepeatedFieldBuilderV3<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.Builder, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirementOrBuilder> getSecurityFieldBuilder() {
                 if (securityBuilder_ == null) {
                     securityBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.Builder, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirementOrBuilder>(
-                            security_, ((bitField0_ & 0x00000010) != 0), getParentForChildren(), isClean());
+                            security_, ((bitField0_ & 0x00000200) != 0), getParentForChildren(), isClean());
                     security_ = null;
                 }
                 return securityBuilder_;
@@ -4144,7 +4191,7 @@ public final class Openapiv2 {
              * @return Whether the externalDocs field is set.
              */
             public boolean hasExternalDocs() {
-                return externalDocsBuilder_ != null || externalDocs_ != null;
+                return ((bitField0_ & 0x00000400) != 0);
             }
 
             /**
@@ -4179,10 +4226,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     externalDocs_ = value;
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000400;
+                onChanged();
                 return this;
             }
 
@@ -4197,10 +4245,11 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder builderForValue) {
                 if (externalDocsBuilder_ == null) {
                     externalDocs_ = builderForValue.build();
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000400;
+                onChanged();
                 return this;
             }
 
@@ -4213,16 +4262,18 @@ public final class Openapiv2 {
              */
             public Builder mergeExternalDocs(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation value) {
                 if (externalDocsBuilder_ == null) {
-                    if (externalDocs_ != null) {
-                        externalDocs_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
-                                .newBuilder(externalDocs_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000400) != 0) && externalDocs_ != null
+                            && externalDocs_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
+                                    .getDefaultInstance()) {
+                        getExternalDocsBuilder().mergeFrom(value);
                     } else {
                         externalDocs_ = value;
                     }
-                    onChanged();
                 } else {
                     externalDocsBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000400;
+                onChanged();
                 return this;
             }
 
@@ -4234,13 +4285,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 14;</code>
              */
             public Builder clearExternalDocs() {
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                    onChanged();
-                } else {
-                    externalDocs_ = null;
+                bitField0_ = (bitField0_ & ~0x00000400);
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -4252,6 +4303,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 14;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder getExternalDocsBuilder() {
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return getExternalDocsFieldBuilder().getBuilder();
             }
@@ -4299,14 +4351,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetMutableExtensions() {
-                onChanged();
-                ;
                 if (extensions_ == null) {
                     extensions_ = com.google.protobuf.MapField.newMapField(ExtensionsDefaultEntryHolder.defaultEntry);
                 }
                 if (!extensions_.isMutable()) {
                     extensions_ = extensions_.copy();
                 }
+                bitField0_ |= 0x00000800;
+                onChanged();
                 return extensions_;
             }
 
@@ -4346,7 +4398,8 @@ public final class Openapiv2 {
              * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 15;</code>
              */
             @java.lang.Override
-            public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key,
+            public /* nullable */
+            com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
                     com.google.protobuf.Value defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -4371,6 +4424,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearExtensions() {
+                bitField0_ = (bitField0_ & ~0x00000800);
                 internalGetMutableExtensions().getMutableMap().clear();
                 return this;
             }
@@ -4391,6 +4445,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, com.google.protobuf.Value> getMutableExtensions() {
+                bitField0_ |= 0x00000800;
                 return internalGetMutableExtensions().getMutableMap();
             }
 
@@ -4405,6 +4460,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableExtensions().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000800;
                 return this;
             }
 
@@ -4413,6 +4469,7 @@ public final class Openapiv2 {
              */
             public Builder putAllExtensions(java.util.Map<java.lang.String, com.google.protobuf.Value> values) {
                 internalGetMutableExtensions().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000800;
                 return this;
             }
 
@@ -4787,7 +4844,8 @@ public final class Openapiv2 {
          *
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Response&gt; responses = 9;</code>
          */
-        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key,
+        /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response defaultValue);
 
         /**
@@ -4968,7 +5026,9 @@ public final class Openapiv2 {
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 13;</code>
          */
-        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue);
+        /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue);
 
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 13;</code>
@@ -4979,13 +5039,17 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Operation` is a representation of OpenAPI v2 specification's Operation object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#operationObject
+     *
      * Example:
+     *
      *  service EchoService {
      *    rpc Echo(SimpleMessage) returns (SimpleMessage) {
      *      option (google.api.http) = {
      *        get: "/v1/example/echo/{id}"
      *      };
+     *
      *      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
      *        summary: "Get a message.";
      *        operation_id: "getMessage";
@@ -5014,12 +5078,12 @@ public final class Openapiv2 {
         }
 
         private Operation() {
-            tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            tags_ = com.google.protobuf.LazyStringArrayList.emptyList();
             summary_ = "";
             description_ = "";
             operationId_ = "";
-            consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-            produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+            produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
             schemes_ = java.util.Collections.emptyList();
             security_ = java.util.Collections.emptyList();
         }
@@ -5028,11 +5092,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new Operation();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -5061,7 +5120,8 @@ public final class Openapiv2 {
 
         public static final int TAGS_FIELD_NUMBER = 1;
 
-        private com.google.protobuf.LazyStringList tags_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList tags_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -5123,7 +5183,8 @@ public final class Openapiv2 {
 
         public static final int SUMMARY_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object summary_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object summary_ = "";
 
         /**
          * <pre>
@@ -5172,7 +5233,8 @@ public final class Openapiv2 {
 
         public static final int DESCRIPTION_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -5262,12 +5324,15 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentationOrBuilder getExternalDocsOrBuilder() {
-            return getExternalDocs();
+            return externalDocs_ == null
+                    ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.getDefaultInstance()
+                    : externalDocs_;
         }
 
         public static final int OPERATION_ID_FIELD_NUMBER = 5;
 
-        private volatile java.lang.Object operationId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object operationId_ = "";
 
         /**
          * <pre>
@@ -5320,7 +5385,8 @@ public final class Openapiv2 {
 
         public static final int CONSUMES_FIELD_NUMBER = 6;
 
-        private com.google.protobuf.LazyStringList consumes_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -5386,7 +5452,8 @@ public final class Openapiv2 {
 
         public static final int PRODUCES_FIELD_NUMBER = 7;
 
-        private com.google.protobuf.LazyStringList produces_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -5460,6 +5527,7 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> responses_;
 
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> internalGetResponses() {
@@ -5520,7 +5588,8 @@ public final class Openapiv2 {
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Response&gt; responses = 9;</code>
          */
         @java.lang.Override
-        public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key,
+        public /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
@@ -5553,14 +5622,14 @@ public final class Openapiv2 {
 
         public static final int SCHEMES_FIELD_NUMBER = 10;
 
+        @SuppressWarnings("serial")
         private java.util.List<java.lang.Integer> schemes_;
 
         private static final com.google.protobuf.Internal.ListAdapter.Converter<java.lang.Integer, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme> schemes_converter_ = new com.google.protobuf.Internal.ListAdapter.Converter<java.lang.Integer, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme>() {
 
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme convert(java.lang.Integer from) {
-                @SuppressWarnings("deprecation")
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme
-                        .valueOf(from);
+                        .forNumber(from);
                 return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scheme.UNRECOGNIZED : result;
             }
         };
@@ -5652,7 +5721,7 @@ public final class Openapiv2 {
 
         public static final int DEPRECATED_FIELD_NUMBER = 11;
 
-        private boolean deprecated_;
+        private boolean deprecated_ = false;
 
         /**
          * <pre>
@@ -5671,6 +5740,7 @@ public final class Openapiv2 {
 
         public static final int SECURITY_FIELD_NUMBER = 12;
 
+        @SuppressWarnings("serial")
         private java.util.List<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement> security_;
 
         /**
@@ -5764,6 +5834,7 @@ public final class Openapiv2 {
                     com.google.protobuf.Value.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> extensions_;
 
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetExtensions() {
@@ -5809,7 +5880,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 13;</code>
          */
         @java.lang.Override
-        public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue) {
+        public /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -6152,13 +6225,17 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Operation` is a representation of OpenAPI v2 specification's Operation object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#operationObject
+         *
          * Example:
+         *
          *  service EchoService {
          *    rpc Echo(SimpleMessage) returns (SimpleMessage) {
          *      option (google.api.http) = {
          *        get: "/v1/example/echo/{id}"
          *      };
+         *
          *      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
          *        summary: "Get a message.";
          *        operation_id: "getMessage";
@@ -6225,24 +6302,21 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = 0;
+                tags_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 summary_ = "";
                 description_ = "";
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                } else {
-                    externalDocs_ = null;
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
                 operationId_ = "";
-                consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
-                produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 internalGetMutableResponses().clear();
                 schemes_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000010);
+                bitField0_ = (bitField0_ & ~0x00000100);
                 deprecated_ = false;
                 if (securityBuilder_ == null) {
                     security_ = java.util.Collections.emptyList();
@@ -6250,7 +6324,7 @@ public final class Openapiv2 {
                     security_ = null;
                     securityBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000020);
+                bitField0_ = (bitField0_ & ~0x00000400);
                 internalGetMutableExtensions().clear();
                 return this;
             }
@@ -6278,82 +6352,68 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Operation buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Operation result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Operation(
                         this);
-                int from_bitField0_ = bitField0_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    tags_ = tags_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.tags_ = tags_;
-                result.summary_ = summary_;
-                result.description_ = description_;
-                if (externalDocsBuilder_ == null) {
-                    result.externalDocs_ = externalDocs_;
-                } else {
-                    result.externalDocs_ = externalDocsBuilder_.build();
-                }
-                result.operationId_ = operationId_;
-                if (((bitField0_ & 0x00000002) != 0)) {
-                    consumes_ = consumes_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                }
-                result.consumes_ = consumes_;
-                if (((bitField0_ & 0x00000004) != 0)) {
-                    produces_ = produces_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000004);
-                }
-                result.produces_ = produces_;
-                result.responses_ = internalGetResponses();
-                result.responses_.makeImmutable();
-                if (((bitField0_ & 0x00000010) != 0)) {
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Operation result) {
+                if (((bitField0_ & 0x00000100) != 0)) {
                     schemes_ = java.util.Collections.unmodifiableList(schemes_);
-                    bitField0_ = (bitField0_ & ~0x00000010);
+                    bitField0_ = (bitField0_ & ~0x00000100);
                 }
                 result.schemes_ = schemes_;
-                result.deprecated_ = deprecated_;
                 if (securityBuilder_ == null) {
-                    if (((bitField0_ & 0x00000020) != 0)) {
+                    if (((bitField0_ & 0x00000400) != 0)) {
                         security_ = java.util.Collections.unmodifiableList(security_);
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        bitField0_ = (bitField0_ & ~0x00000400);
                     }
                     result.security_ = security_;
                 } else {
                     result.security_ = securityBuilder_.build();
                 }
-                result.extensions_ = internalGetExtensions();
-                result.extensions_.makeImmutable();
-                onBuilt();
-                return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Operation result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    tags_.makeImmutable();
+                    result.tags_ = tags_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.summary_ = summary_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.externalDocs_ = externalDocsBuilder_ == null ? externalDocs_ : externalDocsBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.operationId_ = operationId_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    consumes_.makeImmutable();
+                    result.consumes_ = consumes_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    produces_.makeImmutable();
+                    result.produces_ = produces_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.responses_ = internalGetResponses();
+                    result.responses_.makeImmutable();
+                }
+                if (((from_bitField0_ & 0x00000200) != 0)) {
+                    result.deprecated_ = deprecated_;
+                }
+                if (((from_bitField0_ & 0x00000800) != 0)) {
+                    result.extensions_ = internalGetExtensions();
+                    result.extensions_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -6372,7 +6432,7 @@ public final class Openapiv2 {
                 if (!other.tags_.isEmpty()) {
                     if (tags_.isEmpty()) {
                         tags_ = other.tags_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00000001;
                     } else {
                         ensureTagsIsMutable();
                         tags_.addAll(other.tags_);
@@ -6381,10 +6441,12 @@ public final class Openapiv2 {
                 }
                 if (!other.getSummary().isEmpty()) {
                     summary_ = other.summary_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (other.hasExternalDocs()) {
@@ -6392,12 +6454,13 @@ public final class Openapiv2 {
                 }
                 if (!other.getOperationId().isEmpty()) {
                     operationId_ = other.operationId_;
+                    bitField0_ |= 0x00000010;
                     onChanged();
                 }
                 if (!other.consumes_.isEmpty()) {
                     if (consumes_.isEmpty()) {
                         consumes_ = other.consumes_;
-                        bitField0_ = (bitField0_ & ~0x00000002);
+                        bitField0_ |= 0x00000020;
                     } else {
                         ensureConsumesIsMutable();
                         consumes_.addAll(other.consumes_);
@@ -6407,7 +6470,7 @@ public final class Openapiv2 {
                 if (!other.produces_.isEmpty()) {
                     if (produces_.isEmpty()) {
                         produces_ = other.produces_;
-                        bitField0_ = (bitField0_ & ~0x00000004);
+                        bitField0_ |= 0x00000040;
                     } else {
                         ensureProducesIsMutable();
                         produces_.addAll(other.produces_);
@@ -6415,10 +6478,11 @@ public final class Openapiv2 {
                     onChanged();
                 }
                 internalGetMutableResponses().mergeFrom(other.internalGetResponses());
+                bitField0_ |= 0x00000080;
                 if (!other.schemes_.isEmpty()) {
                     if (schemes_.isEmpty()) {
                         schemes_ = other.schemes_;
-                        bitField0_ = (bitField0_ & ~0x00000010);
+                        bitField0_ = (bitField0_ & ~0x00000100);
                     } else {
                         ensureSchemesIsMutable();
                         schemes_.addAll(other.schemes_);
@@ -6432,7 +6496,7 @@ public final class Openapiv2 {
                     if (!other.security_.isEmpty()) {
                         if (security_.isEmpty()) {
                             security_ = other.security_;
-                            bitField0_ = (bitField0_ & ~0x00000020);
+                            bitField0_ = (bitField0_ & ~0x00000400);
                         } else {
                             ensureSecurityIsMutable();
                             security_.addAll(other.security_);
@@ -6445,7 +6509,7 @@ public final class Openapiv2 {
                             securityBuilder_.dispose();
                             securityBuilder_ = null;
                             security_ = other.security_;
-                            bitField0_ = (bitField0_ & ~0x00000020);
+                            bitField0_ = (bitField0_ & ~0x00000400);
                             securityBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                     ? getSecurityFieldBuilder()
                                     : null;
@@ -6455,6 +6519,7 @@ public final class Openapiv2 {
                     }
                 }
                 internalGetMutableExtensions().mergeFrom(other.internalGetExtensions());
+                bitField0_ |= 0x00000800;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -6488,21 +6553,25 @@ public final class Openapiv2 {
                             // case 10
                             case 18: {
                                 summary_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 input.readMessage(getExternalDocsFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
                             case 42: {
                                 operationId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 42
@@ -6525,6 +6594,7 @@ public final class Openapiv2 {
                                         .readMessage(ResponsesDefaultEntryHolder.defaultEntry.getParserForType(),
                                                 extensionRegistry);
                                 internalGetMutableResponses().getMutableMap().put(responses__.getKey(), responses__.getValue());
+                                bitField0_ |= 0x00000080;
                                 break;
                             }
                             // case 74
@@ -6549,6 +6619,7 @@ public final class Openapiv2 {
                             // case 82
                             case 88: {
                                 deprecated_ = input.readBool();
+                                bitField0_ |= 0x00000200;
                                 break;
                             }
                             // case 88
@@ -6571,6 +6642,7 @@ public final class Openapiv2 {
                                                 extensionRegistry);
                                 internalGetMutableExtensions().getMutableMap().put(extensions__.getKey(),
                                         extensions__.getValue());
+                                bitField0_ |= 0x00000800;
                                 break;
                             }
                             // case 106
@@ -6596,13 +6668,13 @@ public final class Openapiv2 {
 
             private int bitField0_;
 
-            private com.google.protobuf.LazyStringList tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList tags_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureTagsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!tags_.isModifiable()) {
                     tags_ = new com.google.protobuf.LazyStringArrayList(tags_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00000001;
             }
 
             /**
@@ -6616,7 +6688,8 @@ public final class Openapiv2 {
              * @return A list containing the tags.
              */
             public com.google.protobuf.ProtocolStringList getTagsList() {
-                return tags_.getUnmodifiableView();
+                tags_.makeImmutable();
+                return tags_;
             }
 
             /**
@@ -6681,6 +6754,7 @@ public final class Openapiv2 {
                 }
                 ensureTagsIsMutable();
                 tags_.set(index, value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6702,6 +6776,7 @@ public final class Openapiv2 {
                 }
                 ensureTagsIsMutable();
                 tags_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6720,6 +6795,7 @@ public final class Openapiv2 {
             public Builder addAllTags(java.lang.Iterable<java.lang.String> values) {
                 ensureTagsIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, tags_);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6735,8 +6811,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearTags() {
-                tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                tags_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 bitField0_ = (bitField0_ & ~0x00000001);
+                ;
                 onChanged();
                 return this;
             }
@@ -6759,6 +6836,7 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureTagsIsMutable();
                 tags_.add(value);
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6824,6 +6902,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 summary_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -6840,6 +6919,7 @@ public final class Openapiv2 {
              */
             public Builder clearSummary() {
                 summary_ = getDefaultInstance().getSummary();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -6861,6 +6941,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 summary_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -6926,6 +7007,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -6942,6 +7024,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -6963,6 +7046,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -6981,7 +7065,7 @@ public final class Openapiv2 {
              * @return Whether the externalDocs field is set.
              */
             public boolean hasExternalDocs() {
-                return externalDocsBuilder_ != null || externalDocs_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -7016,10 +7100,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     externalDocs_ = value;
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -7034,10 +7119,11 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder builderForValue) {
                 if (externalDocsBuilder_ == null) {
                     externalDocs_ = builderForValue.build();
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -7050,16 +7136,18 @@ public final class Openapiv2 {
              */
             public Builder mergeExternalDocs(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation value) {
                 if (externalDocsBuilder_ == null) {
-                    if (externalDocs_ != null) {
-                        externalDocs_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
-                                .newBuilder(externalDocs_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && externalDocs_ != null
+                            && externalDocs_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
+                                    .getDefaultInstance()) {
+                        getExternalDocsBuilder().mergeFrom(value);
                     } else {
                         externalDocs_ = value;
                     }
-                    onChanged();
                 } else {
                     externalDocsBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -7071,13 +7159,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 4;</code>
              */
             public Builder clearExternalDocs() {
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                    onChanged();
-                } else {
-                    externalDocs_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -7089,6 +7177,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 4;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder getExternalDocsBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getExternalDocsFieldBuilder().getBuilder();
             }
@@ -7193,6 +7282,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 operationId_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -7211,6 +7301,7 @@ public final class Openapiv2 {
              */
             public Builder clearOperationId() {
                 operationId_ = getDefaultInstance().getOperationId();
+                bitField0_ = (bitField0_ & ~0x00000010);
                 onChanged();
                 return this;
             }
@@ -7234,17 +7325,18 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 operationId_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureConsumesIsMutable() {
-                if (!((bitField0_ & 0x00000002) != 0)) {
+                if (!consumes_.isModifiable()) {
                     consumes_ = new com.google.protobuf.LazyStringArrayList(consumes_);
-                    bitField0_ |= 0x00000002;
                 }
+                bitField0_ |= 0x00000020;
             }
 
             /**
@@ -7259,7 +7351,8 @@ public final class Openapiv2 {
              * @return A list containing the consumes.
              */
             public com.google.protobuf.ProtocolStringList getConsumesList() {
-                return consumes_.getUnmodifiableView();
+                consumes_.makeImmutable();
+                return consumes_;
             }
 
             /**
@@ -7328,6 +7421,7 @@ public final class Openapiv2 {
                 }
                 ensureConsumesIsMutable();
                 consumes_.set(index, value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -7350,6 +7444,7 @@ public final class Openapiv2 {
                 }
                 ensureConsumesIsMutable();
                 consumes_.add(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -7369,6 +7464,7 @@ public final class Openapiv2 {
             public Builder addAllConsumes(java.lang.Iterable<java.lang.String> values) {
                 ensureConsumesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, consumes_);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -7385,8 +7481,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearConsumes() {
-                consumes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
+                consumes_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000020);
+                ;
                 onChanged();
                 return this;
             }
@@ -7410,17 +7507,18 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureConsumesIsMutable();
                 consumes_.add(value);
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureProducesIsMutable() {
-                if (!((bitField0_ & 0x00000004) != 0)) {
+                if (!produces_.isModifiable()) {
                     produces_ = new com.google.protobuf.LazyStringArrayList(produces_);
-                    bitField0_ |= 0x00000004;
                 }
+                bitField0_ |= 0x00000040;
             }
 
             /**
@@ -7435,7 +7533,8 @@ public final class Openapiv2 {
              * @return A list containing the produces.
              */
             public com.google.protobuf.ProtocolStringList getProducesList() {
-                return produces_.getUnmodifiableView();
+                produces_.makeImmutable();
+                return produces_;
             }
 
             /**
@@ -7504,6 +7603,7 @@ public final class Openapiv2 {
                 }
                 ensureProducesIsMutable();
                 produces_.set(index, value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -7526,6 +7626,7 @@ public final class Openapiv2 {
                 }
                 ensureProducesIsMutable();
                 produces_.add(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -7545,6 +7646,7 @@ public final class Openapiv2 {
             public Builder addAllProduces(java.lang.Iterable<java.lang.String> values) {
                 ensureProducesIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, produces_);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -7561,8 +7663,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearProduces() {
-                produces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                produces_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000040);
+                ;
                 onChanged();
                 return this;
             }
@@ -7586,6 +7689,7 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureProducesIsMutable();
                 produces_.add(value);
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -7600,14 +7704,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> internalGetMutableResponses() {
-                onChanged();
-                ;
                 if (responses_ == null) {
                     responses_ = com.google.protobuf.MapField.newMapField(ResponsesDefaultEntryHolder.defaultEntry);
                 }
                 if (!responses_.isMutable()) {
                     responses_ = responses_.copy();
                 }
+                bitField0_ |= 0x00000080;
+                onChanged();
                 return responses_;
             }
 
@@ -7662,7 +7766,10 @@ public final class Openapiv2 {
              * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Response&gt; responses = 9;</code>
              */
             @java.lang.Override
-            public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key,
+            public /* nullable */
+            grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response getResponsesOrDefault(java.lang.String key, /*
+                                                                                                                      * nullable
+                                                                                                                      */
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -7694,6 +7801,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearResponses() {
+                bitField0_ = (bitField0_ & ~0x00000080);
                 internalGetMutableResponses().getMutableMap().clear();
                 return this;
             }
@@ -7719,6 +7827,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> getMutableResponses() {
+                bitField0_ |= 0x00000080;
                 return internalGetMutableResponses().getMutableMap();
             }
 
@@ -7739,6 +7848,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableResponses().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000080;
                 return this;
             }
 
@@ -7753,15 +7863,16 @@ public final class Openapiv2 {
             public Builder putAllResponses(
                     java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response> values) {
                 internalGetMutableResponses().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000080;
                 return this;
             }
 
             private java.util.List<java.lang.Integer> schemes_ = java.util.Collections.emptyList();
 
             private void ensureSchemesIsMutable() {
-                if (!((bitField0_ & 0x00000010) != 0)) {
+                if (!((bitField0_ & 0x00000100) != 0)) {
                     schemes_ = new java.util.ArrayList<java.lang.Integer>(schemes_);
-                    bitField0_ |= 0x00000010;
+                    bitField0_ |= 0x00000100;
                 }
             }
 
@@ -7892,7 +8003,7 @@ public final class Openapiv2 {
              */
             public Builder clearSchemes() {
                 schemes_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000010);
+                bitField0_ = (bitField0_ & ~0x00000100);
                 onChanged();
                 return this;
             }
@@ -7937,8 +8048,8 @@ public final class Openapiv2 {
              *
              * <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.Scheme schemes = 10;</code>
              *
-             * @param index The index of the value to return.
-             * @return The enum numeric value on the wire of schemes at the given index.
+             * @param index The index to set the value at.
+             * @param value The enum numeric value on the wire for schemes to set.
              * @return This builder for chaining.
              */
             public Builder setSchemesValue(int index, int value) {
@@ -8018,6 +8129,7 @@ public final class Openapiv2 {
              */
             public Builder setDeprecated(boolean value) {
                 deprecated_ = value;
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -8033,6 +8145,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearDeprecated() {
+                bitField0_ = (bitField0_ & ~0x00000200);
                 deprecated_ = false;
                 onChanged();
                 return this;
@@ -8042,10 +8155,10 @@ public final class Openapiv2 {
                     .emptyList();
 
             private void ensureSecurityIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
+                if (!((bitField0_ & 0x00000400) != 0)) {
                     security_ = new java.util.ArrayList<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement>(
                             security_);
-                    bitField0_ |= 0x00000020;
+                    bitField0_ |= 0x00000400;
                 }
             }
 
@@ -8291,7 +8404,7 @@ public final class Openapiv2 {
             public Builder clearSecurity() {
                 if (securityBuilder_ == null) {
                     security_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    bitField0_ = (bitField0_ & ~0x00000400);
                     onChanged();
                 } else {
                     securityBuilder_.clear();
@@ -8427,7 +8540,7 @@ public final class Openapiv2 {
             private com.google.protobuf.RepeatedFieldBuilderV3<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.Builder, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirementOrBuilder> getSecurityFieldBuilder() {
                 if (securityBuilder_ == null) {
                     securityBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.Builder, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirementOrBuilder>(
-                            security_, ((bitField0_ & 0x00000020) != 0), getParentForChildren(), isClean());
+                            security_, ((bitField0_ & 0x00000400) != 0), getParentForChildren(), isClean());
                     security_ = null;
                 }
                 return securityBuilder_;
@@ -8443,14 +8556,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetMutableExtensions() {
-                onChanged();
-                ;
                 if (extensions_ == null) {
                     extensions_ = com.google.protobuf.MapField.newMapField(ExtensionsDefaultEntryHolder.defaultEntry);
                 }
                 if (!extensions_.isMutable()) {
                     extensions_ = extensions_.copy();
                 }
+                bitField0_ |= 0x00000800;
+                onChanged();
                 return extensions_;
             }
 
@@ -8490,7 +8603,8 @@ public final class Openapiv2 {
              * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 13;</code>
              */
             @java.lang.Override
-            public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key,
+            public /* nullable */
+            com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
                     com.google.protobuf.Value defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -8515,6 +8629,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearExtensions() {
+                bitField0_ = (bitField0_ & ~0x00000800);
                 internalGetMutableExtensions().getMutableMap().clear();
                 return this;
             }
@@ -8535,6 +8650,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, com.google.protobuf.Value> getMutableExtensions() {
+                bitField0_ |= 0x00000800;
                 return internalGetMutableExtensions().getMutableMap();
             }
 
@@ -8549,6 +8665,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableExtensions().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000800;
                 return this;
             }
 
@@ -8557,6 +8674,7 @@ public final class Openapiv2 {
              */
             public Builder putAllExtensions(java.util.Map<java.lang.String, com.google.protobuf.Value> values) {
                 internalGetMutableExtensions().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000800;
                 return this;
             }
 
@@ -8740,6 +8858,7 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Header` is a representation of OpenAPI v2 specification's Header object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#headerObject
      * </pre>
      *
@@ -8769,11 +8888,6 @@ public final class Openapiv2 {
             return new Header();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.internal_static_grpc_gateway_protoc_gen_openapiv2_options_Header_descriptor;
         }
@@ -8787,7 +8901,8 @@ public final class Openapiv2 {
 
         public static final int DESCRIPTION_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -8834,7 +8949,8 @@ public final class Openapiv2 {
 
         public static final int TYPE_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object type_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object type_ = "";
 
         /**
          * <pre>
@@ -8881,7 +8997,8 @@ public final class Openapiv2 {
 
         public static final int FORMAT_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object format_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object format_ = "";
 
         /**
          * <pre>
@@ -8928,7 +9045,8 @@ public final class Openapiv2 {
 
         public static final int DEFAULT_FIELD_NUMBER = 6;
 
-        private volatile java.lang.Object default_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object default_ = "";
 
         /**
          * <pre>
@@ -8979,7 +9097,8 @@ public final class Openapiv2 {
 
         public static final int PATTERN_FIELD_NUMBER = 13;
 
-        private volatile java.lang.Object pattern_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object pattern_ = "";
 
         /**
          * <pre>
@@ -9220,6 +9339,7 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Header` is a representation of OpenAPI v2 specification's Header object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#headerObject
          * </pre>
          *
@@ -9250,6 +9370,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 description_ = "";
                 type_ = "";
                 format_ = "";
@@ -9281,44 +9402,30 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header(
                         this);
-                result.description_ = description_;
-                result.type_ = type_;
-                result.format_ = format_;
-                result.default_ = default_;
-                result.pattern_ = pattern_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.type_ = type_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.format_ = format_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.default_ = default_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.pattern_ = pattern_;
+                }
             }
 
             @java.lang.Override
@@ -9336,22 +9443,27 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getType().isEmpty()) {
                     type_ = other.type_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getFormat().isEmpty()) {
                     format_ = other.format_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getDefault().isEmpty()) {
                     default_ = other.default_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (!other.getPattern().isEmpty()) {
                     pattern_ = other.pattern_;
+                    bitField0_ |= 0x00000010;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -9380,26 +9492,31 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 type_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 format_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 50: {
                                 default_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 50
                             case 106: {
                                 pattern_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 106
@@ -9422,6 +9539,8 @@ public final class Openapiv2 {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object description_ = "";
 
@@ -9481,6 +9600,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -9496,6 +9616,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -9516,6 +9637,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -9578,6 +9700,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 type_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -9593,6 +9716,7 @@ public final class Openapiv2 {
              */
             public Builder clearType() {
                 type_ = getDefaultInstance().getType();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -9613,6 +9737,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 type_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -9675,6 +9800,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 format_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -9690,6 +9816,7 @@ public final class Openapiv2 {
              */
             public Builder clearFormat() {
                 format_ = getDefaultInstance().getFormat();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -9710,6 +9837,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 format_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -9778,6 +9906,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 default_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -9795,6 +9924,7 @@ public final class Openapiv2 {
              */
             public Builder clearDefault() {
                 default_ = getDefaultInstance().getDefault();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -9817,6 +9947,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 default_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -9879,6 +10010,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 pattern_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -9894,6 +10026,7 @@ public final class Openapiv2 {
              */
             public Builder clearPattern() {
                 pattern_ = getDefaultInstance().getPattern();
+                bitField0_ = (bitField0_ & ~0x00000010);
                 onChanged();
                 return this;
             }
@@ -9914,6 +10047,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 pattern_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -10086,7 +10220,8 @@ public final class Openapiv2 {
          *
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Header&gt; headers = 3;</code>
          */
-        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header getHeadersOrDefault(java.lang.String key,
+        /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header getHeadersOrDefault(java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header defaultValue);
 
         /**
@@ -10144,7 +10279,9 @@ public final class Openapiv2 {
          *
          * <code>map&lt;string, string&gt; examples = 4;</code>
          */
-        java.lang.String getExamplesOrDefault(java.lang.String key, java.lang.String defaultValue);
+        /* nullable */
+        java.lang.String getExamplesOrDefault(java.lang.String key, /* nullable */
+                java.lang.String defaultValue);
 
         /**
          * <pre>
@@ -10180,7 +10317,9 @@ public final class Openapiv2 {
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 5;</code>
          */
-        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue);
+        /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue);
 
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 5;</code>
@@ -10191,6 +10330,7 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Response` is a representation of OpenAPI v2 specification's Response object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#responseObject
      * </pre>
      *
@@ -10214,11 +10354,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new Response();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -10249,7 +10384,8 @@ public final class Openapiv2 {
 
         public static final int DESCRIPTION_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -10340,7 +10476,7 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SchemaOrBuilder getSchemaOrBuilder() {
-            return getSchema();
+            return schema_ == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema.getDefaultInstance() : schema_;
         }
 
         public static final int HEADERS_FIELD_NUMBER = 3;
@@ -10353,6 +10489,7 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header> headers_;
 
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header> internalGetHeaders() {
@@ -10416,7 +10553,8 @@ public final class Openapiv2 {
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Header&gt; headers = 3;</code>
          */
         @java.lang.Override
-        public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header getHeadersOrDefault(java.lang.String key,
+        public /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header getHeadersOrDefault(java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
@@ -10457,6 +10595,7 @@ public final class Openapiv2 {
                     com.google.protobuf.WireFormat.FieldType.STRING, "", com.google.protobuf.WireFormat.FieldType.STRING, "");
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, java.lang.String> examples_;
 
         private com.google.protobuf.MapField<java.lang.String, java.lang.String> internalGetExamples() {
@@ -10517,7 +10656,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, string&gt; examples = 4;</code>
          */
         @java.lang.Override
-        public java.lang.String getExamplesOrDefault(java.lang.String key, java.lang.String defaultValue) {
+        public /* nullable */
+        java.lang.String getExamplesOrDefault(java.lang.String key, /* nullable */
+                java.lang.String defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -10555,6 +10696,7 @@ public final class Openapiv2 {
                     com.google.protobuf.Value.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> extensions_;
 
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetExtensions() {
@@ -10600,7 +10742,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 5;</code>
          */
         @java.lang.Override
-        public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue) {
+        public /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -10836,6 +10980,7 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Response` is a representation of OpenAPI v2 specification's Response object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#responseObject
          * </pre>
          *
@@ -10894,11 +11039,11 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 description_ = "";
-                if (schemaBuilder_ == null) {
-                    schema_ = null;
-                } else {
-                    schema_ = null;
+                schema_ = null;
+                if (schemaBuilder_ != null) {
+                    schemaBuilder_.dispose();
                     schemaBuilder_ = null;
                 }
                 internalGetMutableHeaders().clear();
@@ -10930,52 +11075,33 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.description_ = description_;
-                if (schemaBuilder_ == null) {
-                    result.schema_ = schema_;
-                } else {
-                    result.schema_ = schemaBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.headers_ = internalGetHeaders();
-                result.headers_.makeImmutable();
-                result.examples_ = internalGetExamples();
-                result.examples_.makeImmutable();
-                result.extensions_ = internalGetExtensions();
-                result.extensions_.makeImmutable();
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Response result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.schema_ = schemaBuilder_ == null ? schema_ : schemaBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.headers_ = internalGetHeaders();
+                    result.headers_.makeImmutable();
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.examples_ = internalGetExamples();
+                    result.examples_.makeImmutable();
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.extensions_ = internalGetExtensions();
+                    result.extensions_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -10993,14 +11119,18 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (other.hasSchema()) {
                     mergeSchema(other.getSchema());
                 }
                 internalGetMutableHeaders().mergeFrom(other.internalGetHeaders());
+                bitField0_ |= 0x00000004;
                 internalGetMutableExamples().mergeFrom(other.internalGetExamples());
+                bitField0_ |= 0x00000008;
                 internalGetMutableExtensions().mergeFrom(other.internalGetExtensions());
+                bitField0_ |= 0x00000010;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -11027,11 +11157,13 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 input.readMessage(getSchemaFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -11040,6 +11172,7 @@ public final class Openapiv2 {
                                         .readMessage(HeadersDefaultEntryHolder.defaultEntry.getParserForType(),
                                                 extensionRegistry);
                                 internalGetMutableHeaders().getMutableMap().put(headers__.getKey(), headers__.getValue());
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -11047,6 +11180,7 @@ public final class Openapiv2 {
                                 com.google.protobuf.MapEntry<java.lang.String, java.lang.String> examples__ = input.readMessage(
                                         ExamplesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                                 internalGetMutableExamples().getMutableMap().put(examples__.getKey(), examples__.getValue());
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -11056,6 +11190,7 @@ public final class Openapiv2 {
                                                 extensionRegistry);
                                 internalGetMutableExtensions().getMutableMap().put(extensions__.getKey(),
                                         extensions__.getValue());
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 42
@@ -11142,6 +11277,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -11158,6 +11294,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -11179,6 +11316,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -11198,7 +11336,7 @@ public final class Openapiv2 {
              * @return Whether the schema field is set.
              */
             public boolean hasSchema() {
-                return schemaBuilder_ != null || schema_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -11234,10 +11372,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     schema_ = value;
-                    onChanged();
                 } else {
                     schemaBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -11252,10 +11391,11 @@ public final class Openapiv2 {
             public Builder setSchema(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema.Builder builderForValue) {
                 if (schemaBuilder_ == null) {
                     schema_ = builderForValue.build();
-                    onChanged();
                 } else {
                     schemaBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -11269,16 +11409,17 @@ public final class Openapiv2 {
              */
             public Builder mergeSchema(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema value) {
                 if (schemaBuilder_ == null) {
-                    if (schema_ != null) {
-                        schema_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema.newBuilder(schema_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && schema_ != null
+                            && schema_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema.getDefaultInstance()) {
+                        getSchemaBuilder().mergeFrom(value);
                     } else {
                         schema_ = value;
                     }
-                    onChanged();
                 } else {
                     schemaBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -11291,13 +11432,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Schema schema = 2;</code>
              */
             public Builder clearSchema() {
-                if (schemaBuilder_ == null) {
-                    schema_ = null;
-                    onChanged();
-                } else {
-                    schema_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                schema_ = null;
+                if (schemaBuilder_ != null) {
+                    schemaBuilder_.dispose();
                     schemaBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -11310,6 +11451,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Schema schema = 2;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema.Builder getSchemaBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getSchemaFieldBuilder().getBuilder();
             }
@@ -11358,14 +11500,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header> internalGetMutableHeaders() {
-                onChanged();
-                ;
                 if (headers_ == null) {
                     headers_ = com.google.protobuf.MapField.newMapField(HeadersDefaultEntryHolder.defaultEntry);
                 }
                 if (!headers_.isMutable()) {
                     headers_ = headers_.copy();
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return headers_;
             }
 
@@ -11423,7 +11565,8 @@ public final class Openapiv2 {
              * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.Header&gt; headers = 3;</code>
              */
             @java.lang.Override
-            public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header getHeadersOrDefault(java.lang.String key,
+            public /* nullable */
+            grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header getHeadersOrDefault(java.lang.String key, /* nullable */
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -11456,6 +11599,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearHeaders() {
+                bitField0_ = (bitField0_ & ~0x00000004);
                 internalGetMutableHeaders().getMutableMap().clear();
                 return this;
             }
@@ -11482,6 +11626,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header> getMutableHeaders() {
+                bitField0_ |= 0x00000004;
                 return internalGetMutableHeaders().getMutableMap();
             }
 
@@ -11502,6 +11647,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableHeaders().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000004;
                 return this;
             }
 
@@ -11517,6 +11663,7 @@ public final class Openapiv2 {
             public Builder putAllHeaders(
                     java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Header> values) {
                 internalGetMutableHeaders().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000004;
                 return this;
             }
 
@@ -11530,14 +11677,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, java.lang.String> internalGetMutableExamples() {
-                onChanged();
-                ;
                 if (examples_ == null) {
                     examples_ = com.google.protobuf.MapField.newMapField(ExamplesDefaultEntryHolder.defaultEntry);
                 }
                 if (!examples_.isMutable()) {
                     examples_ = examples_.copy();
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return examples_;
             }
 
@@ -11592,7 +11739,9 @@ public final class Openapiv2 {
              * <code>map&lt;string, string&gt; examples = 4;</code>
              */
             @java.lang.Override
-            public java.lang.String getExamplesOrDefault(java.lang.String key, java.lang.String defaultValue) {
+            public /* nullable */
+            java.lang.String getExamplesOrDefault(java.lang.String key, /* nullable */
+                    java.lang.String defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
                 }
@@ -11621,6 +11770,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearExamples() {
+                bitField0_ = (bitField0_ & ~0x00000008);
                 internalGetMutableExamples().getMutableMap().clear();
                 return this;
             }
@@ -11646,6 +11796,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, java.lang.String> getMutableExamples() {
+                bitField0_ |= 0x00000008;
                 return internalGetMutableExamples().getMutableMap();
             }
 
@@ -11665,6 +11816,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableExamples().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000008;
                 return this;
             }
 
@@ -11678,6 +11830,7 @@ public final class Openapiv2 {
              */
             public Builder putAllExamples(java.util.Map<java.lang.String, java.lang.String> values) {
                 internalGetMutableExamples().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000008;
                 return this;
             }
 
@@ -11691,14 +11844,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetMutableExtensions() {
-                onChanged();
-                ;
                 if (extensions_ == null) {
                     extensions_ = com.google.protobuf.MapField.newMapField(ExtensionsDefaultEntryHolder.defaultEntry);
                 }
                 if (!extensions_.isMutable()) {
                     extensions_ = extensions_.copy();
                 }
+                bitField0_ |= 0x00000010;
+                onChanged();
                 return extensions_;
             }
 
@@ -11738,7 +11891,8 @@ public final class Openapiv2 {
              * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 5;</code>
              */
             @java.lang.Override
-            public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key,
+            public /* nullable */
+            com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
                     com.google.protobuf.Value defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -11763,6 +11917,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearExtensions() {
+                bitField0_ = (bitField0_ & ~0x00000010);
                 internalGetMutableExtensions().getMutableMap().clear();
                 return this;
             }
@@ -11783,6 +11938,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, com.google.protobuf.Value> getMutableExtensions() {
+                bitField0_ |= 0x00000010;
                 return internalGetMutableExtensions().getMutableMap();
             }
 
@@ -11797,6 +11953,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableExtensions().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000010;
                 return this;
             }
 
@@ -11805,6 +11962,7 @@ public final class Openapiv2 {
              */
             public Builder putAllExtensions(java.util.Map<java.lang.String, com.google.protobuf.Value> values) {
                 internalGetMutableExtensions().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000010;
                 return this;
             }
 
@@ -12048,7 +12206,9 @@ public final class Openapiv2 {
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 7;</code>
          */
-        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue);
+        /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue);
 
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 7;</code>
@@ -12059,8 +12219,11 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Info` is a representation of OpenAPI v2 specification's Info object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#infoObject
+     *
      * Example:
+     *
      *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
      *    info: {
      *      title: "Echo API";
@@ -12105,11 +12268,6 @@ public final class Openapiv2 {
             return new Info();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.internal_static_grpc_gateway_protoc_gen_openapiv2_options_Info_descriptor;
         }
@@ -12134,7 +12292,8 @@ public final class Openapiv2 {
 
         public static final int TITLE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object title_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object title_ = "";
 
         /**
          * <pre>
@@ -12181,7 +12340,8 @@ public final class Openapiv2 {
 
         public static final int DESCRIPTION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -12230,7 +12390,8 @@ public final class Openapiv2 {
 
         public static final int TERMS_OF_SERVICE_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object termsOfService_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object termsOfService_ = "";
 
         /**
          * <pre>
@@ -12317,7 +12478,8 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ContactOrBuilder getContactOrBuilder() {
-            return getContact();
+            return contact_ == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact.getDefaultInstance()
+                    : contact_;
         }
 
         public static final int LICENSE_FIELD_NUMBER = 5;
@@ -12362,12 +12524,14 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.LicenseOrBuilder getLicenseOrBuilder() {
-            return getLicense();
+            return license_ == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License.getDefaultInstance()
+                    : license_;
         }
 
         public static final int VERSION_FIELD_NUMBER = 6;
 
-        private volatile java.lang.Object version_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object version_ = "";
 
         /**
          * <pre>
@@ -12424,6 +12588,7 @@ public final class Openapiv2 {
                     com.google.protobuf.Value.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> extensions_;
 
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetExtensions() {
@@ -12469,7 +12634,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 7;</code>
          */
         @java.lang.Override
-        public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue) {
+        public /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -12724,8 +12891,11 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Info` is a representation of OpenAPI v2 specification's Info object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#infoObject
+         *
          * Example:
+         *
          *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
          *    info: {
          *      title: "Echo API";
@@ -12792,19 +12962,18 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 title_ = "";
                 description_ = "";
                 termsOfService_ = "";
-                if (contactBuilder_ == null) {
-                    contact_ = null;
-                } else {
-                    contact_ = null;
+                contact_ = null;
+                if (contactBuilder_ != null) {
+                    contactBuilder_.dispose();
                     contactBuilder_ = null;
                 }
-                if (licenseBuilder_ == null) {
-                    license_ = null;
-                } else {
-                    license_ = null;
+                license_ = null;
+                if (licenseBuilder_ != null) {
+                    licenseBuilder_.dispose();
                     licenseBuilder_ = null;
                 }
                 version_ = "";
@@ -12835,56 +13004,37 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.title_ = title_;
-                result.description_ = description_;
-                result.termsOfService_ = termsOfService_;
-                if (contactBuilder_ == null) {
-                    result.contact_ = contact_;
-                } else {
-                    result.contact_ = contactBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (licenseBuilder_ == null) {
-                    result.license_ = license_;
-                } else {
-                    result.license_ = licenseBuilder_.build();
-                }
-                result.version_ = version_;
-                result.extensions_ = internalGetExtensions();
-                result.extensions_.makeImmutable();
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Info result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.title_ = title_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.termsOfService_ = termsOfService_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.contact_ = contactBuilder_ == null ? contact_ : contactBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.license_ = licenseBuilder_ == null ? license_ : licenseBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.version_ = version_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.extensions_ = internalGetExtensions();
+                    result.extensions_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -12902,14 +13052,17 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getTitle().isEmpty()) {
                     title_ = other.title_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getTermsOfService().isEmpty()) {
                     termsOfService_ = other.termsOfService_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (other.hasContact()) {
@@ -12920,9 +13073,11 @@ public final class Openapiv2 {
                 }
                 if (!other.getVersion().isEmpty()) {
                     version_ = other.version_;
+                    bitField0_ |= 0x00000020;
                     onChanged();
                 }
                 internalGetMutableExtensions().mergeFrom(other.internalGetExtensions());
+                bitField0_ |= 0x00000040;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -12949,31 +13104,37 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 title_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 termsOfService_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 input.readMessage(getContactFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
                             case 42: {
                                 input.readMessage(getLicenseFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 42
                             case 50: {
                                 version_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000020;
                                 break;
                             }
                             // case 50
@@ -12983,6 +13144,7 @@ public final class Openapiv2 {
                                                 extensionRegistry);
                                 internalGetMutableExtensions().getMutableMap().put(extensions__.getKey(),
                                         extensions__.getValue());
+                                bitField0_ |= 0x00000040;
                                 break;
                             }
                             // case 58
@@ -13066,6 +13228,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 title_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -13081,6 +13244,7 @@ public final class Openapiv2 {
              */
             public Builder clearTitle() {
                 title_ = getDefaultInstance().getTitle();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -13101,6 +13265,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 title_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -13166,6 +13331,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -13182,6 +13348,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -13203,6 +13370,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -13265,6 +13433,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 termsOfService_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -13280,6 +13449,7 @@ public final class Openapiv2 {
              */
             public Builder clearTermsOfService() {
                 termsOfService_ = getDefaultInstance().getTermsOfService();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -13300,6 +13470,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 termsOfService_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -13318,7 +13489,7 @@ public final class Openapiv2 {
              * @return Whether the contact field is set.
              */
             public boolean hasContact() {
-                return contactBuilder_ != null || contact_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -13352,10 +13523,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     contact_ = value;
-                    onChanged();
                 } else {
                     contactBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -13369,10 +13541,11 @@ public final class Openapiv2 {
             public Builder setContact(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact.Builder builderForValue) {
                 if (contactBuilder_ == null) {
                     contact_ = builderForValue.build();
-                    onChanged();
                 } else {
                     contactBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -13385,16 +13558,17 @@ public final class Openapiv2 {
              */
             public Builder mergeContact(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact value) {
                 if (contactBuilder_ == null) {
-                    if (contact_ != null) {
-                        contact_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact.newBuilder(contact_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && contact_ != null
+                            && contact_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact.getDefaultInstance()) {
+                        getContactBuilder().mergeFrom(value);
                     } else {
                         contact_ = value;
                     }
-                    onChanged();
                 } else {
                     contactBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -13406,13 +13580,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Contact contact = 4;</code>
              */
             public Builder clearContact() {
-                if (contactBuilder_ == null) {
-                    contact_ = null;
-                    onChanged();
-                } else {
-                    contact_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                contact_ = null;
+                if (contactBuilder_ != null) {
+                    contactBuilder_.dispose();
                     contactBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -13424,6 +13598,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Contact contact = 4;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact.Builder getContactBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getContactFieldBuilder().getBuilder();
             }
@@ -13474,7 +13649,7 @@ public final class Openapiv2 {
              * @return Whether the license field is set.
              */
             public boolean hasLicense() {
-                return licenseBuilder_ != null || license_ != null;
+                return ((bitField0_ & 0x00000010) != 0);
             }
 
             /**
@@ -13508,10 +13683,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     license_ = value;
-                    onChanged();
                 } else {
                     licenseBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -13525,10 +13701,11 @@ public final class Openapiv2 {
             public Builder setLicense(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License.Builder builderForValue) {
                 if (licenseBuilder_ == null) {
                     license_ = builderForValue.build();
-                    onChanged();
                 } else {
                     licenseBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -13541,16 +13718,17 @@ public final class Openapiv2 {
              */
             public Builder mergeLicense(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License value) {
                 if (licenseBuilder_ == null) {
-                    if (license_ != null) {
-                        license_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License.newBuilder(license_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000010) != 0) && license_ != null
+                            && license_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License.getDefaultInstance()) {
+                        getLicenseBuilder().mergeFrom(value);
                     } else {
                         license_ = value;
                     }
-                    onChanged();
                 } else {
                     licenseBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000010;
+                onChanged();
                 return this;
             }
 
@@ -13562,13 +13740,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.License license = 5;</code>
              */
             public Builder clearLicense() {
-                if (licenseBuilder_ == null) {
-                    license_ = null;
-                    onChanged();
-                } else {
-                    license_ = null;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                license_ = null;
+                if (licenseBuilder_ != null) {
+                    licenseBuilder_.dispose();
                     licenseBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -13580,6 +13758,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.License license = 5;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License.Builder getLicenseBuilder() {
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return getLicenseFieldBuilder().getBuilder();
             }
@@ -13677,6 +13856,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 version_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13693,6 +13873,7 @@ public final class Openapiv2 {
              */
             public Builder clearVersion() {
                 version_ = getDefaultInstance().getVersion();
+                bitField0_ = (bitField0_ & ~0x00000020);
                 onChanged();
                 return this;
             }
@@ -13714,6 +13895,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 version_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -13728,14 +13910,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetMutableExtensions() {
-                onChanged();
-                ;
                 if (extensions_ == null) {
                     extensions_ = com.google.protobuf.MapField.newMapField(ExtensionsDefaultEntryHolder.defaultEntry);
                 }
                 if (!extensions_.isMutable()) {
                     extensions_ = extensions_.copy();
                 }
+                bitField0_ |= 0x00000040;
+                onChanged();
                 return extensions_;
             }
 
@@ -13775,7 +13957,8 @@ public final class Openapiv2 {
              * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 7;</code>
              */
             @java.lang.Override
-            public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key,
+            public /* nullable */
+            com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
                     com.google.protobuf.Value defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -13800,6 +13983,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearExtensions() {
+                bitField0_ = (bitField0_ & ~0x00000040);
                 internalGetMutableExtensions().getMutableMap().clear();
                 return this;
             }
@@ -13820,6 +14004,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, com.google.protobuf.Value> getMutableExtensions() {
+                bitField0_ |= 0x00000040;
                 return internalGetMutableExtensions().getMutableMap();
             }
 
@@ -13834,6 +14019,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableExtensions().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000040;
                 return this;
             }
 
@@ -13842,6 +14028,7 @@ public final class Openapiv2 {
              */
             public Builder putAllExtensions(java.util.Map<java.lang.String, com.google.protobuf.Value> values) {
                 internalGetMutableExtensions().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000040;
                 return this;
             }
 
@@ -13981,8 +14168,11 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Contact` is a representation of OpenAPI v2 specification's Contact object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#contactObject
+     *
      * Example:
+     *
      *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
      *    info: {
      *      ...
@@ -14021,11 +14211,6 @@ public final class Openapiv2 {
             return new Contact();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.internal_static_grpc_gateway_protoc_gen_openapiv2_options_Contact_descriptor;
         }
@@ -14039,7 +14224,8 @@ public final class Openapiv2 {
 
         public static final int NAME_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object name_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object name_ = "";
 
         /**
          * <pre>
@@ -14086,7 +14272,8 @@ public final class Openapiv2 {
 
         public static final int URL_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object url_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object url_ = "";
 
         /**
          * <pre>
@@ -14135,7 +14322,8 @@ public final class Openapiv2 {
 
         public static final int EMAIL_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object email_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object email_ = "";
 
         /**
          * <pre>
@@ -14358,8 +14546,11 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Contact` is a representation of OpenAPI v2 specification's Contact object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#contactObject
+         *
          * Example:
+         *
          *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
          *    info: {
          *      ...
@@ -14401,6 +14592,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 name_ = "";
                 url_ = "";
                 email_ = "";
@@ -14430,42 +14622,24 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact(
                         this);
-                result.name_ = name_;
-                result.url_ = url_;
-                result.email_ = email_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Contact result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.name_ = name_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.url_ = url_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.email_ = email_;
+                }
             }
 
             @java.lang.Override
@@ -14483,14 +14657,17 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getName().isEmpty()) {
                     name_ = other.name_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getUrl().isEmpty()) {
                     url_ = other.url_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getEmail().isEmpty()) {
                     email_ = other.email_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -14519,16 +14696,19 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 name_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 url_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 email_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
@@ -14551,6 +14731,8 @@ public final class Openapiv2 {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object name_ = "";
 
@@ -14610,6 +14792,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 name_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -14625,6 +14808,7 @@ public final class Openapiv2 {
              */
             public Builder clearName() {
                 name_ = getDefaultInstance().getName();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -14645,6 +14829,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 name_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -14710,6 +14895,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 url_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -14726,6 +14912,7 @@ public final class Openapiv2 {
              */
             public Builder clearUrl() {
                 url_ = getDefaultInstance().getUrl();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -14747,6 +14934,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 url_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -14812,6 +15000,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 email_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -14828,6 +15017,7 @@ public final class Openapiv2 {
              */
             public Builder clearEmail() {
                 email_ = getDefaultInstance().getEmail();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -14849,6 +15039,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 email_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -14963,8 +15154,11 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `License` is a representation of OpenAPI v2 specification's License object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#licenseObject
+     *
      * Example:
+     *
      *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
      *    info: {
      *      ...
@@ -15001,11 +15195,6 @@ public final class Openapiv2 {
             return new License();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.internal_static_grpc_gateway_protoc_gen_openapiv2_options_License_descriptor;
         }
@@ -15019,7 +15208,8 @@ public final class Openapiv2 {
 
         public static final int NAME_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object name_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object name_ = "";
 
         /**
          * <pre>
@@ -15066,7 +15256,8 @@ public final class Openapiv2 {
 
         public static final int URL_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object url_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object url_ = "";
 
         /**
          * <pre>
@@ -15277,8 +15468,11 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `License` is a representation of OpenAPI v2 specification's License object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#licenseObject
+         *
          * Example:
+         *
          *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
          *    info: {
          *      ...
@@ -15319,6 +15513,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 name_ = "";
                 url_ = "";
                 return this;
@@ -15347,41 +15542,21 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License(
                         this);
-                result.name_ = name_;
-                result.url_ = url_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.License result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.name_ = name_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.url_ = url_;
+                }
             }
 
             @java.lang.Override
@@ -15399,10 +15574,12 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getName().isEmpty()) {
                     name_ = other.name_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getUrl().isEmpty()) {
                     url_ = other.url_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -15431,11 +15608,13 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 name_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 url_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -15458,6 +15637,8 @@ public final class Openapiv2 {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object name_ = "";
 
@@ -15517,6 +15698,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 name_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -15532,6 +15714,7 @@ public final class Openapiv2 {
              */
             public Builder clearName() {
                 name_ = getDefaultInstance().getName();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -15552,6 +15735,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 name_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -15614,6 +15798,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 url_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -15629,6 +15814,7 @@ public final class Openapiv2 {
              */
             public Builder clearUrl() {
                 url_ = getDefaultInstance().getUrl();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -15649,6 +15835,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 url_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -15768,8 +15955,11 @@ public final class Openapiv2 {
      * <pre>
      * `ExternalDocumentation` is a representation of OpenAPI v2 specification's
      * ExternalDocumentation object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#externalDocumentationObject
+     *
      * Example:
+     *
      *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
      *    ...
      *    external_docs: {
@@ -15803,11 +15993,6 @@ public final class Openapiv2 {
             return new ExternalDocumentation();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.internal_static_grpc_gateway_protoc_gen_openapiv2_options_ExternalDocumentation_descriptor;
         }
@@ -15822,7 +16007,8 @@ public final class Openapiv2 {
 
         public static final int DESCRIPTION_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -15871,7 +16057,8 @@ public final class Openapiv2 {
 
         public static final int URL_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object url_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object url_ = "";
 
         /**
          * <pre>
@@ -16087,8 +16274,11 @@ public final class Openapiv2 {
          * <pre>
          * `ExternalDocumentation` is a representation of OpenAPI v2 specification's
          * ExternalDocumentation object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#externalDocumentationObject
+         *
          * Example:
+         *
          *  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
          *    ...
          *    external_docs: {
@@ -16127,6 +16317,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 description_ = "";
                 url_ = "";
                 return this;
@@ -16155,41 +16346,21 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation(
                         this);
-                result.description_ = description_;
-                result.url_ = url_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.url_ = url_;
+                }
             }
 
             @java.lang.Override
@@ -16207,10 +16378,12 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getUrl().isEmpty()) {
                     url_ = other.url_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -16239,11 +16412,13 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 url_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -16266,6 +16441,8 @@ public final class Openapiv2 {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object description_ = "";
 
@@ -16328,6 +16505,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -16344,6 +16522,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -16365,6 +16544,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -16430,6 +16610,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 url_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -16446,6 +16627,7 @@ public final class Openapiv2 {
              */
             public Builder clearUrl() {
                 url_ = getDefaultInstance().getUrl();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -16467,6 +16649,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 url_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -16656,6 +16839,7 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Schema` is a representation of OpenAPI v2 specification's Schema object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#schemaObject
      * </pre>
      *
@@ -16680,11 +16864,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new Schema();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -16728,12 +16907,14 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchemaOrBuilder getJsonSchemaOrBuilder() {
-            return getJsonSchema();
+            return jsonSchema_ == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.getDefaultInstance()
+                    : jsonSchema_;
         }
 
         public static final int DISCRIMINATOR_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object discriminator_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object discriminator_ = "";
 
         /**
          * <pre>
@@ -16788,7 +16969,7 @@ public final class Openapiv2 {
 
         public static final int READ_ONLY_FIELD_NUMBER = 3;
 
-        private boolean readOnly_;
+        private boolean readOnly_ = false;
 
         /**
          * <pre>
@@ -16851,12 +17032,15 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentationOrBuilder getExternalDocsOrBuilder() {
-            return getExternalDocs();
+            return externalDocs_ == null
+                    ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.getDefaultInstance()
+                    : externalDocs_;
         }
 
         public static final int EXAMPLE_FIELD_NUMBER = 6;
 
-        private volatile java.lang.Object example_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object example_ = "";
 
         /**
          * <pre>
@@ -17111,6 +17295,7 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Schema` is a representation of OpenAPI v2 specification's Schema object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#schemaObject
          * </pre>
          *
@@ -17141,18 +17326,17 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (jsonSchemaBuilder_ == null) {
-                    jsonSchema_ = null;
-                } else {
-                    jsonSchema_ = null;
+                bitField0_ = 0;
+                jsonSchema_ = null;
+                if (jsonSchemaBuilder_ != null) {
+                    jsonSchemaBuilder_.dispose();
                     jsonSchemaBuilder_ = null;
                 }
                 discriminator_ = "";
                 readOnly_ = false;
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                } else {
-                    externalDocs_ = null;
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
                 example_ = "";
@@ -17182,52 +17366,30 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema(
                         this);
-                if (jsonSchemaBuilder_ == null) {
-                    result.jsonSchema_ = jsonSchema_;
-                } else {
-                    result.jsonSchema_ = jsonSchemaBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.discriminator_ = discriminator_;
-                result.readOnly_ = readOnly_;
-                if (externalDocsBuilder_ == null) {
-                    result.externalDocs_ = externalDocs_;
-                } else {
-                    result.externalDocs_ = externalDocsBuilder_.build();
-                }
-                result.example_ = example_;
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Schema result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.jsonSchema_ = jsonSchemaBuilder_ == null ? jsonSchema_ : jsonSchemaBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.discriminator_ = discriminator_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.readOnly_ = readOnly_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.externalDocs_ = externalDocsBuilder_ == null ? externalDocs_ : externalDocsBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.example_ = example_;
+                }
             }
 
             @java.lang.Override
@@ -17248,6 +17410,7 @@ public final class Openapiv2 {
                 }
                 if (!other.getDiscriminator().isEmpty()) {
                     discriminator_ = other.discriminator_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.getReadOnly() != false) {
@@ -17258,6 +17421,7 @@ public final class Openapiv2 {
                 }
                 if (!other.getExample().isEmpty()) {
                     example_ = other.example_;
+                    bitField0_ |= 0x00000010;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -17286,26 +17450,31 @@ public final class Openapiv2 {
                                 break;
                             case 10: {
                                 input.readMessage(getJsonSchemaFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 discriminator_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 24: {
                                 readOnly_ = input.readBool();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 24
                             case 42: {
                                 input.readMessage(getExternalDocsFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 42
                             case 50: {
                                 example_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 50
@@ -17329,6 +17498,8 @@ public final class Openapiv2 {
                 return this;
             }
 
+            private int bitField0_;
+
             private grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema jsonSchema_;
 
             private com.google.protobuf.SingleFieldBuilderV3<grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.Builder, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchemaOrBuilder> jsonSchemaBuilder_;
@@ -17339,7 +17510,7 @@ public final class Openapiv2 {
              * @return Whether the jsonSchema field is set.
              */
             public boolean hasJsonSchema() {
-                return jsonSchemaBuilder_ != null || jsonSchema_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -17366,10 +17537,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     jsonSchema_ = value;
-                    onChanged();
                 } else {
                     jsonSchemaBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -17380,10 +17552,11 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.Builder builderForValue) {
                 if (jsonSchemaBuilder_ == null) {
                     jsonSchema_ = builderForValue.build();
-                    onChanged();
                 } else {
                     jsonSchemaBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -17392,16 +17565,18 @@ public final class Openapiv2 {
              */
             public Builder mergeJsonSchema(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema value) {
                 if (jsonSchemaBuilder_ == null) {
-                    if (jsonSchema_ != null) {
-                        jsonSchema_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.newBuilder(jsonSchema_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && jsonSchema_ != null
+                            && jsonSchema_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema
+                                    .getDefaultInstance()) {
+                        getJsonSchemaBuilder().mergeFrom(value);
                     } else {
                         jsonSchema_ = value;
                     }
-                    onChanged();
                 } else {
                     jsonSchemaBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -17409,13 +17584,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.JSONSchema json_schema = 1;</code>
              */
             public Builder clearJsonSchema() {
-                if (jsonSchemaBuilder_ == null) {
-                    jsonSchema_ = null;
-                    onChanged();
-                } else {
-                    jsonSchema_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                jsonSchema_ = null;
+                if (jsonSchemaBuilder_ != null) {
+                    jsonSchemaBuilder_.dispose();
                     jsonSchemaBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -17423,6 +17598,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.JSONSchema json_schema = 1;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.Builder getJsonSchemaBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getJsonSchemaFieldBuilder().getBuilder();
             }
@@ -17522,6 +17698,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 discriminator_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -17541,6 +17718,7 @@ public final class Openapiv2 {
              */
             public Builder clearDiscriminator() {
                 discriminator_ = getDefaultInstance().getDiscriminator();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -17565,6 +17743,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 discriminator_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -17605,6 +17784,7 @@ public final class Openapiv2 {
              */
             public Builder setReadOnly(boolean value) {
                 readOnly_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -17623,6 +17803,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearReadOnly() {
+                bitField0_ = (bitField0_ & ~0x00000004);
                 readOnly_ = false;
                 onChanged();
                 return this;
@@ -17642,7 +17823,7 @@ public final class Openapiv2 {
              * @return Whether the externalDocs field is set.
              */
             public boolean hasExternalDocs() {
-                return externalDocsBuilder_ != null || externalDocs_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -17677,10 +17858,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     externalDocs_ = value;
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -17695,10 +17877,11 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder builderForValue) {
                 if (externalDocsBuilder_ == null) {
                     externalDocs_ = builderForValue.build();
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -17711,16 +17894,18 @@ public final class Openapiv2 {
              */
             public Builder mergeExternalDocs(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation value) {
                 if (externalDocsBuilder_ == null) {
-                    if (externalDocs_ != null) {
-                        externalDocs_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
-                                .newBuilder(externalDocs_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && externalDocs_ != null
+                            && externalDocs_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
+                                    .getDefaultInstance()) {
+                        getExternalDocsBuilder().mergeFrom(value);
                     } else {
                         externalDocs_ = value;
                     }
-                    onChanged();
                 } else {
                     externalDocsBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -17732,13 +17917,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 5;</code>
              */
             public Builder clearExternalDocs() {
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                    onChanged();
-                } else {
-                    externalDocs_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -17750,6 +17935,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 5;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder getExternalDocsBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getExternalDocsFieldBuilder().getBuilder();
             }
@@ -17848,6 +18034,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 example_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -17864,6 +18051,7 @@ public final class Openapiv2 {
              */
             public Builder clearExample() {
                 example_ = getDefaultInstance().getExample();
+                bitField0_ = (bitField0_ & ~0x00000010);
                 onChanged();
                 return this;
             }
@@ -17885,6 +18073,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 example_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -18418,7 +18607,9 @@ public final class Openapiv2 {
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 48;</code>
          */
-        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue);
+        /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue);
 
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 48;</code>
@@ -18430,11 +18621,16 @@ public final class Openapiv2 {
      * <pre>
      * `JSONSchema` represents properties from JSON Schema taken, and as used, in
      * the OpenAPI v2 spec.
+     *
      * This includes changes made by OpenAPI v2.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#schemaObject
+     *
      * See also: https://cswr.github.io/JsonSchema/spec/basic_types/,
      * https://github.com/json-schema-org/json-schema-spec/blob/master/schema.json
+     *
      * Example:
+     *
      *  message SimpleMessage {
      *    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
      *      json_schema: {
@@ -18443,6 +18639,7 @@ public final class Openapiv2 {
      *        required: ["id"]
      *      }
      *    };
+     *
      *    // Id represents the message identifier.
      *    string id = 1; [
      *        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -18470,22 +18667,17 @@ public final class Openapiv2 {
             default_ = "";
             example_ = "";
             pattern_ = "";
-            required_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-            array_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            required_ = com.google.protobuf.LazyStringArrayList.emptyList();
+            array_ = com.google.protobuf.LazyStringArrayList.emptyList();
             type_ = java.util.Collections.emptyList();
             format_ = "";
-            enum_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            enum_ = com.google.protobuf.LazyStringArrayList.emptyList();
         }
 
         @java.lang.Override
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new JSONSchema();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -18738,11 +18930,6 @@ public final class Openapiv2 {
                 return new FieldConfiguration();
             }
 
-            @java.lang.Override
-            public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-                return this.unknownFields;
-            }
-
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
                 return grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.internal_static_grpc_gateway_protoc_gen_openapiv2_options_JSONSchema_FieldConfiguration_descriptor;
             }
@@ -18757,7 +18944,8 @@ public final class Openapiv2 {
 
             public static final int PATH_PARAM_NAME_FIELD_NUMBER = 47;
 
-            private volatile java.lang.Object pathParamName_;
+            @SuppressWarnings("serial")
+            private volatile java.lang.Object pathParamName_ = "";
 
             /**
              * <pre>
@@ -18998,6 +19186,7 @@ public final class Openapiv2 {
                 @java.lang.Override
                 public Builder clear() {
                     super.clear();
+                    bitField0_ = 0;
                     pathParamName_ = "";
                     return this;
                 }
@@ -19026,40 +19215,19 @@ public final class Openapiv2 {
                 public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration buildPartial() {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration(
                             this);
-                    result.pathParamName_ = pathParamName_;
+                    if (bitField0_ != 0) {
+                        buildPartial0(result);
+                    }
                     onBuilt();
                     return result;
                 }
 
-                @java.lang.Override
-                public Builder clone() {
-                    return super.clone();
-                }
-
-                @java.lang.Override
-                public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                    return super.setField(field, value);
-                }
-
-                @java.lang.Override
-                public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                    return super.clearField(field);
-                }
-
-                @java.lang.Override
-                public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                    return super.clearOneof(oneof);
-                }
-
-                @java.lang.Override
-                public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                        java.lang.Object value) {
-                    return super.setRepeatedField(field, index, value);
-                }
-
-                @java.lang.Override
-                public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                    return super.addRepeatedField(field, value);
+                private void buildPartial0(
+                        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration result) {
+                    int from_bitField0_ = bitField0_;
+                    if (((from_bitField0_ & 0x00000001) != 0)) {
+                        result.pathParamName_ = pathParamName_;
+                    }
                 }
 
                 @java.lang.Override
@@ -19080,6 +19248,7 @@ public final class Openapiv2 {
                         return this;
                     if (!other.getPathParamName().isEmpty()) {
                         pathParamName_ = other.pathParamName_;
+                        bitField0_ |= 0x00000001;
                         onChanged();
                     }
                     this.mergeUnknownFields(other.getUnknownFields());
@@ -19108,6 +19277,7 @@ public final class Openapiv2 {
                                     break;
                                 case 378: {
                                     pathParamName_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000001;
                                     break;
                                 }
                                 // case 378
@@ -19130,6 +19300,8 @@ public final class Openapiv2 {
                     // finally
                     return this;
                 }
+
+                private int bitField0_;
 
                 private java.lang.Object pathParamName_ = "";
 
@@ -19198,6 +19370,7 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     pathParamName_ = value;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -19216,6 +19389,7 @@ public final class Openapiv2 {
                  */
                 public Builder clearPathParamName() {
                     pathParamName_ = getDefaultInstance().getPathParamName();
+                    bitField0_ = (bitField0_ & ~0x00000001);
                     onChanged();
                     return this;
                 }
@@ -19239,6 +19413,7 @@ public final class Openapiv2 {
                     }
                     checkByteStringIsUtf8(value);
                     pathParamName_ = value;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -19304,7 +19479,8 @@ public final class Openapiv2 {
 
         public static final int REF_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object ref_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object ref_ = "";
 
         /**
          * <pre>
@@ -19361,7 +19537,8 @@ public final class Openapiv2 {
 
         public static final int TITLE_FIELD_NUMBER = 5;
 
-        private volatile java.lang.Object title_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object title_ = "";
 
         /**
          * <pre>
@@ -19408,7 +19585,8 @@ public final class Openapiv2 {
 
         public static final int DESCRIPTION_FIELD_NUMBER = 6;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -19455,7 +19633,8 @@ public final class Openapiv2 {
 
         public static final int DEFAULT_FIELD_NUMBER = 7;
 
-        private volatile java.lang.Object default_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object default_ = "";
 
         /**
          * <code>string default = 7;</code>
@@ -19494,7 +19673,7 @@ public final class Openapiv2 {
 
         public static final int READ_ONLY_FIELD_NUMBER = 8;
 
-        private boolean readOnly_;
+        private boolean readOnly_ = false;
 
         /**
          * <code>bool read_only = 8;</code>
@@ -19508,7 +19687,8 @@ public final class Openapiv2 {
 
         public static final int EXAMPLE_FIELD_NUMBER = 9;
 
-        private volatile java.lang.Object example_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object example_ = "";
 
         /**
          * <pre>
@@ -19559,7 +19739,7 @@ public final class Openapiv2 {
 
         public static final int MULTIPLE_OF_FIELD_NUMBER = 10;
 
-        private double multipleOf_;
+        private double multipleOf_ = 0D;
 
         /**
          * <code>double multiple_of = 10;</code>
@@ -19573,7 +19753,7 @@ public final class Openapiv2 {
 
         public static final int MAXIMUM_FIELD_NUMBER = 11;
 
-        private double maximum_;
+        private double maximum_ = 0D;
 
         /**
          * <pre>
@@ -19592,7 +19772,7 @@ public final class Openapiv2 {
 
         public static final int EXCLUSIVE_MAXIMUM_FIELD_NUMBER = 12;
 
-        private boolean exclusiveMaximum_;
+        private boolean exclusiveMaximum_ = false;
 
         /**
          * <code>bool exclusive_maximum = 12;</code>
@@ -19606,7 +19786,7 @@ public final class Openapiv2 {
 
         public static final int MINIMUM_FIELD_NUMBER = 13;
 
-        private double minimum_;
+        private double minimum_ = 0D;
 
         /**
          * <pre>
@@ -19625,7 +19805,7 @@ public final class Openapiv2 {
 
         public static final int EXCLUSIVE_MINIMUM_FIELD_NUMBER = 14;
 
-        private boolean exclusiveMinimum_;
+        private boolean exclusiveMinimum_ = false;
 
         /**
          * <code>bool exclusive_minimum = 14;</code>
@@ -19639,7 +19819,7 @@ public final class Openapiv2 {
 
         public static final int MAX_LENGTH_FIELD_NUMBER = 15;
 
-        private long maxLength_;
+        private long maxLength_ = 0L;
 
         /**
          * <code>uint64 max_length = 15;</code>
@@ -19653,7 +19833,7 @@ public final class Openapiv2 {
 
         public static final int MIN_LENGTH_FIELD_NUMBER = 16;
 
-        private long minLength_;
+        private long minLength_ = 0L;
 
         /**
          * <code>uint64 min_length = 16;</code>
@@ -19667,7 +19847,8 @@ public final class Openapiv2 {
 
         public static final int PATTERN_FIELD_NUMBER = 17;
 
-        private volatile java.lang.Object pattern_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object pattern_ = "";
 
         /**
          * <code>string pattern = 17;</code>
@@ -19706,7 +19887,7 @@ public final class Openapiv2 {
 
         public static final int MAX_ITEMS_FIELD_NUMBER = 20;
 
-        private long maxItems_;
+        private long maxItems_ = 0L;
 
         /**
          * <code>uint64 max_items = 20;</code>
@@ -19720,7 +19901,7 @@ public final class Openapiv2 {
 
         public static final int MIN_ITEMS_FIELD_NUMBER = 21;
 
-        private long minItems_;
+        private long minItems_ = 0L;
 
         /**
          * <code>uint64 min_items = 21;</code>
@@ -19734,7 +19915,7 @@ public final class Openapiv2 {
 
         public static final int UNIQUE_ITEMS_FIELD_NUMBER = 22;
 
-        private boolean uniqueItems_;
+        private boolean uniqueItems_ = false;
 
         /**
          * <code>bool unique_items = 22;</code>
@@ -19748,7 +19929,7 @@ public final class Openapiv2 {
 
         public static final int MAX_PROPERTIES_FIELD_NUMBER = 24;
 
-        private long maxProperties_;
+        private long maxProperties_ = 0L;
 
         /**
          * <code>uint64 max_properties = 24;</code>
@@ -19762,7 +19943,7 @@ public final class Openapiv2 {
 
         public static final int MIN_PROPERTIES_FIELD_NUMBER = 25;
 
-        private long minProperties_;
+        private long minProperties_ = 0L;
 
         /**
          * <code>uint64 min_properties = 25;</code>
@@ -19776,7 +19957,8 @@ public final class Openapiv2 {
 
         public static final int REQUIRED_FIELD_NUMBER = 26;
 
-        private com.google.protobuf.LazyStringList required_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList required_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <code>repeated string required = 26;</code>
@@ -19818,7 +20000,8 @@ public final class Openapiv2 {
 
         public static final int ARRAY_FIELD_NUMBER = 34;
 
-        private com.google.protobuf.LazyStringList array_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList array_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -19876,15 +20059,15 @@ public final class Openapiv2 {
 
         public static final int TYPE_FIELD_NUMBER = 35;
 
+        @SuppressWarnings("serial")
         private java.util.List<java.lang.Integer> type_;
 
         private static final com.google.protobuf.Internal.ListAdapter.Converter<java.lang.Integer, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.JSONSchemaSimpleTypes> type_converter_ = new com.google.protobuf.Internal.ListAdapter.Converter<java.lang.Integer, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.JSONSchemaSimpleTypes>() {
 
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.JSONSchemaSimpleTypes convert(
                     java.lang.Integer from) {
-                @SuppressWarnings("deprecation")
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.JSONSchemaSimpleTypes result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.JSONSchemaSimpleTypes
-                        .valueOf(from);
+                        .forNumber(from);
                 return result == null
                         ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.JSONSchemaSimpleTypes.UNRECOGNIZED
                         : result;
@@ -19948,7 +20131,8 @@ public final class Openapiv2 {
 
         public static final int FORMAT_FIELD_NUMBER = 36;
 
-        private volatile java.lang.Object format_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object format_ = "";
 
         /**
          * <pre>
@@ -19995,7 +20179,8 @@ public final class Openapiv2 {
 
         public static final int ENUM_FIELD_NUMBER = 46;
 
-        private com.google.protobuf.LazyStringList enum_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList enum_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
         /**
          * <pre>
@@ -20094,7 +20279,9 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfigurationOrBuilder getFieldConfigurationOrBuilder() {
-            return getFieldConfiguration();
+            return fieldConfiguration_ == null
+                    ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration.getDefaultInstance()
+                    : fieldConfiguration_;
         }
 
         public static final int EXTENSIONS_FIELD_NUMBER = 48;
@@ -20107,6 +20294,7 @@ public final class Openapiv2 {
                     com.google.protobuf.Value.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> extensions_;
 
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetExtensions() {
@@ -20152,7 +20340,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 48;</code>
          */
         @java.lang.Override
-        public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue) {
+        public /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -20630,11 +20820,16 @@ public final class Openapiv2 {
          * <pre>
          * `JSONSchema` represents properties from JSON Schema taken, and as used, in
          * the OpenAPI v2 spec.
+         *
          * This includes changes made by OpenAPI v2.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#schemaObject
+         *
          * See also: https://cswr.github.io/JsonSchema/spec/basic_types/,
          * https://github.com/json-schema-org/json-schema-spec/blob/master/schema.json
+         *
          * Example:
+         *
          *  message SimpleMessage {
          *    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
          *      json_schema: {
@@ -20643,6 +20838,7 @@ public final class Openapiv2 {
          *        required: ["id"]
          *      }
          *    };
+         *
          *    // Id represents the message identifier.
          *    string id = 1; [
          *        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -20698,6 +20894,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 ref_ = "";
                 title_ = "";
                 description_ = "";
@@ -20717,19 +20914,15 @@ public final class Openapiv2 {
                 uniqueItems_ = false;
                 maxProperties_ = 0L;
                 minProperties_ = 0L;
-                required_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                array_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
+                required_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                array_ = com.google.protobuf.LazyStringArrayList.emptyList();
                 type_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00200000);
                 format_ = "";
-                enum_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000008);
-                if (fieldConfigurationBuilder_ == null) {
-                    fieldConfiguration_ = null;
-                } else {
-                    fieldConfiguration_ = null;
+                enum_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                fieldConfiguration_ = null;
+                if (fieldConfigurationBuilder_ != null) {
+                    fieldConfigurationBuilder_.dispose();
                     fieldConfigurationBuilder_ = null;
                 }
                 internalGetMutableExtensions().clear();
@@ -20759,87 +20952,104 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.ref_ = ref_;
-                result.title_ = title_;
-                result.description_ = description_;
-                result.default_ = default_;
-                result.readOnly_ = readOnly_;
-                result.example_ = example_;
-                result.multipleOf_ = multipleOf_;
-                result.maximum_ = maximum_;
-                result.exclusiveMaximum_ = exclusiveMaximum_;
-                result.minimum_ = minimum_;
-                result.exclusiveMinimum_ = exclusiveMinimum_;
-                result.maxLength_ = maxLength_;
-                result.minLength_ = minLength_;
-                result.pattern_ = pattern_;
-                result.maxItems_ = maxItems_;
-                result.minItems_ = minItems_;
-                result.uniqueItems_ = uniqueItems_;
-                result.maxProperties_ = maxProperties_;
-                result.minProperties_ = minProperties_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    required_ = required_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.required_ = required_;
-                if (((bitField0_ & 0x00000002) != 0)) {
-                    array_ = array_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                }
-                result.array_ = array_;
-                if (((bitField0_ & 0x00000004) != 0)) {
-                    type_ = java.util.Collections.unmodifiableList(type_);
-                    bitField0_ = (bitField0_ & ~0x00000004);
-                }
-                result.type_ = type_;
-                result.format_ = format_;
-                if (((bitField0_ & 0x00000008) != 0)) {
-                    enum_ = enum_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000008);
-                }
-                result.enum_ = enum_;
-                if (fieldConfigurationBuilder_ == null) {
-                    result.fieldConfiguration_ = fieldConfiguration_;
-                } else {
-                    result.fieldConfiguration_ = fieldConfigurationBuilder_.build();
-                }
-                result.extensions_ = internalGetExtensions();
-                result.extensions_.makeImmutable();
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
+            private void buildPartialRepeatedFields(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema result) {
+                if (((bitField0_ & 0x00200000) != 0)) {
+                    type_ = java.util.Collections.unmodifiableList(type_);
+                    bitField0_ = (bitField0_ & ~0x00200000);
+                }
+                result.type_ = type_;
             }
 
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.ref_ = ref_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.title_ = title_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.default_ = default_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.readOnly_ = readOnly_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.example_ = example_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.multipleOf_ = multipleOf_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.maximum_ = maximum_;
+                }
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.exclusiveMaximum_ = exclusiveMaximum_;
+                }
+                if (((from_bitField0_ & 0x00000200) != 0)) {
+                    result.minimum_ = minimum_;
+                }
+                if (((from_bitField0_ & 0x00000400) != 0)) {
+                    result.exclusiveMinimum_ = exclusiveMinimum_;
+                }
+                if (((from_bitField0_ & 0x00000800) != 0)) {
+                    result.maxLength_ = maxLength_;
+                }
+                if (((from_bitField0_ & 0x00001000) != 0)) {
+                    result.minLength_ = minLength_;
+                }
+                if (((from_bitField0_ & 0x00002000) != 0)) {
+                    result.pattern_ = pattern_;
+                }
+                if (((from_bitField0_ & 0x00004000) != 0)) {
+                    result.maxItems_ = maxItems_;
+                }
+                if (((from_bitField0_ & 0x00008000) != 0)) {
+                    result.minItems_ = minItems_;
+                }
+                if (((from_bitField0_ & 0x00010000) != 0)) {
+                    result.uniqueItems_ = uniqueItems_;
+                }
+                if (((from_bitField0_ & 0x00020000) != 0)) {
+                    result.maxProperties_ = maxProperties_;
+                }
+                if (((from_bitField0_ & 0x00040000) != 0)) {
+                    result.minProperties_ = minProperties_;
+                }
+                if (((from_bitField0_ & 0x00080000) != 0)) {
+                    required_.makeImmutable();
+                    result.required_ = required_;
+                }
+                if (((from_bitField0_ & 0x00100000) != 0)) {
+                    array_.makeImmutable();
+                    result.array_ = array_;
+                }
+                if (((from_bitField0_ & 0x00400000) != 0)) {
+                    result.format_ = format_;
+                }
+                if (((from_bitField0_ & 0x00800000) != 0)) {
+                    enum_.makeImmutable();
+                    result.enum_ = enum_;
+                }
+                if (((from_bitField0_ & 0x01000000) != 0)) {
+                    result.fieldConfiguration_ = fieldConfigurationBuilder_ == null ? fieldConfiguration_
+                            : fieldConfigurationBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x02000000) != 0)) {
+                    result.extensions_ = internalGetExtensions();
+                    result.extensions_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -20857,18 +21067,22 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getRef().isEmpty()) {
                     ref_ = other.ref_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getTitle().isEmpty()) {
                     title_ = other.title_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getDefault().isEmpty()) {
                     default_ = other.default_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (other.getReadOnly() != false) {
@@ -20876,6 +21090,7 @@ public final class Openapiv2 {
                 }
                 if (!other.getExample().isEmpty()) {
                     example_ = other.example_;
+                    bitField0_ |= 0x00000020;
                     onChanged();
                 }
                 if (other.getMultipleOf() != 0D) {
@@ -20901,6 +21116,7 @@ public final class Openapiv2 {
                 }
                 if (!other.getPattern().isEmpty()) {
                     pattern_ = other.pattern_;
+                    bitField0_ |= 0x00002000;
                     onChanged();
                 }
                 if (other.getMaxItems() != 0L) {
@@ -20921,7 +21137,7 @@ public final class Openapiv2 {
                 if (!other.required_.isEmpty()) {
                     if (required_.isEmpty()) {
                         required_ = other.required_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ |= 0x00080000;
                     } else {
                         ensureRequiredIsMutable();
                         required_.addAll(other.required_);
@@ -20931,7 +21147,7 @@ public final class Openapiv2 {
                 if (!other.array_.isEmpty()) {
                     if (array_.isEmpty()) {
                         array_ = other.array_;
-                        bitField0_ = (bitField0_ & ~0x00000002);
+                        bitField0_ |= 0x00100000;
                     } else {
                         ensureArrayIsMutable();
                         array_.addAll(other.array_);
@@ -20941,7 +21157,7 @@ public final class Openapiv2 {
                 if (!other.type_.isEmpty()) {
                     if (type_.isEmpty()) {
                         type_ = other.type_;
-                        bitField0_ = (bitField0_ & ~0x00000004);
+                        bitField0_ = (bitField0_ & ~0x00200000);
                     } else {
                         ensureTypeIsMutable();
                         type_.addAll(other.type_);
@@ -20950,12 +21166,13 @@ public final class Openapiv2 {
                 }
                 if (!other.getFormat().isEmpty()) {
                     format_ = other.format_;
+                    bitField0_ |= 0x00400000;
                     onChanged();
                 }
                 if (!other.enum_.isEmpty()) {
                     if (enum_.isEmpty()) {
                         enum_ = other.enum_;
-                        bitField0_ = (bitField0_ & ~0x00000008);
+                        bitField0_ |= 0x00800000;
                     } else {
                         ensureEnumIsMutable();
                         enum_.addAll(other.enum_);
@@ -20966,6 +21183,7 @@ public final class Openapiv2 {
                     mergeFieldConfiguration(other.getFieldConfiguration());
                 }
                 internalGetMutableExtensions().mergeFrom(other.internalGetExtensions());
+                bitField0_ |= 0x02000000;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -20992,96 +21210,115 @@ public final class Openapiv2 {
                                 break;
                             case 26: {
                                 ref_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 26
                             case 42: {
                                 title_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 42
                             case 50: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 50
                             case 58: {
                                 default_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 58
                             case 64: {
                                 readOnly_ = input.readBool();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 64
                             case 74: {
                                 example_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000020;
                                 break;
                             }
                             // case 74
                             case 81: {
                                 multipleOf_ = input.readDouble();
+                                bitField0_ |= 0x00000040;
                                 break;
                             }
                             // case 81
                             case 89: {
                                 maximum_ = input.readDouble();
+                                bitField0_ |= 0x00000080;
                                 break;
                             }
                             // case 89
                             case 96: {
                                 exclusiveMaximum_ = input.readBool();
+                                bitField0_ |= 0x00000100;
                                 break;
                             }
                             // case 96
                             case 105: {
                                 minimum_ = input.readDouble();
+                                bitField0_ |= 0x00000200;
                                 break;
                             }
                             // case 105
                             case 112: {
                                 exclusiveMinimum_ = input.readBool();
+                                bitField0_ |= 0x00000400;
                                 break;
                             }
                             // case 112
                             case 120: {
                                 maxLength_ = input.readUInt64();
+                                bitField0_ |= 0x00000800;
                                 break;
                             }
                             // case 120
                             case 128: {
                                 minLength_ = input.readUInt64();
+                                bitField0_ |= 0x00001000;
                                 break;
                             }
                             // case 128
                             case 138: {
                                 pattern_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00002000;
                                 break;
                             }
                             // case 138
                             case 160: {
                                 maxItems_ = input.readUInt64();
+                                bitField0_ |= 0x00004000;
                                 break;
                             }
                             // case 160
                             case 168: {
                                 minItems_ = input.readUInt64();
+                                bitField0_ |= 0x00008000;
                                 break;
                             }
                             // case 168
                             case 176: {
                                 uniqueItems_ = input.readBool();
+                                bitField0_ |= 0x00010000;
                                 break;
                             }
                             // case 176
                             case 192: {
                                 maxProperties_ = input.readUInt64();
+                                bitField0_ |= 0x00020000;
                                 break;
                             }
                             // case 192
                             case 200: {
                                 minProperties_ = input.readUInt64();
+                                bitField0_ |= 0x00040000;
                                 break;
                             }
                             // case 200
@@ -21120,6 +21357,7 @@ public final class Openapiv2 {
                             // case 282
                             case 290: {
                                 format_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00400000;
                                 break;
                             }
                             // case 290
@@ -21136,11 +21374,13 @@ public final class Openapiv2 {
                                                 extensionRegistry);
                                 internalGetMutableExtensions().getMutableMap().put(extensions__.getKey(),
                                         extensions__.getValue());
+                                bitField0_ |= 0x02000000;
                                 break;
                             }
                             // case 386
                             case 8010: {
                                 input.readMessage(getFieldConfigurationFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x01000000;
                                 break;
                             }
                             // case 8010
@@ -21239,6 +21479,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 ref_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -21259,6 +21500,7 @@ public final class Openapiv2 {
              */
             public Builder clearRef() {
                 ref_ = getDefaultInstance().getRef();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -21284,6 +21526,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 ref_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -21346,6 +21589,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 title_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -21361,6 +21605,7 @@ public final class Openapiv2 {
              */
             public Builder clearTitle() {
                 title_ = getDefaultInstance().getTitle();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -21381,6 +21626,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 title_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -21443,6 +21689,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -21458,6 +21705,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -21478,6 +21726,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -21528,6 +21777,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 default_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -21539,6 +21789,7 @@ public final class Openapiv2 {
              */
             public Builder clearDefault() {
                 default_ = getDefaultInstance().getDefault();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -21555,6 +21806,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 default_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -21579,6 +21831,7 @@ public final class Openapiv2 {
              */
             public Builder setReadOnly(boolean value) {
                 readOnly_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -21589,6 +21842,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearReadOnly() {
+                bitField0_ = (bitField0_ & ~0x00000010);
                 readOnly_ = false;
                 onChanged();
                 return this;
@@ -21658,6 +21912,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 example_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -21675,6 +21930,7 @@ public final class Openapiv2 {
              */
             public Builder clearExample() {
                 example_ = getDefaultInstance().getExample();
+                bitField0_ = (bitField0_ & ~0x00000020);
                 onChanged();
                 return this;
             }
@@ -21697,6 +21953,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 example_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -21721,6 +21978,7 @@ public final class Openapiv2 {
              */
             public Builder setMultipleOf(double value) {
                 multipleOf_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -21731,6 +21989,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMultipleOf() {
+                bitField0_ = (bitField0_ & ~0x00000040);
                 multipleOf_ = 0D;
                 onChanged();
                 return this;
@@ -21766,6 +22025,7 @@ public final class Openapiv2 {
              */
             public Builder setMaximum(double value) {
                 maximum_ = value;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -21781,6 +22041,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMaximum() {
+                bitField0_ = (bitField0_ & ~0x00000080);
                 maximum_ = 0D;
                 onChanged();
                 return this;
@@ -21806,6 +22067,7 @@ public final class Openapiv2 {
              */
             public Builder setExclusiveMaximum(boolean value) {
                 exclusiveMaximum_ = value;
+                bitField0_ |= 0x00000100;
                 onChanged();
                 return this;
             }
@@ -21816,6 +22078,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearExclusiveMaximum() {
+                bitField0_ = (bitField0_ & ~0x00000100);
                 exclusiveMaximum_ = false;
                 onChanged();
                 return this;
@@ -21851,6 +22114,7 @@ public final class Openapiv2 {
              */
             public Builder setMinimum(double value) {
                 minimum_ = value;
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -21866,6 +22130,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMinimum() {
+                bitField0_ = (bitField0_ & ~0x00000200);
                 minimum_ = 0D;
                 onChanged();
                 return this;
@@ -21891,6 +22156,7 @@ public final class Openapiv2 {
              */
             public Builder setExclusiveMinimum(boolean value) {
                 exclusiveMinimum_ = value;
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return this;
             }
@@ -21901,6 +22167,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearExclusiveMinimum() {
+                bitField0_ = (bitField0_ & ~0x00000400);
                 exclusiveMinimum_ = false;
                 onChanged();
                 return this;
@@ -21926,6 +22193,7 @@ public final class Openapiv2 {
              */
             public Builder setMaxLength(long value) {
                 maxLength_ = value;
+                bitField0_ |= 0x00000800;
                 onChanged();
                 return this;
             }
@@ -21936,6 +22204,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMaxLength() {
+                bitField0_ = (bitField0_ & ~0x00000800);
                 maxLength_ = 0L;
                 onChanged();
                 return this;
@@ -21961,6 +22230,7 @@ public final class Openapiv2 {
              */
             public Builder setMinLength(long value) {
                 minLength_ = value;
+                bitField0_ |= 0x00001000;
                 onChanged();
                 return this;
             }
@@ -21971,6 +22241,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMinLength() {
+                bitField0_ = (bitField0_ & ~0x00001000);
                 minLength_ = 0L;
                 onChanged();
                 return this;
@@ -22022,6 +22293,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 pattern_ = value;
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -22033,6 +22305,7 @@ public final class Openapiv2 {
              */
             public Builder clearPattern() {
                 pattern_ = getDefaultInstance().getPattern();
+                bitField0_ = (bitField0_ & ~0x00002000);
                 onChanged();
                 return this;
             }
@@ -22049,6 +22322,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 pattern_ = value;
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -22073,6 +22347,7 @@ public final class Openapiv2 {
              */
             public Builder setMaxItems(long value) {
                 maxItems_ = value;
+                bitField0_ |= 0x00004000;
                 onChanged();
                 return this;
             }
@@ -22083,6 +22358,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMaxItems() {
+                bitField0_ = (bitField0_ & ~0x00004000);
                 maxItems_ = 0L;
                 onChanged();
                 return this;
@@ -22108,6 +22384,7 @@ public final class Openapiv2 {
              */
             public Builder setMinItems(long value) {
                 minItems_ = value;
+                bitField0_ |= 0x00008000;
                 onChanged();
                 return this;
             }
@@ -22118,6 +22395,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMinItems() {
+                bitField0_ = (bitField0_ & ~0x00008000);
                 minItems_ = 0L;
                 onChanged();
                 return this;
@@ -22143,6 +22421,7 @@ public final class Openapiv2 {
              */
             public Builder setUniqueItems(boolean value) {
                 uniqueItems_ = value;
+                bitField0_ |= 0x00010000;
                 onChanged();
                 return this;
             }
@@ -22153,6 +22432,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearUniqueItems() {
+                bitField0_ = (bitField0_ & ~0x00010000);
                 uniqueItems_ = false;
                 onChanged();
                 return this;
@@ -22178,6 +22458,7 @@ public final class Openapiv2 {
              */
             public Builder setMaxProperties(long value) {
                 maxProperties_ = value;
+                bitField0_ |= 0x00020000;
                 onChanged();
                 return this;
             }
@@ -22188,6 +22469,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMaxProperties() {
+                bitField0_ = (bitField0_ & ~0x00020000);
                 maxProperties_ = 0L;
                 onChanged();
                 return this;
@@ -22213,6 +22495,7 @@ public final class Openapiv2 {
              */
             public Builder setMinProperties(long value) {
                 minProperties_ = value;
+                bitField0_ |= 0x00040000;
                 onChanged();
                 return this;
             }
@@ -22223,18 +22506,19 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearMinProperties() {
+                bitField0_ = (bitField0_ & ~0x00040000);
                 minProperties_ = 0L;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList required_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList required_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureRequiredIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!required_.isModifiable()) {
                     required_ = new com.google.protobuf.LazyStringArrayList(required_);
-                    bitField0_ |= 0x00000001;
                 }
+                bitField0_ |= 0x00080000;
             }
 
             /**
@@ -22243,7 +22527,8 @@ public final class Openapiv2 {
              * @return A list containing the required.
              */
             public com.google.protobuf.ProtocolStringList getRequiredList() {
-                return required_.getUnmodifiableView();
+                required_.makeImmutable();
+                return required_;
             }
 
             /**
@@ -22288,6 +22573,7 @@ public final class Openapiv2 {
                 }
                 ensureRequiredIsMutable();
                 required_.set(index, value);
+                bitField0_ |= 0x00080000;
                 onChanged();
                 return this;
             }
@@ -22304,6 +22590,7 @@ public final class Openapiv2 {
                 }
                 ensureRequiredIsMutable();
                 required_.add(value);
+                bitField0_ |= 0x00080000;
                 onChanged();
                 return this;
             }
@@ -22317,6 +22604,7 @@ public final class Openapiv2 {
             public Builder addAllRequired(java.lang.Iterable<java.lang.String> values) {
                 ensureRequiredIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, required_);
+                bitField0_ |= 0x00080000;
                 onChanged();
                 return this;
             }
@@ -22327,8 +22615,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearRequired() {
-                required_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                required_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00080000);
+                ;
                 onChanged();
                 return this;
             }
@@ -22346,17 +22635,18 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureRequiredIsMutable();
                 required_.add(value);
+                bitField0_ |= 0x00080000;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList array_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList array_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureArrayIsMutable() {
-                if (!((bitField0_ & 0x00000002) != 0)) {
+                if (!array_.isModifiable()) {
                     array_ = new com.google.protobuf.LazyStringArrayList(array_);
-                    bitField0_ |= 0x00000002;
                 }
+                bitField0_ |= 0x00100000;
             }
 
             /**
@@ -22369,7 +22659,8 @@ public final class Openapiv2 {
              * @return A list containing the array.
              */
             public com.google.protobuf.ProtocolStringList getArrayList() {
-                return array_.getUnmodifiableView();
+                array_.makeImmutable();
+                return array_;
             }
 
             /**
@@ -22430,6 +22721,7 @@ public final class Openapiv2 {
                 }
                 ensureArrayIsMutable();
                 array_.set(index, value);
+                bitField0_ |= 0x00100000;
                 onChanged();
                 return this;
             }
@@ -22450,6 +22742,7 @@ public final class Openapiv2 {
                 }
                 ensureArrayIsMutable();
                 array_.add(value);
+                bitField0_ |= 0x00100000;
                 onChanged();
                 return this;
             }
@@ -22467,6 +22760,7 @@ public final class Openapiv2 {
             public Builder addAllArray(java.lang.Iterable<java.lang.String> values) {
                 ensureArrayIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, array_);
+                bitField0_ |= 0x00100000;
                 onChanged();
                 return this;
             }
@@ -22481,8 +22775,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearArray() {
-                array_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
+                array_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00100000);
+                ;
                 onChanged();
                 return this;
             }
@@ -22504,6 +22799,7 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureArrayIsMutable();
                 array_.add(value);
+                bitField0_ |= 0x00100000;
                 onChanged();
                 return this;
             }
@@ -22511,9 +22807,9 @@ public final class Openapiv2 {
             private java.util.List<java.lang.Integer> type_ = java.util.Collections.emptyList();
 
             private void ensureTypeIsMutable() {
-                if (!((bitField0_ & 0x00000004) != 0)) {
+                if (!((bitField0_ & 0x00200000) != 0)) {
                     type_ = new java.util.ArrayList<java.lang.Integer>(type_);
-                    bitField0_ |= 0x00000004;
+                    bitField0_ |= 0x00200000;
                 }
             }
 
@@ -22603,7 +22899,7 @@ public final class Openapiv2 {
              */
             public Builder clearType() {
                 type_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00200000);
                 onChanged();
                 return this;
             }
@@ -22630,8 +22926,8 @@ public final class Openapiv2 {
             /**
              * <code>repeated .grpc.gateway.protoc_gen_openapiv2.options.JSONSchema.JSONSchemaSimpleTypes type = 35;</code>
              *
-             * @param index The index of the value to return.
-             * @return The enum numeric value on the wire of type at the given index.
+             * @param index The index to set the value at.
+             * @param value The enum numeric value on the wire for type to set.
              * @return This builder for chaining.
              */
             public Builder setTypeValue(int index, int value) {
@@ -22727,6 +23023,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 format_ = value;
+                bitField0_ |= 0x00400000;
                 onChanged();
                 return this;
             }
@@ -22742,6 +23039,7 @@ public final class Openapiv2 {
              */
             public Builder clearFormat() {
                 format_ = getDefaultInstance().getFormat();
+                bitField0_ = (bitField0_ & ~0x00400000);
                 onChanged();
                 return this;
             }
@@ -22762,17 +23060,18 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 format_ = value;
+                bitField0_ |= 0x00400000;
                 onChanged();
                 return this;
             }
 
-            private com.google.protobuf.LazyStringList enum_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringArrayList enum_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             private void ensureEnumIsMutable() {
-                if (!((bitField0_ & 0x00000008) != 0)) {
+                if (!enum_.isModifiable()) {
                     enum_ = new com.google.protobuf.LazyStringArrayList(enum_);
-                    bitField0_ |= 0x00000008;
                 }
+                bitField0_ |= 0x00800000;
             }
 
             /**
@@ -22785,7 +23084,8 @@ public final class Openapiv2 {
              * @return A list containing the enum.
              */
             public com.google.protobuf.ProtocolStringList getEnumList() {
-                return enum_.getUnmodifiableView();
+                enum_.makeImmutable();
+                return enum_;
             }
 
             /**
@@ -22846,6 +23146,7 @@ public final class Openapiv2 {
                 }
                 ensureEnumIsMutable();
                 enum_.set(index, value);
+                bitField0_ |= 0x00800000;
                 onChanged();
                 return this;
             }
@@ -22866,6 +23167,7 @@ public final class Openapiv2 {
                 }
                 ensureEnumIsMutable();
                 enum_.add(value);
+                bitField0_ |= 0x00800000;
                 onChanged();
                 return this;
             }
@@ -22883,6 +23185,7 @@ public final class Openapiv2 {
             public Builder addAllEnum(java.lang.Iterable<java.lang.String> values) {
                 ensureEnumIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, enum_);
+                bitField0_ |= 0x00800000;
                 onChanged();
                 return this;
             }
@@ -22897,8 +23200,9 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearEnum() {
-                enum_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000008);
+                enum_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00800000);
+                ;
                 onChanged();
                 return this;
             }
@@ -22920,6 +23224,7 @@ public final class Openapiv2 {
                 checkByteStringIsUtf8(value);
                 ensureEnumIsMutable();
                 enum_.add(value);
+                bitField0_ |= 0x00800000;
                 onChanged();
                 return this;
             }
@@ -22938,7 +23243,7 @@ public final class Openapiv2 {
              * @return Whether the fieldConfiguration field is set.
              */
             public boolean hasFieldConfiguration() {
-                return fieldConfigurationBuilder_ != null || fieldConfiguration_ != null;
+                return ((bitField0_ & 0x01000000) != 0);
             }
 
             /**
@@ -22975,10 +23280,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     fieldConfiguration_ = value;
-                    onChanged();
                 } else {
                     fieldConfigurationBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x01000000;
+                onChanged();
                 return this;
             }
 
@@ -22993,10 +23299,11 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration.Builder builderForValue) {
                 if (fieldConfigurationBuilder_ == null) {
                     fieldConfiguration_ = builderForValue.build();
-                    onChanged();
                 } else {
                     fieldConfigurationBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x01000000;
+                onChanged();
                 return this;
             }
 
@@ -23010,16 +23317,18 @@ public final class Openapiv2 {
             public Builder mergeFieldConfiguration(
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration value) {
                 if (fieldConfigurationBuilder_ == null) {
-                    if (fieldConfiguration_ != null) {
-                        fieldConfiguration_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration
-                                .newBuilder(fieldConfiguration_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x01000000) != 0) && fieldConfiguration_ != null
+                            && fieldConfiguration_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration
+                                    .getDefaultInstance()) {
+                        getFieldConfigurationBuilder().mergeFrom(value);
                     } else {
                         fieldConfiguration_ = value;
                     }
-                    onChanged();
                 } else {
                     fieldConfigurationBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x01000000;
+                onChanged();
                 return this;
             }
 
@@ -23031,13 +23340,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.JSONSchema.FieldConfiguration field_configuration = 1001;</code>
              */
             public Builder clearFieldConfiguration() {
-                if (fieldConfigurationBuilder_ == null) {
-                    fieldConfiguration_ = null;
-                    onChanged();
-                } else {
-                    fieldConfiguration_ = null;
+                bitField0_ = (bitField0_ & ~0x01000000);
+                fieldConfiguration_ = null;
+                if (fieldConfigurationBuilder_ != null) {
+                    fieldConfigurationBuilder_.dispose();
                     fieldConfigurationBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -23049,6 +23358,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.JSONSchema.FieldConfiguration field_configuration = 1001;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.JSONSchema.FieldConfiguration.Builder getFieldConfigurationBuilder() {
+                bitField0_ |= 0x01000000;
                 onChanged();
                 return getFieldConfigurationFieldBuilder().getBuilder();
             }
@@ -23097,14 +23407,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetMutableExtensions() {
-                onChanged();
-                ;
                 if (extensions_ == null) {
                     extensions_ = com.google.protobuf.MapField.newMapField(ExtensionsDefaultEntryHolder.defaultEntry);
                 }
                 if (!extensions_.isMutable()) {
                     extensions_ = extensions_.copy();
                 }
+                bitField0_ |= 0x02000000;
+                onChanged();
                 return extensions_;
             }
 
@@ -23144,7 +23454,8 @@ public final class Openapiv2 {
              * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 48;</code>
              */
             @java.lang.Override
-            public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key,
+            public /* nullable */
+            com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
                     com.google.protobuf.Value defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -23169,6 +23480,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearExtensions() {
+                bitField0_ = (bitField0_ & ~0x02000000);
                 internalGetMutableExtensions().getMutableMap().clear();
                 return this;
             }
@@ -23189,6 +23501,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, com.google.protobuf.Value> getMutableExtensions() {
+                bitField0_ |= 0x02000000;
                 return internalGetMutableExtensions().getMutableMap();
             }
 
@@ -23203,6 +23516,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableExtensions().getMutableMap().put(key, value);
+                bitField0_ |= 0x02000000;
                 return this;
             }
 
@@ -23211,6 +23525,7 @@ public final class Openapiv2 {
              */
             public Builder putAllExtensions(java.util.Map<java.lang.String, com.google.protobuf.Value> values) {
                 internalGetMutableExtensions().getMutableMap().putAll(values);
+                bitField0_ |= 0x02000000;
                 return this;
             }
 
@@ -23335,6 +23650,7 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Tag` is a representation of OpenAPI v2 specification's Tag object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#tagObject
      * </pre>
      *
@@ -23360,11 +23676,6 @@ public final class Openapiv2 {
             return new Tag();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.internal_static_grpc_gateway_protoc_gen_openapiv2_options_Tag_descriptor;
         }
@@ -23378,7 +23689,8 @@ public final class Openapiv2 {
 
         public static final int DESCRIPTION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -23468,7 +23780,9 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentationOrBuilder getExternalDocsOrBuilder() {
-            return getExternalDocs();
+            return externalDocs_ == null
+                    ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.getDefaultInstance()
+                    : externalDocs_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -23643,6 +23957,7 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Tag` is a representation of OpenAPI v2 specification's Tag object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#tagObject
          * </pre>
          *
@@ -23673,11 +23988,11 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 description_ = "";
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                } else {
-                    externalDocs_ = null;
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
                 return this;
@@ -23706,45 +24021,21 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Tag buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Tag result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Tag(
                         this);
-                result.description_ = description_;
-                if (externalDocsBuilder_ == null) {
-                    result.externalDocs_ = externalDocs_;
-                } else {
-                    result.externalDocs_ = externalDocsBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Tag result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.externalDocs_ = externalDocsBuilder_ == null ? externalDocs_ : externalDocsBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -23762,6 +24053,7 @@ public final class Openapiv2 {
                     return this;
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (other.hasExternalDocs()) {
@@ -23793,11 +24085,13 @@ public final class Openapiv2 {
                                 break;
                             case 18: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 input.readMessage(getExternalDocsFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 26
@@ -23820,6 +24114,8 @@ public final class Openapiv2 {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object description_ = "";
 
@@ -23882,6 +24178,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -23898,6 +24195,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -23919,6 +24217,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -23937,7 +24236,7 @@ public final class Openapiv2 {
              * @return Whether the externalDocs field is set.
              */
             public boolean hasExternalDocs() {
-                return externalDocsBuilder_ != null || externalDocs_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -23972,10 +24271,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     externalDocs_ = value;
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -23990,10 +24290,11 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder builderForValue) {
                 if (externalDocsBuilder_ == null) {
                     externalDocs_ = builderForValue.build();
-                    onChanged();
                 } else {
                     externalDocsBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -24006,16 +24307,18 @@ public final class Openapiv2 {
              */
             public Builder mergeExternalDocs(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation value) {
                 if (externalDocsBuilder_ == null) {
-                    if (externalDocs_ != null) {
-                        externalDocs_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
-                                .newBuilder(externalDocs_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && externalDocs_ != null
+                            && externalDocs_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation
+                                    .getDefaultInstance()) {
+                        getExternalDocsBuilder().mergeFrom(value);
                     } else {
                         externalDocs_ = value;
                     }
-                    onChanged();
                 } else {
                     externalDocsBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -24027,13 +24330,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 3;</code>
              */
             public Builder clearExternalDocs() {
-                if (externalDocsBuilder_ == null) {
-                    externalDocs_ = null;
-                    onChanged();
-                } else {
-                    externalDocs_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                externalDocs_ = null;
+                if (externalDocsBuilder_ != null) {
+                    externalDocsBuilder_.dispose();
                     externalDocsBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -24045,6 +24348,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.ExternalDocumentation external_docs = 3;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ExternalDocumentation.Builder getExternalDocsBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getExternalDocsFieldBuilder().getBuilder();
             }
@@ -24188,7 +24492,10 @@ public final class Openapiv2 {
          *
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.SecurityScheme&gt; security = 1;</code>
          */
-        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme getSecurityOrDefault(java.lang.String key,
+        /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme getSecurityOrDefault(java.lang.String key, /*
+                                                                                                                       * nullable
+                                                                                                                       */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme defaultValue);
 
         /**
@@ -24206,7 +24513,9 @@ public final class Openapiv2 {
      * <pre>
      * `SecurityDefinitions` is a representation of OpenAPI v2 specification's
      * Security Definitions object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#securityDefinitionsObject
+     *
      * A declaration of the security schemes available to be used in the
      * specification. This does not enforce the security schemes on the operations
      * and only serves to provide the relevant details for each scheme.
@@ -24231,11 +24540,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new SecurityDefinitions();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -24271,6 +24575,7 @@ public final class Openapiv2 {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme> security_;
 
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme> internalGetSecurity() {
@@ -24331,7 +24636,10 @@ public final class Openapiv2 {
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.SecurityScheme&gt; security = 1;</code>
          */
         @java.lang.Override
-        public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme getSecurityOrDefault(java.lang.String key,
+        public /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme getSecurityOrDefault(java.lang.String key, /*
+                                                                                                                       * nullable
+                                                                                                                       */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
@@ -24525,7 +24833,9 @@ public final class Openapiv2 {
          * <pre>
          * `SecurityDefinitions` is a representation of OpenAPI v2 specification's
          * Security Definitions object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#securityDefinitionsObject
+         *
          * A declaration of the security schemes available to be used in the
          * specification. This does not enforce the security schemes on the operations
          * and only serves to provide the relevant details for each scheme.
@@ -24579,6 +24889,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 internalGetMutableSecurity().clear();
                 return this;
             }
@@ -24606,42 +24917,19 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.security_ = internalGetSecurity();
-                result.security_.makeImmutable();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.security_ = internalGetSecurity();
+                    result.security_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -24658,6 +24946,7 @@ public final class Openapiv2 {
                 if (other == grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityDefinitions.getDefaultInstance())
                     return this;
                 internalGetMutableSecurity().mergeFrom(other.internalGetSecurity());
+                bitField0_ |= 0x00000001;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -24687,6 +24976,7 @@ public final class Openapiv2 {
                                         .readMessage(SecurityDefaultEntryHolder.defaultEntry.getParserForType(),
                                                 extensionRegistry);
                                 internalGetMutableSecurity().getMutableMap().put(security__.getKey(), security__.getValue());
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -24722,14 +25012,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme> internalGetMutableSecurity() {
-                onChanged();
-                ;
                 if (security_ == null) {
                     security_ = com.google.protobuf.MapField.newMapField(SecurityDefaultEntryHolder.defaultEntry);
                 }
                 if (!security_.isMutable()) {
                     security_ = security_.copy();
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return security_;
             }
 
@@ -24784,7 +25074,10 @@ public final class Openapiv2 {
              * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.SecurityScheme&gt; security = 1;</code>
              */
             @java.lang.Override
-            public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme getSecurityOrDefault(java.lang.String key,
+            public /* nullable */
+            grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme getSecurityOrDefault(java.lang.String key, /*
+                                                                                                                           * nullable
+                                                                                                                           */
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -24816,6 +25109,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearSecurity() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 internalGetMutableSecurity().getMutableMap().clear();
                 return this;
             }
@@ -24841,6 +25135,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme> getMutableSecurity() {
+                bitField0_ |= 0x00000001;
                 return internalGetMutableSecurity().getMutableMap();
             }
 
@@ -24861,6 +25156,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableSecurity().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000001;
                 return this;
             }
 
@@ -24875,6 +25171,7 @@ public final class Openapiv2 {
             public Builder putAllSecurity(
                     java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme> values) {
                 internalGetMutableSecurity().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000001;
                 return this;
             }
 
@@ -25172,7 +25469,9 @@ public final class Openapiv2 {
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 9;</code>
          */
-        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue);
+        /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue);
 
         /**
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 9;</code>
@@ -25184,7 +25483,9 @@ public final class Openapiv2 {
      * <pre>
      * `SecurityScheme` is a representation of OpenAPI v2 specification's
      * Security Scheme object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#securitySchemeObject
+     *
      * Allows the definition of a security scheme that can be used by the
      * operations. Supported schemes are basic authentication, an API key (either as
      * a header or as a query parameter) and OAuth2's common flows (implicit,
@@ -25217,11 +25518,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new SecurityScheme();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -25634,7 +25930,7 @@ public final class Openapiv2 {
 
         public static final int TYPE_FIELD_NUMBER = 1;
 
-        private int type_;
+        private int type_ = 0;
 
         /**
          * <pre>
@@ -25663,16 +25959,16 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type getType() {
-            @SuppressWarnings("deprecation")
             grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type
-                    .valueOf(type_);
+                    .forNumber(type_);
             return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type.UNRECOGNIZED
                     : result;
         }
 
         public static final int DESCRIPTION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object description_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object description_ = "";
 
         /**
          * <pre>
@@ -25719,7 +26015,8 @@ public final class Openapiv2 {
 
         public static final int NAME_FIELD_NUMBER = 3;
 
-        private volatile java.lang.Object name_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object name_ = "";
 
         /**
          * <pre>
@@ -25768,7 +26065,7 @@ public final class Openapiv2 {
 
         public static final int IN_FIELD_NUMBER = 4;
 
-        private int in_;
+        private int in_ = 0;
 
         /**
          * <pre>
@@ -25799,15 +26096,14 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In getIn() {
-            @SuppressWarnings("deprecation")
             grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In
-                    .valueOf(in_);
+                    .forNumber(in_);
             return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In.UNRECOGNIZED : result;
         }
 
         public static final int FLOW_FIELD_NUMBER = 5;
 
-        private int flow_;
+        private int flow_ = 0;
 
         /**
          * <pre>
@@ -25838,16 +26134,16 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow getFlow() {
-            @SuppressWarnings("deprecation")
             grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow
-                    .valueOf(flow_);
+                    .forNumber(flow_);
             return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow.UNRECOGNIZED
                     : result;
         }
 
         public static final int AUTHORIZATION_URL_FIELD_NUMBER = 6;
 
-        private volatile java.lang.Object authorizationUrl_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object authorizationUrl_ = "";
 
         /**
          * <pre>
@@ -25898,7 +26194,8 @@ public final class Openapiv2 {
 
         public static final int TOKEN_URL_FIELD_NUMBER = 7;
 
-        private volatile java.lang.Object tokenUrl_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object tokenUrl_ = "";
 
         /**
          * <pre>
@@ -25991,7 +26288,7 @@ public final class Openapiv2 {
          */
         @java.lang.Override
         public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.ScopesOrBuilder getScopesOrBuilder() {
-            return getScopes();
+            return scopes_ == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes.getDefaultInstance() : scopes_;
         }
 
         public static final int EXTENSIONS_FIELD_NUMBER = 9;
@@ -26004,6 +26301,7 @@ public final class Openapiv2 {
                     com.google.protobuf.Value.getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> extensions_;
 
         private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetExtensions() {
@@ -26049,7 +26347,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 9;</code>
          */
         @java.lang.Override
-        public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, com.google.protobuf.Value defaultValue) {
+        public /* nullable */
+        com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
+                com.google.protobuf.Value defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -26320,7 +26620,9 @@ public final class Openapiv2 {
          * <pre>
          * `SecurityScheme` is a representation of OpenAPI v2 specification's
          * Security Scheme object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#securitySchemeObject
+         *
          * Allows the definition of a security scheme that can be used by the
          * operations. Supported schemes are basic authentication, an API key (either as
          * a header or as a query parameter) and OAuth2's common flows (implicit,
@@ -26375,6 +26677,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 type_ = 0;
                 description_ = "";
                 name_ = "";
@@ -26382,10 +26685,9 @@ public final class Openapiv2 {
                 flow_ = 0;
                 authorizationUrl_ = "";
                 tokenUrl_ = "";
-                if (scopesBuilder_ == null) {
-                    scopes_ = null;
-                } else {
-                    scopes_ = null;
+                scopes_ = null;
+                if (scopesBuilder_ != null) {
+                    scopesBuilder_.dispose();
                     scopesBuilder_ = null;
                 }
                 internalGetMutableExtensions().clear();
@@ -26415,54 +26717,43 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.type_ = type_;
-                result.description_ = description_;
-                result.name_ = name_;
-                result.in_ = in_;
-                result.flow_ = flow_;
-                result.authorizationUrl_ = authorizationUrl_;
-                result.tokenUrl_ = tokenUrl_;
-                if (scopesBuilder_ == null) {
-                    result.scopes_ = scopes_;
-                } else {
-                    result.scopes_ = scopesBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.extensions_ = internalGetExtensions();
-                result.extensions_.makeImmutable();
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.type_ = type_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.description_ = description_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.name_ = name_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.in_ = in_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.flow_ = flow_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.authorizationUrl_ = authorizationUrl_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.tokenUrl_ = tokenUrl_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.scopes_ = scopesBuilder_ == null ? scopes_ : scopesBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.extensions_ = internalGetExtensions();
+                    result.extensions_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -26483,10 +26774,12 @@ public final class Openapiv2 {
                 }
                 if (!other.getDescription().isEmpty()) {
                     description_ = other.description_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getName().isEmpty()) {
                     name_ = other.name_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (other.in_ != 0) {
@@ -26497,16 +26790,19 @@ public final class Openapiv2 {
                 }
                 if (!other.getAuthorizationUrl().isEmpty()) {
                     authorizationUrl_ = other.authorizationUrl_;
+                    bitField0_ |= 0x00000020;
                     onChanged();
                 }
                 if (!other.getTokenUrl().isEmpty()) {
                     tokenUrl_ = other.tokenUrl_;
+                    bitField0_ |= 0x00000040;
                     onChanged();
                 }
                 if (other.hasScopes()) {
                     mergeScopes(other.getScopes());
                 }
                 internalGetMutableExtensions().mergeFrom(other.internalGetExtensions());
+                bitField0_ |= 0x00000100;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -26533,41 +26829,49 @@ public final class Openapiv2 {
                                 break;
                             case 8: {
                                 type_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 8
                             case 18: {
                                 description_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 name_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 32: {
                                 in_ = input.readEnum();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 32
                             case 40: {
                                 flow_ = input.readEnum();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 40
                             case 50: {
                                 authorizationUrl_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000020;
                                 break;
                             }
                             // case 50
                             case 58: {
                                 tokenUrl_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000040;
                                 break;
                             }
                             // case 58
                             case 66: {
                                 input.readMessage(getScopesFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000080;
                                 break;
                             }
                             // case 66
@@ -26577,6 +26881,7 @@ public final class Openapiv2 {
                                                 extensionRegistry);
                                 internalGetMutableExtensions().getMutableMap().put(extensions__.getKey(),
                                         extensions__.getValue());
+                                bitField0_ |= 0x00000100;
                                 break;
                             }
                             // case 74
@@ -26632,6 +26937,7 @@ public final class Openapiv2 {
              */
             public Builder setTypeValue(int value) {
                 type_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -26648,9 +26954,8 @@ public final class Openapiv2 {
              */
             @java.lang.Override
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type getType() {
-                @SuppressWarnings("deprecation")
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type
-                        .valueOf(type_);
+                        .forNumber(type_);
                 return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Type.UNRECOGNIZED
                         : result;
             }
@@ -26670,6 +26975,7 @@ public final class Openapiv2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000001;
                 type_ = value.getNumber();
                 onChanged();
                 return this;
@@ -26686,6 +26992,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearType() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 type_ = 0;
                 onChanged();
                 return this;
@@ -26749,6 +27056,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 description_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -26764,6 +27072,7 @@ public final class Openapiv2 {
              */
             public Builder clearDescription() {
                 description_ = getDefaultInstance().getDescription();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -26784,6 +27093,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 description_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -26849,6 +27159,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 name_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -26865,6 +27176,7 @@ public final class Openapiv2 {
              */
             public Builder clearName() {
                 name_ = getDefaultInstance().getName();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -26886,6 +27198,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 name_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -26922,6 +27235,7 @@ public final class Openapiv2 {
              */
             public Builder setInValue(int value) {
                 in_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -26939,9 +27253,8 @@ public final class Openapiv2 {
              */
             @java.lang.Override
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In getIn() {
-                @SuppressWarnings("deprecation")
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In
-                        .valueOf(in_);
+                        .forNumber(in_);
                 return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.In.UNRECOGNIZED
                         : result;
             }
@@ -26962,6 +27275,7 @@ public final class Openapiv2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000008;
                 in_ = value.getNumber();
                 onChanged();
                 return this;
@@ -26979,6 +27293,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearIn() {
+                bitField0_ = (bitField0_ & ~0x00000008);
                 in_ = 0;
                 onChanged();
                 return this;
@@ -27016,6 +27331,7 @@ public final class Openapiv2 {
              */
             public Builder setFlowValue(int value) {
                 flow_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -27033,9 +27349,8 @@ public final class Openapiv2 {
              */
             @java.lang.Override
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow getFlow() {
-                @SuppressWarnings("deprecation")
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow result = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow
-                        .valueOf(flow_);
+                        .forNumber(flow_);
                 return result == null ? grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityScheme.Flow.UNRECOGNIZED
                         : result;
             }
@@ -27056,6 +27371,7 @@ public final class Openapiv2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000010;
                 flow_ = value.getNumber();
                 onChanged();
                 return this;
@@ -27073,6 +27389,7 @@ public final class Openapiv2 {
              * @return This builder for chaining.
              */
             public Builder clearFlow() {
+                bitField0_ = (bitField0_ & ~0x00000010);
                 flow_ = 0;
                 onChanged();
                 return this;
@@ -27142,6 +27459,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 authorizationUrl_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -27159,6 +27477,7 @@ public final class Openapiv2 {
              */
             public Builder clearAuthorizationUrl() {
                 authorizationUrl_ = getDefaultInstance().getAuthorizationUrl();
+                bitField0_ = (bitField0_ & ~0x00000020);
                 onChanged();
                 return this;
             }
@@ -27181,6 +27500,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 authorizationUrl_ = value;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -27249,6 +27569,7 @@ public final class Openapiv2 {
                     throw new NullPointerException();
                 }
                 tokenUrl_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -27266,6 +27587,7 @@ public final class Openapiv2 {
              */
             public Builder clearTokenUrl() {
                 tokenUrl_ = getDefaultInstance().getTokenUrl();
+                bitField0_ = (bitField0_ & ~0x00000040);
                 onChanged();
                 return this;
             }
@@ -27288,6 +27610,7 @@ public final class Openapiv2 {
                 }
                 checkByteStringIsUtf8(value);
                 tokenUrl_ = value;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -27307,7 +27630,7 @@ public final class Openapiv2 {
              * @return Whether the scopes field is set.
              */
             public boolean hasScopes() {
-                return scopesBuilder_ != null || scopes_ != null;
+                return ((bitField0_ & 0x00000080) != 0);
             }
 
             /**
@@ -27343,10 +27666,11 @@ public final class Openapiv2 {
                         throw new NullPointerException();
                     }
                     scopes_ = value;
-                    onChanged();
                 } else {
                     scopesBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000080;
+                onChanged();
                 return this;
             }
 
@@ -27361,10 +27685,11 @@ public final class Openapiv2 {
             public Builder setScopes(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes.Builder builderForValue) {
                 if (scopesBuilder_ == null) {
                     scopes_ = builderForValue.build();
-                    onChanged();
                 } else {
                     scopesBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000080;
+                onChanged();
                 return this;
             }
 
@@ -27378,16 +27703,17 @@ public final class Openapiv2 {
              */
             public Builder mergeScopes(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes value) {
                 if (scopesBuilder_ == null) {
-                    if (scopes_ != null) {
-                        scopes_ = grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes.newBuilder(scopes_)
-                                .mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000080) != 0) && scopes_ != null
+                            && scopes_ != grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes.getDefaultInstance()) {
+                        getScopesBuilder().mergeFrom(value);
                     } else {
                         scopes_ = value;
                     }
-                    onChanged();
                 } else {
                     scopesBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000080;
+                onChanged();
                 return this;
             }
 
@@ -27400,13 +27726,13 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Scopes scopes = 8;</code>
              */
             public Builder clearScopes() {
-                if (scopesBuilder_ == null) {
-                    scopes_ = null;
-                    onChanged();
-                } else {
-                    scopes_ = null;
+                bitField0_ = (bitField0_ & ~0x00000080);
+                scopes_ = null;
+                if (scopesBuilder_ != null) {
+                    scopesBuilder_.dispose();
                     scopesBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -27419,6 +27745,7 @@ public final class Openapiv2 {
              * <code>.grpc.gateway.protoc_gen_openapiv2.options.Scopes scopes = 8;</code>
              */
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes.Builder getScopesBuilder() {
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return getScopesFieldBuilder().getBuilder();
             }
@@ -27467,14 +27794,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.Value> internalGetMutableExtensions() {
-                onChanged();
-                ;
                 if (extensions_ == null) {
                     extensions_ = com.google.protobuf.MapField.newMapField(ExtensionsDefaultEntryHolder.defaultEntry);
                 }
                 if (!extensions_.isMutable()) {
                     extensions_ = extensions_.copy();
                 }
+                bitField0_ |= 0x00000100;
+                onChanged();
                 return extensions_;
             }
 
@@ -27514,7 +27841,8 @@ public final class Openapiv2 {
              * <code>map&lt;string, .google.protobuf.Value&gt; extensions = 9;</code>
              */
             @java.lang.Override
-            public com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key,
+            public /* nullable */
+            com.google.protobuf.Value getExtensionsOrDefault(java.lang.String key, /* nullable */
                     com.google.protobuf.Value defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -27539,6 +27867,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearExtensions() {
+                bitField0_ = (bitField0_ & ~0x00000100);
                 internalGetMutableExtensions().getMutableMap().clear();
                 return this;
             }
@@ -27559,6 +27888,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, com.google.protobuf.Value> getMutableExtensions() {
+                bitField0_ |= 0x00000100;
                 return internalGetMutableExtensions().getMutableMap();
             }
 
@@ -27573,6 +27903,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableExtensions().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000100;
                 return this;
             }
 
@@ -27581,6 +27912,7 @@ public final class Openapiv2 {
              */
             public Builder putAllExtensions(java.util.Map<java.lang.String, com.google.protobuf.Value> values) {
                 internalGetMutableExtensions().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000100;
                 return this;
             }
 
@@ -27698,8 +28030,9 @@ public final class Openapiv2 {
          *
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.SecurityRequirement.SecurityRequirementValue&gt; security_requirement = 1;</code>
          */
+        /* nullable */
         grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue getSecurityRequirementOrDefault(
-                java.lang.String key,
+                java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue defaultValue);
 
         /**
@@ -27720,10 +28053,13 @@ public final class Openapiv2 {
      * <pre>
      * `SecurityRequirement` is a representation of OpenAPI v2 specification's
      * Security Requirement object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#securityRequirementObject
+     *
      * Lists the required security schemes to execute this operation. The object can
      * have multiple security schemes declared in it which are all required (that
      * is, there is a logical AND between the schemes).
+     *
      * The name used for each property MUST correspond to a security scheme
      * declared in the Security Definitions.
      * </pre>
@@ -27747,11 +28083,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new SecurityRequirement();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -27831,18 +28162,13 @@ public final class Openapiv2 {
             }
 
             private SecurityRequirementValue() {
-                scope_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                scope_ = com.google.protobuf.LazyStringArrayList.emptyList();
             }
 
             @java.lang.Override
             @SuppressWarnings({ "unused" })
             protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
                 return new SecurityRequirementValue();
-            }
-
-            @java.lang.Override
-            public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-                return this.unknownFields;
             }
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -27859,7 +28185,8 @@ public final class Openapiv2 {
 
             public static final int SCOPE_FIELD_NUMBER = 1;
 
-            private com.google.protobuf.LazyStringList scope_;
+            @SuppressWarnings("serial")
+            private com.google.protobuf.LazyStringArrayList scope_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
             /**
              * <code>repeated string scope = 1;</code>
@@ -28097,8 +28424,8 @@ public final class Openapiv2 {
                 @java.lang.Override
                 public Builder clear() {
                     super.clear();
-                    scope_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = 0;
+                    scope_ = com.google.protobuf.LazyStringArrayList.emptyList();
                     return this;
                 }
 
@@ -28126,45 +28453,20 @@ public final class Openapiv2 {
                 public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue buildPartial() {
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue(
                             this);
-                    int from_bitField0_ = bitField0_;
-                    if (((bitField0_ & 0x00000001) != 0)) {
-                        scope_ = scope_.getUnmodifiableView();
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                    if (bitField0_ != 0) {
+                        buildPartial0(result);
                     }
-                    result.scope_ = scope_;
                     onBuilt();
                     return result;
                 }
 
-                @java.lang.Override
-                public Builder clone() {
-                    return super.clone();
-                }
-
-                @java.lang.Override
-                public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                    return super.setField(field, value);
-                }
-
-                @java.lang.Override
-                public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                    return super.clearField(field);
-                }
-
-                @java.lang.Override
-                public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                    return super.clearOneof(oneof);
-                }
-
-                @java.lang.Override
-                public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                        java.lang.Object value) {
-                    return super.setRepeatedField(field, index, value);
-                }
-
-                @java.lang.Override
-                public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                    return super.addRepeatedField(field, value);
+                private void buildPartial0(
+                        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue result) {
+                    int from_bitField0_ = bitField0_;
+                    if (((from_bitField0_ & 0x00000001) != 0)) {
+                        scope_.makeImmutable();
+                        result.scope_ = scope_;
+                    }
                 }
 
                 @java.lang.Override
@@ -28186,7 +28488,7 @@ public final class Openapiv2 {
                     if (!other.scope_.isEmpty()) {
                         if (scope_.isEmpty()) {
                             scope_ = other.scope_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ |= 0x00000001;
                         } else {
                             ensureScopeIsMutable();
                             scope_.addAll(other.scope_);
@@ -28246,13 +28548,13 @@ public final class Openapiv2 {
 
                 private int bitField0_;
 
-                private com.google.protobuf.LazyStringList scope_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                private com.google.protobuf.LazyStringArrayList scope_ = com.google.protobuf.LazyStringArrayList.emptyList();
 
                 private void ensureScopeIsMutable() {
-                    if (!((bitField0_ & 0x00000001) != 0)) {
+                    if (!scope_.isModifiable()) {
                         scope_ = new com.google.protobuf.LazyStringArrayList(scope_);
-                        bitField0_ |= 0x00000001;
                     }
+                    bitField0_ |= 0x00000001;
                 }
 
                 /**
@@ -28261,7 +28563,8 @@ public final class Openapiv2 {
                  * @return A list containing the scope.
                  */
                 public com.google.protobuf.ProtocolStringList getScopeList() {
-                    return scope_.getUnmodifiableView();
+                    scope_.makeImmutable();
+                    return scope_;
                 }
 
                 /**
@@ -28306,6 +28609,7 @@ public final class Openapiv2 {
                     }
                     ensureScopeIsMutable();
                     scope_.set(index, value);
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -28322,6 +28626,7 @@ public final class Openapiv2 {
                     }
                     ensureScopeIsMutable();
                     scope_.add(value);
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -28335,6 +28640,7 @@ public final class Openapiv2 {
                 public Builder addAllScope(java.lang.Iterable<java.lang.String> values) {
                     ensureScopeIsMutable();
                     com.google.protobuf.AbstractMessageLite.Builder.addAll(values, scope_);
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -28345,8 +28651,9 @@ public final class Openapiv2 {
                  * @return This builder for chaining.
                  */
                 public Builder clearScope() {
-                    scope_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                    scope_ = com.google.protobuf.LazyStringArrayList.emptyList();
                     bitField0_ = (bitField0_ & ~0x00000001);
+                    ;
                     onChanged();
                     return this;
                 }
@@ -28364,6 +28671,7 @@ public final class Openapiv2 {
                     checkByteStringIsUtf8(value);
                     ensureScopeIsMutable();
                     scope_.add(value);
+                    bitField0_ |= 0x00000001;
                     onChanged();
                     return this;
                 }
@@ -28438,6 +28746,7 @@ public final class Openapiv2 {
                             .getDefaultInstance());
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue> securityRequirement_;
 
         private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue> internalGetSecurityRequirement() {
@@ -28504,8 +28813,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.SecurityRequirement.SecurityRequirementValue&gt; security_requirement = 1;</code>
          */
         @java.lang.Override
-        public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue getSecurityRequirementOrDefault(
-                java.lang.String key,
+        public /* nullable */
+        grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue getSecurityRequirementOrDefault(
+                java.lang.String key, /* nullable */
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
@@ -28702,10 +29012,13 @@ public final class Openapiv2 {
          * <pre>
          * `SecurityRequirement` is a representation of OpenAPI v2 specification's
          * Security Requirement object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#securityRequirementObject
+         *
          * Lists the required security schemes to execute this operation. The object can
          * have multiple security schemes declared in it which are all required (that
          * is, there is a logical AND between the schemes).
+         *
          * The name used for each property MUST correspond to a security scheme
          * declared in the Security Definitions.
          * </pre>
@@ -28758,6 +29071,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 internalGetMutableSecurityRequirement().clear();
                 return this;
             }
@@ -28785,42 +29099,19 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.securityRequirement_ = internalGetSecurityRequirement();
-                result.securityRequirement_.makeImmutable();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.securityRequirement_ = internalGetSecurityRequirement();
+                    result.securityRequirement_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -28837,6 +29128,7 @@ public final class Openapiv2 {
                 if (other == grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.getDefaultInstance())
                     return this;
                 internalGetMutableSecurityRequirement().mergeFrom(other.internalGetSecurityRequirement());
+                bitField0_ |= 0x00000001;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -28867,6 +29159,7 @@ public final class Openapiv2 {
                                                 extensionRegistry);
                                 internalGetMutableSecurityRequirement().getMutableMap().put(securityRequirement__.getKey(),
                                         securityRequirement__.getValue());
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -28902,8 +29195,6 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue> internalGetMutableSecurityRequirement() {
-                onChanged();
-                ;
                 if (securityRequirement_ == null) {
                     securityRequirement_ = com.google.protobuf.MapField
                             .newMapField(SecurityRequirementDefaultEntryHolder.defaultEntry);
@@ -28911,6 +29202,8 @@ public final class Openapiv2 {
                 if (!securityRequirement_.isMutable()) {
                     securityRequirement_ = securityRequirement_.copy();
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return securityRequirement_;
             }
 
@@ -28971,8 +29264,9 @@ public final class Openapiv2 {
              * <code>map&lt;string, .grpc.gateway.protoc_gen_openapiv2.options.SecurityRequirement.SecurityRequirementValue&gt; security_requirement = 1;</code>
              */
             @java.lang.Override
-            public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue getSecurityRequirementOrDefault(
-                    java.lang.String key,
+            public /* nullable */
+            grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue getSecurityRequirementOrDefault(
+                    java.lang.String key, /* nullable */
                     grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
@@ -29007,6 +29301,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearSecurityRequirement() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 internalGetMutableSecurityRequirement().getMutableMap().clear();
                 return this;
             }
@@ -29034,6 +29329,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue> getMutableSecurityRequirement() {
+                bitField0_ |= 0x00000001;
                 return internalGetMutableSecurityRequirement().getMutableMap();
             }
 
@@ -29056,6 +29352,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableSecurityRequirement().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000001;
                 return this;
             }
 
@@ -29072,6 +29369,7 @@ public final class Openapiv2 {
             public Builder putAllSecurityRequirement(
                     java.util.Map<java.lang.String, grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.SecurityRequirement.SecurityRequirementValue> values) {
                 internalGetMutableSecurityRequirement().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000001;
                 return this;
             }
 
@@ -29181,7 +29479,9 @@ public final class Openapiv2 {
          *
          * <code>map&lt;string, string&gt; scope = 1;</code>
          */
-        java.lang.String getScopeOrDefault(java.lang.String key, java.lang.String defaultValue);
+        /* nullable */
+        java.lang.String getScopeOrDefault(java.lang.String key, /* nullable */
+                java.lang.String defaultValue);
 
         /**
          * <pre>
@@ -29197,7 +29497,9 @@ public final class Openapiv2 {
     /**
      * <pre>
      * `Scopes` is a representation of OpenAPI v2 specification's Scopes object.
+     *
      * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#scopesObject
+     *
      * Lists the available scopes for an OAuth2 security scheme.
      * </pre>
      *
@@ -29220,11 +29522,6 @@ public final class Openapiv2 {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new Scopes();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -29258,6 +29555,7 @@ public final class Openapiv2 {
                     com.google.protobuf.WireFormat.FieldType.STRING, "", com.google.protobuf.WireFormat.FieldType.STRING, "");
         }
 
+        @SuppressWarnings("serial")
         private com.google.protobuf.MapField<java.lang.String, java.lang.String> scope_;
 
         private com.google.protobuf.MapField<java.lang.String, java.lang.String> internalGetScope() {
@@ -29318,7 +29616,9 @@ public final class Openapiv2 {
          * <code>map&lt;string, string&gt; scope = 1;</code>
          */
         @java.lang.Override
-        public java.lang.String getScopeOrDefault(java.lang.String key, java.lang.String defaultValue) {
+        public /* nullable */
+        java.lang.String getScopeOrDefault(java.lang.String key, /* nullable */
+                java.lang.String defaultValue) {
             if (key == null) {
                 throw new NullPointerException("map key");
             }
@@ -29505,7 +29805,9 @@ public final class Openapiv2 {
         /**
          * <pre>
          * `Scopes` is a representation of OpenAPI v2 specification's Scopes object.
+         *
          * See: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/2.0.md#scopesObject
+         *
          * Lists the available scopes for an OAuth2 security scheme.
          * </pre>
          *
@@ -29556,6 +29858,7 @@ public final class Openapiv2 {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 internalGetMutableScope().clear();
                 return this;
             }
@@ -29583,42 +29886,19 @@ public final class Openapiv2 {
             public grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes buildPartial() {
                 grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes result = new grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes(
                         this);
-                int from_bitField0_ = bitField0_;
-                result.scope_ = internalGetScope();
-                result.scope_.makeImmutable();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.scope_ = internalGetScope();
+                    result.scope_.makeImmutable();
+                }
             }
 
             @java.lang.Override
@@ -29635,6 +29915,7 @@ public final class Openapiv2 {
                 if (other == grpc.gateway.protoc_gen_openapiv2.options.Openapiv2.Scopes.getDefaultInstance())
                     return this;
                 internalGetMutableScope().mergeFrom(other.internalGetScope());
+                bitField0_ |= 0x00000001;
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -29663,6 +29944,7 @@ public final class Openapiv2 {
                                 com.google.protobuf.MapEntry<java.lang.String, java.lang.String> scope__ = input.readMessage(
                                         ScopeDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                                 internalGetMutableScope().getMutableMap().put(scope__.getKey(), scope__.getValue());
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -29698,14 +29980,14 @@ public final class Openapiv2 {
             }
 
             private com.google.protobuf.MapField<java.lang.String, java.lang.String> internalGetMutableScope() {
-                onChanged();
-                ;
                 if (scope_ == null) {
                     scope_ = com.google.protobuf.MapField.newMapField(ScopeDefaultEntryHolder.defaultEntry);
                 }
                 if (!scope_.isMutable()) {
                     scope_ = scope_.copy();
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return scope_;
             }
 
@@ -29760,7 +30042,9 @@ public final class Openapiv2 {
              * <code>map&lt;string, string&gt; scope = 1;</code>
              */
             @java.lang.Override
-            public java.lang.String getScopeOrDefault(java.lang.String key, java.lang.String defaultValue) {
+            public /* nullable */
+            java.lang.String getScopeOrDefault(java.lang.String key, /* nullable */
+                    java.lang.String defaultValue) {
                 if (key == null) {
                     throw new NullPointerException("map key");
                 }
@@ -29789,6 +30073,7 @@ public final class Openapiv2 {
             }
 
             public Builder clearScope() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 internalGetMutableScope().getMutableMap().clear();
                 return this;
             }
@@ -29814,6 +30099,7 @@ public final class Openapiv2 {
              */
             @java.lang.Deprecated
             public java.util.Map<java.lang.String, java.lang.String> getMutableScope() {
+                bitField0_ |= 0x00000001;
                 return internalGetMutableScope().getMutableMap();
             }
 
@@ -29833,6 +30119,7 @@ public final class Openapiv2 {
                     throw new NullPointerException("map value");
                 }
                 internalGetMutableScope().getMutableMap().put(key, value);
+                bitField0_ |= 0x00000001;
                 return this;
             }
 
@@ -29846,6 +30133,7 @@ public final class Openapiv2 {
              */
             public Builder putAllScope(java.util.Map<java.lang.String, java.lang.String> values) {
                 internalGetMutableScope().getMutableMap().putAll(values);
+                bitField0_ |= 0x00000001;
                 return this;
             }
 

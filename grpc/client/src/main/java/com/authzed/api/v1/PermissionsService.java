@@ -2,7 +2,7 @@ package com.authzed.api.v1;
 
 import io.quarkus.grpc.MutinyService;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
 public interface PermissionsService extends MutinyService {
 
     /**
@@ -34,6 +34,15 @@ public interface PermissionsService extends MutinyService {
      */
     io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckPermissionResponse> checkPermission(
             com.authzed.api.v1.PermissionService.CheckPermissionRequest request);
+
+    /**
+     * <pre>
+     *  CheckBulkPermissions evaluates the given list of permission checks
+     *  and returns the list of results.
+     * </pre>
+     */
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request);
 
     /**
      * <pre>

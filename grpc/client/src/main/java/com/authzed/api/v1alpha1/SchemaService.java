@@ -2,7 +2,7 @@ package com.authzed.api.v1alpha1;
 
 import io.quarkus.grpc.MutinyService;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/schema.proto")
 public interface SchemaService extends MutinyService {
 
     /**

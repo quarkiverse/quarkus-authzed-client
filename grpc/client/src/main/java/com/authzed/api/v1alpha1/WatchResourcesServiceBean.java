@@ -4,7 +4,7 @@ import io.grpc.BindableService;
 import io.quarkus.grpc.GrpcService;
 import io.quarkus.grpc.MutinyBean;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watchresources_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watch_resources_service.proto")
 public class WatchResourcesServiceBean extends MutinyWatchResourcesServiceGrpc.WatchResourcesServiceImplBase
         implements BindableService, MutinyBean {
 
@@ -15,8 +15,8 @@ public class WatchResourcesServiceBean extends MutinyWatchResourcesServiceGrpc.W
     }
 
     @Override
-    public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse> watchResources(
-            com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest request) {
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesResponse> watchResources(
+            com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesRequest request) {
         try {
             return delegate.watchResources(request);
         } catch (UnsupportedOperationException e) {

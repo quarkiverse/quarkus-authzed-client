@@ -44,11 +44,6 @@ public final class SchemaServiceOuterClass {
             return new ReadSchemaRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_ReadSchemaRequest_descriptor;
         }
@@ -266,37 +261,6 @@ public final class SchemaServiceOuterClass {
             }
 
             @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
-            }
-
-            @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
                 if (other instanceof com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest) {
                     return mergeFrom((com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest) other);
@@ -436,6 +400,37 @@ public final class SchemaServiceOuterClass {
          * @return The bytes for schemaText.
          */
         com.google.protobuf.ByteString getSchemaTextBytes();
+
+        /**
+         * <pre>
+         * read_at is the ZedToken at which the schema was read.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the readAt field is set.
+         */
+        boolean hasReadAt();
+
+        /**
+         * <pre>
+         * read_at is the ZedToken at which the schema was read.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The readAt.
+         */
+        com.authzed.api.v1.Core.ZedToken getReadAt();
+
+        /**
+         * <pre>
+         * read_at is the ZedToken at which the schema was read.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.ZedTokenOrBuilder getReadAtOrBuilder();
     }
 
     /**
@@ -466,11 +461,6 @@ public final class SchemaServiceOuterClass {
             return new ReadSchemaResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_ReadSchemaResponse_descriptor;
         }
@@ -484,7 +474,8 @@ public final class SchemaServiceOuterClass {
 
         public static final int SCHEMA_TEXT_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schemaText_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schemaText_ = "";
 
         /**
          * <pre>
@@ -529,6 +520,50 @@ public final class SchemaServiceOuterClass {
             }
         }
 
+        public static final int READ_AT_FIELD_NUMBER = 2;
+
+        private com.authzed.api.v1.Core.ZedToken readAt_;
+
+        /**
+         * <pre>
+         * read_at is the ZedToken at which the schema was read.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the readAt field is set.
+         */
+        @java.lang.Override
+        public boolean hasReadAt() {
+            return readAt_ != null;
+        }
+
+        /**
+         * <pre>
+         * read_at is the ZedToken at which the schema was read.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The readAt.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ZedToken getReadAt() {
+            return readAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : readAt_;
+        }
+
+        /**
+         * <pre>
+         * read_at is the ZedToken at which the schema was read.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ZedTokenOrBuilder getReadAtOrBuilder() {
+            return readAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : readAt_;
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -547,6 +582,9 @@ public final class SchemaServiceOuterClass {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaText_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 1, schemaText_);
             }
+            if (readAt_ != null) {
+                output.writeMessage(2, getReadAt());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -558,6 +596,9 @@ public final class SchemaServiceOuterClass {
             size = 0;
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaText_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, schemaText_);
+            }
+            if (readAt_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getReadAt());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -575,6 +616,12 @@ public final class SchemaServiceOuterClass {
             com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse other = (com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse) obj;
             if (!getSchemaText().equals(other.getSchemaText()))
                 return false;
+            if (hasReadAt() != other.hasReadAt())
+                return false;
+            if (hasReadAt()) {
+                if (!getReadAt().equals(other.getReadAt()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -589,6 +636,10 @@ public final class SchemaServiceOuterClass {
             hash = (19 * hash) + getDescriptor().hashCode();
             hash = (37 * hash) + SCHEMA_TEXT_FIELD_NUMBER;
             hash = (53 * hash) + getSchemaText().hashCode();
+            if (hasReadAt()) {
+                hash = (37 * hash) + READ_AT_FIELD_NUMBER;
+                hash = (53 * hash) + getReadAt().hashCode();
+            }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -716,7 +767,13 @@ public final class SchemaServiceOuterClass {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schemaText_ = "";
+                readAt_ = null;
+                if (readAtBuilder_ != null) {
+                    readAtBuilder_.dispose();
+                    readAtBuilder_ = null;
+                }
                 return this;
             }
 
@@ -743,40 +800,21 @@ public final class SchemaServiceOuterClass {
             public com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse buildPartial() {
                 com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse result = new com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse(
                         this);
-                result.schemaText_ = schemaText_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schemaText_ = schemaText_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.readAt_ = readAtBuilder_ == null ? readAt_ : readAtBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -794,7 +832,11 @@ public final class SchemaServiceOuterClass {
                     return this;
                 if (!other.getSchemaText().isEmpty()) {
                     schemaText_ = other.schemaText_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
+                }
+                if (other.hasReadAt()) {
+                    mergeReadAt(other.getReadAt());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -822,9 +864,16 @@ public final class SchemaServiceOuterClass {
                                 break;
                             case 10: {
                                 schemaText_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
+                            case 18: {
+                                input.readMessage(getReadAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
+                                break;
+                            }
+                            // case 18
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -844,6 +893,8 @@ public final class SchemaServiceOuterClass {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object schemaText_ = "";
 
@@ -903,6 +954,7 @@ public final class SchemaServiceOuterClass {
                     throw new NullPointerException();
                 }
                 schemaText_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -918,6 +970,7 @@ public final class SchemaServiceOuterClass {
              */
             public Builder clearSchemaText() {
                 schemaText_ = getDefaultInstance().getSchemaText();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -938,8 +991,167 @@ public final class SchemaServiceOuterClass {
                 }
                 checkByteStringIsUtf8(value);
                 schemaText_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
+            }
+
+            private com.authzed.api.v1.Core.ZedToken readAt_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> readAtBuilder_;
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the readAt field is set.
+             */
+            public boolean hasReadAt() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return The readAt.
+             */
+            public com.authzed.api.v1.Core.ZedToken getReadAt() {
+                if (readAtBuilder_ == null) {
+                    return readAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : readAt_;
+                } else {
+                    return readAtBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setReadAt(com.authzed.api.v1.Core.ZedToken value) {
+                if (readAtBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    readAt_ = value;
+                } else {
+                    readAtBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setReadAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
+                if (readAtBuilder_ == null) {
+                    readAt_ = builderForValue.build();
+                } else {
+                    readAtBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeReadAt(com.authzed.api.v1.Core.ZedToken value) {
+                if (readAtBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) && readAt_ != null
+                            && readAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getReadAtBuilder().mergeFrom(value);
+                    } else {
+                        readAt_ = value;
+                    }
+                } else {
+                    readAtBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearReadAt() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                readAt_ = null;
+                if (readAtBuilder_ != null) {
+                    readAtBuilder_.dispose();
+                    readAtBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ZedToken.Builder getReadAtBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getReadAtFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ZedTokenOrBuilder getReadAtOrBuilder() {
+                if (readAtBuilder_ != null) {
+                    return readAtBuilder_.getMessageOrBuilder();
+                } else {
+                    return readAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : readAt_;
+                }
+            }
+
+            /**
+             * <pre>
+             * read_at is the ZedToken at which the schema was read.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken read_at = 2 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getReadAtFieldBuilder() {
+                if (readAtBuilder_ == null) {
+                    readAtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder>(
+                            getReadAt(), getParentForChildren(), isClean());
+                    readAt_ = null;
+                }
+                return readAtBuilder_;
             }
 
             @java.lang.Override
@@ -1057,11 +1269,6 @@ public final class SchemaServiceOuterClass {
             return new WriteSchemaRequest();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_WriteSchemaRequest_descriptor;
         }
@@ -1075,7 +1282,8 @@ public final class SchemaServiceOuterClass {
 
         public static final int SCHEMA_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object schema_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schema_ = "";
 
         /**
          * <pre>
@@ -1309,6 +1517,7 @@ public final class SchemaServiceOuterClass {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 schema_ = "";
                 return this;
             }
@@ -1336,40 +1545,18 @@ public final class SchemaServiceOuterClass {
             public com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest buildPartial() {
                 com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest result = new com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest(
                         this);
-                result.schema_ = schema_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.schema_ = schema_;
+                }
             }
 
             @java.lang.Override
@@ -1387,6 +1574,7 @@ public final class SchemaServiceOuterClass {
                     return this;
                 if (!other.getSchema().isEmpty()) {
                     schema_ = other.schema_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -1415,6 +1603,7 @@ public final class SchemaServiceOuterClass {
                                 break;
                             case 10: {
                                 schema_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -1437,6 +1626,8 @@ public final class SchemaServiceOuterClass {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object schema_ = "";
 
@@ -1499,6 +1690,7 @@ public final class SchemaServiceOuterClass {
                     throw new NullPointerException();
                 }
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1515,6 +1707,7 @@ public final class SchemaServiceOuterClass {
              */
             public Builder clearSchema() {
                 schema_ = getDefaultInstance().getSchema();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -1536,6 +1729,7 @@ public final class SchemaServiceOuterClass {
                 }
                 checkByteStringIsUtf8(value);
                 schema_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -1601,6 +1795,37 @@ public final class SchemaServiceOuterClass {
 
     public interface WriteSchemaResponseOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.WriteSchemaResponse)
             com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         * written_at is the ZedToken at which the schema was written.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the writtenAt field is set.
+         */
+        boolean hasWrittenAt();
+
+        /**
+         * <pre>
+         * written_at is the ZedToken at which the schema was written.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The writtenAt.
+         */
+        com.authzed.api.v1.Core.ZedToken getWrittenAt();
+
+        /**
+         * <pre>
+         * written_at is the ZedToken at which the schema was written.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.ZedTokenOrBuilder getWrittenAtOrBuilder();
     }
 
     /**
@@ -1630,11 +1855,6 @@ public final class SchemaServiceOuterClass {
             return new WriteSchemaResponse();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_WriteSchemaResponse_descriptor;
         }
@@ -1644,6 +1864,50 @@ public final class SchemaServiceOuterClass {
             return com.authzed.api.v1.SchemaServiceOuterClass.internal_static_authzed_api_v1_WriteSchemaResponse_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse.class,
                             com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse.Builder.class);
+        }
+
+        public static final int WRITTEN_AT_FIELD_NUMBER = 1;
+
+        private com.authzed.api.v1.Core.ZedToken writtenAt_;
+
+        /**
+         * <pre>
+         * written_at is the ZedToken at which the schema was written.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the writtenAt field is set.
+         */
+        @java.lang.Override
+        public boolean hasWrittenAt() {
+            return writtenAt_ != null;
+        }
+
+        /**
+         * <pre>
+         * written_at is the ZedToken at which the schema was written.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The writtenAt.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ZedToken getWrittenAt() {
+            return writtenAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : writtenAt_;
+        }
+
+        /**
+         * <pre>
+         * written_at is the ZedToken at which the schema was written.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ZedTokenOrBuilder getWrittenAtOrBuilder() {
+            return writtenAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : writtenAt_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -1661,6 +1925,9 @@ public final class SchemaServiceOuterClass {
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (writtenAt_ != null) {
+                output.writeMessage(1, getWrittenAt());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -1670,6 +1937,9 @@ public final class SchemaServiceOuterClass {
             if (size != -1)
                 return size;
             size = 0;
+            if (writtenAt_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getWrittenAt());
+            }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
@@ -1684,6 +1954,12 @@ public final class SchemaServiceOuterClass {
                 return super.equals(obj);
             }
             com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse other = (com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse) obj;
+            if (hasWrittenAt() != other.hasWrittenAt())
+                return false;
+            if (hasWrittenAt()) {
+                if (!getWrittenAt().equals(other.getWrittenAt()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -1696,6 +1972,10 @@ public final class SchemaServiceOuterClass {
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasWrittenAt()) {
+                hash = (37 * hash) + WRITTEN_AT_FIELD_NUMBER;
+                hash = (53 * hash) + getWrittenAt().hashCode();
+            }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -1823,6 +2103,12 @@ public final class SchemaServiceOuterClass {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
+                writtenAt_ = null;
+                if (writtenAtBuilder_ != null) {
+                    writtenAtBuilder_.dispose();
+                    writtenAtBuilder_ = null;
+                }
                 return this;
             }
 
@@ -1849,39 +2135,18 @@ public final class SchemaServiceOuterClass {
             public com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse buildPartial() {
                 com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse result = new com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse(
                         this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.writtenAt_ = writtenAtBuilder_ == null ? writtenAt_ : writtenAtBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -1897,6 +2162,9 @@ public final class SchemaServiceOuterClass {
             public Builder mergeFrom(com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse other) {
                 if (other == com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse.getDefaultInstance())
                     return this;
+                if (other.hasWrittenAt()) {
+                    mergeWrittenAt(other.getWrittenAt());
+                }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
@@ -1921,6 +2189,12 @@ public final class SchemaServiceOuterClass {
                             case 0:
                                 done = true;
                                 break;
+                            case 10: {
+                                input.readMessage(getWrittenAtFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -1939,6 +2213,166 @@ public final class SchemaServiceOuterClass {
                 }
                 // finally
                 return this;
+            }
+
+            private int bitField0_;
+
+            private com.authzed.api.v1.Core.ZedToken writtenAt_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> writtenAtBuilder_;
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the writtenAt field is set.
+             */
+            public boolean hasWrittenAt() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The writtenAt.
+             */
+            public com.authzed.api.v1.Core.ZedToken getWrittenAt() {
+                if (writtenAtBuilder_ == null) {
+                    return writtenAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : writtenAt_;
+                } else {
+                    return writtenAtBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setWrittenAt(com.authzed.api.v1.Core.ZedToken value) {
+                if (writtenAtBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    writtenAt_ = value;
+                } else {
+                    writtenAtBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setWrittenAt(com.authzed.api.v1.Core.ZedToken.Builder builderForValue) {
+                if (writtenAtBuilder_ == null) {
+                    writtenAt_ = builderForValue.build();
+                } else {
+                    writtenAtBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeWrittenAt(com.authzed.api.v1.Core.ZedToken value) {
+                if (writtenAtBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) && writtenAt_ != null
+                            && writtenAt_ != com.authzed.api.v1.Core.ZedToken.getDefaultInstance()) {
+                        getWrittenAtBuilder().mergeFrom(value);
+                    } else {
+                        writtenAt_ = value;
+                    }
+                } else {
+                    writtenAtBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearWrittenAt() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                writtenAt_ = null;
+                if (writtenAtBuilder_ != null) {
+                    writtenAtBuilder_.dispose();
+                    writtenAtBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ZedToken.Builder getWrittenAtBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getWrittenAtFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ZedTokenOrBuilder getWrittenAtOrBuilder() {
+                if (writtenAtBuilder_ != null) {
+                    return writtenAtBuilder_.getMessageOrBuilder();
+                } else {
+                    return writtenAt_ == null ? com.authzed.api.v1.Core.ZedToken.getDefaultInstance() : writtenAt_;
+                }
+            }
+
+            /**
+             * <pre>
+             * written_at is the ZedToken at which the schema was written.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ZedToken written_at = 1 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder> getWrittenAtFieldBuilder() {
+                if (writtenAtBuilder_ == null) {
+                    writtenAtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ZedToken, com.authzed.api.v1.Core.ZedToken.Builder, com.authzed.api.v1.Core.ZedTokenOrBuilder>(
+                            getWrittenAt(), getParentForChildren(), isClean());
+                    writtenAt_ = null;
+                }
+                return writtenAtBuilder_;
             }
 
             @java.lang.Override
@@ -2024,37 +2458,42 @@ public final class SchemaServiceOuterClass {
 
     static {
         java.lang.String[] descriptorData = { "\n#authzed/api/v1/schema_service.proto\022\016a"
-                + "uthzed.api.v1\032\034google/api/annotations.pr" + "oto\032\027validate/validate.proto\"\023\n\021ReadSche"
-                + "maRequest\")\n\022ReadSchemaResponse\022\023\n\013schem"
-                + "a_text\030\001 \001(\t\"/\n\022WriteSchemaRequest\022\031\n\006sc"
-                + "hema\030\001 \001(\tB\t\372B\006r\004(\200\200\020\"\025\n\023WriteSchemaResp"
-                + "onse2\365\001\n\rSchemaService\022o\n\nReadSchema\022!.a" + "uthzed.api.v1.ReadSchemaRequest\032\".authze"
-                + "d.api.v1.ReadSchemaResponse\"\032\202\323\344\223\002\024\"\017/v1"
-                + "/schema/read:\001*\022s\n\013WriteSchema\022\".authzed" + ".api.v1.WriteSchemaRequest\032#.authzed.api"
-                + ".v1.WriteSchemaResponse\"\033\202\323\344\223\002\025\"\020/v1/sch"
-                + "ema/write:\001*BH\n\022com.authzed.api.v1Z2gith" + "ub.com/authzed/authzed-go/proto/authzed/"
-                + "api/v1b\006proto3" };
+                + "uthzed.api.v1\032\034google/api/annotations.pr" + "oto\032\027validate/validate.proto\032\031authzed/ap"
+                + "i/v1/core.proto\"\023\n\021ReadSchemaRequest\"^\n\022"
+                + "ReadSchemaResponse\022\023\n\013schema_text\030\001 \001(\t\022"
+                + "3\n\007read_at\030\002 \001(\0132\030.authzed.api.v1.ZedTok"
+                + "enB\010\372B\005\212\001\002\020\001\"0\n\022WriteSchemaRequest\022\032\n\006sc"
+                + "hema\030\001 \001(\tB\n\372B\007r\005(\200\200\200\002\"M\n\023WriteSchemaRes"
+                + "ponse\0226\n\nwritten_at\030\001 \001(\0132\030.authzed.api."
+                + "v1.ZedTokenB\010\372B\005\212\001\002\020\0012\365\001\n\rSchemaService\022"
+                + "o\n\nReadSchema\022!.authzed.api.v1.ReadSchem" + "aRequest\032\".authzed.api.v1.ReadSchemaResp"
+                + "onse\"\032\202\323\344\223\002\024\"\017/v1/schema/read:\001*\022s\n\013Writ"
+                + "eSchema\022\".authzed.api.v1.WriteSchemaRequ" + "est\032#.authzed.api.v1.WriteSchemaResponse"
+                + "\"\033\202\323\344\223\002\025\"\020/v1/schema/write:\001*BH\n\022com.aut"
+                + "hzed.api.v1Z2github.com/authzed/authzed-" + "go/proto/authzed/api/v1b\006proto3" };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
                 new com.google.protobuf.Descriptors.FileDescriptor[] { com.google.api.AnnotationsProto.getDescriptor(),
-                        io.envoyproxy.pgv.validate.Validate.getDescriptor() });
+                        io.envoyproxy.pgv.validate.Validate.getDescriptor(), com.authzed.api.v1.Core.getDescriptor() });
         internal_static_authzed_api_v1_ReadSchemaRequest_descriptor = getDescriptor().getMessageTypes().get(0);
         internal_static_authzed_api_v1_ReadSchemaRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_ReadSchemaRequest_descriptor, new java.lang.String[] {});
         internal_static_authzed_api_v1_ReadSchemaResponse_descriptor = getDescriptor().getMessageTypes().get(1);
         internal_static_authzed_api_v1_ReadSchemaResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_ReadSchemaResponse_descriptor, new java.lang.String[] { "SchemaText" });
+                internal_static_authzed_api_v1_ReadSchemaResponse_descriptor,
+                new java.lang.String[] { "SchemaText", "ReadAt" });
         internal_static_authzed_api_v1_WriteSchemaRequest_descriptor = getDescriptor().getMessageTypes().get(2);
         internal_static_authzed_api_v1_WriteSchemaRequest_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_WriteSchemaRequest_descriptor, new java.lang.String[] { "Schema" });
         internal_static_authzed_api_v1_WriteSchemaResponse_descriptor = getDescriptor().getMessageTypes().get(3);
         internal_static_authzed_api_v1_WriteSchemaResponse_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_WriteSchemaResponse_descriptor, new java.lang.String[] {});
+                internal_static_authzed_api_v1_WriteSchemaResponse_descriptor, new java.lang.String[] { "WrittenAt" });
         com.google.protobuf.ExtensionRegistry registry = com.google.protobuf.ExtensionRegistry.newInstance();
         registry.add(com.google.api.AnnotationsProto.http);
         registry.add(io.envoyproxy.pgv.validate.Validate.rules);
         com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(descriptor, registry);
         com.google.api.AnnotationsProto.getDescriptor();
         io.envoyproxy.pgv.validate.Validate.getDescriptor();
+        com.authzed.api.v1.Core.getDescriptor();
     }
     // @@protoc_insertion_point(outer_class_scope)
 }

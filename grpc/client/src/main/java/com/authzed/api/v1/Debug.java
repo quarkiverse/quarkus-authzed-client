@@ -75,7 +75,9 @@ public final class Debug {
      * <pre>
      * DebugInformation defines debug information returned by an API call in a footer when
      * requested with a specific debugging header.
+     *
      * The specific debug information returned will depend on the type of the API call made.
+     *
      * See the github.com/authzed/authzed-go project for the specific header and footer names.
      * </pre>
      *
@@ -99,11 +101,6 @@ public final class Debug {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new DebugInformation();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -158,12 +155,13 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Debug.CheckDebugTraceOrBuilder getCheckOrBuilder() {
-            return getCheck();
+            return check_ == null ? com.authzed.api.v1.Debug.CheckDebugTrace.getDefaultInstance() : check_;
         }
 
         public static final int SCHEMA_USED_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object schemaUsed_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object schemaUsed_ = "";
 
         /**
          * <pre>
@@ -380,7 +378,9 @@ public final class Debug {
          * <pre>
          * DebugInformation defines debug information returned by an API call in a footer when
          * requested with a specific debugging header.
+         *
          * The specific debug information returned will depend on the type of the API call made.
+         *
          * See the github.com/authzed/authzed-go project for the specific header and footer names.
          * </pre>
          *
@@ -411,10 +411,10 @@ public final class Debug {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (checkBuilder_ == null) {
-                    check_ = null;
-                } else {
-                    check_ = null;
+                bitField0_ = 0;
+                check_ = null;
+                if (checkBuilder_ != null) {
+                    checkBuilder_.dispose();
                     checkBuilder_ = null;
                 }
                 schemaUsed_ = "";
@@ -443,45 +443,21 @@ public final class Debug {
             @java.lang.Override
             public com.authzed.api.v1.Debug.DebugInformation buildPartial() {
                 com.authzed.api.v1.Debug.DebugInformation result = new com.authzed.api.v1.Debug.DebugInformation(this);
-                if (checkBuilder_ == null) {
-                    result.check_ = check_;
-                } else {
-                    result.check_ = checkBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.schemaUsed_ = schemaUsed_;
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Debug.DebugInformation result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.check_ = checkBuilder_ == null ? check_ : checkBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.schemaUsed_ = schemaUsed_;
+                }
             }
 
             @java.lang.Override
@@ -502,6 +478,7 @@ public final class Debug {
                 }
                 if (!other.getSchemaUsed().isEmpty()) {
                     schemaUsed_ = other.schemaUsed_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -530,11 +507,13 @@ public final class Debug {
                                 break;
                             case 10: {
                                 input.readMessage(getCheckFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 schemaUsed_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -558,6 +537,8 @@ public final class Debug {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Debug.CheckDebugTrace check_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.CheckDebugTrace, com.authzed.api.v1.Debug.CheckDebugTrace.Builder, com.authzed.api.v1.Debug.CheckDebugTraceOrBuilder> checkBuilder_;
@@ -572,7 +553,7 @@ public final class Debug {
              * @return Whether the check field is set.
              */
             public boolean hasCheck() {
-                return checkBuilder_ != null || check_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -605,10 +586,11 @@ public final class Debug {
                         throw new NullPointerException();
                     }
                     check_ = value;
-                    onChanged();
                 } else {
                     checkBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -622,10 +604,11 @@ public final class Debug {
             public Builder setCheck(com.authzed.api.v1.Debug.CheckDebugTrace.Builder builderForValue) {
                 if (checkBuilder_ == null) {
                     check_ = builderForValue.build();
-                    onChanged();
                 } else {
                     checkBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -638,15 +621,17 @@ public final class Debug {
              */
             public Builder mergeCheck(com.authzed.api.v1.Debug.CheckDebugTrace value) {
                 if (checkBuilder_ == null) {
-                    if (check_ != null) {
-                        check_ = com.authzed.api.v1.Debug.CheckDebugTrace.newBuilder(check_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && check_ != null
+                            && check_ != com.authzed.api.v1.Debug.CheckDebugTrace.getDefaultInstance()) {
+                        getCheckBuilder().mergeFrom(value);
                     } else {
                         check_ = value;
                     }
-                    onChanged();
                 } else {
                     checkBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -658,13 +643,13 @@ public final class Debug {
              * <code>.authzed.api.v1.CheckDebugTrace check = 1;</code>
              */
             public Builder clearCheck() {
-                if (checkBuilder_ == null) {
-                    check_ = null;
-                    onChanged();
-                } else {
-                    check_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                check_ = null;
+                if (checkBuilder_ != null) {
+                    checkBuilder_.dispose();
                     checkBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -676,6 +661,7 @@ public final class Debug {
              * <code>.authzed.api.v1.CheckDebugTrace check = 1;</code>
              */
             public com.authzed.api.v1.Debug.CheckDebugTrace.Builder getCheckBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getCheckFieldBuilder().getBuilder();
             }
@@ -769,6 +755,7 @@ public final class Debug {
                     throw new NullPointerException();
                 }
                 schemaUsed_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -784,6 +771,7 @@ public final class Debug {
              */
             public Builder clearSchemaUsed() {
                 schemaUsed_ = getDefaultInstance().getSchemaUsed();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -804,6 +792,7 @@ public final class Debug {
                 }
                 checkByteStringIsUtf8(value);
                 schemaUsed_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -928,7 +917,7 @@ public final class Debug {
          * permission_type holds information indicating whether it was a permission or relation.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for permissionType.
          */
@@ -939,7 +928,7 @@ public final class Debug {
          * permission_type holds information indicating whether it was a permission or relation.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The permissionType.
          */
@@ -984,7 +973,7 @@ public final class Debug {
          * result holds the result of the Check call.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for result.
          */
@@ -995,11 +984,73 @@ public final class Debug {
          * result holds the result of the Check call.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
          *
          * @return The result.
          */
         com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship getResult();
+
+        /**
+         * <pre>
+         * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+         *
+         * @return Whether the caveatEvaluationInfo field is set.
+         */
+        boolean hasCaveatEvaluationInfo();
+
+        /**
+         * <pre>
+         * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+         *
+         * @return The caveatEvaluationInfo.
+         */
+        com.authzed.api.v1.Debug.CaveatEvalInfo getCaveatEvaluationInfo();
+
+        /**
+         * <pre>
+         * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+         */
+        com.authzed.api.v1.Debug.CaveatEvalInfoOrBuilder getCaveatEvaluationInfoOrBuilder();
+
+        /**
+         * <pre>
+         * duration holds the time spent executing this Check operation.
+         * </pre>
+         *
+         * <code>.google.protobuf.Duration duration = 9;</code>
+         *
+         * @return Whether the duration field is set.
+         */
+        boolean hasDuration();
+
+        /**
+         * <pre>
+         * duration holds the time spent executing this Check operation.
+         * </pre>
+         *
+         * <code>.google.protobuf.Duration duration = 9;</code>
+         *
+         * @return The duration.
+         */
+        com.google.protobuf.Duration getDuration();
+
+        /**
+         * <pre>
+         * duration holds the time spent executing this Check operation.
+         * </pre>
+         *
+         * <code>.google.protobuf.Duration duration = 9;</code>
+         */
+        com.google.protobuf.DurationOrBuilder getDurationOrBuilder();
 
         /**
          * <pre>
@@ -1057,7 +1108,7 @@ public final class Debug {
          */
         com.authzed.api.v1.Debug.CheckDebugTrace.SubProblemsOrBuilder getSubProblemsOrBuilder();
 
-        public com.authzed.api.v1.Debug.CheckDebugTrace.ResolutionCase getResolutionCase();
+        com.authzed.api.v1.Debug.CheckDebugTrace.ResolutionCase getResolutionCase();
     }
 
     /**
@@ -1088,11 +1139,6 @@ public final class Debug {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new CheckDebugTrace();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -1236,6 +1282,10 @@ public final class Debug {
              * <code>PERMISSIONSHIP_HAS_PERMISSION = 2;</code>
              */
             PERMISSIONSHIP_HAS_PERMISSION(2),
+            /**
+             * <code>PERMISSIONSHIP_CONDITIONAL_PERMISSION = 3;</code>
+             */
+            PERMISSIONSHIP_CONDITIONAL_PERMISSION(3),
             UNRECOGNIZED(-1);
 
             /**
@@ -1252,6 +1302,11 @@ public final class Debug {
              * <code>PERMISSIONSHIP_HAS_PERMISSION = 2;</code>
              */
             public static final int PERMISSIONSHIP_HAS_PERMISSION_VALUE = 2;
+
+            /**
+             * <code>PERMISSIONSHIP_CONDITIONAL_PERMISSION = 3;</code>
+             */
+            public static final int PERMISSIONSHIP_CONDITIONAL_PERMISSION_VALUE = 3;
 
             public final int getNumber() {
                 if (this == UNRECOGNIZED) {
@@ -1282,6 +1337,8 @@ public final class Debug {
                         return PERMISSIONSHIP_NO_PERMISSION;
                     case 2:
                         return PERMISSIONSHIP_HAS_PERMISSION;
+                    case 3:
+                        return PERMISSIONSHIP_CONDITIONAL_PERMISSION;
                     default:
                         return null;
                 }
@@ -1384,11 +1441,6 @@ public final class Debug {
                 return new SubProblems();
             }
 
-            @java.lang.Override
-            public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-                return this.unknownFields;
-            }
-
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
                 return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CheckDebugTrace_SubProblems_descriptor;
             }
@@ -1402,6 +1454,7 @@ public final class Debug {
 
             public static final int TRACES_FIELD_NUMBER = 1;
 
+            @SuppressWarnings("serial")
             private java.util.List<com.authzed.api.v1.Debug.CheckDebugTrace> traces_;
 
             /**
@@ -1627,6 +1680,7 @@ public final class Debug {
                 @java.lang.Override
                 public Builder clear() {
                     super.clear();
+                    bitField0_ = 0;
                     if (tracesBuilder_ == null) {
                         traces_ = java.util.Collections.emptyList();
                     } else {
@@ -1660,7 +1714,15 @@ public final class Debug {
                 public com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems buildPartial() {
                     com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems result = new com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems(
                             this);
-                    int from_bitField0_ = bitField0_;
+                    buildPartialRepeatedFields(result);
+                    if (bitField0_ != 0) {
+                        buildPartial0(result);
+                    }
+                    onBuilt();
+                    return result;
+                }
+
+                private void buildPartialRepeatedFields(com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems result) {
                     if (tracesBuilder_ == null) {
                         if (((bitField0_ & 0x00000001) != 0)) {
                             traces_ = java.util.Collections.unmodifiableList(traces_);
@@ -1670,39 +1732,10 @@ public final class Debug {
                     } else {
                         result.traces_ = tracesBuilder_.build();
                     }
-                    onBuilt();
-                    return result;
                 }
 
-                @java.lang.Override
-                public Builder clone() {
-                    return super.clone();
-                }
-
-                @java.lang.Override
-                public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                    return super.setField(field, value);
-                }
-
-                @java.lang.Override
-                public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                    return super.clearField(field);
-                }
-
-                @java.lang.Override
-                public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                    return super.clearOneof(oneof);
-                }
-
-                @java.lang.Override
-                public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                        java.lang.Object value) {
-                    return super.setRepeatedField(field, index, value);
-                }
-
-                @java.lang.Override
-                public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                    return super.addRepeatedField(field, value);
+                private void buildPartial0(com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems result) {
+                    int from_bitField0_ = bitField0_;
                 }
 
                 @java.lang.Override
@@ -2102,6 +2135,7 @@ public final class Debug {
 
         private int resolutionCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object resolution_;
 
         public enum ResolutionCase
@@ -2190,12 +2224,13 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int PERMISSION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object permission_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object permission_ = "";
 
         /**
          * <pre>
@@ -2242,14 +2277,14 @@ public final class Debug {
 
         public static final int PERMISSION_TYPE_FIELD_NUMBER = 3;
 
-        private int permissionType_;
+        private int permissionType_ = 0;
 
         /**
          * <pre>
          * permission_type holds information indicating whether it was a permission or relation.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for permissionType.
          */
@@ -2263,15 +2298,14 @@ public final class Debug {
          * permission_type holds information indicating whether it was a permission or relation.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
          *
          * @return The permissionType.
          */
         @java.lang.Override
         public com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType getPermissionType() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType result = com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType
-                    .valueOf(permissionType_);
+                    .forNumber(permissionType_);
             return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType.UNRECOGNIZED : result;
         }
 
@@ -2319,19 +2353,19 @@ public final class Debug {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
-            return getSubject();
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
         }
 
         public static final int RESULT_FIELD_NUMBER = 5;
 
-        private int result_;
+        private int result_ = 0;
 
         /**
          * <pre>
          * result holds the result of the Check call.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for result.
          */
@@ -2345,16 +2379,105 @@ public final class Debug {
          * result holds the result of the Check call.
          * </pre>
          *
-         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+         * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
          *
          * @return The result.
          */
         @java.lang.Override
         public com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship getResult() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship result = com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship
-                    .valueOf(result_);
+                    .forNumber(result_);
             return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship.UNRECOGNIZED : result;
+        }
+
+        public static final int CAVEAT_EVALUATION_INFO_FIELD_NUMBER = 8;
+
+        private com.authzed.api.v1.Debug.CaveatEvalInfo caveatEvaluationInfo_;
+
+        /**
+         * <pre>
+         * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+         *
+         * @return Whether the caveatEvaluationInfo field is set.
+         */
+        @java.lang.Override
+        public boolean hasCaveatEvaluationInfo() {
+            return caveatEvaluationInfo_ != null;
+        }
+
+        /**
+         * <pre>
+         * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+         *
+         * @return The caveatEvaluationInfo.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Debug.CaveatEvalInfo getCaveatEvaluationInfo() {
+            return caveatEvaluationInfo_ == null ? com.authzed.api.v1.Debug.CaveatEvalInfo.getDefaultInstance()
+                    : caveatEvaluationInfo_;
+        }
+
+        /**
+         * <pre>
+         * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Debug.CaveatEvalInfoOrBuilder getCaveatEvaluationInfoOrBuilder() {
+            return caveatEvaluationInfo_ == null ? com.authzed.api.v1.Debug.CaveatEvalInfo.getDefaultInstance()
+                    : caveatEvaluationInfo_;
+        }
+
+        public static final int DURATION_FIELD_NUMBER = 9;
+
+        private com.google.protobuf.Duration duration_;
+
+        /**
+         * <pre>
+         * duration holds the time spent executing this Check operation.
+         * </pre>
+         *
+         * <code>.google.protobuf.Duration duration = 9;</code>
+         *
+         * @return Whether the duration field is set.
+         */
+        @java.lang.Override
+        public boolean hasDuration() {
+            return duration_ != null;
+        }
+
+        /**
+         * <pre>
+         * duration holds the time spent executing this Check operation.
+         * </pre>
+         *
+         * <code>.google.protobuf.Duration duration = 9;</code>
+         *
+         * @return The duration.
+         */
+        @java.lang.Override
+        public com.google.protobuf.Duration getDuration() {
+            return duration_ == null ? com.google.protobuf.Duration.getDefaultInstance() : duration_;
+        }
+
+        /**
+         * <pre>
+         * duration holds the time spent executing this Check operation.
+         * </pre>
+         *
+         * <code>.google.protobuf.Duration duration = 9;</code>
+         */
+        @java.lang.Override
+        public com.google.protobuf.DurationOrBuilder getDurationOrBuilder() {
+            return duration_ == null ? com.google.protobuf.Duration.getDefaultInstance() : duration_;
         }
 
         public static final int WAS_CACHED_RESULT_FIELD_NUMBER = 6;
@@ -2478,6 +2601,12 @@ public final class Debug {
             if (resolutionCase_ == 7) {
                 output.writeMessage(7, (com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) resolution_);
             }
+            if (caveatEvaluationInfo_ != null) {
+                output.writeMessage(8, getCaveatEvaluationInfo());
+            }
+            if (duration_ != null) {
+                output.writeMessage(9, getDuration());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -2509,6 +2638,12 @@ public final class Debug {
             if (resolutionCase_ == 7) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(7,
                         (com.authzed.api.v1.Debug.CheckDebugTrace.SubProblems) resolution_);
+            }
+            if (caveatEvaluationInfo_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, getCaveatEvaluationInfo());
+            }
+            if (duration_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(9, getDuration());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -2542,6 +2677,18 @@ public final class Debug {
             }
             if (result_ != other.result_)
                 return false;
+            if (hasCaveatEvaluationInfo() != other.hasCaveatEvaluationInfo())
+                return false;
+            if (hasCaveatEvaluationInfo()) {
+                if (!getCaveatEvaluationInfo().equals(other.getCaveatEvaluationInfo()))
+                    return false;
+            }
+            if (hasDuration() != other.hasDuration())
+                return false;
+            if (hasDuration()) {
+                if (!getDuration().equals(other.getDuration()))
+                    return false;
+            }
             if (!getResolutionCase().equals(other.getResolutionCase()))
                 return false;
             switch (resolutionCase_) {
@@ -2582,6 +2729,14 @@ public final class Debug {
             }
             hash = (37 * hash) + RESULT_FIELD_NUMBER;
             hash = (53 * hash) + result_;
+            if (hasCaveatEvaluationInfo()) {
+                hash = (37 * hash) + CAVEAT_EVALUATION_INFO_FIELD_NUMBER;
+                hash = (53 * hash) + getCaveatEvaluationInfo().hashCode();
+            }
+            if (hasDuration()) {
+                hash = (37 * hash) + DURATION_FIELD_NUMBER;
+                hash = (53 * hash) + getDuration().hashCode();
+            }
             switch (resolutionCase_) {
                 case 6:
                     hash = (37 * hash) + WAS_CACHED_RESULT_FIELD_NUMBER;
@@ -2718,21 +2873,30 @@ public final class Debug {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                bitField0_ = 0;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 permission_ = "";
                 permissionType_ = 0;
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                } else {
-                    subject_ = null;
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
                 result_ = 0;
+                caveatEvaluationInfo_ = null;
+                if (caveatEvaluationInfoBuilder_ != null) {
+                    caveatEvaluationInfoBuilder_.dispose();
+                    caveatEvaluationInfoBuilder_ = null;
+                }
+                duration_ = null;
+                if (durationBuilder_ != null) {
+                    durationBuilder_.dispose();
+                    durationBuilder_ = null;
+                }
                 if (subProblemsBuilder_ != null) {
                     subProblemsBuilder_.clear();
                 }
@@ -2763,63 +2927,46 @@ public final class Debug {
             @java.lang.Override
             public com.authzed.api.v1.Debug.CheckDebugTrace buildPartial() {
                 com.authzed.api.v1.Debug.CheckDebugTrace result = new com.authzed.api.v1.Debug.CheckDebugTrace(this);
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.permission_ = permission_;
-                result.permissionType_ = permissionType_;
-                if (subjectBuilder_ == null) {
-                    result.subject_ = subject_;
-                } else {
-                    result.subject_ = subjectBuilder_.build();
-                }
-                result.result_ = result_;
-                if (resolutionCase_ == 6) {
-                    result.resolution_ = resolution_;
-                }
-                if (resolutionCase_ == 7) {
-                    if (subProblemsBuilder_ == null) {
-                        result.resolution_ = resolution_;
-                    } else {
-                        result.resolution_ = subProblemsBuilder_.build();
-                    }
-                }
-                result.resolutionCase_ = resolutionCase_;
+                buildPartialOneofs(result);
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
+            private void buildPartial0(com.authzed.api.v1.Debug.CheckDebugTrace result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.permission_ = permission_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.permissionType_ = permissionType_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.result_ = result_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.caveatEvaluationInfo_ = caveatEvaluationInfoBuilder_ == null ? caveatEvaluationInfo_
+                            : caveatEvaluationInfoBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.duration_ = durationBuilder_ == null ? duration_ : durationBuilder_.build();
+                }
             }
 
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartialOneofs(com.authzed.api.v1.Debug.CheckDebugTrace result) {
+                result.resolutionCase_ = resolutionCase_;
+                result.resolution_ = this.resolution_;
+                if (resolutionCase_ == 7 && subProblemsBuilder_ != null) {
+                    result.resolution_ = subProblemsBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -2840,6 +2987,7 @@ public final class Debug {
                 }
                 if (!other.getPermission().isEmpty()) {
                     permission_ = other.permission_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.permissionType_ != 0) {
@@ -2850,6 +2998,12 @@ public final class Debug {
                 }
                 if (other.result_ != 0) {
                     setResultValue(other.getResultValue());
+                }
+                if (other.hasCaveatEvaluationInfo()) {
+                    mergeCaveatEvaluationInfo(other.getCaveatEvaluationInfo());
+                }
+                if (other.hasDuration()) {
+                    mergeDuration(other.getDuration());
                 }
                 switch (other.getResolutionCase()) {
                     case WAS_CACHED_RESULT: {
@@ -2890,26 +3044,31 @@ public final class Debug {
                                 break;
                             case 10: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 permission_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 24: {
                                 permissionType_ = input.readEnum();
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 24
                             case 34: {
                                 input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
                             case 40: {
                                 result_ = input.readEnum();
+                                bitField0_ |= 0x00000010;
                                 break;
                             }
                             // case 40
@@ -2925,6 +3084,18 @@ public final class Debug {
                                 break;
                             }
                             // case 58
+                            case 66: {
+                                input.readMessage(getCaveatEvaluationInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000020;
+                                break;
+                            }
+                            // case 66
+                            case 74: {
+                                input.readMessage(getDurationFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000040;
+                                break;
+                            }
+                            // case 74
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -2960,6 +3131,8 @@ public final class Debug {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ObjectReference resource_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> resourceBuilder_;
@@ -2974,7 +3147,7 @@ public final class Debug {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -3007,10 +3180,11 @@ public final class Debug {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -3024,10 +3198,11 @@ public final class Debug {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -3040,16 +3215,17 @@ public final class Debug {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -3061,13 +3237,13 @@ public final class Debug {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3079,6 +3255,7 @@ public final class Debug {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -3172,6 +3349,7 @@ public final class Debug {
                     throw new NullPointerException();
                 }
                 permission_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3187,6 +3365,7 @@ public final class Debug {
              */
             public Builder clearPermission() {
                 permission_ = getDefaultInstance().getPermission();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -3207,6 +3386,7 @@ public final class Debug {
                 }
                 checkByteStringIsUtf8(value);
                 permission_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3218,7 +3398,7 @@ public final class Debug {
              * permission_type holds information indicating whether it was a permission or relation.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
              *
              * @return The enum numeric value on the wire for permissionType.
              */
@@ -3232,13 +3412,14 @@ public final class Debug {
              * permission_type holds information indicating whether it was a permission or relation.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
              *
              * @param value The enum numeric value on the wire for permissionType to set.
              * @return This builder for chaining.
              */
             public Builder setPermissionTypeValue(int value) {
                 permissionType_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -3248,15 +3429,14 @@ public final class Debug {
              * permission_type holds information indicating whether it was a permission or relation.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
              *
              * @return The permissionType.
              */
             @java.lang.Override
             public com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType getPermissionType() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType result = com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType
-                        .valueOf(permissionType_);
+                        .forNumber(permissionType_);
                 return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.PermissionType.UNRECOGNIZED : result;
             }
 
@@ -3265,7 +3445,7 @@ public final class Debug {
              * permission_type holds information indicating whether it was a permission or relation.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
              *
              * @param value The permissionType to set.
              * @return This builder for chaining.
@@ -3274,6 +3454,7 @@ public final class Debug {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000004;
                 permissionType_ = value.getNumber();
                 onChanged();
                 return this;
@@ -3284,11 +3465,12 @@ public final class Debug {
              * permission_type holds information indicating whether it was a permission or relation.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.PermissionType permission_type = 3 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
              */
             public Builder clearPermissionType() {
+                bitField0_ = (bitField0_ & ~0x00000004);
                 permissionType_ = 0;
                 onChanged();
                 return this;
@@ -3309,7 +3491,7 @@ public final class Debug {
              * @return Whether the subject field is set.
              */
             public boolean hasSubject() {
-                return subjectBuilder_ != null || subject_ != null;
+                return ((bitField0_ & 0x00000008) != 0);
             }
 
             /**
@@ -3344,10 +3526,11 @@ public final class Debug {
                         throw new NullPointerException();
                     }
                     subject_ = value;
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -3362,10 +3545,11 @@ public final class Debug {
             public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
                 if (subjectBuilder_ == null) {
                     subject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -3379,16 +3563,17 @@ public final class Debug {
              */
             public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
                 if (subjectBuilder_ == null) {
-                    if (subject_ != null) {
-                        subject_ = com.authzed.api.v1.Core.SubjectReference.newBuilder(subject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000008) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
                     } else {
                         subject_ = value;
                     }
-                    onChanged();
                 } else {
                     subjectBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000008;
+                onChanged();
                 return this;
             }
 
@@ -3401,13 +3586,13 @@ public final class Debug {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public Builder clearSubject() {
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                    onChanged();
-                } else {
-                    subject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3420,6 +3605,7 @@ public final class Debug {
              * <code>.authzed.api.v1.SubjectReference subject = 4 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return getSubjectFieldBuilder().getBuilder();
             }
@@ -3464,7 +3650,7 @@ public final class Debug {
              * result holds the result of the Check call.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
              *
              * @return The enum numeric value on the wire for result.
              */
@@ -3478,13 +3664,14 @@ public final class Debug {
              * result holds the result of the Check call.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
              *
              * @param value The enum numeric value on the wire for result to set.
              * @return This builder for chaining.
              */
             public Builder setResultValue(int value) {
                 result_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -3494,15 +3681,14 @@ public final class Debug {
              * result holds the result of the Check call.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
              *
              * @return The result.
              */
             @java.lang.Override
             public com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship getResult() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship result = com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship
-                        .valueOf(result_);
+                        .forNumber(result_);
                 return result == null ? com.authzed.api.v1.Debug.CheckDebugTrace.Permissionship.UNRECOGNIZED : result;
             }
 
@@ -3511,7 +3697,7 @@ public final class Debug {
              * result holds the result of the Check call.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
              *
              * @param value The result to set.
              * @return This builder for chaining.
@@ -3520,6 +3706,7 @@ public final class Debug {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000010;
                 result_ = value.getNumber();
                 onChanged();
                 return this;
@@ -3530,14 +3717,333 @@ public final class Debug {
              * result holds the result of the Check call.
              * </pre>
              *
-             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5;</code>
+             * <code>.authzed.api.v1.CheckDebugTrace.Permissionship result = 5 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
              */
             public Builder clearResult() {
+                bitField0_ = (bitField0_ & ~0x00000010);
                 result_ = 0;
                 onChanged();
                 return this;
+            }
+
+            private com.authzed.api.v1.Debug.CaveatEvalInfo caveatEvaluationInfo_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.CaveatEvalInfo, com.authzed.api.v1.Debug.CaveatEvalInfo.Builder, com.authzed.api.v1.Debug.CaveatEvalInfoOrBuilder> caveatEvaluationInfoBuilder_;
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             *
+             * @return Whether the caveatEvaluationInfo field is set.
+             */
+            public boolean hasCaveatEvaluationInfo() {
+                return ((bitField0_ & 0x00000020) != 0);
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             *
+             * @return The caveatEvaluationInfo.
+             */
+            public com.authzed.api.v1.Debug.CaveatEvalInfo getCaveatEvaluationInfo() {
+                if (caveatEvaluationInfoBuilder_ == null) {
+                    return caveatEvaluationInfo_ == null ? com.authzed.api.v1.Debug.CaveatEvalInfo.getDefaultInstance()
+                            : caveatEvaluationInfo_;
+                } else {
+                    return caveatEvaluationInfoBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             */
+            public Builder setCaveatEvaluationInfo(com.authzed.api.v1.Debug.CaveatEvalInfo value) {
+                if (caveatEvaluationInfoBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    caveatEvaluationInfo_ = value;
+                } else {
+                    caveatEvaluationInfoBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             */
+            public Builder setCaveatEvaluationInfo(com.authzed.api.v1.Debug.CaveatEvalInfo.Builder builderForValue) {
+                if (caveatEvaluationInfoBuilder_ == null) {
+                    caveatEvaluationInfo_ = builderForValue.build();
+                } else {
+                    caveatEvaluationInfoBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             */
+            public Builder mergeCaveatEvaluationInfo(com.authzed.api.v1.Debug.CaveatEvalInfo value) {
+                if (caveatEvaluationInfoBuilder_ == null) {
+                    if (((bitField0_ & 0x00000020) != 0) && caveatEvaluationInfo_ != null
+                            && caveatEvaluationInfo_ != com.authzed.api.v1.Debug.CaveatEvalInfo.getDefaultInstance()) {
+                        getCaveatEvaluationInfoBuilder().mergeFrom(value);
+                    } else {
+                        caveatEvaluationInfo_ = value;
+                    }
+                } else {
+                    caveatEvaluationInfoBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             */
+            public Builder clearCaveatEvaluationInfo() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                caveatEvaluationInfo_ = null;
+                if (caveatEvaluationInfoBuilder_ != null) {
+                    caveatEvaluationInfoBuilder_.dispose();
+                    caveatEvaluationInfoBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             */
+            public com.authzed.api.v1.Debug.CaveatEvalInfo.Builder getCaveatEvaluationInfoBuilder() {
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return getCaveatEvaluationInfoFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             */
+            public com.authzed.api.v1.Debug.CaveatEvalInfoOrBuilder getCaveatEvaluationInfoOrBuilder() {
+                if (caveatEvaluationInfoBuilder_ != null) {
+                    return caveatEvaluationInfoBuilder_.getMessageOrBuilder();
+                } else {
+                    return caveatEvaluationInfo_ == null ? com.authzed.api.v1.Debug.CaveatEvalInfo.getDefaultInstance()
+                            : caveatEvaluationInfo_;
+                }
+            }
+
+            /**
+             * <pre>
+             * caveat_evaluation_info holds information about the caveat evaluated for this step of the trace.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo caveat_evaluation_info = 8;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.CaveatEvalInfo, com.authzed.api.v1.Debug.CaveatEvalInfo.Builder, com.authzed.api.v1.Debug.CaveatEvalInfoOrBuilder> getCaveatEvaluationInfoFieldBuilder() {
+                if (caveatEvaluationInfoBuilder_ == null) {
+                    caveatEvaluationInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Debug.CaveatEvalInfo, com.authzed.api.v1.Debug.CaveatEvalInfo.Builder, com.authzed.api.v1.Debug.CaveatEvalInfoOrBuilder>(
+                            getCaveatEvaluationInfo(), getParentForChildren(), isClean());
+                    caveatEvaluationInfo_ = null;
+                }
+                return caveatEvaluationInfoBuilder_;
+            }
+
+            private com.google.protobuf.Duration duration_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> durationBuilder_;
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             *
+             * @return Whether the duration field is set.
+             */
+            public boolean hasDuration() {
+                return ((bitField0_ & 0x00000040) != 0);
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             *
+             * @return The duration.
+             */
+            public com.google.protobuf.Duration getDuration() {
+                if (durationBuilder_ == null) {
+                    return duration_ == null ? com.google.protobuf.Duration.getDefaultInstance() : duration_;
+                } else {
+                    return durationBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             */
+            public Builder setDuration(com.google.protobuf.Duration value) {
+                if (durationBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    duration_ = value;
+                } else {
+                    durationBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             */
+            public Builder setDuration(com.google.protobuf.Duration.Builder builderForValue) {
+                if (durationBuilder_ == null) {
+                    duration_ = builderForValue.build();
+                } else {
+                    durationBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             */
+            public Builder mergeDuration(com.google.protobuf.Duration value) {
+                if (durationBuilder_ == null) {
+                    if (((bitField0_ & 0x00000040) != 0) && duration_ != null
+                            && duration_ != com.google.protobuf.Duration.getDefaultInstance()) {
+                        getDurationBuilder().mergeFrom(value);
+                    } else {
+                        duration_ = value;
+                    }
+                } else {
+                    durationBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             */
+            public Builder clearDuration() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                duration_ = null;
+                if (durationBuilder_ != null) {
+                    durationBuilder_.dispose();
+                    durationBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             */
+            public com.google.protobuf.Duration.Builder getDurationBuilder() {
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return getDurationFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             */
+            public com.google.protobuf.DurationOrBuilder getDurationOrBuilder() {
+                if (durationBuilder_ != null) {
+                    return durationBuilder_.getMessageOrBuilder();
+                } else {
+                    return duration_ == null ? com.google.protobuf.Duration.getDefaultInstance() : duration_;
+                }
+            }
+
+            /**
+             * <pre>
+             * duration holds the time spent executing this Check operation.
+             * </pre>
+             *
+             * <code>.google.protobuf.Duration duration = 9;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> getDurationFieldBuilder() {
+                if (durationBuilder_ == null) {
+                    durationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                            getDuration(), getParentForChildren(), isClean());
+                    duration_ = null;
+                }
+                return durationBuilder_;
             }
 
             /**
@@ -3709,8 +4215,9 @@ public final class Debug {
                 } else {
                     if (resolutionCase_ == 7) {
                         subProblemsBuilder_.mergeFrom(value);
+                    } else {
+                        subProblemsBuilder_.setMessage(value);
                     }
-                    subProblemsBuilder_.setMessage(value);
                 }
                 resolutionCase_ = 7;
                 return this;
@@ -3793,7 +4300,6 @@ public final class Debug {
                 }
                 resolutionCase_ = 7;
                 onChanged();
-                ;
                 return subProblemsBuilder_;
             }
 
@@ -3856,6 +4362,1604 @@ public final class Debug {
         }
     }
 
+    public interface CaveatEvalInfoOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.CaveatEvalInfo)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         * expression is the expression that was evaluated.
+         * </pre>
+         *
+         * <code>string expression = 1;</code>
+         *
+         * @return The expression.
+         */
+        java.lang.String getExpression();
+
+        /**
+         * <pre>
+         * expression is the expression that was evaluated.
+         * </pre>
+         *
+         * <code>string expression = 1;</code>
+         *
+         * @return The bytes for expression.
+         */
+        com.google.protobuf.ByteString getExpressionBytes();
+
+        /**
+         * <pre>
+         * result is the result of the evaluation.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+         *
+         * @return The enum numeric value on the wire for result.
+         */
+        int getResultValue();
+
+        /**
+         * <pre>
+         * result is the result of the evaluation.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+         *
+         * @return The result.
+         */
+        com.authzed.api.v1.Debug.CaveatEvalInfo.Result getResult();
+
+        /**
+         * <pre>
+         * context consists of any named values that were used for evaluating the caveat expression.
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 3;</code>
+         *
+         * @return Whether the context field is set.
+         */
+        boolean hasContext();
+
+        /**
+         * <pre>
+         * context consists of any named values that were used for evaluating the caveat expression.
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 3;</code>
+         *
+         * @return The context.
+         */
+        com.google.protobuf.Struct getContext();
+
+        /**
+         * <pre>
+         * context consists of any named values that were used for evaluating the caveat expression.
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 3;</code>
+         */
+        com.google.protobuf.StructOrBuilder getContextOrBuilder();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        boolean hasPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo();
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+         */
+        com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder();
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat that was executed, if applicable.
+         * </pre>
+         *
+         * <code>string caveat_name = 5;</code>
+         *
+         * @return The caveatName.
+         */
+        java.lang.String getCaveatName();
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat that was executed, if applicable.
+         * </pre>
+         *
+         * <code>string caveat_name = 5;</code>
+         *
+         * @return The bytes for caveatName.
+         */
+        com.google.protobuf.ByteString getCaveatNameBytes();
+    }
+
+    /**
+     * <pre>
+     * CaveatEvalInfo holds information about a caveat expression that was evaluated.
+     * </pre>
+     *
+     * Protobuf type {@code authzed.api.v1.CaveatEvalInfo}
+     */
+    public static final class CaveatEvalInfo extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.CaveatEvalInfo)
+            CaveatEvalInfoOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use CaveatEvalInfo.newBuilder() to construct.
+        private CaveatEvalInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private CaveatEvalInfo() {
+            expression_ = "";
+            result_ = 0;
+            caveatName_ = "";
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new CaveatEvalInfo();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CaveatEvalInfo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CaveatEvalInfo_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.Debug.CaveatEvalInfo.class,
+                            com.authzed.api.v1.Debug.CaveatEvalInfo.Builder.class);
+        }
+
+        /**
+         * Protobuf enum {@code authzed.api.v1.CaveatEvalInfo.Result}
+         */
+        public enum Result implements com.google.protobuf.ProtocolMessageEnum {
+
+            /**
+             * <code>RESULT_UNSPECIFIED = 0;</code>
+             */
+            RESULT_UNSPECIFIED(0),
+            /**
+             * <code>RESULT_UNEVALUATED = 1;</code>
+             */
+            RESULT_UNEVALUATED(1),
+            /**
+             * <code>RESULT_FALSE = 2;</code>
+             */
+            RESULT_FALSE(2),
+            /**
+             * <code>RESULT_TRUE = 3;</code>
+             */
+            RESULT_TRUE(3),
+            /**
+             * <code>RESULT_MISSING_SOME_CONTEXT = 4;</code>
+             */
+            RESULT_MISSING_SOME_CONTEXT(4),
+            UNRECOGNIZED(-1);
+
+            /**
+             * <code>RESULT_UNSPECIFIED = 0;</code>
+             */
+            public static final int RESULT_UNSPECIFIED_VALUE = 0;
+
+            /**
+             * <code>RESULT_UNEVALUATED = 1;</code>
+             */
+            public static final int RESULT_UNEVALUATED_VALUE = 1;
+
+            /**
+             * <code>RESULT_FALSE = 2;</code>
+             */
+            public static final int RESULT_FALSE_VALUE = 2;
+
+            /**
+             * <code>RESULT_TRUE = 3;</code>
+             */
+            public static final int RESULT_TRUE_VALUE = 3;
+
+            /**
+             * <code>RESULT_MISSING_SOME_CONTEXT = 4;</code>
+             */
+            public static final int RESULT_MISSING_SOME_CONTEXT_VALUE = 4;
+
+            public final int getNumber() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalArgumentException("Can't get the number of an unknown enum value.");
+                }
+                return value;
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             * @deprecated Use {@link #forNumber(int)} instead.
+             */
+            @java.lang.Deprecated
+            public static Result valueOf(int value) {
+                return forNumber(value);
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             */
+            public static Result forNumber(int value) {
+                switch (value) {
+                    case 0:
+                        return RESULT_UNSPECIFIED;
+                    case 1:
+                        return RESULT_UNEVALUATED;
+                    case 2:
+                        return RESULT_FALSE;
+                    case 3:
+                        return RESULT_TRUE;
+                    case 4:
+                        return RESULT_MISSING_SOME_CONTEXT;
+                    default:
+                        return null;
+                }
+            }
+
+            public static com.google.protobuf.Internal.EnumLiteMap<Result> internalGetValueMap() {
+                return internalValueMap;
+            }
+
+            private static final com.google.protobuf.Internal.EnumLiteMap<Result> internalValueMap = new com.google.protobuf.Internal.EnumLiteMap<Result>() {
+
+                public Result findValueByNumber(int number) {
+                    return Result.forNumber(number);
+                }
+            };
+
+            public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalStateException("Can't get the descriptor of an unrecognized enum value.");
+                }
+                return getDescriptor().getValues().get(ordinal());
+            }
+
+            public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+                return getDescriptor();
+            }
+
+            public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+                return com.authzed.api.v1.Debug.CaveatEvalInfo.getDescriptor().getEnumTypes().get(0);
+            }
+
+            private static final Result[] VALUES = values();
+
+            public static Result valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+                if (desc.getType() != getDescriptor()) {
+                    throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+                }
+                if (desc.getIndex() == -1) {
+                    return UNRECOGNIZED;
+                }
+                return VALUES[desc.getIndex()];
+            }
+
+            private final int value;
+
+            private Result(int value) {
+                this.value = value;
+            }
+        }
+
+        public static final int EXPRESSION_FIELD_NUMBER = 1;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object expression_ = "";
+
+        /**
+         * <pre>
+         * expression is the expression that was evaluated.
+         * </pre>
+         *
+         * <code>string expression = 1;</code>
+         *
+         * @return The expression.
+         */
+        @java.lang.Override
+        public java.lang.String getExpression() {
+            java.lang.Object ref = expression_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                expression_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <pre>
+         * expression is the expression that was evaluated.
+         * </pre>
+         *
+         * <code>string expression = 1;</code>
+         *
+         * @return The bytes for expression.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getExpressionBytes() {
+            java.lang.Object ref = expression_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                expression_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int RESULT_FIELD_NUMBER = 2;
+
+        private int result_ = 0;
+
+        /**
+         * <pre>
+         * result is the result of the evaluation.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+         *
+         * @return The enum numeric value on the wire for result.
+         */
+        @java.lang.Override
+        public int getResultValue() {
+            return result_;
+        }
+
+        /**
+         * <pre>
+         * result is the result of the evaluation.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+         *
+         * @return The result.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Debug.CaveatEvalInfo.Result getResult() {
+            com.authzed.api.v1.Debug.CaveatEvalInfo.Result result = com.authzed.api.v1.Debug.CaveatEvalInfo.Result
+                    .forNumber(result_);
+            return result == null ? com.authzed.api.v1.Debug.CaveatEvalInfo.Result.UNRECOGNIZED : result;
+        }
+
+        public static final int CONTEXT_FIELD_NUMBER = 3;
+
+        private com.google.protobuf.Struct context_;
+
+        /**
+         * <pre>
+         * context consists of any named values that were used for evaluating the caveat expression.
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 3;</code>
+         *
+         * @return Whether the context field is set.
+         */
+        @java.lang.Override
+        public boolean hasContext() {
+            return context_ != null;
+        }
+
+        /**
+         * <pre>
+         * context consists of any named values that were used for evaluating the caveat expression.
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 3;</code>
+         *
+         * @return The context.
+         */
+        @java.lang.Override
+        public com.google.protobuf.Struct getContext() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        /**
+         * <pre>
+         * context consists of any named values that were used for evaluating the caveat expression.
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 3;</code>
+         */
+        @java.lang.Override
+        public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        public static final int PARTIAL_CAVEAT_INFO_FIELD_NUMBER = 4;
+
+        private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+         *
+         * @return Whether the partialCaveatInfo field is set.
+         */
+        @java.lang.Override
+        public boolean hasPartialCaveatInfo() {
+            return partialCaveatInfo_ != null;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+         *
+         * @return The partialCaveatInfo.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        /**
+         * <pre>
+         * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+         * </pre>
+         *
+         * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+            return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                    : partialCaveatInfo_;
+        }
+
+        public static final int CAVEAT_NAME_FIELD_NUMBER = 5;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object caveatName_ = "";
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat that was executed, if applicable.
+         * </pre>
+         *
+         * <code>string caveat_name = 5;</code>
+         *
+         * @return The caveatName.
+         */
+        @java.lang.Override
+        public java.lang.String getCaveatName() {
+            java.lang.Object ref = caveatName_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                caveatName_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat that was executed, if applicable.
+         * </pre>
+         *
+         * <code>string caveat_name = 5;</code>
+         *
+         * @return The bytes for caveatName.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getCaveatNameBytes() {
+            java.lang.Object ref = caveatName_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                caveatName_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expression_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, expression_);
+            }
+            if (result_ != com.authzed.api.v1.Debug.CaveatEvalInfo.Result.RESULT_UNSPECIFIED.getNumber()) {
+                output.writeEnum(2, result_);
+            }
+            if (context_ != null) {
+                output.writeMessage(3, getContext());
+            }
+            if (partialCaveatInfo_ != null) {
+                output.writeMessage(4, getPartialCaveatInfo());
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(caveatName_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 5, caveatName_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expression_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, expression_);
+            }
+            if (result_ != com.authzed.api.v1.Debug.CaveatEvalInfo.Result.RESULT_UNSPECIFIED.getNumber()) {
+                size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, result_);
+            }
+            if (context_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getContext());
+            }
+            if (partialCaveatInfo_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getPartialCaveatInfo());
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(caveatName_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, caveatName_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.Debug.CaveatEvalInfo)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.Debug.CaveatEvalInfo other = (com.authzed.api.v1.Debug.CaveatEvalInfo) obj;
+            if (!getExpression().equals(other.getExpression()))
+                return false;
+            if (result_ != other.result_)
+                return false;
+            if (hasContext() != other.hasContext())
+                return false;
+            if (hasContext()) {
+                if (!getContext().equals(other.getContext()))
+                    return false;
+            }
+            if (hasPartialCaveatInfo() != other.hasPartialCaveatInfo())
+                return false;
+            if (hasPartialCaveatInfo()) {
+                if (!getPartialCaveatInfo().equals(other.getPartialCaveatInfo()))
+                    return false;
+            }
+            if (!getCaveatName().equals(other.getCaveatName()))
+                return false;
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + EXPRESSION_FIELD_NUMBER;
+            hash = (53 * hash) + getExpression().hashCode();
+            hash = (37 * hash) + RESULT_FIELD_NUMBER;
+            hash = (53 * hash) + result_;
+            if (hasContext()) {
+                hash = (37 * hash) + CONTEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getContext().hashCode();
+            }
+            if (hasPartialCaveatInfo()) {
+                hash = (37 * hash) + PARTIAL_CAVEAT_INFO_FIELD_NUMBER;
+                hash = (53 * hash) + getPartialCaveatInfo().hashCode();
+            }
+            hash = (37 * hash) + CAVEAT_NAME_FIELD_NUMBER;
+            hash = (53 * hash) + getCaveatName().hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseDelimitedFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo parseFrom(com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.Debug.CaveatEvalInfo prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * <pre>
+         * CaveatEvalInfo holds information about a caveat expression that was evaluated.
+         * </pre>
+         *
+         * Protobuf type {@code authzed.api.v1.CaveatEvalInfo}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.CaveatEvalInfo)
+                com.authzed.api.v1.Debug.CaveatEvalInfoOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CaveatEvalInfo_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CaveatEvalInfo_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.authzed.api.v1.Debug.CaveatEvalInfo.class,
+                                com.authzed.api.v1.Debug.CaveatEvalInfo.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.Debug.CaveatEvalInfo.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                expression_ = "";
+                result_ = 0;
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                caveatName_ = "";
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.Debug.internal_static_authzed_api_v1_CaveatEvalInfo_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Debug.CaveatEvalInfo getDefaultInstanceForType() {
+                return com.authzed.api.v1.Debug.CaveatEvalInfo.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Debug.CaveatEvalInfo build() {
+                com.authzed.api.v1.Debug.CaveatEvalInfo result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Debug.CaveatEvalInfo buildPartial() {
+                com.authzed.api.v1.Debug.CaveatEvalInfo result = new com.authzed.api.v1.Debug.CaveatEvalInfo(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Debug.CaveatEvalInfo result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.expression_ = expression_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.result_ = result_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.partialCaveatInfo_ = partialCaveatInfoBuilder_ == null ? partialCaveatInfo_
+                            : partialCaveatInfoBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.caveatName_ = caveatName_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.Debug.CaveatEvalInfo) {
+                    return mergeFrom((com.authzed.api.v1.Debug.CaveatEvalInfo) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.Debug.CaveatEvalInfo other) {
+                if (other == com.authzed.api.v1.Debug.CaveatEvalInfo.getDefaultInstance())
+                    return this;
+                if (!other.getExpression().isEmpty()) {
+                    expression_ = other.expression_;
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
+                if (other.result_ != 0) {
+                    setResultValue(other.getResultValue());
+                }
+                if (other.hasContext()) {
+                    mergeContext(other.getContext());
+                }
+                if (other.hasPartialCaveatInfo()) {
+                    mergePartialCaveatInfo(other.getPartialCaveatInfo());
+                }
+                if (!other.getCaveatName().isEmpty()) {
+                    caveatName_ = other.caveatName_;
+                    bitField0_ |= 0x00000010;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                expression_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            case 16: {
+                                result_ = input.readEnum();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            }
+                            // case 16
+                            case 26: {
+                                input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
+                                break;
+                            }
+                            // case 26
+                            case 34: {
+                                input.readMessage(getPartialCaveatInfoFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 34
+                            case 42: {
+                                caveatName_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000010;
+                                break;
+                            }
+                            // case 42
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private java.lang.Object expression_ = "";
+
+            /**
+             * <pre>
+             * expression is the expression that was evaluated.
+             * </pre>
+             *
+             * <code>string expression = 1;</code>
+             *
+             * @return The expression.
+             */
+            public java.lang.String getExpression() {
+                java.lang.Object ref = expression_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    expression_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * expression is the expression that was evaluated.
+             * </pre>
+             *
+             * <code>string expression = 1;</code>
+             *
+             * @return The bytes for expression.
+             */
+            public com.google.protobuf.ByteString getExpressionBytes() {
+                java.lang.Object ref = expression_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    expression_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * expression is the expression that was evaluated.
+             * </pre>
+             *
+             * <code>string expression = 1;</code>
+             *
+             * @param value The expression to set.
+             * @return This builder for chaining.
+             */
+            public Builder setExpression(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                expression_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * expression is the expression that was evaluated.
+             * </pre>
+             *
+             * <code>string expression = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearExpression() {
+                expression_ = getDefaultInstance().getExpression();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * expression is the expression that was evaluated.
+             * </pre>
+             *
+             * <code>string expression = 1;</code>
+             *
+             * @param value The bytes for expression to set.
+             * @return This builder for chaining.
+             */
+            public Builder setExpressionBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                expression_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            private int result_ = 0;
+
+            /**
+             * <pre>
+             * result is the result of the evaluation.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+             *
+             * @return The enum numeric value on the wire for result.
+             */
+            @java.lang.Override
+            public int getResultValue() {
+                return result_;
+            }
+
+            /**
+             * <pre>
+             * result is the result of the evaluation.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+             *
+             * @param value The enum numeric value on the wire for result to set.
+             * @return This builder for chaining.
+             */
+            public Builder setResultValue(int value) {
+                result_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * result is the result of the evaluation.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+             *
+             * @return The result.
+             */
+            @java.lang.Override
+            public com.authzed.api.v1.Debug.CaveatEvalInfo.Result getResult() {
+                com.authzed.api.v1.Debug.CaveatEvalInfo.Result result = com.authzed.api.v1.Debug.CaveatEvalInfo.Result
+                        .forNumber(result_);
+                return result == null ? com.authzed.api.v1.Debug.CaveatEvalInfo.Result.UNRECOGNIZED : result;
+            }
+
+            /**
+             * <pre>
+             * result is the result of the evaluation.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+             *
+             * @param value The result to set.
+             * @return This builder for chaining.
+             */
+            public Builder setResult(com.authzed.api.v1.Debug.CaveatEvalInfo.Result value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                result_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * result is the result of the evaluation.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.CaveatEvalInfo.Result result = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearResult() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                result_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.Struct context_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> contextBuilder_;
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             *
+             * @return Whether the context field is set.
+             */
+            public boolean hasContext() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             *
+             * @return The context.
+             */
+            public com.google.protobuf.Struct getContext() {
+                if (contextBuilder_ == null) {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                } else {
+                    return contextBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    context_ = value;
+                } else {
+                    contextBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct.Builder builderForValue) {
+                if (contextBuilder_ == null) {
+                    context_ = builderForValue.build();
+                } else {
+                    contextBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             */
+            public Builder mergeContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) && context_ != null
+                            && context_ != com.google.protobuf.Struct.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
+                    } else {
+                        context_ = value;
+                    }
+                } else {
+                    contextBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             */
+            public Builder clearContext() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             */
+            public com.google.protobuf.Struct.Builder getContextBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getContextFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             */
+            public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+                if (contextBuilder_ != null) {
+                    return contextBuilder_.getMessageOrBuilder();
+                } else {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that were used for evaluating the caveat expression.
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 3;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> getContextFieldBuilder() {
+                if (contextBuilder_ == null) {
+                    contextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                            getContext(), getParentForChildren(), isClean());
+                    context_ = null;
+                }
+                return contextBuilder_;
+            }
+
+            private com.authzed.api.v1.Core.PartialCaveatInfo partialCaveatInfo_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> partialCaveatInfoBuilder_;
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             *
+             * @return Whether the partialCaveatInfo field is set.
+             */
+            public boolean hasPartialCaveatInfo() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             *
+             * @return The partialCaveatInfo.
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo getPartialCaveatInfo() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                } else {
+                    return partialCaveatInfoBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    partialCaveatInfo_ = value;
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             */
+            public Builder setPartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo.Builder builderForValue) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfo_ = builderForValue.build();
+                } else {
+                    partialCaveatInfoBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             */
+            public Builder mergePartialCaveatInfo(com.authzed.api.v1.Core.PartialCaveatInfo value) {
+                if (partialCaveatInfoBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) && partialCaveatInfo_ != null
+                            && partialCaveatInfo_ != com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()) {
+                        getPartialCaveatInfoBuilder().mergeFrom(value);
+                    } else {
+                        partialCaveatInfo_ = value;
+                    }
+                } else {
+                    partialCaveatInfoBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             */
+            public Builder clearPartialCaveatInfo() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                partialCaveatInfo_ = null;
+                if (partialCaveatInfoBuilder_ != null) {
+                    partialCaveatInfoBuilder_.dispose();
+                    partialCaveatInfoBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfo.Builder getPartialCaveatInfoBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getPartialCaveatInfoFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             */
+            public com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder getPartialCaveatInfoOrBuilder() {
+                if (partialCaveatInfoBuilder_ != null) {
+                    return partialCaveatInfoBuilder_.getMessageOrBuilder();
+                } else {
+                    return partialCaveatInfo_ == null ? com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance()
+                            : partialCaveatInfo_;
+                }
+            }
+
+            /**
+             * <pre>
+             * partial_caveat_info holds information of a partially-evaluated caveated response, if applicable.
+             * </pre>
+             *
+             * <code>.authzed.api.v1.PartialCaveatInfo partial_caveat_info = 4;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder> getPartialCaveatInfoFieldBuilder() {
+                if (partialCaveatInfoBuilder_ == null) {
+                    partialCaveatInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.PartialCaveatInfo, com.authzed.api.v1.Core.PartialCaveatInfo.Builder, com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder>(
+                            getPartialCaveatInfo(), getParentForChildren(), isClean());
+                    partialCaveatInfo_ = null;
+                }
+                return partialCaveatInfoBuilder_;
+            }
+
+            private java.lang.Object caveatName_ = "";
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat that was executed, if applicable.
+             * </pre>
+             *
+             * <code>string caveat_name = 5;</code>
+             *
+             * @return The caveatName.
+             */
+            public java.lang.String getCaveatName() {
+                java.lang.Object ref = caveatName_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    caveatName_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat that was executed, if applicable.
+             * </pre>
+             *
+             * <code>string caveat_name = 5;</code>
+             *
+             * @return The bytes for caveatName.
+             */
+            public com.google.protobuf.ByteString getCaveatNameBytes() {
+                java.lang.Object ref = caveatName_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    caveatName_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat that was executed, if applicable.
+             * </pre>
+             *
+             * <code>string caveat_name = 5;</code>
+             *
+             * @param value The caveatName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setCaveatName(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                caveatName_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat that was executed, if applicable.
+             * </pre>
+             *
+             * <code>string caveat_name = 5;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearCaveatName() {
+                caveatName_ = getDefaultInstance().getCaveatName();
+                bitField0_ = (bitField0_ & ~0x00000010);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat that was executed, if applicable.
+             * </pre>
+             *
+             * <code>string caveat_name = 5;</code>
+             *
+             * @param value The bytes for caveatName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setCaveatNameBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                caveatName_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.CaveatEvalInfo)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.CaveatEvalInfo)
+        private static final com.authzed.api.v1.Debug.CaveatEvalInfo DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.Debug.CaveatEvalInfo();
+        }
+
+        public static com.authzed.api.v1.Debug.CaveatEvalInfo getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<CaveatEvalInfo> PARSER = new com.google.protobuf.AbstractParser<CaveatEvalInfo>() {
+
+            @java.lang.Override
+            public CaveatEvalInfo parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<CaveatEvalInfo> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<CaveatEvalInfo> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.Debug.CaveatEvalInfo getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_DebugInformation_descriptor;
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_DebugInformation_fieldAccessorTable;
@@ -3868,6 +5972,10 @@ public final class Debug {
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CheckDebugTrace_SubProblems_fieldAccessorTable;
 
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_CaveatEvalInfo_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_CaveatEvalInfo_fieldAccessorTable;
+
     public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
         return descriptor;
     }
@@ -3875,49 +5983,72 @@ public final class Debug {
     private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
 
     static {
-        java.lang.String[] descriptorData = { "\n\032authzed/api/v1/debug.proto\022\016authzed.ap"
-                + "i.v1\032\031authzed/api/v1/core.proto\032\027validat"
-                + "e/validate.proto\"W\n\020DebugInformation\022.\n\005"
-                + "check\030\001 \001(\0132\037.authzed.api.v1.CheckDebugT"
-                + "race\022\023\n\013schema_used\030\002 \001(\t\"\305\005\n\017CheckDebug"
-                + "Trace\022;\n\010resource\030\001 \001(\0132\037.authzed.api.v1"
-                + ".ObjectReferenceB\010\372B\005\212\001\002\020\001\022\022\n\npermission"
-                + "\030\002 \001(\t\022G\n\017permission_type\030\003 \001(\0162..authze"
-                + "d.api.v1.CheckDebugTrace.PermissionType\022" + ";\n\007subject\030\004 \001(\0132 .authzed.api.v1.Subjec"
-                + "tReferenceB\010\372B\005\212\001\002\020\001\022>\n\006result\030\005 \001(\0162..a"
-                + "uthzed.api.v1.CheckDebugTrace.Permission"
-                + "ship\022\033\n\021was_cached_result\030\006 \001(\010H\000\022C\n\014sub"
-                + "_problems\030\007 \001(\0132+.authzed.api.v1.CheckDe"
-                + "bugTrace.SubProblemsH\000\032>\n\013SubProblems\022/\n"
-                + "\006traces\030\001 \003(\0132\037.authzed.api.v1.CheckDebu"
-                + "gTrace\"o\n\016PermissionType\022\037\n\033PERMISSION_T"
-                + "YPE_UNSPECIFIED\020\000\022\034\n\030PERMISSION_TYPE_REL"
-                + "ATION\020\001\022\036\n\032PERMISSION_TYPE_PERMISSION\020\002\""
-                + "u\n\016Permissionship\022\036\n\032PERMISSIONSHIP_UNSP"
-                + "ECIFIED\020\000\022 \n\034PERMISSIONSHIP_NO_PERMISSIO"
-                + "N\020\001\022!\n\035PERMISSIONSHIP_HAS_PERMISSION\020\002B\021"
-                + "\n\nresolution\022\003\370B\001BH\n\022com.authzed.api.v1Z" + "2github.com/authzed/authzed-go/proto/aut"
-                + "hzed/api/v1b\006proto3" };
+        java.lang.String[] descriptorData = {
+                "\n\032authzed/api/v1/debug.proto\022\016authzed.ap" + "i.v1\032\031authzed/api/v1/core.proto\032\027validat"
+                        + "e/validate.proto\032\034google/protobuf/struct" + ".proto\032\036google/protobuf/duration.proto\"W"
+                        + "\n\020DebugInformation\022.\n\005check\030\001 \001(\0132\037.auth"
+                        + "zed.api.v1.CheckDebugTrace\022\023\n\013schema_use"
+                        + "d\030\002 \001(\t\"\366\006\n\017CheckDebugTrace\022;\n\010resource\030"
+                        + "\001 \001(\0132\037.authzed.api.v1.ObjectReferenceB\010"
+                        + "\372B\005\212\001\002\020\001\022\022\n\npermission\030\002 \001(\t\022S\n\017permissi"
+                        + "on_type\030\003 \001(\0162..authzed.api.v1.CheckDebu"
+                        + "gTrace.PermissionTypeB\n\372B\007\202\001\004\020\001 \000\022;\n\007sub"
+                        + "ject\030\004 \001(\0132 .authzed.api.v1.SubjectRefer"
+                        + "enceB\010\372B\005\212\001\002\020\001\022J\n\006result\030\005 \001(\0162..authzed"
+                        + ".api.v1.CheckDebugTrace.PermissionshipB\n"
+                        + "\372B\007\202\001\004\020\001 \000\022>\n\026caveat_evaluation_info\030\010 \001"
+                        + "(\0132\036.authzed.api.v1.CaveatEvalInfo\022+\n\010du"
+                        + "ration\030\t \001(\0132\031.google.protobuf.Duration\022"
+                        + "\033\n\021was_cached_result\030\006 \001(\010H\000\022C\n\014sub_prob"
+                        + "lems\030\007 \001(\0132+.authzed.api.v1.CheckDebugTr"
+                        + "ace.SubProblemsH\000\032>\n\013SubProblems\022/\n\006trac"
+                        + "es\030\001 \003(\0132\037.authzed.api.v1.CheckDebugTrac"
+                        + "e\"o\n\016PermissionType\022\037\n\033PERMISSION_TYPE_U"
+                        + "NSPECIFIED\020\000\022\034\n\030PERMISSION_TYPE_RELATION"
+                        + "\020\001\022\036\n\032PERMISSION_TYPE_PERMISSION\020\002\"\240\001\n\016P"
+                        + "ermissionship\022\036\n\032PERMISSIONSHIP_UNSPECIF"
+                        + "IED\020\000\022 \n\034PERMISSIONSHIP_NO_PERMISSION\020\001\022"
+                        + "!\n\035PERMISSIONSHIP_HAS_PERMISSION\020\002\022)\n%PE"
+                        + "RMISSIONSHIP_CONDITIONAL_PERMISSION\020\003B\021\n"
+                        + "\nresolution\022\003\370B\001\"\330\002\n\016CaveatEvalInfo\022\022\n\ne"
+                        + "xpression\030\001 \001(\t\0225\n\006result\030\002 \001(\0162%.authze"
+                        + "d.api.v1.CaveatEvalInfo.Result\022(\n\007contex"
+                        + "t\030\003 \001(\0132\027.google.protobuf.Struct\022>\n\023part"
+                        + "ial_caveat_info\030\004 \001(\0132!.authzed.api.v1.P"
+                        + "artialCaveatInfo\022\023\n\013caveat_name\030\005 \001(\t\"|\n"
+                        + "\006Result\022\026\n\022RESULT_UNSPECIFIED\020\000\022\026\n\022RESUL"
+                        + "T_UNEVALUATED\020\001\022\020\n\014RESULT_FALSE\020\002\022\017\n\013RES"
+                        + "ULT_TRUE\020\003\022\037\n\033RESULT_MISSING_SOME_CONTEX"
+                        + "T\020\004BH\n\022com.authzed.api.v1Z2github.com/au" + "thzed/authzed-go/proto/authzed/api/v1b\006p"
+                        + "roto3" };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
                 new com.google.protobuf.Descriptors.FileDescriptor[] { com.authzed.api.v1.Core.getDescriptor(),
-                        io.envoyproxy.pgv.validate.Validate.getDescriptor() });
+                        io.envoyproxy.pgv.validate.Validate.getDescriptor(), com.google.protobuf.StructProto.getDescriptor(),
+                        com.google.protobuf.DurationProto.getDescriptor() });
         internal_static_authzed_api_v1_DebugInformation_descriptor = getDescriptor().getMessageTypes().get(0);
         internal_static_authzed_api_v1_DebugInformation_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_DebugInformation_descriptor, new java.lang.String[] { "Check", "SchemaUsed" });
         internal_static_authzed_api_v1_CheckDebugTrace_descriptor = getDescriptor().getMessageTypes().get(1);
         internal_static_authzed_api_v1_CheckDebugTrace_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_authzed_api_v1_CheckDebugTrace_descriptor, new java.lang.String[] { "Resource", "Permission",
-                        "PermissionType", "Subject", "Result", "WasCachedResult", "SubProblems", "Resolution" });
+                internal_static_authzed_api_v1_CheckDebugTrace_descriptor,
+                new java.lang.String[] { "Resource", "Permission", "PermissionType", "Subject", "Result",
+                        "CaveatEvaluationInfo", "Duration", "WasCachedResult", "SubProblems", "Resolution" });
         internal_static_authzed_api_v1_CheckDebugTrace_SubProblems_descriptor = internal_static_authzed_api_v1_CheckDebugTrace_descriptor
                 .getNestedTypes().get(0);
         internal_static_authzed_api_v1_CheckDebugTrace_SubProblems_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_CheckDebugTrace_SubProblems_descriptor, new java.lang.String[] { "Traces" });
+        internal_static_authzed_api_v1_CaveatEvalInfo_descriptor = getDescriptor().getMessageTypes().get(2);
+        internal_static_authzed_api_v1_CaveatEvalInfo_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_CaveatEvalInfo_descriptor,
+                new java.lang.String[] { "Expression", "Result", "Context", "PartialCaveatInfo", "CaveatName" });
         com.google.protobuf.ExtensionRegistry registry = com.google.protobuf.ExtensionRegistry.newInstance();
         registry.add(io.envoyproxy.pgv.validate.Validate.required);
         registry.add(io.envoyproxy.pgv.validate.Validate.rules);
         com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(descriptor, registry);
         com.authzed.api.v1.Core.getDescriptor();
         io.envoyproxy.pgv.validate.Validate.getDescriptor();
+        com.google.protobuf.StructProto.getDescriptor();
+        com.google.protobuf.DurationProto.getDescriptor();
     }
     // @@protoc_insertion_point(outer_class_scope)
 }

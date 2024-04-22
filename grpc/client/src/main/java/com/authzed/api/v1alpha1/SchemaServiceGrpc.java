@@ -7,7 +7,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * SchemaService implements operations on a Permissions System's Schema.
  * </pre>
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.50.2)", comments = "Source: authzed/api/v1alpha1/schema.proto")
+@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v1alpha1/schema.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class SchemaServiceGrpc {
 
@@ -112,7 +112,7 @@ public final class SchemaServiceGrpc {
      * SchemaService implements operations on a Permissions System's Schema.
      * </pre>
      */
-    public static abstract class SchemaServiceImplBase implements io.grpc.BindableService {
+    public interface AsyncService {
 
         /**
          * <pre>
@@ -122,7 +122,7 @@ public final class SchemaServiceGrpc {
          * - NOT_FOUND: one of the Object Definitions being requested does not exist
          * </pre>
          */
-        public void readSchema(com.authzed.api.v1alpha1.Schema.ReadSchemaRequest request,
+        default void readSchema(com.authzed.api.v1alpha1.Schema.ReadSchemaRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1alpha1.Schema.ReadSchemaResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReadSchemaMethod(), responseObserver);
         }
@@ -133,25 +133,30 @@ public final class SchemaServiceGrpc {
          * Any Object Definitions that exist, but are not included will be deleted.
          * </pre>
          */
-        public void writeSchema(com.authzed.api.v1alpha1.Schema.WriteSchemaRequest request,
+        default void writeSchema(com.authzed.api.v1alpha1.Schema.WriteSchemaRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v1alpha1.Schema.WriteSchemaResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWriteSchemaMethod(), responseObserver);
-        }
-
-        @java.lang.Override
-        public io.grpc.ServerServiceDefinition bindService() {
-            return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-                    .addMethod(getReadSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1alpha1.Schema.ReadSchemaRequest, com.authzed.api.v1alpha1.Schema.ReadSchemaResponse>(
-                                    this, METHODID_READ_SCHEMA)))
-                    .addMethod(getWriteSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1alpha1.Schema.WriteSchemaRequest, com.authzed.api.v1alpha1.Schema.WriteSchemaResponse>(
-                                    this, METHODID_WRITE_SCHEMA)))
-                    .build();
         }
     }
 
     /**
+     * Base class for the server implementation of the service SchemaService.
+     *
+     * <pre>
+     * SchemaService implements operations on a Permissions System's Schema.
+     * </pre>
+     */
+    public static abstract class SchemaServiceImplBase implements io.grpc.BindableService, AsyncService {
+
+        @java.lang.Override
+        public io.grpc.ServerServiceDefinition bindService() {
+            return SchemaServiceGrpc.bindService(this);
+        }
+    }
+
+    /**
+     * A stub to allow clients to do asynchronous rpc calls to service SchemaService.
+     *
      * <pre>
      * SchemaService implements operations on a Permissions System's Schema.
      * </pre>
@@ -195,6 +200,8 @@ public final class SchemaServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do synchronous rpc calls to service SchemaService.
+     *
      * <pre>
      * SchemaService implements operations on a Permissions System's Schema.
      * </pre>
@@ -236,6 +243,8 @@ public final class SchemaServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do ListenableFuture-style rpc calls to service SchemaService.
+     *
      * <pre>
      * SchemaService implements operations on a Permissions System's Schema.
      * </pre>
@@ -286,11 +295,11 @@ public final class SchemaServiceGrpc {
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>, io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
 
-        private final SchemaServiceImplBase serviceImpl;
+        private final AsyncService serviceImpl;
 
         private final int methodId;
 
-        MethodHandlers(SchemaServiceImplBase serviceImpl, int methodId) {
+        MethodHandlers(AsyncService serviceImpl, int methodId) {
             this.serviceImpl = serviceImpl;
             this.methodId = methodId;
         }
@@ -320,6 +329,17 @@ public final class SchemaServiceGrpc {
                     throw new AssertionError();
             }
         }
+    }
+
+    public static io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+        return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+                .addMethod(getReadSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1alpha1.Schema.ReadSchemaRequest, com.authzed.api.v1alpha1.Schema.ReadSchemaResponse>(
+                                service, METHODID_READ_SCHEMA)))
+                .addMethod(getWriteSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1alpha1.Schema.WriteSchemaRequest, com.authzed.api.v1alpha1.Schema.WriteSchemaResponse>(
+                                service, METHODID_WRITE_SCHEMA)))
+                .build();
     }
 
     private static abstract class SchemaServiceBaseDescriptorSupplier
