@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 import io.quarkus.grpc.MutinyClient;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watchresources_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1alpha1/watch_resources_service.proto")
 public class WatchResourcesServiceClient
         implements WatchResourcesService, MutinyClient<MutinyWatchResourcesServiceGrpc.MutinyWatchResourcesServiceStub> {
 
@@ -30,8 +30,8 @@ public class WatchResourcesServiceClient
     }
 
     @Override
-    public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesResponse> watchResources(
-            com.authzed.api.v1alpha1.WatchresourcesService.WatchResourcesRequest request) {
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesResponse> watchResources(
+            com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesRequest request) {
         return stub.watchResources(request);
     }
 }

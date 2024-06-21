@@ -4,7 +4,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.50.2)", comments = "Source: authzed/api/v0/developer.proto")
+@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v0/developer.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class DeveloperServiceGrpc {
 
@@ -199,76 +199,64 @@ public final class DeveloperServiceGrpc {
 
     /**
      */
-    public static abstract class DeveloperServiceImplBase implements io.grpc.BindableService {
+    public interface AsyncService {
 
         /**
          */
-        public void editCheck(com.authzed.api.v0.Developer.EditCheckRequest request,
+        default void editCheck(com.authzed.api.v0.Developer.EditCheckRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v0.Developer.EditCheckResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getEditCheckMethod(), responseObserver);
         }
 
         /**
          */
-        public void validate(com.authzed.api.v0.Developer.ValidateRequest request,
+        default void validate(com.authzed.api.v0.Developer.ValidateRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v0.Developer.ValidateResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getValidateMethod(), responseObserver);
         }
 
         /**
          */
-        public void share(com.authzed.api.v0.Developer.ShareRequest request,
+        default void share(com.authzed.api.v0.Developer.ShareRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v0.Developer.ShareResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getShareMethod(), responseObserver);
         }
 
         /**
          */
-        public void lookupShared(com.authzed.api.v0.Developer.LookupShareRequest request,
+        default void lookupShared(com.authzed.api.v0.Developer.LookupShareRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v0.Developer.LookupShareResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLookupSharedMethod(), responseObserver);
         }
 
         /**
          */
-        public void upgradeSchema(com.authzed.api.v0.Developer.UpgradeSchemaRequest request,
+        default void upgradeSchema(com.authzed.api.v0.Developer.UpgradeSchemaRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v0.Developer.UpgradeSchemaResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpgradeSchemaMethod(), responseObserver);
         }
 
         /**
          */
-        public void formatSchema(com.authzed.api.v0.Developer.FormatSchemaRequest request,
+        default void formatSchema(com.authzed.api.v0.Developer.FormatSchemaRequest request,
                 io.grpc.stub.StreamObserver<com.authzed.api.v0.Developer.FormatSchemaResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFormatSchemaMethod(), responseObserver);
-        }
-
-        @java.lang.Override
-        public io.grpc.ServerServiceDefinition bindService() {
-            return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-                    .addMethod(getEditCheckMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v0.Developer.EditCheckRequest, com.authzed.api.v0.Developer.EditCheckResponse>(
-                                    this, METHODID_EDIT_CHECK)))
-                    .addMethod(getValidateMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v0.Developer.ValidateRequest, com.authzed.api.v0.Developer.ValidateResponse>(
-                                    this, METHODID_VALIDATE)))
-                    .addMethod(getShareMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v0.Developer.ShareRequest, com.authzed.api.v0.Developer.ShareResponse>(
-                                    this, METHODID_SHARE)))
-                    .addMethod(getLookupSharedMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v0.Developer.LookupShareRequest, com.authzed.api.v0.Developer.LookupShareResponse>(
-                                    this, METHODID_LOOKUP_SHARED)))
-                    .addMethod(getUpgradeSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v0.Developer.UpgradeSchemaRequest, com.authzed.api.v0.Developer.UpgradeSchemaResponse>(
-                                    this, METHODID_UPGRADE_SCHEMA)))
-                    .addMethod(getFormatSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v0.Developer.FormatSchemaRequest, com.authzed.api.v0.Developer.FormatSchemaResponse>(
-                                    this, METHODID_FORMAT_SCHEMA)))
-                    .build();
         }
     }
 
     /**
+     * Base class for the server implementation of the service DeveloperService.
+     */
+    public static abstract class DeveloperServiceImplBase implements io.grpc.BindableService, AsyncService {
+
+        @java.lang.Override
+        public io.grpc.ServerServiceDefinition bindService() {
+            return DeveloperServiceGrpc.bindService(this);
+        }
+    }
+
+    /**
+     * A stub to allow clients to do asynchronous rpc calls to service DeveloperService.
      */
     public static class DeveloperServiceStub extends io.grpc.stub.AbstractAsyncStub<DeveloperServiceStub> {
 
@@ -331,6 +319,7 @@ public final class DeveloperServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do synchronous rpc calls to service DeveloperService.
      */
     public static class DeveloperServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<DeveloperServiceBlockingStub> {
 
@@ -385,6 +374,7 @@ public final class DeveloperServiceGrpc {
     }
 
     /**
+     * A stub to allow clients to do ListenableFuture-style rpc calls to service DeveloperService.
      */
     public static class DeveloperServiceFutureStub extends io.grpc.stub.AbstractFutureStub<DeveloperServiceFutureStub> {
 
@@ -461,11 +451,11 @@ public final class DeveloperServiceGrpc {
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>, io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
 
-        private final DeveloperServiceImplBase serviceImpl;
+        private final AsyncService serviceImpl;
 
         private final int methodId;
 
-        MethodHandlers(DeveloperServiceImplBase serviceImpl, int methodId) {
+        MethodHandlers(AsyncService serviceImpl, int methodId) {
             this.serviceImpl = serviceImpl;
             this.methodId = methodId;
         }
@@ -511,6 +501,29 @@ public final class DeveloperServiceGrpc {
                     throw new AssertionError();
             }
         }
+    }
+
+    public static io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+        return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+                .addMethod(getEditCheckMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v0.Developer.EditCheckRequest, com.authzed.api.v0.Developer.EditCheckResponse>(
+                                service, METHODID_EDIT_CHECK)))
+                .addMethod(getValidateMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v0.Developer.ValidateRequest, com.authzed.api.v0.Developer.ValidateResponse>(
+                                service, METHODID_VALIDATE)))
+                .addMethod(getShareMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v0.Developer.ShareRequest, com.authzed.api.v0.Developer.ShareResponse>(
+                                service, METHODID_SHARE)))
+                .addMethod(getLookupSharedMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v0.Developer.LookupShareRequest, com.authzed.api.v0.Developer.LookupShareResponse>(
+                                service, METHODID_LOOKUP_SHARED)))
+                .addMethod(getUpgradeSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v0.Developer.UpgradeSchemaRequest, com.authzed.api.v0.Developer.UpgradeSchemaResponse>(
+                                service, METHODID_UPGRADE_SCHEMA)))
+                .addMethod(getFormatSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v0.Developer.FormatSchemaRequest, com.authzed.api.v0.Developer.FormatSchemaResponse>(
+                                service, METHODID_FORMAT_SCHEMA)))
+                .build();
     }
 
     private static abstract class DeveloperServiceBaseDescriptorSupplier

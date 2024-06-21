@@ -1,12 +1,11 @@
 package io.quarkiverse.quarkus.authzed.client.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.Optional;
 
 import jakarta.inject.Inject;
@@ -23,8 +22,8 @@ import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkus.test.QuarkusUnitTest;
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
 import io.restassured.response.Response;
-import io.smallrye.mutiny.Uni;
 
 public class DevServicesAuthzedClientTest {
 
@@ -41,40 +40,44 @@ public class DevServicesAuthzedClientTest {
                     .addAsResource(DevServicesAuthzedClientTest.class.getResource("/test-schema"), "/test-schema"));
 
     @Test
-    public void shouldAccessDashboard() {
-        Optional<String> dashboardUrl = ConfigProvider.getConfig().getOptionalValue("quarkus.authzed.dashboard.url",
-                String.class);
-        assertTrue(dashboardUrl.isPresent());
-        final Response resp = RestAssured.given().get(dashboardUrl.get());
+    public void shouldAccessHttp() {
+        Optional<String> httpUrl = ConfigProvider.getConfig().getOptionalValue("quarkus.authzed.http.url", String.class);
+        assertTrue(httpUrl.isPresent());
+
+        Optional<String> token = ConfigProvider.getConfig().getOptionalValue("quarkus.authzed.token", String.class);
+        assertTrue(token.isPresent());
+
+        final Response resp = RestAssured.given()
+                .header(new Header("Authorization", "Bearer " + token.get()))
+                .post(httpUrl.get() + "/schema/read");
+
         assertEquals(200, resp.statusCode());
     }
 
     @Test
-    public void shouldAccessHttp() {
-        Optional<String> httpUrl = ConfigProvider.getConfig().getOptionalValue("quarkus.authzed.http.url", String.class);
-        assertTrue(httpUrl.isPresent());
-        final Response resp = RestAssured.given().get(httpUrl.get());
-        //TODO: Fix the assertion below
-        //assertEquals(200, resp.statusCode());
-    }
-
-    @Test
     public void shouldAccessMetrics() {
-        Optional<String> metricsUrl = ConfigProvider.getConfig().getOptionalValue("quarkus.authzed.metrics.url",
-                String.class);
+        Optional<String> metricsUrl = ConfigProvider.getConfig().getOptionalValue("quarkus.authzed.metrics.url", String.class);
         assertTrue(metricsUrl.isPresent());
-        final Response resp = RestAssured.given().get(metricsUrl.get());
-        //TODO: Fix the assertion below
-        //assertEquals(200, resp.statusCode());
+
+        final Response resp = RestAssured.given().get(metricsUrl.get() + "/metrics");
+        assertEquals(200, resp.statusCode());
     }
 
     @Test
     public void shouldCreateSchema() {
-        client.v1().schemaService()
-                .writeSchema(SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(readSchema()).build());
-        Uni<SchemaServiceOuterClass.ReadSchemaResponse> response = client.v1().schemaService()
-                .readSchema(SchemaServiceOuterClass.ReadSchemaRequest.newBuilder().build());
+        client.v1()
+                .schemaService()
+                .writeSchema(SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(readSchema()).build())
+                .await().atMost(Duration.ofSeconds(10));
+
+        SchemaServiceOuterClass.ReadSchemaResponse response = client.v1()
+                .schemaService()
+                .readSchema(SchemaServiceOuterClass.ReadSchemaRequest.newBuilder().build())
+                .await().atMost(Duration.ofSeconds(10));
+
         assertNotNull(response);
+        assertNotNull(response.getSchemaText());
+        assertFalse(response.getSchemaText().isEmpty());
     }
 
     private String readSchema() {

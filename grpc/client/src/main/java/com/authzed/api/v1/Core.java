@@ -100,6 +100,37 @@ public final class Core {
          * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder();
+
+        /**
+         * <pre>
+         * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the optionalCaveat field is set.
+         */
+        boolean hasOptionalCaveat();
+
+        /**
+         * <pre>
+         * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalCaveat.
+         */
+        com.authzed.api.v1.Core.ContextualizedCaveat getOptionalCaveat();
+
+        /**
+         * <pre>
+         * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+         */
+        com.authzed.api.v1.Core.ContextualizedCaveatOrBuilder getOptionalCaveatOrBuilder();
     }
 
     /**
@@ -129,11 +160,6 @@ public final class Core {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new Relationship();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -188,12 +214,13 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getResourceOrBuilder() {
-            return getResource();
+            return resource_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : resource_;
         }
 
         public static final int RELATION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object relation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object relation_ = "";
 
         /**
          * <pre>
@@ -279,7 +306,53 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.SubjectReferenceOrBuilder getSubjectOrBuilder() {
-            return getSubject();
+            return subject_ == null ? com.authzed.api.v1.Core.SubjectReference.getDefaultInstance() : subject_;
+        }
+
+        public static final int OPTIONAL_CAVEAT_FIELD_NUMBER = 4;
+
+        private com.authzed.api.v1.Core.ContextualizedCaveat optionalCaveat_;
+
+        /**
+         * <pre>
+         * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the optionalCaveat field is set.
+         */
+        @java.lang.Override
+        public boolean hasOptionalCaveat() {
+            return optionalCaveat_ != null;
+        }
+
+        /**
+         * <pre>
+         * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+         *
+         * @return The optionalCaveat.
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ContextualizedCaveat getOptionalCaveat() {
+            return optionalCaveat_ == null ? com.authzed.api.v1.Core.ContextualizedCaveat.getDefaultInstance()
+                    : optionalCaveat_;
+        }
+
+        /**
+         * <pre>
+         * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+         * </pre>
+         *
+         * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ContextualizedCaveatOrBuilder getOptionalCaveatOrBuilder() {
+            return optionalCaveat_ == null ? com.authzed.api.v1.Core.ContextualizedCaveat.getDefaultInstance()
+                    : optionalCaveat_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -306,6 +379,9 @@ public final class Core {
             if (subject_ != null) {
                 output.writeMessage(3, getSubject());
             }
+            if (optionalCaveat_ != null) {
+                output.writeMessage(4, getOptionalCaveat());
+            }
             getUnknownFields().writeTo(output);
         }
 
@@ -323,6 +399,9 @@ public final class Core {
             }
             if (subject_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getSubject());
+            }
+            if (optionalCaveat_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getOptionalCaveat());
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -352,6 +431,12 @@ public final class Core {
                 if (!getSubject().equals(other.getSubject()))
                     return false;
             }
+            if (hasOptionalCaveat() != other.hasOptionalCaveat())
+                return false;
+            if (hasOptionalCaveat()) {
+                if (!getOptionalCaveat().equals(other.getOptionalCaveat()))
+                    return false;
+            }
             if (!getUnknownFields().equals(other.getUnknownFields()))
                 return false;
             return true;
@@ -373,6 +458,10 @@ public final class Core {
             if (hasSubject()) {
                 hash = (37 * hash) + SUBJECT_FIELD_NUMBER;
                 hash = (53 * hash) + getSubject().hashCode();
+            }
+            if (hasOptionalCaveat()) {
+                hash = (37 * hash) + OPTIONAL_CAVEAT_FIELD_NUMBER;
+                hash = (53 * hash) + getOptionalCaveat().hashCode();
             }
             hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
@@ -499,18 +588,22 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                } else {
-                    resource_ = null;
+                bitField0_ = 0;
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
                 relation_ = "";
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                } else {
-                    subject_ = null;
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
+                }
+                optionalCaveat_ = null;
+                if (optionalCaveatBuilder_ != null) {
+                    optionalCaveatBuilder_.dispose();
+                    optionalCaveatBuilder_ = null;
                 }
                 return this;
             }
@@ -537,50 +630,27 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.Relationship buildPartial() {
                 com.authzed.api.v1.Core.Relationship result = new com.authzed.api.v1.Core.Relationship(this);
-                if (resourceBuilder_ == null) {
-                    result.resource_ = resource_;
-                } else {
-                    result.resource_ = resourceBuilder_.build();
-                }
-                result.relation_ = relation_;
-                if (subjectBuilder_ == null) {
-                    result.subject_ = subject_;
-                } else {
-                    result.subject_ = subjectBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Core.Relationship result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.resource_ = resourceBuilder_ == null ? resource_ : resourceBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relation_ = relation_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.subject_ = subjectBuilder_ == null ? subject_ : subjectBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.optionalCaveat_ = optionalCaveatBuilder_ == null ? optionalCaveat_ : optionalCaveatBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -601,10 +671,14 @@ public final class Core {
                 }
                 if (!other.getRelation().isEmpty()) {
                     relation_ = other.relation_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.hasSubject()) {
                     mergeSubject(other.getSubject());
+                }
+                if (other.hasOptionalCaveat()) {
+                    mergeOptionalCaveat(other.getOptionalCaveat());
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
@@ -632,19 +706,28 @@ public final class Core {
                                 break;
                             case 10: {
                                 input.readMessage(getResourceFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 relation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
                             case 26: {
                                 input.readMessage(getSubjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
+                            case 34: {
+                                input.readMessage(getOptionalCaveatFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000008;
+                                break;
+                            }
+                            // case 34
                             default: {
                                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                                     // was an endgroup tag
@@ -665,6 +748,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ObjectReference resource_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> resourceBuilder_;
@@ -679,7 +764,7 @@ public final class Core {
              * @return Whether the resource field is set.
              */
             public boolean hasResource() {
-                return resourceBuilder_ != null || resource_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -712,10 +797,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     resource_ = value;
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -729,10 +815,11 @@ public final class Core {
             public Builder setResource(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (resourceBuilder_ == null) {
                     resource_ = builderForValue.build();
-                    onChanged();
                 } else {
                     resourceBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -745,16 +832,17 @@ public final class Core {
              */
             public Builder mergeResource(com.authzed.api.v1.Core.ObjectReference value) {
                 if (resourceBuilder_ == null) {
-                    if (resource_ != null) {
-                        resource_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(resource_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && resource_ != null
+                            && resource_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getResourceBuilder().mergeFrom(value);
                     } else {
                         resource_ = value;
                     }
-                    onChanged();
                 } else {
                     resourceBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -766,13 +854,13 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearResource() {
-                if (resourceBuilder_ == null) {
-                    resource_ = null;
-                    onChanged();
-                } else {
-                    resource_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                resource_ = null;
+                if (resourceBuilder_ != null) {
+                    resourceBuilder_.dispose();
                     resourceBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -784,6 +872,7 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference resource = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getResourceFieldBuilder().getBuilder();
             }
@@ -877,6 +966,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 relation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -892,6 +982,7 @@ public final class Core {
              */
             public Builder clearRelation() {
                 relation_ = getDefaultInstance().getRelation();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -912,6 +1003,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 relation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -930,7 +1022,7 @@ public final class Core {
              * @return Whether the subject field is set.
              */
             public boolean hasSubject() {
-                return subjectBuilder_ != null || subject_ != null;
+                return ((bitField0_ & 0x00000004) != 0);
             }
 
             /**
@@ -963,10 +1055,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     subject_ = value;
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -980,10 +1073,11 @@ public final class Core {
             public Builder setSubject(com.authzed.api.v1.Core.SubjectReference.Builder builderForValue) {
                 if (subjectBuilder_ == null) {
                     subject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     subjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -996,16 +1090,17 @@ public final class Core {
              */
             public Builder mergeSubject(com.authzed.api.v1.Core.SubjectReference value) {
                 if (subjectBuilder_ == null) {
-                    if (subject_ != null) {
-                        subject_ = com.authzed.api.v1.Core.SubjectReference.newBuilder(subject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000004) != 0) && subject_ != null
+                            && subject_ != com.authzed.api.v1.Core.SubjectReference.getDefaultInstance()) {
+                        getSubjectBuilder().mergeFrom(value);
                     } else {
                         subject_ = value;
                     }
-                    onChanged();
                 } else {
                     subjectBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -1017,13 +1112,13 @@ public final class Core {
              * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
              */
             public Builder clearSubject() {
-                if (subjectBuilder_ == null) {
-                    subject_ = null;
-                    onChanged();
-                } else {
-                    subject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                subject_ = null;
+                if (subjectBuilder_ != null) {
+                    subjectBuilder_.dispose();
                     subjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1035,6 +1130,7 @@ public final class Core {
              * <code>.authzed.api.v1.SubjectReference subject = 3 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.SubjectReference.Builder getSubjectBuilder() {
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return getSubjectFieldBuilder().getBuilder();
             }
@@ -1068,6 +1164,166 @@ public final class Core {
                     subject_ = null;
                 }
                 return subjectBuilder_;
+            }
+
+            private com.authzed.api.v1.Core.ContextualizedCaveat optionalCaveat_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ContextualizedCaveat, com.authzed.api.v1.Core.ContextualizedCaveat.Builder, com.authzed.api.v1.Core.ContextualizedCaveatOrBuilder> optionalCaveatBuilder_;
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the optionalCaveat field is set.
+             */
+            public boolean hasOptionalCaveat() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             *
+             * @return The optionalCaveat.
+             */
+            public com.authzed.api.v1.Core.ContextualizedCaveat getOptionalCaveat() {
+                if (optionalCaveatBuilder_ == null) {
+                    return optionalCaveat_ == null ? com.authzed.api.v1.Core.ContextualizedCaveat.getDefaultInstance()
+                            : optionalCaveat_;
+                } else {
+                    return optionalCaveatBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setOptionalCaveat(com.authzed.api.v1.Core.ContextualizedCaveat value) {
+                if (optionalCaveatBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    optionalCaveat_ = value;
+                } else {
+                    optionalCaveatBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setOptionalCaveat(com.authzed.api.v1.Core.ContextualizedCaveat.Builder builderForValue) {
+                if (optionalCaveatBuilder_ == null) {
+                    optionalCaveat_ = builderForValue.build();
+                } else {
+                    optionalCaveatBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeOptionalCaveat(com.authzed.api.v1.Core.ContextualizedCaveat value) {
+                if (optionalCaveatBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) && optionalCaveat_ != null
+                            && optionalCaveat_ != com.authzed.api.v1.Core.ContextualizedCaveat.getDefaultInstance()) {
+                        getOptionalCaveatBuilder().mergeFrom(value);
+                    } else {
+                        optionalCaveat_ = value;
+                    }
+                } else {
+                    optionalCaveatBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearOptionalCaveat() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                optionalCaveat_ = null;
+                if (optionalCaveatBuilder_ != null) {
+                    optionalCaveatBuilder_.dispose();
+                    optionalCaveatBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ContextualizedCaveat.Builder getOptionalCaveatBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getOptionalCaveatFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             */
+            public com.authzed.api.v1.Core.ContextualizedCaveatOrBuilder getOptionalCaveatOrBuilder() {
+                if (optionalCaveatBuilder_ != null) {
+                    return optionalCaveatBuilder_.getMessageOrBuilder();
+                } else {
+                    return optionalCaveat_ == null ? com.authzed.api.v1.Core.ContextualizedCaveat.getDefaultInstance()
+                            : optionalCaveat_;
+                }
+            }
+
+            /**
+             * <pre>
+             * optional_caveat is a reference to a the caveat that must be enforced over the relationship
+             * </pre>
+             *
+             * <code>.authzed.api.v1.ContextualizedCaveat optional_caveat = 4 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ContextualizedCaveat, com.authzed.api.v1.Core.ContextualizedCaveat.Builder, com.authzed.api.v1.Core.ContextualizedCaveatOrBuilder> getOptionalCaveatFieldBuilder() {
+                if (optionalCaveatBuilder_ == null) {
+                    optionalCaveatBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ContextualizedCaveat, com.authzed.api.v1.Core.ContextualizedCaveat.Builder, com.authzed.api.v1.Core.ContextualizedCaveatOrBuilder>(
+                            getOptionalCaveat(), getParentForChildren(), isClean());
+                    optionalCaveat_ = null;
+                }
+                return optionalCaveatBuilder_;
             }
 
             @java.lang.Override
@@ -1125,6 +1381,842 @@ public final class Core {
 
         @java.lang.Override
         public com.authzed.api.v1.Core.Relationship getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
+    public interface ContextualizedCaveatOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.ContextualizedCaveat)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat expression to use, as defined in the schema
+         * </pre>
+         *
+         * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The caveatName.
+         */
+        java.lang.String getCaveatName();
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat expression to use, as defined in the schema
+         * </pre>
+         *
+         * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for caveatName.
+         */
+        com.google.protobuf.ByteString getCaveatNameBytes();
+
+        /**
+         * <pre>
+         * context consists of any named values that are defined at write time for the caveat expression
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        boolean hasContext();
+
+        /**
+         * <pre>
+         * context consists of any named values that are defined at write time for the caveat expression
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        com.google.protobuf.Struct getContext();
+
+        /**
+         * <pre>
+         * context consists of any named values that are defined at write time for the caveat expression
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+         */
+        com.google.protobuf.StructOrBuilder getContextOrBuilder();
+    }
+
+    /**
+     * <pre>
+     * ContextualizedCaveat represents a reference to a caveat to be used by caveated relationships.
+     * The context consists of key-value pairs that will be injected at evaluation time.
+     * The keys must match the arguments defined on the caveat in the schema.
+     * </pre>
+     *
+     * Protobuf type {@code authzed.api.v1.ContextualizedCaveat}
+     */
+    public static final class ContextualizedCaveat extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.ContextualizedCaveat)
+            ContextualizedCaveatOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use ContextualizedCaveat.newBuilder() to construct.
+        private ContextualizedCaveat(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private ContextualizedCaveat() {
+            caveatName_ = "";
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new ContextualizedCaveat();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ContextualizedCaveat_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ContextualizedCaveat_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.ContextualizedCaveat.class,
+                            com.authzed.api.v1.Core.ContextualizedCaveat.Builder.class);
+        }
+
+        public static final int CAVEAT_NAME_FIELD_NUMBER = 1;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object caveatName_ = "";
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat expression to use, as defined in the schema
+         * </pre>
+         *
+         * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The caveatName.
+         */
+        @java.lang.Override
+        public java.lang.String getCaveatName() {
+            java.lang.Object ref = caveatName_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                caveatName_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <pre>
+         * caveat_name is the name of the caveat expression to use, as defined in the schema
+         * </pre>
+         *
+         * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for caveatName.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getCaveatNameBytes() {
+            java.lang.Object ref = caveatName_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                caveatName_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int CONTEXT_FIELD_NUMBER = 2;
+
+        private com.google.protobuf.Struct context_;
+
+        /**
+         * <pre>
+         * context consists of any named values that are defined at write time for the caveat expression
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return Whether the context field is set.
+         */
+        @java.lang.Override
+        public boolean hasContext() {
+            return context_ != null;
+        }
+
+        /**
+         * <pre>
+         * context consists of any named values that are defined at write time for the caveat expression
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+         *
+         * @return The context.
+         */
+        @java.lang.Override
+        public com.google.protobuf.Struct getContext() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        /**
+         * <pre>
+         * context consists of any named values that are defined at write time for the caveat expression
+         * </pre>
+         *
+         * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+         */
+        @java.lang.Override
+        public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+            return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(caveatName_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, caveatName_);
+            }
+            if (context_ != null) {
+                output.writeMessage(2, getContext());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(caveatName_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, caveatName_);
+            }
+            if (context_ != null) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getContext());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.Core.ContextualizedCaveat)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.Core.ContextualizedCaveat other = (com.authzed.api.v1.Core.ContextualizedCaveat) obj;
+            if (!getCaveatName().equals(other.getCaveatName()))
+                return false;
+            if (hasContext() != other.hasContext())
+                return false;
+            if (hasContext()) {
+                if (!getContext().equals(other.getContext()))
+                    return false;
+            }
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + CAVEAT_NAME_FIELD_NUMBER;
+            hash = (53 * hash) + getCaveatName().hashCode();
+            if (hasContext()) {
+                hash = (37 * hash) + CONTEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getContext().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseDelimitedFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat parseFrom(com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.Core.ContextualizedCaveat prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * <pre>
+         * ContextualizedCaveat represents a reference to a caveat to be used by caveated relationships.
+         * The context consists of key-value pairs that will be injected at evaluation time.
+         * The keys must match the arguments defined on the caveat in the schema.
+         * </pre>
+         *
+         * Protobuf type {@code authzed.api.v1.ContextualizedCaveat}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.ContextualizedCaveat)
+                com.authzed.api.v1.Core.ContextualizedCaveatOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ContextualizedCaveat_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ContextualizedCaveat_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.ContextualizedCaveat.class,
+                                com.authzed.api.v1.Core.ContextualizedCaveat.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.Core.ContextualizedCaveat.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                caveatName_ = "";
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ContextualizedCaveat_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.ContextualizedCaveat getDefaultInstanceForType() {
+                return com.authzed.api.v1.Core.ContextualizedCaveat.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.ContextualizedCaveat build() {
+                com.authzed.api.v1.Core.ContextualizedCaveat result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.ContextualizedCaveat buildPartial() {
+                com.authzed.api.v1.Core.ContextualizedCaveat result = new com.authzed.api.v1.Core.ContextualizedCaveat(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.ContextualizedCaveat result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.caveatName_ = caveatName_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.context_ = contextBuilder_ == null ? context_ : contextBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.Core.ContextualizedCaveat) {
+                    return mergeFrom((com.authzed.api.v1.Core.ContextualizedCaveat) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.Core.ContextualizedCaveat other) {
+                if (other == com.authzed.api.v1.Core.ContextualizedCaveat.getDefaultInstance())
+                    return this;
+                if (!other.getCaveatName().isEmpty()) {
+                    caveatName_ = other.caveatName_;
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
+                if (other.hasContext()) {
+                    mergeContext(other.getContext());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                caveatName_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            case 18: {
+                                input.readMessage(getContextFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
+                                break;
+                            }
+                            // case 18
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private java.lang.Object caveatName_ = "";
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat expression to use, as defined in the schema
+             * </pre>
+             *
+             * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The caveatName.
+             */
+            public java.lang.String getCaveatName() {
+                java.lang.Object ref = caveatName_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    caveatName_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat expression to use, as defined in the schema
+             * </pre>
+             *
+             * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The bytes for caveatName.
+             */
+            public com.google.protobuf.ByteString getCaveatNameBytes() {
+                java.lang.Object ref = caveatName_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    caveatName_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat expression to use, as defined in the schema
+             * </pre>
+             *
+             * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The caveatName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setCaveatName(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                caveatName_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat expression to use, as defined in the schema
+             * </pre>
+             *
+             * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearCaveatName() {
+                caveatName_ = getDefaultInstance().getCaveatName();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * caveat_name is the name of the caveat expression to use, as defined in the schema
+             * </pre>
+             *
+             * <code>string caveat_name = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The bytes for caveatName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setCaveatNameBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                caveatName_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.Struct context_;
+
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> contextBuilder_;
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return Whether the context field is set.
+             */
+            public boolean hasContext() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             *
+             * @return The context.
+             */
+            public com.google.protobuf.Struct getContext() {
+                if (contextBuilder_ == null) {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                } else {
+                    return contextBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    context_ = value;
+                } else {
+                    contextBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder setContext(com.google.protobuf.Struct.Builder builderForValue) {
+                if (contextBuilder_ == null) {
+                    context_ = builderForValue.build();
+                } else {
+                    contextBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder mergeContext(com.google.protobuf.Struct value) {
+                if (contextBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) && context_ != null
+                            && context_ != com.google.protobuf.Struct.getDefaultInstance()) {
+                        getContextBuilder().mergeFrom(value);
+                    } else {
+                        context_ = value;
+                    }
+                } else {
+                    contextBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             */
+            public Builder clearContext() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                context_ = null;
+                if (contextBuilder_ != null) {
+                    contextBuilder_.dispose();
+                    contextBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.Struct.Builder getContextBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getContextFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             */
+            public com.google.protobuf.StructOrBuilder getContextOrBuilder() {
+                if (contextBuilder_ != null) {
+                    return contextBuilder_.getMessageOrBuilder();
+                } else {
+                    return context_ == null ? com.google.protobuf.Struct.getDefaultInstance() : context_;
+                }
+            }
+
+            /**
+             * <pre>
+             * context consists of any named values that are defined at write time for the caveat expression
+             * </pre>
+             *
+             * <code>.google.protobuf.Struct context = 2 [(.validate.rules) = { ... }</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> getContextFieldBuilder() {
+                if (contextBuilder_ == null) {
+                    contextBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                            getContext(), getParentForChildren(), isClean());
+                    context_ = null;
+                }
+                return contextBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.ContextualizedCaveat)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.ContextualizedCaveat)
+        private static final com.authzed.api.v1.Core.ContextualizedCaveat DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.Core.ContextualizedCaveat();
+        }
+
+        public static com.authzed.api.v1.Core.ContextualizedCaveat getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<ContextualizedCaveat> PARSER = new com.google.protobuf.AbstractParser<ContextualizedCaveat>() {
+
+            @java.lang.Override
+            public ContextualizedCaveat parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<ContextualizedCaveat> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<ContextualizedCaveat> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.Core.ContextualizedCaveat getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
     }
@@ -1195,11 +2287,6 @@ public final class Core {
             return new SubjectReference();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_SubjectReference_descriptor;
         }
@@ -1240,12 +2327,13 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getObjectOrBuilder() {
-            return getObject();
+            return object_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : object_;
         }
 
         public static final int OPTIONAL_RELATION_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object optionalRelation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object optionalRelation_ = "";
 
         /**
          * <code>string optional_relation = 2 [(.validate.rules) = { ... }</code>
@@ -1483,10 +2571,10 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (objectBuilder_ == null) {
-                    object_ = null;
-                } else {
-                    object_ = null;
+                bitField0_ = 0;
+                object_ = null;
+                if (objectBuilder_ != null) {
+                    objectBuilder_.dispose();
                     objectBuilder_ = null;
                 }
                 optionalRelation_ = "";
@@ -1515,45 +2603,21 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.SubjectReference buildPartial() {
                 com.authzed.api.v1.Core.SubjectReference result = new com.authzed.api.v1.Core.SubjectReference(this);
-                if (objectBuilder_ == null) {
-                    result.object_ = object_;
-                } else {
-                    result.object_ = objectBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.optionalRelation_ = optionalRelation_;
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Core.SubjectReference result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.object_ = objectBuilder_ == null ? object_ : objectBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.optionalRelation_ = optionalRelation_;
+                }
             }
 
             @java.lang.Override
@@ -1574,6 +2638,7 @@ public final class Core {
                 }
                 if (!other.getOptionalRelation().isEmpty()) {
                     optionalRelation_ = other.optionalRelation_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -1602,11 +2667,13 @@ public final class Core {
                                 break;
                             case 10: {
                                 input.readMessage(getObjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 optionalRelation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -1630,6 +2697,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private com.authzed.api.v1.Core.ObjectReference object_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.ObjectReference, com.authzed.api.v1.Core.ObjectReference.Builder, com.authzed.api.v1.Core.ObjectReferenceOrBuilder> objectBuilder_;
@@ -1640,7 +2709,7 @@ public final class Core {
              * @return Whether the object field is set.
              */
             public boolean hasObject() {
-                return objectBuilder_ != null || object_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
 
             /**
@@ -1665,10 +2734,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     object_ = value;
-                    onChanged();
                 } else {
                     objectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -1678,10 +2748,11 @@ public final class Core {
             public Builder setObject(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (objectBuilder_ == null) {
                     object_ = builderForValue.build();
-                    onChanged();
                 } else {
                     objectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -1690,15 +2761,17 @@ public final class Core {
              */
             public Builder mergeObject(com.authzed.api.v1.Core.ObjectReference value) {
                 if (objectBuilder_ == null) {
-                    if (object_ != null) {
-                        object_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(object_).mergeFrom(value).buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0) && object_ != null
+                            && object_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getObjectBuilder().mergeFrom(value);
                     } else {
                         object_ = value;
                     }
-                    onChanged();
                 } else {
                     objectBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
 
@@ -1706,13 +2779,13 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference object = 1 [(.validate.rules) = { ... }</code>
              */
             public Builder clearObject() {
-                if (objectBuilder_ == null) {
-                    object_ = null;
-                    onChanged();
-                } else {
-                    object_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                object_ = null;
+                if (objectBuilder_ != null) {
+                    objectBuilder_.dispose();
                     objectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -1720,6 +2793,7 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference object = 1 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getObjectBuilder() {
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getObjectFieldBuilder().getBuilder();
             }
@@ -1793,6 +2867,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 optionalRelation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1804,6 +2879,7 @@ public final class Core {
              */
             public Builder clearOptionalRelation() {
                 optionalRelation_ = getDefaultInstance().getOptionalRelation();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -1820,6 +2896,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 optionalRelation_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -1943,11 +3020,6 @@ public final class Core {
             return new ObjectReference();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ObjectReference_descriptor;
         }
@@ -1961,7 +3033,8 @@ public final class Core {
 
         public static final int OBJECT_TYPE_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object objectType_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object objectType_ = "";
 
         /**
          * <code>string object_type = 1 [(.validate.rules) = { ... }</code>
@@ -2000,7 +3073,8 @@ public final class Core {
 
         public static final int OBJECT_ID_FIELD_NUMBER = 2;
 
-        private volatile java.lang.Object objectId_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object objectId_ = "";
 
         /**
          * <code>string object_id = 2 [(.validate.rules) = { ... }</code>
@@ -2230,6 +3304,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 objectType_ = "";
                 objectId_ = "";
                 return this;
@@ -2257,41 +3332,21 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.ObjectReference buildPartial() {
                 com.authzed.api.v1.Core.ObjectReference result = new com.authzed.api.v1.Core.ObjectReference(this);
-                result.objectType_ = objectType_;
-                result.objectId_ = objectId_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Core.ObjectReference result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.objectType_ = objectType_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.objectId_ = objectId_;
+                }
             }
 
             @java.lang.Override
@@ -2309,10 +3364,12 @@ public final class Core {
                     return this;
                 if (!other.getObjectType().isEmpty()) {
                     objectType_ = other.objectType_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getObjectId().isEmpty()) {
                     objectId_ = other.objectId_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -2341,11 +3398,13 @@ public final class Core {
                                 break;
                             case 10: {
                                 objectType_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
                             case 18: {
                                 objectId_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -2368,6 +3427,8 @@ public final class Core {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object objectType_ = "";
 
@@ -2415,6 +3476,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 objectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2426,6 +3488,7 @@ public final class Core {
              */
             public Builder clearObjectType() {
                 objectType_ = getDefaultInstance().getObjectType();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -2442,6 +3505,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 objectType_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -2492,6 +3556,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 objectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2503,6 +3568,7 @@ public final class Core {
              */
             public Builder clearObjectId() {
                 objectId_ = getDefaultInstance().getObjectId();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -2519,6 +3585,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 objectId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -2604,6 +3671,7 @@ public final class Core {
      * <pre>
      * ZedToken is used to provide causality metadata between Write and Check
      * requests.
+     *
      * See the authzed.api.v1.Consistency message for more information.
      * </pre>
      *
@@ -2629,11 +3697,6 @@ public final class Core {
             return new ZedToken();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_ZedToken_descriptor;
         }
@@ -2647,7 +3710,8 @@ public final class Core {
 
         public static final int TOKEN_FIELD_NUMBER = 1;
 
-        private volatile java.lang.Object token_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object token_ = "";
 
         /**
          * <code>string token = 1 [(.validate.rules) = { ... }</code>
@@ -2839,6 +3903,7 @@ public final class Core {
          * <pre>
          * ZedToken is used to provide causality metadata between Write and Check
          * requests.
+         *
          * See the authzed.api.v1.Consistency message for more information.
          * </pre>
          *
@@ -2869,6 +3934,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 token_ = "";
                 return this;
             }
@@ -2895,40 +3961,18 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.ZedToken buildPartial() {
                 com.authzed.api.v1.Core.ZedToken result = new com.authzed.api.v1.Core.ZedToken(this);
-                result.token_ = token_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Core.ZedToken result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.token_ = token_;
+                }
             }
 
             @java.lang.Override
@@ -2946,6 +3990,7 @@ public final class Core {
                     return this;
                 if (!other.getToken().isEmpty()) {
                     token_ = other.token_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 this.mergeUnknownFields(other.getUnknownFields());
@@ -2974,6 +4019,7 @@ public final class Core {
                                 break;
                             case 10: {
                                 token_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 10
@@ -2996,6 +4042,8 @@ public final class Core {
                 // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object token_ = "";
 
@@ -3043,6 +4091,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 token_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3054,6 +4103,7 @@ public final class Core {
              */
             public Builder clearToken() {
                 token_ = getDefaultInstance().getToken();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -3070,6 +4120,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 token_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3133,6 +4184,536 @@ public final class Core {
         }
     }
 
+    public interface CursorOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.Cursor)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>string token = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The token.
+         */
+        java.lang.String getToken();
+
+        /**
+         * <code>string token = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for token.
+         */
+        com.google.protobuf.ByteString getTokenBytes();
+    }
+
+    /**
+     * <pre>
+     * Cursor is used to provide resumption of listing between calls to APIs
+     * such as LookupResources.
+     * </pre>
+     *
+     * Protobuf type {@code authzed.api.v1.Cursor}
+     */
+    public static final class Cursor extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.Cursor)
+            CursorOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use Cursor.newBuilder() to construct.
+        private Cursor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private Cursor() {
+            token_ = "";
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new Cursor();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.Core.internal_static_authzed_api_v1_Cursor_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.Core.internal_static_authzed_api_v1_Cursor_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.Cursor.class,
+                            com.authzed.api.v1.Core.Cursor.Builder.class);
+        }
+
+        public static final int TOKEN_FIELD_NUMBER = 1;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object token_ = "";
+
+        /**
+         * <code>string token = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The token.
+         */
+        @java.lang.Override
+        public java.lang.String getToken() {
+            java.lang.Object ref = token_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                token_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>string token = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The bytes for token.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getTokenBytes() {
+            java.lang.Object ref = token_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                token_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, token_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, token_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.Core.Cursor)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.Core.Cursor other = (com.authzed.api.v1.Core.Cursor) obj;
+            if (!getToken().equals(other.getToken()))
+                return false;
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+            hash = (53 * hash) + getToken().hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseDelimitedFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.Cursor parseFrom(com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.Core.Cursor prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * <pre>
+         * Cursor is used to provide resumption of listing between calls to APIs
+         * such as LookupResources.
+         * </pre>
+         *
+         * Protobuf type {@code authzed.api.v1.Cursor}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.Cursor)
+                com.authzed.api.v1.Core.CursorOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_Cursor_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_Cursor_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.Cursor.class,
+                                com.authzed.api.v1.Core.Cursor.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.Core.Cursor.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                token_ = "";
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_Cursor_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.Cursor getDefaultInstanceForType() {
+                return com.authzed.api.v1.Core.Cursor.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.Cursor build() {
+                com.authzed.api.v1.Core.Cursor result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.Cursor buildPartial() {
+                com.authzed.api.v1.Core.Cursor result = new com.authzed.api.v1.Core.Cursor(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.Cursor result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.token_ = token_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.Core.Cursor) {
+                    return mergeFrom((com.authzed.api.v1.Core.Cursor) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.Core.Cursor other) {
+                if (other == com.authzed.api.v1.Core.Cursor.getDefaultInstance())
+                    return this;
+                if (!other.getToken().isEmpty()) {
+                    token_ = other.token_;
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                token_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            }
+                            // case 10
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private java.lang.Object token_ = "";
+
+            /**
+             * <code>string token = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The token.
+             */
+            public java.lang.String getToken() {
+                java.lang.Object ref = token_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    token_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string token = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The bytes for token.
+             */
+            public com.google.protobuf.ByteString getTokenBytes() {
+                java.lang.Object ref = token_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    token_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string token = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The token to set.
+             * @return This builder for chaining.
+             */
+            public Builder setToken(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                token_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string token = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearToken() {
+                token_ = getDefaultInstance().getToken();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string token = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The bytes for token to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTokenBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                token_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.Cursor)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.Cursor)
+        private static final com.authzed.api.v1.Core.Cursor DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.Core.Cursor();
+        }
+
+        public static com.authzed.api.v1.Core.Cursor getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<Cursor> PARSER = new com.google.protobuf.AbstractParser<Cursor>() {
+
+            @java.lang.Override
+            public Cursor parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<Cursor> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Cursor> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.Core.Cursor getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
     public interface RelationshipUpdateOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.RelationshipUpdate)
             com.google.protobuf.MessageOrBuilder {
 
@@ -3174,12 +4755,15 @@ public final class Core {
      * <pre>
      * RelationshipUpdate is used for mutating a single relationship within the
      * service.
+     *
      * CREATE will create the relationship only if it doesn't exist, and error
      * otherwise.
+     *
      * TOUCH will upsert the relationship, and will not error if it
      * already exists.
-     * DELETE will delete the relationship and error if it doesn't
-     * exist.
+     *
+     * DELETE will delete the relationship. If the relationship does not exist,
+     * this operation will no-op.
      * </pre>
      *
      * Protobuf type {@code authzed.api.v1.RelationshipUpdate}
@@ -3202,11 +4786,6 @@ public final class Core {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new RelationshipUpdate();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -3346,7 +4925,7 @@ public final class Core {
 
         public static final int OPERATION_FIELD_NUMBER = 1;
 
-        private int operation_;
+        private int operation_ = 0;
 
         /**
          * <code>.authzed.api.v1.RelationshipUpdate.Operation operation = 1 [(.validate.rules) = { ... }</code>
@@ -3365,9 +4944,8 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.RelationshipUpdate.Operation getOperation() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Core.RelationshipUpdate.Operation result = com.authzed.api.v1.Core.RelationshipUpdate.Operation
-                    .valueOf(operation_);
+                    .forNumber(operation_);
             return result == null ? com.authzed.api.v1.Core.RelationshipUpdate.Operation.UNRECOGNIZED : result;
         }
 
@@ -3400,7 +4978,7 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.RelationshipOrBuilder getRelationshipOrBuilder() {
-            return getRelationship();
+            return relationship_ == null ? com.authzed.api.v1.Core.Relationship.getDefaultInstance() : relationship_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -3575,12 +5153,15 @@ public final class Core {
          * <pre>
          * RelationshipUpdate is used for mutating a single relationship within the
          * service.
+         *
          * CREATE will create the relationship only if it doesn't exist, and error
          * otherwise.
+         *
          * TOUCH will upsert the relationship, and will not error if it
          * already exists.
-         * DELETE will delete the relationship and error if it doesn't
-         * exist.
+         *
+         * DELETE will delete the relationship. If the relationship does not exist,
+         * this operation will no-op.
          * </pre>
          *
          * Protobuf type {@code authzed.api.v1.RelationshipUpdate}
@@ -3610,11 +5191,11 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 operation_ = 0;
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                } else {
-                    relationship_ = null;
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
                 return this;
@@ -3642,45 +5223,21 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.RelationshipUpdate buildPartial() {
                 com.authzed.api.v1.Core.RelationshipUpdate result = new com.authzed.api.v1.Core.RelationshipUpdate(this);
-                result.operation_ = operation_;
-                if (relationshipBuilder_ == null) {
-                    result.relationship_ = relationship_;
-                } else {
-                    result.relationship_ = relationshipBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Core.RelationshipUpdate result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.operation_ = operation_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.relationship_ = relationshipBuilder_ == null ? relationship_ : relationshipBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -3728,11 +5285,13 @@ public final class Core {
                                 break;
                             case 8: {
                                 operation_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 8
                             case 18: {
                                 input.readMessage(getRelationshipFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000002;
                                 break;
                             }
                             // case 18
@@ -3756,6 +5315,8 @@ public final class Core {
                 return this;
             }
 
+            private int bitField0_;
+
             private int operation_ = 0;
 
             /**
@@ -3776,6 +5337,7 @@ public final class Core {
              */
             public Builder setOperationValue(int value) {
                 operation_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3787,9 +5349,8 @@ public final class Core {
              */
             @java.lang.Override
             public com.authzed.api.v1.Core.RelationshipUpdate.Operation getOperation() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Core.RelationshipUpdate.Operation result = com.authzed.api.v1.Core.RelationshipUpdate.Operation
-                        .valueOf(operation_);
+                        .forNumber(operation_);
                 return result == null ? com.authzed.api.v1.Core.RelationshipUpdate.Operation.UNRECOGNIZED : result;
             }
 
@@ -3803,6 +5364,7 @@ public final class Core {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000001;
                 operation_ = value.getNumber();
                 onChanged();
                 return this;
@@ -3814,6 +5376,7 @@ public final class Core {
              * @return This builder for chaining.
              */
             public Builder clearOperation() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 operation_ = 0;
                 onChanged();
                 return this;
@@ -3829,7 +5392,7 @@ public final class Core {
              * @return Whether the relationship field is set.
              */
             public boolean hasRelationship() {
-                return relationshipBuilder_ != null || relationship_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
 
             /**
@@ -3854,10 +5417,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     relationship_ = value;
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -3867,10 +5431,11 @@ public final class Core {
             public Builder setRelationship(com.authzed.api.v1.Core.Relationship.Builder builderForValue) {
                 if (relationshipBuilder_ == null) {
                     relationship_ = builderForValue.build();
-                    onChanged();
                 } else {
                     relationshipBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -3879,16 +5444,17 @@ public final class Core {
              */
             public Builder mergeRelationship(com.authzed.api.v1.Core.Relationship value) {
                 if (relationshipBuilder_ == null) {
-                    if (relationship_ != null) {
-                        relationship_ = com.authzed.api.v1.Core.Relationship.newBuilder(relationship_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0) && relationship_ != null
+                            && relationship_ != com.authzed.api.v1.Core.Relationship.getDefaultInstance()) {
+                        getRelationshipBuilder().mergeFrom(value);
                     } else {
                         relationship_ = value;
                     }
-                    onChanged();
                 } else {
                     relationshipBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
 
@@ -3896,13 +5462,13 @@ public final class Core {
              * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearRelationship() {
-                if (relationshipBuilder_ == null) {
-                    relationship_ = null;
-                    onChanged();
-                } else {
-                    relationship_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                relationship_ = null;
+                if (relationshipBuilder_ != null) {
+                    relationshipBuilder_.dispose();
                     relationshipBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -3910,6 +5476,7 @@ public final class Core {
              * <code>.authzed.api.v1.Relationship relationship = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.Relationship.Builder getRelationshipBuilder() {
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getRelationshipFieldBuilder().getBuilder();
             }
@@ -4070,7 +5637,7 @@ public final class Core {
          */
         com.google.protobuf.ByteString getExpandedRelationBytes();
 
-        public com.authzed.api.v1.Core.PermissionRelationshipTree.TreeTypeCase getTreeTypeCase();
+        com.authzed.api.v1.Core.PermissionRelationshipTree.TreeTypeCase getTreeTypeCase();
     }
 
     /**
@@ -4101,11 +5668,6 @@ public final class Core {
             return new PermissionRelationshipTree();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_PermissionRelationshipTree_descriptor;
         }
@@ -4119,6 +5681,7 @@ public final class Core {
 
         private int treeTypeCase_ = 0;
 
+        @SuppressWarnings("serial")
         private java.lang.Object treeType_;
 
         public enum TreeTypeCase
@@ -4267,12 +5830,13 @@ public final class Core {
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.ObjectReferenceOrBuilder getExpandedObjectOrBuilder() {
-            return getExpandedObject();
+            return expandedObject_ == null ? com.authzed.api.v1.Core.ObjectReference.getDefaultInstance() : expandedObject_;
         }
 
         public static final int EXPANDED_RELATION_FIELD_NUMBER = 4;
 
-        private volatile java.lang.Object expandedRelation_;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object expandedRelation_ = "";
 
         /**
          * <code>string expanded_relation = 4;</code>
@@ -4550,16 +6114,16 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (intermediateBuilder_ != null) {
                     intermediateBuilder_.clear();
                 }
                 if (leafBuilder_ != null) {
                     leafBuilder_.clear();
                 }
-                if (expandedObjectBuilder_ == null) {
-                    expandedObject_ = null;
-                } else {
-                    expandedObject_ = null;
+                expandedObject_ = null;
+                if (expandedObjectBuilder_ != null) {
+                    expandedObjectBuilder_.dispose();
                     expandedObjectBuilder_ = null;
                 }
                 expandedRelation_ = "";
@@ -4591,60 +6155,33 @@ public final class Core {
             public com.authzed.api.v1.Core.PermissionRelationshipTree buildPartial() {
                 com.authzed.api.v1.Core.PermissionRelationshipTree result = new com.authzed.api.v1.Core.PermissionRelationshipTree(
                         this);
-                if (treeTypeCase_ == 1) {
-                    if (intermediateBuilder_ == null) {
-                        result.treeType_ = treeType_;
-                    } else {
-                        result.treeType_ = intermediateBuilder_.build();
-                    }
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                if (treeTypeCase_ == 2) {
-                    if (leafBuilder_ == null) {
-                        result.treeType_ = treeType_;
-                    } else {
-                        result.treeType_ = leafBuilder_.build();
-                    }
-                }
-                if (expandedObjectBuilder_ == null) {
-                    result.expandedObject_ = expandedObject_;
-                } else {
-                    result.expandedObject_ = expandedObjectBuilder_.build();
-                }
-                result.expandedRelation_ = expandedRelation_;
-                result.treeTypeCase_ = treeTypeCase_;
+                buildPartialOneofs(result);
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
+            private void buildPartial0(com.authzed.api.v1.Core.PermissionRelationshipTree result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.expandedObject_ = expandedObjectBuilder_ == null ? expandedObject_ : expandedObjectBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.expandedRelation_ = expandedRelation_;
+                }
             }
 
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartialOneofs(com.authzed.api.v1.Core.PermissionRelationshipTree result) {
+                result.treeTypeCase_ = treeTypeCase_;
+                result.treeType_ = this.treeType_;
+                if (treeTypeCase_ == 1 && intermediateBuilder_ != null) {
+                    result.treeType_ = intermediateBuilder_.build();
+                }
+                if (treeTypeCase_ == 2 && leafBuilder_ != null) {
+                    result.treeType_ = leafBuilder_.build();
+                }
             }
 
             @java.lang.Override
@@ -4665,6 +6202,7 @@ public final class Core {
                 }
                 if (!other.getExpandedRelation().isEmpty()) {
                     expandedRelation_ = other.expandedRelation_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 switch (other.getTreeTypeCase()) {
@@ -4718,11 +6256,13 @@ public final class Core {
                             // case 18
                             case 26: {
                                 input.readMessage(getExpandedObjectFieldBuilder().getBuilder(), extensionRegistry);
+                                bitField0_ |= 0x00000004;
                                 break;
                             }
                             // case 26
                             case 34: {
                                 expandedRelation_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
                                 break;
                             }
                             // case 34
@@ -4760,6 +6300,8 @@ public final class Core {
                 onChanged();
                 return this;
             }
+
+            private int bitField0_;
 
             private com.google.protobuf.SingleFieldBuilderV3<com.authzed.api.v1.Core.AlgebraicSubjectSet, com.authzed.api.v1.Core.AlgebraicSubjectSet.Builder, com.authzed.api.v1.Core.AlgebraicSubjectSetOrBuilder> intermediateBuilder_;
 
@@ -4840,8 +6382,9 @@ public final class Core {
                 } else {
                     if (treeTypeCase_ == 1) {
                         intermediateBuilder_.mergeFrom(value);
+                    } else {
+                        intermediateBuilder_.setMessage(value);
                     }
-                    intermediateBuilder_.setMessage(value);
                 }
                 treeTypeCase_ = 1;
                 return this;
@@ -4903,7 +6446,6 @@ public final class Core {
                 }
                 treeTypeCase_ = 1;
                 onChanged();
-                ;
                 return intermediateBuilder_;
             }
 
@@ -4986,8 +6528,9 @@ public final class Core {
                 } else {
                     if (treeTypeCase_ == 2) {
                         leafBuilder_.mergeFrom(value);
+                    } else {
+                        leafBuilder_.setMessage(value);
                     }
-                    leafBuilder_.setMessage(value);
                 }
                 treeTypeCase_ = 2;
                 return this;
@@ -5049,7 +6592,6 @@ public final class Core {
                 }
                 treeTypeCase_ = 2;
                 onChanged();
-                ;
                 return leafBuilder_;
             }
 
@@ -5063,7 +6605,7 @@ public final class Core {
              * @return Whether the expandedObject field is set.
              */
             public boolean hasExpandedObject() {
-                return expandedObjectBuilder_ != null || expandedObject_ != null;
+                return ((bitField0_ & 0x00000004) != 0);
             }
 
             /**
@@ -5089,10 +6631,11 @@ public final class Core {
                         throw new NullPointerException();
                     }
                     expandedObject_ = value;
-                    onChanged();
                 } else {
                     expandedObjectBuilder_.setMessage(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -5102,10 +6645,11 @@ public final class Core {
             public Builder setExpandedObject(com.authzed.api.v1.Core.ObjectReference.Builder builderForValue) {
                 if (expandedObjectBuilder_ == null) {
                     expandedObject_ = builderForValue.build();
-                    onChanged();
                 } else {
                     expandedObjectBuilder_.setMessage(builderForValue.build());
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -5114,16 +6658,17 @@ public final class Core {
              */
             public Builder mergeExpandedObject(com.authzed.api.v1.Core.ObjectReference value) {
                 if (expandedObjectBuilder_ == null) {
-                    if (expandedObject_ != null) {
-                        expandedObject_ = com.authzed.api.v1.Core.ObjectReference.newBuilder(expandedObject_).mergeFrom(value)
-                                .buildPartial();
+                    if (((bitField0_ & 0x00000004) != 0) && expandedObject_ != null
+                            && expandedObject_ != com.authzed.api.v1.Core.ObjectReference.getDefaultInstance()) {
+                        getExpandedObjectBuilder().mergeFrom(value);
                     } else {
                         expandedObject_ = value;
                     }
-                    onChanged();
                 } else {
                     expandedObjectBuilder_.mergeFrom(value);
                 }
+                bitField0_ |= 0x00000004;
+                onChanged();
                 return this;
             }
 
@@ -5131,13 +6676,13 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference expanded_object = 3;</code>
              */
             public Builder clearExpandedObject() {
-                if (expandedObjectBuilder_ == null) {
-                    expandedObject_ = null;
-                    onChanged();
-                } else {
-                    expandedObject_ = null;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                expandedObject_ = null;
+                if (expandedObjectBuilder_ != null) {
+                    expandedObjectBuilder_.dispose();
                     expandedObjectBuilder_ = null;
                 }
+                onChanged();
                 return this;
             }
 
@@ -5145,6 +6690,7 @@ public final class Core {
              * <code>.authzed.api.v1.ObjectReference expanded_object = 3;</code>
              */
             public com.authzed.api.v1.Core.ObjectReference.Builder getExpandedObjectBuilder() {
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return getExpandedObjectFieldBuilder().getBuilder();
             }
@@ -5219,6 +6765,7 @@ public final class Core {
                     throw new NullPointerException();
                 }
                 expandedRelation_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -5230,6 +6777,7 @@ public final class Core {
              */
             public Builder clearExpandedRelation() {
                 expandedRelation_ = getDefaultInstance().getExpandedRelation();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -5246,6 +6794,7 @@ public final class Core {
                 }
                 checkByteStringIsUtf8(value);
                 expandedRelation_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -5313,41 +6862,41 @@ public final class Core {
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for operation.
          */
         int getOperationValue();
 
         /**
-         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The operation.
          */
         com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation getOperation();
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         java.util.List<com.authzed.api.v1.Core.PermissionRelationshipTree> getChildrenList();
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.PermissionRelationshipTree getChildren(int index);
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         int getChildrenCount();
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         java.util.List<? extends com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder> getChildrenOrBuilderList();
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder getChildrenOrBuilder(int index);
     }
@@ -5356,9 +6905,12 @@ public final class Core {
      * <pre>
      * AlgebraicSubjectSet is a subject set which is computed based on applying the
      * specified operation to the operands according to the algebra of sets.
+     *
      * UNION is a logical set containing the subject members from all operands.
+     *
      * INTERSECTION is a logical set containing only the subject members which are
      * present in all operands.
+     *
      * EXCLUSION is a logical set containing only the subject members which are
      * present in the first operand, and none of the other operands.
      * </pre>
@@ -5384,11 +6936,6 @@ public final class Core {
         @SuppressWarnings({ "unused" })
         protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
             return new AlgebraicSubjectSet();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -5528,10 +7075,10 @@ public final class Core {
 
         public static final int OPERATION_FIELD_NUMBER = 1;
 
-        private int operation_;
+        private int operation_ = 0;
 
         /**
-         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The enum numeric value on the wire for operation.
          */
@@ -5541,24 +7088,24 @@ public final class Core {
         }
 
         /**
-         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+         * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
          *
          * @return The operation.
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation getOperation() {
-            @SuppressWarnings("deprecation")
             com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation result = com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation
-                    .valueOf(operation_);
+                    .forNumber(operation_);
             return result == null ? com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation.UNRECOGNIZED : result;
         }
 
         public static final int CHILDREN_FIELD_NUMBER = 2;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.Core.PermissionRelationshipTree> children_;
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public java.util.List<com.authzed.api.v1.Core.PermissionRelationshipTree> getChildrenList() {
@@ -5566,7 +7113,7 @@ public final class Core {
         }
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public java.util.List<? extends com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder> getChildrenOrBuilderList() {
@@ -5574,7 +7121,7 @@ public final class Core {
         }
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public int getChildrenCount() {
@@ -5582,7 +7129,7 @@ public final class Core {
         }
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.PermissionRelationshipTree getChildren(int index) {
@@ -5590,7 +7137,7 @@ public final class Core {
         }
 
         /**
-         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+         * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
          */
         @java.lang.Override
         public com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder getChildrenOrBuilder(int index) {
@@ -5765,9 +7312,12 @@ public final class Core {
          * <pre>
          * AlgebraicSubjectSet is a subject set which is computed based on applying the
          * specified operation to the operands according to the algebra of sets.
+         *
          * UNION is a logical set containing the subject members from all operands.
+         *
          * INTERSECTION is a logical set containing only the subject members which are
          * present in all operands.
+         *
          * EXCLUSION is a logical set containing only the subject members which are
          * present in the first operand, and none of the other operands.
          * </pre>
@@ -5799,6 +7349,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 operation_ = 0;
                 if (childrenBuilder_ == null) {
                     children_ = java.util.Collections.emptyList();
@@ -5806,7 +7357,7 @@ public final class Core {
                     children_ = null;
                     childrenBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -5832,50 +7383,31 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.AlgebraicSubjectSet buildPartial() {
                 com.authzed.api.v1.Core.AlgebraicSubjectSet result = new com.authzed.api.v1.Core.AlgebraicSubjectSet(this);
-                int from_bitField0_ = bitField0_;
-                result.operation_ = operation_;
-                if (childrenBuilder_ == null) {
-                    if (((bitField0_ & 0x00000001) != 0)) {
-                        children_ = java.util.Collections.unmodifiableList(children_);
-                        bitField0_ = (bitField0_ & ~0x00000001);
-                    }
-                    result.children_ = children_;
-                } else {
-                    result.children_ = childrenBuilder_.build();
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
+            private void buildPartialRepeatedFields(com.authzed.api.v1.Core.AlgebraicSubjectSet result) {
+                if (childrenBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
+                        children_ = java.util.Collections.unmodifiableList(children_);
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    }
+                    result.children_ = children_;
+                } else {
+                    result.children_ = childrenBuilder_.build();
+                }
             }
 
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Core.AlgebraicSubjectSet result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.operation_ = operation_;
+                }
             }
 
             @java.lang.Override
@@ -5898,7 +7430,7 @@ public final class Core {
                     if (!other.children_.isEmpty()) {
                         if (children_.isEmpty()) {
                             children_ = other.children_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                         } else {
                             ensureChildrenIsMutable();
                             children_.addAll(other.children_);
@@ -5911,7 +7443,7 @@ public final class Core {
                             childrenBuilder_.dispose();
                             childrenBuilder_ = null;
                             children_ = other.children_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000002);
                             childrenBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                     ? getChildrenFieldBuilder()
                                     : null;
@@ -5946,6 +7478,7 @@ public final class Core {
                                 break;
                             case 8: {
                                 operation_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
                                 break;
                             }
                             // case 8
@@ -5986,7 +7519,7 @@ public final class Core {
             private int operation_ = 0;
 
             /**
-             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
              *
              * @return The enum numeric value on the wire for operation.
              */
@@ -5996,32 +7529,32 @@ public final class Core {
             }
 
             /**
-             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
              *
              * @param value The enum numeric value on the wire for operation to set.
              * @return This builder for chaining.
              */
             public Builder setOperationValue(int value) {
                 operation_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
 
             /**
-             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
              *
              * @return The operation.
              */
             @java.lang.Override
             public com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation getOperation() {
-                @SuppressWarnings("deprecation")
                 com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation result = com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation
-                        .valueOf(operation_);
+                        .forNumber(operation_);
                 return result == null ? com.authzed.api.v1.Core.AlgebraicSubjectSet.Operation.UNRECOGNIZED : result;
             }
 
             /**
-             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
              *
              * @param value The operation to set.
              * @return This builder for chaining.
@@ -6030,17 +7563,19 @@ public final class Core {
                 if (value == null) {
                     throw new NullPointerException();
                 }
+                bitField0_ |= 0x00000001;
                 operation_ = value.getNumber();
                 onChanged();
                 return this;
             }
 
             /**
-             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1;</code>
+             * <code>.authzed.api.v1.AlgebraicSubjectSet.Operation operation = 1 [(.validate.rules) = { ... }</code>
              *
              * @return This builder for chaining.
              */
             public Builder clearOperation() {
+                bitField0_ = (bitField0_ & ~0x00000001);
                 operation_ = 0;
                 onChanged();
                 return this;
@@ -6050,16 +7585,16 @@ public final class Core {
                     .emptyList();
 
             private void ensureChildrenIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     children_ = new java.util.ArrayList<com.authzed.api.v1.Core.PermissionRelationshipTree>(children_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
 
             private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.Core.PermissionRelationshipTree, com.authzed.api.v1.Core.PermissionRelationshipTree.Builder, com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder> childrenBuilder_;
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public java.util.List<com.authzed.api.v1.Core.PermissionRelationshipTree> getChildrenList() {
                 if (childrenBuilder_ == null) {
@@ -6070,7 +7605,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public int getChildrenCount() {
                 if (childrenBuilder_ == null) {
@@ -6081,7 +7616,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.PermissionRelationshipTree getChildren(int index) {
                 if (childrenBuilder_ == null) {
@@ -6092,7 +7627,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder setChildren(int index, com.authzed.api.v1.Core.PermissionRelationshipTree value) {
                 if (childrenBuilder_ == null) {
@@ -6109,7 +7644,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder setChildren(int index, com.authzed.api.v1.Core.PermissionRelationshipTree.Builder builderForValue) {
                 if (childrenBuilder_ == null) {
@@ -6123,7 +7658,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder addChildren(com.authzed.api.v1.Core.PermissionRelationshipTree value) {
                 if (childrenBuilder_ == null) {
@@ -6140,7 +7675,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder addChildren(int index, com.authzed.api.v1.Core.PermissionRelationshipTree value) {
                 if (childrenBuilder_ == null) {
@@ -6157,7 +7692,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder addChildren(com.authzed.api.v1.Core.PermissionRelationshipTree.Builder builderForValue) {
                 if (childrenBuilder_ == null) {
@@ -6171,7 +7706,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder addChildren(int index, com.authzed.api.v1.Core.PermissionRelationshipTree.Builder builderForValue) {
                 if (childrenBuilder_ == null) {
@@ -6185,7 +7720,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder addAllChildren(
                     java.lang.Iterable<? extends com.authzed.api.v1.Core.PermissionRelationshipTree> values) {
@@ -6200,12 +7735,12 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder clearChildren() {
                 if (childrenBuilder_ == null) {
                     children_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                     onChanged();
                 } else {
                     childrenBuilder_.clear();
@@ -6214,7 +7749,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public Builder removeChildren(int index) {
                 if (childrenBuilder_ == null) {
@@ -6228,14 +7763,14 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.PermissionRelationshipTree.Builder getChildrenBuilder(int index) {
                 return getChildrenFieldBuilder().getBuilder(index);
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder getChildrenOrBuilder(int index) {
                 if (childrenBuilder_ == null) {
@@ -6246,7 +7781,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public java.util.List<? extends com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder> getChildrenOrBuilderList() {
                 if (childrenBuilder_ != null) {
@@ -6257,7 +7792,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.PermissionRelationshipTree.Builder addChildrenBuilder() {
                 return getChildrenFieldBuilder()
@@ -6265,7 +7800,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public com.authzed.api.v1.Core.PermissionRelationshipTree.Builder addChildrenBuilder(int index) {
                 return getChildrenFieldBuilder().addBuilder(index,
@@ -6273,7 +7808,7 @@ public final class Core {
             }
 
             /**
-             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2;</code>
+             * <code>repeated .authzed.api.v1.PermissionRelationshipTree children = 2 [(.validate.rules) = { ... }</code>
              */
             public java.util.List<com.authzed.api.v1.Core.PermissionRelationshipTree.Builder> getChildrenBuilderList() {
                 return getChildrenFieldBuilder().getBuilderList();
@@ -6282,7 +7817,7 @@ public final class Core {
             private com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.Core.PermissionRelationshipTree, com.authzed.api.v1.Core.PermissionRelationshipTree.Builder, com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder> getChildrenFieldBuilder() {
                 if (childrenBuilder_ == null) {
                     childrenBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<com.authzed.api.v1.Core.PermissionRelationshipTree, com.authzed.api.v1.Core.PermissionRelationshipTree.Builder, com.authzed.api.v1.Core.PermissionRelationshipTreeOrBuilder>(
-                            children_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+                            children_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
                     children_ = null;
                 }
                 return childrenBuilder_;
@@ -6403,11 +7938,6 @@ public final class Core {
             return new DirectSubjectSet();
         }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-            return this.unknownFields;
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.authzed.api.v1.Core.internal_static_authzed_api_v1_DirectSubjectSet_descriptor;
         }
@@ -6421,6 +7951,7 @@ public final class Core {
 
         public static final int SUBJECTS_FIELD_NUMBER = 1;
 
+        @SuppressWarnings("serial")
         private java.util.List<com.authzed.api.v1.Core.SubjectReference> subjects_;
 
         /**
@@ -6648,6 +8179,7 @@ public final class Core {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (subjectsBuilder_ == null) {
                     subjects_ = java.util.Collections.emptyList();
                 } else {
@@ -6680,7 +8212,15 @@ public final class Core {
             @java.lang.Override
             public com.authzed.api.v1.Core.DirectSubjectSet buildPartial() {
                 com.authzed.api.v1.Core.DirectSubjectSet result = new com.authzed.api.v1.Core.DirectSubjectSet(this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.authzed.api.v1.Core.DirectSubjectSet result) {
                 if (subjectsBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         subjects_ = java.util.Collections.unmodifiableList(subjects_);
@@ -6690,39 +8230,10 @@ public final class Core {
                 } else {
                     result.subjects_ = subjectsBuilder_.build();
                 }
-                onBuilt();
-                return result;
             }
 
-            @java.lang.Override
-            public Builder clone() {
-                return super.clone();
-            }
-
-            @java.lang.Override
-            public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.setField(field, value);
-            }
-
-            @java.lang.Override
-            public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return super.clearField(field);
-            }
-
-            @java.lang.Override
-            public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return super.clearOneof(oneof);
-            }
-
-            @java.lang.Override
-            public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-                    java.lang.Object value) {
-                return super.setRepeatedField(field, index, value);
-            }
-
-            @java.lang.Override
-            public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
-                return super.addRepeatedField(field, value);
+            private void buildPartial0(com.authzed.api.v1.Core.DirectSubjectSet result) {
+                int from_bitField0_ = bitField0_;
             }
 
             @java.lang.Override
@@ -7120,9 +8631,713 @@ public final class Core {
         }
     }
 
+    public interface PartialCaveatInfoOrBuilder extends // @@protoc_insertion_point(interface_extends:authzed.api.v1.PartialCaveatInfo)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return A list containing the missingRequiredContext.
+         */
+        java.util.List<java.lang.String> getMissingRequiredContextList();
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The count of missingRequiredContext.
+         */
+        int getMissingRequiredContextCount();
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @param index The index of the element to return.
+         * @return The missingRequiredContext at the given index.
+         */
+        java.lang.String getMissingRequiredContext(int index);
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the missingRequiredContext at the given index.
+         */
+        com.google.protobuf.ByteString getMissingRequiredContextBytes(int index);
+    }
+
+    /**
+     * <pre>
+     * PartialCaveatInfo carries information necessary for the client to take action
+     * in the event a response contains a partially evaluated caveat
+     * </pre>
+     *
+     * Protobuf type {@code authzed.api.v1.PartialCaveatInfo}
+     */
+    public static final class PartialCaveatInfo extends com.google.protobuf.GeneratedMessageV3 implements // @@protoc_insertion_point(message_implements:authzed.api.v1.PartialCaveatInfo)
+            PartialCaveatInfoOrBuilder {
+
+        private static final long serialVersionUID = 0L;
+
+        // Use PartialCaveatInfo.newBuilder() to construct.
+        private PartialCaveatInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private PartialCaveatInfo() {
+            missingRequiredContext_ = com.google.protobuf.LazyStringArrayList.emptyList();
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({ "unused" })
+        protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+            return new PartialCaveatInfo();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            return com.authzed.api.v1.Core.internal_static_authzed_api_v1_PartialCaveatInfo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+            return com.authzed.api.v1.Core.internal_static_authzed_api_v1_PartialCaveatInfo_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.PartialCaveatInfo.class,
+                            com.authzed.api.v1.Core.PartialCaveatInfo.Builder.class);
+        }
+
+        public static final int MISSING_REQUIRED_CONTEXT_FIELD_NUMBER = 1;
+
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringArrayList missingRequiredContext_ = com.google.protobuf.LazyStringArrayList
+                .emptyList();
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return A list containing the missingRequiredContext.
+         */
+        public com.google.protobuf.ProtocolStringList getMissingRequiredContextList() {
+            return missingRequiredContext_;
+        }
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @return The count of missingRequiredContext.
+         */
+        public int getMissingRequiredContextCount() {
+            return missingRequiredContext_.size();
+        }
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @param index The index of the element to return.
+         * @return The missingRequiredContext at the given index.
+         */
+        public java.lang.String getMissingRequiredContext(int index) {
+            return missingRequiredContext_.get(index);
+        }
+
+        /**
+         * <pre>
+         * missing_required_context is a list of one or more fields that were missing and prevented caveats
+         * from being fully evaluated
+         * </pre>
+         *
+         * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the missingRequiredContext at the given index.
+         */
+        public com.google.protobuf.ByteString getMissingRequiredContextBytes(int index) {
+            return missingRequiredContext_.getByteString(index);
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+            for (int i = 0; i < missingRequiredContext_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, missingRequiredContext_.getRaw(i));
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1)
+                return size;
+            size = 0;
+            {
+                int dataSize = 0;
+                for (int i = 0; i < missingRequiredContext_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(missingRequiredContext_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getMissingRequiredContextList().size();
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.authzed.api.v1.Core.PartialCaveatInfo)) {
+                return super.equals(obj);
+            }
+            com.authzed.api.v1.Core.PartialCaveatInfo other = (com.authzed.api.v1.Core.PartialCaveatInfo) obj;
+            if (!getMissingRequiredContextList().equals(other.getMissingRequiredContextList()))
+                return false;
+            if (!getUnknownFields().equals(other.getUnknownFields()))
+                return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (getMissingRequiredContextCount() > 0) {
+                hash = (37 * hash) + MISSING_REQUIRED_CONTEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getMissingRequiredContextList().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseDelimitedFrom(java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo parseFrom(com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.authzed.api.v1.Core.PartialCaveatInfo prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * <pre>
+         * PartialCaveatInfo carries information necessary for the client to take action
+         * in the event a response contains a partially evaluated caveat
+         * </pre>
+         *
+         * Protobuf type {@code authzed.api.v1.PartialCaveatInfo}
+         */
+        public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements // @@protoc_insertion_point(builder_implements:authzed.api.v1.PartialCaveatInfo)
+                com.authzed.api.v1.Core.PartialCaveatInfoOrBuilder {
+
+            public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_PartialCaveatInfo_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_PartialCaveatInfo_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.authzed.api.v1.Core.PartialCaveatInfo.class,
+                                com.authzed.api.v1.Core.PartialCaveatInfo.Builder.class);
+            }
+
+            // Construct using com.authzed.api.v1.Core.PartialCaveatInfo.newBuilder()
+            private Builder() {
+            }
+
+            private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                missingRequiredContext_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+                return com.authzed.api.v1.Core.internal_static_authzed_api_v1_PartialCaveatInfo_descriptor;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.PartialCaveatInfo getDefaultInstanceForType() {
+                return com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.PartialCaveatInfo build() {
+                com.authzed.api.v1.Core.PartialCaveatInfo result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.authzed.api.v1.Core.PartialCaveatInfo buildPartial() {
+                com.authzed.api.v1.Core.PartialCaveatInfo result = new com.authzed.api.v1.Core.PartialCaveatInfo(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.authzed.api.v1.Core.PartialCaveatInfo result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    missingRequiredContext_.makeImmutable();
+                    result.missingRequiredContext_ = missingRequiredContext_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.authzed.api.v1.Core.PartialCaveatInfo) {
+                    return mergeFrom((com.authzed.api.v1.Core.PartialCaveatInfo) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.authzed.api.v1.Core.PartialCaveatInfo other) {
+                if (other == com.authzed.api.v1.Core.PartialCaveatInfo.getDefaultInstance())
+                    return this;
+                if (!other.missingRequiredContext_.isEmpty()) {
+                    if (missingRequiredContext_.isEmpty()) {
+                        missingRequiredContext_ = other.missingRequiredContext_;
+                        bitField0_ |= 0x00000001;
+                    } else {
+                        ensureMissingRequiredContextIsMutable();
+                        missingRequiredContext_.addAll(other.missingRequiredContext_);
+                    }
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                ensureMissingRequiredContextIsMutable();
+                                missingRequiredContext_.add(s);
+                                break;
+                            }
+                            // case 10
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    // was an endgroup tag
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                        // switch (tag)
+                    }
+                    // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                }
+                // finally
+                return this;
+            }
+
+            private int bitField0_;
+
+            private com.google.protobuf.LazyStringArrayList missingRequiredContext_ = com.google.protobuf.LazyStringArrayList
+                    .emptyList();
+
+            private void ensureMissingRequiredContextIsMutable() {
+                if (!missingRequiredContext_.isModifiable()) {
+                    missingRequiredContext_ = new com.google.protobuf.LazyStringArrayList(missingRequiredContext_);
+                }
+                bitField0_ |= 0x00000001;
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return A list containing the missingRequiredContext.
+             */
+            public com.google.protobuf.ProtocolStringList getMissingRequiredContextList() {
+                missingRequiredContext_.makeImmutable();
+                return missingRequiredContext_;
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return The count of missingRequiredContext.
+             */
+            public int getMissingRequiredContextCount() {
+                return missingRequiredContext_.size();
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param index The index of the element to return.
+             * @return The missingRequiredContext at the given index.
+             */
+            public java.lang.String getMissingRequiredContext(int index) {
+                return missingRequiredContext_.get(index);
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the missingRequiredContext at the given index.
+             */
+            public com.google.protobuf.ByteString getMissingRequiredContextBytes(int index) {
+                return missingRequiredContext_.getByteString(index);
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The missingRequiredContext to set.
+             * @return This builder for chaining.
+             */
+            public Builder setMissingRequiredContext(int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMissingRequiredContextIsMutable();
+                missingRequiredContext_.set(index, value);
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The missingRequiredContext to add.
+             * @return This builder for chaining.
+             */
+            public Builder addMissingRequiredContext(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMissingRequiredContextIsMutable();
+                missingRequiredContext_.add(value);
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param values The missingRequiredContext to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllMissingRequiredContext(java.lang.Iterable<java.lang.String> values) {
+                ensureMissingRequiredContextIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(values, missingRequiredContext_);
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearMissingRequiredContext() {
+                missingRequiredContext_ = com.google.protobuf.LazyStringArrayList.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                ;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <pre>
+             * missing_required_context is a list of one or more fields that were missing and prevented caveats
+             * from being fully evaluated
+             * </pre>
+             *
+             * <code>repeated string missing_required_context = 1 [(.validate.rules) = { ... }</code>
+             *
+             * @param value The bytes of the missingRequiredContext to add.
+             * @return This builder for chaining.
+             */
+            public Builder addMissingRequiredContextBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureMissingRequiredContextIsMutable();
+                missingRequiredContext_.add(value);
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+            // @@protoc_insertion_point(builder_scope:authzed.api.v1.PartialCaveatInfo)
+        }
+
+        // @@protoc_insertion_point(class_scope:authzed.api.v1.PartialCaveatInfo)
+        private static final com.authzed.api.v1.Core.PartialCaveatInfo DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new com.authzed.api.v1.Core.PartialCaveatInfo();
+        }
+
+        public static com.authzed.api.v1.Core.PartialCaveatInfo getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<PartialCaveatInfo> PARSER = new com.google.protobuf.AbstractParser<PartialCaveatInfo>() {
+
+            @java.lang.Override
+            public PartialCaveatInfo parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
+
+        public static com.google.protobuf.Parser<PartialCaveatInfo> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<PartialCaveatInfo> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.authzed.api.v1.Core.PartialCaveatInfo getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+    }
+
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_Relationship_descriptor;
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_Relationship_fieldAccessorTable;
+
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_ContextualizedCaveat_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_ContextualizedCaveat_fieldAccessorTable;
 
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_SubjectReference_descriptor;
 
@@ -7135,6 +9350,10 @@ public final class Core {
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_ZedToken_descriptor;
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_ZedToken_fieldAccessorTable;
+
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_Cursor_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_Cursor_fieldAccessorTable;
 
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_RelationshipUpdate_descriptor;
 
@@ -7152,6 +9371,10 @@ public final class Core {
 
     private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_DirectSubjectSet_fieldAccessorTable;
 
+    private static final com.google.protobuf.Descriptors.Descriptor internal_static_authzed_api_v1_PartialCaveatInfo_descriptor;
+
+    private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_authzed_api_v1_PartialCaveatInfo_fieldAccessorTable;
+
     public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
         return descriptor;
     }
@@ -7160,75 +9383,96 @@ public final class Core {
 
     static {
         java.lang.String[] descriptorData = { "\n\031authzed/api/v1/core.proto\022\016authzed.api"
-                + ".v1\032\027validate/validate.proto\"\303\001\n\014Relatio"
-                + "nship\022;\n\010resource\030\001 \001(\0132\037.authzed.api.v1"
-                + ".ObjectReferenceB\010\372B\005\212\001\002\020\001\0229\n\010relation\030\002"
-                + " \001(\tB\'\372B$r\"(@2\036^[a-z][a-z0-9_]{1,62}[a-z"
-                + "0-9]$\022;\n\007subject\030\003 \001(\0132 .authzed.api.v1."
-                + "SubjectReferenceB\010\372B\005\212\001\002\020\001\"\224\001\n\020SubjectRe"
-                + "ference\0229\n\006object\030\001 \001(\0132\037.authzed.api.v1"
-                + ".ObjectReferenceB\010\372B\005\212\001\002\020\001\022E\n\021optional_r"
-                + "elation\030\002 \001(\tB*\372B\'r%(@2!^([a-z][a-z0-9_]"
-                + "{1,62}[a-z0-9])?$\"\272\001\n\017ObjectReference\022]\n"
-                + "\013object_type\030\001 \001(\tBH\372BErC(\200\0012>^([a-z][a-" + "z0-9_]{1,61}[a-z0-9]/)?[a-z][a-z0-9_]{1,"
-                + "62}[a-z0-9]$\022H\n\tobject_id\030\002 \001(\tB5\372B2r0(\200"
-                + "\0012+^(([a-zA-Z0-9_][a-zA-Z0-9/_|-]{0,127}"
-                + ")|\\*)$\"\"\n\010ZedToken\022\026\n\005token\030\001 \001(\tB\007\372B\004r\002"
-                + " \001\"\206\002\n\022RelationshipUpdate\022I\n\toperation\030\001"
-                + " \001(\0162,.authzed.api.v1.RelationshipUpdate"
-                + ".OperationB\010\372B\005\202\001\002\020\001\022<\n\014relationship\030\002 \001"
-                + "(\0132\034.authzed.api.v1.RelationshipB\010\372B\005\212\001\002"
-                + "\020\001\"g\n\tOperation\022\031\n\025OPERATION_UNSPECIFIED"
-                + "\020\000\022\024\n\020OPERATION_CREATE\020\001\022\023\n\017OPERATION_TO"
-                + "UCH\020\002\022\024\n\020OPERATION_DELETE\020\003\"\362\001\n\032Permissi"
-                + "onRelationshipTree\022;\n\014intermediate\030\001 \001(\013"
-                + "2#.authzed.api.v1.AlgebraicSubjectSetH\000\022" + "0\n\004leaf\030\002 \001(\0132 .authzed.api.v1.DirectSub"
-                + "jectSetH\000\0228\n\017expanded_object\030\003 \001(\0132\037.aut"
-                + "hzed.api.v1.ObjectReference\022\031\n\021expanded_"
-                + "relation\030\004 \001(\tB\020\n\ttree_type\022\003\370B\001\"\207\002\n\023Alg"
-                + "ebraicSubjectSet\022@\n\toperation\030\001 \001(\0162-.au" + "thzed.api.v1.AlgebraicSubjectSet.Operati"
-                + "on\022<\n\010children\030\002 \003(\0132*.authzed.api.v1.Pe"
-                + "rmissionRelationshipTree\"p\n\tOperation\022\031\n"
-                + "\025OPERATION_UNSPECIFIED\020\000\022\023\n\017OPERATION_UN"
-                + "ION\020\001\022\032\n\026OPERATION_INTERSECTION\020\002\022\027\n\023OPE"
-                + "RATION_EXCLUSION\020\003\"F\n\020DirectSubjectSet\0222"
-                + "\n\010subjects\030\001 \003(\0132 .authzed.api.v1.Subjec" + "tReferenceBH\n\022com.authzed.api.v1Z2github"
-                + ".com/authzed/authzed-go/proto/authzed/ap" + "i/v1b\006proto3" };
+                + ".v1\032\034google/protobuf/struct.proto\032\027valid"
+                + "ate/validate.proto\"\214\002\n\014Relationship\022;\n\010r"
+                + "esource\030\001 \001(\0132\037.authzed.api.v1.ObjectRef"
+                + "erenceB\010\372B\005\212\001\002\020\001\0229\n\010relation\030\002 \001(\tB\'\372B$r"
+                + "\"(@2\036^[a-z][a-z0-9_]{1,62}[a-z0-9]$\022;\n\007s" + "ubject\030\003 \001(\0132 .authzed.api.v1.SubjectRef"
+                + "erenceB\010\372B\005\212\001\002\020\001\022G\n\017optional_caveat\030\004 \001("
+                + "\0132$.authzed.api.v1.ContextualizedCaveatB"
+                + "\010\372B\005\212\001\002\020\000\"\221\001\n\024ContextualizedCaveat\022E\n\013ca"
+                + "veat_name\030\001 \001(\tB0\372B-r+(\200\0012&^([a-zA-Z0-9_"
+                + "][a-zA-Z0-9/_|-]{0,127})$\0222\n\007context\030\002 \001"
+                + "(\0132\027.google.protobuf.StructB\010\372B\005\212\001\002\020\000\"\224\001"
+                + "\n\020SubjectReference\0229\n\006object\030\001 \001(\0132\037.aut"
+                + "hzed.api.v1.ObjectReferenceB\010\372B\005\212\001\002\020\001\022E\n"
+                + "\021optional_relation\030\002 \001(\tB*\372B\'r%(@2!^([a-"
+                + "z][a-z0-9_]{1,62}[a-z0-9])?$\"\256\001\n\017ObjectR"
+                + "eference\022]\n\013object_type\030\001 \001(\tBH\372BErC(\200\0012"
+                + ">^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][" + "a-z0-9_]{1,62}[a-z0-9]$\022<\n\tobject_id\030\002 \001"
+                + "(\tB)\372B&r$(\200\0102\037^(([a-zA-Z0-9/_|\\-=+]{1,})"
+                + "|\\*)$\"\"\n\010ZedToken\022\026\n\005token\030\001 \001(\tB\007\372B\004r\002 "
+                + "\001\"$\n\006Cursor\022\032\n\005token\030\001 \001(\tB\013\372B\010r\006 \001(\200\240\006\""
+                + "\210\002\n\022RelationshipUpdate\022K\n\toperation\030\001 \001("
+                + "\0162,.authzed.api.v1.RelationshipUpdate.Op"
+                + "erationB\n\372B\007\202\001\004\020\001 \000\022<\n\014relationship\030\002 \001("
+                + "\0132\034.authzed.api.v1.RelationshipB\010\372B\005\212\001\002\020"
+                + "\001\"g\n\tOperation\022\031\n\025OPERATION_UNSPECIFIED\020"
+                + "\000\022\024\n\020OPERATION_CREATE\020\001\022\023\n\017OPERATION_TOU"
+                + "CH\020\002\022\024\n\020OPERATION_DELETE\020\003\"\362\001\n\032Permissio"
+                + "nRelationshipTree\022;\n\014intermediate\030\001 \001(\0132"
+                + "#.authzed.api.v1.AlgebraicSubjectSetH\000\0220" + "\n\004leaf\030\002 \001(\0132 .authzed.api.v1.DirectSubj"
+                + "ectSetH\000\0228\n\017expanded_object\030\003 \001(\0132\037.auth"
+                + "zed.api.v1.ObjectReference\022\031\n\021expanded_r"
+                + "elation\030\004 \001(\tB\020\n\ttree_type\022\003\370B\001\"\242\002\n\023Alge"
+                + "braicSubjectSet\022L\n\toperation\030\001 \001(\0162-.aut" + "hzed.api.v1.AlgebraicSubjectSet.Operatio"
+                + "nB\n\372B\007\202\001\004\020\001 \000\022K\n\010children\030\002 \003(\0132*.authze"
+                + "d.api.v1.PermissionRelationshipTreeB\r\372B\n"
+                + "\222\001\007\"\005\212\001\002\020\001\"p\n\tOperation\022\031\n\025OPERATION_UNS"
+                + "PECIFIED\020\000\022\023\n\017OPERATION_UNION\020\001\022\032\n\026OPERA"
+                + "TION_INTERSECTION\020\002\022\027\n\023OPERATION_EXCLUSI"
+                + "ON\020\003\"F\n\020DirectSubjectSet\0222\n\010subjects\030\001 \003"
+                + "(\0132 .authzed.api.v1.SubjectReference\"?\n\021" + "PartialCaveatInfo\022*\n\030missing_required_co"
+                + "ntext\030\001 \003(\tB\010\372B\005\222\001\002\010\001BH\n\022com.authzed.api"
+                + ".v1Z2github.com/authzed/authzed-go/proto" + "/authzed/api/v1b\006proto3" };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
-                new com.google.protobuf.Descriptors.FileDescriptor[] { io.envoyproxy.pgv.validate.Validate.getDescriptor() });
+                new com.google.protobuf.Descriptors.FileDescriptor[] { com.google.protobuf.StructProto.getDescriptor(),
+                        io.envoyproxy.pgv.validate.Validate.getDescriptor() });
         internal_static_authzed_api_v1_Relationship_descriptor = getDescriptor().getMessageTypes().get(0);
         internal_static_authzed_api_v1_Relationship_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_Relationship_descriptor,
-                new java.lang.String[] { "Resource", "Relation", "Subject" });
-        internal_static_authzed_api_v1_SubjectReference_descriptor = getDescriptor().getMessageTypes().get(1);
+                new java.lang.String[] { "Resource", "Relation", "Subject", "OptionalCaveat" });
+        internal_static_authzed_api_v1_ContextualizedCaveat_descriptor = getDescriptor().getMessageTypes().get(1);
+        internal_static_authzed_api_v1_ContextualizedCaveat_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_ContextualizedCaveat_descriptor,
+                new java.lang.String[] { "CaveatName", "Context" });
+        internal_static_authzed_api_v1_SubjectReference_descriptor = getDescriptor().getMessageTypes().get(2);
         internal_static_authzed_api_v1_SubjectReference_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_SubjectReference_descriptor,
                 new java.lang.String[] { "Object", "OptionalRelation" });
-        internal_static_authzed_api_v1_ObjectReference_descriptor = getDescriptor().getMessageTypes().get(2);
+        internal_static_authzed_api_v1_ObjectReference_descriptor = getDescriptor().getMessageTypes().get(3);
         internal_static_authzed_api_v1_ObjectReference_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_ObjectReference_descriptor, new java.lang.String[] { "ObjectType", "ObjectId" });
-        internal_static_authzed_api_v1_ZedToken_descriptor = getDescriptor().getMessageTypes().get(3);
+        internal_static_authzed_api_v1_ZedToken_descriptor = getDescriptor().getMessageTypes().get(4);
         internal_static_authzed_api_v1_ZedToken_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_ZedToken_descriptor, new java.lang.String[] { "Token" });
-        internal_static_authzed_api_v1_RelationshipUpdate_descriptor = getDescriptor().getMessageTypes().get(4);
+        internal_static_authzed_api_v1_Cursor_descriptor = getDescriptor().getMessageTypes().get(5);
+        internal_static_authzed_api_v1_Cursor_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_Cursor_descriptor, new java.lang.String[] { "Token" });
+        internal_static_authzed_api_v1_RelationshipUpdate_descriptor = getDescriptor().getMessageTypes().get(6);
         internal_static_authzed_api_v1_RelationshipUpdate_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_RelationshipUpdate_descriptor,
                 new java.lang.String[] { "Operation", "Relationship" });
-        internal_static_authzed_api_v1_PermissionRelationshipTree_descriptor = getDescriptor().getMessageTypes().get(5);
+        internal_static_authzed_api_v1_PermissionRelationshipTree_descriptor = getDescriptor().getMessageTypes().get(7);
         internal_static_authzed_api_v1_PermissionRelationshipTree_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_PermissionRelationshipTree_descriptor,
                 new java.lang.String[] { "Intermediate", "Leaf", "ExpandedObject", "ExpandedRelation", "TreeType" });
-        internal_static_authzed_api_v1_AlgebraicSubjectSet_descriptor = getDescriptor().getMessageTypes().get(6);
+        internal_static_authzed_api_v1_AlgebraicSubjectSet_descriptor = getDescriptor().getMessageTypes().get(8);
         internal_static_authzed_api_v1_AlgebraicSubjectSet_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_AlgebraicSubjectSet_descriptor,
                 new java.lang.String[] { "Operation", "Children" });
-        internal_static_authzed_api_v1_DirectSubjectSet_descriptor = getDescriptor().getMessageTypes().get(7);
+        internal_static_authzed_api_v1_DirectSubjectSet_descriptor = getDescriptor().getMessageTypes().get(9);
         internal_static_authzed_api_v1_DirectSubjectSet_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_authzed_api_v1_DirectSubjectSet_descriptor, new java.lang.String[] { "Subjects" });
+        internal_static_authzed_api_v1_PartialCaveatInfo_descriptor = getDescriptor().getMessageTypes().get(10);
+        internal_static_authzed_api_v1_PartialCaveatInfo_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_authzed_api_v1_PartialCaveatInfo_descriptor,
+                new java.lang.String[] { "MissingRequiredContext" });
         com.google.protobuf.ExtensionRegistry registry = com.google.protobuf.ExtensionRegistry.newInstance();
         registry.add(io.envoyproxy.pgv.validate.Validate.required);
         registry.add(io.envoyproxy.pgv.validate.Validate.rules);
         com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(descriptor, registry);
+        com.google.protobuf.StructProto.getDescriptor();
         io.envoyproxy.pgv.validate.Validate.getDescriptor();
     }
     // @@protoc_insertion_point(outer_class_scope)

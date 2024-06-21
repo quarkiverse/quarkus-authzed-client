@@ -2,7 +2,7 @@ package com.authzed.api.v0;
 
 import io.quarkus.grpc.MutinyService;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v0/developer.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v0/developer.proto")
 public interface DeveloperService extends MutinyService {
 
     io.smallrye.mutiny.Uni<com.authzed.api.v0.Developer.EditCheckResponse> editCheck(

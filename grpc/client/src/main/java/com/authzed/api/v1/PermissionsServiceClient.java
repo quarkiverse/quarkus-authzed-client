@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 import io.quarkus.grpc.MutinyClient;
 
-@io.quarkus.grpc.common.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/v1/permission_service.proto")
 public class PermissionsServiceClient
         implements PermissionsService, MutinyClient<MutinyPermissionsServiceGrpc.MutinyPermissionsServiceStub> {
 
@@ -44,6 +44,12 @@ public class PermissionsServiceClient
     public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckPermissionResponse> checkPermission(
             com.authzed.api.v1.PermissionService.CheckPermissionRequest request) {
         return stub.checkPermission(request);
+    }
+
+    @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+        return stub.checkBulkPermissions(request);
     }
 
     @Override
