@@ -1,6 +1,6 @@
 # Quarkus - Authzed Client
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 An early draft of quarkus extension for https://github.com/authzed/authzed-java
@@ -159,6 +159,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kdubb"><img src="https://avatars.githubusercontent.com/u/787655?v=4?s=100" width="100px;" alt="Kevin Wooten"/><br /><sub><b>Kevin Wooten</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-authzed-client/commits?author=kdubb" title="Code">💻</a> <a href="#maintenance-kdubb" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://iocanel.blogspot.com"><img src="https://avatars.githubusercontent.com/u/402008?v=4?s=100" width="100px;" alt="Ioannis Canellos"/><br /><sub><b>Ioannis Canellos</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-authzed-client/commits?author=iocanel" title="Code">💻</a> <a href="#maintenance-iocanel" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
