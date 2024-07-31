@@ -23,7 +23,7 @@
     <url>https://github.com/quarkiverse/quarkus-authzed-client</url>
   </scm>
   <properties>
-    <quarkus.version>3.0.0.Final</quarkus.version>
+    <quarkus.version>3.12.3</quarkus.version>
   </properties>
   <dependencyManagement>
     <dependencies>

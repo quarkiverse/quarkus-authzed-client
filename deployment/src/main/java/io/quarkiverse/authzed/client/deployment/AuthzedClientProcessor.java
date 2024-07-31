@@ -13,7 +13,6 @@ import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.*;
-import io.quarkus.runtime.TlsConfig;
 import io.quarkus.vertx.deployment.VertxBuildItem;
 
 class AuthzedClientProcessor {
@@ -30,7 +29,6 @@ class AuthzedClientProcessor {
     ServiceStartBuildItem registerSyntheticBeans(
             AuthzedBuildTimeConfig buildTimeConfig,
             AuthzedConfig runtimeConfig,
-            TlsConfig tlsConfig,
             SslNativeConfigBuildItem sslNativeConfig,
             VertxBuildItem vertx,
             ShutdownContextBuildItem shutdownContextBuildItem,

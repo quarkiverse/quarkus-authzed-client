@@ -4,14 +4,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v1/watch_service.proto")
+@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.64.0)", comments = "Source: authzed/api/v1/watch_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WatchServiceGrpc {
 
     private WatchServiceGrpc() {
     }
 
-    public static final String SERVICE_NAME = "authzed.api.v1.WatchService";
+    public static final java.lang.String SERVICE_NAME = "authzed.api.v1.WatchService";
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> getWatchMethod;
@@ -235,9 +235,9 @@ public final class WatchServiceGrpc {
     private static final class WatchServiceMethodDescriptorSupplier extends WatchServiceBaseDescriptorSupplier
             implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
 
-        private final String methodName;
+        private final java.lang.String methodName;
 
-        WatchServiceMethodDescriptorSupplier(String methodName) {
+        WatchServiceMethodDescriptorSupplier(java.lang.String methodName) {
             this.methodName = methodName;
         }
 
