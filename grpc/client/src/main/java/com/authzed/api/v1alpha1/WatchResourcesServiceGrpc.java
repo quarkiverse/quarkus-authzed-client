@@ -8,14 +8,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * specific (resource type, permission, subject) combination.
  * </pre>
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v1alpha1/watch_resources_service.proto")
+@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.64.0)", comments = "Source: authzed/api/v1alpha1/watch_resources_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WatchResourcesServiceGrpc {
 
     private WatchResourcesServiceGrpc() {
     }
 
-    public static final String SERVICE_NAME = "authzed.api.v1alpha1.WatchResourcesService";
+    public static final java.lang.String SERVICE_NAME = "authzed.api.v1alpha1.WatchResourcesService";
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesRequest, com.authzed.api.v1alpha1.WatchResourcesServiceOuterClass.WatchResourcesResponse> getWatchResourcesMethod;
@@ -281,9 +281,9 @@ public final class WatchResourcesServiceGrpc {
     private static final class WatchResourcesServiceMethodDescriptorSupplier extends WatchResourcesServiceBaseDescriptorSupplier
             implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
 
-        private final String methodName;
+        private final java.lang.String methodName;
 
-        WatchResourcesServiceMethodDescriptorSupplier(String methodName) {
+        WatchResourcesServiceMethodDescriptorSupplier(java.lang.String methodName) {
             this.methodName = methodName;
         }
 

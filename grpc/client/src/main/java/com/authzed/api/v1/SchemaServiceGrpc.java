@@ -7,14 +7,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * SchemaService implements operations on a Permissions System's Schema.
  * </pre>
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v1/schema_service.proto")
+@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.64.0)", comments = "Source: authzed/api/v1/schema_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class SchemaServiceGrpc {
 
     private SchemaServiceGrpc() {
     }
 
-    public static final String SERVICE_NAME = "authzed.api.v1.SchemaService";
+    public static final java.lang.String SERVICE_NAME = "authzed.api.v1.SchemaService";
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest, com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> getReadSchemaMethod;
@@ -364,9 +364,9 @@ public final class SchemaServiceGrpc {
     private static final class SchemaServiceMethodDescriptorSupplier extends SchemaServiceBaseDescriptorSupplier
             implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
 
-        private final String methodName;
+        private final java.lang.String methodName;
 
-        SchemaServiceMethodDescriptorSupplier(String methodName) {
+        SchemaServiceMethodDescriptorSupplier(java.lang.String methodName) {
             this.methodName = methodName;
         }
 

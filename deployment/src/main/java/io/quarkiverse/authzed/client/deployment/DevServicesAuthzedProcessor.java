@@ -178,7 +178,7 @@ public class DevServicesAuthzedProcessor {
             return null;
         }
 
-        if (!dockerStatusBuildItem.isDockerAvailable()) {
+        if (!dockerStatusBuildItem.isContainerRuntimeAvailable()) {
             log.warn("Please configure " + GRPC_URL_CONFIG_KEY + " or get a working docker instance");
             return null;
         }

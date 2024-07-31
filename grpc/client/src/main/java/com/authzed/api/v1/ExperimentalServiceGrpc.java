@@ -8,14 +8,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * prototyped and tested for future inclusion in the stable API.
  * </pre>
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v1/experimental_service.proto")
+@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.64.0)", comments = "Source: authzed/api/v1/experimental_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class ExperimentalServiceGrpc {
 
     private ExperimentalServiceGrpc() {
     }
 
-    public static final String SERVICE_NAME = "authzed.api.v1.ExperimentalService";
+    public static final java.lang.String SERVICE_NAME = "authzed.api.v1.ExperimentalService";
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> getBulkImportRelationshipsMethod;
@@ -427,9 +427,9 @@ public final class ExperimentalServiceGrpc {
     private static final class ExperimentalServiceMethodDescriptorSupplier extends ExperimentalServiceBaseDescriptorSupplier
             implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
 
-        private final String methodName;
+        private final java.lang.String methodName;
 
-        ExperimentalServiceMethodDescriptorSupplier(String methodName) {
+        ExperimentalServiceMethodDescriptorSupplier(java.lang.String methodName) {
             this.methodName = methodName;
         }
 

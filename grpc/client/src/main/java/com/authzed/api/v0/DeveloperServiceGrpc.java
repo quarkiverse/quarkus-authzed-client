@@ -4,14 +4,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@io.quarkus.grpc.common.Generated(value = "by gRPC proto compiler (version 1.54.0)", comments = "Source: authzed/api/v0/developer.proto")
+@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.64.0)", comments = "Source: authzed/api/v0/developer.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class DeveloperServiceGrpc {
 
     private DeveloperServiceGrpc() {
     }
 
-    public static final String SERVICE_NAME = "authzed.api.v0.DeveloperService";
+    public static final java.lang.String SERVICE_NAME = "authzed.api.v0.DeveloperService";
 
     // Static method descriptors that strictly reflect the proto.
     private static volatile io.grpc.MethodDescriptor<com.authzed.api.v0.Developer.EditCheckRequest, com.authzed.api.v0.Developer.EditCheckResponse> getEditCheckMethod;
@@ -552,9 +552,9 @@ public final class DeveloperServiceGrpc {
     private static final class DeveloperServiceMethodDescriptorSupplier extends DeveloperServiceBaseDescriptorSupplier
             implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
 
-        private final String methodName;
+        private final java.lang.String methodName;
 
-        DeveloperServiceMethodDescriptorSupplier(String methodName) {
+        DeveloperServiceMethodDescriptorSupplier(java.lang.String methodName) {
             this.methodName = methodName;
         }
 
