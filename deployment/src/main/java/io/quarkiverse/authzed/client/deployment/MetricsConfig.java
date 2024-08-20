@@ -4,41 +4,38 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 import io.quarkus.runtime.annotations.ConfigGroup;
-import io.quarkus.runtime.annotations.ConfigItem;
+import io.smallrye.config.WithDefault;
 
 @ConfigGroup
-public class MetricsConfig {
+public interface MetricsConfig {
 
     /**
      * Flag to enable http (defaults to true)
      */
-    @ConfigItem(defaultValue = "true")
-    public Boolean enabled;
+    @WithDefault("true")
+    public Boolean enabled();
 
     /**
      * The container port the http will be bound to.
      */
-    @ConfigItem(defaultValue = "9090")
-    public Integer port;
+    @WithDefault("9090")
+    Integer port();
 
     /**
      * Optional host port the http will be bound to.
      * <p>
      * If not defined, the port will be chosen randomly.
      */
-    @ConfigItem
-    public OptionalInt hostPort;
+    OptionalInt hostPort();
 
     /**
      * The path to the TLS certificate.
      */
-    @ConfigItem
-    public Optional<String> tlsCertPath;
+    Optional<String> tlsCertPath();
 
     /**
      * The path to the TLS key.
      */
-    @ConfigItem
-    public Optional<String> tlsKeyPath;
+    Optional<String> tlsKeyPath();
 
 }

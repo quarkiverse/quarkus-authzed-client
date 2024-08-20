@@ -33,41 +33,43 @@ public class AuthzedContext implements AutoCloseable {
     }
 
     private static ManagedChannel createChannel(AuthzedConfig config) {
-        NettyChannelBuilder builder = NettyChannelBuilder.forAddress(config.url.getHost(), config.url.getPort())
+        NettyChannelBuilder builder = NettyChannelBuilder.forAddress(config.url().getHost(), config.url().getPort())
                 .intercept(new IOThreadClientInterceptor());
 
-        if (config.tlsEnabled) {
-            builder = builder.useTransportSecurity().sslContext(createSslContext(config));
+        if (config.tlsEnabled()) {
+            builder.useTransportSecurity().sslContext(createSslContext(config));
         } else {
-            builder = builder.usePlaintext();
+            builder.usePlaintext();
         }
 
-        if (config.keepAliveTime.isPresent()) {
-            builder = builder.keepAliveTime(config.keepAliveTime.getAsInt(), TimeUnit.MILLISECONDS);
+        if (config.keepAliveTime().isPresent()) {
+            builder.keepAliveTime(config.keepAliveTime().getAsInt(), TimeUnit.MILLISECONDS);
         }
 
-        if (config.keepAliveTimeout.isPresent()) {
-            builder = builder.keepAliveTimeout(config.keepAliveTimeout.getAsInt(), TimeUnit.MILLISECONDS);
+        if (config.keepAliveTimeout().isPresent()) {
+            builder.keepAliveTimeout(config.keepAliveTimeout().getAsInt(), TimeUnit.MILLISECONDS);
         }
 
-        if (config.idleTimeout.isPresent()) {
-            builder = builder.idleTimeout(config.idleTimeout.getAsInt(), TimeUnit.MILLISECONDS);
+        if (config.idleTimeout().isPresent()) {
+            builder.idleTimeout(config.idleTimeout().getAsInt(), TimeUnit.MILLISECONDS);
         }
+
         return builder.build();
     }
 
     private static SslContext createSslContext(AuthzedConfig config) {
         SslContextBuilder builder = GrpcSslContexts.forClient();
-        if (config.tlsCaCertPath.isPresent()) {
-            builder = builder.trustManager(new File(config.tlsCaCertPath.get()));
+
+        if (config.tlsCaCertPath().isPresent()) {
+            builder.trustManager(new File(config.tlsCaCertPath().get()));
         }
 
-        if (config.tlsCertPath.isPresent() && config.tlsKeyPath.isPresent()) {
-            if (config.tlsKeyPassphrase.isPresent()) {
-                builder = builder.keyManager(new File(config.tlsCertPath.get()), new File(config.tlsKeyPath.get()),
-                        config.tlsKeyPassphrase.get());
+        if (config.tlsCertPath().isPresent() && config.tlsKeyPath().isPresent()) {
+            if (config.tlsKeyPassphrase().isPresent()) {
+                builder.keyManager(new File(config.tlsCertPath().get()), new File(config.tlsKeyPath().get()),
+                        config.tlsKeyPassphrase().get());
             } else {
-                builder = builder.keyManager(new File(config.tlsCertPath.get()), new File(config.tlsKeyPath.get()));
+                builder.keyManager(new File(config.tlsCertPath().get()), new File(config.tlsKeyPath().get()));
             }
         }
 
@@ -79,7 +81,7 @@ public class AuthzedContext implements AutoCloseable {
     }
 
     private static BearerToken createToken(AuthzedConfig config) {
-        return new BearerToken(config.token);
+        return new BearerToken(config.token());
     }
 
     public AuthzedConfig getConfig() {
