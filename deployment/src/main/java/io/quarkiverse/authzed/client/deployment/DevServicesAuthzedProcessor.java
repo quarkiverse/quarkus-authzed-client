@@ -3,22 +3,11 @@ package io.quarkiverse.authzed.client.deployment;
 import static io.quarkiverse.authzed.client.deployment.AuthzedClientProcessor.FEATURE;
 import static java.lang.String.format;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -87,7 +76,8 @@ public class DevServicesAuthzedProcessor {
             LoggingSetupBuildItem loggingSetupBuildItem,
             GlobalDevServicesConfig devServicesConfig,
             BuildProducer<DevServicesResultBuildItem> devServicesResults) {
-        DevServicesAuthzedConfig currentDevServicesConfiguration = config.devservices;
+
+        DevServicesAuthzedConfig currentDevServicesConfiguration = config.devservices();
 
         // figure out if we need to shut down and restart any existing authzed container
         // if not and the authzed container have already started we just return
@@ -166,7 +156,8 @@ public class DevServicesAuthzedProcessor {
             DevServicesAuthzedConfig devServicesConfig,
             LaunchModeBuildItem launchMode,
             Optional<Duration> timeout) {
-        if (!devServicesConfig.enabled) {
+
+        if (!devServicesConfig.enabled()) {
             // explicitly disabled
             log.debug("Not starting devservices for authzed as it has been disabled in the config");
             return null;
@@ -184,7 +175,7 @@ public class DevServicesAuthzedProcessor {
         }
 
         DockerImageName dockerImageName = DockerImageName
-                .parse(devServicesConfig.imageName.orElse(DevServicesAuthzedConfig.DEFAULT_IMAGE))
+                .parse(devServicesConfig.imageName().orElse(DevServicesAuthzedConfig.DEFAULT_IMAGE))
                 .asCompatibleSubstituteFor(DevServicesAuthzedConfig.DEFAULT_IMAGE);
 
         final Supplier<RunningDevService> defaultAuthzedInstanceSupplier = () -> {
@@ -207,7 +198,7 @@ public class DevServicesAuthzedProcessor {
                         devServicesConfigProperties.put(DASHBOARD_URL_CONFIG_KEY,
                                 container.getDashboardURL().toExternalForm());
                         devServicesConfigProperties.put(METRICS_URL_CONFIG_KEY, container.getMetricsURL().toExternalForm());
-                        devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
+                        devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc().presharedKey());
                         loadSchema(devServicesConfig).ifPresentOrElse(schema -> {
                             log.info("Initializing authorization schema ...");
                             Uni<WriteSchemaResponse> writeSchemaResponse = client.v1().schemaService()
@@ -221,7 +212,7 @@ public class DevServicesAuthzedProcessor {
                                         .writeRelationships(WriteRelationshipsRequest.newBuilder()
                                                 .addUpdates(RelationshipUpdate.newBuilder()
                                                         .setOperation(Operation.valueOf(OPERATION
-                                                                .concat(devServicesConfig.operationType.toUpperCase())))
+                                                                .concat(devServicesConfig.operationType().toUpperCase())))
                                                         .setRelationship(Tuples.parseRelationship(tuple))
                                                         .build())
                                                 .build());
@@ -242,13 +233,13 @@ public class DevServicesAuthzedProcessor {
 
         return authzedContainerLocator
                 .locateContainer(
-                        devServicesConfig.serviceName,
-                        devServicesConfig.shared,
+                        devServicesConfig.serviceName(),
+                        devServicesConfig.shared(),
                         launchMode.getLaunchMode())
                 .map(containerAddress -> {
                     Map<String, String> devServicesConfigProperties = new HashMap<>();
                     devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY, containerAddress.getUrl());
-                    devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc.presharedKey);
+                    devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc().presharedKey());
                     return new RunningDevService(
                             FEATURE,
                             containerAddress.getId(),
@@ -259,9 +250,9 @@ public class DevServicesAuthzedProcessor {
     }
 
     private static Optional<String> loadSchema(DevServicesAuthzedConfig devServicesConfig) {
-        return devServicesConfig.schema
+        return devServicesConfig.schema()
                 .or(() -> {
-                    return devServicesConfig.schemaLocation.map(location -> {
+                    return devServicesConfig.schemaLocation().map(location -> {
                         try {
                             return streamFileOrResource(location).collect(Collectors.joining("\n"));
                         } catch (Throwable x) {
@@ -272,15 +263,15 @@ public class DevServicesAuthzedProcessor {
     }
 
     private static List<String> loadAuthorizationTuples(DevServicesAuthzedConfig devServicesConfig) {
-        return devServicesConfig.authorizationTuples.map(lines -> Arrays.asList(lines.split("\n|\r")))
-                .orElseGet(() -> devServicesConfig.authorizationTuplesLocation.map(location -> {
+        return devServicesConfig.authorizationTuples().map(lines -> Arrays.asList(lines.split("[\n\r]")))
+                .orElseGet(() -> devServicesConfig.authorizationTuplesLocation().map(location -> {
                     try {
                         return streamFileOrResource(location)
                                 .collect(Collectors.toList());
                     } catch (Throwable x) {
                         throw new RuntimeException(format("Unable to load authorization tuples from '%s'", location));
                     }
-                }).orElseGet(() -> Collections.emptyList()));
+                }).orElseGet(Collections::emptyList));
     }
 
     private static Stream<String> streamFileOrResource(String location) {
@@ -319,20 +310,70 @@ public class DevServicesAuthzedProcessor {
             Consumer<AuthzedClient> consumer) {
         URL instanceURL;
 
-        AuthzedConfig config = new AuthzedConfig();
-        config.token = devServicesAuthzedConfig.grpc.presharedKey;
-        config.tlsEnabled = devServicesAuthzedConfig.grpc.tlsCertPath.isPresent()
-                || devServicesAuthzedConfig.grpc.tlsKeyPath.isPresent();
-        config.idleTimeout = OptionalInt.empty();
-        config.keepAliveTime = OptionalInt.empty();
-        config.keepAliveTimeout = OptionalInt.empty();
-        try {
-            instanceURL = new URL(config.tlsEnabled ? "https" : "http", container.getHost(), container.getGrpcPort(), "");
-        } catch (MalformedURLException e) {
-            // Should not happen
-            throw new RuntimeException(e);
-        }
-        config.url = instanceURL;
+        var config = new AuthzedConfig() {
+
+            @Override
+            public URL url() {
+                try {
+                    return new URL(tlsEnabled() ? "https" : "http", container.getHost(), container.getGrpcPort(), "");
+                } catch (MalformedURLException e) {
+                    // Should not happen
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public boolean tlsEnabled() {
+                return devServicesAuthzedConfig.grpc().tlsCertPath().isPresent() ||
+                        devServicesAuthzedConfig.grpc().tlsKeyPath().isPresent();
+            }
+
+            @Override
+            public Optional<String> tlsCaCertPath() {
+                return Optional.empty();
+            }
+
+            @Override
+            public Optional<String> tlsCertPath() {
+                return Optional.empty();
+            }
+
+            @Override
+            public Optional<String> tlsKeyPath() {
+                return Optional.empty();
+            }
+
+            @Override
+            public Optional<String> tlsKeyPassphrase() {
+                return Optional.empty();
+            }
+
+            @Override
+            public Optional<String> tlsKeyAlgo() {
+                return Optional.empty();
+            }
+
+            @Override
+            public String token() {
+                return devServicesAuthzedConfig.grpc().presharedKey();
+            }
+
+            @Override
+            public OptionalInt keepAliveTime() {
+                return OptionalInt.empty();
+            }
+
+            @Override
+            public OptionalInt keepAliveTimeout() {
+                return OptionalInt.empty();
+            }
+
+            @Override
+            public OptionalInt idleTimeout() {
+                return OptionalInt.empty();
+            }
+        };
+
         try (AuthzedClient client = new AuthzedClient(config)) {
             consumer.accept(client);
         } catch (Exception e) {
@@ -357,113 +398,113 @@ public class DevServicesAuthzedProcessor {
 
             configureGrpc();
 
-            if (config.http.enabled) {
+            if (config.http().enabled()) {
                 configureHttp();
             }
 
-            if (config.dashboard.enabled) {
+            if (config.dashboard().enabled()) {
                 configureDashboard();
             }
 
-            if (config.metrics.enabled) {
+            if (config.metrics().enabled()) {
                 configureMetrics();
             }
             withCommand(command.toArray(new String[command.size()]));
             withNetwork(Network.SHARED);
-            if (config.serviceName != null) { // Only adds the label in dev mode.
-                withLabel(DEV_SERVICE_LABEL, config.serviceName);
+            if (config.serviceName() != null) { // Only adds the label in dev mode.
+                withLabel(DEV_SERVICE_LABEL, config.serviceName());
             }
         }
 
         private void configureGrpc() {
             command.add("--grpc-preshared-key");
-            command.add(config.grpc.presharedKey);
+            command.add(config.grpc().presharedKey());
             command.add("--grpc-enabled");
             command.add("--grpc-addr");
-            command.add(":" + config.grpc.port);
-            config.grpc.tlsCertPath.ifPresent(path -> {
+            command.add(":" + config.grpc().port());
+            config.grpc().tlsCertPath().ifPresent(path -> {
                 command.add("--grpc-tls-cert-path");
                 command.add(path);
             });
-            config.grpc.tlsKeyPath.ifPresent(key -> {
+            config.grpc().tlsKeyPath().ifPresent(key -> {
                 command.add("--grpc-tls-cert-key");
                 command.add(key);
             });
 
-            if (config.grpc.hostPort.isPresent()) {
-                addFixedExposedPort(config.grpc.hostPort.getAsInt(), config.grpc.port);
+            if (config.grpc().hostPort().isPresent()) {
+                addFixedExposedPort(config.grpc().hostPort().getAsInt(), config.grpc().port());
             } else {
-                addExposedPort(config.grpc.port);
+                addExposedPort(config.grpc().port());
             }
         }
 
         private void configureHttp() {
             command.add("--http-enabled");
             command.add("--http-addr");
-            command.add(":" + config.http.port);
-            config.http.tlsCertPath.ifPresent(path -> {
+            command.add(":" + config.http().port());
+            config.http().tlsCertPath().ifPresent(path -> {
                 command.add("--http-tls-cert-path");
                 command.add(path);
             });
-            config.http.tlsKeyPath.ifPresent(key -> {
+            config.http().tlsKeyPath().ifPresent(key -> {
                 command.add("--http-tls-cert-key");
                 command.add(key);
             });
 
-            if (config.http.hostPort.isPresent()) {
-                addFixedExposedPort(config.http.hostPort.getAsInt(), config.http.port);
+            if (config.http().hostPort().isPresent()) {
+                addFixedExposedPort(config.http().hostPort().getAsInt(), config.http().port());
             } else {
-                addExposedPort(config.http.port);
+                addExposedPort(config.http().port());
             }
         }
 
         private void configureDashboard() {
             command.add("--dashboard-enabled");
             command.add("--dashboard-addr");
-            command.add(":" + config.dashboard.port);
-            config.dashboard.tlsCertPath.ifPresent(path -> {
+            command.add(":" + config.dashboard().port());
+            config.dashboard().tlsCertPath().ifPresent(path -> {
                 command.add("--dashboard-tls-cert-path");
                 command.add(path);
             });
-            config.dashboard.tlsKeyPath.ifPresent(key -> {
+            config.dashboard().tlsKeyPath().ifPresent(key -> {
                 command.add("--dashboard-tls-cert-key");
                 command.add(key);
             });
 
-            if (config.dashboard.hostPort.isPresent()) {
-                addFixedExposedPort(config.dashboard.hostPort.getAsInt(), config.dashboard.port);
+            if (config.dashboard().hostPort().isPresent()) {
+                addFixedExposedPort(config.dashboard().hostPort().getAsInt(), config.dashboard().port());
             } else {
-                addExposedPort(config.dashboard.port);
+                addExposedPort(config.dashboard().port());
             }
         }
 
         private void configureMetrics() {
             command.add("--metrics-enabled");
             command.add("--metrics-addr");
-            command.add(":" + config.metrics.port);
-            config.metrics.tlsCertPath.ifPresent(path -> {
+            command.add(":" + config.metrics().port());
+            config.metrics().tlsCertPath().ifPresent(path -> {
                 command.add("--metrics-tls-cert-path");
                 command.add(path);
             });
-            config.metrics.tlsKeyPath.ifPresent(key -> {
+            config.metrics().tlsKeyPath().ifPresent(key -> {
                 command.add("--metrics-tls-cert-key");
                 command.add(key);
             });
 
-            if (config.metrics.hostPort.isPresent()) {
-                addFixedExposedPort(config.metrics.hostPort.getAsInt(), config.metrics.port);
+            if (config.metrics().hostPort().isPresent()) {
+                addFixedExposedPort(config.metrics().hostPort().getAsInt(), config.metrics().port());
             } else {
-                addExposedPort(config.metrics.port);
+                addExposedPort(config.metrics().port());
             }
         }
 
         public Integer getGrpcPort() {
-            return config.grpc.hostPort.orElseGet(() -> super.getMappedPort(config.grpc.port));
+            return config.grpc().hostPort().orElseGet(() -> super.getMappedPort(config.grpc().port()));
         }
 
         public URL getGrpcURL() {
             try {
-                boolean useHttps = config.grpc.tlsCertPath.isPresent() && config.grpc.tlsKeyPath.isPresent();
+                boolean useHttps = config.grpc().tlsCertPath().isPresent() && config.grpc().tlsKeyPath().isPresent();
                 return new URL(useHttps ? "https" : "http", getHost(), getGrpcPort(), "");
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
@@ -471,12 +512,12 @@ public class DevServicesAuthzedProcessor {
         }
 
         public Integer getHttpPort() {
-            return config.http.hostPort.orElseGet(() -> super.getMappedPort(config.http.port));
+            return config.http().hostPort().orElseGet(() -> super.getMappedPort(config.http().port()));
         }
 
         public URL getHttpURL() {
             try {
-                boolean useHttps = config.http.tlsCertPath.isPresent() && config.http.tlsKeyPath.isPresent();
+                boolean useHttps = config.http().tlsCertPath().isPresent() && config.http().tlsKeyPath().isPresent();
                 return new URL(useHttps ? "https" : "http", getHost(), getHttpPort(), "/v1");
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
@@ -484,12 +525,12 @@ public class DevServicesAuthzedProcessor {
         }
 
         public Integer getDashboardPort() {
-            return config.dashboard.hostPort.orElseGet(() -> super.getMappedPort(config.dashboard.port));
+            return config.dashboard().hostPort().orElseGet(() -> super.getMappedPort(config.dashboard().port()));
         }
 
         public URL getDashboardURL() {
             try {
-                boolean useHttps = config.dashboard.tlsCertPath.isPresent() && config.dashboard.tlsKeyPath.isPresent();
+                boolean useHttps = config.dashboard().tlsCertPath().isPresent() && config.dashboard().tlsKeyPath().isPresent();
                 return new URL(useHttps ? "https" : "http", getHost(), getDashboardPort(), "");
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
@@ -497,12 +538,12 @@ public class DevServicesAuthzedProcessor {
         }
 
         public Integer getMetricsPort() {
-            return config.metrics.hostPort.orElseGet(() -> super.getMappedPort(config.metrics.port));
+            return config.metrics().hostPort().orElseGet(() -> super.getMappedPort(config.metrics().port()));
         }
 
         public URL getMetricsURL() {
             try {
-                boolean useHttps = config.metrics.tlsCertPath.isPresent() && config.metrics.tlsKeyPath.isPresent();
+                boolean useHttps = config.metrics().tlsCertPath().isPresent() && config.metrics().tlsKeyPath().isPresent();
                 return new URL(useHttps ? "https" : "http", getHost(), getMetricsPort(), "");
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);

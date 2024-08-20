@@ -1,15 +1,17 @@
 package io.quarkiverse.authzed.client.deployment;
 
-import io.quarkus.runtime.annotations.ConfigItem;
+import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkus.runtime.annotations.ConfigPhase;
 import io.quarkus.runtime.annotations.ConfigRoot;
+import io.smallrye.config.ConfigMapping;
 
-@ConfigRoot(name = "authzed", phase = ConfigPhase.BUILD_TIME)
-public class AuthzedBuildTimeConfig {
+@ConfigRoot(phase = ConfigPhase.BUILD_TIME)
+@ConfigMapping(prefix = AuthzedConfig.PREFIX)
+public interface AuthzedBuildTimeConfig {
 
     /**
      * Dev services configuration.
      */
-    @ConfigItem
-    public DevServicesAuthzedConfig devservices;
+    DevServicesAuthzedConfig devservices();
+
 }
