@@ -88,11 +88,6 @@ public interface DevServicesAuthzedConfig {
     GrpcConfig grpc();
 
     /**
-     * Dashboard configuration
-     */
-    DashboardConfig dashboard();
-
-    /**
      * Http configuration
      */
     HttpConfig http();
