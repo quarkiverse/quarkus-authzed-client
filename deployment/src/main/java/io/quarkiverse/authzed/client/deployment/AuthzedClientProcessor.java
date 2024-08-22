@@ -2,6 +2,8 @@ package io.quarkiverse.authzed.client.deployment;
 
 import static io.quarkus.deployment.annotations.ExecutionTime.RUNTIME_INIT;
 
+import java.util.Optional;
+
 import jakarta.enterprise.context.ApplicationScoped;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
@@ -13,6 +15,7 @@ import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.*;
+import io.quarkus.tls.TlsRegistryBuildItem;
 import io.quarkus.vertx.deployment.VertxBuildItem;
 
 class AuthzedClientProcessor {
@@ -31,11 +34,15 @@ class AuthzedClientProcessor {
             AuthzedConfig runtimeConfig,
             SslNativeConfigBuildItem sslNativeConfig,
             VertxBuildItem vertx,
+            Optional<TlsRegistryBuildItem> tlsRegistryBuildItem,
             ShutdownContextBuildItem shutdownContextBuildItem,
             AuthzedRecorder recorder,
             Capabilities capabilities,
             BuildProducer<SyntheticBeanBuildItem> syntheticBeans,
             BuildProducer<ExtensionSslNativeSupportBuildItem> sslNativeSupport) {
+
+        var tlsRegistrySupplier = tlsRegistryBuildItem.map(TlsRegistryBuildItem::registry)
+                .orElse(() -> null);
 
         sslNativeSupport.produce(new ExtensionSslNativeSupportBuildItem(FEATURE));
 
@@ -43,7 +50,7 @@ class AuthzedClientProcessor {
                 SyntheticBeanBuildItem.configure(AuthzedClient.class)
                         .scope(ApplicationScoped.class)
                         .setRuntimeInit()
-                        .runtimeValue(recorder.createClient(runtimeConfig))
+                        .runtimeValue(recorder.createClient(runtimeConfig, tlsRegistrySupplier))
                         .done());
 
         return new ServiceStartBuildItem("authzed-client");

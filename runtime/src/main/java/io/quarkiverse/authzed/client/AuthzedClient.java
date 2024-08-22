@@ -1,10 +1,13 @@
 package io.quarkiverse.authzed.client;
 
+import java.net.URL;
+
 import io.quarkiverse.authzed.client.blocking.BlockingAuthzedClient;
 import io.quarkiverse.authzed.client.reactive.AuthzedClientV0;
 import io.quarkiverse.authzed.client.reactive.AuthzedClientV1;
 import io.quarkiverse.authzed.client.reactive.AuthzedClientV1Alpha1;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
+import io.quarkus.tls.TlsConfigurationRegistry;
 
 public class AuthzedClient implements AutoCloseable {
 
@@ -14,8 +17,12 @@ public class AuthzedClient implements AutoCloseable {
         this.context = context;
     }
 
-    public AuthzedClient(AuthzedConfig config) {
-        this(AuthzedContext.create(config));
+    public AuthzedClient(AuthzedConfig config, TlsConfigurationRegistry tlsRegistry) {
+        this(AuthzedContext.create(config, tlsRegistry));
+    }
+
+    public AuthzedClient(URL url, String presharedKey) {
+        this(AuthzedContext.create(url, presharedKey));
     }
 
     public AuthzedClientV0 v0() {

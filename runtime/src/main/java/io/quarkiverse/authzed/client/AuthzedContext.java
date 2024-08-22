@@ -1,43 +1,78 @@
 package io.quarkiverse.authzed.client;
 
-import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.SSLException;
+import org.jboss.logging.Logger;
 
 import io.grpc.ManagedChannel;
 import io.grpc.netty.GrpcSslContexts;
 import io.grpc.netty.NettyChannelBuilder;
-import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.*;
+import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkiverse.authzed.utils.BearerToken;
 import io.quarkus.grpc.runtime.supports.IOThreadClientInterceptor;
+import io.quarkus.tls.TlsConfiguration;
+import io.quarkus.tls.TlsConfigurationRegistry;
 
 public class AuthzedContext implements AutoCloseable {
-
-    private final AuthzedConfig config;
 
     private final ManagedChannel channel;
 
     private final BearerToken bearerToken;
 
-    public AuthzedContext(AuthzedConfig config, ManagedChannel channel, BearerToken bearerToken) {
-        this.config = config;
+    public AuthzedContext(ManagedChannel channel, BearerToken bearerToken) {
         this.channel = channel;
         this.bearerToken = bearerToken;
     }
 
-    public static AuthzedContext create(AuthzedConfig config) {
-        return new AuthzedContext(config, createChannel(config), createToken(config));
+    public static AuthzedContext create(AuthzedConfig config, TlsConfigurationRegistry tlsRegistry) {
+        return new AuthzedContext(createChannel(config, tlsRegistry), createToken(config));
     }
 
-    private static ManagedChannel createChannel(AuthzedConfig config) {
+    public static AuthzedContext create(URL url, String presharedKey) {
+        Logger.getLogger(AuthzedContext.class).infof("Creating channel for Authzed with static url: %s", url);
+
+        NettyChannelBuilder builder = NettyChannelBuilder.forAddress(url.getHost(), url.getPort())
+                .intercept(new IOThreadClientInterceptor());
+        try {
+            if (url.getProtocol().equals("https")) {
+                Logger.getLogger(AuthzedContext.class).infof("Using TLS configuration");
+                builder.useTransportSecurity()
+                        .sslContext(GrpcSslContexts.forClient()
+                                .trustManager(InsecureTrustManagerFactory.INSTANCE)
+                                .build());
+            } else {
+                Logger.getLogger(AuthzedContext.class).infof("Using plaintext configuration");
+                builder.usePlaintext();
+            }
+
+            return new AuthzedContext(builder.build(), presharedKey != null ? new BearerToken(presharedKey) : null);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static ManagedChannel createChannel(AuthzedConfig config, TlsConfigurationRegistry tlsRegistry) {
         NettyChannelBuilder builder = NettyChannelBuilder.forAddress(config.url().getHost(), config.url().getPort())
                 .intercept(new IOThreadClientInterceptor());
 
-        if (config.tlsEnabled()) {
-            builder.useTransportSecurity().sslContext(createSslContext(config));
+        if (config.url().getProtocol().equals("https")) {
+            TlsConfiguration.from(tlsRegistry, config.tlsConfigurationName())
+                    .or(tlsRegistry::getDefault)
+                    .ifPresentOrElse(tlsConfig -> {
+                        try {
+                            builder.sslContext(createSslContext(tlsConfig));
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }, () -> {
+                        throw new RuntimeException("No TLS configuration found");
+                    });
         } else {
             builder.usePlaintext();
         }
@@ -57,35 +92,44 @@ public class AuthzedContext implements AutoCloseable {
         return builder.build();
     }
 
-    private static SslContext createSslContext(AuthzedConfig config) {
-        SslContextBuilder builder = GrpcSslContexts.forClient();
+    private static SslContext createSslContext(TlsConfiguration tlsConfig) throws Exception {
 
-        if (config.tlsCaCertPath().isPresent()) {
-            builder.trustManager(new File(config.tlsCaCertPath().get()));
-        }
+        var base = GrpcSslContexts.forClient().build();
+        var sslOptions = tlsConfig.getSSLOptions();
 
-        if (config.tlsCertPath().isPresent() && config.tlsKeyPath().isPresent()) {
-            if (config.tlsKeyPassphrase().isPresent()) {
-                builder.keyManager(new File(config.tlsCertPath().get()), new File(config.tlsKeyPath().get()),
-                        config.tlsKeyPassphrase().get());
-            } else {
-                builder.keyManager(new File(config.tlsCertPath().get()), new File(config.tlsKeyPath().get()));
+        var cipherSuiteFilter = new CipherSuiteFilter() {
+            @Override
+            public String[] filterCipherSuites(Iterable<String> ciphers, List<String> defaultCiphers,
+                    Set<String> supportedCiphers) {// Join default ciphers with supported ciphers, prioritizing supported ciphers
+                var allCiphers = new ArrayList<>(supportedCiphers);
+                for (var cipher : ciphers) {
+                    if (cipher == null) {
+                        continue;
+                    }
+                    if (supportedCiphers.contains(cipher)) {
+                        allCiphers.add(cipher);
+                    }
+                }
+                allCiphers.addAll(defaultCiphers);
+                return allCiphers.toArray(new String[] {});
             }
-        }
+        };
 
-        try {
-            return builder.build();
-        } catch (SSLException e) {
-            throw new RuntimeException(e);
-        }
+        return new JdkSslContext(tlsConfig.createSSLContext(), base.isClient(),
+                sslOptions.getEnabledCipherSuites().isEmpty() ? base.cipherSuites() : sslOptions.getEnabledCipherSuites(),
+                cipherSuiteFilter, new ApplicationProtocolConfig(ApplicationProtocolConfig.Protocol.ALPN,
+                        ApplicationProtocolConfig.SelectorFailureBehavior.FATAL_ALERT,
+                        ApplicationProtocolConfig.SelectedListenerFailureBehavior.FATAL_ALERT,
+                        ApplicationProtocolNames.HTTP_2),
+                tlsConfig.getKeyStore() != null ? ClientAuth.REQUIRE : ClientAuth.NONE,
+                sslOptions.getEnabledSecureTransportProtocols().isEmpty()
+                        ? base.applicationProtocolNegotiator().protocols().toArray(new String[] {})
+                        : sslOptions.getEnabledSecureTransportProtocols().toArray(new String[] {}),
+                true);
     }
 
     private static BearerToken createToken(AuthzedConfig config) {
         return new BearerToken(config.token());
-    }
-
-    public AuthzedConfig getConfig() {
-        return config;
     }
 
     public ManagedChannel getChannel() {

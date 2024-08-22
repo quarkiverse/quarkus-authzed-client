@@ -37,4 +37,11 @@ public interface HttpConfig {
      */
     Optional<String> tlsKeyPath();
 
+    /**
+     * URL of the devservices HTTP endpoint.
+     * <p>
+     * Note: This is only used to report the URL to the user.
+     */
+    Optional<String> url();
+
 }

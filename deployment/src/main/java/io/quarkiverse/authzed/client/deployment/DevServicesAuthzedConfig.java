@@ -6,12 +6,6 @@ import io.smallrye.config.WithDefault;
 
 public interface DevServicesAuthzedConfig {
 
-    String DEFAULT_IMAGE = "authzed/spicedb";
-
-    String DEFAULT_IMAGE_TAG = "v1.11.0";
-
-    String DEFAULT_SERVICE_NAME = "authzed";
-
     /**
      * If DevServices has been explicitly enabled or disabled. DevServices is generally enabled
      * by default, unless there is an existing configuration present.
