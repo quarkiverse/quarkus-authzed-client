@@ -61,7 +61,6 @@ public class DevServicesAuthzedProcessor {
     static final String DS_CONFIG_PREFIX = "quarkus.authzed.devservices.";
     static final String GRPC_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "grpc.url";
     static final String HTTP_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "http.url";
-    static final String DASH_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "dashboard.url";
     static final String METRICS_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "metrics.url";
 
     static final int AUTHZED_EXPOSED_PORT = 50051;
@@ -202,7 +201,6 @@ public class DevServicesAuthzedProcessor {
                         devServicesConfigProperties.put(URL_CONFIG_KEY, container.getGrpcURL().toExternalForm());
                         devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY, container.getGrpcURL().toExternalForm());
                         devServicesConfigProperties.put(HTTP_URL_CONFIG_KEY, container.getHttpURL().toExternalForm());
-                        devServicesConfigProperties.put(DASH_URL_CONFIG_KEY, container.getDashboardURL().toExternalForm());
                         devServicesConfigProperties.put(METRICS_URL_CONFIG_KEY, container.getMetricsURL().toExternalForm());
                         devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc().presharedKey());
                         loadSchema(devServicesConfig).ifPresentOrElse(schema -> {
@@ -346,15 +344,13 @@ public class DevServicesAuthzedProcessor {
                 configureHttp();
             }
 
-            if (config.dashboard().enabled()) {
-                configureDashboard();
-            }
-
             if (config.metrics().enabled()) {
                 configureMetrics();
             }
+
             withCommand(command.toArray(new String[command.size()]));
             withNetwork(Network.SHARED);
+
             if (config.serviceName() != null) { // Only adds the label in dev mode.
                 withLabel(DEV_SERVICE_LABEL, config.serviceName());
             }
@@ -410,30 +406,6 @@ public class DevServicesAuthzedProcessor {
             }
         }
 
-        private void configureDashboard() {
-            command.add("--dashboard-enabled");
-            command.add("--dashboard-addr");
-            command.add(":" + config.dashboard().port());
-            config.dashboard().tlsCertPath().ifPresent(path -> {
-                var containerPath = "/certs/dashboard/tls.crt";
-                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
-                command.add("--dashboard-tls-cert-path");
-                command.add(containerPath);
-            });
-            config.dashboard().tlsKeyPath().ifPresent(path -> {
-                var containerPath = "/certs/dashboard/tls.key";
-                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
-                command.add("--dashboard-tls-key-path");
-                command.add(containerPath);
-            });
-
-            if (config.dashboard().hostPort().isPresent()) {
-                addFixedExposedPort(config.dashboard().hostPort().getAsInt(), config.dashboard().port());
-            } else {
-                addExposedPort(config.dashboard().port());
-            }
-        }
-
         private void configureMetrics() {
             command.add("--metrics-enabled");
             command.add("--metrics-addr");
@@ -479,19 +451,6 @@ public class DevServicesAuthzedProcessor {
             try {
                 boolean useHttps = config.http().tlsCertPath().isPresent() && config.http().tlsKeyPath().isPresent();
                 return new URL(useHttps ? "https" : "http", getHost(), getHttpPort(), "/v1");
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        public Integer getDashboardPort() {
-            return config.dashboard().hostPort().orElseGet(() -> super.getMappedPort(config.dashboard().port()));
-        }
-
-        public URL getDashboardURL() {
-            try {
-                boolean useHttps = config.dashboard().tlsCertPath().isPresent() && config.dashboard().tlsKeyPath().isPresent();
-                return new URL(useHttps ? "https" : "http", getHost(), getDashboardPort(), "");
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
             }
