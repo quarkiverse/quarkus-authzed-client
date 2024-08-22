@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.quarkiverse.authzed</groupId>
     <artifactId>quarkus-authzed-client-grpc-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>999-SNAPSHOT</version>
   </parent>
   <artifactId>quarkus-authzed-grpc-generator</artifactId>
   <name>Quarkus - Authzed Client - gRPC - Generator</name>

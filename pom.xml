@@ -8,7 +8,7 @@
   </parent>
   <groupId>io.quarkiverse.authzed</groupId>
   <artifactId>quarkus-authzed-client-parent</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>999-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Quarkus - Authzed Client - Parent</name>
   <modules>
