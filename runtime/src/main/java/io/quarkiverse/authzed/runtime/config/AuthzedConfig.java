@@ -7,7 +7,6 @@ import java.util.OptionalInt;
 import io.quarkus.runtime.annotations.ConfigPhase;
 import io.quarkus.runtime.annotations.ConfigRoot;
 import io.smallrye.config.ConfigMapping;
-import io.smallrye.config.WithDefault;
 
 @ConfigRoot(phase = ConfigPhase.RUN_TIME)
 @ConfigMapping(prefix = AuthzedConfig.PREFIX)
@@ -22,35 +21,13 @@ public interface AuthzedConfig {
     URL url();
 
     /**
-     * The token to use to connect.
+     * The name of the TLS configuration to use.
+     * <p>
+     * If not set and the default TLS configuration is configured ({@code quarkus.tls.*}) then that will be used.
+     * If a name is configured, it uses the configuration from {@code quarkus.tls.<name>.*}
+     * If a name is configured, but no TLS configuration is found with that name then an error will be thrown.
      */
-    @WithDefault("false")
-    boolean tlsEnabled();
-
-    /**
-     * The path to the file that holds certificates from Certified Authorities.
-     */
-    Optional<String> tlsCaCertPath();
-
-    /**
-     * The path to the TLS certificate.
-     */
-    Optional<String> tlsCertPath();
-
-    /**
-     * The path to the TLS certificate.
-     */
-    Optional<String> tlsKeyPath();
-
-    /**
-     * The TLS key file passphrase.
-     */
-    Optional<String> tlsKeyPassphrase();
-
-    /**
-     * The TLS key file passphrase.
-     */
-    Optional<String> tlsKeyAlgo();
+    Optional<String> tlsConfigurationName();
 
     /**
      * The token to use to connect.

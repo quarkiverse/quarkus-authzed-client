@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.jboss.logging.Logger;
+import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
 import org.testcontainers.containers.wait.strategy.Wait;
@@ -27,7 +28,6 @@ import com.authzed.api.v1.SchemaServiceOuterClass;
 import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
-import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkiverse.authzed.utils.Tuples;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -48,15 +48,21 @@ import io.smallrye.mutiny.Uni;
 public class DevServicesAuthzedProcessor {
 
     private static final Logger log = Logger.getLogger(DevServicesAuthzedProcessor.class);
+
+    static final String DEFAULT_IMAGE_TAG = "v1.35.2";
+    static final String DEFAULT_IMAGE = "authzed/spicedb:" + DEFAULT_IMAGE_TAG;
+
     static final String CONFIG_PREFIX = "quarkus.authzed.";
-    public static final String OPERATION = "OPERATION_";
+    static final String OPERATION = "OPERATION_";
 
-    static final String GRPC_URL_CONFIG_KEY = CONFIG_PREFIX + "url";
-    static final String HTTP_URL_CONFIG_KEY = CONFIG_PREFIX + "http.url";
-    static final String DASHBOARD_URL_CONFIG_KEY = CONFIG_PREFIX + "dashboard.url";
-    static final String METRICS_URL_CONFIG_KEY = CONFIG_PREFIX + "metrics.url";
-
+    static final String URL_CONFIG_KEY = CONFIG_PREFIX + "url";
     static final String TOKEN_CONFIG_KEY = CONFIG_PREFIX + "token";
+
+    static final String DS_CONFIG_PREFIX = "quarkus.authzed.devservices.";
+    static final String GRPC_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "grpc.url";
+    static final String HTTP_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "http.url";
+    static final String DASH_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "dashboard.url";
+    static final String METRICS_URL_CONFIG_KEY = DS_CONFIG_PREFIX + "metrics.url";
 
     static final int AUTHZED_EXPOSED_PORT = 50051;
     static final String DEV_SERVICE_LABEL = "quarkus-dev-service-authzed";
@@ -115,8 +121,8 @@ public class DevServicesAuthzedProcessor {
                             "Other Quarkus applications in dev mode will find the " +
                                     "instance automatically. For Quarkus applications in production mode, you can connect to" +
                                     " this by starting your application with -D%s=%s -D%s=%s",
-                            GRPC_URL_CONFIG_KEY,
-                            devService.getConfig().get(GRPC_URL_CONFIG_KEY),
+                            URL_CONFIG_KEY,
+                            devService.getConfig().get(URL_CONFIG_KEY),
                             TOKEN_CONFIG_KEY,
                             devService.getConfig().get(TOKEN_CONFIG_KEY));
                 }
@@ -163,20 +169,20 @@ public class DevServicesAuthzedProcessor {
             return null;
         }
 
-        boolean needToStart = !ConfigUtils.isPropertyPresent(GRPC_URL_CONFIG_KEY);
+        boolean needToStart = !ConfigUtils.isPropertyPresent(URL_CONFIG_KEY);
         if (!needToStart) {
             log.debug("Not starting devservices for default authzed client as url has been provided");
             return null;
         }
 
         if (!dockerStatusBuildItem.isContainerRuntimeAvailable()) {
-            log.warn("Please configure " + GRPC_URL_CONFIG_KEY + " or get a working docker instance");
+            log.warn("Please configure " + URL_CONFIG_KEY + " or get a working docker instance");
             return null;
         }
 
         DockerImageName dockerImageName = DockerImageName
-                .parse(devServicesConfig.imageName().orElse(DevServicesAuthzedConfig.DEFAULT_IMAGE))
-                .asCompatibleSubstituteFor(DevServicesAuthzedConfig.DEFAULT_IMAGE);
+                .parse(devServicesConfig.imageName().orElse(DEFAULT_IMAGE))
+                .asCompatibleSubstituteFor(DEFAULT_IMAGE);
 
         final Supplier<RunningDevService> defaultAuthzedInstanceSupplier = () -> {
             QuarkusAuthzedContainer container = new QuarkusAuthzedContainer(dockerImageName, devServicesConfig)
@@ -193,10 +199,10 @@ public class DevServicesAuthzedProcessor {
                     container,
                     devServicesConfig,
                     client -> {
+                        devServicesConfigProperties.put(URL_CONFIG_KEY, container.getGrpcURL().toExternalForm());
                         devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY, container.getGrpcURL().toExternalForm());
                         devServicesConfigProperties.put(HTTP_URL_CONFIG_KEY, container.getHttpURL().toExternalForm());
-                        devServicesConfigProperties.put(DASHBOARD_URL_CONFIG_KEY,
-                                container.getDashboardURL().toExternalForm());
+                        devServicesConfigProperties.put(DASH_URL_CONFIG_KEY, container.getDashboardURL().toExternalForm());
                         devServicesConfigProperties.put(METRICS_URL_CONFIG_KEY, container.getMetricsURL().toExternalForm());
                         devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc().presharedKey());
                         loadSchema(devServicesConfig).ifPresentOrElse(schema -> {
@@ -238,7 +244,7 @@ public class DevServicesAuthzedProcessor {
                         launchMode.getLaunchMode())
                 .map(containerAddress -> {
                     Map<String, String> devServicesConfigProperties = new HashMap<>();
-                    devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY, containerAddress.getUrl());
+                    devServicesConfigProperties.put(URL_CONFIG_KEY, containerAddress.getUrl());
                     devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc().presharedKey());
                     return new RunningDevService(
                             FEATURE,
@@ -308,73 +314,11 @@ public class DevServicesAuthzedProcessor {
 
     private static void withClient(QuarkusAuthzedContainer container, DevServicesAuthzedConfig devServicesAuthzedConfig,
             Consumer<AuthzedClient> consumer) {
-        URL instanceURL;
 
-        var config = new AuthzedConfig() {
+        var url = container.getGrpcURL();
+        var presharedKey = devServicesAuthzedConfig.grpc().presharedKey();
 
-            @Override
-            public URL url() {
-                try {
-                    return new URL(tlsEnabled() ? "https" : "http", container.getHost(), container.getGrpcPort(), "");
-                } catch (MalformedURLException e) {
-                    // Should not happen
-                    throw new RuntimeException(e);
-                }
-            }
-
-            @Override
-            public boolean tlsEnabled() {
-                return devServicesAuthzedConfig.grpc().tlsCertPath().isPresent() ||
-                        devServicesAuthzedConfig.grpc().tlsKeyPath().isPresent();
-            }
-
-            @Override
-            public Optional<String> tlsCaCertPath() {
-                return Optional.empty();
-            }
-
-            @Override
-            public Optional<String> tlsCertPath() {
-                return Optional.empty();
-            }
-
-            @Override
-            public Optional<String> tlsKeyPath() {
-                return Optional.empty();
-            }
-
-            @Override
-            public Optional<String> tlsKeyPassphrase() {
-                return Optional.empty();
-            }
-
-            @Override
-            public Optional<String> tlsKeyAlgo() {
-                return Optional.empty();
-            }
-
-            @Override
-            public String token() {
-                return devServicesAuthzedConfig.grpc().presharedKey();
-            }
-
-            @Override
-            public OptionalInt keepAliveTime() {
-                return OptionalInt.empty();
-            }
-
-            @Override
-            public OptionalInt keepAliveTimeout() {
-                return OptionalInt.empty();
-            }
-
-            @Override
-            public OptionalInt idleTimeout() {
-                return OptionalInt.empty();
-            }
-        };
-
-        try (AuthzedClient client = new AuthzedClient(config)) {
+        try (AuthzedClient client = new AuthzedClient(url, presharedKey)) {
             consumer.accept(client);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -423,12 +367,16 @@ public class DevServicesAuthzedProcessor {
             command.add("--grpc-addr");
             command.add(":" + config.grpc().port());
             config.grpc().tlsCertPath().ifPresent(path -> {
+                var containerPath = "/certs/grpc/tls.crt";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
                 command.add("--grpc-tls-cert-path");
-                command.add(path);
+                command.add(containerPath);
             });
-            config.grpc().tlsKeyPath().ifPresent(key -> {
-                command.add("--grpc-tls-cert-key");
-                command.add(key);
+            config.grpc().tlsKeyPath().ifPresent(path -> {
+                var containerPath = "/certs/grpc/tls.key";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
+                command.add("--grpc-tls-key-path");
+                command.add(containerPath);
             });
 
             if (config.grpc().hostPort().isPresent()) {
@@ -443,12 +391,16 @@ public class DevServicesAuthzedProcessor {
             command.add("--http-addr");
             command.add(":" + config.http().port());
             config.http().tlsCertPath().ifPresent(path -> {
+                var containerPath = "/certs/http/tls.crt";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
                 command.add("--http-tls-cert-path");
-                command.add(path);
+                command.add(containerPath);
             });
-            config.http().tlsKeyPath().ifPresent(key -> {
-                command.add("--http-tls-cert-key");
-                command.add(key);
+            config.http().tlsKeyPath().ifPresent(path -> {
+                var containerPath = "/certs/http/tls.key";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
+                command.add("--http-tls-key-path");
+                command.add(containerPath);
             });
 
             if (config.http().hostPort().isPresent()) {
@@ -463,12 +415,16 @@ public class DevServicesAuthzedProcessor {
             command.add("--dashboard-addr");
             command.add(":" + config.dashboard().port());
             config.dashboard().tlsCertPath().ifPresent(path -> {
+                var containerPath = "/certs/dashboard/tls.crt";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
                 command.add("--dashboard-tls-cert-path");
-                command.add(path);
+                command.add(containerPath);
             });
-            config.dashboard().tlsKeyPath().ifPresent(key -> {
-                command.add("--dashboard-tls-cert-key");
-                command.add(key);
+            config.dashboard().tlsKeyPath().ifPresent(path -> {
+                var containerPath = "/certs/dashboard/tls.key";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
+                command.add("--dashboard-tls-key-path");
+                command.add(containerPath);
             });
 
             if (config.dashboard().hostPort().isPresent()) {
@@ -483,12 +439,16 @@ public class DevServicesAuthzedProcessor {
             command.add("--metrics-addr");
             command.add(":" + config.metrics().port());
             config.metrics().tlsCertPath().ifPresent(path -> {
+                var containerPath = "/certs/metrics/tls.crt";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
                 command.add("--metrics-tls-cert-path");
-                command.add(path);
+                command.add(containerPath);
             });
-            config.metrics().tlsKeyPath().ifPresent(key -> {
-                command.add("--metrics-tls-cert-key");
-                command.add(key);
+            config.metrics().tlsKeyPath().ifPresent(path -> {
+                var containerPath = "/certs/metrics/tls.key";
+                withFileSystemBind(path, containerPath, BindMode.READ_ONLY);
+                command.add("--metrics-tls-key-path");
+                command.add(containerPath);
             });
 
             if (config.metrics().hostPort().isPresent()) {

@@ -13,6 +13,7 @@ import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -24,7 +25,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
 
-public class DevServicesAuthzedClientTest {
+public class DevServicesAuthzedClientTLSTest {
 
     @Inject
     AuthzedClient client;
@@ -33,7 +34,13 @@ public class DevServicesAuthzedClientTest {
     @RegisterExtension
     static final QuarkusUnitTest unitTest = new QuarkusUnitTest()
             .setArchiveProducer(() -> ShrinkWrap.create(JavaArchive.class)
-                    .addAsResource(DevServicesAuthzedClientTest.class.getResource("/test-schema"), "/test-schema"));
+                    .addAsResource("application-with-tls.properties", "application.properties")
+                    .addAsResource("test-schema", "test-schema"));
+
+    @BeforeAll
+    public static void setup() {
+        RestAssured.useRelaxedHTTPSValidation();
+    }
 
     @Test
     public void shouldAccessHttp() {
@@ -80,7 +87,7 @@ public class DevServicesAuthzedClientTest {
 
     private String readSchema() {
         try {
-            return Files.readString(Path.of(DevServicesAuthzedClientTest.class.getResource("/test-schema").getPath()));
+            return Files.readString(Path.of(DevServicesAuthzedClientTLSTest.class.getResource("/test-schema").getPath()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

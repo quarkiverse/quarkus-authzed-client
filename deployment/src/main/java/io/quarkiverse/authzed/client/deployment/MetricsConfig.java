@@ -38,4 +38,11 @@ public interface MetricsConfig {
      */
     Optional<String> tlsKeyPath();
 
+    /**
+     * URL of the devservices metrics endpoint.
+     * <p>
+     * Note: This is only used to report the URL to the user.
+     */
+    Optional<String> url();
+
 }

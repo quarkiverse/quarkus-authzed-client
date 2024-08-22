@@ -39,4 +39,11 @@ public interface DashboardConfig {
      */
     Optional<String> tlsKeyPath();
 
+    /**
+     * URL of the devservices Dashboard endpoint.
+     * <p>
+     * Note: This is only used to report the URL to the user.
+     */
+    Optional<String> url();
+
 }

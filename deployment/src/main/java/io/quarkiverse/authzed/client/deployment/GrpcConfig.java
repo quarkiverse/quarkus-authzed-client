@@ -45,4 +45,11 @@ public interface GrpcConfig {
     @WithDefault("test")
     String presharedKey();
 
+    /**
+     * URL of the devservices GRPC endpoint.
+     * <p>
+     * Note: This is only used to report the URL to the user.
+     */
+    Optional<String> url();
+
 }

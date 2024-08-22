@@ -7,6 +7,7 @@ import jakarta.inject.Singleton;
 
 import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkus.arc.DefaultBean;
+import io.quarkus.tls.TlsConfigurationRegistry;
 
 @ApplicationScoped
 public class AuthzedClientProducer {
@@ -16,8 +17,8 @@ public class AuthzedClientProducer {
     @DefaultBean
     @Singleton
     @Produces
-    public AuthzedClient create(AuthzedConfig config) {
-        client = new AuthzedClient(config);
+    public AuthzedClient create(AuthzedConfig config, TlsConfigurationRegistry tlsRegistry) {
+        client = new AuthzedClient(config, tlsRegistry);
         return client;
     }
 
