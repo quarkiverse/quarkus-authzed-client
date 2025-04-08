@@ -89,6 +89,14 @@ public class AuthzedContext implements AutoCloseable {
             builder.idleTimeout(config.idleTimeout().getAsInt(), TimeUnit.MILLISECONDS);
         }
 
+        if (config.retry()) {
+            builder.enableRetry()
+                    .maxHedgedAttempts(config.maxHedgedAttempts())
+                    .maxRetryAttempts(config.maxRetryAttempts());
+        } else {
+            builder.disableRetry();
+        }
+
         return builder.build();
     }
 

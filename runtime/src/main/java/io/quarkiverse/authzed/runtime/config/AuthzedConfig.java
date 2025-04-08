@@ -7,6 +7,7 @@ import java.util.OptionalInt;
 import io.quarkus.runtime.annotations.ConfigPhase;
 import io.quarkus.runtime.annotations.ConfigRoot;
 import io.smallrye.config.ConfigMapping;
+import io.smallrye.config.WithDefault;
 
 @ConfigRoot(phase = ConfigPhase.RUN_TIME)
 @ConfigMapping(prefix = AuthzedConfig.PREFIX)
@@ -51,4 +52,24 @@ public interface AuthzedConfig {
      */
     OptionalInt idleTimeout();
 
+    /**
+     * Whether retry is enabled.
+     * Note that retry is disabled by default.
+     */
+    @WithDefault("false")
+    boolean retry();
+
+    /**
+     * The max number of hedged attempts.
+     * Retry must be explicitly enabled.
+     */
+    @WithDefault("2")
+    int maxHedgedAttempts();
+
+    /**
+     * The max number of retry attempts.
+     * Retry must be explicitly enabled.
+     */
+    @WithDefault("2")
+    int maxRetryAttempts();
 }
