@@ -39,7 +39,7 @@ import io.quarkus.deployment.builditem.DockerStatusBuildItem;
 import io.quarkus.deployment.builditem.LaunchModeBuildItem;
 import io.quarkus.deployment.console.ConsoleInstalledBuildItem;
 import io.quarkus.deployment.console.StartupLogCompressor;
-import io.quarkus.deployment.dev.devservices.GlobalDevServicesConfig;
+import io.quarkus.deployment.dev.devservices.DevServicesConfig;
 import io.quarkus.deployment.logging.LoggingSetupBuildItem;
 import io.quarkus.devservices.common.ContainerLocator;
 import io.quarkus.runtime.configuration.ConfigUtils;
@@ -71,7 +71,7 @@ public class DevServicesAuthzedProcessor {
     private static volatile DevServicesAuthzedConfig capturedDevServicesConfiguration;
     private static volatile boolean first = true;
 
-    @BuildStep(onlyIfNot = IsNormal.class, onlyIf = GlobalDevServicesConfig.Enabled.class)
+    @BuildStep(onlyIfNot = IsNormal.class, onlyIf = DevServicesConfig.Enabled.class)
     public DevServicesResultBuildItem startContainers(
             AuthzedBuildTimeConfig config,
             Optional<ConsoleInstalledBuildItem> consoleInstalledBuildItem,
@@ -79,7 +79,7 @@ public class DevServicesAuthzedProcessor {
             DockerStatusBuildItem dockerStatusBuildItem,
             CuratedApplicationShutdownBuildItem closeBuildItem,
             LoggingSetupBuildItem loggingSetupBuildItem,
-            GlobalDevServicesConfig devServicesConfig,
+            DevServicesConfig devServicesConfig,
             BuildProducer<DevServicesResultBuildItem> devServicesResults) {
 
         DevServicesAuthzedConfig currentDevServicesConfiguration = config.devservices();
@@ -112,7 +112,7 @@ public class DevServicesAuthzedProcessor {
                     dockerStatusBuildItem,
                     currentDevServicesConfiguration,
                     launchMode,
-                    devServicesConfig.timeout);
+                    devServicesConfig.timeout());
             if (devService != null) {
                 if (devService.isOwner()) {
                     log.info("Dev Services for authzed started.");
