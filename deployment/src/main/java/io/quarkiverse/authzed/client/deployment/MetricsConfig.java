@@ -10,19 +10,19 @@ import io.smallrye.config.WithDefault;
 public interface MetricsConfig {
 
     /**
-     * Flag to enable http (defaults to true)
+     * Flag to enable metrics (defaults to true)
      */
     @WithDefault("true")
     public Boolean enabled();
 
     /**
-     * The container port the http will be bound to.
+     * The container port the metrics will be bound to.
      */
     @WithDefault("9090")
     Integer port();
 
     /**
-     * Optional host port the http will be bound to.
+     * Optional host port the metrics will be bound to.
      * <p>
      * If not defined, the port will be chosen randomly.
      */
