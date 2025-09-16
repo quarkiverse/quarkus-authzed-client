@@ -31,7 +31,7 @@ import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.utils.Tuples;
-import io.quarkus.deployment.IsNormal;
+import io.quarkus.deployment.IsDevServicesSupportedByLaunchMode;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.*;
@@ -68,7 +68,7 @@ public class DevServicesAuthzedProcessor {
     static final ContainerLocator authzedContainerLocator = ContainerLocator.locateContainerWithLabels(AUTHZED_EXPOSED_PORT,
             DEV_SERVICE_LABEL);
 
-    @BuildStep(onlyIfNot = IsNormal.class, onlyIf = DevServicesConfig.Enabled.class)
+    @BuildStep(onlyIf = { IsDevServicesSupportedByLaunchMode.class, DevServicesConfig.Enabled.class })
     public void startContainers(AuthzedBuildTimeConfig config,
             LaunchModeBuildItem launchModeBuildItem,
             DockerStatusBuildItem dockerStatusBuildItem,
