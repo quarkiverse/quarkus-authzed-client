@@ -1,6 +1,7 @@
 package io.quarkiverse.authzed.client.deployment;
 
 import static io.quarkiverse.authzed.client.deployment.AuthzedClientProcessor.FEATURE;
+import static io.quarkiverse.authzed.client.deployment.DevServicesAuthzedProcessor.QuarkusAuthzedContainer.*;
 import static java.lang.String.format;
 
 import java.io.*;
@@ -9,14 +10,15 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.jboss.logging.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.Network;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
@@ -32,16 +34,13 @@ import io.quarkiverse.authzed.utils.Tuples;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
-import io.quarkus.deployment.builditem.CuratedApplicationShutdownBuildItem;
-import io.quarkus.deployment.builditem.DevServicesResultBuildItem;
-import io.quarkus.deployment.builditem.DevServicesResultBuildItem.RunningDevService;
-import io.quarkus.deployment.builditem.DockerStatusBuildItem;
-import io.quarkus.deployment.builditem.LaunchModeBuildItem;
-import io.quarkus.deployment.console.ConsoleInstalledBuildItem;
-import io.quarkus.deployment.console.StartupLogCompressor;
+import io.quarkus.deployment.builditem.*;
 import io.quarkus.deployment.dev.devservices.DevServicesConfig;
-import io.quarkus.deployment.logging.LoggingSetupBuildItem;
+import io.quarkus.devservices.common.ComposeLocator;
+import io.quarkus.devservices.common.ConfigureUtil;
 import io.quarkus.devservices.common.ContainerLocator;
+import io.quarkus.devservices.common.StartableContainer;
+import io.quarkus.runtime.LaunchMode;
 import io.quarkus.runtime.configuration.ConfigUtils;
 import io.smallrye.mutiny.Uni;
 
@@ -50,7 +49,8 @@ public class DevServicesAuthzedProcessor {
     private static final Logger log = Logger.getLogger(DevServicesAuthzedProcessor.class);
 
     static final String DEFAULT_IMAGE_TAG = "v1.35.2";
-    static final String DEFAULT_IMAGE = "authzed/spicedb:" + DEFAULT_IMAGE_TAG;
+    static final String DEFAULT_IMAGE_NAME = "authzed/spicedb";
+    static final String DEFAULT_IMAGE = DEFAULT_IMAGE_NAME + ":" + DEFAULT_IMAGE_TAG;
 
     static final String CONFIG_PREFIX = "quarkus.authzed.";
     static final String OPERATION = "OPERATION_";
@@ -65,192 +65,154 @@ public class DevServicesAuthzedProcessor {
 
     static final int AUTHZED_EXPOSED_PORT = 50051;
     static final String DEV_SERVICE_LABEL = "quarkus-dev-service-authzed";
-    static final ContainerLocator authzedContainerLocator = new ContainerLocator(DEV_SERVICE_LABEL, AUTHZED_EXPOSED_PORT);
-
-    private static volatile RunningDevService devService;
-    private static volatile DevServicesAuthzedConfig capturedDevServicesConfiguration;
-    private static volatile boolean first = true;
+    static final ContainerLocator authzedContainerLocator = ContainerLocator.locateContainerWithLabels(AUTHZED_EXPOSED_PORT,
+            DEV_SERVICE_LABEL);
 
     @BuildStep(onlyIfNot = IsNormal.class, onlyIf = DevServicesConfig.Enabled.class)
-    public DevServicesResultBuildItem startContainers(
-            AuthzedBuildTimeConfig config,
-            Optional<ConsoleInstalledBuildItem> consoleInstalledBuildItem,
-            LaunchModeBuildItem launchMode,
+    public void startContainers(AuthzedBuildTimeConfig config,
+            LaunchModeBuildItem launchModeBuildItem,
             DockerStatusBuildItem dockerStatusBuildItem,
-            CuratedApplicationShutdownBuildItem closeBuildItem,
-            LoggingSetupBuildItem loggingSetupBuildItem,
+            List<DevServicesSharedNetworkBuildItem> sharedNetworkBuildItem,
+            DevServicesComposeProjectBuildItem composeProjectBuildItem,
             DevServicesConfig devServicesConfig,
             BuildProducer<DevServicesResultBuildItem> devServicesResults) {
 
-        DevServicesAuthzedConfig currentDevServicesConfiguration = config.devservices();
+        var launchMode = launchModeBuildItem.getLaunchMode();
+        DevServicesAuthzedConfig authzedDevServiceConfig = config.devservices();
 
-        // figure out if we need to shut down and restart any existing authzed container
-        // if not and the authzed container have already started we just return
-        if (devService != null) {
-            boolean restartRequired = !currentDevServicesConfiguration.equals(
-                    capturedDevServicesConfiguration);
-            if (!restartRequired) {
-                return devService.toBuildItem();
-            }
-            try {
-                devService.close();
-            } catch (Throwable e) {
-                log.error("Failed to stop authzed container", e);
-            }
-            devService = null;
-            capturedDevServicesConfiguration = null;
-        }
-
-        capturedDevServicesConfiguration = currentDevServicesConfiguration;
-
-        StartupLogCompressor compressor = new StartupLogCompressor(
-                (launchMode.isTest() ? "(test) " : "") + "Authzed Dev Services Starting:",
-                consoleInstalledBuildItem,
-                loggingSetupBuildItem);
-        try {
-            devService = startContainer(
-                    dockerStatusBuildItem,
-                    currentDevServicesConfiguration,
-                    launchMode,
-                    devServicesConfig.timeout());
-            if (devService != null) {
-                if (devService.isOwner()) {
-                    log.info("Dev Services for authzed started.");
-                    log.infof(
-                            "Other Quarkus applications in dev mode will find the " +
-                                    "instance automatically. For Quarkus applications in production mode, you can connect to" +
-                                    " this by starting your application with -D%s=%s -D%s=%s",
-                            URL_CONFIG_KEY,
-                            devService.getConfig().get(URL_CONFIG_KEY),
-                            TOKEN_CONFIG_KEY,
-                            devService.getConfig().get(TOKEN_CONFIG_KEY));
-                }
-            } else {
-                return null;
-            }
-        } catch (Throwable t) {
-            compressor.closeAndDumpCaptured();
-            throw new RuntimeException(t);
-        } finally {
-            compressor.close();
-        }
-
-        if (first) {
-            first = false;
-            Runnable closeTask = () -> {
-                if (devService != null) {
-                    try {
-                        devService.close();
-                    } catch (Throwable t) {
-                        log.error("Failed to stop authzed container", t);
-                    }
-                    devService = null;
-                    log.info("Dev Services for authzed shut down.");
-                }
-                first = true;
-                capturedDevServicesConfiguration = null;
-            };
-            closeBuildItem.addCloseTask(closeTask, true);
-        }
-
-        return devService.toBuildItem();
-    }
-
-    private RunningDevService startContainer(
-            DockerStatusBuildItem dockerStatusBuildItem,
-            DevServicesAuthzedConfig devServicesConfig,
-            LaunchModeBuildItem launchMode,
-            Optional<Duration> timeout) {
-
-        if (!devServicesConfig.enabled()) {
+        if (!authzedDevServiceConfig.enabled()) {
             // explicitly disabled
-            log.debug("Not starting devservices for authzed as it has been disabled in the config");
-            return null;
+            log.debug("Not starting devservices for AuthZed as it has been disabled in the config");
+            return;
         }
 
-        boolean needToStart = !ConfigUtils.isPropertyPresent(URL_CONFIG_KEY);
+        var useSharedNetwork = DevServicesSharedNetworkBuildItem.isSharedNetworkRequired(devServicesConfig,
+                sharedNetworkBuildItem);
+
+        boolean needToStart = !ConfigUtils.isPropertyNonEmpty(URL_CONFIG_KEY);
         if (!needToStart) {
-            log.debug("Not starting devservices for default authzed client as url has been provided");
-            return null;
+            log.debug("Not starting devservices for default AuthZed client as url has been provided");
+            return;
         }
 
         if (!dockerStatusBuildItem.isContainerRuntimeAvailable()) {
-            log.warn("Please configure " + URL_CONFIG_KEY + " or get a working docker instance");
-            return null;
+            log.warn("Requires configuration of '" + URL_CONFIG_KEY + "' or a working docker instance");
+            return;
         }
 
-        DockerImageName dockerImageName = DockerImageName
-                .parse(devServicesConfig.imageName().orElse(DEFAULT_IMAGE))
+        var dockerImageName = DockerImageName.parse(authzedDevServiceConfig.imageName().orElse(DEFAULT_IMAGE))
                 .asCompatibleSubstituteFor(DEFAULT_IMAGE);
 
-        final Supplier<RunningDevService> defaultAuthzedInstanceSupplier = () -> {
-            QuarkusAuthzedContainer container = new QuarkusAuthzedContainer(dockerImageName, devServicesConfig)
-                    .withNetwork(Network.SHARED)
-                    .waitingFor(Wait.forLogMessage(".*grpc server started serving.*", 1));
-
-            timeout.ifPresent(container::withStartupTimeout);
-            log.info("Starting authzed...");
-            container.start();
-
-            var devServicesConfigProperties = new HashMap<String, String>();
-
-            withClient(
-                    container,
-                    devServicesConfig,
-                    client -> {
-                        devServicesConfigProperties.put(URL_CONFIG_KEY, container.getGrpcURL().toExternalForm());
-                        devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY, container.getGrpcURL().toExternalForm());
-                        devServicesConfigProperties.put(HTTP_URL_CONFIG_KEY, container.getHttpURL().toExternalForm());
-                        devServicesConfigProperties.put(METRICS_URL_CONFIG_KEY, container.getMetricsURL().toExternalForm());
-                        devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc().presharedKey());
-                        loadSchema(devServicesConfig).ifPresentOrElse(schema -> {
-                            log.info("Initializing authorization schema ...");
-                            Uni<WriteSchemaResponse> writeSchemaResponse = client.v1().schemaService()
-                                    .writeSchema(
-                                            SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(schema).build());
-                            writeSchemaResponse.await().indefinitely();
-
-                            loadAuthorizationTuples(devServicesConfig).forEach(tuple -> {
-                                log.debug(dockerImageName);
-                                Uni<WriteRelationshipsResponse> writeRelationshipRespone = client.v1().permissionService()
-                                        .writeRelationships(WriteRelationshipsRequest.newBuilder()
-                                                .addUpdates(RelationshipUpdate.newBuilder()
-                                                        .setOperation(Operation.valueOf(OPERATION
-                                                                .concat(devServicesConfig.operationType().toUpperCase())))
-                                                        .setRelationship(Tuples.parseRelationship(tuple))
-                                                        .build())
-                                                .build());
-                                writeRelationshipRespone.await().indefinitely();
-                            });
-                            log.info("Loaded tuples succesfully");
-                        }, () -> {
-                            log.warn("No schema configured");
-                        });
-                    });
-
-            return new RunningDevService(
-                    FEATURE,
-                    container.getContainerId(),
-                    container::close,
-                    devServicesConfigProperties);
-        };
-
-        return authzedContainerLocator
-                .locateContainer(
-                        devServicesConfig.serviceName(),
-                        devServicesConfig.shared(),
-                        launchMode.getLaunchMode())
-                .map(containerAddress -> {
-                    Map<String, String> devServicesConfigProperties = new HashMap<>();
-                    devServicesConfigProperties.put(URL_CONFIG_KEY, containerAddress.getUrl());
-                    devServicesConfigProperties.put(TOKEN_CONFIG_KEY, devServicesConfig.grpc().presharedKey());
-                    return new RunningDevService(
-                            FEATURE,
-                            containerAddress.getId(),
-                            null,
-                            devServicesConfigProperties);
+        final Supplier<DevServicesResultBuildItem> startSupplier = () -> DevServicesResultBuildItem.owned()
+                .name(FEATURE)
+                .serviceName(authzedDevServiceConfig.serviceName())
+                .serviceConfig(config)
+                .description("AuthZed DevServices Instance")
+                .startable(() -> {
+                    var container = new QuarkusAuthzedContainer(dockerImageName, authzedDevServiceConfig,
+                            composeProjectBuildItem.getDefaultNetworkId(), useSharedNetwork, devServicesConfig.timeout());
+                    if (authzedDevServiceConfig.shared()) {
+                        container = container.withSharedServiceLabel(launchMode, DEV_SERVICE_LABEL,
+                                authzedDevServiceConfig.serviceName());
+                    }
+                    return new StartableContainer<>(container);
                 })
-                .orElseGet(defaultAuthzedInstanceSupplier);
+                .postStartHook(s -> {
+
+                    withClient(
+                            s.getContainer(),
+                            authzedDevServiceConfig,
+                            client -> {
+                                loadSchema(authzedDevServiceConfig).ifPresentOrElse(schema -> {
+                                    log.info("Initializing authorization schema ...");
+                                    Uni<WriteSchemaResponse> writeSchemaResponse = client.v1().schemaService()
+                                            .writeSchema(
+                                                    SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(schema)
+                                                            .build());
+                                    writeSchemaResponse.await().indefinitely();
+
+                                    loadAuthorizationTuples(authzedDevServiceConfig).forEach(tuple -> {
+                                        log.debug(dockerImageName);
+                                        Uni<WriteRelationshipsResponse> writeRelationshipRespone = client.v1()
+                                                .permissionService()
+                                                .writeRelationships(WriteRelationshipsRequest.newBuilder()
+                                                        .addUpdates(RelationshipUpdate.newBuilder()
+                                                                .setOperation(Operation.valueOf(OPERATION
+                                                                        .concat(authzedDevServiceConfig.operationType()
+                                                                                .toUpperCase())))
+                                                                .setRelationship(Tuples.parseRelationship(tuple))
+                                                                .build())
+                                                        .build());
+                                        writeRelationshipRespone.await().indefinitely();
+                                    });
+
+                                    log.info("Loaded tuples successfully");
+                                }, () -> {
+                                    log.warn("No schema configured");
+                                });
+                            });
+                })
+                .configProvider(getContainerConfigResolvers(authzedDevServiceConfig))
+                .build();
+
+        devServicesResults.produce(
+                authzedContainerLocator
+                        .locateContainer(authzedDevServiceConfig.serviceName(), authzedDevServiceConfig.shared(), launchMode)
+                        .or(() -> ComposeLocator.locateContainer(composeProjectBuildItem,
+                                List.of(authzedDevServiceConfig.imageName().orElse(DEFAULT_IMAGE_NAME)),
+                                AUTHZED_EXPOSED_PORT, launchMode, useSharedNetwork))
+                        .map(containerAddress -> {
+
+                            var container = containerAddress.getRunningContainer();
+                            var host = containerAddress.getHost();
+
+                            var devServicesConfigProperties = new HashMap<String, String>();
+                            container.getPortMapping(authzedDevServiceConfig.grpc().port())
+                                    .ifPresentOrElse(grpcPort -> devServicesConfigProperties.put(GRPC_URL_CONFIG_KEY,
+                                            getGrpcURL(isGrpcTLS(authzedDevServiceConfig), host, grpcPort).toExternalForm()),
+                                            () -> {
+                                                if (authzedDevServiceConfig.grpc().enabled()) {
+                                                    log.warn("No grpc port mapping found for AuthZed container");
+                                                }
+                                            });
+                            container.getPortMapping(authzedDevServiceConfig.http().port())
+                                    .ifPresentOrElse(httpPort -> devServicesConfigProperties.put(HTTP_URL_CONFIG_KEY,
+                                            getHttpURL(isHttpTLS(authzedDevServiceConfig), host, httpPort).toExternalForm()),
+                                            () -> {
+                                                if (authzedDevServiceConfig.http().enabled()) {
+                                                    log.warn("No http port mapping found for AuthZed container");
+                                                }
+                                            });
+                            container.getPortMapping(authzedDevServiceConfig.metrics().port())
+                                    .ifPresentOrElse(metricsPort -> devServicesConfigProperties.put(METRICS_URL_CONFIG_KEY,
+                                            getMetricsURL(isMetricsTLS(authzedDevServiceConfig), host, metricsPort)
+                                                    .toExternalForm()),
+                                            () -> {
+                                                if (authzedDevServiceConfig.metrics().enabled()) {
+                                                    log.warn("No metrics port mapping found for AuthZed container");
+                                                }
+                                            });
+                            devServicesConfigProperties.put(TOKEN_CONFIG_KEY, authzedDevServiceConfig.grpc().presharedKey());
+
+                            return DevServicesResultBuildItem.discovered()
+                                    .name(FEATURE)
+                                    .containerId(containerAddress.getId())
+                                    .description("OpenFGA DevServices Services")
+                                    .config(devServicesConfigProperties)
+                                    .build();
+                        })
+                        .orElseGet(startSupplier));
+    }
+
+    private static @NotNull HashMap<String, Function<StartableContainer<QuarkusAuthzedContainer>, String>> getContainerConfigResolvers(
+            DevServicesAuthzedConfig authzedDevServiceConfig) {
+        var configPropertyResolvers = new HashMap<String, Function<StartableContainer<QuarkusAuthzedContainer>, String>>();
+        configPropertyResolvers.put(URL_CONFIG_KEY, s -> s.getContainer().getGrpcURL().toExternalForm());
+        configPropertyResolvers.put(GRPC_URL_CONFIG_KEY, s -> s.getContainer().getGrpcURL().toExternalForm());
+        configPropertyResolvers.put(HTTP_URL_CONFIG_KEY, s -> s.getContainer().getHttpURL().toExternalForm());
+        configPropertyResolvers.put(METRICS_URL_CONFIG_KEY, s -> s.getContainer().getMetricsURL().toExternalForm());
+        configPropertyResolvers.put(TOKEN_CONFIG_KEY, ignored -> authzedDevServiceConfig.grpc().presharedKey());
+        return configPropertyResolvers;
     }
 
     private static Optional<String> loadSchema(DevServicesAuthzedConfig devServicesConfig) {
@@ -323,40 +285,65 @@ public class DevServicesAuthzedProcessor {
         }
     }
 
-    private static class QuarkusAuthzedContainer extends GenericContainer<QuarkusAuthzedContainer> {
+    static class QuarkusAuthzedContainer extends GenericContainer<QuarkusAuthzedContainer> {
 
-        DevServicesAuthzedConfig config;
-        List<String> command = new ArrayList<>();
+        private final String sharedHostName;
+        private final List<String> command = new ArrayList<>();
+        private final int grpcPort;
+        private final OptionalInt fixedExposedGrpcPort;
+        private final boolean grpcTlsEnabled;
+        private final int httpPort;
+        private final OptionalInt fixedExposedHttpPort;
+        private final boolean httpTlsEnabled;
+        private final int metricsPort;
+        private final OptionalInt fixedExposedMetricsPort;
+        private final boolean metrisTlsEnabled;
+        boolean useSharedNetwork;
 
-        public QuarkusAuthzedContainer(DockerImageName dockerImageName, DevServicesAuthzedConfig config) {
+        public QuarkusAuthzedContainer(DockerImageName dockerImageName, DevServicesAuthzedConfig config,
+                String defaultNetworkId, boolean useSharedNetwork, Optional<Duration> timeout) {
             super(dockerImageName);
-            this.config = config;
+            this.waitStrategy = Wait.forLogMessage(".*grpc server started serving.*", 1);
+            timeout.ifPresent(this.waitStrategy::withStartupTimeout);
+            this.grpcPort = config.grpc().port();
+            this.fixedExposedGrpcPort = config.grpc().hostPort();
+            this.grpcTlsEnabled = isGrpcTLS(config);
+            this.httpPort = config.http().port();
+            this.fixedExposedHttpPort = config.http().hostPort();
+            this.httpTlsEnabled = isHttpTLS(config);
+            this.metricsPort = config.metrics().port();
+            this.fixedExposedMetricsPort = config.metrics().hostPort();
+            this.metrisTlsEnabled = isMetricsTLS(config);
+            this.useSharedNetwork = useSharedNetwork;
+            this.sharedHostName = ConfigureUtil.configureNetwork(this, defaultNetworkId, useSharedNetwork, "authzed");
+
+            configureCommand(config);
         }
 
-        @Override
-        protected void configure() {
-            super.configure();
+        public QuarkusAuthzedContainer withSharedServiceLabel(LaunchMode launchMode, String serviceLabel, String serviceName) {
+            return ConfigureUtil.configureSharedServiceLabel(this, launchMode, serviceLabel, serviceName);
+        }
+
+        private void configureCommand(DevServicesAuthzedConfig config) {
+            var command = new ArrayList<String>();
             command.add("serve");
 
-            configureGrpc();
+            if (config.grpc().enabled()) {
+                configureGrpc(config, command);
+            }
 
             if (config.http().enabled()) {
-                configureHttp();
+                configureHttp(config, command);
             }
 
             if (config.metrics().enabled()) {
-                configureMetrics();
+                configureMetrics(config, command);
             }
 
-            withCommand(command.toArray(new String[command.size()]));
-            withNetwork(Network.SHARED);
-
-            if (config.serviceName() != null) { // Only adds the label in dev mode.
-                withLabel(DEV_SERVICE_LABEL, config.serviceName());
-            }
+            setCommand(command.toArray(String[]::new));
         }
 
-        private void configureGrpc() {
+        private void configureGrpc(DevServicesAuthzedConfig config, List<String> command) {
             command.add("--grpc-preshared-key");
             command.add(config.grpc().presharedKey());
             command.add("--grpc-enabled");
@@ -382,7 +369,7 @@ public class DevServicesAuthzedProcessor {
             }
         }
 
-        private void configureHttp() {
+        private void configureHttp(DevServicesAuthzedConfig config, List<String> command) {
             command.add("--http-enabled");
             command.add("--http-addr");
             command.add(":" + config.http().port());
@@ -406,7 +393,7 @@ public class DevServicesAuthzedProcessor {
             }
         }
 
-        private void configureMetrics() {
+        private void configureMetrics(DevServicesAuthzedConfig config, List<String> command) {
             command.add("--metrics-enabled");
             command.add("--metrics-addr");
             command.add(":" + config.metrics().port());
@@ -430,43 +417,91 @@ public class DevServicesAuthzedProcessor {
             }
         }
 
+        @Override
+        protected void configure() {
+            super.configure();
+            if (useSharedNetwork) {
+                return;
+            }
+
+            if (fixedExposedGrpcPort.isPresent()) {
+                addFixedExposedPort(fixedExposedGrpcPort.getAsInt(), grpcPort);
+            } else {
+                addExposedPort(grpcPort);
+            }
+
+            if (fixedExposedHttpPort.isPresent()) {
+                addFixedExposedPort(fixedExposedHttpPort.getAsInt(), httpPort);
+            } else {
+                addExposedPort(httpPort);
+            }
+
+            if (fixedExposedMetricsPort.isPresent()) {
+                addFixedExposedPort(fixedExposedMetricsPort.getAsInt(), metricsPort);
+            } else {
+                addExposedPort(metricsPort);
+            }
+        }
+
+        @Override
+        public String getHost() {
+            return useSharedNetwork ? sharedHostName : super.getHost();
+        }
+
         public Integer getGrpcPort() {
-            return config.grpc().hostPort().orElseGet(() -> super.getMappedPort(config.grpc().port()));
+            return fixedExposedGrpcPort.orElseGet(() -> super.getMappedPort(grpcPort));
+        }
+
+        public static URL getURL(boolean isTLS, String host, int port, String path) {
+            try {
+                return new URL(isTLS ? "https" : "http", host, port, path);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public static URL getGrpcURL(boolean isTLS, String host, int port) {
+            return getURL(isTLS, host, port, "");
         }
 
         public URL getGrpcURL() {
-            try {
-                boolean useHttps = config.grpc().tlsCertPath().isPresent() && config.grpc().tlsKeyPath().isPresent();
-                return new URL(useHttps ? "https" : "http", getHost(), getGrpcPort(), "");
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
+            return getGrpcURL(grpcTlsEnabled, getHost(), getGrpcPort());
         }
 
         public Integer getHttpPort() {
-            return config.http().hostPort().orElseGet(() -> super.getMappedPort(config.http().port()));
+            return fixedExposedHttpPort.orElseGet(() -> super.getMappedPort(httpPort));
+        }
+
+        public static URL getHttpURL(boolean isTLS, String host, int port) {
+            return getURL(isTLS, host, port, "/v1");
         }
 
         public URL getHttpURL() {
-            try {
-                boolean useHttps = config.http().tlsCertPath().isPresent() && config.http().tlsKeyPath().isPresent();
-                return new URL(useHttps ? "https" : "http", getHost(), getHttpPort(), "/v1");
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
+            return getHttpURL(httpTlsEnabled, getHost(), getHttpPort());
         }
 
         public Integer getMetricsPort() {
-            return config.metrics().hostPort().orElseGet(() -> super.getMappedPort(config.metrics().port()));
+            return fixedExposedMetricsPort.orElseGet(() -> super.getMappedPort(metricsPort));
+        }
+
+        public static URL getMetricsURL(boolean isTLS, String host, int port) {
+            return getURL(isTLS, host, port, "");
         }
 
         public URL getMetricsURL() {
-            try {
-                boolean useHttps = config.metrics().tlsCertPath().isPresent() && config.metrics().tlsKeyPath().isPresent();
-                return new URL(useHttps ? "https" : "http", getHost(), getMetricsPort(), "");
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
+            return getMetricsURL(metrisTlsEnabled, getHost(), getMetricsPort());
         }
+    }
+
+    private static boolean isGrpcTLS(DevServicesAuthzedConfig config) {
+        return config.grpc().tlsCertPath().isPresent() && config.grpc().tlsKeyPath().isPresent();
+    }
+
+    private static boolean isHttpTLS(DevServicesAuthzedConfig config) {
+        return config.http().tlsCertPath().isPresent() && config.http().tlsKeyPath().isPresent();
+    }
+
+    private static boolean isMetricsTLS(DevServicesAuthzedConfig config) {
+        return config.metrics().tlsCertPath().isPresent() && config.metrics().tlsKeyPath().isPresent();
     }
 }

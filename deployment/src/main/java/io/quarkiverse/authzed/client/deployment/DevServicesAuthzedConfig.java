@@ -14,7 +14,7 @@ public interface DevServicesAuthzedConfig {
      * a database when running in 'dev' or 'test' mode.
      */
     @WithDefault("true")
-    Boolean enabled();
+    boolean enabled();
 
     /**
      * The container image name to use, for container based DevServices providers.
