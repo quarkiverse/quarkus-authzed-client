@@ -8,7 +8,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.runtime.AuthzedRecorder;
-import io.quarkiverse.authzed.runtime.config.AuthzedConfig;
 import io.quarkus.arc.deployment.SyntheticBeanBuildItem;
 import io.quarkus.deployment.Capabilities;
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -31,7 +30,6 @@ class AuthzedClientProcessor {
     @Record(RUNTIME_INIT)
     ServiceStartBuildItem registerSyntheticBeans(
             AuthzedBuildTimeConfig buildTimeConfig,
-            AuthzedConfig runtimeConfig,
             SslNativeConfigBuildItem sslNativeConfig,
             VertxBuildItem vertx,
             Optional<TlsRegistryBuildItem> tlsRegistryBuildItem,
@@ -50,7 +48,7 @@ class AuthzedClientProcessor {
                 SyntheticBeanBuildItem.configure(AuthzedClient.class)
                         .scope(ApplicationScoped.class)
                         .setRuntimeInit()
-                        .runtimeValue(recorder.createClient(runtimeConfig, tlsRegistrySupplier))
+                        .runtimeValue(recorder.createClient(tlsRegistrySupplier))
                         .done());
 
         return new ServiceStartBuildItem("authzed-client");
