@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -31,6 +32,7 @@ import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.utils.Tuples;
+import io.quarkus.bootstrap.classloading.QuarkusClassLoader;
 import io.quarkus.deployment.IsDevServicesSupportedByLaunchMode;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -67,6 +69,7 @@ public class DevServicesAuthzedProcessor {
     static final String DEV_SERVICE_LABEL = "quarkus-dev-service-authzed";
     static final ContainerLocator authzedContainerLocator = ContainerLocator.locateContainerWithLabels(AUTHZED_EXPOSED_PORT,
             DEV_SERVICE_LABEL);
+    static final AtomicReference<ClassLoader> resourceClassLoader = new AtomicReference<>();
 
     @BuildStep(onlyIf = { IsDevServicesSupportedByLaunchMode.class, DevServicesConfig.Enabled.class })
     public void startContainers(AuthzedBuildTimeConfig config,
@@ -76,6 +79,8 @@ public class DevServicesAuthzedProcessor {
             DevServicesComposeProjectBuildItem composeProjectBuildItem,
             DevServicesConfig devServicesConfig,
             BuildProducer<DevServicesResultBuildItem> devServicesResults) {
+
+        resourceClassLoader.set(Thread.currentThread().getContextClassLoader());
 
         var launchMode = launchModeBuildItem.getLaunchMode();
         DevServicesAuthzedConfig authzedDevServiceConfig = config.devservices();
@@ -259,8 +264,14 @@ public class DevServicesAuthzedProcessor {
     }
 
     private static Stream<String> streamClasspathResource(String resource) {
-        InputStream is;
-        is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource);
+        var resCL = resourceClassLoader.get();
+        var is = resCL != null ? resCL.getResourceAsStream(resource) : null;
+        if (is == null) {
+            is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource);
+            if (is == null) {
+                is = QuarkusClassLoader.getSystemResourceAsStream(resource);
+            }
+        }
         if (is == null) {
             throw new RuntimeException("Failed to read classpath resource:" + resource);
         }
