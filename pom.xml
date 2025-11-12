@@ -25,7 +25,7 @@
   </scm>
   <properties>
     <quarkus.version>3.28.4</quarkus.version>
-    <quarkus-mcp.version>1.7.0</quarkus-mcp.version>
+    <quarkus-mcp.version>1.7.2</quarkus-mcp.version>
   </properties>
   <dependencyManagement>
     <dependencies>
