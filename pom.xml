@@ -24,8 +24,8 @@
     <tag>HEAD</tag>
   </scm>
   <properties>
-    <quarkus.version>3.28.4</quarkus.version>
-    <quarkus-mcp.version>1.7.0</quarkus-mcp.version>
+    <quarkus.version>3.31.2</quarkus.version>
+    <quarkus-mcp.version>1.9.0</quarkus-mcp.version>
   </properties>
   <dependencyManagement>
     <dependencies>
