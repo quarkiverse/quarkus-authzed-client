@@ -4,7 +4,7 @@
   <parent>
     <groupId>io.quarkiverse.authzed</groupId>
     <artifactId>quarkus-authzed-client-parent</artifactId>
-    <version>999-SNAPSHOT</version>
+    <version>0.17.0</version>
   </parent>
   <artifactId>quarkus-authzed-client-deployment</artifactId>
   <name>Quarkus - Authzed Client - Deployment</name>
