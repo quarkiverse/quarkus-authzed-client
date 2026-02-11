@@ -28,14 +28,38 @@ public class SchemaServiceClient implements SchemaService, MutinyClient<MutinySc
     }
 
     @Override
-    public io.smallrye.mutiny.Uni<com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse> readSchema(
-            com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest request) {
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.ReadSchemaResponse> readSchema(
+            com.authzed.api.v1.ReadSchemaRequest request) {
         return stub.readSchema(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Uni<com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse> writeSchema(
-            com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest request) {
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.WriteSchemaResponse> writeSchema(
+            com.authzed.api.v1.WriteSchemaRequest request) {
         return stub.writeSchema(request);
+    }
+
+    @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.ReflectSchemaResponse> reflectSchema(
+            com.authzed.api.v1.ReflectSchemaRequest request) {
+        return stub.reflectSchema(request);
+    }
+
+    @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.ComputablePermissionsResponse> computablePermissions(
+            com.authzed.api.v1.ComputablePermissionsRequest request) {
+        return stub.computablePermissions(request);
+    }
+
+    @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.DependentRelationsResponse> dependentRelations(
+            com.authzed.api.v1.DependentRelationsRequest request) {
+        return stub.dependentRelations(request);
+    }
+
+    @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.DiffSchemaResponse> diffSchema(
+            com.authzed.api.v1.DiffSchemaRequest request) {
+        return stub.diffSchema(request);
     }
 }

@@ -23,12 +23,12 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
-import com.authzed.api.v1.Core.RelationshipUpdate;
-import com.authzed.api.v1.Core.RelationshipUpdate.Operation;
-import com.authzed.api.v1.PermissionService.WriteRelationshipsRequest;
-import com.authzed.api.v1.PermissionService.WriteRelationshipsResponse;
-import com.authzed.api.v1.SchemaServiceOuterClass;
-import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse;
+import com.authzed.api.v1.RelationshipUpdate;
+import com.authzed.api.v1.RelationshipUpdate.Operation;
+import com.authzed.api.v1.WriteRelationshipsRequest;
+import com.authzed.api.v1.WriteRelationshipsResponse;
+import com.authzed.api.v1.WriteSchemaRequest;
+import com.authzed.api.v1.WriteSchemaResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.utils.Tuples;
@@ -50,7 +50,7 @@ public class DevServicesAuthzedProcessor {
 
     private static final Logger log = Logger.getLogger(DevServicesAuthzedProcessor.class);
 
-    static final String DEFAULT_IMAGE_TAG = "v1.35.2";
+    static final String DEFAULT_IMAGE_TAG = "v1.49.1";
     static final String DEFAULT_IMAGE_NAME = "authzed/spicedb";
     static final String DEFAULT_IMAGE = DEFAULT_IMAGE_NAME + ":" + DEFAULT_IMAGE_TAG;
 
@@ -132,7 +132,7 @@ public class DevServicesAuthzedProcessor {
                                     log.info("Initializing authorization schema ...");
                                     Uni<WriteSchemaResponse> writeSchemaResponse = client.v1().schemaService()
                                             .writeSchema(
-                                                    SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(schema)
+                                                    WriteSchemaRequest.newBuilder().setSchema(schema)
                                                             .build());
                                     writeSchemaResponse.await().indefinitely();
 

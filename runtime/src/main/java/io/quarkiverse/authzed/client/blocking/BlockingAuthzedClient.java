@@ -16,16 +16,8 @@ public class BlockingAuthzedClient implements AutoCloseable {
         this.context = context;
     }
 
-    public AuthzedClientV0 v0() {
-        return new AuthzedClientV0(context);
-    }
-
     public AuthzedClientV1 v1() {
         return new AuthzedClientV1(context);
-    }
-
-    public AuthzedClientV1Alpha1 v1alpha1() {
-        return new AuthzedClientV1Alpha1(context);
     }
 
     @Override

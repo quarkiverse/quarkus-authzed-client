@@ -3,9 +3,9 @@ package io.quarkiverse.authzed.permission;
 import java.time.Duration;
 import java.util.concurrent.Callable;
 
-import com.authzed.api.v1.PermissionService.CheckPermissionRequest;
-import com.authzed.api.v1.PermissionService.CheckPermissionResponse;
-import com.authzed.api.v1.PermissionService.Consistency;
+import com.authzed.api.v1.CheckPermissionRequest;
+import com.authzed.api.v1.CheckPermissionResponse;
+import com.authzed.api.v1.Consistency;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.utils.Tuples;

@@ -1,103 +1,152 @@
 syntax = "proto3";
 package authzed.api.v1;
 
-option go_package = "github.com/authzed/authzed-go/proto/authzed/api/v1";
-option java_package = "com.authzed.api.v1";
-
-import "google/protobuf/struct.proto";
-import "google/api/annotations.proto";
-import "google/rpc/status.proto";
-import "validate/validate.proto";
-
 import "authzed/api/v1/core.proto";
 import "authzed/api/v1/debug.proto";
+import "buf/validate/validate.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "validate/validate.proto";
+
+option go_package = "github.com/authzed/authzed-go/proto/authzed/api/v1";
+option java_multiple_files = true;
+option java_package = "com.authzed.api.v1";
 
 // PermissionsService implements a set of RPCs that perform operations on
 // relationships and permissions.
 service PermissionsService {
   // ReadRelationships reads a set of the relationships matching one or more
   // filters.
-  rpc ReadRelationships(ReadRelationshipsRequest)
-    returns (stream ReadRelationshipsResponse) {
-      option (google.api.http) = {
-        post: "/v1/relationships/read"
-        body: "*"
-      };
+  rpc ReadRelationships(ReadRelationshipsRequest) returns (stream ReadRelationshipsResponse) {
+    option (google.api.http) = {
+      post: "/v1/relationships/read"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
   }
 
   // WriteRelationships atomically writes and/or deletes a set of specified
   // relationships. An optional set of preconditions can be provided that must
   // be satisfied for the operation to commit.
-  rpc WriteRelationships(WriteRelationshipsRequest)
-    returns (WriteRelationshipsResponse) {
-      option (google.api.http) = {
-        post: "/v1/relationships/write"
-        body: "*"
-      };
-    }
+  rpc WriteRelationships(WriteRelationshipsRequest) returns (WriteRelationshipsResponse) {
+    option (google.api.http) = {
+      post: "/v1/relationships/write"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
 
   // DeleteRelationships atomically bulk deletes all relationships matching the
   // provided filter. If no relationships match, none will be deleted and the
   // operation will succeed. An optional set of preconditions can be provided that must
   // be satisfied for the operation to commit.
-  rpc DeleteRelationships(DeleteRelationshipsRequest)
-    returns (DeleteRelationshipsResponse) {
-      option (google.api.http) = {
-        post: "/v1/relationships/delete"
-        body: "*"
-      };
-    }
+  rpc DeleteRelationships(DeleteRelationshipsRequest) returns (DeleteRelationshipsResponse) {
+    option (google.api.http) = {
+      post: "/v1/relationships/delete"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
 
   // CheckPermission determines for a given resource whether a subject computes
   // to having a permission or is a direct member of a particular relation.
-  rpc CheckPermission(CheckPermissionRequest)
-    returns (CheckPermissionResponse) {
-      option (google.api.http) = {
-        post: "/v1/permissions/check"
-        body: "*"
-      };
-    }
+  rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse) {
+    option (google.api.http) = {
+      post: "/v1/permissions/check"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
 
   // CheckBulkPermissions evaluates the given list of permission checks
   // and returns the list of results.
-  rpc CheckBulkPermissions(CheckBulkPermissionsRequest)
-    returns (CheckBulkPermissionsResponse) {
-      option (google.api.http) = {
-        post: "/v1/permissions/checkbulk"
-        body: "*"
-      };
-    }
+  rpc CheckBulkPermissions(CheckBulkPermissionsRequest) returns (CheckBulkPermissionsResponse) {
+    option (google.api.http) = {
+      post: "/v1/permissions/checkbulk"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
 
   // ExpandPermissionTree reveals the graph structure for a resource's
   // permission or relation. This RPC does not recurse infinitely deep and may
   // require multiple calls to fully unnest a deeply nested graph.
-  rpc ExpandPermissionTree(ExpandPermissionTreeRequest)
-    returns (ExpandPermissionTreeResponse) {
-      option (google.api.http) = {
-        post: "/v1/permissions/expand"
-        body: "*"
-      };
-    }
+  rpc ExpandPermissionTree(ExpandPermissionTreeRequest) returns (ExpandPermissionTreeResponse) {
+    option (google.api.http) = {
+      post: "/v1/permissions/expand"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
 
   // LookupResources returns all the resources of a given type that a subject
   // can access whether via a computed permission or relation membership.
-  rpc LookupResources(LookupResourcesRequest)
-    returns (stream LookupResourcesResponse) {
-      option (google.api.http) = {
-        post: "/v1/permissions/resources"
-        body: "*"
-      };
-    }
+  rpc LookupResources(LookupResourcesRequest) returns (stream LookupResourcesResponse) {
+    option (google.api.http) = {
+      post: "/v1/permissions/resources"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
 
   // LookupSubjects returns all the subjects of a given type that
   // have access whether via a computed permission or relation membership.
-  rpc LookupSubjects(LookupSubjectsRequest)
-    returns (stream LookupSubjectsResponse) {
-      option (google.api.http) = {
-        post: "/v1/permissions/subjects"
-        body: "*"
-      };
-    }
+  rpc LookupSubjects(LookupSubjectsRequest) returns (stream LookupSubjectsResponse) {
+    option (google.api.http) = {
+      post: "/v1/permissions/subjects"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
+
+  // ImportBulkRelationships is a faster path to writing a large number of
+  // relationships at once. It is both batched and streaming. For maximum
+  // performance, the caller should attempt to write relationships in as close
+  // to relationship sort order as possible: (resource.object_type,
+  // resource.object_id, relation, subject.object.object_type,
+  // subject.object.object_id, subject.optional_relation). All relationships
+  // written are done so under a single transaction.
+  rpc ImportBulkRelationships(stream ImportBulkRelationshipsRequest) returns (ImportBulkRelationshipsResponse) {
+    option (google.api.http) = {
+      post: "/v1/relationships/importbulk"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
+
+  // ExportBulkRelationships is the fastest path available to exporting
+  // relationships from the server. It is resumable, and will return results
+  // in an order determined by the server.
+  rpc ExportBulkRelationships(ExportBulkRelationshipsRequest) returns (stream ExportBulkRelationshipsResponse) {
+    option (google.api.http) = {
+      post: "/v1/relationships/exportbulk"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      tags: ["Permissions"]
+    };
+  }
 }
 
 // Consistency will define how a request is handled by the backend.
@@ -106,10 +155,14 @@ service PermissionsService {
 message Consistency {
   oneof requirement {
     option (validate.required) = true;
+    option (buf.validate.oneof).required = true;
 
     // minimize_latency indicates that the latency for the call should be
     // minimized by having the system select the fastest snapshot available.
-    bool minimize_latency = 1 [ (validate.rules).bool.const = true ];
+    bool minimize_latency = 1 [
+      (validate.rules).bool.const = true,
+      (buf.validate.field).bool.const = true
+    ];
 
     // at_least_as_fresh indicates that all data used in the API call must be
     // *at least as fresh* as that found in the ZedToken; more recent data might
@@ -127,7 +180,10 @@ message Consistency {
     // NOTE: using this method can be *quite slow*, so unless there is a need to
     // do so, it is recommended to use `at_least_as_fresh` with a stored
     // ZedToken.
-    bool fully_consistent = 4 [ (validate.rules).bool.const = true ];
+    bool fully_consistent = 4 [
+      (validate.rules).bool.const = true,
+      (buf.validate.field).bool.const = true
+    ];
   }
 }
 
@@ -143,31 +199,54 @@ message Consistency {
 message RelationshipFilter {
   // resource_type is the *optional* resource type of the relationship.
   // NOTE: It is not prefixed with "optional_" for legacy compatibility.
-  string resource_type = 1 [ (validate.rules).string = {
-    pattern : "^(([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-    max_bytes : 128,
-  } ];
+  string resource_type = 1 [
+    (validate.rules).string = {
+      pattern: "^(([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 128
+    },
+    (buf.validate.field).string = {
+      pattern: "^(([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 128
+    }
+  ];
 
   // optional_resource_id is the *optional* resource ID of the relationship.
   // If specified, optional_resource_id_prefix cannot be specified.
-  string optional_resource_id = 2 [ (validate.rules).string = {
-    pattern : "^([a-zA-Z0-9/_|\\-=+]{1,})?$",
-    max_bytes : 1024,
-  } ];
+  string optional_resource_id = 2 [
+    (validate.rules).string = {
+      pattern: "^([a-zA-Z0-9/_|\\-=+]{1,})?$"
+      max_bytes: 1024
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-zA-Z0-9/_|\\-=+]{1,})?$"
+      max_bytes: 1024
+    }
+  ];
 
   // optional_resource_id_prefix is the *optional* prefix for the resource ID of the relationship.
   // If specified, optional_resource_id cannot be specified.
-  string optional_resource_id_prefix = 5 [ (validate.rules).string = {
-    pattern : "^([a-zA-Z0-9/_|\\-=+]{1,})?$",
-    max_bytes : 1024,
-  } ];
-
+  string optional_resource_id_prefix = 5 [
+    (validate.rules).string = {
+      pattern: "^([a-zA-Z0-9/_|\\-=+]{1,})?$"
+      max_bytes: 1024
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-zA-Z0-9/_|\\-=+]{1,})?$"
+      max_bytes: 1024
+    }
+  ];
 
   // relation is the *optional* relation of the relationship.
-  string optional_relation = 3 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-    max_bytes : 64,
-  } ];
+  string optional_relation = 3 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    }
+  ];
 
   // optional_subject_filter is the optional filter for the subjects of the relationships.
   SubjectFilter optional_subject_filter = 4;
@@ -179,21 +258,39 @@ message RelationshipFilter {
 // impose any additional requirements if left unspecified.
 message SubjectFilter {
   message RelationFilter {
-    string relation = 1 [ (validate.rules).string = {
-      pattern : "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-      max_bytes : 64,
-    } ];
+    string relation = 1 [
+      (validate.rules).string = {
+        pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+        max_bytes: 64
+      },
+      (buf.validate.field).string = {
+        pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+        max_bytes: 64
+      }
+    ];
   }
 
-  string subject_type = 1 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$",
-    max_bytes : 128,
-  } ];
+  string subject_type = 1 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 128
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 128
+    }
+  ];
 
-  string optional_subject_id = 2 [ (validate.rules).string = {
-    pattern : "^(([a-zA-Z0-9/_|\\-=+]{1,})|\\*)?$",
-    max_bytes : 1024,
-  } ];
+  string optional_subject_id = 2 [
+    (validate.rules).string = {
+      pattern: "^(([a-zA-Z0-9/_|\\-=+]{1,})|\\*)?$"
+      max_bytes: 1024
+    },
+    (buf.validate.field).string = {
+      pattern: "^(([a-zA-Z0-9/_|\\-=+]{1,})|\\*)?$"
+      max_bytes: 1024
+    }
+  ];
 
   RelationFilter optional_relation = 3;
 }
@@ -205,14 +302,19 @@ message ReadRelationshipsRequest {
 
   // relationship_filter defines the filter to be applied to the relationships
   // to be returned.
-  RelationshipFilter relationship_filter = 2
-      [ (validate.rules).message.required = true ];
+  RelationshipFilter relationship_filter = 2 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // optional_limit, if non-zero, specifies the limit on the number of relationships to return
   // before the stream is closed on the server side. By default, the stream will continue
   // resolving relationships until exhausted or the stream is closed due to the client or a
   // network issue.
-  uint32 optional_limit = 3 [(validate.rules).uint32 = {gte:0, lte: 1000}];
+  uint32 optional_limit = 3 [
+    (validate.rules).uint32 = {gte: 0},
+    (buf.validate.field).uint32 = {gte: 0}
+  ];
 
   // optional_cursor, if specified, indicates the cursor after which results should resume being returned.
   // The cursor can be found on the ReadRelationshipsResponse object.
@@ -224,10 +326,16 @@ message ReadRelationshipsRequest {
 // be streamed to the client for each relationship found.
 message ReadRelationshipsResponse {
   // read_at is the ZedToken at which the relationship was found.
-  ZedToken read_at = 1 [ (validate.rules).message.required = true ];
+  ZedToken read_at = 1 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // relationship is the found relationship.
-  Relationship relationship = 2 [ (validate.rules).message.required = true ];
+  Relationship relationship = 2 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // after_result_cursor holds a cursor that can be used to resume the ReadRelationships stream after this
   // result.
@@ -249,24 +357,51 @@ message Precondition {
     OPERATION_MUST_MATCH = 2;
   }
 
-  Operation operation = 1 [ (validate.rules).enum = {defined_only: true, not_in: [0]} ];
-  RelationshipFilter filter = 2 [ (validate.rules).message.required = true ];
+  Operation operation = 1 [
+    (validate.rules).enum = {
+      defined_only: true
+      not_in: [0]
+    },
+    (buf.validate.field).enum = {
+      defined_only: true
+      not_in: [0]
+    }
+  ];
+  RelationshipFilter filter = 2 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 }
 
 // WriteRelationshipsRequest contains a list of Relationship mutations that
 // should be applied to the service. If the optional_preconditions parameter
 // is included, all of the specified preconditions must also be satisfied before
-// the write will be committed.
+// the write will be committed. All updates will be applied transactionally,
+// and if any preconditions fail, the entire transaction will be reverted.
 message WriteRelationshipsRequest {
-  repeated RelationshipUpdate updates = 1
-      [ (validate.rules).repeated .items.message.required = true ];
+  repeated RelationshipUpdate updates = 1 [
+    (validate.rules).repeated.items.message.required = true,
+    (buf.validate.field).repeated.items.required = true
+  ];
 
-  repeated Precondition optional_preconditions = 2
-      [ (validate.rules).repeated .items.message.required =
-            true ]; // To be bounded by configuration
+  repeated Precondition optional_preconditions = 2 [
+    (validate.rules).repeated.items.message.required = true,
+    (buf.validate.field).repeated.items.required = true
+  ]; // To be bounded by configuration
+
+  // optional_transaction_metadata is an optional field that can be used to store metadata about the transaction.
+  // If specified, this metadata will be supplied in the WatchResponse for the updates associated with this
+  // transaction.
+  google.protobuf.Struct optional_transaction_metadata = 3 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 }
 
-message WriteRelationshipsResponse { ZedToken written_at = 1; }
+message WriteRelationshipsResponse {
+  // written_at is the revision at which the relationships were written or deleted.
+  ZedToken written_at = 1;
+}
 
 // DeleteRelationshipsRequest specifies which Relationships should be deleted,
 // requesting the delete of *ALL* relationships that match the specified
@@ -274,29 +409,43 @@ message WriteRelationshipsResponse { ZedToken written_at = 1; }
 // specified preconditions must also be satisfied before the delete will be
 // executed.
 message DeleteRelationshipsRequest {
-  RelationshipFilter relationship_filter = 1
-      [ (validate.rules).message.required = true ];
+  RelationshipFilter relationship_filter = 1 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
-  repeated Precondition optional_preconditions = 2
-      [ (validate.rules).repeated .items.message.required =
-            true ]; // To be bounded by configuration
+  repeated Precondition optional_preconditions = 2 [
+    (validate.rules).repeated.items.message.required = true,
+    (buf.validate.field).repeated.items.required = true
+  ]; // To be bounded by configuration
 
   // optional_limit, if non-zero, specifies the limit on the number of relationships to be deleted.
   // If there are more matching relationships found to be deleted than the limit specified here,
   // the deletion call will fail with an error to prevent partial deletion. If partial deletion
   // is needed, specify below that partial deletion is allowed. Partial deletions can be used
   // in a loop to delete large amounts of relationships in a *non-transactional* manner.
-  uint32 optional_limit = 3 [(validate.rules).uint32 = {gte:0, lte: 1000}];
+  uint32 optional_limit = 3 [
+    (validate.rules).uint32 = {gte: 0},
+    (buf.validate.field).uint32 = {gte: 0}
+  ];
 
   // optional_allow_partial_deletions, if true and a limit is specified, will delete matching found
   // relationships up to the count specified in optional_limit, and no more.
   bool optional_allow_partial_deletions = 4;
+
+  // optional_transaction_metadata is an optional field that can be used to store metadata about the transaction.
+  // If specified, this metadata will be supplied in the WatchResponse for the deletions associated with
+  // this transaction.
+  google.protobuf.Struct optional_transaction_metadata = 5 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 }
 
 message DeleteRelationshipsResponse {
   enum DeletionProgress {
     DELETION_PROGRESS_UNSPECIFIED = 0;
-    
+
     // DELETION_PROGRESS_COMPLETE indicates that all remaining relationships matching the filter
     // were deleted. Will be returned even if no relationships were deleted.
     DELETION_PROGRESS_COMPLETE = 1;
@@ -313,6 +462,9 @@ message DeleteRelationshipsResponse {
 
   // deletion_progress is an enumeration of the possible outcomes that occurred when attempting to delete the specified relationships.
   DeletionProgress deletion_progress = 2;
+
+  // relationships_deleted_count is the number of relationships that were deleted.
+  uint64 relationships_deleted_count = 3;
 }
 
 // CheckPermissionRequest issues a check on whether a subject has a permission
@@ -321,20 +473,35 @@ message CheckPermissionRequest {
   Consistency consistency = 1;
 
   // resource is the resource on which to check the permission or relation.
-  ObjectReference resource = 2 [ (validate.rules).message.required = true ];
+  ObjectReference resource = 2 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // permission is the name of the permission (or relation) on which to execute
   // the check.
-  string permission = 3 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-    max_bytes : 64,
-  } ];
+  string permission = 3 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    }
+  ];
 
   // subject is the subject that will be checked for the permission or relation.
-  SubjectReference subject = 4 [ (validate.rules).message.required = true ];
+  SubjectReference subject = 4 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // context consists of named values that are injected into the caveat evaluation context
-  google.protobuf.Struct context = 5 [ (validate.rules).message.required = false ];
+  google.protobuf.Struct context = 5 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
   // with_tracing, if true, indicates that the response should include a debug trace.
   // This can be useful for debugging and performance analysis, but adds a small amount
@@ -350,7 +517,10 @@ message CheckPermissionResponse {
     PERMISSIONSHIP_CONDITIONAL_PERMISSION = 3;
   }
 
-  ZedToken checked_at = 1 [ (validate.rules).message.required = false ];
+  ZedToken checked_at = 1 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
   // Permissionship communicates whether or not the subject has the requested
   // permission or has a relationship with the given resource, over the given
@@ -360,16 +530,32 @@ message CheckPermissionResponse {
   // requested subject is a member of the computed permission set or there
   // exists a relationship with the requested relation from the given resource
   // to the given subject.
-  Permissionship permissionship = 2 [ (validate.rules).enum = {defined_only: true, not_in: [0]} ];
+  Permissionship permissionship = 2 [
+    (validate.rules).enum = {
+      defined_only: true
+      not_in: [0]
+    },
+    (buf.validate.field).enum = {
+      defined_only: true
+      not_in: [0]
+    }
+  ];
 
   // partial_caveat_info holds information of a partially-evaluated caveated response
-  PartialCaveatInfo partial_caveat_info = 3 [ (validate.rules).message.required = false ];
+  PartialCaveatInfo partial_caveat_info = 3 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
   // debug_trace is the debugging trace of this check, if requested.
   DebugInformation debug_trace = 4;
+
+  // optional_expires_at is the time at which at least one of the relationships used to
+  // compute this result, expires (if any). This is *not* related to the caching window.
+  google.protobuf.Timestamp optional_expires_at = 5;
 }
 
-// CheckBulkPermissionsRequest issues a check on whether a subject has permission 
+// CheckBulkPermissionsRequest issues a check on whether a subject has permission
 // or is a member of a relation on a specific resource for each item in the list.
 //
 // The ordering of the items in the response is maintained in the response.
@@ -377,26 +563,55 @@ message CheckPermissionResponse {
 message CheckBulkPermissionsRequest {
   Consistency consistency = 1;
 
-  repeated CheckBulkPermissionsRequestItem items = 2 [ (validate.rules).repeated .items.message.required = true ];
+  repeated CheckBulkPermissionsRequestItem items = 2 [
+    (validate.rules).repeated.items.message.required = true,
+    (buf.validate.field).repeated.items.required = true
+  ];
+
+  // with_tracing, if true, indicates that each response should include a debug trace.
+  // This can be useful for debugging and performance analysis, but adds a small amount
+  // of compute overhead to the request.
+  bool with_tracing = 3;
 }
 
 message CheckBulkPermissionsRequestItem {
-  ObjectReference resource = 1 [ (validate.rules).message.required = true ];
+  ObjectReference resource = 1 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
-  string permission = 2 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-    max_bytes : 64,
-  } ];
+  string permission = 2 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    }
+  ];
 
-  SubjectReference subject = 3 [ (validate.rules).message.required = true ];
+  SubjectReference subject = 3 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
-  google.protobuf.Struct context = 4 [ (validate.rules).message.required = false ];
+  google.protobuf.Struct context = 4 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 }
 
 message CheckBulkPermissionsResponse {
-  ZedToken checked_at = 1 [ (validate.rules).message.required = false ];
+  ZedToken checked_at = 1 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
-  repeated CheckBulkPermissionsPair pairs = 2 [ (validate.rules).repeated .items.message.required = true ];
+  repeated CheckBulkPermissionsPair pairs = 2 [
+    (validate.rules).repeated.items.message.required = true,
+    (buf.validate.field).repeated.items.required = true
+  ];
 }
 
 message CheckBulkPermissionsPair {
@@ -408,9 +623,24 @@ message CheckBulkPermissionsPair {
 }
 
 message CheckBulkPermissionsResponseItem {
-  CheckPermissionResponse.Permissionship permissionship = 1 [ (validate.rules).enum = {defined_only: true, not_in: [0]} ];
+  CheckPermissionResponse.Permissionship permissionship = 1 [
+    (validate.rules).enum = {
+      defined_only: true
+      not_in: [0]
+    },
+    (buf.validate.field).enum = {
+      defined_only: true
+      not_in: [0]
+    }
+  ];
 
-  PartialCaveatInfo partial_caveat_info = 2 [ (validate.rules).message.required = false ];
+  PartialCaveatInfo partial_caveat_info = 2 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
+
+  // debug_trace is the debugging trace of this check, if requested.
+  DebugInformation debug_trace = 3;
 }
 
 // ExpandPermissionTreeRequest returns a tree representing the expansion of all
@@ -424,14 +654,23 @@ message ExpandPermissionTreeRequest {
   Consistency consistency = 1;
 
   // resource is the resource over which to run the expansion.
-  ObjectReference resource = 2 [ (validate.rules).message.required = true ];
+  ObjectReference resource = 2 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // permission is the name of the permission or relation over which to run the
   // expansion for the resource.
-  string permission = 3 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-    max_bytes : 64,
-  } ];
+  string permission = 3 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    }
+  ];
 }
 
 message ExpandPermissionTreeResponse {
@@ -451,29 +690,50 @@ message LookupResourcesRequest {
 
   // resource_object_type is the type of resource object for which the IDs will
   // be returned.
-  string resource_object_type = 2 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$",
-    max_bytes : 128,
-  } ];
+  string resource_object_type = 2 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 128
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 128
+    }
+  ];
 
   // permission is the name of the permission or relation for which the subject
   // must Check.
-  string permission = 3 [ (validate.rules).string = {
-    pattern : "^[a-z][a-z0-9_]{1,62}[a-z0-9]$",
-    max_bytes : 64,
-  } ];
+  string permission = 3 [
+    (validate.rules).string = {
+      pattern: "^[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 64
+    },
+    (buf.validate.field).string = {
+      pattern: "^[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 64
+    }
+  ];
 
   // subject is the subject with access to the resources.
-  SubjectReference subject = 4 [ (validate.rules).message.required = true ];
+  SubjectReference subject = 4 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // context consists of named values that are injected into the caveat evaluation context
-  google.protobuf.Struct context = 5 [ (validate.rules).message.required = false ];
+  google.protobuf.Struct context = 5 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
   // optional_limit, if non-zero, specifies the limit on the number of resources to return
   // before the stream is closed on the server side. By default, the stream will continue
   // resolving resources until exhausted or the stream is closed due to the client or a
   // network issue.
-  uint32 optional_limit = 6 [(validate.rules).uint32 = {gte:0, lte: 1000}];
+  uint32 optional_limit = 6 [
+    (validate.rules).uint32 = {gte: 0},
+    (buf.validate.field).uint32 = {gte: 0}
+  ];
 
   // optional_cursor, if specified, indicates the cursor after which results should resume being returned.
   // The cursor can be found on the LookupResourcesResponse object.
@@ -497,10 +757,22 @@ message LookupResourcesResponse {
   string resource_object_id = 2;
 
   // permissionship indicates whether the response was partially evaluated or not
-  LookupPermissionship permissionship = 3 [ (validate.rules).enum = {defined_only: true, not_in: [0]} ];
+  LookupPermissionship permissionship = 3 [
+    (validate.rules).enum = {
+      defined_only: true
+      not_in: [0]
+    },
+    (buf.validate.field).enum = {
+      defined_only: true
+      not_in: [0]
+    }
+  ];
 
   // partial_caveat_info holds information of a partially-evaluated caveated response
-  PartialCaveatInfo partial_caveat_info = 4  [ (validate.rules).message.required = false ];
+  PartialCaveatInfo partial_caveat_info = 4 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
   // after_result_cursor holds a cursor that can be used to resume the LookupResources stream after this
   // result.
@@ -521,57 +793,66 @@ message LookupSubjectsRequest {
 
   // resource is the resource for which all matching subjects for the permission
   // or relation will be returned.
-  ObjectReference resource = 2 [ (validate.rules).message.required = true ];
+  ObjectReference resource = 2 [
+    (validate.rules).message.required = true,
+    (buf.validate.field).required = true
+  ];
 
   // permission is the name of the permission (or relation) for which to find
   // the subjects.
-  string permission = 3 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-    max_bytes : 64,
-  } ];
+  string permission = 3 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    }
+  ];
 
   // subject_object_type is the type of subject object for which the IDs will
   // be returned.
-  string subject_object_type = 4 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$",
-    max_bytes : 128,
-  } ];
+  string subject_object_type = 4 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 128
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,61}[a-z0-9]/)*[a-z][a-z0-9_]{1,62}[a-z0-9]$"
+      max_bytes: 128
+    }
+  ];
 
   // optional_subject_relation is the optional relation for the subject.
-  string optional_subject_relation = 5 [ (validate.rules).string = {
-    pattern : "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$",
-    max_bytes : 64,
-  } ];
+  string optional_subject_relation = 5 [
+    (validate.rules).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    },
+    (buf.validate.field).string = {
+      pattern: "^([a-z][a-z0-9_]{1,62}[a-z0-9])?$"
+      max_bytes: 64
+    }
+  ];
 
   // context consists of named values that are injected into the caveat evaluation context
-  google.protobuf.Struct context = 6 [ (validate.rules).message.required = false ];
+  google.protobuf.Struct context = 6 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
-  // optional_concrete_limit, if non-zero, specifies the limit on the number of
-  // *concrete* (non-wildcard) subjects to return before the stream is closed on the
-  // server side. With the default value of zero, the stream will continue resolving
-  // concrete subjects until exhausted or the stream is closed due to the client or
-  // a network issue.
-  //
-  // NOTE: Wildcard subjects ("*") have special treatment when cursors and limits are used. Because
-  // wildcards can apply to *any* concrete subjects, if a wildcard subject is found within the dataset,
-  // a wildcard subject can be returned for *all* LookupSubjects calls, regardless of the cursor or
-  // limit.
-  //
-  // For example, if wildcards are requested, a wildcard subject exists, there is a specified limit
-  // of 10 concrete subjects, and at least 10 concrete subjects exist, the API will return 11 subjects
-  // in total: the 10 concrete + the wildcard
-  //
-  // Furthermore, if a wildcard has a set of exclusions generated by the dataset,
-  // the exclusions *will respect the cursor* and only a *partial* set of exclusions will be returned
-  // for each invocation of the API.
-  //
-  // ***IT IS UP TO THE CALLER IN THIS CASE TO COMBINE THE EXCLUSIONS IF DESIRED***
-  uint32 optional_concrete_limit = 7 [(validate.rules).uint32 = {gte:0, lte: 1000}];
+  // optional_concrete_limit is currently unimplemented for LookupSubjects
+  // and will return an error as of SpiceDB version 1.40.1. This will
+  // be implemented in a future version of SpiceDB.
+  uint32 optional_concrete_limit = 7 [
+    (validate.rules).uint32 = {gte: 0},
+    (buf.validate.field).uint32 = {gte: 0}
+  ];
 
-  // optional_cursor, if specified, indicates the cursor after which results should resume being returned.
-  // The cursor can be found on the LookupSubjectsResponse object.
-  //
-  // NOTE: See above for notes about how cursors interact with wildcard subjects.
+  // optional_cursor is currently unimplemented for LookupSubjects
+  // and will be ignored as of SpiceDB version 1.40.1. This will
+  // be implemented in a future version of SpiceDB.
   Cursor optional_cursor = 8;
 
   // wildcard_option specifies whether wildcards should be returned by LookupSubjects.
@@ -597,11 +878,25 @@ message LookupSubjectsResponse {
 
   // permissionship indicates whether the response was partially evaluated or not
   // deprecated: use `subject.permissionship`
-  LookupPermissionship permissionship = 4 [ deprecated = true, (validate.rules).enum = {defined_only: true, not_in: [0]} ];
+  LookupPermissionship permissionship = 4 [
+    deprecated = true,
+    (validate.rules).enum = {
+      defined_only: true
+      not_in: [0]
+    },
+    (buf.validate.field).enum = {
+      defined_only: true
+      not_in: [0]
+    }
+  ];
 
   // partial_caveat_info holds information of a partially-evaluated caveated response
   // deprecated: use `subject.partial_caveat_info`
-  PartialCaveatInfo partial_caveat_info = 5 [ deprecated = true, (validate.rules).message.required = false ];
+  PartialCaveatInfo partial_caveat_info = 5 [
+    deprecated = true,
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
 
   // subject is the subject found, along with its permissionship.
   ResolvedSubject subject = 6;
@@ -623,8 +918,73 @@ message ResolvedSubject {
   string subject_object_id = 1;
 
   // permissionship indicates whether the response was partially evaluated or not
-  LookupPermissionship permissionship = 2 [ (validate.rules).enum = {defined_only: true, not_in: [0]} ];
+  LookupPermissionship permissionship = 2 [
+    (validate.rules).enum = {
+      defined_only: true
+      not_in: [0]
+    },
+    (buf.validate.field).enum = {
+      defined_only: true
+      not_in: [0]
+    }
+  ];
 
   // partial_caveat_info holds information of a partially-evaluated caveated response
-  PartialCaveatInfo partial_caveat_info = 3 [ (validate.rules).message.required = false ];
+  PartialCaveatInfo partial_caveat_info = 3 [
+    (validate.rules).message.required = false,
+    (buf.validate.field).required = false
+  ];
+}
+
+// ImportBulkRelationshipsRequest represents one batch of the streaming
+// ImportBulkRelationships API. The maximum size is only limited by the backing
+// datastore, and optimal size should be determined by the calling client
+// experimentally. When ImportBulk is invoked and receives its first request message,
+// a transaction is opened to import the relationships. All requests sent to the same
+// invocation are executed under this single transaction. If a relationship already
+// exists within the datastore, the entire transaction will fail with an error.
+message ImportBulkRelationshipsRequest {
+  repeated Relationship relationships = 1 [
+    (validate.rules).repeated.items.message.required = true,
+    (buf.validate.field).repeated.items.required = true
+  ];
+}
+
+// ImportBulkRelationshipsResponse is returned on successful completion of the
+// bulk load stream, and contains the total number of relationships loaded.
+message ImportBulkRelationshipsResponse {
+  uint64 num_loaded = 1;
+}
+
+// ExportBulkRelationshipsRequest represents a resumable request for
+// all relationships from the server.
+message ExportBulkRelationshipsRequest {
+  Consistency consistency = 1;
+
+  // optional_limit, if non-zero, specifies the limit on the number of
+  // relationships the server can return in one page. By default, the server
+  // will pick a page size, and the server is free to choose a smaller size
+  // at will.
+  uint32 optional_limit = 2 [
+    (validate.rules).uint32 = {gte: 0},
+    (buf.validate.field).uint32 = {gte: 0}
+  ];
+
+  // optional_cursor, if specified, indicates the cursor after which results
+  // should resume being returned. The cursor can be found on the
+  // BulkExportRelationshipsResponse object.
+  Cursor optional_cursor = 3;
+
+  // optional_relationship_filter, if specified, indicates the
+  // filter to apply to each relationship to be exported.
+  RelationshipFilter optional_relationship_filter = 4;
+}
+
+// ExportBulkRelationshipsResponse is one page in a stream of relationship
+// groups that meet the criteria specified by the originating request. The
+// server will continue to stream back relationship groups as quickly as it can
+// until all relationships have been transmitted back.
+message ExportBulkRelationshipsResponse {
+  Cursor after_result_cursor = 1;
+  repeated Relationship relationships = 2;
 }

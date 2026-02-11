@@ -9,12 +9,12 @@ import jakarta.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
-import com.authzed.api.v1.PermissionService.CheckPermissionRequest;
-import com.authzed.api.v1.PermissionService.CheckPermissionResponse;
-import com.authzed.api.v1.PermissionService.CheckPermissionResponse.Permissionship;
-import com.authzed.api.v1.PermissionService.Consistency;
-import com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest;
-import com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse;
+import com.authzed.api.v1.CheckPermissionRequest;
+import com.authzed.api.v1.CheckPermissionResponse;
+import com.authzed.api.v1.CheckPermissionResponse.Permissionship;
+import com.authzed.api.v1.Consistency;
+import com.authzed.api.v1.ReadSchemaRequest;
+import com.authzed.api.v1.ReadSchemaResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.utils.Tuples;

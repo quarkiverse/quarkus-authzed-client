@@ -3,11 +3,11 @@ package io.quarkiverse.authzed.relationship;
 import java.time.Duration;
 import java.util.concurrent.Callable;
 
-import com.authzed.api.v1.Core.Relationship;
-import com.authzed.api.v1.Core.RelationshipUpdate;
-import com.authzed.api.v1.Core.RelationshipUpdate.Operation;
-import com.authzed.api.v1.PermissionService.WriteRelationshipsRequest;
-import com.authzed.api.v1.PermissionService.WriteRelationshipsResponse;
+import com.authzed.api.v1.Relationship;
+import com.authzed.api.v1.RelationshipUpdate;
+import com.authzed.api.v1.RelationshipUpdate.Operation;
+import com.authzed.api.v1.WriteRelationshipsRequest;
+import com.authzed.api.v1.WriteRelationshipsResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkiverse.authzed.utils.Tuples;

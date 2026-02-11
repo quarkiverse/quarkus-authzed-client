@@ -4,7 +4,6 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.64.0)", comments = "Source: authzed/api/v1/watch_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WatchServiceGrpc {
 
@@ -14,22 +13,22 @@ public final class WatchServiceGrpc {
     public static final java.lang.String SERVICE_NAME = "authzed.api.v1.WatchService";
 
     // Static method descriptors that strictly reflect the proto.
-    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> getWatchMethod;
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.WatchRequest, com.authzed.api.v1.WatchResponse> getWatchMethod;
 
     @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
-            + "Watch", requestType = com.authzed.api.v1.WatchServiceOuterClass.WatchRequest.class, responseType = com.authzed.api.v1.WatchServiceOuterClass.WatchResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-    public static io.grpc.MethodDescriptor<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> getWatchMethod() {
-        io.grpc.MethodDescriptor<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> getWatchMethod;
+            + "Watch", requestType = com.authzed.api.v1.WatchRequest.class, responseType = com.authzed.api.v1.WatchResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.WatchRequest, com.authzed.api.v1.WatchResponse> getWatchMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.WatchRequest, com.authzed.api.v1.WatchResponse> getWatchMethod;
         if ((getWatchMethod = WatchServiceGrpc.getWatchMethod) == null) {
             synchronized (WatchServiceGrpc.class) {
                 if ((getWatchMethod = WatchServiceGrpc.getWatchMethod) == null) {
-                    WatchServiceGrpc.getWatchMethod = getWatchMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> newBuilder()
+                    WatchServiceGrpc.getWatchMethod = getWatchMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.WatchRequest, com.authzed.api.v1.WatchResponse> newBuilder()
                             .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
                             .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Watch")).setSampledToLocalTracing(true)
                             .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest.getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.WatchRequest.getDefaultInstance()))
                             .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.WatchServiceOuterClass.WatchResponse.getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.WatchResponse.getDefaultInstance()))
                             .setSchemaDescriptor(new WatchServiceMethodDescriptorSupplier("Watch")).build();
                 }
             }
@@ -49,6 +48,20 @@ public final class WatchServiceGrpc {
             }
         };
         return WatchServiceStub.newStub(factory, channel);
+    }
+
+    /**
+     * Creates a new blocking-style stub that supports all types of calls on the service
+     */
+    public static WatchServiceBlockingV2Stub newBlockingV2Stub(io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<WatchServiceBlockingV2Stub> factory = new io.grpc.stub.AbstractStub.StubFactory<WatchServiceBlockingV2Stub>() {
+
+            @java.lang.Override
+            public WatchServiceBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                return new WatchServiceBlockingV2Stub(channel, callOptions);
+            }
+        };
+        return WatchServiceBlockingV2Stub.newStub(factory, channel);
     }
 
     /**
@@ -84,9 +97,13 @@ public final class WatchServiceGrpc {
     public interface AsyncService {
 
         /**
+         * <pre>
+         * Watch returns a stream of events that occurred in the datastore in ascending timestamp order.
+         * The events can be relationship updates, schema updates, or checkpoints.
+         * </pre>
          */
-        default void watch(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request,
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> responseObserver) {
+        default void watch(com.authzed.api.v1.WatchRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWatchMethod(), responseObserver);
         }
     }
@@ -117,9 +134,13 @@ public final class WatchServiceGrpc {
         }
 
         /**
+         * <pre>
+         * Watch returns a stream of events that occurred in the datastore in ascending timestamp order.
+         * The events can be relationship updates, schema updates, or checkpoints.
+         * </pre>
          */
-        public void watch(com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request,
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> responseObserver) {
+        public void watch(com.authzed.api.v1.WatchRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchResponse> responseObserver) {
             io.grpc.stub.ClientCalls.asyncServerStreamingCall(getChannel().newCall(getWatchMethod(), getCallOptions()), request,
                     responseObserver);
         }
@@ -127,6 +148,34 @@ public final class WatchServiceGrpc {
 
     /**
      * A stub to allow clients to do synchronous rpc calls to service WatchService.
+     */
+    public static class WatchServiceBlockingV2Stub extends io.grpc.stub.AbstractBlockingStub<WatchServiceBlockingV2Stub> {
+
+        private WatchServiceBlockingV2Stub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
+
+        @java.lang.Override
+        protected WatchServiceBlockingV2Stub build(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new WatchServiceBlockingV2Stub(channel, callOptions);
+        }
+
+        /**
+         * <pre>
+         * Watch returns a stream of events that occurred in the datastore in ascending timestamp order.
+         * The events can be relationship updates, schema updates, or checkpoints.
+         * </pre>
+         */
+        @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+        public io.grpc.stub.BlockingClientCall<?, com.authzed.api.v1.WatchResponse> watch(
+                com.authzed.api.v1.WatchRequest request) {
+            return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(getChannel(), getWatchMethod(), getCallOptions(),
+                    request);
+        }
+    }
+
+    /**
+     * A stub to allow clients to do limited synchronous rpc calls to service WatchService.
      */
     public static class WatchServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<WatchServiceBlockingStub> {
 
@@ -140,9 +189,12 @@ public final class WatchServiceGrpc {
         }
 
         /**
+         * <pre>
+         * Watch returns a stream of events that occurred in the datastore in ascending timestamp order.
+         * The events can be relationship updates, schema updates, or checkpoints.
+         * </pre>
          */
-        public java.util.Iterator<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> watch(
-                com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request) {
+        public java.util.Iterator<com.authzed.api.v1.WatchResponse> watch(com.authzed.api.v1.WatchRequest request) {
             return io.grpc.stub.ClientCalls.blockingServerStreamingCall(getChannel(), getWatchMethod(), getCallOptions(),
                     request);
         }
@@ -183,8 +235,8 @@ public final class WatchServiceGrpc {
         public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
             switch (methodId) {
                 case METHODID_WATCH:
-                    serviceImpl.watch((com.authzed.api.v1.WatchServiceOuterClass.WatchRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse>) responseObserver);
+                    serviceImpl.watch((com.authzed.api.v1.WatchRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchResponse>) responseObserver);
                     break;
                 default:
                     throw new AssertionError();
@@ -203,9 +255,10 @@ public final class WatchServiceGrpc {
 
     public static io.grpc.ServerServiceDefinition bindService(AsyncService service) {
         return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-                .addMethod(getWatchMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-                        new MethodHandlers<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse>(
-                                service, METHODID_WATCH)))
+                .addMethod(getWatchMethod(),
+                        io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+                                new MethodHandlers<com.authzed.api.v1.WatchRequest, com.authzed.api.v1.WatchResponse>(service,
+                                        METHODID_WATCH)))
                 .build();
     }
 

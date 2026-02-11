@@ -2,6 +2,7 @@ syntax = "proto3";
 package authzed.api.v1;
 
 option go_package = "github.com/authzed/authzed-go/proto/authzed/api/v1";
+option java_multiple_files = true;
 option java_package = "com.authzed.api.v1";
 
 // Defines the supported values for `google.rpc.ErrorInfo.reason` for the
@@ -14,7 +15,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     { 
+  //     {
   //       "reason": "ERROR_REASON_SCHEMA_PARSE_ERROR",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -33,7 +34,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_SCHEMA_TYPE_ERROR",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -47,7 +48,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_UNKNOWN_DEFINITION",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -60,7 +61,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_UNKNOWN_RELATION_OR_PERMISSION",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -87,7 +88,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_TOO_MANY_PRECONDITIONS_IN_REQUEST",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -101,7 +102,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_WRITE_OR_DELETE_PRECONDITION_FAILURE",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -116,7 +117,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_SERVICE_READ_ONLY",
   //       "domain": "authzed.com"
   //     }
@@ -126,7 +127,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_UNKNOWN_CAVEAT",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -139,7 +140,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_INVALID_SUBJECT_TYPE",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -154,7 +155,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_CAVEAT_PARAMETER_TYPE_ERROR",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -171,7 +172,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_UPDATES_ON_SAME_RELATIONSHIP",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -185,7 +186,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_CANNOT_UPDATE_PERMISSION",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -199,7 +200,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_CAVEAT_EVALUATION_ERROR",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -212,7 +213,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_INVALID_CURSOR",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -227,7 +228,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_TOO_MANY_RELATIONSHIPS_FOR_TRANSACTIONAL_DELETE",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -304,7 +305,7 @@ enum ErrorReason {
   //
   // Example of an ErrorInfo:
   //
-  //     {  
+  //     {
   //       "reason": "ERROR_REASON_TOO_MANY_CHECKS_IN_REQUEST",
   //       "domain": "authzed.com",
   //       "metadata": {
@@ -313,4 +314,103 @@ enum ErrorReason {
   //       }
   //     }
   ERROR_REASON_TOO_MANY_CHECKS_IN_REQUEST = 21;
+
+  // The request's specified limit is too large.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_EXCEEDS_MAXIMUM_ALLOWABLE_LIMIT",
+  //       "domain": "authzed.com",
+  //       "metadata": {
+  //         "limit_provided": "525",
+  //         "maximum_limit_allowed": "500",
+  //       }
+  //     }
+  ERROR_REASON_EXCEEDS_MAXIMUM_ALLOWABLE_LIMIT = 22;
+
+  // The request failed because the provided filter was invalid in some way.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_INVALID_FILTER",
+  //       "domain": "authzed.com",
+  //       "metadata": {
+  //         "filter": "...",
+  //       }
+  //     }
+  ERROR_REASON_INVALID_FILTER = 23;
+
+  // The request failed because too many concurrent updates were attempted
+  // against the in-memory datastore.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_INMEMORY_TOO_MANY_CONCURRENT_UPDATES",
+  //       "domain": "authzed.com",
+  //       "metadata": {}
+  //     }
+  ERROR_REASON_INMEMORY_TOO_MANY_CONCURRENT_UPDATES = 24;
+
+  // The request failed because the precondition specified is empty.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_EMPTY_PRECONDITION",
+  //       "domain": "authzed.com",
+  //       "metadata": {}
+  //     }
+  ERROR_REASON_EMPTY_PRECONDITION = 25;
+
+  // The request failed because the counter was already registered.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_COUNTER_ALREADY_REGISTERED",
+  //       "domain": "authzed.com",
+  //       "metadata": { "counter_name": "name" }
+  //     }
+  ERROR_REASON_COUNTER_ALREADY_REGISTERED = 26;
+
+  // The request failed because the counter was not registered.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_COUNTER_NOT_REGISTERED",
+  //       "domain": "authzed.com",
+  //       "metadata": { "counter_name": "name"  }
+  //     }
+  ERROR_REASON_COUNTER_NOT_REGISTERED = 27;
+
+  // The request failed because a wildcard was not allowed. For CheckPermission,
+  // this means that the subject or resource ID was a wildcard. For LookupResources,
+  // this means that the subject ID was a wildcard.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_WILDCARD_NOT_ALLOWED",
+  //       "domain": "authzed.com",
+  //       "metadata": { "disallowed_field": "subject_id" }
+  //     }
+  ERROR_REASON_WILDCARD_NOT_ALLOWED = 28;
+
+  // The request failed because the transaction metadata was too large.
+  //
+  // Example of an ErrorInfo:
+  //
+  //     {
+  //       "reason": "ERROR_REASON_TRANSACTION_METADATA_TOO_LARGE",
+  //       "domain": "authzed.com",
+  //       "metadata": {
+  //         "metadata_byte_size": "1024",
+  //         "maximum_allowed_metadata_byte_size": "512",
+  //       }
+  //     }
+  ERROR_REASON_TRANSACTION_METADATA_TOO_LARGE = 29;
 }

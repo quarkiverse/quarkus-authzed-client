@@ -33,8 +33,13 @@ public final class MutinyWatchServiceGrpc implements io.quarkus.grpc.MutinyGrpc 
             return new MutinyWatchServiceStub(channel, callOptions);
         }
 
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> watch(
-                com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request) {
+        /**
+         * <pre>
+         *  Watch returns a stream of events that occurred in the datastore in ascending timestamp order.
+         *  The events can be relationship updates, schema updates, or checkpoints.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchResponse> watch(com.authzed.api.v1.WatchRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToMany(request, delegateStub::watch);
         }
     }
@@ -53,17 +58,23 @@ public final class MutinyWatchServiceGrpc implements io.quarkus.grpc.MutinyGrpc 
             return this;
         }
 
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> watch(
-                com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request) {
+        /**
+         * <pre>
+         *  Watch returns a stream of events that occurred in the datastore in ascending timestamp order.
+         *  The events can be relationship updates, schema updates, or checkpoints.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchResponse> watch(com.authzed.api.v1.WatchRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
         @java.lang.Override
         public io.grpc.ServerServiceDefinition bindService() {
             return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-                    .addMethod(com.authzed.api.v1.WatchServiceGrpc.getWatchMethod(), asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.WatchServiceOuterClass.WatchRequest, com.authzed.api.v1.WatchServiceOuterClass.WatchResponse>(
-                                    this, METHODID_WATCH, compression)))
+                    .addMethod(com.authzed.api.v1.WatchServiceGrpc.getWatchMethod(),
+                            asyncServerStreamingCall(
+                                    new MethodHandlers<com.authzed.api.v1.WatchRequest, com.authzed.api.v1.WatchResponse>(this,
+                                            METHODID_WATCH, compression)))
                     .build();
         }
     }
@@ -91,10 +102,9 @@ public final class MutinyWatchServiceGrpc implements io.quarkus.grpc.MutinyGrpc 
         public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
             switch (methodId) {
                 case METHODID_WATCH:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToMany(
-                            (com.authzed.api.v1.WatchServiceOuterClass.WatchRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse>) responseObserver,
-                            compression, serviceImpl::watch);
+                    io.quarkus.grpc.stubs.ServerCalls.oneToMany((com.authzed.api.v1.WatchRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.WatchResponse>) responseObserver, compression,
+                            serviceImpl::watch);
                     break;
                 default:
                     throw new java.lang.AssertionError();

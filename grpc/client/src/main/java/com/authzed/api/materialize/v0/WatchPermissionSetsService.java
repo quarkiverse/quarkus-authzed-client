@@ -1,0 +1,75 @@
+package com.authzed.api.materialize.v0;
+
+import io.quarkus.grpc.MutinyService;
+
+@jakarta.annotation.Generated(value = "by Mutiny Grpc generator", comments = "Source: authzed/api/materialize/v0/watchpermissionsets.proto")
+public interface WatchPermissionSetsService extends MutinyService {
+
+    /**
+     * <pre>
+     *  DownloadPermissionSets returns URLs to download permission sets data as Avro files.
+     *  This provides an alternative to LookupPermissionSets for customers who need to download
+     *  large datasets efficiently. The returned URLs point to compressed Avro files containing
+     *  the permission sets data in a normalized format.
+     * </pre>
+     */
+    io.smallrye.mutiny.Uni<com.authzed.api.materialize.v0.DownloadPermissionSetsResponse> downloadPermissionSets(
+            com.authzed.api.materialize.v0.DownloadPermissionSetsRequest request);
+
+    /**
+     * <pre>
+     *  WatchPermissionSets returns a stream of changes to the sets which can be used to compute the watched permissions.
+     *
+     *  WatchPermissionSets lets consumers achieve the same thing as WatchPermissions, but trades off a simpler usage model with
+     *  significantly lower computational requirements. Unlike WatchPermissions, this method returns changes to the sets of permissions,
+     *  rather than the individual permissions. Permission sets are a normalized form of the computed permissions, which
+     *  means that the consumer must perform an extra computation over this representation to obtain the final computed
+     *  permissions, typically by intersecting the provided sets.
+     *
+     *  For example, this would look like a JOIN between the
+     *  materialize permission sets table in a target relation database, the table with the resources to authorize access
+     *  to, and the table with the subject (e.g. a user).
+     *
+     *  In exchange, the number of changes issued by WatchPermissionSets will be several orders of magnitude less than those
+     *  emitted by WatchPermissions, which has several implications:
+     *  - significantly less resources to compute the sets
+     *  - significantly less messages to stream over the network
+     *  - significantly less events to ingest on the consumer side
+     *  - less ingestion lag from the origin SpiceDB mutation
+     *
+     *  The type of scenarios WatchPermissionSets is particularly well suited is when a single change
+     *  in the origin SpiceDB can yield millions of changes. For example, in the GitHub authorization model, assigning a role
+     *  to a top-level team of an organization with hundreds of thousands of employees can lead to an explosion of
+     *  permission change events that would require a lot of computational resources to process, both on Materialize and
+     *  the consumer side.
+     *
+     *  WatchPermissionSets is thus recommended for any larger scale use case where the fan-out in permission changes that
+     *  emerges from a specific schema and data shape is too large to handle effectively.
+     *
+     *  The API does not offer a sharding mechanism and thus there should only be one consumer per target system.
+     *  Implementing an active-active HA consumer setup over the same target system will require coordinating which
+     *  revisions have been consumed in order to prevent transitioning to an inconsistent state.
+     * </pre>
+     */
+    io.smallrye.mutiny.Multi<com.authzed.api.materialize.v0.WatchPermissionSetsResponse> watchPermissionSets(
+            com.authzed.api.materialize.v0.WatchPermissionSetsRequest request);
+
+    /**
+     * <pre>
+     *  LookupPermissionSets returns the current state of the permission sets which can be used to derive the computed permissions.
+     *  It&#39;s typically used to backfill the state of the permission sets in the consumer side.
+     *
+     *  It&#39;s a cursored API and the consumer is responsible to keep track of the cursor and use it on each subsequent call.
+     *  Each stream will return &lt;N&gt; permission sets defined by the specified request limit. The server will keep streaming until
+     *  the sets per stream is hit, or the current state of the sets is reached,
+     *  whatever happens first, and then close the stream. The server will indicate there are no more changes to stream
+     *  through the `completed_members` in the cursor.
+     *
+     *  There may be many elements to stream, and so the consumer should be prepared to resume the stream from the last
+     *  cursor received. Once completed, the consumer may start streaming permission set changes using WatchPermissionSets
+     *  and the revision token from the last LookupPermissionSets response.
+     * </pre>
+     */
+    io.smallrye.mutiny.Multi<com.authzed.api.materialize.v0.LookupPermissionSetsResponse> lookupPermissionSets(
+            com.authzed.api.materialize.v0.LookupPermissionSetsRequest request);
+}

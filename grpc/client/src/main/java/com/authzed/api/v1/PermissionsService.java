@@ -12,8 +12,8 @@ public interface PermissionsService extends MutinyService {
      *  be satisfied for the operation to commit.
      * </pre>
      */
-    io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.WriteRelationshipsResponse> writeRelationships(
-            com.authzed.api.v1.PermissionService.WriteRelationshipsRequest request);
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.WriteRelationshipsResponse> writeRelationships(
+            com.authzed.api.v1.WriteRelationshipsRequest request);
 
     /**
      * <pre>
@@ -23,8 +23,8 @@ public interface PermissionsService extends MutinyService {
      *  be satisfied for the operation to commit.
      * </pre>
      */
-    io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse> deleteRelationships(
-            com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest request);
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.DeleteRelationshipsResponse> deleteRelationships(
+            com.authzed.api.v1.DeleteRelationshipsRequest request);
 
     /**
      * <pre>
@@ -32,8 +32,8 @@ public interface PermissionsService extends MutinyService {
      *  to having a permission or is a direct member of a particular relation.
      * </pre>
      */
-    io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckPermissionResponse> checkPermission(
-            com.authzed.api.v1.PermissionService.CheckPermissionRequest request);
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckPermissionResponse> checkPermission(
+            com.authzed.api.v1.CheckPermissionRequest request);
 
     /**
      * <pre>
@@ -41,8 +41,8 @@ public interface PermissionsService extends MutinyService {
      *  and returns the list of results.
      * </pre>
      */
-    io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
-            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request);
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.CheckBulkPermissionsRequest request);
 
     /**
      * <pre>
@@ -51,8 +51,8 @@ public interface PermissionsService extends MutinyService {
      *  require multiple calls to fully unnest a deeply nested graph.
      * </pre>
      */
-    io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> expandPermissionTree(
-            com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request);
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.ExpandPermissionTreeResponse> expandPermissionTree(
+            com.authzed.api.v1.ExpandPermissionTreeRequest request);
 
     /**
      * <pre>
@@ -60,8 +60,8 @@ public interface PermissionsService extends MutinyService {
      *  filters.
      * </pre>
      */
-    io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.ReadRelationshipsResponse> readRelationships(
-            com.authzed.api.v1.PermissionService.ReadRelationshipsRequest request);
+    io.smallrye.mutiny.Multi<com.authzed.api.v1.ReadRelationshipsResponse> readRelationships(
+            com.authzed.api.v1.ReadRelationshipsRequest request);
 
     /**
      * <pre>
@@ -69,8 +69,8 @@ public interface PermissionsService extends MutinyService {
      *  can access whether via a computed permission or relation membership.
      * </pre>
      */
-    io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupResourcesResponse> lookupResources(
-            com.authzed.api.v1.PermissionService.LookupResourcesRequest request);
+    io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupResourcesResponse> lookupResources(
+            com.authzed.api.v1.LookupResourcesRequest request);
 
     /**
      * <pre>
@@ -78,6 +78,30 @@ public interface PermissionsService extends MutinyService {
      *  have access whether via a computed permission or relation membership.
      * </pre>
      */
-    io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupSubjectsResponse> lookupSubjects(
-            com.authzed.api.v1.PermissionService.LookupSubjectsRequest request);
+    io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupSubjectsResponse> lookupSubjects(
+            com.authzed.api.v1.LookupSubjectsRequest request);
+
+    /**
+     * <pre>
+     *  ExportBulkRelationships is the fastest path available to exporting
+     *  relationships from the server. It is resumable, and will return results
+     *  in an order determined by the server.
+     * </pre>
+     */
+    io.smallrye.mutiny.Multi<com.authzed.api.v1.ExportBulkRelationshipsResponse> exportBulkRelationships(
+            com.authzed.api.v1.ExportBulkRelationshipsRequest request);
+
+    /**
+     * <pre>
+     *  ImportBulkRelationships is a faster path to writing a large number of
+     *  relationships at once. It is both batched and streaming. For maximum
+     *  performance, the caller should attempt to write relationships in as close
+     *  to relationship sort order as possible: (resource.object_type,
+     *  resource.object_id, relation, subject.object.object_type,
+     *  subject.object.object_id, subject.optional_relation). All relationships
+     *  written are done so under a single transaction.
+     * </pre>
+     */
+    io.smallrye.mutiny.Uni<com.authzed.api.v1.ImportBulkRelationshipsResponse> importBulkRelationships(
+            io.smallrye.mutiny.Multi<com.authzed.api.v1.ImportBulkRelationshipsRequest> request);
 }
