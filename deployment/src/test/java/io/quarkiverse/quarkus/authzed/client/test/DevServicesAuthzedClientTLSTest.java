@@ -17,7 +17,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import com.authzed.api.v1.SchemaServiceOuterClass;
+import com.authzed.api.v1.ReadSchemaRequest;
+import com.authzed.api.v1.ReadSchemaResponse;
+import com.authzed.api.v1.WriteSchemaRequest;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkus.test.QuarkusUnitTest;
@@ -72,12 +74,12 @@ public class DevServicesAuthzedClientTLSTest {
     public void shouldCreateSchema() {
         client.v1()
                 .schemaService()
-                .writeSchema(SchemaServiceOuterClass.WriteSchemaRequest.newBuilder().setSchema(readSchema()).build())
+                .writeSchema(WriteSchemaRequest.newBuilder().setSchema(readSchema()).build())
                 .await().atMost(Duration.ofSeconds(10));
 
-        SchemaServiceOuterClass.ReadSchemaResponse response = client.v1()
+        ReadSchemaResponse response = client.v1()
                 .schemaService()
-                .readSchema(SchemaServiceOuterClass.ReadSchemaRequest.newBuilder().build())
+                .readSchema(ReadSchemaRequest.newBuilder().build())
                 .await().atMost(Duration.ofSeconds(10));
 
         assertNotNull(response);

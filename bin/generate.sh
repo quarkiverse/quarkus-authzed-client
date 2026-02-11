@@ -7,21 +7,26 @@ PROTO_DIR_IN_DOCKER="/workspace/grpc/generator/src/main/proto"
 GENERATED_DIR="${BASE_DIR}/grpc/generator/target/generated-sources/grpc"
 TARGET_DIR="${BASE_DIR}/grpc/client/src/main/java"
 
-# https://buf.build/authzed/api/activity/commit/v1.30.0
-PROTO_SHA=${1:-63d28145265446828dc8270d04472ea8}
+# https://buf.build/authzed/api/activity/commit/v1.45.4
+PROTO_SHA=${1:-v1.45.4}
 
 pushd $BASE_DIR
+
+DOCKER_USER="--user $(id -u):$(id -g)"
+DOCKER_ENV="--env HOME=/tmp --env XDG_CACHE_HOME=/tmp/.cache"
 
 echo "Updating proto files using $PROTO_SHA"
 rm -rf $PROTO_DIR
 mkdir -p $PROTO_DIR
 
-docker run --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export buf.build/envoyproxy/protoc-gen-validate -o $PROTO_DIR_IN_DOCKER
-docker run --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export buf.build/grpc-ecosystem/grpc-gateway -o $PROTO_DIR_IN_DOCKER
-docker run --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export buf.build/authzed/api:${PROTO_SHA} -o $PROTO_DIR_IN_DOCKER
+docker run $DOCKER_USER $DOCKER_ENV --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export buf.build/envoyproxy/protoc-gen-validate -o $PROTO_DIR_IN_DOCKER
+docker run $DOCKER_USER $DOCKER_ENV --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export buf.build/grpc-ecosystem/grpc-gateway -o $PROTO_DIR_IN_DOCKER
+docker run $DOCKER_USER $DOCKER_ENV --volume "$(pwd):/workspace" --workdir /workspace bufbuild/buf export buf.build/authzed/api:${PROTO_SHA} -o $PROTO_DIR_IN_DOCKER
 
 # Need to put _ between watch and resources due to MacOS case sensitive, else maven will fail
-sudo mv $PROTO_DIR/authzed/api/v1alpha1/watchresources_service.proto $PROTO_DIR/authzed/api/v1alpha1/watch_resources_service.proto
+if [ -f "$PROTO_DIR/authzed/api/v1alpha1/watchresources_service.proto" ]; then
+  mv $PROTO_DIR/authzed/api/v1alpha1/watchresources_service.proto $PROTO_DIR/authzed/api/v1alpha1/watch_resources_service.proto
+fi
 
 echo "Generating gRPC client"
 mvn clean package -Pgenerate -pl :quarkus-authzed-grpc-generator

@@ -8,7 +8,6 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * prototyped and tested for future inclusion in the stable API.
  * </pre>
  */
-@io.quarkus.Generated(value = "by gRPC proto compiler (version 1.64.0)", comments = "Source: authzed/api/v1/experimental_service.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class ExperimentalServiceGrpc {
 
@@ -18,25 +17,23 @@ public final class ExperimentalServiceGrpc {
     public static final java.lang.String SERVICE_NAME = "authzed.api.v1.ExperimentalService";
 
     // Static method descriptors that strictly reflect the proto.
-    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> getBulkImportRelationshipsMethod;
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.BulkImportRelationshipsRequest, com.authzed.api.v1.BulkImportRelationshipsResponse> getBulkImportRelationshipsMethod;
 
     @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
-            + "BulkImportRelationships", requestType = com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest.class, responseType = com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> getBulkImportRelationshipsMethod() {
-        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> getBulkImportRelationshipsMethod;
+            + "BulkImportRelationships", requestType = com.authzed.api.v1.BulkImportRelationshipsRequest.class, responseType = com.authzed.api.v1.BulkImportRelationshipsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.BulkImportRelationshipsRequest, com.authzed.api.v1.BulkImportRelationshipsResponse> getBulkImportRelationshipsMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.BulkImportRelationshipsRequest, com.authzed.api.v1.BulkImportRelationshipsResponse> getBulkImportRelationshipsMethod;
         if ((getBulkImportRelationshipsMethod = ExperimentalServiceGrpc.getBulkImportRelationshipsMethod) == null) {
             synchronized (ExperimentalServiceGrpc.class) {
                 if ((getBulkImportRelationshipsMethod = ExperimentalServiceGrpc.getBulkImportRelationshipsMethod) == null) {
-                    ExperimentalServiceGrpc.getBulkImportRelationshipsMethod = getBulkImportRelationshipsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> newBuilder()
+                    ExperimentalServiceGrpc.getBulkImportRelationshipsMethod = getBulkImportRelationshipsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.BulkImportRelationshipsRequest, com.authzed.api.v1.BulkImportRelationshipsResponse> newBuilder()
                             .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
                             .setFullMethodName(generateFullMethodName(SERVICE_NAME, "BulkImportRelationships"))
                             .setSampledToLocalTracing(true)
                             .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest
-                                            .getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.BulkImportRelationshipsRequest.getDefaultInstance()))
                             .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse
-                                            .getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.BulkImportRelationshipsResponse.getDefaultInstance()))
                             .setSchemaDescriptor(new ExperimentalServiceMethodDescriptorSupplier("BulkImportRelationships"))
                             .build();
                 }
@@ -45,25 +42,23 @@ public final class ExperimentalServiceGrpc {
         return getBulkImportRelationshipsMethod;
     }
 
-    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> getBulkExportRelationshipsMethod;
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.BulkExportRelationshipsRequest, com.authzed.api.v1.BulkExportRelationshipsResponse> getBulkExportRelationshipsMethod;
 
     @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
-            + "BulkExportRelationships", requestType = com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest.class, responseType = com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> getBulkExportRelationshipsMethod() {
-        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> getBulkExportRelationshipsMethod;
+            + "BulkExportRelationships", requestType = com.authzed.api.v1.BulkExportRelationshipsRequest.class, responseType = com.authzed.api.v1.BulkExportRelationshipsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.BulkExportRelationshipsRequest, com.authzed.api.v1.BulkExportRelationshipsResponse> getBulkExportRelationshipsMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.BulkExportRelationshipsRequest, com.authzed.api.v1.BulkExportRelationshipsResponse> getBulkExportRelationshipsMethod;
         if ((getBulkExportRelationshipsMethod = ExperimentalServiceGrpc.getBulkExportRelationshipsMethod) == null) {
             synchronized (ExperimentalServiceGrpc.class) {
                 if ((getBulkExportRelationshipsMethod = ExperimentalServiceGrpc.getBulkExportRelationshipsMethod) == null) {
-                    ExperimentalServiceGrpc.getBulkExportRelationshipsMethod = getBulkExportRelationshipsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> newBuilder()
+                    ExperimentalServiceGrpc.getBulkExportRelationshipsMethod = getBulkExportRelationshipsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.BulkExportRelationshipsRequest, com.authzed.api.v1.BulkExportRelationshipsResponse> newBuilder()
                             .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
                             .setFullMethodName(generateFullMethodName(SERVICE_NAME, "BulkExportRelationships"))
                             .setSampledToLocalTracing(true)
                             .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest
-                                            .getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.BulkExportRelationshipsRequest.getDefaultInstance()))
                             .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse
-                                            .getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.BulkExportRelationshipsResponse.getDefaultInstance()))
                             .setSchemaDescriptor(new ExperimentalServiceMethodDescriptorSupplier("BulkExportRelationships"))
                             .build();
                 }
@@ -72,31 +67,210 @@ public final class ExperimentalServiceGrpc {
         return getBulkExportRelationshipsMethod;
     }
 
-    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> getBulkCheckPermissionMethod;
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.BulkCheckPermissionRequest, com.authzed.api.v1.BulkCheckPermissionResponse> getBulkCheckPermissionMethod;
 
     @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
-            + "BulkCheckPermission", requestType = com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest.class, responseType = com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> getBulkCheckPermissionMethod() {
-        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> getBulkCheckPermissionMethod;
+            + "BulkCheckPermission", requestType = com.authzed.api.v1.BulkCheckPermissionRequest.class, responseType = com.authzed.api.v1.BulkCheckPermissionResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.BulkCheckPermissionRequest, com.authzed.api.v1.BulkCheckPermissionResponse> getBulkCheckPermissionMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.BulkCheckPermissionRequest, com.authzed.api.v1.BulkCheckPermissionResponse> getBulkCheckPermissionMethod;
         if ((getBulkCheckPermissionMethod = ExperimentalServiceGrpc.getBulkCheckPermissionMethod) == null) {
             synchronized (ExperimentalServiceGrpc.class) {
                 if ((getBulkCheckPermissionMethod = ExperimentalServiceGrpc.getBulkCheckPermissionMethod) == null) {
-                    ExperimentalServiceGrpc.getBulkCheckPermissionMethod = getBulkCheckPermissionMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> newBuilder()
+                    ExperimentalServiceGrpc.getBulkCheckPermissionMethod = getBulkCheckPermissionMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.BulkCheckPermissionRequest, com.authzed.api.v1.BulkCheckPermissionResponse> newBuilder()
                             .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                             .setFullMethodName(generateFullMethodName(SERVICE_NAME, "BulkCheckPermission"))
                             .setSampledToLocalTracing(true)
                             .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest
-                                            .getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.BulkCheckPermissionRequest.getDefaultInstance()))
                             .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
-                                    .marshaller(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse
-                                            .getDefaultInstance()))
+                                    .marshaller(com.authzed.api.v1.BulkCheckPermissionResponse.getDefaultInstance()))
                             .setSchemaDescriptor(new ExperimentalServiceMethodDescriptorSupplier("BulkCheckPermission"))
                             .build();
                 }
             }
         }
         return getBulkCheckPermissionMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalReflectSchemaRequest, com.authzed.api.v1.ExperimentalReflectSchemaResponse> getExperimentalReflectSchemaMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ExperimentalReflectSchema", requestType = com.authzed.api.v1.ExperimentalReflectSchemaRequest.class, responseType = com.authzed.api.v1.ExperimentalReflectSchemaResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalReflectSchemaRequest, com.authzed.api.v1.ExperimentalReflectSchemaResponse> getExperimentalReflectSchemaMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalReflectSchemaRequest, com.authzed.api.v1.ExperimentalReflectSchemaResponse> getExperimentalReflectSchemaMethod;
+        if ((getExperimentalReflectSchemaMethod = ExperimentalServiceGrpc.getExperimentalReflectSchemaMethod) == null) {
+            synchronized (ExperimentalServiceGrpc.class) {
+                if ((getExperimentalReflectSchemaMethod = ExperimentalServiceGrpc.getExperimentalReflectSchemaMethod) == null) {
+                    ExperimentalServiceGrpc.getExperimentalReflectSchemaMethod = getExperimentalReflectSchemaMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalReflectSchemaRequest, com.authzed.api.v1.ExperimentalReflectSchemaResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExperimentalReflectSchema"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalReflectSchemaRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalReflectSchemaResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(new ExperimentalServiceMethodDescriptorSupplier("ExperimentalReflectSchema"))
+                            .build();
+                }
+            }
+        }
+        return getExperimentalReflectSchemaMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalComputablePermissionsRequest, com.authzed.api.v1.ExperimentalComputablePermissionsResponse> getExperimentalComputablePermissionsMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ExperimentalComputablePermissions", requestType = com.authzed.api.v1.ExperimentalComputablePermissionsRequest.class, responseType = com.authzed.api.v1.ExperimentalComputablePermissionsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalComputablePermissionsRequest, com.authzed.api.v1.ExperimentalComputablePermissionsResponse> getExperimentalComputablePermissionsMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalComputablePermissionsRequest, com.authzed.api.v1.ExperimentalComputablePermissionsResponse> getExperimentalComputablePermissionsMethod;
+        if ((getExperimentalComputablePermissionsMethod = ExperimentalServiceGrpc.getExperimentalComputablePermissionsMethod) == null) {
+            synchronized (ExperimentalServiceGrpc.class) {
+                if ((getExperimentalComputablePermissionsMethod = ExperimentalServiceGrpc.getExperimentalComputablePermissionsMethod) == null) {
+                    ExperimentalServiceGrpc.getExperimentalComputablePermissionsMethod = getExperimentalComputablePermissionsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalComputablePermissionsRequest, com.authzed.api.v1.ExperimentalComputablePermissionsResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExperimentalComputablePermissions"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.ExperimentalComputablePermissionsRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.ExperimentalComputablePermissionsResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(
+                                    new ExperimentalServiceMethodDescriptorSupplier("ExperimentalComputablePermissions"))
+                            .build();
+                }
+            }
+        }
+        return getExperimentalComputablePermissionsMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalDependentRelationsRequest, com.authzed.api.v1.ExperimentalDependentRelationsResponse> getExperimentalDependentRelationsMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ExperimentalDependentRelations", requestType = com.authzed.api.v1.ExperimentalDependentRelationsRequest.class, responseType = com.authzed.api.v1.ExperimentalDependentRelationsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalDependentRelationsRequest, com.authzed.api.v1.ExperimentalDependentRelationsResponse> getExperimentalDependentRelationsMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalDependentRelationsRequest, com.authzed.api.v1.ExperimentalDependentRelationsResponse> getExperimentalDependentRelationsMethod;
+        if ((getExperimentalDependentRelationsMethod = ExperimentalServiceGrpc.getExperimentalDependentRelationsMethod) == null) {
+            synchronized (ExperimentalServiceGrpc.class) {
+                if ((getExperimentalDependentRelationsMethod = ExperimentalServiceGrpc.getExperimentalDependentRelationsMethod) == null) {
+                    ExperimentalServiceGrpc.getExperimentalDependentRelationsMethod = getExperimentalDependentRelationsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalDependentRelationsRequest, com.authzed.api.v1.ExperimentalDependentRelationsResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExperimentalDependentRelations"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalDependentRelationsRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalDependentRelationsResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(
+                                    new ExperimentalServiceMethodDescriptorSupplier("ExperimentalDependentRelations"))
+                            .build();
+                }
+            }
+        }
+        return getExperimentalDependentRelationsMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalDiffSchemaRequest, com.authzed.api.v1.ExperimentalDiffSchemaResponse> getExperimentalDiffSchemaMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ExperimentalDiffSchema", requestType = com.authzed.api.v1.ExperimentalDiffSchemaRequest.class, responseType = com.authzed.api.v1.ExperimentalDiffSchemaResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalDiffSchemaRequest, com.authzed.api.v1.ExperimentalDiffSchemaResponse> getExperimentalDiffSchemaMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalDiffSchemaRequest, com.authzed.api.v1.ExperimentalDiffSchemaResponse> getExperimentalDiffSchemaMethod;
+        if ((getExperimentalDiffSchemaMethod = ExperimentalServiceGrpc.getExperimentalDiffSchemaMethod) == null) {
+            synchronized (ExperimentalServiceGrpc.class) {
+                if ((getExperimentalDiffSchemaMethod = ExperimentalServiceGrpc.getExperimentalDiffSchemaMethod) == null) {
+                    ExperimentalServiceGrpc.getExperimentalDiffSchemaMethod = getExperimentalDiffSchemaMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalDiffSchemaRequest, com.authzed.api.v1.ExperimentalDiffSchemaResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExperimentalDiffSchema"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalDiffSchemaRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalDiffSchemaResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(new ExperimentalServiceMethodDescriptorSupplier("ExperimentalDiffSchema"))
+                            .build();
+                }
+            }
+        }
+        return getExperimentalDiffSchemaMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> getExperimentalRegisterRelationshipCounterMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ExperimentalRegisterRelationshipCounter", requestType = com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest.class, responseType = com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> getExperimentalRegisterRelationshipCounterMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> getExperimentalRegisterRelationshipCounterMethod;
+        if ((getExperimentalRegisterRelationshipCounterMethod = ExperimentalServiceGrpc.getExperimentalRegisterRelationshipCounterMethod) == null) {
+            synchronized (ExperimentalServiceGrpc.class) {
+                if ((getExperimentalRegisterRelationshipCounterMethod = ExperimentalServiceGrpc.getExperimentalRegisterRelationshipCounterMethod) == null) {
+                    ExperimentalServiceGrpc.getExperimentalRegisterRelationshipCounterMethod = getExperimentalRegisterRelationshipCounterMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExperimentalRegisterRelationshipCounter"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(
+                                    new ExperimentalServiceMethodDescriptorSupplier("ExperimentalRegisterRelationshipCounter"))
+                            .build();
+                }
+            }
+        }
+        return getExperimentalRegisterRelationshipCounterMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalCountRelationshipsRequest, com.authzed.api.v1.ExperimentalCountRelationshipsResponse> getExperimentalCountRelationshipsMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ExperimentalCountRelationships", requestType = com.authzed.api.v1.ExperimentalCountRelationshipsRequest.class, responseType = com.authzed.api.v1.ExperimentalCountRelationshipsResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalCountRelationshipsRequest, com.authzed.api.v1.ExperimentalCountRelationshipsResponse> getExperimentalCountRelationshipsMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalCountRelationshipsRequest, com.authzed.api.v1.ExperimentalCountRelationshipsResponse> getExperimentalCountRelationshipsMethod;
+        if ((getExperimentalCountRelationshipsMethod = ExperimentalServiceGrpc.getExperimentalCountRelationshipsMethod) == null) {
+            synchronized (ExperimentalServiceGrpc.class) {
+                if ((getExperimentalCountRelationshipsMethod = ExperimentalServiceGrpc.getExperimentalCountRelationshipsMethod) == null) {
+                    ExperimentalServiceGrpc.getExperimentalCountRelationshipsMethod = getExperimentalCountRelationshipsMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalCountRelationshipsRequest, com.authzed.api.v1.ExperimentalCountRelationshipsResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExperimentalCountRelationships"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalCountRelationshipsRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils
+                                    .marshaller(com.authzed.api.v1.ExperimentalCountRelationshipsResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(
+                                    new ExperimentalServiceMethodDescriptorSupplier("ExperimentalCountRelationships"))
+                            .build();
+                }
+            }
+        }
+        return getExperimentalCountRelationshipsMethod;
+    }
+
+    private static volatile io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> getExperimentalUnregisterRelationshipCounterMethod;
+
+    @io.grpc.stub.annotations.RpcMethod(fullMethodName = SERVICE_NAME + '/'
+            + "ExperimentalUnregisterRelationshipCounter", requestType = com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest.class, responseType = com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse.class, methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+    public static io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> getExperimentalUnregisterRelationshipCounterMethod() {
+        io.grpc.MethodDescriptor<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> getExperimentalUnregisterRelationshipCounterMethod;
+        if ((getExperimentalUnregisterRelationshipCounterMethod = ExperimentalServiceGrpc.getExperimentalUnregisterRelationshipCounterMethod) == null) {
+            synchronized (ExperimentalServiceGrpc.class) {
+                if ((getExperimentalUnregisterRelationshipCounterMethod = ExperimentalServiceGrpc.getExperimentalUnregisterRelationshipCounterMethod) == null) {
+                    ExperimentalServiceGrpc.getExperimentalUnregisterRelationshipCounterMethod = getExperimentalUnregisterRelationshipCounterMethod = io.grpc.MethodDescriptor.<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> newBuilder()
+                            .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                            .setFullMethodName(
+                                    generateFullMethodName(SERVICE_NAME, "ExperimentalUnregisterRelationshipCounter"))
+                            .setSampledToLocalTracing(true)
+                            .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest.getDefaultInstance()))
+                            .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                    com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse.getDefaultInstance()))
+                            .setSchemaDescriptor(new ExperimentalServiceMethodDescriptorSupplier(
+                                    "ExperimentalUnregisterRelationshipCounter"))
+                            .build();
+                }
+            }
+        }
+        return getExperimentalUnregisterRelationshipCounterMethod;
     }
 
     /**
@@ -111,6 +285,20 @@ public final class ExperimentalServiceGrpc {
             }
         };
         return ExperimentalServiceStub.newStub(factory, channel);
+    }
+
+    /**
+     * Creates a new blocking-style stub that supports all types of calls on the service
+     */
+    public static ExperimentalServiceBlockingV2Stub newBlockingV2Stub(io.grpc.Channel channel) {
+        io.grpc.stub.AbstractStub.StubFactory<ExperimentalServiceBlockingV2Stub> factory = new io.grpc.stub.AbstractStub.StubFactory<ExperimentalServiceBlockingV2Stub>() {
+
+            @java.lang.Override
+            public ExperimentalServiceBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+                return new ExperimentalServiceBlockingV2Stub(channel, callOptions);
+            }
+        };
+        return ExperimentalServiceBlockingV2Stub.newStub(factory, channel);
     }
 
     /**
@@ -151,41 +339,116 @@ public final class ExperimentalServiceGrpc {
 
         /**
          * <pre>
-         * BulkImportRelationships is a faster path to writing a large number of
-         * relationships at once. It is both batched and streaming. For maximum
-         * performance, the caller should attempt to write relationships in as close
-         * to relationship sort order as possible: (resource.object_type,
-         * resource.object_id, relation, subject.object.object_type,
-         * subject.object.object_id, subject.optional_relation)
-         *
-         * EXPERIMENTAL
-         * https://github.com/authzed/spicedb/issues/1303
+         * DEPRECATED: Promoted to ImportBulkRelationships in the stable API.
          * </pre>
          */
-        default io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest> bulkImportRelationships(
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> responseObserver) {
+        @java.lang.Deprecated
+        default io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkImportRelationshipsRequest> bulkImportRelationships(
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkImportRelationshipsResponse> responseObserver) {
             return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getBulkImportRelationshipsMethod(),
                     responseObserver);
         }
 
         /**
          * <pre>
-         * BulkExportRelationships is the fastest path available to exporting
-         * relationships from the server. It is resumable, and will return results
-         * in an order determined by the server.
+         * DEPRECATED: Promoted to ExportBulkRelationships in the stable API.
          * </pre>
          */
-        default void bulkExportRelationships(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest request,
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> responseObserver) {
+        @java.lang.Deprecated
+        default void bulkExportRelationships(com.authzed.api.v1.BulkExportRelationshipsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkExportRelationshipsResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getBulkExportRelationshipsMethod(), responseObserver);
         }
 
         /**
+         * <pre>
+         * DEPRECATED: Promoted to CheckBulkPermission in the stable API.
+         * </pre>
          */
-        default void bulkCheckPermission(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest request,
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> responseObserver) {
+        @java.lang.Deprecated
+        default void bulkCheckPermission(com.authzed.api.v1.BulkCheckPermissionRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkCheckPermissionResponse> responseObserver) {
             io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getBulkCheckPermissionMethod(), responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ReflectSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        default void experimentalReflectSchema(com.authzed.api.v1.ExperimentalReflectSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalReflectSchemaResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExperimentalReflectSchemaMethod(), responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ComputablePermissions in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        default void experimentalComputablePermissions(com.authzed.api.v1.ExperimentalComputablePermissionsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalComputablePermissionsResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExperimentalComputablePermissionsMethod(),
+                    responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DependentRelations in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        default void experimentalDependentRelations(com.authzed.api.v1.ExperimentalDependentRelationsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDependentRelationsResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExperimentalDependentRelationsMethod(), responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DiffSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        default void experimentalDiffSchema(com.authzed.api.v1.ExperimentalDiffSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDiffSchemaResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExperimentalDiffSchemaMethod(), responseObserver);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: RegisterRelationshipCounter registers a new filter for counting relationships. A filter must be registered before
+         * a count can be requested.
+         * </pre>
+         */
+        default void experimentalRegisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExperimentalRegisterRelationshipCounterMethod(),
+                    responseObserver);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: CountRelationships returns the count of relationships for *pre-registered* filter.
+         * </pre>
+         */
+        default void experimentalCountRelationships(com.authzed.api.v1.ExperimentalCountRelationshipsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalCountRelationshipsResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExperimentalCountRelationshipsMethod(), responseObserver);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: UnregisterRelationshipCounter unregisters an existing filter for counting relationships.
+         * </pre>
+         */
+        default void experimentalUnregisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> responseObserver) {
+            io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExperimentalUnregisterRelationshipCounterMethod(),
+                    responseObserver);
         }
     }
 
@@ -226,48 +489,272 @@ public final class ExperimentalServiceGrpc {
 
         /**
          * <pre>
-         * BulkImportRelationships is a faster path to writing a large number of
-         * relationships at once. It is both batched and streaming. For maximum
-         * performance, the caller should attempt to write relationships in as close
-         * to relationship sort order as possible: (resource.object_type,
-         * resource.object_id, relation, subject.object.object_type,
-         * subject.object.object_id, subject.optional_relation)
-         *
-         * EXPERIMENTAL
-         * https://github.com/authzed/spicedb/issues/1303
+         * DEPRECATED: Promoted to ImportBulkRelationships in the stable API.
          * </pre>
          */
-        public io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest> bulkImportRelationships(
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> responseObserver) {
+        @java.lang.Deprecated
+        public io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkImportRelationshipsRequest> bulkImportRelationships(
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkImportRelationshipsResponse> responseObserver) {
             return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
                     getChannel().newCall(getBulkImportRelationshipsMethod(), getCallOptions()), responseObserver);
         }
 
         /**
          * <pre>
-         * BulkExportRelationships is the fastest path available to exporting
-         * relationships from the server. It is resumable, and will return results
-         * in an order determined by the server.
+         * DEPRECATED: Promoted to ExportBulkRelationships in the stable API.
          * </pre>
          */
-        public void bulkExportRelationships(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest request,
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> responseObserver) {
+        @java.lang.Deprecated
+        public void bulkExportRelationships(com.authzed.api.v1.BulkExportRelationshipsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkExportRelationshipsResponse> responseObserver) {
             io.grpc.stub.ClientCalls.asyncServerStreamingCall(
                     getChannel().newCall(getBulkExportRelationshipsMethod(), getCallOptions()), request, responseObserver);
         }
 
         /**
+         * <pre>
+         * DEPRECATED: Promoted to CheckBulkPermission in the stable API.
+         * </pre>
          */
-        public void bulkCheckPermission(com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest request,
-                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> responseObserver) {
+        @java.lang.Deprecated
+        public void bulkCheckPermission(com.authzed.api.v1.BulkCheckPermissionRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkCheckPermissionResponse> responseObserver) {
             io.grpc.stub.ClientCalls.asyncUnaryCall(getChannel().newCall(getBulkCheckPermissionMethod(), getCallOptions()),
                     request, responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ReflectSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public void experimentalReflectSchema(com.authzed.api.v1.ExperimentalReflectSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalReflectSchemaResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(
+                    getChannel().newCall(getExperimentalReflectSchemaMethod(), getCallOptions()), request, responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ComputablePermissions in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public void experimentalComputablePermissions(com.authzed.api.v1.ExperimentalComputablePermissionsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalComputablePermissionsResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(
+                    getChannel().newCall(getExperimentalComputablePermissionsMethod(), getCallOptions()), request,
+                    responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DependentRelations in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public void experimentalDependentRelations(com.authzed.api.v1.ExperimentalDependentRelationsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDependentRelationsResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(
+                    getChannel().newCall(getExperimentalDependentRelationsMethod(), getCallOptions()), request,
+                    responseObserver);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DiffSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public void experimentalDiffSchema(com.authzed.api.v1.ExperimentalDiffSchemaRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDiffSchemaResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(getChannel().newCall(getExperimentalDiffSchemaMethod(), getCallOptions()),
+                    request, responseObserver);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: RegisterRelationshipCounter registers a new filter for counting relationships. A filter must be registered before
+         * a count can be requested.
+         * </pre>
+         */
+        public void experimentalRegisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(
+                    getChannel().newCall(getExperimentalRegisterRelationshipCounterMethod(), getCallOptions()), request,
+                    responseObserver);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: CountRelationships returns the count of relationships for *pre-registered* filter.
+         * </pre>
+         */
+        public void experimentalCountRelationships(com.authzed.api.v1.ExperimentalCountRelationshipsRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalCountRelationshipsResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(
+                    getChannel().newCall(getExperimentalCountRelationshipsMethod(), getCallOptions()), request,
+                    responseObserver);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: UnregisterRelationshipCounter unregisters an existing filter for counting relationships.
+         * </pre>
+         */
+        public void experimentalUnregisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest request,
+                io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> responseObserver) {
+            io.grpc.stub.ClientCalls.asyncUnaryCall(
+                    getChannel().newCall(getExperimentalUnregisterRelationshipCounterMethod(), getCallOptions()), request,
+                    responseObserver);
         }
     }
 
     /**
      * A stub to allow clients to do synchronous rpc calls to service ExperimentalService.
+     *
+     * <pre>
+     * ExperimentalService exposes a number of APIs that are currently being
+     * prototyped and tested for future inclusion in the stable API.
+     * </pre>
+     */
+    public static class ExperimentalServiceBlockingV2Stub
+            extends io.grpc.stub.AbstractBlockingStub<ExperimentalServiceBlockingV2Stub> {
+
+        private ExperimentalServiceBlockingV2Stub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            super(channel, callOptions);
+        }
+
+        @java.lang.Override
+        protected ExperimentalServiceBlockingV2Stub build(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new ExperimentalServiceBlockingV2Stub(channel, callOptions);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ImportBulkRelationships in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+        public io.grpc.stub.BlockingClientCall<com.authzed.api.v1.BulkImportRelationshipsRequest, com.authzed.api.v1.BulkImportRelationshipsResponse> bulkImportRelationships() {
+            return io.grpc.stub.ClientCalls.blockingClientStreamingCall(getChannel(), getBulkImportRelationshipsMethod(),
+                    getCallOptions());
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ExportBulkRelationships in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+        public io.grpc.stub.BlockingClientCall<?, com.authzed.api.v1.BulkExportRelationshipsResponse> bulkExportRelationships(
+                com.authzed.api.v1.BulkExportRelationshipsRequest request) {
+            return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(getChannel(), getBulkExportRelationshipsMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to CheckBulkPermission in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.BulkCheckPermissionResponse bulkCheckPermission(
+                com.authzed.api.v1.BulkCheckPermissionRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(), getBulkCheckPermissionMethod(), getCallOptions(),
+                    request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ReflectSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalReflectSchemaResponse experimentalReflectSchema(
+                com.authzed.api.v1.ExperimentalReflectSchemaRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(), getExperimentalReflectSchemaMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ComputablePermissions in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalComputablePermissionsResponse experimentalComputablePermissions(
+                com.authzed.api.v1.ExperimentalComputablePermissionsRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(), getExperimentalComputablePermissionsMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DependentRelations in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalDependentRelationsResponse experimentalDependentRelations(
+                com.authzed.api.v1.ExperimentalDependentRelationsRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(), getExperimentalDependentRelationsMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DiffSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalDiffSchemaResponse experimentalDiffSchema(
+                com.authzed.api.v1.ExperimentalDiffSchemaRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(), getExperimentalDiffSchemaMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: RegisterRelationshipCounter registers a new filter for counting relationships. A filter must be registered before
+         * a count can be requested.
+         * </pre>
+         */
+        public com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse experimentalRegisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(),
+                    getExperimentalRegisterRelationshipCounterMethod(), getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: CountRelationships returns the count of relationships for *pre-registered* filter.
+         * </pre>
+         */
+        public com.authzed.api.v1.ExperimentalCountRelationshipsResponse experimentalCountRelationships(
+                com.authzed.api.v1.ExperimentalCountRelationshipsRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(), getExperimentalCountRelationshipsMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: UnregisterRelationshipCounter unregisters an existing filter for counting relationships.
+         * </pre>
+         */
+        public com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse experimentalUnregisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest request) throws io.grpc.StatusException {
+            return io.grpc.stub.ClientCalls.blockingV2UnaryCall(getChannel(),
+                    getExperimentalUnregisterRelationshipCounterMethod(), getCallOptions(), request);
+        }
+    }
+
+    /**
+     * A stub to allow clients to do limited synchronous rpc calls to service ExperimentalService.
      *
      * <pre>
      * ExperimentalService exposes a number of APIs that are currently being
@@ -288,23 +775,108 @@ public final class ExperimentalServiceGrpc {
 
         /**
          * <pre>
-         * BulkExportRelationships is the fastest path available to exporting
-         * relationships from the server. It is resumable, and will return results
-         * in an order determined by the server.
+         * DEPRECATED: Promoted to ExportBulkRelationships in the stable API.
          * </pre>
          */
-        public java.util.Iterator<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> bulkExportRelationships(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest request) {
+        @java.lang.Deprecated
+        public java.util.Iterator<com.authzed.api.v1.BulkExportRelationshipsResponse> bulkExportRelationships(
+                com.authzed.api.v1.BulkExportRelationshipsRequest request) {
             return io.grpc.stub.ClientCalls.blockingServerStreamingCall(getChannel(), getBulkExportRelationshipsMethod(),
                     getCallOptions(), request);
         }
 
         /**
+         * <pre>
+         * DEPRECATED: Promoted to CheckBulkPermission in the stable API.
+         * </pre>
          */
-        public com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse bulkCheckPermission(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest request) {
+        @java.lang.Deprecated
+        public com.authzed.api.v1.BulkCheckPermissionResponse bulkCheckPermission(
+                com.authzed.api.v1.BulkCheckPermissionRequest request) {
             return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getBulkCheckPermissionMethod(), getCallOptions(),
                     request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ReflectSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalReflectSchemaResponse experimentalReflectSchema(
+                com.authzed.api.v1.ExperimentalReflectSchemaRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getExperimentalReflectSchemaMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ComputablePermissions in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalComputablePermissionsResponse experimentalComputablePermissions(
+                com.authzed.api.v1.ExperimentalComputablePermissionsRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getExperimentalComputablePermissionsMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DependentRelations in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalDependentRelationsResponse experimentalDependentRelations(
+                com.authzed.api.v1.ExperimentalDependentRelationsRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getExperimentalDependentRelationsMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DiffSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.authzed.api.v1.ExperimentalDiffSchemaResponse experimentalDiffSchema(
+                com.authzed.api.v1.ExperimentalDiffSchemaRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getExperimentalDiffSchemaMethod(), getCallOptions(),
+                    request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: RegisterRelationshipCounter registers a new filter for counting relationships. A filter must be registered before
+         * a count can be requested.
+         * </pre>
+         */
+        public com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse experimentalRegisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getExperimentalRegisterRelationshipCounterMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: CountRelationships returns the count of relationships for *pre-registered* filter.
+         * </pre>
+         */
+        public com.authzed.api.v1.ExperimentalCountRelationshipsResponse experimentalCountRelationships(
+                com.authzed.api.v1.ExperimentalCountRelationshipsRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(), getExperimentalCountRelationshipsMethod(),
+                    getCallOptions(), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: UnregisterRelationshipCounter unregisters an existing filter for counting relationships.
+         * </pre>
+         */
+        public com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse experimentalUnregisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest request) {
+            return io.grpc.stub.ClientCalls.blockingUnaryCall(getChannel(),
+                    getExperimentalUnregisterRelationshipCounterMethod(), getCallOptions(), request);
         }
     }
 
@@ -328,11 +900,97 @@ public final class ExperimentalServiceGrpc {
         }
 
         /**
+         * <pre>
+         * DEPRECATED: Promoted to CheckBulkPermission in the stable API.
+         * </pre>
          */
-        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> bulkCheckPermission(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest request) {
+        @java.lang.Deprecated
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.BulkCheckPermissionResponse> bulkCheckPermission(
+                com.authzed.api.v1.BulkCheckPermissionRequest request) {
             return io.grpc.stub.ClientCalls
                     .futureUnaryCall(getChannel().newCall(getBulkCheckPermissionMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ReflectSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalReflectSchemaResponse> experimentalReflectSchema(
+                com.authzed.api.v1.ExperimentalReflectSchemaRequest request) {
+            return io.grpc.stub.ClientCalls
+                    .futureUnaryCall(getChannel().newCall(getExperimentalReflectSchemaMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to ComputablePermissions in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalComputablePermissionsResponse> experimentalComputablePermissions(
+                com.authzed.api.v1.ExperimentalComputablePermissionsRequest request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(
+                    getChannel().newCall(getExperimentalComputablePermissionsMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DependentRelations in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalDependentRelationsResponse> experimentalDependentRelations(
+                com.authzed.api.v1.ExperimentalDependentRelationsRequest request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(
+                    getChannel().newCall(getExperimentalDependentRelationsMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
+         * DEPRECATED: Promoted to DiffSchema in the stable API.
+         * </pre>
+         */
+        @java.lang.Deprecated
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalDiffSchemaResponse> experimentalDiffSchema(
+                com.authzed.api.v1.ExperimentalDiffSchemaRequest request) {
+            return io.grpc.stub.ClientCalls
+                    .futureUnaryCall(getChannel().newCall(getExperimentalDiffSchemaMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: RegisterRelationshipCounter registers a new filter for counting relationships. A filter must be registered before
+         * a count can be requested.
+         * </pre>
+         */
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> experimentalRegisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(
+                    getChannel().newCall(getExperimentalRegisterRelationshipCounterMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: CountRelationships returns the count of relationships for *pre-registered* filter.
+         * </pre>
+         */
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalCountRelationshipsResponse> experimentalCountRelationships(
+                com.authzed.api.v1.ExperimentalCountRelationshipsRequest request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(
+                    getChannel().newCall(getExperimentalCountRelationshipsMethod(), getCallOptions()), request);
+        }
+
+        /**
+         * <pre>
+         * EXPERIMENTAL: UnregisterRelationshipCounter unregisters an existing filter for counting relationships.
+         * </pre>
+         */
+        public com.google.common.util.concurrent.ListenableFuture<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> experimentalUnregisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest request) {
+            return io.grpc.stub.ClientCalls.futureUnaryCall(
+                    getChannel().newCall(getExperimentalUnregisterRelationshipCounterMethod(), getCallOptions()), request);
         }
     }
 
@@ -340,7 +998,21 @@ public final class ExperimentalServiceGrpc {
 
     private static final int METHODID_BULK_CHECK_PERMISSION = 1;
 
-    private static final int METHODID_BULK_IMPORT_RELATIONSHIPS = 2;
+    private static final int METHODID_EXPERIMENTAL_REFLECT_SCHEMA = 2;
+
+    private static final int METHODID_EXPERIMENTAL_COMPUTABLE_PERMISSIONS = 3;
+
+    private static final int METHODID_EXPERIMENTAL_DEPENDENT_RELATIONS = 4;
+
+    private static final int METHODID_EXPERIMENTAL_DIFF_SCHEMA = 5;
+
+    private static final int METHODID_EXPERIMENTAL_REGISTER_RELATIONSHIP_COUNTER = 6;
+
+    private static final int METHODID_EXPERIMENTAL_COUNT_RELATIONSHIPS = 7;
+
+    private static final int METHODID_EXPERIMENTAL_UNREGISTER_RELATIONSHIP_COUNTER = 8;
+
+    private static final int METHODID_BULK_IMPORT_RELATIONSHIPS = 9;
 
     private static final class MethodHandlers<Req, Resp> implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
@@ -360,14 +1032,45 @@ public final class ExperimentalServiceGrpc {
         public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
             switch (methodId) {
                 case METHODID_BULK_EXPORT_RELATIONSHIPS:
-                    serviceImpl.bulkExportRelationships(
-                            (com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse>) responseObserver);
+                    serviceImpl.bulkExportRelationships((com.authzed.api.v1.BulkExportRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkExportRelationshipsResponse>) responseObserver);
                     break;
                 case METHODID_BULK_CHECK_PERMISSION:
-                    serviceImpl.bulkCheckPermission(
-                            (com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse>) responseObserver);
+                    serviceImpl.bulkCheckPermission((com.authzed.api.v1.BulkCheckPermissionRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkCheckPermissionResponse>) responseObserver);
+                    break;
+                case METHODID_EXPERIMENTAL_REFLECT_SCHEMA:
+                    serviceImpl.experimentalReflectSchema((com.authzed.api.v1.ExperimentalReflectSchemaRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalReflectSchemaResponse>) responseObserver);
+                    break;
+                case METHODID_EXPERIMENTAL_COMPUTABLE_PERMISSIONS:
+                    serviceImpl.experimentalComputablePermissions(
+                            (com.authzed.api.v1.ExperimentalComputablePermissionsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalComputablePermissionsResponse>) responseObserver);
+                    break;
+                case METHODID_EXPERIMENTAL_DEPENDENT_RELATIONS:
+                    serviceImpl.experimentalDependentRelations(
+                            (com.authzed.api.v1.ExperimentalDependentRelationsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDependentRelationsResponse>) responseObserver);
+                    break;
+                case METHODID_EXPERIMENTAL_DIFF_SCHEMA:
+                    serviceImpl.experimentalDiffSchema((com.authzed.api.v1.ExperimentalDiffSchemaRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDiffSchemaResponse>) responseObserver);
+                    break;
+                case METHODID_EXPERIMENTAL_REGISTER_RELATIONSHIP_COUNTER:
+                    serviceImpl.experimentalRegisterRelationshipCounter(
+                            (com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse>) responseObserver);
+                    break;
+                case METHODID_EXPERIMENTAL_COUNT_RELATIONSHIPS:
+                    serviceImpl.experimentalCountRelationships(
+                            (com.authzed.api.v1.ExperimentalCountRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalCountRelationshipsResponse>) responseObserver);
+                    break;
+                case METHODID_EXPERIMENTAL_UNREGISTER_RELATIONSHIP_COUNTER:
+                    serviceImpl.experimentalUnregisterRelationshipCounter(
+                            (com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse>) responseObserver);
                     break;
                 default:
                     throw new AssertionError();
@@ -380,7 +1083,7 @@ public final class ExperimentalServiceGrpc {
             switch (methodId) {
                 case METHODID_BULK_IMPORT_RELATIONSHIPS:
                     return (io.grpc.stub.StreamObserver<Req>) serviceImpl.bulkImportRelationships(
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse>) responseObserver);
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkImportRelationshipsResponse>) responseObserver);
                 default:
                     throw new AssertionError();
             }
@@ -390,14 +1093,35 @@ public final class ExperimentalServiceGrpc {
     public static io.grpc.ServerServiceDefinition bindService(AsyncService service) {
         return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
                 .addMethod(getBulkImportRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncClientStreamingCall(
-                        new MethodHandlers<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse>(
+                        new MethodHandlers<com.authzed.api.v1.BulkImportRelationshipsRequest, com.authzed.api.v1.BulkImportRelationshipsResponse>(
                                 service, METHODID_BULK_IMPORT_RELATIONSHIPS)))
                 .addMethod(getBulkExportRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-                        new MethodHandlers<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse>(
+                        new MethodHandlers<com.authzed.api.v1.BulkExportRelationshipsRequest, com.authzed.api.v1.BulkExportRelationshipsResponse>(
                                 service, METHODID_BULK_EXPORT_RELATIONSHIPS)))
                 .addMethod(getBulkCheckPermissionMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
-                        new MethodHandlers<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse>(
+                        new MethodHandlers<com.authzed.api.v1.BulkCheckPermissionRequest, com.authzed.api.v1.BulkCheckPermissionResponse>(
                                 service, METHODID_BULK_CHECK_PERMISSION)))
+                .addMethod(getExperimentalReflectSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.ExperimentalReflectSchemaRequest, com.authzed.api.v1.ExperimentalReflectSchemaResponse>(
+                                service, METHODID_EXPERIMENTAL_REFLECT_SCHEMA)))
+                .addMethod(getExperimentalComputablePermissionsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.ExperimentalComputablePermissionsRequest, com.authzed.api.v1.ExperimentalComputablePermissionsResponse>(
+                                service, METHODID_EXPERIMENTAL_COMPUTABLE_PERMISSIONS)))
+                .addMethod(getExperimentalDependentRelationsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.ExperimentalDependentRelationsRequest, com.authzed.api.v1.ExperimentalDependentRelationsResponse>(
+                                service, METHODID_EXPERIMENTAL_DEPENDENT_RELATIONS)))
+                .addMethod(getExperimentalDiffSchemaMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.ExperimentalDiffSchemaRequest, com.authzed.api.v1.ExperimentalDiffSchemaResponse>(
+                                service, METHODID_EXPERIMENTAL_DIFF_SCHEMA)))
+                .addMethod(getExperimentalRegisterRelationshipCounterMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse>(
+                                service, METHODID_EXPERIMENTAL_REGISTER_RELATIONSHIP_COUNTER)))
+                .addMethod(getExperimentalCountRelationshipsMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.ExperimentalCountRelationshipsRequest, com.authzed.api.v1.ExperimentalCountRelationshipsResponse>(
+                                service, METHODID_EXPERIMENTAL_COUNT_RELATIONSHIPS)))
+                .addMethod(getExperimentalUnregisterRelationshipCounterMethod(), io.grpc.stub.ServerCalls.asyncUnaryCall(
+                        new MethodHandlers<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse>(
+                                service, METHODID_EXPERIMENTAL_UNREGISTER_RELATIONSHIP_COUNTER)))
                 .build();
     }
 
@@ -450,7 +1174,12 @@ public final class ExperimentalServiceGrpc {
                     serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
                             .setSchemaDescriptor(new ExperimentalServiceFileDescriptorSupplier())
                             .addMethod(getBulkImportRelationshipsMethod()).addMethod(getBulkExportRelationshipsMethod())
-                            .addMethod(getBulkCheckPermissionMethod()).build();
+                            .addMethod(getBulkCheckPermissionMethod()).addMethod(getExperimentalReflectSchemaMethod())
+                            .addMethod(getExperimentalComputablePermissionsMethod())
+                            .addMethod(getExperimentalDependentRelationsMethod()).addMethod(getExperimentalDiffSchemaMethod())
+                            .addMethod(getExperimentalRegisterRelationshipCounterMethod())
+                            .addMethod(getExperimentalCountRelationshipsMethod())
+                            .addMethod(getExperimentalUnregisterRelationshipCounterMethod()).build();
                 }
             }
         }

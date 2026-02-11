@@ -53,7 +53,7 @@ nb-configuration.xml
 
 # Gradle
 .gradle/
-build/
+/build/
 
 # Maven
 target/

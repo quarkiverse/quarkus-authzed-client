@@ -28,8 +28,7 @@ public class WatchServiceClient implements WatchService, MutinyClient<MutinyWatc
     }
 
     @Override
-    public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> watch(
-            com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request) {
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchResponse> watch(com.authzed.api.v1.WatchRequest request) {
         return stub.watch(request);
     }
 }

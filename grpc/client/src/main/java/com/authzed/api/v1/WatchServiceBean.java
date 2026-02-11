@@ -14,8 +14,7 @@ public class WatchServiceBean extends MutinyWatchServiceGrpc.WatchServiceImplBas
     }
 
     @Override
-    public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchServiceOuterClass.WatchResponse> watch(
-            com.authzed.api.v1.WatchServiceOuterClass.WatchRequest request) {
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1.WatchResponse> watch(com.authzed.api.v1.WatchRequest request) {
         try {
             return delegate.watch(request);
         } catch (UnsupportedOperationException e) {
