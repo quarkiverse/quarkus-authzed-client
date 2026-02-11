@@ -41,38 +41,111 @@ public final class MutinyExperimentalServiceGrpc implements io.quarkus.grpc.Muti
             return new MutinyExperimentalServiceStub(channel, callOptions);
         }
 
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> bulkCheckPermission(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest request) {
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to CheckBulkPermission in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.BulkCheckPermissionResponse> bulkCheckPermission(
+                com.authzed.api.v1.BulkCheckPermissionRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::bulkCheckPermission);
         }
 
         /**
          * <pre>
-         *  BulkExportRelationships is the fastest path available to exporting
-         *  relationships from the server. It is resumable, and will return results
-         *  in an order determined by the server.
+         *  DEPRECATED: Promoted to ReflectSchema in the stable API.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> bulkExportRelationships(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest request) {
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalReflectSchemaResponse> experimentalReflectSchema(
+                com.authzed.api.v1.ExperimentalReflectSchemaRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::experimentalReflectSchema);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to ComputablePermissions in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalComputablePermissionsResponse> experimentalComputablePermissions(
+                com.authzed.api.v1.ExperimentalComputablePermissionsRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::experimentalComputablePermissions);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to DependentRelations in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalDependentRelationsResponse> experimentalDependentRelations(
+                com.authzed.api.v1.ExperimentalDependentRelationsRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::experimentalDependentRelations);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to DiffSchema in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalDiffSchemaResponse> experimentalDiffSchema(
+                com.authzed.api.v1.ExperimentalDiffSchemaRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::experimentalDiffSchema);
+        }
+
+        /**
+         * <pre>
+         *  EXPERIMENTAL: RegisterRelationshipCounter registers a new filter for counting relationships. A filter must be registered before
+         *  a count can be requested.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> experimentalRegisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::experimentalRegisterRelationshipCounter);
+        }
+
+        /**
+         * <pre>
+         *  EXPERIMENTAL: CountRelationships returns the count of relationships for &#42;pre-registered&#42; filter.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalCountRelationshipsResponse> experimentalCountRelationships(
+                com.authzed.api.v1.ExperimentalCountRelationshipsRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::experimentalCountRelationships);
+        }
+
+        /**
+         * <pre>
+         *  EXPERIMENTAL: UnregisterRelationshipCounter unregisters an existing filter for counting relationships.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> experimentalUnregisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::experimentalUnregisterRelationshipCounter);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to ExportBulkRelationships in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.BulkExportRelationshipsResponse> bulkExportRelationships(
+                com.authzed.api.v1.BulkExportRelationshipsRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToMany(request, delegateStub::bulkExportRelationships);
         }
 
         /**
          * <pre>
-         *  BulkImportRelationships is a faster path to writing a large number of
-         *  relationships at once. It is both batched and streaming. For maximum
-         *  performance, the caller should attempt to write relationships in as close
-         *  to relationship sort order as possible: (resource.object_type,
-         *  resource.object_id, relation, subject.object.object_type,
-         *  subject.object.object_id, subject.optional_relation)
-         *
-         *  EXPERIMENTAL
-         *  https://github.com/authzed/spicedb/issues/1303
+         *  DEPRECATED: Promoted to ImportBulkRelationships in the stable API.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> bulkImportRelationships(
-                io.smallrye.mutiny.Multi<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest> request) {
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.BulkImportRelationshipsResponse> bulkImportRelationships(
+                io.smallrye.mutiny.Multi<com.authzed.api.v1.BulkImportRelationshipsRequest> request) {
             return io.quarkus.grpc.stubs.ClientCalls.manyToOne(request, delegateStub::bulkImportRelationships);
         }
     }
@@ -97,38 +170,111 @@ public final class MutinyExperimentalServiceGrpc implements io.quarkus.grpc.Muti
             return this;
         }
 
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse> bulkCheckPermission(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest request) {
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to CheckBulkPermission in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.BulkCheckPermissionResponse> bulkCheckPermission(
+                com.authzed.api.v1.BulkCheckPermissionRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
         /**
          * <pre>
-         *  BulkExportRelationships is the fastest path available to exporting
-         *  relationships from the server. It is resumable, and will return results
-         *  in an order determined by the server.
+         *  DEPRECATED: Promoted to ReflectSchema in the stable API.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse> bulkExportRelationships(
-                com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest request) {
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalReflectSchemaResponse> experimentalReflectSchema(
+                com.authzed.api.v1.ExperimentalReflectSchemaRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
         /**
          * <pre>
-         *  BulkImportRelationships is a faster path to writing a large number of
-         *  relationships at once. It is both batched and streaming. For maximum
-         *  performance, the caller should attempt to write relationships in as close
-         *  to relationship sort order as possible: (resource.object_type,
-         *  resource.object_id, relation, subject.object.object_type,
-         *  subject.object.object_id, subject.optional_relation)
-         *
-         *  EXPERIMENTAL
-         *  https://github.com/authzed/spicedb/issues/1303
+         *  DEPRECATED: Promoted to ComputablePermissions in the stable API.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse> bulkImportRelationships(
-                io.smallrye.mutiny.Multi<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest> request) {
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalComputablePermissionsResponse> experimentalComputablePermissions(
+                com.authzed.api.v1.ExperimentalComputablePermissionsRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to DependentRelations in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalDependentRelationsResponse> experimentalDependentRelations(
+                com.authzed.api.v1.ExperimentalDependentRelationsRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to DiffSchema in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalDiffSchemaResponse> experimentalDiffSchema(
+                com.authzed.api.v1.ExperimentalDiffSchemaRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  EXPERIMENTAL: RegisterRelationshipCounter registers a new filter for counting relationships. A filter must be registered before
+         *  a count can be requested.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse> experimentalRegisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  EXPERIMENTAL: CountRelationships returns the count of relationships for &#42;pre-registered&#42; filter.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalCountRelationshipsResponse> experimentalCountRelationships(
+                com.authzed.api.v1.ExperimentalCountRelationshipsRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  EXPERIMENTAL: UnregisterRelationshipCounter unregisters an existing filter for counting relationships.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse> experimentalUnregisterRelationshipCounter(
+                com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to ExportBulkRelationships in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.BulkExportRelationshipsResponse> bulkExportRelationships(
+                com.authzed.api.v1.BulkExportRelationshipsRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  DEPRECATED: Promoted to ImportBulkRelationships in the stable API.
+         * </pre>
+         */
+        @Deprecated
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.BulkImportRelationshipsResponse> bulkImportRelationships(
+                io.smallrye.mutiny.Multi<com.authzed.api.v1.BulkImportRelationshipsRequest> request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -137,15 +283,41 @@ public final class MutinyExperimentalServiceGrpc implements io.quarkus.grpc.Muti
             return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor()).addMethod(
                     com.authzed.api.v1.ExperimentalServiceGrpc.getBulkImportRelationshipsMethod(),
                     asyncClientStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse>(
+                            new MethodHandlers<com.authzed.api.v1.BulkImportRelationshipsRequest, com.authzed.api.v1.BulkImportRelationshipsResponse>(
                                     this, METHODID_BULK_IMPORT_RELATIONSHIPS, compression)))
                     .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getBulkExportRelationshipsMethod(),
                             asyncServerStreamingCall(
-                                    new MethodHandlers<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse>(
+                                    new MethodHandlers<com.authzed.api.v1.BulkExportRelationshipsRequest, com.authzed.api.v1.BulkExportRelationshipsResponse>(
                                             this, METHODID_BULK_EXPORT_RELATIONSHIPS, compression)))
                     .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getBulkCheckPermissionMethod(), asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest, com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse>(
+                            new MethodHandlers<com.authzed.api.v1.BulkCheckPermissionRequest, com.authzed.api.v1.BulkCheckPermissionResponse>(
                                     this, METHODID_BULK_CHECK_PERMISSION, compression)))
+                    .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getExperimentalReflectSchemaMethod(), asyncUnaryCall(
+                            new MethodHandlers<com.authzed.api.v1.ExperimentalReflectSchemaRequest, com.authzed.api.v1.ExperimentalReflectSchemaResponse>(
+                                    this, METHODID_EXPERIMENTAL_REFLECT_SCHEMA, compression)))
+                    .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getExperimentalComputablePermissionsMethod(),
+                            asyncUnaryCall(
+                                    new MethodHandlers<com.authzed.api.v1.ExperimentalComputablePermissionsRequest, com.authzed.api.v1.ExperimentalComputablePermissionsResponse>(
+                                            this, METHODID_EXPERIMENTAL_COMPUTABLE_PERMISSIONS, compression)))
+                    .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getExperimentalDependentRelationsMethod(),
+                            asyncUnaryCall(
+                                    new MethodHandlers<com.authzed.api.v1.ExperimentalDependentRelationsRequest, com.authzed.api.v1.ExperimentalDependentRelationsResponse>(
+                                            this, METHODID_EXPERIMENTAL_DEPENDENT_RELATIONS, compression)))
+                    .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getExperimentalDiffSchemaMethod(), asyncUnaryCall(
+                            new MethodHandlers<com.authzed.api.v1.ExperimentalDiffSchemaRequest, com.authzed.api.v1.ExperimentalDiffSchemaResponse>(
+                                    this, METHODID_EXPERIMENTAL_DIFF_SCHEMA, compression)))
+                    .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getExperimentalRegisterRelationshipCounterMethod(),
+                            asyncUnaryCall(
+                                    new MethodHandlers<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse>(
+                                            this, METHODID_EXPERIMENTAL_REGISTER_RELATIONSHIP_COUNTER, compression)))
+                    .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getExperimentalCountRelationshipsMethod(),
+                            asyncUnaryCall(
+                                    new MethodHandlers<com.authzed.api.v1.ExperimentalCountRelationshipsRequest, com.authzed.api.v1.ExperimentalCountRelationshipsResponse>(
+                                            this, METHODID_EXPERIMENTAL_COUNT_RELATIONSHIPS, compression)))
+                    .addMethod(com.authzed.api.v1.ExperimentalServiceGrpc.getExperimentalUnregisterRelationshipCounterMethod(),
+                            asyncUnaryCall(
+                                    new MethodHandlers<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest, com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse>(
+                                            this, METHODID_EXPERIMENTAL_UNREGISTER_RELATIONSHIP_COUNTER, compression)))
                     .build();
         }
     }
@@ -155,6 +327,20 @@ public final class MutinyExperimentalServiceGrpc implements io.quarkus.grpc.Muti
     private static final int METHODID_BULK_EXPORT_RELATIONSHIPS = 1;
 
     private static final int METHODID_BULK_CHECK_PERMISSION = 2;
+
+    private static final int METHODID_EXPERIMENTAL_REFLECT_SCHEMA = 3;
+
+    private static final int METHODID_EXPERIMENTAL_COMPUTABLE_PERMISSIONS = 4;
+
+    private static final int METHODID_EXPERIMENTAL_DEPENDENT_RELATIONS = 5;
+
+    private static final int METHODID_EXPERIMENTAL_DIFF_SCHEMA = 6;
+
+    private static final int METHODID_EXPERIMENTAL_REGISTER_RELATIONSHIP_COUNTER = 7;
+
+    private static final int METHODID_EXPERIMENTAL_COUNT_RELATIONSHIPS = 8;
+
+    private static final int METHODID_EXPERIMENTAL_UNREGISTER_RELATIONSHIP_COUNTER = 9;
 
     private static final class MethodHandlers<Req, Resp> implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
@@ -177,16 +363,54 @@ public final class MutinyExperimentalServiceGrpc implements io.quarkus.grpc.Muti
         public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
             switch (methodId) {
                 case METHODID_BULK_EXPORT_RELATIONSHIPS:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToMany(
-                            (com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkExportRelationshipsResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToMany((com.authzed.api.v1.BulkExportRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkExportRelationshipsResponse>) responseObserver,
                             compression, serviceImpl::bulkExportRelationships);
                     break;
                 case METHODID_BULK_CHECK_PERMISSION:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
-                            (com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkCheckPermissionResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.BulkCheckPermissionRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkCheckPermissionResponse>) responseObserver,
                             compression, serviceImpl::bulkCheckPermission);
+                    break;
+                case METHODID_EXPERIMENTAL_REFLECT_SCHEMA:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.ExperimentalReflectSchemaRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalReflectSchemaResponse>) responseObserver,
+                            compression, serviceImpl::experimentalReflectSchema);
+                    break;
+                case METHODID_EXPERIMENTAL_COMPUTABLE_PERMISSIONS:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
+                            (com.authzed.api.v1.ExperimentalComputablePermissionsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalComputablePermissionsResponse>) responseObserver,
+                            compression, serviceImpl::experimentalComputablePermissions);
+                    break;
+                case METHODID_EXPERIMENTAL_DEPENDENT_RELATIONS:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
+                            (com.authzed.api.v1.ExperimentalDependentRelationsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDependentRelationsResponse>) responseObserver,
+                            compression, serviceImpl::experimentalDependentRelations);
+                    break;
+                case METHODID_EXPERIMENTAL_DIFF_SCHEMA:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.ExperimentalDiffSchemaRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalDiffSchemaResponse>) responseObserver,
+                            compression, serviceImpl::experimentalDiffSchema);
+                    break;
+                case METHODID_EXPERIMENTAL_REGISTER_RELATIONSHIP_COUNTER:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
+                            (com.authzed.api.v1.ExperimentalRegisterRelationshipCounterRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalRegisterRelationshipCounterResponse>) responseObserver,
+                            compression, serviceImpl::experimentalRegisterRelationshipCounter);
+                    break;
+                case METHODID_EXPERIMENTAL_COUNT_RELATIONSHIPS:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
+                            (com.authzed.api.v1.ExperimentalCountRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalCountRelationshipsResponse>) responseObserver,
+                            compression, serviceImpl::experimentalCountRelationships);
+                    break;
+                case METHODID_EXPERIMENTAL_UNREGISTER_RELATIONSHIP_COUNTER:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
+                            (com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalUnregisterRelationshipCounterResponse>) responseObserver,
+                            compression, serviceImpl::experimentalUnregisterRelationshipCounter);
                     break;
                 default:
                     throw new java.lang.AssertionError();
@@ -199,7 +423,7 @@ public final class MutinyExperimentalServiceGrpc implements io.quarkus.grpc.Muti
             switch (methodId) {
                 case METHODID_BULK_IMPORT_RELATIONSHIPS:
                     return (io.grpc.stub.StreamObserver<Req>) io.quarkus.grpc.stubs.ServerCalls.manyToOne(
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExperimentalServiceOuterClass.BulkImportRelationshipsResponse>) responseObserver,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.BulkImportRelationshipsResponse>) responseObserver,
                             serviceImpl::bulkImportRelationships);
                 default:
                     throw new java.lang.AssertionError();

@@ -3,8 +3,8 @@ package io.quarkiverse.authzed.schema;
 import java.time.Duration;
 import java.util.concurrent.Callable;
 
-import com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaRequest;
-import com.authzed.api.v1.SchemaServiceOuterClass.ReadSchemaResponse;
+import com.authzed.api.v1.ReadSchemaRequest;
+import com.authzed.api.v1.ReadSchemaResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import picocli.CommandLine.Command;

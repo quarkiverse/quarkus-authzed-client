@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 
 import org.jboss.logging.Logger;
 
-import com.authzed.api.v1.Core.ObjectReference;
-import com.authzed.api.v1.Core.Relationship;
-import com.authzed.api.v1.Core.SubjectReference;
+import com.authzed.api.v1.ObjectReference;
+import com.authzed.api.v1.Relationship;
+import com.authzed.api.v1.SubjectReference;
 
 public class Tuples {
 

@@ -8,8 +8,8 @@ import java.time.Duration;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
-import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaRequest;
-import com.authzed.api.v1.SchemaServiceOuterClass.WriteSchemaResponse;
+import com.authzed.api.v1.WriteSchemaRequest;
+import com.authzed.api.v1.WriteSchemaResponse;
 
 import io.quarkiverse.authzed.client.AuthzedClient;
 import io.quarkus.runtime.util.StringUtil;

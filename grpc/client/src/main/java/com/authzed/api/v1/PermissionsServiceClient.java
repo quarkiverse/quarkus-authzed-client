@@ -29,50 +29,62 @@ public class PermissionsServiceClient
     }
 
     @Override
-    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.WriteRelationshipsResponse> writeRelationships(
-            com.authzed.api.v1.PermissionService.WriteRelationshipsRequest request) {
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.WriteRelationshipsResponse> writeRelationships(
+            com.authzed.api.v1.WriteRelationshipsRequest request) {
         return stub.writeRelationships(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse> deleteRelationships(
-            com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest request) {
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.DeleteRelationshipsResponse> deleteRelationships(
+            com.authzed.api.v1.DeleteRelationshipsRequest request) {
         return stub.deleteRelationships(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckPermissionResponse> checkPermission(
-            com.authzed.api.v1.PermissionService.CheckPermissionRequest request) {
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckPermissionResponse> checkPermission(
+            com.authzed.api.v1.CheckPermissionRequest request) {
         return stub.checkPermission(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
-            com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckBulkPermissionsResponse> checkBulkPermissions(
+            com.authzed.api.v1.CheckBulkPermissionsRequest request) {
         return stub.checkBulkPermissions(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> expandPermissionTree(
-            com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request) {
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExpandPermissionTreeResponse> expandPermissionTree(
+            com.authzed.api.v1.ExpandPermissionTreeRequest request) {
         return stub.expandPermissionTree(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.ReadRelationshipsResponse> readRelationships(
-            com.authzed.api.v1.PermissionService.ReadRelationshipsRequest request) {
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1.ReadRelationshipsResponse> readRelationships(
+            com.authzed.api.v1.ReadRelationshipsRequest request) {
         return stub.readRelationships(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupResourcesResponse> lookupResources(
-            com.authzed.api.v1.PermissionService.LookupResourcesRequest request) {
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupResourcesResponse> lookupResources(
+            com.authzed.api.v1.LookupResourcesRequest request) {
         return stub.lookupResources(request);
     }
 
     @Override
-    public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupSubjectsResponse> lookupSubjects(
-            com.authzed.api.v1.PermissionService.LookupSubjectsRequest request) {
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupSubjectsResponse> lookupSubjects(
+            com.authzed.api.v1.LookupSubjectsRequest request) {
         return stub.lookupSubjects(request);
+    }
+
+    @Override
+    public io.smallrye.mutiny.Multi<com.authzed.api.v1.ExportBulkRelationshipsResponse> exportBulkRelationships(
+            com.authzed.api.v1.ExportBulkRelationshipsRequest request) {
+        return stub.exportBulkRelationships(request);
+    }
+
+    @Override
+    public io.smallrye.mutiny.Uni<com.authzed.api.v1.ImportBulkRelationshipsResponse> importBulkRelationships(
+            io.smallrye.mutiny.Multi<com.authzed.api.v1.ImportBulkRelationshipsRequest> request) {
+        return stub.importBulkRelationships(request);
     }
 }

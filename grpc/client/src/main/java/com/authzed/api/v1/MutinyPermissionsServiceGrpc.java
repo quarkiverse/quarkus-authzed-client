@@ -1,6 +1,7 @@
 package com.authzed.api.v1;
 
 import static com.authzed.api.v1.PermissionsServiceGrpc.getServiceDescriptor;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 
@@ -47,8 +48,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  be satisfied for the operation to commit.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.WriteRelationshipsResponse> writeRelationships(
-                com.authzed.api.v1.PermissionService.WriteRelationshipsRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.WriteRelationshipsResponse> writeRelationships(
+                com.authzed.api.v1.WriteRelationshipsRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::writeRelationships);
         }
 
@@ -60,8 +61,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  be satisfied for the operation to commit.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse> deleteRelationships(
-                com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.DeleteRelationshipsResponse> deleteRelationships(
+                com.authzed.api.v1.DeleteRelationshipsRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::deleteRelationships);
         }
 
@@ -71,8 +72,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  to having a permission or is a direct member of a particular relation.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckPermissionResponse> checkPermission(
-                com.authzed.api.v1.PermissionService.CheckPermissionRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckPermissionResponse> checkPermission(
+                com.authzed.api.v1.CheckPermissionRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::checkPermission);
         }
 
@@ -82,8 +83,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  and returns the list of results.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
-                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckBulkPermissionsResponse> checkBulkPermissions(
+                com.authzed.api.v1.CheckBulkPermissionsRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::checkBulkPermissions);
         }
 
@@ -94,8 +95,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  require multiple calls to fully unnest a deeply nested graph.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> expandPermissionTree(
-                com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExpandPermissionTreeResponse> expandPermissionTree(
+                com.authzed.api.v1.ExpandPermissionTreeRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToOne(request, delegateStub::expandPermissionTree);
         }
 
@@ -105,8 +106,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  filters.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.ReadRelationshipsResponse> readRelationships(
-                com.authzed.api.v1.PermissionService.ReadRelationshipsRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.ReadRelationshipsResponse> readRelationships(
+                com.authzed.api.v1.ReadRelationshipsRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToMany(request, delegateStub::readRelationships);
         }
 
@@ -116,8 +117,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  can access whether via a computed permission or relation membership.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupResourcesResponse> lookupResources(
-                com.authzed.api.v1.PermissionService.LookupResourcesRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupResourcesResponse> lookupResources(
+                com.authzed.api.v1.LookupResourcesRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToMany(request, delegateStub::lookupResources);
         }
 
@@ -127,9 +128,37 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  have access whether via a computed permission or relation membership.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupSubjectsResponse> lookupSubjects(
-                com.authzed.api.v1.PermissionService.LookupSubjectsRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupSubjectsResponse> lookupSubjects(
+                com.authzed.api.v1.LookupSubjectsRequest request) {
             return io.quarkus.grpc.stubs.ClientCalls.oneToMany(request, delegateStub::lookupSubjects);
+        }
+
+        /**
+         * <pre>
+         *  ExportBulkRelationships is the fastest path available to exporting
+         *  relationships from the server. It is resumable, and will return results
+         *  in an order determined by the server.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.ExportBulkRelationshipsResponse> exportBulkRelationships(
+                com.authzed.api.v1.ExportBulkRelationshipsRequest request) {
+            return io.quarkus.grpc.stubs.ClientCalls.oneToMany(request, delegateStub::exportBulkRelationships);
+        }
+
+        /**
+         * <pre>
+         *  ImportBulkRelationships is a faster path to writing a large number of
+         *  relationships at once. It is both batched and streaming. For maximum
+         *  performance, the caller should attempt to write relationships in as close
+         *  to relationship sort order as possible: (resource.object_type,
+         *  resource.object_id, relation, subject.object.object_type,
+         *  subject.object.object_id, subject.optional_relation). All relationships
+         *  written are done so under a single transaction.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ImportBulkRelationshipsResponse> importBulkRelationships(
+                io.smallrye.mutiny.Multi<com.authzed.api.v1.ImportBulkRelationshipsRequest> request) {
+            return io.quarkus.grpc.stubs.ClientCalls.manyToOne(request, delegateStub::importBulkRelationships);
         }
     }
 
@@ -160,8 +189,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  be satisfied for the operation to commit.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.WriteRelationshipsResponse> writeRelationships(
-                com.authzed.api.v1.PermissionService.WriteRelationshipsRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.WriteRelationshipsResponse> writeRelationships(
+                com.authzed.api.v1.WriteRelationshipsRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -173,8 +202,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  be satisfied for the operation to commit.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse> deleteRelationships(
-                com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.DeleteRelationshipsResponse> deleteRelationships(
+                com.authzed.api.v1.DeleteRelationshipsRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -184,8 +213,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  to having a permission or is a direct member of a particular relation.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckPermissionResponse> checkPermission(
-                com.authzed.api.v1.PermissionService.CheckPermissionRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckPermissionResponse> checkPermission(
+                com.authzed.api.v1.CheckPermissionRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -195,8 +224,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  and returns the list of results.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse> checkBulkPermissions(
-                com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.CheckBulkPermissionsResponse> checkBulkPermissions(
+                com.authzed.api.v1.CheckBulkPermissionsRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -207,8 +236,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  require multiple calls to fully unnest a deeply nested graph.
          * </pre>
          */
-        public io.smallrye.mutiny.Uni<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse> expandPermissionTree(
-                com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest request) {
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ExpandPermissionTreeResponse> expandPermissionTree(
+                com.authzed.api.v1.ExpandPermissionTreeRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -218,8 +247,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  filters.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.ReadRelationshipsResponse> readRelationships(
-                com.authzed.api.v1.PermissionService.ReadRelationshipsRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.ReadRelationshipsResponse> readRelationships(
+                com.authzed.api.v1.ReadRelationshipsRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -229,8 +258,8 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  can access whether via a computed permission or relation membership.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupResourcesResponse> lookupResources(
-                com.authzed.api.v1.PermissionService.LookupResourcesRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupResourcesResponse> lookupResources(
+                com.authzed.api.v1.LookupResourcesRequest request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -240,8 +269,36 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
          *  have access whether via a computed permission or relation membership.
          * </pre>
          */
-        public io.smallrye.mutiny.Multi<com.authzed.api.v1.PermissionService.LookupSubjectsResponse> lookupSubjects(
-                com.authzed.api.v1.PermissionService.LookupSubjectsRequest request) {
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.LookupSubjectsResponse> lookupSubjects(
+                com.authzed.api.v1.LookupSubjectsRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  ExportBulkRelationships is the fastest path available to exporting
+         *  relationships from the server. It is resumable, and will return results
+         *  in an order determined by the server.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Multi<com.authzed.api.v1.ExportBulkRelationshipsResponse> exportBulkRelationships(
+                com.authzed.api.v1.ExportBulkRelationshipsRequest request) {
+            throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
+        }
+
+        /**
+         * <pre>
+         *  ImportBulkRelationships is a faster path to writing a large number of
+         *  relationships at once. It is both batched and streaming. For maximum
+         *  performance, the caller should attempt to write relationships in as close
+         *  to relationship sort order as possible: (resource.object_type,
+         *  resource.object_id, relation, subject.object.object_type,
+         *  subject.object.object_id, subject.optional_relation). All relationships
+         *  written are done so under a single transaction.
+         * </pre>
+         */
+        public io.smallrye.mutiny.Uni<com.authzed.api.v1.ImportBulkRelationshipsResponse> importBulkRelationships(
+                io.smallrye.mutiny.Multi<com.authzed.api.v1.ImportBulkRelationshipsRequest> request) {
             throw new io.grpc.StatusRuntimeException(io.grpc.Status.UNIMPLEMENTED);
         }
 
@@ -249,29 +306,37 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
         public io.grpc.ServerServiceDefinition bindService() {
             return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getReadRelationshipsMethod(), asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.ReadRelationshipsRequest, com.authzed.api.v1.PermissionService.ReadRelationshipsResponse>(
+                            new MethodHandlers<com.authzed.api.v1.ReadRelationshipsRequest, com.authzed.api.v1.ReadRelationshipsResponse>(
                                     this, METHODID_READ_RELATIONSHIPS, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getWriteRelationshipsMethod(), asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.WriteRelationshipsRequest, com.authzed.api.v1.PermissionService.WriteRelationshipsResponse>(
+                            new MethodHandlers<com.authzed.api.v1.WriteRelationshipsRequest, com.authzed.api.v1.WriteRelationshipsResponse>(
                                     this, METHODID_WRITE_RELATIONSHIPS, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getDeleteRelationshipsMethod(), asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest, com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse>(
+                            new MethodHandlers<com.authzed.api.v1.DeleteRelationshipsRequest, com.authzed.api.v1.DeleteRelationshipsResponse>(
                                     this, METHODID_DELETE_RELATIONSHIPS, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getCheckPermissionMethod(), asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.CheckPermissionRequest, com.authzed.api.v1.PermissionService.CheckPermissionResponse>(
+                            new MethodHandlers<com.authzed.api.v1.CheckPermissionRequest, com.authzed.api.v1.CheckPermissionResponse>(
                                     this, METHODID_CHECK_PERMISSION, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getCheckBulkPermissionsMethod(), asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest, com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse>(
+                            new MethodHandlers<com.authzed.api.v1.CheckBulkPermissionsRequest, com.authzed.api.v1.CheckBulkPermissionsResponse>(
                                     this, METHODID_CHECK_BULK_PERMISSIONS, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getExpandPermissionTreeMethod(), asyncUnaryCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest, com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse>(
+                            new MethodHandlers<com.authzed.api.v1.ExpandPermissionTreeRequest, com.authzed.api.v1.ExpandPermissionTreeResponse>(
                                     this, METHODID_EXPAND_PERMISSION_TREE, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getLookupResourcesMethod(), asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.LookupResourcesRequest, com.authzed.api.v1.PermissionService.LookupResourcesResponse>(
+                            new MethodHandlers<com.authzed.api.v1.LookupResourcesRequest, com.authzed.api.v1.LookupResourcesResponse>(
                                     this, METHODID_LOOKUP_RESOURCES, compression)))
                     .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getLookupSubjectsMethod(), asyncServerStreamingCall(
-                            new MethodHandlers<com.authzed.api.v1.PermissionService.LookupSubjectsRequest, com.authzed.api.v1.PermissionService.LookupSubjectsResponse>(
+                            new MethodHandlers<com.authzed.api.v1.LookupSubjectsRequest, com.authzed.api.v1.LookupSubjectsResponse>(
                                     this, METHODID_LOOKUP_SUBJECTS, compression)))
+                    .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getImportBulkRelationshipsMethod(),
+                            asyncClientStreamingCall(
+                                    new MethodHandlers<com.authzed.api.v1.ImportBulkRelationshipsRequest, com.authzed.api.v1.ImportBulkRelationshipsResponse>(
+                                            this, METHODID_IMPORT_BULK_RELATIONSHIPS, compression)))
+                    .addMethod(com.authzed.api.v1.PermissionsServiceGrpc.getExportBulkRelationshipsMethod(),
+                            asyncServerStreamingCall(
+                                    new MethodHandlers<com.authzed.api.v1.ExportBulkRelationshipsRequest, com.authzed.api.v1.ExportBulkRelationshipsResponse>(
+                                            this, METHODID_EXPORT_BULK_RELATIONSHIPS, compression)))
                     .build();
         }
     }
@@ -291,6 +356,10 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
     private static final int METHODID_LOOKUP_RESOURCES = 6;
 
     private static final int METHODID_LOOKUP_SUBJECTS = 7;
+
+    private static final int METHODID_IMPORT_BULK_RELATIONSHIPS = 8;
+
+    private static final int METHODID_EXPORT_BULK_RELATIONSHIPS = 9;
 
     private static final class MethodHandlers<Req, Resp> implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
             io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
@@ -313,52 +382,49 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
         public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
             switch (methodId) {
                 case METHODID_READ_RELATIONSHIPS:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToMany(
-                            (com.authzed.api.v1.PermissionService.ReadRelationshipsRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.ReadRelationshipsResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToMany((com.authzed.api.v1.ReadRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ReadRelationshipsResponse>) responseObserver,
                             compression, serviceImpl::readRelationships);
                     break;
                 case METHODID_WRITE_RELATIONSHIPS:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
-                            (com.authzed.api.v1.PermissionService.WriteRelationshipsRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.WriteRelationshipsResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.WriteRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.WriteRelationshipsResponse>) responseObserver,
                             compression, serviceImpl::writeRelationships);
                     break;
                 case METHODID_DELETE_RELATIONSHIPS:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
-                            (com.authzed.api.v1.PermissionService.DeleteRelationshipsRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.DeleteRelationshipsResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.DeleteRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.DeleteRelationshipsResponse>) responseObserver,
                             compression, serviceImpl::deleteRelationships);
                     break;
                 case METHODID_CHECK_PERMISSION:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
-                            (com.authzed.api.v1.PermissionService.CheckPermissionRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckPermissionResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.CheckPermissionRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.CheckPermissionResponse>) responseObserver,
                             compression, serviceImpl::checkPermission);
                     break;
                 case METHODID_CHECK_BULK_PERMISSIONS:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
-                            (com.authzed.api.v1.PermissionService.CheckBulkPermissionsRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.CheckBulkPermissionsResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.CheckBulkPermissionsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.CheckBulkPermissionsResponse>) responseObserver,
                             compression, serviceImpl::checkBulkPermissions);
                     break;
                 case METHODID_EXPAND_PERMISSION_TREE:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToOne(
-                            (com.authzed.api.v1.PermissionService.ExpandPermissionTreeRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.ExpandPermissionTreeResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToOne((com.authzed.api.v1.ExpandPermissionTreeRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExpandPermissionTreeResponse>) responseObserver,
                             compression, serviceImpl::expandPermissionTree);
                     break;
                 case METHODID_LOOKUP_RESOURCES:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToMany(
-                            (com.authzed.api.v1.PermissionService.LookupResourcesRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.LookupResourcesResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToMany((com.authzed.api.v1.LookupResourcesRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.LookupResourcesResponse>) responseObserver,
                             compression, serviceImpl::lookupResources);
                     break;
                 case METHODID_LOOKUP_SUBJECTS:
-                    io.quarkus.grpc.stubs.ServerCalls.oneToMany(
-                            (com.authzed.api.v1.PermissionService.LookupSubjectsRequest) request,
-                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.PermissionService.LookupSubjectsResponse>) responseObserver,
+                    io.quarkus.grpc.stubs.ServerCalls.oneToMany((com.authzed.api.v1.LookupSubjectsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.LookupSubjectsResponse>) responseObserver,
                             compression, serviceImpl::lookupSubjects);
+                    break;
+                case METHODID_EXPORT_BULK_RELATIONSHIPS:
+                    io.quarkus.grpc.stubs.ServerCalls.oneToMany((com.authzed.api.v1.ExportBulkRelationshipsRequest) request,
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ExportBulkRelationshipsResponse>) responseObserver,
+                            compression, serviceImpl::exportBulkRelationships);
                     break;
                 default:
                     throw new java.lang.AssertionError();
@@ -369,6 +435,10 @@ public final class MutinyPermissionsServiceGrpc implements io.quarkus.grpc.Mutin
         @java.lang.SuppressWarnings("unchecked")
         public io.grpc.stub.StreamObserver<Req> invoke(io.grpc.stub.StreamObserver<Resp> responseObserver) {
             switch (methodId) {
+                case METHODID_IMPORT_BULK_RELATIONSHIPS:
+                    return (io.grpc.stub.StreamObserver<Req>) io.quarkus.grpc.stubs.ServerCalls.manyToOne(
+                            (io.grpc.stub.StreamObserver<com.authzed.api.v1.ImportBulkRelationshipsResponse>) responseObserver,
+                            serviceImpl::importBulkRelationships);
                 default:
                     throw new java.lang.AssertionError();
             }
