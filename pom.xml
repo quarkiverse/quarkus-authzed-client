@@ -8,7 +8,7 @@
   </parent>
   <groupId>io.quarkiverse.authzed</groupId>
   <artifactId>quarkus-authzed-client-parent</artifactId>
-  <version>999-SNAPSHOT</version>
+  <version>0.18.0</version>
   <packaging>pom</packaging>
   <name>Quarkus - Authzed Client - Parent</name>
   <modules>
@@ -21,7 +21,7 @@
     <connection>scm:git:git@github.com:quarkiverse/quarkus-authzed-client.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-authzed-client.git</developerConnection>
     <url>https://github.com/quarkiverse/quarkus-authzed-client</url>
-    <tag>HEAD</tag>
+    <tag>0.18.0</tag>
   </scm>
   <properties>
     <quarkus.version>3.32.0</quarkus.version>
